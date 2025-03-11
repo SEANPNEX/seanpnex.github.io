@@ -1,21 +1,20 @@
 ---
-prev: 
+next: 
     text: 'NCCP'
     link: "/projects/NCCP"
-next: 
-    text: 'Example'
-    link: "/examples/api-examples"
+prev: 
+    text: 'Home'
+    link: "/"
 ---
 
 ## My Resume
-∂
 
 <iframe 
-    src="./resume.pdf#zoom=fitH" 
+    src="/public/resume.pdf#zoom=fitH" 
     type="application/pdf" 
     width="100%" 
     height="1200" 
     style="border: none; overflow: hidden;"
 ></iframe>
 
-[📥 Download Resume](./resume.pdf){target="_blank" download}
+[📥 Download Resume](/public/resume.pdf){target="_blank" download}
