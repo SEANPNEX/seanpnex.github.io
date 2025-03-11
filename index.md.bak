@@ -1,0 +1,21 @@
+---
+# https://vitepress.dev/reference/default-theme-home-page
+layout: home
+
+hero:
+  name: "Sean's Homepage"
+  text: ""
+  tagline: Go! Go! Go!
+  actions:
+    - theme: brand
+      text: My Github
+      link: https://github.com/SEANPNEX
+    - theme: alt
+      text: Examples
+      link: /examples/api-examples.md
+    - theme: alt
+      text: test
+      link: /test
+
+---
+

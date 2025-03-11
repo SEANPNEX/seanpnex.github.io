@@ -1,0 +1,53 @@
+name: Log Commit Details
+
+on: [push]
+
+jobs:
+  log_commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Git user
+        run: |
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+
+      - name: Log commit information
+        env:
+          TZ: "America/New_York"
+        run: |
+          TIMESTAMP=$(date +"%Y-%m-%d %H:%M:%S")
+          USER="${{ github.actor }}"
+          MESSAGE=$(git log -1 --pretty=%B)
+          LOG_ENTRY="${TIMESTAMP}-${USER}-${MESSAGE}"
+          
+          # Append to workflow.log
+          echo "$LOG_ENTRY" >> workflow.log
+          
+          if [ -f "workflow.md" ]; then
+            {
+              echo "---"
+              echo "prev:"
+              echo "  text: \"MarkdownExample\""
+              echo "  link: \"examples/markdown-examples.md\""
+              echo "---"
+              echo "# Workflow"
+              echo ""
+              
+              # Add blank line between each line in workflow.log
+              awk '{print $0 "\n"}' workflow.log
+            } > workflow.md
+          fi
+
+      - name: Commit and push log files
+        run: |
+          git add workflow.log
+          if [ -f "docpage/docs/workflow.md" ]; then
+            git add docpage/docs/workflow.md
+          fi
+          git commit -m "Update log files with latest commit details"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

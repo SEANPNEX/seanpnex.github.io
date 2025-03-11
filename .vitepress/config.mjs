@@ -1,5 +1,5 @@
 import { defineConfig } from 'vitepress'
-import { set_sidebar } from "../.vitepress/auto-sidebar.mjs";	// 改成自己的路径
+import { set_sidebar } from "../.vitepress/auto-sidebar.mjs";	
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   base:"/",
@@ -12,10 +12,13 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/examples/api-examples.md' }
+      { text: 'Examples', link: '/examples/api-examples.md' },
+      { text: 'Resume', link: '/resume/resume.md' },
     ],
 
-    sidebar: { "/examples": set_sidebar("/examples") },
+    sidebar: { "/examples": set_sidebar("/examples"),
+                "/resume": set_sidebar("resume"),
+     },
     aside: "left",
     socialLinks: [
       { icon: 'github', link: 'https://github.com/SEANPNEX' }
