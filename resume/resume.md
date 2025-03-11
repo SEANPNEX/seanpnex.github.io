@@ -8,10 +8,7 @@ next:
 ---
 
 ## My Resume
-
-<script setup>
-  import { VPdfViewer } from "@vue-pdf-viewer/viewer";
-</script>
+∂
 
 <iframe 
     src="./resume.pdf#zoom=fitH" 
