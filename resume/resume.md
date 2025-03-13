@@ -10,7 +10,7 @@ prev:
 ## My Resume
 
 <iframe 
-    src="/public/resume.pdf#zoom=fitH" 
+    src="/resume.pdf#zoom=fitH" 
     type="application/pdf" 
     width="100%" 
     height="1200" 

@@ -7,3 +7,4 @@ cache
 *.local
 *.docx
 dist
+tree.txt
