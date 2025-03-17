@@ -5,7 +5,10 @@ export default defineConfig({
   base:"/",
   head: [["link", { rel: "icon", href: "/favicon.ico" }]],
   title: "Sean's Homepage",
-  description: "A VitePress Site",
+  description: "Sean's Homepage",
+  markdown: {
+    math: true,
+  },
   themeConfig: {
     outlineTitle: "Outline",
     outline: [2, 6],
@@ -52,7 +55,6 @@ export default defineConfig({
 
 
   },
-   // 设置搜索框的样式
   locales: {
     root: {
       label: 'English',
