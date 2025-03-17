@@ -25,10 +25,10 @@ layout: page
 <VPTeamPage>
   <VPTeamPageTitle>
     <template #title>
-        My Profile
+        我的资料
     </template>
     <template #lead>
-        First Year Student at Duke Fintech
+        杜克金融科技一年级学生
     </template>
   </VPTeamPageTitle>
   <VPTeamMembers
@@ -37,15 +37,15 @@ layout: page
 
 <div class="scroll-link-container">
     <div class="scroll-link-box">
-        <a href="/projects/NCCP" class="scroll-link">Projects</a>
+        <a href="/zh/projects/NCCP" class="scroll-link">项目</a>
     </div>
     <span class="separator">|</span>
     <div class="scroll-link-box">
-        <a href="/blogs/start" class="scroll-link">Blog</a>
+        <a href="/zh/blogs/start" class="scroll-link">博客</a>
     </div>
     <span class="separator">|</span>
     <div class="scroll-link-box">
-        <a href="/resume/resume" class="scroll-link">Resume</a>
+        <a href="/zh/resume/resume" class="scroll-link">简历</a>
     </div>
 </div>
 
