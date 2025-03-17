@@ -41,12 +41,14 @@ layout: page
     </div>
     <span class="separator">|</span>
     <div class="scroll-link-box">
-        <a href="/blogs/start" class="scroll-link">Blog</a>
+        <a href="/resume/resume" class="scroll-link">Resume</a>
     </div>
     <span class="separator">|</span>
     <div class="scroll-link-box">
-        <a href="/resume/resume" class="scroll-link">Resume</a>
+        <a href="/blogs/start" class="scroll-link">Blog</a>
     </div>
+
+
 </div>
 
 </VPTeamPage>
