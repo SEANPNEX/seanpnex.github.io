@@ -3,13 +3,14 @@ prev:
     text: 'NCCP'
     link: "/projects/NCCP"
 next: 
-    text: 'Resume'
-    link: "/resume/resume"
+    text: 'Rivalry Network'
+    link: "/projects/rivalry_network"
 ---
-
 <style>
 .figure {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 1em 0;
 }
 .figure img {
@@ -20,6 +21,20 @@ next:
   color: #555;
   margin-top: 0.5em;
   font-style: italic;
+}
+
+.resume-fallback {
+  display: none;
+}
+@media (max-width: 768px) {
+  .resume-wrapper iframe {
+    display: none;
+  }
+  .resume-fallback {
+    display: block;
+    text-align: center;
+    margin-top: 1em;
+  }
 }
 </style>
 
@@ -42,7 +57,7 @@ This project presents the development of a **cross-platform chatbot with integra
   - Utilized **Mel-Cepstral Distance (MCD)** to assess the similarity between generated speech and real human speech samples.
   
   <div class="figure">
-    <img src="/images/statistical_synthesis.png" alt="Table 2.1: Statistical Parametric Synthesis Overview">
+    <img src="/images/chatbot/statistical_synthesis.png" alt="Table 2.1: Statistical Parametric Synthesis Overview">
     <p class="caption">Table 2.1: Algorithms in Text-to-Speech (TTS) tasks</p>
   </div>
 
@@ -52,12 +67,12 @@ This project presents the development of a **cross-platform chatbot with integra
   - MCD indicated VITS-generated speech had greater similarity to real human voices.
   
   <div class="figure">
-    <img src="/images/mel_s.png" alt="Figure 4.1: Mel-spectrogram of sample data">
+    <img src="/images/chatbot/mel_s.png" alt="Figure 4.1: Mel-spectrogram of sample data">
     <p class="caption">Figure 4.1: Mel-spectrogram of sample data</p>
   </div>
 
   <div class="figure">
-    <img src="/images/mel_n.png" alt="Figure 4.2: Mel-spectrogram of inference data">
+    <img src="/images/chatbot/mel_n.png" alt="Figure 4.2: Mel-spectrogram of inference data">
     <p class="caption">Figure 4.2: Mel-spectrogram of inference data</p>
   </div>
 
@@ -69,7 +84,7 @@ This project presents the development of a **cross-platform chatbot with integra
 - **NLP Integration:** Chatbot responses generated via a combination of preset records, NLP APIs (e.g., ChatGPT), and chatbot logs.
 
 <div class="figure">
-  <img src="/images/Nonebot.jpg" alt="Figure 2.1: Nonebot chatbot framework architecture">
+  <img src="/images/chatbot/Nonebot.jpg" alt="Figure 2.1: Nonebot chatbot framework architecture">
   <p class="caption">Figure 2.1: Nonebot chatbot framework architecture</p>
 </div>
 
@@ -114,16 +129,35 @@ $$
 The project demonstrates the potential of deep learning TTS systems to significantly improve chatbot-human interaction by adding natural speech capabilities. While **VITS** was identified as the superior model, limitations such as slow response generation and evaluation accuracy were noted, paving the way for further enhancements in future iterations.
 
 <div class="figure">
-  <img src="/images/gan_diagram.jpg" alt="Figure 3.3: Structure of GAN">
+  <img src="/images/chatbot/gan_diagram.jpg" alt="Figure 3.3: Structure of GAN">
   <p class="caption">Figure 3.3: Structure of GAN</p>
 </div>
 
 <div class="figure">
-  <img src="/images/GAN.png" alt="Figure 3.3: Structure of GAN">
+  <img src="/images/chatbot/GAN.png" alt="Figure 3.3: Structure of GAN">
   <p class="caption">Figure 3.3: Structure of GAN</p>
 </div>
 
 <div class="figure">
-  <img src="/images/vits_loss.jpg" alt="Equation 3.1: STFT Formula">
+  <img src="/images/chatbot/vits_loss.jpg" alt="Equation 3.1: STFT Formula">
   <p class="caption">Equation 3.1: STFT Formula</p>
 </div>
+
+
+## The original report
+<div class="resume-wrapper">
+  <iframe 
+      src="/chatbot_report.pdf#zoom=fitH" 
+      type="application/pdf" 
+      width="100%" 
+      height="1200" 
+      style="border: none; overflow: hidden;"
+  ></iframe>
+  <div class="resume-fallback">
+    <p>PDF preview unavailable in this view. Please download instead:</p>
+    <p><a href="/chatbot_report.pdf" target="_blank" download>📥 Download Report</a></p>
+  </div>
+</div>
+
+[📥 Download Report](/chatbot_report.pdf){target="_blank" download}
+
