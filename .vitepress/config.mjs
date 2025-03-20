@@ -27,7 +27,7 @@ export default defineConfig({
      },
     aside: "left",
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/SEANPNEX' }
+      { icon: 'github', link: 'https://github.com/SEANPNEX/seanpnex.github.io' },
     ],
     footer:{
       copyright: "Copyright@ 2024 Sean Guo",
