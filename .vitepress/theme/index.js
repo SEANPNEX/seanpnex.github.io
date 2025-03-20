@@ -1,7 +1,7 @@
 import { h } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 import './style.css'
-import MouseTracker from './components/MouseTracker.vue';
+import MouseTracker from './components/mousetracker.vue';
 
 /** @type {import('vitepress').Theme} */
 export default {
