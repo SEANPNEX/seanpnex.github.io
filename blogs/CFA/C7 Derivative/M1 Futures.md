@@ -1,16 +1,3 @@
----
-prev: 
-    text: 'Resume'
-    link: "/resume/resume"
-next: 
-    text: 'Options'
-    link: "/blogs/CFA/Derivative/Options"
----
-
-
-
-
-
 
 
 
@@ -334,7 +321,7 @@ Same as all futures and forwards, value of the contract at time $0$ should be $0
 
 By the note above, since $V_0=0$, $PV_{fix}=PV_{float}=Par$.
 
-Assume $F$ is the coupon ofr fixed-rate bond with par of $1$.
+Assume $F$ is the coupon for fixed-rate bond with par of $1$.
 
 Then $1=\sum_{i=1}^n FD_i+1D_n$, $F=\frac{1-D_n}{\sum_{i=1}^nD_i}$, where $D_i$ is the discount factor under **simple interest**, which is $\frac{1}{1+ri}$.
 
@@ -408,6 +395,125 @@ The discount the par and the pre-determined float rate at $90$ days to get the f
 $$
 V_{float}=(1+\frac{90}{360}2.5\%)\times D_a=1.001219
 $$
+> [!Note]
+>
+> Here we use the rate of the previous example ($2.5\%$) because swap is **pay in arrear**, which means rate is determined at the beginning of each period.
+
 The value is then $NP\times(V_{float}-V_{fix})$.
 
 </span>
+
+### Valuation Mathod 2
+
+Imagine at time $t$, signing a new contract with a new fixed rate, Then the value of long position is:
+$$
+V_{l,t} =\sum PV(F_{t}-F_0)
+$$
+where $F$ is the fixed rate in the contract. 
+
+This valuation is established from the homogenity of future floating rate. Since the future floating cash flow is same, $F_t$ represents the present value of future floating cash flow (value of new contract is $0$).
+
+> [!Note]
+>
+> This formula is same as forward
+
+  
+
+#### Example
+
+2 years ago, we entered an annual-reset $\$100m$ 7-year receive-fixed interest rate swap, with fixed swap rate of $2\%$.
+
+The estimated PV factors are given in the following table. Calculate the value for the party receiving fixed rate:
+
+| Maturity (years) | PV Factors |
+| ---------------- | ---------- |
+| 1                | 0.990      |
+| 2                | 0.978      |
+| 3                | 0.965      |
+| 4                | 0.952      |
+| 5                | 0.938      |
+
+<span class="blur-hover">
+
+Now, making clear that we are calculating value for short position, which is:
+$$
+V_{s,t} = \sum PV (F_0-F_t)
+$$
+Then, calculate $F_t$ with the pricing formula;
+$$
+F_t=\frac{1-D_n}{\sum_{i=1}^n D_i}=1.29\%
+$$
+Then the value is:
+$$
+V_{s,t}=((2\%-1.29\%)\sum_{i=1}^nD_i)NP
+$$
+where $NP$ is $\$100m$.
+
+</span>
+
+
+
+## Currency Swap 
+
+Currency swap is another form opf interest swap rate, but using interest rate of coresponding currency. It involves:
+
+* Exchange principal at the beginning accoring to the exchange rate, and returned at termination
+* On settlement dates, interest payments are not netted
+* Floating rate payments are typically made in arrears
+
+> [!Important]
+>
+> The **currency exchange rate** used should be the exchange rate at the beginning.
+
+### Pricing
+
+For currency swaps, there are 4 potential modes:
+
+* Pay fixed, Receive fixed
+* Pay float, Receive fix,
+* Pay fix, Receive float
+* Pay float, receive float
+
+For the **Fix/Float** pattern, we still use $V_{fix}=V_{float}$, always consider the fixed bond to be $1$ at par, and using the same formula for interest rate swaps: $F = \frac{1-D_n}{\sum D_i}$.
+
+For the **Fix/Fix** pattern, let principal for both side to be $1$ at par, then use the same formula to calculate (Since we are calculating the rate, we can set principal at any value).
+
+For the **Float/Float** pattern, pricing is impossible.
+
+### Valuation
+
+Take the contract as long a bond and short another in different currency, and exchange them to PV of the same currency with spot currency exchange rate. The valuation is all same as first method of Interest Rate Swap.
+
+
+
+## Equity Swap
+
+Equity swap is another form of Interest Rate Swap, exchanging the return of some stock (Dividend, Secondary market returns).
+
+Exchanging all returns is called **Total Return Swap**.
+
+### Usage
+
+* Speculating
+* Asset Allocation
+* Leveraging (Borrow money and enter an Equity Swap)
+* Change position (unable to buy stock or its option)
+
+### Pricing
+
+For the fixed side, same as the formula of Interest Rate Swap
+
+### Valuation
+
+For the side receiving fixed rate and pay equity returns:
+$$
+V_{t}=PV_{\text{fixed bond}}-\frac{S_t}{S_{t-1}}NP
+$$
+For the side receiving float rate and pay equity returns:
+$$
+V_{t}=PV_{\text{float bond}}-\frac{S_t}{S_{t-1}}NP
+$$
+For the side receiving equity returns and pay equity returns:
+$$
+V_{t}=(R_1-R_2)NP
+$$
