@@ -40,7 +40,7 @@ npm install
 npm run docs:dev
 ```
 
-Your site will be available at http://localhost:5173.
+Your site will be available at localhost 5173.
 
 ## **🧪 Customize**
 
