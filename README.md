@@ -72,7 +72,7 @@ npm run build
 
 ### **3. Deploy**
 
-You can use [vitepress-gh-pages](https://www.npmjs.com/package/vitepress-gh-pages) or follow the manual deploy method:
+You can use [vitepress-gh-pages](https://vitepress.dev/guide/deploy#github-pages) or follow the manual deploy method:
 
 ```
 # Initialize a new git worktree for the `gh-pages` branch
@@ -89,7 +89,7 @@ Or automate deployment via GitHub Actions. See [VitePress Deploy Guide](https://
 
 ## **📄 License**
 
-This project is licensed under the [GNU General Public License v3.0 (GPL-3.0)](LICENSE).
+This project is licensed under the [GNU General Public License v3.0 (GPL-3.0)](https://www.gnu.org/licenses/gpl-3.0).
 
 ## **🙌 Credits**
 
