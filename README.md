@@ -67,7 +67,7 @@ export default defineConfig({
 ### **2. Build the Site**
 
 ```
-npm run build
+npm run docs:build
 ```
 
 ### **3. Deploy**

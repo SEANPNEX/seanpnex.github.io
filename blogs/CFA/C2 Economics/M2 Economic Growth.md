@@ -137,7 +137,7 @@ Assuming in the long run $\frac{Y}{K}$ stays the same, then $\frac{Y/L}{K/L}$ is
 
 From the previous growth formula $\frac{dy}{y}=\frac{dA}{A}+\alpha \frac{dk}{k}$.
 
-Combining the formulas above: $(1-\alpha)\frac{dk}{k}=\frac{dA}{A}$, $\frac{dy}{y}=\frac{dk}{k}=\frac{\theta}{1-\alpha}$. **Denote it as $g*=\frac{\theta}{1-\alpha} $**. 
+Combining the formulas above: $(1-\alpha)\frac{dk}{k}=\frac{dA}{A}$, $\frac{dy}{y}=\frac{dk}{k}=\frac{\theta}{1-\alpha}$. Denote it as $g*=\frac{\theta}{1-\alpha}$ . 
 
 From $Y=yl$, $G*=\frac{dY}{Y}=\frac{dy}{y}+\frac{dL}{L}=\frac{\theta}{1-\alpha}+n$.
 
