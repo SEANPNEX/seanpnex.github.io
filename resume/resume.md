@@ -4,7 +4,7 @@ prev:
     link: "/projects/NCCP"
 next: 
     text: 'Blogs'
-    link: "/blogs/start"
+    link: "/blogs/0-start"
 ---
 
 <style>
