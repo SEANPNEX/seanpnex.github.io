@@ -166,7 +166,6 @@ Both downstream and upstream should not be processed as NI. They should be deduc
 >
 >VIE or SPE is a legal structure where a comppany wants to maintain control over another entity but doesn't own 
 
-![image-20250523035600075](/Users/sean/Desktop/image-20250523035600075.png)
 
 #### B/S Conditions
 

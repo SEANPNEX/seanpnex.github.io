@@ -108,11 +108,6 @@ Forecast COGS and SGA based on % of Rev.
 
 ## Post-Empolyment Compensation 养老金
 
-![image-20250523055444831](/Users/sean/Desktop/image-20250523055444831.png)
-
-![image-20250523055944786](/Users/sean/Library/Application Support/typora-user-images/image-20250523055944786.png)
-
-![image-20250523060008720](/Users/sean/Library/Application Support/typora-user-images/image-20250523060008720.png)
 
 Fund Status = PA - PBO
 
@@ -124,8 +119,3 @@ Then we let Net_PBO + PBO - PA = Net_PBO + I-AG+S-AR-C = Net_PBO_End
 
 Note I-AG+S-AR as Total periodic Pension Cost (TPPC)
 
-![image-20250523071438361](/Users/sean/Library/Application Support/typora-user-images/image-20250523071438361.png)
-
-![image-20250523071840721](/Users/sean/Library/Application Support/typora-user-images/image-20250523071840721.png)
-
-![image-20250523072236485](/Users/sean/Library/Application Support/typora-user-images/image-20250523072236485.png)
