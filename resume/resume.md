@@ -35,8 +35,9 @@ next:
   ></iframe>
   <div class="resume-fallback">
     <p>PDF preview unavailable in this view. Please download instead:</p>
-    <p><a href="/resume.pdf" target="_blank" download>📥 Download Resume</a></p>
+    <p><a href="/Shun_Guo_Resume.pdf" target="_blank" download>📥 Download Resume</a></p>
   </div>
 </div>
 
-[📥 Download Resume](/resume.pdf){target="_blank" download}
+
+[📥 Download Resume](/Shun_Guo_Resume.pdf){target="_blank" download}
