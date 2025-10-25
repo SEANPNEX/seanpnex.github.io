@@ -27,7 +27,7 @@ next:
 
 <div class="resume-wrapper">
   <iframe 
-      src="/resume.pdf#zoom=fitH" 
+      src="/Shun_Guo_Resume.pdf#zoom=fitH" 
       type="application/pdf" 
       width="100%" 
       height="1200" 

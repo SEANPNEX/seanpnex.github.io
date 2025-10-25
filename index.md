@@ -28,7 +28,7 @@ layout: page
         My Profile
     </template>
     <template #lead>
-        First Year Student at Duke Fintech
+        Second Year Student at Duke Fintech
     </template>
   </VPTeamPageTitle>
   <VPTeamMembers
