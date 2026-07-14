@@ -28,7 +28,7 @@ layout: page
         我的资料
     </template>
     <template #lead>
-        杜克金融科技一年级学生
+        杜克金融科技二年级学生
     </template>
   </VPTeamPageTitle>
   <VPTeamMembers

@@ -66,9 +66,34 @@ As noted above, there are 4 catgories of Long-term equity investment, depending 
 | **Term of Investee**       | -                        | associate             | -              | subsidiary           |
 | **Accounting Treatment**   | AMC, FVOCI, FVPL         | Equity Method         | Equity Method  | Acquisition Method   |
 
+> [!Note]
+>
+> Review the table with later contents. For specific methods
+
+
 > [!Important]
 >
-> In acquisition case, note if the companies have common controllers.
+> In acquisition case, note if the companies have common controllers, i.e, 2 or more entities controlled by one common controller.
+
+
+
+## Investment in Financial Assets
+
+### Classification of Financial Assets
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
