@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Reading residual diagnostics</title>
+<style>
+:root{--bg:#F0EFEB;--paper:#F0EFEB;--ink:#1C1C1A;--mid:#55554F;--muted:#8F8E88;--faint:#C6C5BF;--grid:#DEDDD6}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body{padding:18px}
+.figure-head{margin:2px 4px 20px}
+.figure-head h1{margin:0 0 5px;font-size:24px;line-height:1.12;letter-spacing:-.035em}
+.figure-head p{margin:0;color:var(--muted);font-size:11px;line-height:1.5}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.card{min-width:0;padding:20px 20px 15px;border-radius:24px;background:var(--paper);outline:1px solid var(--grid)}
+.card h2{margin:0 0 4px;font-size:16px;line-height:1.2;letter-spacing:-.025em}
+.sub{min-height:34px;color:var(--muted);font-size:10px;line-height:1.45}
+svg{display:block;width:100%;height:auto;margin-top:4px;overflow:visible}
+.src{margin-top:4px;color:var(--muted);font-size:7px;font-weight:700;letter-spacing:.15em;text-transform:uppercase}
+.fade{opacity:0;animation:fade .48s cubic-bezier(.165,.84,.44,1) forwards}
+.pop{opacity:0;transform-box:fill-box;transform-origin:center;animation:pop .48s cubic-bezier(.165,.84,.44,1) forwards}
+.draw{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1s cubic-bezier(.165,.84,.44,1) forwards}
+@keyframes fade{to{opacity:1}}
+@keyframes pop{0%{opacity:0;transform:scale(0)}100%{opacity:1;transform:scale(1)}}
+@keyframes draw{to{stroke-dashoffset:0}}
+@media(max-width:620px){body{padding:12px}.grid{grid-template-columns:1fr}.card{padding:18px}.sub{min-height:0;margin-bottom:3px}}
+@media(prefers-reduced-motion:reduce){.fade,.pop,.draw{animation:none!important;opacity:1!important;stroke-dashoffset:0!important}}
+</style>
+</head>
+<body>
+<header class="figure-head">
+  <h1>Residuals reveal what the fitted equation hides</h1>
+  <p>Four simulated patterns · every dot is one residual · click a panel to replay</p>
+</header>
+<main class="grid">
+  <section class="card">
+    <h2>A random band supports linearity</h2>
+    <div class="sub">residuals stay centered on zero · vertical spread remains broadly stable</div>
+    <svg id="linear" viewBox="0 0 400 280" role="img" aria-label="Residual plot showing a random band around zero"></svg>
+    <div class="src">PLUMB SCATTER · F8 MONO-BASIC · SIMULATED RESIDUALS</div>
+  </section>
+  <section class="card">
+    <h2>Curvature signals missing structure</h2>
+    <div class="sub">a U-shaped residual path · consider a transformation or nonlinear term</div>
+    <svg id="curved" viewBox="0 0 400 280" role="img" aria-label="Residual plot showing curvature"></svg>
+    <div class="src">PLUMB SCATTER · F8 MONO-BASIC · SIMULATED RESIDUALS</div>
+  </section>
+  <section class="card">
+    <h2>A widening fan breaks constant variance</h2>
+    <div class="sub">dispersion grows with fitted value · standard OLS errors may be unreliable</div>
+    <svg id="funnel" viewBox="0 0 400 280" role="img" aria-label="Residual plot showing heteroskedasticity"></svg>
+    <div class="src">PLUMB SCATTER · F8 MONO-BASIC · SIMULATED RESIDUALS</div>
+  </section>
+  <section class="card">
+    <h2>A near-straight Q–Q path supports normality</h2>
+    <div class="sub">ordered residuals track theoretical normal quantiles · inspect the tails</div>
+    <svg id="qq" viewBox="0 0 400 280" role="img" aria-label="Normal Q-Q plot with points close to its reference line"></svg>
+    <div class="src">PLUMB SCATTER · F8 MONO-BASIC · SIMULATED QUANTILES</div>
+  </section>
+</main>
+<script>
+const INK='#1C1C1A',PAPER='#F0EFEB',MUTED='#8F8E88',GRID='#DEDDD6';
+const NS='http://www.w3.org/2000/svg';
+const el=(p,t,a)=>{const n=document.createElementNS(NS,t);for(const k in a)n.setAttribute(k,a[k]);p.appendChild(n);return n};
+const txt=(p,a,s)=>{const n=el(p,'text',a);n.textContent=s;return n};
+const tip=(n,s)=>{const t=document.createElementNS(NS,'title');t.textContent=s;n.appendChild(t)};
+const rnd=(i,k)=>Math.abs(((i*73856093)^(k*19349663))%1000)/1000;
+const timers=new Map();
+const obsReveal=(id,fn)=>{
+  const n=document.getElementById(id);
+  const go=()=>{(timers.get(id)||[]).forEach(clearTimeout);timers.set(id,[]);n.innerHTML='';fn(n)};
+  const io=new IntersectionObserver(es=>{if(es[0].isIntersecting){go();io.disconnect()}},{threshold:.25});
+  io.observe(n);n.style.cursor='pointer';n.addEventListener('click',go);
+};
+
+const clamp=(v,a=8,b=92)=>Math.max(a,Math.min(b,v));
+const N=19;
+const DATA={
+  linear:Array.from({length:N},(_,i)=>[8+i*4.6,clamp(50+18*Math.sin(i*2.31)+7*Math.cos(i*.77),20,80)]),
+  curved:Array.from({length:N},(_,i)=>{const x=8+i*4.6,z=(x-50)/44;return[x,clamp(68-45*z*z+7*Math.sin(i*1.91),15,82)]}),
+  funnel:Array.from({length:N},(_,i)=>{const x=8+i*4.6,spread=5+x*.32;return[x,clamp(50+spread*Math.sin(i*2.19),10,90)]}),
+  qq:Array.from({length:N},(_,i)=>{const x=8+i*4.6,tail=Math.abs(x-50)>35?Math.sign(x-50)*4:0;return[x,clamp(92-x+1.8*Math.sin(i*1.4)-tail,7,93)]})
+};
+
+function renderPlumb(id,kind){
+  obsReveal(id,s=>{
+    const X0=48,X1=368,top=24,base=232,mapX=p=>X0+p/100*(X1-X0),mapY=v=>top+v/100*(base-top);
+    for(let g=0;g<=20;g++){
+      const x=X0+g/20*(X1-X0);
+      el(s,'line',{x1:x,y1:base,x2:x,y2:base-(g%5===0?7:4),stroke:'#C6C5BF','stroke-width':.6,class:'fade',style:`animation-delay:${g*.01}s`});
+    }
+    el(s,'line',{x1:X0-6,y1:base,x2:X1+6,y2:base,stroke:GRID,'stroke-width':.8,class:'fade'});
+    if(kind!=='qq')el(s,'line',{x1:X0,y1:mapY(50),x2:X1,y2:mapY(50),stroke:MUTED,'stroke-width':.65,'stroke-dasharray':'3 4',class:'fade'});
+    if(kind==='qq')el(s,'line',{x1:mapX(8),y1:mapY(92),x2:mapX(92),y2:mapY(8),stroke:INK,'stroke-width':1,pathLength:1,class:'draw'});
+    if(kind==='curved'){
+      const d=Array.from({length:41},(_,i)=>{const x=i*2.5,z=(x-50)/44,y=68-45*z*z;return`${i?'L':'M'}${mapX(x)} ${mapY(y)}`}).join(' ');
+      el(s,'path',{d,fill:'none',stroke:INK,'stroke-width':1.2,pathLength:1,class:'draw'});
+    }
+    DATA[kind].forEach(([px,py],i)=>{
+      const x=mapX(px),y=mapY(py);
+      el(s,'line',{x1:x,y1:base,x2:x,y2:y,stroke:'#B0AFA9','stroke-width':.55,opacity:.62,class:'fade',style:`animation-delay:${.16+i*.035}s`});
+      const dot=el(s,'circle',{cx:x,cy:y,r:2.7,fill:i%6===0?INK:'#55554F',class:'pop',style:`animation-delay:${.22+i*.035}s`});
+      tip(dot,kind==='qq'?`Theoretical quantile ${px.toFixed(0)} · ordered residual ${py.toFixed(0)}`:`Fitted value ${px.toFixed(0)} · residual position ${py.toFixed(0)}`);
+    });
+    txt(s,{x:X0,y:base+17,'font-size':7,'font-weight':600,fill:'#8F8E88',class:'fade'},kind==='qq'?'LOW QUANTILE':'LOW FIT');
+    txt(s,{x:X1,y:base+17,'font-size':7,'font-weight':600,fill:'#8F8E88','text-anchor':'end',class:'fade'},kind==='qq'?'HIGH QUANTILE':'HIGH FIT');
+    txt(s,{x:25,y:top+3,'font-size':7,'font-weight':600,fill:'#8F8E88',transform:`rotate(-90 25 ${top+3})`,'text-anchor':'end','letter-spacing':'.08em',class:'fade'},kind==='qq'?'ORDERED RESIDUAL ↑':'RESIDUAL ↑');
+    txt(s,{x:200,y:274,'font-size':7,'font-weight':600,fill:'#8F8E88','text-anchor':'middle','letter-spacing':'.12em',class:'fade',style:'animation-delay:.9s'},'EVERY DOT HANGS TO THE SAME FITTED-VALUE FLOOR');
+  });
+}
+renderPlumb('linear','linear');renderPlumb('curved','curved');renderPlumb('funnel','funnel');renderPlumb('qq','qq');
+</script>
+</body>
+</html>
