@@ -9,7 +9,7 @@ export default withMermaid(
     base:"/",
     head: [["link", { rel: "icon", href: "/favicon.ico" }]],
     title: "Sean's Homepage",
-    description: "Sean's Homepage",
+    description: "Projects, research, notes, and learning plans by Sean Guo.",
     markdown: {
       math: true,
     },
@@ -21,6 +21,11 @@ export default withMermaid(
         { text: 'Projects', link: '/projects/NCCP.md' },
         { text: 'Resume', link: '/resume/resume.md' },
         { text: 'Blog', link: '/blogs/0-start.md' },
+        { text: 'Learning', items: [
+          { text: 'CFA Level II', link: '/blogs/CFA/plan.md' },
+          { text: 'JLPT N2', link: '/blogs/JLPT-N2/plan.md' },
+          { text: 'Business German', link: '/blogs/German/plan.md' },
+        ]},
       ],
       sidebar: {
         "/examples": set_sidebar("/examples"),
@@ -33,7 +38,7 @@ export default withMermaid(
         { icon: 'github', link: 'https://github.com/SEANPNEX/seanpnex.github.io' },
       ],
       footer: {
-        copyright: "Copyright@ 2024 Sean Guo",
+        copyright: "© 2026 Sean Guo · Built as a learning base",
       },
       search: {
         provider: "local",

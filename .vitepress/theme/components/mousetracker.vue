@@ -6,6 +6,7 @@ const y = ref(0);
 
 const targetX = ref(0);
 const targetY = ref(0);
+let animationFrame;
 
 const handleMouseMove = (e) => {
   targetX.value = e.clientX;
@@ -15,15 +16,16 @@ const handleMouseMove = (e) => {
 const animate = () => {
   x.value += (targetX.value - x.value) * 0.1;
   y.value += (targetY.value - y.value) * 0.1;
-  requestAnimationFrame(animate);
+  animationFrame = requestAnimationFrame(animate);
 };
 
 onMounted(() => {
   window.addEventListener('mousemove', handleMouseMove);
-  requestAnimationFrame(animate);
+  animationFrame = requestAnimationFrame(animate);
 });
 onUnmounted(() => {
   window.removeEventListener('mousemove', handleMouseMove);
+  cancelAnimationFrame(animationFrame);
 });
 </script>
 
@@ -40,17 +42,21 @@ onUnmounted(() => {
 <style scoped>
 .pointer {
   position: fixed;
-  width: 35em;
-  height: 35em;
+  width: 32rem;
+  height: 32rem;
   border-radius: 50%;
   pointer-events: none;
   transform: translate(-50%, -50%);
-  z-index: 9999;
+  z-index: 0;
   background: radial-gradient(
     circle,
     rgba(255, 221, 2, 0.25) 0%,
     rgba(255, 214, 90, 0) 60%
   );
+}
+
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .pointer { display: none; }
 }
 
 /* Switch when dark mode is active */
