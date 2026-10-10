@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Time-Series Model Selection</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@6/dist/echarts.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --paper:#F0EFEB;--ink:#1C1C1A;--g1:#4A4944;--g2:#6A6963;
+      --g3:#8A8983;--g4:#A8A7A0;--g5:#B0AFA9;--g6:#C6C5BF;
+      --grid:#D8D6CE;--faint:#E3E2DB;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+    .card{max-width:1280px;min-height:1190px;margin:auto;padding:34px 36px 24px;border-radius:24px;background:var(--paper);cursor:pointer}
+    .eyebrow{margin:0 0 10px;color:var(--g2);font-size:10px;font-weight:800;letter-spacing:.17em;text-transform:uppercase}
+    h1{max-width:850px;margin:0;font-size:clamp(30px,4.5vw,54px);font-weight:700;line-height:1.02;letter-spacing:-.045em}
+    .sub{max-width:900px;margin:14px 0 21px;color:var(--g2);font-size:13px;line-height:1.55}
+    .preflight{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-bottom:15px;background:var(--grid);border-top:1px solid var(--grid);border-bottom:1px solid var(--grid)}
+    .preflight div{min-height:58px;padding:12px 13px;background:var(--paper)}
+    .preflight b{display:block;margin-bottom:4px;font-size:8px;letter-spacing:.13em;text-transform:uppercase}
+    .preflight span{color:var(--g2);font-size:10px;line-height:1.35}
+    .tree-shell{width:100%;overflow-x:auto;overscroll-behavior-inline:contain;scrollbar-color:var(--g5) transparent;scrollbar-width:thin}
+    #tree{width:max(1100px,100%);height:570px}
+    .gate-title,.model-title{margin:16px 0 9px;font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+    .gates{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--grid);border-top:1px solid var(--grid);border-bottom:1px solid var(--grid)}
+    .gate{min-height:92px;padding:13px 14px;background:var(--paper)}
+    .gate b{display:block;margin-bottom:5px;font-size:10px}.gate p{margin:0;color:var(--g2);font-size:9.5px;line-height:1.48}.gate strong{color:var(--ink);font-weight:700}
+    .models{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+    .model{min-height:112px;padding:12px 12px 10px;border-top:2px solid var(--ink);background:var(--faint)}
+    .model:nth-child(2){border-color:var(--g2)}.model:nth-child(3){border-color:var(--g3)}.model:nth-child(4){border-color:var(--g4)}.model:nth-child(5){border-color:var(--g5)}
+    .model h2{margin:0 0 6px;font-size:10px;letter-spacing:.02em}.model p{margin:0;color:var(--g2);font-size:8.8px;line-height:1.48}
+    .notes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:17px;padding-top:17px;border-top:1px solid var(--grid)}
+    .note{padding-left:13px;border-left:2px solid var(--ink)}
+    .note:nth-child(2){border-color:var(--g3)}.note:nth-child(3){border-color:var(--g5)}
+    .note h2{margin:0 0 5px;font-size:11px;letter-spacing:.02em}
+    .note p{margin:0;color:var(--g2);font-size:9.5px;line-height:1.55}
+    .src{display:flex;justify-content:space-between;gap:15px;margin-top:20px;color:var(--g3);font-size:8.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
+    @media(max-width:700px){
+      .card{min-height:2050px;padding:25px 16px 18px}.preflight{grid-template-columns:1fr 1fr}.preflight div{min-height:64px}
+      #tree{height:650px}.gates,.models{grid-template-columns:1fr}.gate{min-height:78px}.model{min-height:82px}.notes{grid-template-columns:1fr;gap:10px}.note p{font-size:9px}.src{display:block;line-height:1.8}
+    }
+  </style>
+</head>
+<body>
+  <main class="card" id="card" aria-label="Click to replay the workflow animation">
+    <p class="eyebrow">Time-series workflow · decision discipline</p>
+    <h1>A forecast is ready only after the residuals fall silent.</h1>
+    <p class="sub">Start with economic structure, establish a stationary representation, fit the smallest adequate mean model, and let residual diagnostics decide whether to revise or proceed.</p>
+
+    <section class="preflight" aria-label="Checks before modeling">
+      <div><b>01 · See it</b><span>Plot levels and changes</span></div>
+      <div><b>02 · Place it</b><span>Confirm frequency and context</span></div>
+      <div><b>03 · Structure it</b><span>Identify trend and seasonality</span></div>
+      <div><b>04 · Protect it</b><span>Reserve out-of-sample data</span></div>
+    </section>
+
+    <div class="tree-shell" aria-label="Scrollable model-selection workflow">
+      <div id="tree" role="img" aria-label="Left-to-right tree of the time-series model-selection process"></div>
+    </div>
+
+    <h2 class="gate-title">Why each branch exists</h2>
+    <section class="gates" aria-label="Reasons for model-selection branches">
+      <article class="gate"><b>01 · Stationarity gate</b><p><strong>Unit root supported → difference and retest.</strong> AR, MA, and ARMA assume a stationary modeled series. ARIMA is allowed when its <i>d</i> differences produce stationarity.</p></article>
+      <article class="gate"><b>02 · Mean-model gate</b><p><strong>Residual correlation → revise and refit.</strong> ARMA-family innovations should be white noise; remaining serial correlation means predictable mean structure was missed.</p></article>
+      <article class="gate"><b>03 · Variance-model gate</b><p><strong>ARCH effects → consider ARCH/GARCH.</strong> Model conditional variance only after the mean equation is adequate and squared residuals show volatility dependence.</p></article>
+    </section>
+
+    <h2 class="model-title">Assumptions that admit each model</h2>
+    <section class="models" aria-label="Time-series model assumptions">
+      <article class="model"><h2>AR / MA / ARMA</h2><p>Modeled series is covariance stationary; AR roots satisfy stationarity, MA side is invertible, and innovations are white noise.</p></article>
+      <article class="model"><h2>ARIMA(p,d,q)</h2><p>The level may be nonstationary, but differencing exactly d times must yield a stationary ARMA process. Residuals must then be white noise.</p></article>
+      <article class="model"><h2>Trend / seasonal</h2><p>Trend or calendar structure is deterministic and stable; after removing it, the remainder must satisfy the chosen error-model assumptions.</p></article>
+      <article class="model"><h2>ARCH / GARCH</h2><p>The conditional mean is adequate, variance remains positive, and squared residuals exhibit dependence or volatility clustering.</p></article>
+      <article class="model"><h2>Cointegration</h2><p>Nonstationary series share an integration order and a linear combination is stationary; use error correction for joint dynamics.</p></article>
+    </section>
+
+    <section class="notes" aria-label="Workflow interpretation notes">
+      <article class="note"><h2>Failing to reject is not proof</h2><p>Use DF or ADF terms consistent with the hypothesized deterministic structure, then retest after transformation.</p></article>
+      <article class="note"><h2>Diagnostics outrank fit</h2><p>Residual correlation means the mean specification remains incomplete, even when in-sample fit looks strong.</p></article>
+      <article class="note"><h2>Parsimony survives validation</h2><p>Prefer the smallest stable model whose residuals are adequate and whose unseen-observation error is credible.</p></article>
+    </section>
+
+    <div class="src"><span>Tree LR · G7 mono-fancy · CFA quantitative methods</span><span>Click anywhere to replay</span></div>
+  </main>
+
+  <script>
+    const PAPER='#F0EFEB',INK='#1C1C1A',G1='#4A4944',G2='#6A6963',G3='#8A8983',G4='#A8A7A0',G5='#B0AFA9',G6='#C6C5BF',GRID='#D8D6CE',FAINT='#E3E2DB';
+    const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let chart;
+    const node=(name,description,shade=G3,children=[])=>({
+      name,description,children,
+      itemStyle:{color:shade,borderColor:shade,borderWidth:0},
+      lineStyle:{color:shade}
+    });
+    const leaf=(name,description,dark=false,position='right')=>({
+      name,description,
+      itemStyle:dark?{color:INK,borderWidth:0}:{color:PAPER,borderColor:G3,borderWidth:1.4},
+      lineStyle:{color:dark?INK:G4},
+      label:{color:dark?INK:G2,fontWeight:dark?700:600,position}
+    });
+    const DATA={
+      name:'RAW\nSERIES',description:'Plot and contextualize the observed series.',
+      itemStyle:{color:INK,borderWidth:0},lineStyle:{color:G6},label:{color:INK,fontSize:11.5,fontWeight:800},
+      children:[node('1 ·\nSTRUCTURE','Specify trend, seasonality, and economic constraints.',G1,[
+        node('UNIT\nROOT?','Stationarity gate: a unit root invalidates fitting stationary AR/MA/ARMA directly to the level series.',G2,[
+          node('FAIL TO\nREJECT','Evidence remains compatible with a unit root; transform before fitting a stationary mean process.',G3,[
+            node('2 ·\nDIFFERENCE','Difference the series. In ARIMA(p,d,q), d records how many differences are needed for stationarity.',G3,[
+              leaf('RETEST ↻','Proceed only when the transformed series is stationary; avoid under- and over-differencing.')
+            ])
+          ]),
+          node('REJECT','Stationarity is plausible, so AR, MA, or ARMA dynamics may be modeled directly.',G1,[
+            node('3 ·\nSELECT','Use theory, ACF/PACF, and AIC/BIC; prefer parsimony.',G1,[
+              node('4 ·\nFIT','Estimate an AR, MA, ARMA, or ARIMA candidate.',G2,[
+                node('RESIDUAL\nCORRELATION?','Mean-model gate: white-noise innovations are required; inspect residual ACF or use a joint test.',G2,[
+                  leaf('YES →\nREVISE ↻','Yes: change lags or specification, refit, and diagnose again.',false,'top'),
+                  node('NO → ARCH\nEFFECTS?','No residual correlation: inspect squared residuals after the conditional mean is adequate.',G3,[
+                    node('YES → ARCH /\nGARCH','Yes: model conditional variance only when relevant.',G3,[
+                      leaf('6 ·\nVALIDATE','Check stability, all residual diagnostics, and out-of-sample error.',true)
+                    ]),
+                    node('NO → MEAN\nADEQUATE','No ARCH effect: the conditional mean model passes this gate.',G5,[
+                      leaf('6 ·\nVALIDATE','Check stability, all residual diagnostics, and out-of-sample error.',true)
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])]
+    };
+
+    function render(){
+      if(chart)chart.dispose();
+      chart=echarts.init(document.getElementById('tree'),null,{renderer:'svg'});
+      chart.setOption({
+        animation:!reduced,animationDuration:1050,animationEasing:'quarticOut',
+        tooltip:{
+          trigger:'item',backgroundColor:INK,borderWidth:0,padding:[10,13],
+          textStyle:{color:PAPER,fontFamily:'Inter',fontSize:11,lineHeight:17},
+          formatter:p=>`<b>${p.data.name}</b><br>${p.data.description||''}`
+        },
+        series:[{
+          type:'tree',layout:'orthogonal',orient:'LR',left:118,right:135,top:10,bottom:12,
+          symbol:'circle',symbolSize:7,initialTreeDepth:12,expandAndCollapse:false,roam:false,
+          itemStyle:{borderWidth:0},lineStyle:{width:1.15,curveness:.48,color:G6},
+          label:{fontFamily:'Inter',fontSize:9,fontWeight:650,lineHeight:11,color:G2,position:'left',distance:7},
+          leaves:{label:{position:'right',color:G2,fontWeight:650,fontSize:9,lineHeight:11,distance:7}},
+          emphasis:{focus:'ancestor',lineStyle:{width:1.8,color:INK}},data:[DATA]
+        }]
+      });
+    }
+
+    const observer=new IntersectionObserver(entries=>{
+      if(entries.some(entry=>entry.isIntersecting)){render();observer.disconnect()}
+    },{threshold:.12});
+    observer.observe(document.getElementById('tree'));
+    document.getElementById('card').addEventListener('click',render);
+    addEventListener('resize',()=>chart?.resize());
+  </script>
+</body>
+</html>

@@ -43,10 +43,6 @@ layout: page
     <div class="scroll-link-box">
         <a href="/zh/blogs/start" class="scroll-link">博客</a>
     </div>
-    <span class="separator">|</span>
-    <div class="scroll-link-box">
-        <a href="/zh/resume/resume" class="scroll-link">简历</a>
-    </div>
 </div>
 
 </VPTeamPage>

@@ -1,17 +1,13 @@
-import { h } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 import './style.css'
-import MouseTracker from './components/mousetracker.vue';
+import ProjectHero from './components/ProjectHero.vue';
+import NoteIndex from './components/NoteIndex.vue';
 
 /** @type {import('vitepress').Theme} */
 export default {
   extends: DefaultTheme,
-  Layout: () => {
-    return h(DefaultTheme.Layout, null, {
-      'layout-bottom': () => h(MouseTracker) // Inject at bottom of the layout
-    })
-  },
   enhanceApp({ app }) {
-    app.component('MouseTracker', MouseTracker);
+    app.component('ProjectHero', ProjectHero);
+    app.component('NoteIndex', NoteIndex);
   }
 }

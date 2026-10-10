@@ -1,11 +1,9 @@
 ---
-prev: 
-    text: 'Home'
-    link: "/"
-next: 
-    text: 'TTS-chatbot'
-    link: "/projects/TTS-chatbot"
+pageClass: project-case-study
+title: Hurricane Helene Impact
+order: 1
 ---
+
 <style>
 .figure {
   display: flex;
@@ -39,9 +37,20 @@ next:
 </style>
 
 
-# NCCP - Western North Carolina Hurricane Helene Impact Assessment
+<ProjectHero
+  index="01"
+  eyebrow="Urban analytics · Disaster recovery"
+  title="Western North Carolina Hurricane Helene Impact Assessment"
+  summary="A multi-source assessment that connects physical storm damage with the economic and social conditions shaping recovery."
+  year="2024"
+  role="Data analysis & research"
+  methods="Geospatial analysis · Public data · Resilience indicators"
+  image="/images/NCCP/precipitation.png"
+  image-alt="Map of Hurricane Helene precipitation and affected counties"
+  report="/NCCP_slides.pdf"
+/>
 
-## Overview
+## The question
 This project focuses on assessing the impacts of Hurricane Helene on Western North Carolina. The assessment includes a high-level analysis of storm impacts, ranking of affected counties, pre-Helene conditions, and key considerations for recovery and future resiliency efforts.
 
 ## Context

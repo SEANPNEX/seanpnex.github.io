@@ -1,3 +1,7 @@
+---
+title: JLPT N2 Plan
+---
+
 # JLPT N2 Learning Plan
 
 > **Working assumption:** a 24-week runway and about **7 hours per week**. The plan targets both the exam and useful Japanese, so reading and listening stay connected to real material.

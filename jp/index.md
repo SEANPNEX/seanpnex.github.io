@@ -43,10 +43,6 @@ layout: page
     <div class="scroll-link-box">
         <a href="/jp/blogs/start" class="scroll-link">ブログ</a>
     </div>
-    <span class="separator">|</span>
-    <div class="scroll-link-box">
-        <a href="/jp/resume/resume" class="scroll-link">履歴書</a>
-    </div>
 </div>
 
 </VPTeamPage>

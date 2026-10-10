@@ -1,72 +1,120 @@
 import path from "node:path";
 import fs from "node:fs";
 
-// 文件根目录
-const DIR_PATH = path.resolve();
-// 白名单,过滤不是文章的文件和文件夹
-const WHITE_LIST = [
-  ".vitepress",
-  "node_modules",
-  ".idea",
-  "assets",
-  "index.md",
-  ".github",
-  ".git"
-];
+// Site source root (VitePress runs from the repo root).
+const ROOT = path.resolve();
 
-// 判断是否是文件夹
-const isDirectory = (path) => fs.lstatSync(path).isDirectory();
+// Readable names for curriculum folders. Folders not listed fall back to
+// their own name with any "C1 " / "M1 " ordering prefix removed.
+export const GROUP_LABELS = {
+  "C0 Ethics": "Ethical & Professional Standards",
+  "C1 Quantity": "Quantitative Methods",
+  "C2 Economics": "Economics",
+  "C3 Financial Statements": "Financial Statement Analysis",
+  "C4 Corporate Finance": "Corporate Issuers",
+  "C5 Equity": "Equity Valuation",
+  "C6 Fixed Income": "Fixed Income",
+  "C7 Derivative": "Derivatives",
+  "C8 Alternative": "Alternative Investments",
+  "C9 Portfolio Theory": "Portfolio Management",
+  coding_notes: "Technical Notes",
+  system_design: "System Design",
+};
 
-// 取差值
-const intersections = (arr1, arr2) =>
-  Array.from(new Set(arr1.filter((item) => !new Set(arr2).has(item))));
+// A note with less body text than this is shown as an outline, not a full note.
+const OUTLINE_LIMIT = 1500;
 
-// 把方法导出直接使用
-function getList(params, path1, pathname) {
-  // 存放结果
-  const res = [];
-  // 开始遍历params
-  for (let file in params) {
-    // 拼接目录
-    const dir = path.join(path1, params[file]);
-    // 判断是否是文件夹
-    const isDir = isDirectory(dir);
-    if (isDir) {
-      // 如果是文件夹,读取之后作为下一次递归参数
-      const files = fs.readdirSync(dir);
-      res.push({
-        text: params[file],
-        collapsible: true,
-        items: getList(files, dir, `${pathname}/${params[file]}`),
-      });
-    } else {
-      // 获取名字
-      const name = path.basename(params[file]);
-      // 排除非 md 文件
-      const suffix = path.extname(params[file]);
-      if (suffix !== ".md") {
-        continue;
-      }
-      res.push({
-        text: name,
-        link: `${pathname}/${name}`,
-      });
-    }
+const IGNORED = new Set([".obsidian", ".DS_Store", "assets", "index.md"]);
+
+const byName = (a, b) => a.localeCompare(b, "en", { numeric: true });
+const stripPrefix = (name) => name.replace(/\.md$/, "").replace(/^[A-Z]?\d+[\s_-]+/, "");
+
+function readFrontmatter(source) {
+  const match = source.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+  if (!match) return { data: {}, body: source };
+  const data = {};
+  for (const line of match[1].split(/\r?\n/)) {
+    const field = line.match(/^(title|draft|order):\s*(.+)$/);
+    if (field) data[field[1]] = field[2].trim().replace(/^['"]|['"]$/g, "");
   }
-  // 对name做一下处理，把后缀删除
-  res.map((item) => {
-    item.text = item.text.replace(/\.md$/, "");
-  });
-  return res;
+  return { data, body: source.slice(match[0].length) };
 }
 
-export const set_sidebar = (pathname) => {
-  // 获取pathname的路径
-  const dirPath = path.join(DIR_PATH, pathname);
-  // 读取pathname下的所有文件或者文件夹
-  const files = fs.readdirSync(dirPath);
-  // 过滤掉
-  const items = intersections(files, WHITE_LIST);
-  // getList 函数后面会讲到
-  return getList(items, dirPath, pathname);
-};
+/**
+ * Read one markdown file.
+ * status: "draft" (`draft: true`) and "planned" (empty) are not published;
+ *         "outline" (headings and a few lines) and "written" are.
+ */
+function readNote(file, link) {
+  const { data, body } = readFrontmatter(fs.readFileSync(file, "utf8"));
+  const text = body.trim();
+  const heading = text.match(/^#\s+(.+)$/m)?.[1].trim();
+  const status = data.draft === "true" ? "draft"
+    : !text ? "planned"
+    : text.length < OUTLINE_LIMIT ? "outline" : "written";
+  return {
+    type: "note",
+    file: path.relative(ROOT, file),
+    link,
+    text: data.title || stripPrefix(path.basename(file)) || heading,
+    order: Number(data.order ?? Infinity),
+    status,
+  };
+}
+
+// Build the folder tree: notes first (by `order`, then name), then subfolders.
+function scan(dir, link) {
+  const entries = fs.readdirSync(dir).filter((name) => !IGNORED.has(name) && !name.startsWith("."));
+  const notes = [];
+  const groups = [];
+  for (const name of entries.sort(byName)) {
+    const full = path.join(dir, name);
+    if (fs.lstatSync(full).isDirectory()) {
+      groups.push({
+        type: "group",
+        text: GROUP_LABELS[name] ?? stripPrefix(name),
+        items: scan(full, `${link}/${name}`),
+      });
+    } else if (name.endsWith(".md")) {
+      notes.push(readNote(full, `${link}/${name.replace(/\.md$/, "")}`));
+    }
+  }
+  notes.sort((a, b) => a.order - b.order);
+  return [...notes, ...groups];
+}
+
+const isPublished = (note) => note.status === "outline" || note.status === "written";
+
+const published = (items) => items.flatMap((item) => {
+  if (item.type === "note") return !isPublished(item) ? [] : [{ text: item.text, link: item.link }];
+  const children = published(item.items);
+  return children.length ? [{ text: item.text, collapsed: true, items: children }] : [];
+});
+
+/**
+ * Sidebar for one section. VitePress derives prev/next links from this order,
+ * so the sidebar is the single source of truth for page sequence.
+ * `before` items (e.g. a link back to an overview page) are prepended.
+ */
+export const set_sidebar = (pathname, { before = [] } = {}) =>
+  [...before, ...published(scan(path.join(ROOT, pathname), pathname))];
+
+/** Unpublished notes, relative to the site root, for `srcExclude`. */
+export function unpublishedNotes(pathname) {
+  const walk = (items) => items.flatMap((item) =>
+    item.type === "group" ? walk(item.items) : isPublished(item) ? [] : [item.file]);
+  return walk(scan(path.join(ROOT, pathname), pathname))
+    .map((file) => file.split(path.sep).join("/").replace(/[()[\]{}*?!]/g, "\\$&"));
+}
+
+/** Every curriculum note including planned (empty) ones, grouped by top-level folder — for directory pages. */
+export function noteIndex(pathname) {
+  const flatten = (items) => items.flatMap((item) => (item.type === "group" ? flatten(item.items) : [item]));
+  const tree = scan(path.join(ROOT, pathname), pathname);
+  return tree
+    .filter((item) => item.type === "group")
+    .map((group) => ({
+      text: group.text,
+      notes: flatten(group.items).filter((note) => note.status !== "draft").map(({ text, link, status }) => ({ text, link, status })),
+    }));
+}

@@ -1,3 +1,7 @@
+---
+title: Business German Plan
+---
+
 # Business German Learning Plan
 
 > **Working assumption:** this is a practical, non-exam goal with about **4 hours per week**. The first cycle runs for 24 weeks and prioritizes recurring workplace situations over broad textbook coverage.

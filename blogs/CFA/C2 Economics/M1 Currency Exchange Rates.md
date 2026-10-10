@@ -3,285 +3,490 @@
     filter: blur(5px);
     transition: filter 0.3s;
 }
-.blur-hover:hover {
+.blur-hover:hover,
+.blur-hover:focus-within {
     filter: none;
+}
+.fx-concept-chart {
+    display: block;
+    width: 100%;
+    height: 480px;
+    margin: 24px 0 30px;
+    border: 0;
+    border-radius: 24px;
+    background: #F0EFEB;
+}
+@media (max-width: 700px) {
+    .fx-concept-chart { height: 540px; }
 }
 </style>
 
-# Currency Exchange Rate
+# Currency Exchange Rates
 
-## Exchange Rate Calculation
+An exchange-rate problem becomes much easier once the quote convention is fixed. Throughout this module,
 
-### Basic FX notation
-
-* Price Currency/Base Currency: 7 CNY/USD
-
-* Spot Exchange Rate: Currency Exchange rate for immediate delivery
-
-* Forward exchange rate: Contracted exchange rate for future deal.
-
-* Bid/Offer price: The offer price is always higher than bid price. The price is given by **dealer**. The counter party is either **hit the bid**(sell) or paid the offer(buy.
-
-* Bid-offer spread: Spread in FX is noted as 'pips' (base point), except for yen ($\frac{1}{100}$). The spread to client is wider than interbank market. The spread depends on:
-
-  * The spread in interbank market
-  * Size of transaction (larger, larger)
-  * Relationship between the dealer and client
-
-  and interbank spreads depend on:
-
-  * Currency pair involved (Major pair less spread) $\to$ liquidity
-  * Time of day
-  * Market volatility
-
-### Cross Rate
-
-Basic cross rate:
 $$
-\frac{KRW}{CNY}=\frac{KRW}{USR}\times \frac{USD}{CNY}
+A/B
 $$
 
-- $\left(\frac{A}{B}\right)_{\text{bid}} = \left(\frac{A}{C}\right)_{\text{bid}} \left(\frac{C}{B}\right)_{\text{bid}}$
-- $\left(\frac{A}{B}\right)_{\text{ask}} = \left(\frac{A}{C}\right)_{\text{ask}} \left(\frac{C}{B}\right)_{\text{ask}}$
-- $\left(\frac{A}{B}\right)_{\text{bid}} = \frac{1}{\left(\frac{B}{A}\right)_{\text{ask}}}$
-- $\left(\frac{A}{B}\right)_{\text{ask}} = \frac{1}{\left(\frac{B}{A}\right)_{\text{bid}}}$
+means **units of price currency $A$ per one unit of base currency $B$**. Thus, CNY/USD = 7.00 means USD 1 costs CNY 7.00.
+
+## Exchange-Rate Calculations
+
+### Basic FX Notation
+
+- The **spot rate** is the exchange rate for immediate delivery under market convention.
+- A **forward rate** is agreed today for exchanging currencies at a specified future date.
+- A dealer's quote is written **bid–ask**. The bid is always below the ask.
+- At the bid, the dealer buys the base currency; at the ask, the dealer sells the base currency.
+- A customer who sells the base currency **hits the bid**. A customer who buys the base currency **pays the ask**.
+
+For a quote $A/B=b-a$:
+
+| Customer action | Dealer action | Rate used |
+| --- | --- | --- |
+| Sell $B$, receive $A$ | Dealer buys base currency $B$ | Bid $b$ |
+| Buy $B$, pay $A$ | Dealer sells base currency $B$ | Ask $a$ |
+
+The bid–ask spread compensates the dealer for operating costs, inventory risk, adverse selection, and market risk. FX spreads are commonly stated in **pips**. For most currency pairs, one pip is 0.0001; for many JPY pairs, it is 0.01. The applicable convention depends on how the pair is quoted.
+
+Client spreads are generally wider than interbank spreads and depend on liquidity, transaction size, client relationship, time of day, and market volatility. A larger trade does not mechanically imply a wider percentage spread: market depth and the dealer's ability to hedge also matter.
+
+### Inverting a Quote
+
+When a quote is inverted, the bid and ask switch sides:
+
+$$
+(B/A)_{bid}=\frac{1}{(A/B)_{ask}},
+\qquad
+(B/A)_{ask}=\frac{1}{(A/B)_{bid}}.
+$$
+
+This preserves the rule that the bid remains below the ask.
+
+### Cross Rates
+
+Arrange the currency ratios so that the unwanted currency cancels. For example,
+
+$$
+\frac{KRW}{CNY}
+=
+\frac{KRW}{USD}\times\frac{USD}{CNY}.
+$$
+
+If no quote must be inverted, multiply bid by bid and ask by ask:
+
+$$
+(A/B)_{bid}=(A/C)_{bid}(C/B)_{bid},
+$$
+
+$$
+(A/B)_{ask}=(A/C)_{ask}(C/B)_{ask}.
+$$
+
+If a quote is inverted, first apply the reciprocal bid–ask rule above. The safest exam method is to write the currency units explicitly and check that they cancel.
 
 #### Example
 
-$CHF/USD=1.5960-70$, $AUD/USD =1.7225-35$. Calculate $AUD/CHF$.
+$CHF/USD=1.5960\text{–}1.5970$ and $AUD/USD=1.7225\text{–}1.7235$. Calculate $AUD/CHF$.
 
-<span class="blur-hover">
+<span class="blur-hover" tabindex="0">
 
-We first calculate the bid price:
+Because
+
 $$
-\frac{AUD}{CHF}_{bid}=\frac{AUD}{USD}_{bid}\times \frac{1}{\frac{CHF}{USD}_{ask}}=\frac{1.8225}{1.5970}=1.1412
+\frac{AUD}{CHF}
+=
+\frac{AUD}{USD}\times\frac{USD}{CHF},
 $$
-Then similarly the ask price
+
+the CHF/USD quote must be inverted. For the cross-rate bid, sell CHF and receive AUD, so use the AUD/USD bid and CHF/USD ask:
+
 $$
-\frac{AUD}{CHF}_{ask}=\frac{AUD}{USD}_{ask}\times \frac{1}{\frac{CHF}{USD}_{bid}}=\frac{1.8235}{1.5960}=1.1425
+(AUD/CHF)_{bid}
+=\frac{1.7225}{1.5970}
+=1.0786.
 $$
+
+For the ask, use the AUD/USD ask and CHF/USD bid:
+
+$$
+(AUD/CHF)_{ask}
+=\frac{1.7235}{1.5960}
+=1.0799.
+$$
+
+Therefore,
+
+$$
+AUD/CHF=1.0786\text{–}1.0799.
+$$
+
 </span>
 
 #### Example
 
-A delater is quoting $AUD/GBP$ spot rate as $1.5060-1.5067$. Compute the proceeds of converting 1 million GBP and the proceeds of converting 1 million AUD.
+A dealer quotes $AUD/GBP=1.5060\text{–}1.5067$. Compute the proceeds from converting GBP 1 million into AUD and from converting AUD 1 million into GBP.
 
-<span class="blur-hover">
+<span class="blur-hover" tabindex="0">
 
-The give base currency is GBP, so we know that 1 GBP can buy 1.5060 AUD (bid) and 1.5067 AUD can buy 1 GBP.
+GBP is the base currency. A customer converting GBP into AUD sells GBP to the dealer and receives the bid:
 
-Therefore, 1 million GBP is worth $1.5060\times10^6$ AUD and 1 million AUD is worth $\frac{10^6}{1.5067}=663,702.13 $ GBP
+$$
+GBP\ 1{,}000{,}000\times1.5060
+=AUD\ 1{,}506{,}000.
+$$
+
+A customer converting AUD into GBP buys GBP from the dealer and therefore pays the ask:
+
+$$
+\frac{AUD\ 1{,}000{,}000}{1.5067}
+=GBP\ 663{,}702.13.
+$$
 
 </span>
 
 ### Triangular Arbitrage
 
-**Triangular arbitrage**: If identical products are priced differently, then the market participants will but the cheaper one and sell the more expensive one until the price difference is eliminated.
+Triangular arbitrage is possible when a dealer's direct cross-rate quote is inconsistent with the no-arbitrage cross rate implied by two other currency pairs. The trade must be checked using executable bid and ask prices, not mid-market rates.
 
-* Arbitrage exist if dealer bid $<$ interbank offer or delaer offer $>$ interbank bid.
+For the same currency pair:
 
-#### Example
-
-Spot rate of $JPY/USD=105.39-41$ and $CAD/USD=1.3199-1.3200$. If a dealer is offering $JPY/CAD = 79.81-83$. Does triangular arbitrage exist?  
-
-<span class="blur-hover">
-
-We calculate the cross rate similarly to the previous example and we can get interbank $JPY/CAD=79.84-79.8621$. Compare with dealer offering, we know that we can buy from dealer and sell at market to arbitrage.
-
-</span>
-
-### Forward Exchange Rate 
-
-* If forward quote is higher than spot rate:
-  * Base currency trading at forward premium
-  * Price currency is at forward discount
-* If forward quote is less than spot price:
-  * Base currency is at forward discount
-  * Price currency is at forward premium
-
-### Mark-to-Market Value
-
-It is actually calculating **return** of a forward contract. It is similar to derivative. It is calculated from thje gain realized by closing out the position.
-
-> [!Note]
->
-> To close out a position, we make a equal and opposite position forward contract.
-
-Steps for calculating:
-
-* Create a opposite position at **now**.
-* Determine the approprite forward rate for the new contract
-* Calculate the cash flow at settlement
-* Calculate the PV of the net cash flow at settlement.
+- if a dealer's ask is below another market's bid, buy the base currency from the dealer and sell it in the other market;
+- if a dealer's bid is above another market's ask, buy the base currency in the other market and sell it to the dealer.
 
 #### Example
 
-**Ted Black originally bought 1 million USD forward at 1.05358 AUD.** 
-The maturity is 90 days. Now 30 days have passed, the following information is available:
+The spot rates are $JPY/USD=105.39\text{–}105.41$ and $CAD/USD=1.3199\text{–}1.3200$. A dealer quotes $JPY/CAD=79.81\text{–}79.83$. Does triangular arbitrage exist?
 
-| Maturity | AUD/USD Rates        | Interest rate (at t=30) |
-| -------- | -------------------- | ----------------------- |
-| Spot     | 1.0612 / 1.0614      | 60-day (AUD) – 1.16%    |
-| 60-day   | +8.6 / +9.0 (points) | 90-day (AUD) – 1.36%    |
+<span class="blur-hover" tabindex="0">
 
-What is the mark-to-market value. in AUD of Black's forward contract.
+The implied cross rate is
 
-<span class="blur-hover">
+$$
+\frac{JPY}{CAD}
+=
+\frac{JPY/USD}{CAD/USD}.
+$$
 
-We first create a reverse position at 30 days using the forward bid price (opposite position), which is $1.06206$. Then we calculate the net cash flow at settlement,
+Therefore,
 
-* The original contract: +1m USD, -1.05358m AUD
-* The opposite contract: -1m USD, +1.06206 AUD
-* Net: +0.008480m AUD
+$$
+(JPY/CAD)_{bid}=\frac{105.39}{1.3200}=79.8409,
+$$
 
-Then calculate the PV of the net cash flow: $PV=8480/(1+1.16\frac{60}{360})= 8463$ 
+$$
+(JPY/CAD)_{ask}=\frac{105.41}{1.3199}=79.8621.
+$$
+
+The dealer will sell CAD at JPY 79.83, while the interbank market will buy CAD at JPY 79.8409. Because
+
+$$
+79.83<79.8409,
+$$
+
+an arbitrage exists: buy CAD from the dealer for JPY 79.83 per CAD and immediately sell CAD at the interbank bid of JPY 79.8409 per CAD. The gross profit is JPY 0.0109 per CAD before transaction costs and position-size constraints.
 
 </span>
 
-## Factors of Exchange Rate
+### Forward Exchange Rates
 
-### International Parity Condition
+Forward points are added to or subtracted from the corresponding spot bid and ask. Maintain a valid spread after the adjustment.
 
-| Interest rate parity (IRP) | Purchasing power parity (PPP) | International Fisher effect |
-| -------------------------- | ----------------------------- | --------------------------- |
-| • Covered IRP              | • Absolute PPP                | • Fisher effect             |
-| • Uncovered IRP            | • Relative PPP                | • Real interest rate parity |
-| • Forward rate parity      | • Ex-ante PPP                 |                             |
+For a quote $A/B$:
 
-```mermaid
-flowchart TD
-    A[Interest rate] -- IRP --> B[Exchange rate]
-    C[Inflation] -- PPP --> B
-    A -- Fisher --> C
-```
+- if $F_{A/B}>S_{A/B}$, the base currency $B$ trades at a forward premium and the price currency $A$ at a forward discount;
+- if $F_{A/B}<S_{A/B}$, the base currency trades at a forward discount and the price currency at a forward premium.
 
-#### Interest Rate parity
+The percentage forward premium on the base currency for a contract of $n$ days is approximately
 
-**Covered Interest Rate Parity (CIRP)**: An investment in foreign money market instrument that is completely hedged against exchange rate rist should yield exactly same return as an domestic investment.
 $$
-1+i_d=\frac{S_{f/d}(1+i_f)}{F_{f/d}}
-$$
-where $S$ and $F$ are spot exchange rate and forward exchange rate with domestic currency as base currency. Then:
-$$
-F = S\frac{1+i_f}{1+i_d}
-$$
-We can have:
-
-* $i_f>i_d$, then $F>S$, domestic currency will have forward premium. 
-
-**Uncovered Interest Rate Parity (UIRP)**: The change in spot rate over the invemstment horizon should, on average, equal the differential in interest rate between the 2 countries. 
-
-Deriving from CIRP:
-$$
-E(S_{f/d})= S_{f/d}\frac{1+i_f}{1+i_d}
-$$
-From this, we can have:
-$$
-d\% E(S_{f/d})=\frac{days}{360}(i_f-i_d)
+\left(\frac{F_{A/B}}{S_{A/B}}-1\right)\frac{360}{n}.
 $$
 
-> [!Important]
->
-> From the formula, we conclude that the currency of higher interest rate will depreciate in the long term. 
+### Mark-to-Market Value of a Forward
 
-Under UIRP, the return of foreign investment is $(1+i_f)(1-d\% E(S_{f/d}))-1$
+The mark-to-market value is the present value of the net cash flow created by offsetting the original forward at the current forward rate for the remaining maturity. It is a **value**, not merely a return.
 
-#### Carry Trade
+Steps:
 
-If **UIRP** not holding, we have arbitrage in carry trade.
+1. Identify the original currency cash flows at settlement.
+2. Enter an equal and opposite forward for the remaining maturity.
+3. Use the correct current forward bid or ask for that offsetting transaction.
+4. Net the two settlement cash flows.
+5. Discount the net amount using the interest rate of the currency in which that cash flow is denominated.
 
-In a carry trade, we borrow from the lower yielding currency and invest in a higher yielding currency. The trade is **risky** from the exchange rate fluctuation.
+#### Example
 
-##### Example
+**Ted Black originally bought USD 1 million forward at AUD/USD 1.05358.** The contract originally had 90 days to maturity. After 30 days, the following information is available:
 
-Exchange rate for USD/GBP is **1.50 today** and **1.49 one year later**.  
-Interest rate is **3% for U.K.** and **1% for U.S.**  
+| Maturity | AUD/USD rates | Interest rate at $t=30$ |
+| --- | --- | --- |
+| Spot | 1.0612 / 1.0614 | 60-day AUD rate: 1.16% |
+| 60-day | +8.6 / +9.0 points | — |
 
-Calculate the profit from **borrowing in the U.S. and investing in the U.K.**
+What is the mark-to-market value of Black's forward contract in AUD?
 
-<span class="blur-hover">
+<span class="blur-hover" tabindex="0">
 
-Let borrowing 1.5 USD at 0 and it can become 1.5347 in UK market, returning 1.515. The profit is 0.0197. The return is 1.31%
+Black will receive USD and pay AUD under the original contract. To offset it, he must sell USD forward and receive AUD, so he uses the current 60-day forward **bid**:
 
-Or using the formula:
 $$
-NR = (1+i_f)(1-d\%E(S_{f/d}))-1-i_d=(1.03)(1-0.67\%)-1-1\%=1.31
+1.0612+0.00086=1.06206.
 $$
 
+The settlement cash flows are:
+
+- original contract: receive USD 1 million and pay AUD 1.05358 million;
+- offsetting contract: pay USD 1 million and receive AUD 1.06206 million;
+- net settlement inflow: AUD $1{,}062{,}060-1{,}053{,}580=8{,}480$.
+
+Discount the AUD cash flow for the remaining 60 days:
+
+$$
+V_{t=30}
+=\frac{8{,}480}{1+0.0116(60/360)}
+=AUD\ 8{,}463.64.
+$$
+
+The value is positive because the current forward market allows Black to sell the USD he will receive for more AUD than he originally agreed to pay.
 
 </span>
 
-#### Forward Rate Parity
+## Factors Affecting Exchange Rates
 
-Assuming both CIRP and UIRP holds:
+Exchange rates respond to relative—not standalone—economic conditions. The effects below assume other relevant factors are held constant and can differ across horizons.
+
+## International Parity Conditions
+
+<iframe
+  class="fx-concept-chart"
+  src="/charts/currency-exchange-concepts.html?view=parity"
+  title="Connections among international parity conditions"
+  loading="lazy"
+></iframe>
+
+| Condition | Links | Central implication |
+| --- | --- | --- |
+| Covered interest-rate parity (CIRP) | Spot, forward, and interest rates | No arbitrage for a fully hedged investment |
+| Uncovered interest-rate parity (UIRP) | Expected spot change and interest rates | Expected currency change offsets the yield differential |
+| Forward-rate parity | Forward and expected future spot | Follows if CIRP and UIRP both hold |
+| Purchasing power parity (PPP) | Exchange rates and price levels/inflation | Currency values adjust to relative purchasing power |
+| Fisher effect | Nominal rates, real rates, and expected inflation | Nominal rates compensate for real returns and inflation |
+| Real interest-rate parity | Real rates across countries | Follows jointly from UIRP, ex-ante PPP, and Fisher relations |
+
+### Covered Interest-Rate Parity
+
+Let $S_{f/d}$ and $F_{f/d}$ be units of foreign currency per unit of domestic currency. A domestic money-market investment and a fully hedged foreign investment must provide the same domestic-currency payoff:
+
 $$
-F_{f/d}=E(S_{f/d})
-$$
-Then forward exchange rate will be an unbiased predictor of the future spot exchange rate.
-
-#### Purchasing Power partiy (PPP)
-
-* **Absoluite PPP** the equilibrium exchange rate between 2 countries is determined entirely by the ratio of thier national price levels (with one price law):
-
-$$
-S_{f/d}=P_f/P_d
+1+i_d
+=
+\frac{S_{f/d}(1+i_f)}{F_{f/d}}.
 $$
 
-In practice, absolute PPP might not hold because the weights of various goods in 2 economies may not be the same. 
+Therefore,
 
-* **Relative PPP** With the inflation $\pi = \frac{P_1}{P_0}-1$. $\%dS_{f/d}=\frac{S'_{f/d}}{S_{f/d}}-1=\frac{P'_f/P'_d}{P_f/P_d}-1=\frac{\pi_f+1}{\pi_d+1}-1=\frac{\pi_f-\pi_d}{\pi_d+1}$
-
-It can be viewed as $\pi_f-\pi_d$
-
-* **Ex-ante PPP**. Adding expectation to Relative PPP.
-
-Inferring from the formula, the domestic will appreciate if the domestic inflation rate is lower than foreign inflation rate.
-
-#### International Fisher Effect
-
-* **Fisher Effect**: $i=r+E(\pi)$, where $i$ is nominal interest rate and $r$ is real interest rate.
-* The international one is $i_f-i_d=(r_f-r_d)+(E(\pi_f)-E(\pi_d))$.
-* From the Ex-ante PPP and UIRP, $r_f=r_d$, $i_f-i_d\simeq E(\pi_f)-E(\pi_d)$
-
->[!Important]
->
->UIRP $\iff$Ex-ante PPP
-
-### Balance of Payment
-
-In international trade, there is:
-
-* Current Account: Long term effect on FX. Deficit will lead to depreciation.
-* Capital Account: Short term effect on FX
-
-* Portfolio balance channel: Current account imbalance shift financial wealth to surplus nations. The rebalance of portfolio will lead to appreciation.
-* Debt sustainability channel: Deficit country will constantly increase debt to unsustainable levels.
-
-### Monetary and Fiscal Policy
-
-#### Mundell-Fleming Model
-
-* It describes how the policies change interest rate and economic activity, which in turn leads to change in trade and capital flows and change exchange rate ultimately.
-* **Assume inflation plays no role**
-* It focuses on the short-term implication of monetary and fiscal policy.
-
-1. First we discuss country of free capital flow: 
-   * Expasionary monetary policy $\to$ Interest rate decreate $\to$ Investments and spending increase $\to$ Capital flows to high yielding countries $\to$ Depreciation
-   * Expasionary fiscal policy $\to$ Spending increase or tax decrease $\to$ Interest rate increase $\to$ Capital inflow $\to$ Appreciation
-2. Restricted capital flow:
-   * Expansionary monetary policy $\to$ Boosting spending and import $\to$ Trade deficit $\to$ Depreciate
-   * Expansionary fiscal policy $\to$ Increase import $\to$ Trade deficit $\to$ Depreciate
-
-#### Monetary Approach
-
-Assume output is fixed (GDP), so monetary policy will influence price level and infaltion level. With:
 $$
-MV = PY
+F_{f/d}
+=S_{f/d}\frac{1+i_f}{1+i_d}.
 $$
-Where $M$ is money supply, $V$ is money flow time, $P$ is price level, and $Y$ is real GDP. Assuming $V$ and $P$ be the same, we have $P$ increase when $M$ increase. Then domestic currency depreciation.
 
-Assume price have limited flexibility in the short run but fully flexible in the long run, then under expansionary monetary policy, price will not be influenced significantly, but interest rate will be significantly influenced. Then the depreciation will overshoot the implied level of PPP. In the long term, the conclusion is same. 
+For maturities shorter than one year, use rates scaled to the appropriate horizon. If $i_f>i_d$, then $F_{f/d}>S_{f/d}$: one unit of domestic currency buys more foreign currency forward, so the domestic currency is at a forward premium.
 
-#### Portfolio Balance Approach
+### Uncovered Interest-Rate Parity
 
-Under expansive fiscal policy, the government debt will build up, the bank will either be restrictive or monetize debt, then the currency will depreciate. 
+UIRP states that the expected return advantage of a higher-yielding currency is offset by its expected depreciation. In the current convention, the approximate relation is
+
+$$
+E(\%\Delta S_{f/d})
+\approx i_f-i_d.
+$$
+
+Thus, when the foreign interest rate exceeds the domestic rate, $S_{f/d}$ is expected to rise: the domestic base currency is expected to appreciate and the higher-yielding foreign price currency to depreciate.
+
+For an $n$-day horizon using annualized money-market rates,
+
+$$
+E(\%\Delta S_{f/d})
+\approx \frac{n}{360}(i_f-i_d).
+$$
+
+UIRP is an equilibrium expectation, not a riskless arbitrage condition. It often fails over shorter horizons.
+
+### Carry Trade
+
+A carry trade borrows in a low-yield currency and invests in a high-yield currency without fully hedging the exchange-rate exposure. Its apparent interest advantage can be eliminated or reversed if the investment currency depreciates. It is therefore risky, not arbitrage.
+
+#### Example
+
+The USD/GBP exchange rate is **1.50 today** and **1.49 one year later**. The one-year interest rate is **3% in the United Kingdom** and **1% in the United States**. Calculate the profit from borrowing in the United States and investing in the United Kingdom.
+
+<span class="blur-hover" tabindex="0">
+
+Borrow USD 1.50 and convert it into GBP 1.00. Invest at 3% to receive GBP 1.03. At the ending USD/GBP rate, convert back to
+
+$$
+GBP\ 1.03\times1.49=USD\ 1.5347.
+$$
+
+Repay
+
+$$
+USD\ 1.50\times1.01=USD\ 1.5150.
+$$
+
+The profit is USD 0.0197 and the return on the USD 1.50 initially borrowed is
+
+$$
+\frac{0.0197}{1.50}=1.31\%.
+$$
+
+Equivalently, the unhedged UK investment earns
+
+$$
+(1.03)\left(\frac{1.49}{1.50}\right)-1=2.313\%
+$$
+
+in USD terms, exceeding the 1% USD financing cost by approximately 1.31%.
+
+</span>
+
+### Forward-Rate Parity
+
+If both CIRP and UIRP hold for the same horizon and quote convention, then
+
+$$
+F_{f/d}=E(S_{f/d,T}).
+$$
+
+The forward rate is then an unbiased predictor of the future spot rate **under those assumptions**. This is an expectation statement; an individual future spot realization will almost certainly differ from the forward rate.
+
+### Purchasing Power Parity
+
+**Absolute PPP** applies the law of one price to a representative basket. With $S_{f/d}$ quoted as foreign currency per domestic currency,
+
+$$
+S_{f/d}=\frac{P_f}{P_d}.
+$$
+
+Absolute PPP is unlikely to hold exactly because of transportation costs, tariffs, non-traded goods, market segmentation, and differences in consumption baskets.
+
+**Relative PPP** predicts exchange-rate changes from inflation differentials:
+
+$$
+\frac{S_{1,f/d}}{S_{0,f/d}}-1
+=
+\frac{1+\pi_f}{1+\pi_d}-1
+=
+\frac{\pi_f-\pi_d}{1+\pi_d}
+\approx \pi_f-\pi_d.
+$$
+
+If domestic inflation is lower than foreign inflation, $S_{f/d}$ rises and the domestic base currency appreciates. **Ex-ante PPP** replaces realized inflation with expected inflation.
+
+### Fisher Relations and Real Interest-Rate Parity
+
+The exact Fisher relation is
+
+$$
+1+i=(1+r)(1+E\pi),
+$$
+
+or approximately
+
+$$
+i\approx r+E\pi.
+$$
+
+Across countries,
+
+$$
+i_f-i_d
+\approx(r_f-r_d)+(E\pi_f-E\pi_d).
+$$
+
+If both UIRP and ex-ante PPP hold, their exchange-rate expectations are equal, implying
+
+$$
+r_f\approx r_d.
+$$
+
+> [!IMPORTANT]
+> UIRP and ex-ante PPP are not automatically equivalent. Together with the Fisher relations, their joint validity implies real interest-rate parity.
+
+## Balance-of-Payments Channels
+
+The balance of payments records transactions between residents and non-residents:
+
+- the **current account** includes trade in goods and services, primary income, and transfers;
+- the **capital account** is usually small and includes capital transfers and certain non-produced assets;
+- the **financial account** records direct investment, portfolio investment, other investment, and reserve assets.
+
+A current-account deficit must be financed by net financial inflows or reserve changes. It does not mechanically cause immediate depreciation: the exchange-rate effect depends on why the deficit exists, how investors view the associated claims, and whether financing remains sustainable.
+
+Two longer-run channels are:
+
+- **Portfolio-balance channel:** persistent current-account imbalances change the distribution of global wealth and desired portfolio holdings, which can affect exchange rates.
+- **Debt-sustainability channel:** rising external liabilities may eventually require higher risk premiums, expenditure adjustment, or currency depreciation if investors doubt repayment capacity.
+
+## Monetary and Fiscal Policy
+
+### Mundell–Fleming Framework
+
+The Mundell–Fleming framework extends short-run macroeconomic analysis to an open economy. Its conclusions depend critically on capital mobility and whether the exchange rate floats or is fixed.
+
+<iframe
+  class="fx-concept-chart"
+  src="/charts/currency-exchange-concepts.html?view=policy"
+  title="Short-run exchange-rate transmission of monetary and fiscal policy"
+  loading="lazy"
+></iframe>
+
+Under a **floating exchange rate with high capital mobility**:
+
+- expansionary monetary policy lowers domestic interest rates, creates capital outflow pressure, and depreciates the currency; the depreciation supports net exports, making monetary policy relatively powerful;
+- expansionary fiscal policy raises output and interest rates, attracts capital inflows, and appreciates the currency; the appreciation crowds out some net exports, weakening the output effect.
+
+Under a **credible fixed exchange rate with high capital mobility**:
+
+- independent monetary expansion is ineffective because the central bank must reverse it to maintain the peg;
+- fiscal expansion is more powerful because the central bank accommodates the resulting pressure on the peg.
+
+With **restricted capital mobility**, trade flows matter more relative to interest-sensitive capital flows. Expansionary policy can increase imports and create depreciation pressure, but the outcome still depends on the exchange-rate regime, the response of output and rates, and policy credibility.
+
+### Monetary Approach
+
+The monetary approach begins with
+
+$$
+MV=PY,
+$$
+
+where $M$ is money supply, $V$ is velocity, $P$ is the price level, and $Y$ is real output. If velocity and real output are stable in the long run, faster domestic money growth raises the domestic price level. Relative PPP then implies long-run domestic-currency depreciation, all else equal.
+
+When goods prices adjust slowly but financial markets adjust quickly, an unexpected monetary expansion can lower interest rates and cause the currency to depreciate beyond its long-run PPP level. The currency later appreciates toward that level as domestic prices gradually rise. This is **exchange-rate overshooting**.
+
+### Portfolio-Balance Approach
+
+Domestic and foreign bonds need not be perfect substitutes. Investors require expected returns that compensate for the quantity and risk of each asset they must hold. A fiscal deficit that increases the supply of government debt can therefore raise the required risk premium.
+
+The exchange-rate effect of fiscal expansion is not unconditionally depreciation:
+
+- higher interest rates can initially attract capital and support the currency;
+- concern about debt sustainability, monetization, inflation, or default risk can weaken the currency;
+- the net result depends on investor preferences, policy credibility, and the degree of asset substitutability.
+
+## Exam Checklist
+
+- Read every quote as price currency per one unit of base currency.
+- At the dealer bid, sell the base; at the ask, buy the base.
+- When inverting a quote, invert the ask for the new bid and the bid for the new ask.
+- Construct cross rates by cancelling currency units and using executable sides of the quote.
+- Test triangular arbitrage with bid against ask, never midpoint against midpoint.
+- Value a forward by offsetting the remaining exposure and discounting the net settlement cash flow in its currency.
+- Keep the $S_{f/d}$ convention consistent across CIRP, UIRP, and PPP.
+- Distinguish riskless CIRP arbitrage from risky UIRP and carry-trade expectations.
+- Do not infer real interest-rate parity without the required joint parity assumptions.
+- Distinguish the financial account from the much smaller capital account.
+- State the exchange-rate regime and capital-mobility assumption before applying Mundell–Fleming conclusions.

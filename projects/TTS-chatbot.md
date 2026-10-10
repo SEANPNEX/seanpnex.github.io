@@ -1,11 +1,9 @@
 ---
-prev: 
-    text: 'NCCP'
-    link: "/projects/NCCP"
-next: 
-    text: 'Rivalry Network'
-    link: "/projects/rivalry_network"
+pageClass: project-case-study
+title: TTS Chatbot
+order: 3
 ---
+
 <style>
 .figure {
   display: flex;
@@ -23,14 +21,14 @@ next:
   font-style: italic;
 }
 
-.resume-fallback {
+.pdf-embed-fallback {
   display: none;
 }
 @media (max-width: 768px) {
-  .resume-wrapper iframe {
+  .pdf-embed iframe {
     display: none;
   }
-  .resume-fallback {
+  .pdf-embed-fallback {
     display: block;
     text-align: center;
     margin-top: 1em;
@@ -38,9 +36,20 @@ next:
 }
 </style>
 
-# TTS-chatbot
+<ProjectHero
+  index="03"
+  eyebrow="Machine learning · Conversational systems"
+  title="A Multilingual Text-to-Speech Chatbot"
+  summary="A cross-platform chatbot and comparative study of neural speech synthesis, built to make machine conversation sound more natural."
+  year="2023"
+  role="Research, model evaluation & development"
+  methods="VITS · Tacotron 2 · NoneBot · MOSNet · MCD"
+  image="/images/chatbot/mel_s.png"
+  image-alt="Mel spectrogram produced by the speech synthesis system"
+  report="/chatbot_report.pdf"
+/>
 
-## Overview
+## The question
 
 This project presents the development of a **cross-platform chatbot with integrated Text-to-Speech (TTS) capabilities**, designed and implemented by Shun Guo as part of the Duke Kunshan University Signature Work program. The chatbot was designed to operate across multiple social platforms such as QQ and WeChat, aiming to enhance human-machine interaction with natural-sounding voice responses.
 
@@ -145,7 +154,7 @@ The project demonstrates the potential of deep learning TTS systems to significa
 
 
 ## The original report
-<div class="resume-wrapper">
+<div class="pdf-embed">
   <iframe 
       src="/chatbot_report.pdf#zoom=fitH" 
       type="application/pdf" 
@@ -153,11 +162,10 @@ The project demonstrates the potential of deep learning TTS systems to significa
       height="1200" 
       style="border: none; overflow: hidden;"
   ></iframe>
-  <div class="resume-fallback">
+  <div class="pdf-embed-fallback">
     <p>PDF preview unavailable in this view. Please download instead:</p>
     <p><a href="/chatbot_report.pdf" target="_blank" download>📥 Download Report</a></p>
   </div>
 </div>
 
 [📥 Download Report](/chatbot_report.pdf){target="_blank" download}
-

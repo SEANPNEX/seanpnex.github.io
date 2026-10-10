@@ -1,11 +1,9 @@
 ---
-prev: 
-    text: 'Rivalry Netwoerk'
-    link: "/projects/rivalry_network"
-next: 
-    text: 'Resume'
-    link: "/resume/resume"
+pageClass: project-case-study
+title: Wilson–Cowan Equations
+order: 2
 ---
+
 <style>
 .figure {
   display: flex;
@@ -38,9 +36,20 @@ next:
 }
 </style>
 
-# Analytical Results of Oscillatory Behavior in the Wilson-Cowan Model
+<ProjectHero
+  index="02"
+  eyebrow="Computational neuroscience · Dynamical systems"
+  title="When Neural Populations Begin to Oscillate"
+  summary="An analytical and computational study of the conditions that produce limit cycles in a modified Wilson–Cowan model."
+  year="2022"
+  role="Mathematical analysis & simulation"
+  methods="Differential equations · Bifurcation analysis · Python"
+  image="/images/wilson_cowan/Nullclines.png"
+  image-alt="Nullclines of a Wilson-Cowan dynamical system"
+  report="/Wilson_Cowan_Equation.pdf"
+/>
 
-## Overview
+## The question
 
 This project explores the oscillatory behavior of neuronal populations using a **modified Wilson-Cowan model**. The study investigates the conditions under which limit cycles (representing oscillatory neural activity) occur, focusing on both theoretical analysis and simulation results.
 
