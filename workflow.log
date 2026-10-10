@@ -29,3 +29,19 @@
 2025-10-24 22:00:10-SEANPNEX-add Resume
 2026-07-14 15:54:39-SEANPNEX-update resume
 2026-07-14 15:58:32-SEANPNEX-delete some pdf
+2026-10-10 05:09:09-SEANPNEX-Restyle site in lieflat mono, restructure learning notes, remove resume
+
+- Theme: rewrite style.css on lieflat mono tokens (paper/ink, 7-step gray
+  ladder, Inter, 24px borderless cards, no shadows/gradients), with dark
+  mode inversion; grayscale code (min-light/min-dark) and Mermaid (neutral).
+- Notes: sidebar generator now uses readable topic labels, curriculum
+  order, and hides empty or `draft: true` notes from sidebar and build
+  (srcExclude), so placeholders appear once written.
+- Navigation: per-track sidebars drive prev/next; remove hand-written
+  prev/next frontmatter that pointed at the resume or wrong pages.
+- Learning Base: replace hand-maintained CFA link list with NoteIndex,
+  generated at build time from the same data; homepage shows progress.
+- Remove resume pages (all locales), resume PDFs, and nav/home links.
+- Include in-progress CFA note rewrites, lieflat charts, and ProjectHero.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
