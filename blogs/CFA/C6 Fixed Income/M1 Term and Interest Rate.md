@@ -1,3 +1,7 @@
+---
+title: Term Structure and Interest Rate Dynamics
+---
+
 # Term Structure
 
 ## Spot rate & Forward rate

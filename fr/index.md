@@ -43,10 +43,6 @@ layout: page
     <div class="scroll-link-box">
         <a href="/fr/blogs/start" class="scroll-link">Blog</a>
     </div>
-    <span class="separator">|</span>
-    <div class="scroll-link-box">
-        <a href="/fr/resume/resume" class="scroll-link">CV</a>
-    </div>
 </div>
 
 </VPTeamPage>

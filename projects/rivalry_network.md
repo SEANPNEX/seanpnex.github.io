@@ -1,11 +1,9 @@
 ---
-prev: 
-    text: 'TTS-chatbot'
-    link: "/projects/TTS-chatbot"
-next: 
-    text: 'Resume'
-    link: "/resume/resume"
+pageClass: project-case-study
+title: Rivalry Network
+order: 4
 ---
+
 <style>
 .figure {
   display: flex;
@@ -23,14 +21,14 @@ next:
   font-style: italic;
 }
 
-.resume-fallback {
+.pdf-embed-fallback {
   display: none;
 }
 @media (max-width: 768px) {
-  .resume-wrapper iframe {
+  .pdf-embed iframe {
     display: none;
   }
-  .resume-fallback {
+  .pdf-embed-fallback {
     display: block;
     text-align: center;
     margin-top: 1em;
@@ -38,9 +36,20 @@ next:
 }
 </style>
 
-# Rivalry Network
+<ProjectHero
+  index="04"
+  eyebrow="Computational neuroscience · Network dynamics"
+  title="Rivalry Networks: From Perception to Locomotion"
+  summary="A generalized Wilson–Cowan network used to study alternating visual perception and rhythmic patterns in quadrupedal movement."
+  year="2022"
+  role="Modeling, simulation & synthesis"
+  methods="Coupled oscillators · Symmetry · Hopf bifurcation"
+  image="/images/rivalry_network/wilson_network.png"
+  image-alt="Diagram of the generalized Wilson rivalry network"
+  report="/Rivalry_Network.pdf"
+/>
 
-## Overview
+## The question
 
 This project investigates the **Rivalry Network**, a generalized model for explaining the behavior of coupled neuronal populations using an extended **Wilson-Cowan model**. It focuses on two key biological phenomena:
 - **Visual perception**, specifically **binocular rivalry**.
@@ -107,7 +116,7 @@ The study highlights the effectiveness of rivalry networks and symmetry analysis
 
 
 ## The original report
-<div class="resume-wrapper">
+<div class="pdf-embed">
   <iframe 
       src="/Rivalry_Network.pdf#zoom=fitH" 
       type="application/pdf" 
@@ -115,11 +124,10 @@ The study highlights the effectiveness of rivalry networks and symmetry analysis
       height="1200" 
       style="border: none; overflow: hidden;"
   ></iframe>
-  <div class="resume-fallback">
+  <div class="pdf-embed-fallback">
     <p>PDF preview unavailable in this view. Please download instead:</p>
     <p><a href="/Rivalry_Network.pdf" target="_blank" download>📥 Download Report</a></p>
   </div>
 </div>
 
 [📥 Download Report](/Rivalry_Network.pdf){target="_blank" download}
-

@@ -1,3 +1,7 @@
+---
+title: Valuation of Bonds with Embedded Options
+---
+
 # Valuation of Bond with Option
 
 ## Bond With Option

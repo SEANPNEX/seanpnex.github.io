@@ -1,37 +1,61 @@
 // .vitepress/config.ts
 import { defineConfig } from 'vitepress';
-import { set_sidebar } from "../.vitepress/auto-sidebar.mjs";	
+import { set_sidebar, unpublishedNotes } from "./auto-sidebar.mjs";
 import { withMermaid } from "vitepress-plugin-mermaid";
+
+// Each learning track gets its own sidebar so prev/next stays inside the track.
+// The overview link comes first, so every track's first page links back to it.
+const overview = { text: "Learning Base", link: "/blogs/0-start" };
+const learningSidebar = {
+  "/blogs/CFA/": set_sidebar("/blogs/CFA", { before: [overview] }),
+  "/blogs/JLPT-N2/": set_sidebar("/blogs/JLPT-N2", { before: [overview] }),
+  "/blogs/German/": set_sidebar("/blogs/German", { before: [overview] }),
+  "/blogs/": [
+    overview,
+    {
+      text: "Tracks",
+      items: [
+        { text: "CFA Level II", link: "/blogs/CFA/plan" },
+        { text: "JLPT N2", link: "/blogs/JLPT-N2/plan" },
+        { text: "Business German", link: "/blogs/German/plan" },
+      ],
+    },
+  ],
+};
 
 // https://vitepress.dev/reference/site-config
 export default withMermaid(
   defineConfig({
     base:"/",
-    head: [["link", { rel: "icon", href: "/favicon.ico" }]],
+    // Empty or `draft: true` notes stay in the vault but are not published.
+    srcExclude: unpublishedNotes("/blogs"),
+    head: [
+      ["link", { rel: "icon", href: "/favicon.ico" }],
+      ["meta", { name: "theme-color", content: "#F0EFEB" }],
+    ],
     title: "Sean's Homepage",
     description: "Projects, research, notes, and learning plans by Sean Guo.",
     markdown: {
       math: true,
+      theme: { light: "min-light", dark: "min-dark" },
     },
     themeConfig: {
       outlineTitle: "Outline",
       outline: [2, 6],
       nav: [
         { text: 'Home', link: '/' },
-        { text: 'Projects', link: '/projects/NCCP.md' },
-        { text: 'Resume', link: '/resume/resume.md' },
-        { text: 'Blog', link: '/blogs/0-start.md' },
-        { text: 'Learning', items: [
-          { text: 'CFA Level II', link: '/blogs/CFA/plan.md' },
-          { text: 'JLPT N2', link: '/blogs/JLPT-N2/plan.md' },
-          { text: 'Business German', link: '/blogs/German/plan.md' },
+        { text: 'Projects', link: '/projects/NCCP' },
+        { text: 'Learning', activeMatch: '^/blogs/', items: [
+          { text: 'Learning Base', link: '/blogs/0-start' },
+          { text: 'CFA Level II', link: '/blogs/CFA/plan' },
+          { text: 'JLPT N2', link: '/blogs/JLPT-N2/plan' },
+          { text: 'Business German', link: '/blogs/German/plan' },
         ]},
       ],
       sidebar: {
-        "/examples": set_sidebar("/examples"),
-        "/resume": set_sidebar("resume"),
-        '/blogs': set_sidebar('/blogs'),
-        '/projects': set_sidebar('/projects'),
+        "/examples/": set_sidebar("/examples"),
+        ...learningSidebar,
+        "/projects/": set_sidebar("/projects"),
       },
       aside: "left",
       socialLinks: [
@@ -74,12 +98,10 @@ export default withMermaid(
           nav: [
             { text: '首页', link: '/zh/' },
             { text: '项目', link: '/zh/projects/NCCP.md' },
-            { text: '简历', link: '/zh/resume/resume.md' },
             { text: '博客', link: '/zh/blogs/start.md' },
           ],
           sidebar: {
             "/zh/examples": set_sidebar("/zh/examples"),
-            "/zh/resume": set_sidebar("/zh/resume"),
             '/zh/blogs': set_sidebar('/zh/blogs'),
             '/zh/projects': set_sidebar('/zh/projects'),
           },
@@ -112,12 +134,10 @@ export default withMermaid(
           nav: [
             { text: 'ホーム', link: '/jp/' },
             { text: 'プロジェクト', link: '/jp/projects/NCCP.md' },
-            { text: '履歴書', link: '/jp/resume/resume.md' },
             { text: 'ブログ', link: '/jp/blogs/start.md' },
           ],
           sidebar: {
             "/jp/examples": set_sidebar("/jp/examples"),
-            "/jp/resume": set_sidebar("/jp/resume"),
             '/jp/blogs': set_sidebar('/jp/blogs'),
             '/jp/projects': set_sidebar('/jp/projects'),
           },
@@ -150,12 +170,10 @@ export default withMermaid(
           nav: [
             { text: 'Accueil', link: '/fr/' },
             { text: 'Projets', link: '/fr/projects/NCCP.md' },
-            { text: 'CV', link: '/fr/resume/resume.md' },
             { text: 'Blog', link: '/fr/blogs/start.md' },
           ],
           sidebar: {
             "/fr/examples": set_sidebar("/fr/examples"),
-            "/fr/resume": set_sidebar("/fr/resume"),
             '/fr/blogs': set_sidebar('/fr/blogs'),
             '/fr/projects': set_sidebar('/fr/projects'),
           },
@@ -183,7 +201,7 @@ export default withMermaid(
     },
 
     mermaid: {
-      theme: 'default',
+      theme: 'neutral',
     },
     mermaidPlugin: {
       class: 'mermaid my-class',

@@ -1,3 +1,7 @@
+---
+title: CFA Level II Plan
+---
+
 # CFA Level II Learning Plan
 
 > **Working assumption:** a 24-week runway and about **12 hours per week**. If the exam is closer, keep the sequence but compress the first two phases; do not cut the final review and mock phase.
