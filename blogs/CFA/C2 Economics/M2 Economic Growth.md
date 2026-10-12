@@ -16,9 +16,11 @@
     background: #F0EFEB;
 }
 .fx-concept-chart.dmp-chart { height: 560px; }
+.fx-concept-chart.alpha-chart { height: 560px; }
 @media (max-width: 700px) {
     .fx-concept-chart { height: 500px; }
     .fx-concept-chart.dmp-chart { height: 980px; }
+    .fx-concept-chart.alpha-chart { height: 980px; }
 }
 </style>
 
@@ -156,8 +158,41 @@ Doubling inputs doubles output, so the production function has constant returns 
   loading="lazy"
   title="Diminishing marginal productivity"
 ></iframe>
-
 Holding labor fixed, each extra unit of capital raises output by less than the last one: the production curve flattens and $\mathrm{MPK}=\alpha A k^{\alpha-1}$ falls as $k$ rises. The same logic applies to labor: holding capital fixed, $\mathrm{MPL}=(1-\alpha)A(K/L)^{\alpha}$ declines as $L$ rises, so each extra worker adds less output than the last. That is why capital deepening alone cannot sustain long-run growth in per-capita output without growth in $A$.
+
+#### For per capita, smaller $\alpha$ will lead to stronger diminishing marginal productivity effect.
+
+Recall $y = Ak^{\alpha}$,
+
+From the per-capita production function above,
+
+$$
+y = Ak^{\alpha}.
+$$
+
+Differentiating with respect to capital intensity gives the marginal product of capital per worker (same idea as the MPK chart under Diminishing marginal productivity):
+
+$$
+\frac{dy}{dk} = \alpha A k^{\alpha-1}.
+$$
+
+Taking logs and differentiating recovers the growth decomposition already in this note:
+
+$$
+\frac{dy}{y} = \frac{dA}{A} + \alpha\frac{dk}{k}.
+$$
+
+So the elasticity of $y$ with respect to $k$ is exactly $\alpha$: a 1% rise in $k$ raises $y$ by $\alpha\%$. The slope $\alpha A k^{\alpha-1}$ has exponent $\alpha-1<0$; when $\alpha$ is smaller, $\alpha-1$ is more negative, so that slope falls faster as $k$ rises.
+
+A smaller $\alpha$ therefore means a flatter contribution of capital deepening to growth ($\alpha\,dk/k$ is smaller) and a more concave $y(k)$ curve whose MPK fades sooner — stronger diminishing marginal productivity of capital intensity.
+
+<iframe
+  class="fx-concept-chart alpha-chart"
+  src="/charts/alpha-diminishing-productivity.html"
+  loading="lazy"
+  title="Smaller alpha bends the production curve sooner"
+></iframe>
+
 
 >[!Important]
 >
