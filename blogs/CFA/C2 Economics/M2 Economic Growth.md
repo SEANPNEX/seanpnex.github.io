@@ -32,6 +32,14 @@ E(Re)&= \text{div}+\text{expected capital gain}\\
 &=d+\Delta(P/E)+i+g+\Delta S
 \end{align}
 $$
+
+How to read the stack:
+
+* Line 1: expected equity return is income plus price appreciation.
+* Line 2: that price appreciation splits into a valuation change (repricing of $P/E$) and earnings growth.
+* Line 3–4: EPS growth is tied to the macro path — inflation $i$ and real growth $g$ — plus a share-count / earnings-mix term $\Delta S$ (buybacks and relative dynamism, i.e. whether corporate earnings grow faster or slower than the broad economy).
+
+So higher potential real growth $g$ raises the earnings component of $E(Re)$, even before any change in multiples.
 Potential growth matters to fixed income investor:
 
 * Higher growth translate into higher interest rate and expected return
