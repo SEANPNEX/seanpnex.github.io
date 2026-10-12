@@ -18,10 +18,12 @@
 }
 .fx-concept-chart.parity-chart { height: 600px; }
 .fx-concept-chart.overshoot-chart { height: 820px; }
+.fx-concept-chart.portfolio-chart { height: 680px; }
 @media (max-width: 700px) {
     .fx-concept-chart { height: 540px; }
     .fx-concept-chart.parity-chart { height: 790px; }
     .fx-concept-chart.overshoot-chart { height: 1180px; }
+    .fx-concept-chart.portfolio-chart { height: 980px; }
 }
 </style>
 
@@ -544,6 +546,13 @@ When goods prices adjust slowly but financial markets adjust quickly, an unexpec
 ></iframe>
 
 ### Portfolio-Balance Approach
+
+<iframe
+  class="fx-concept-chart portfolio-chart"
+  src="/charts/portfolio-balance-approach.html"
+  loading="lazy"
+  title="Portfolio balance approach: fiscal expansion paths"
+></iframe>
 
 Domestic and foreign bonds need not be perfect substitutes. Investors require expected returns that compensate for the quantity and risk of each asset they must hold. A fiscal deficit that increases the supply of government debt can therefore raise the required risk premium.
 

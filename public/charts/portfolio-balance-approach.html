@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Portfolio balance approach</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--paper:#F0EFEB;--ink:#1C1C1A;--muted:#6A6963;--soft:#A8A7A0;--grid:#D8D6CE;--faint:#E3E2DB}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:var(--paper);color:var(--ink);font-family:'Inter',ui-sans-serif,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+    .card{padding:28px 28px 16px;border-radius:24px;overflow:hidden}
+    h2{max-width:820px;margin:0;font-size:clamp(22px,3.4vw,34px);font-weight:700;line-height:1.08;letter-spacing:-.03em}
+    .sub{margin:10px 0 16px;color:var(--muted);font-size:12px;line-height:1.55;max-width:760px}
+    svg{display:block;width:100%;height:auto}
+    svg text{font-family:'Inter',ui-sans-serif,system-ui,sans-serif}
+    .src{margin-top:12px;color:#8A8983;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+    .draw{stroke-dasharray:1;stroke-dashoffset:1;animation:draw .85s cubic-bezier(.25,.9,.35,1) both}
+    .pop{opacity:0;transform-box:fill-box;transform-origin:center;animation:pop .4s cubic-bezier(.25,.9,.35,1) both}
+    .fade{opacity:0;animation:fade .5s ease both}
+    @keyframes draw{to{stroke-dashoffset:0}}
+    @keyframes pop{to{opacity:1;transform:none}}
+    @keyframes fade{to{opacity:1}}
+    @media(max-width:640px){
+      .card{padding:22px 14px 12px}
+      h2{font-size:22px}
+      .sub{font-size:11px}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .draw{stroke-dashoffset:0;animation:none}
+      .pop,.fade{opacity:1;transform:none;animation:none}
+    }
+  </style>
+</head>
+<body>
+  <main class="card" id="card">
+    <h2>Fiscal expansion: appreciate first, depreciate later.</h2>
+    <div class="sub">Short-run Mundell–Fleming vs long-run portfolio balance · debt supply, risk premium, and monetization risk</div>
+    <svg id="chart" viewBox="0 0 860 500" role="img" aria-label="Portfolio balance approach flowchart"></svg>
+    <div class="src">PORTFOLIO BALANCE APPROACH · TREND LINEAGE · FISCAL EXPANSION PATHS</div>
+  </main>
+  <script src="i18n.js"></script>
+  <script>
+chartI18n.use({
+  zh: {
+    'Portfolio balance approach': '资产组合平衡法',
+    'Fiscal expansion: appreciate first, depreciate later.': '财政扩张：先升值，后贬值。',
+    'Short-run Mundell–Fleming vs long-run portfolio balance · debt supply, risk premium, and monetization risk': '短期蒙代尔–弗莱明 vs 长期资产组合平衡 · 债务供给、风险溢价与货币化风险',
+    'Expansionary Fiscal Policy': '扩张性财政政策',
+    'Increase in Real Interest Rate Differential': '实际利差上升',
+    'Currency Appreciates': '货币升值',
+    'Government Debt Buildup': '政府债务累积',
+    'Central Bank Monetizes Debt': '央行货币化债务',
+    'Fiscal Stance Turns Restrictive': '财政立场转为紧缩',
+    'Currency Depreciates': '货币贬值',
+    'SHORT-RUN RESPONSE · MUNDELL–FLEMING': '短期反应 · 蒙代尔–弗莱明',
+    'LONG-RUN RESPONSE · PORTFOLIO BALANCE APPROACH': '长期反应 · 资产组合平衡法',
+    'direct effect': '直接效应',
+    'PORTFOLIO BALANCE APPROACH · TREND LINEAGE · FISCAL EXPANSION PATHS': '资产组合平衡法 · 趋势谱系 · 财政扩张路径',
+  },
+  ja: {
+    'Portfolio balance approach': 'ポートフォリオ・バランス・アプローチ',
+    'Fiscal expansion: appreciate first, depreciate later.': '財政拡張：まず通貨高、のち通貨安。',
+    'Short-run Mundell–Fleming vs long-run portfolio balance · debt supply, risk premium, and monetization risk': '短期マンデル＝フレミング vs 長期ポートフォリオ・バランス · 債務供給、リスクプレミアム、マネタイズ・リスク',
+    'Expansionary Fiscal Policy': '拡張的財政政策',
+    'Increase in Real Interest Rate Differential': '実質金利差の拡大',
+    'Currency Appreciates': '通貨高',
+    'Government Debt Buildup': '政府債務の蓄積',
+    'Central Bank Monetizes Debt': '中央銀行が債務をマネタイズ',
+    'Fiscal Stance Turns Restrictive': '財政スタンスが引き締めへ',
+    'Currency Depreciates': '通貨安',
+    'SHORT-RUN RESPONSE · MUNDELL–FLEMING': '短期反応 · マンデル＝フレミング',
+    'LONG-RUN RESPONSE · PORTFOLIO BALANCE APPROACH': '長期反応 · ポートフォリオ・バランス・アプローチ',
+    'direct effect': '直接効果',
+    'PORTFOLIO BALANCE APPROACH · TREND LINEAGE · FISCAL EXPANSION PATHS': 'ポートフォリオ・バランス・アプローチ · トレンド系譜 · 財政拡張の経路',
+  },
+  fr: {
+    'Portfolio balance approach': 'Approche de portefeuille',
+    'Fiscal expansion: appreciate first, depreciate later.': 'Expansion budgétaire : apprécier d’abord, déprécier ensuite.',
+    'Short-run Mundell–Fleming vs long-run portfolio balance · debt supply, risk premium, and monetization risk': 'Court terme Mundell–Fleming vs long terme portefeuille · offre de dette, prime de risque et risque de monétisation',
+    'Expansionary Fiscal Policy': 'Politique budgétaire expansionniste',
+    'Increase in Real Interest Rate Differential': 'Hausse du différentiel de taux réel',
+    'Currency Appreciates': 'Appréciation de la devise',
+    'Government Debt Buildup': 'Accumulation de dette publique',
+    'Central Bank Monetizes Debt': 'La banque centrale monétise la dette',
+    'Fiscal Stance Turns Restrictive': 'La politique budgétaire devient restrictive',
+    'Currency Depreciates': 'Dépréciation de la devise',
+    'SHORT-RUN RESPONSE · MUNDELL–FLEMING': 'RÉPONSE DE COURT TERME · MUNDELL–FLEMING',
+    'LONG-RUN RESPONSE · PORTFOLIO BALANCE APPROACH': 'RÉPONSE DE LONG TERME · APPROCHE DE PORTEFEUILLE',
+    'direct effect': 'effet direct',
+    'PORTFOLIO BALANCE APPROACH · TREND LINEAGE · FISCAL EXPANSION PATHS': 'APPROCHE DE PORTEFEUILLE · LIGNAGE · CHEMINS D’EXPANSION BUDGÉTAIRE',
+  },
+});
+  </script>
+  <script>
+    const NS='http://www.w3.org/2000/svg';
+    const INK='#1C1C1A', PAPER='#F0EFEB', MUTED='#6A6963', SOFT='#A8A7A0', GRID='#D8D6CE', FAINT='#E3E2DB';
+    const svg=document.querySelector('#chart');
+
+    function el(tag, a={}, content=''){
+      const n=document.createElementNS(NS, tag);
+      Object.entries(a).forEach(([k,v])=>n.setAttribute(k,v));
+      if(content!=='') n.textContent=content;
+      svg.append(n);
+      return n;
+    }
+    function wrapLines(label, maxChars){
+      const words=String(label).split(/\s+/);
+      const lines=[];
+      let cur='';
+      words.forEach(w=>{
+        const next=cur?cur+' '+w:w;
+        if(next.length>maxChars && cur){lines.push(cur);cur=w;}
+        else cur=next;
+      });
+      if(cur) lines.push(cur);
+      return lines.length?lines:[''];
+    }
+    function box(x,y,w,h,label,{dark=false,delay=0,maxChars=18,fs=11}={}){
+      el('rect',{x,y,width:w,height:h,rx:14,fill:dark?INK:FAINT,class:'pop',style:`animation-delay:${delay}s`});
+      const lines=wrapLines(label,maxChars);
+      const lh=fs+3;
+      const start=y+h/2-((lines.length-1)*lh)/2+fs*0.35;
+      lines.forEach((ln,i)=>{
+        el('text',{
+          x:x+w/2,y:start+i*lh,fill:dark?PAPER:INK,'text-anchor':'middle',
+          'font-size':fs,'font-weight':800,class:'fade',style:`animation-delay:${delay+.08}s`
+        },ln);
+      });
+    }
+    function arrow(x1,y1,x2,y2,{delay=0,stroke=GRID,sw=1.25}={}){
+      const d=`M${x1} ${y1} L${x2} ${y2}`;
+      el('path',{d,fill:'none',stroke, 'stroke-width':sw, pathLength:1, class:'draw', style:`animation-delay:${delay}s`});
+      // small arrowhead
+      const ang=Math.atan2(y2-y1,x2-x1);
+      const ah=6;
+      const p1=[x2-ah*Math.cos(ang-0.45), y2-ah*Math.sin(ang-0.45)];
+      const p2=[x2-ah*Math.cos(ang+0.45), y2-ah*Math.sin(ang+0.45)];
+      el('path',{d:`M${x2} ${y2} L${p1[0]} ${p1[1]} M${x2} ${y2} L${p2[0]} ${p2[1]}`, fill:'none', stroke, 'stroke-width':sw, 'stroke-linecap':'round', class:'draw', style:`animation-delay:${delay+.15}s`});
+    }
+    function label(x,y,s,{delay=0,anchor='start',fs=9,fill=MUTED,weight=700,ls='.06em'}={}){
+      el('text',{x,y,fill,'text-anchor':anchor,'font-size':fs,'font-weight':weight,'letter-spacing':ls,class:'fade',style:`animation-delay:${delay}s`},s);
+    }
+    function polyline(pts,{delay=0,stroke=GRID,sw=1.25,head=true}={}){
+      let d='';
+      pts.forEach((p,i)=>{d+=(i?'L':'M')+p[0]+' '+p[1]+' ';});
+      el('path',{d:d.trim(),fill:'none',stroke,'stroke-width':sw,pathLength:1,class:'draw',style:`animation-delay:${delay}s`});
+      if(head && pts.length>=2){
+        const a=pts[pts.length-2], b=pts[pts.length-1];
+        const ang=Math.atan2(b[1]-a[1],b[0]-a[0]);
+        const ah=6;
+        const p1=[b[0]-ah*Math.cos(ang-0.45), b[1]-ah*Math.sin(ang-0.45)];
+        const p2=[b[0]-ah*Math.cos(ang+0.45), b[1]-ah*Math.sin(ang+0.45)];
+        el('path',{d:`M${b[0]} ${b[1]} L${p1[0]} ${p1[1]} M${b[0]} ${b[1]} L${p2[0]} ${p2[1]}`,fill:'none',stroke,'stroke-width':sw,'stroke-linecap':'round',class:'draw',style:`animation-delay:${delay+.15}s`});
+      }
+    }
+
+    function render(){
+      svg.innerHTML='';
+
+      // Columns: root | mid | branch | outcome
+      const root={x:28,y:220,w:170,h:78};
+      const midSR={x:280,y:48,w:220,h:68};
+      const outSR={x:600,y:56,w:180,h:52};
+      const debt={x:280,y:220,w:200,h:68};
+      const mon={x:540,y:158,w:180,h:58};
+      const rest={x:540,y:300,w:180,h:58};
+      const dep={x:760,y:214,w:84,h:90};
+
+      label(280,30,'SHORT-RUN RESPONSE · MUNDELL–FLEMING',{delay:0.05,fs:9,fill:INK,weight:800,ls:'.08em'});
+      label(280,198,'LONG-RUN RESPONSE · PORTFOLIO BALANCE APPROACH',{delay:0.12,fs:9,fill:INK,weight:800,ls:'.08em'});
+
+      box(root.x,root.y,root.w,root.h,'Expansionary Fiscal Policy',{dark:true,delay:0.05,maxChars:14,fs:12});
+      box(midSR.x,midSR.y,midSR.w,midSR.h,'Increase in Real Interest Rate Differential',{delay:0.2,maxChars:18,fs:11});
+      box(outSR.x,outSR.y,outSR.w,outSR.h,'Currency Appreciates',{dark:true,delay:0.35,maxChars:12,fs:12});
+      box(debt.x,debt.y,debt.w,debt.h,'Government Debt Buildup',{delay:0.22,maxChars:14,fs:12});
+      box(mon.x,mon.y,mon.w,mon.h,'Central Bank Monetizes Debt',{delay:0.38,maxChars:14,fs:11});
+      box(rest.x,rest.y,rest.w,rest.h,'Fiscal Stance Turns Restrictive',{delay:0.42,maxChars:14,fs:11});
+      box(dep.x,dep.y,dep.w,dep.h,'Currency Depreciates',{dark:true,delay:0.55,maxChars:10,fs:11});
+
+      const rx=root.x+root.w, ryc=root.y+root.h/2;
+      const sry=midSR.y+midSR.h/2;
+      const dy=debt.y+debt.h/2;
+      const my=mon.y+mon.h/2;
+      const ry2=rest.y+rest.h/2;
+      const dey=dep.y+dep.h/2;
+
+      // root → short-run mid
+      polyline([[rx,ryc],[248,ryc],[248,sry],[midSR.x,sry]],{delay:0.1,stroke:SOFT,sw:1.35});
+      arrow(midSR.x+midSR.w,sry,outSR.x,outSR.y+outSR.h/2,{delay:0.26,stroke:SOFT,sw:1.35});
+
+      // root → debt
+      arrow(rx,ryc,debt.x,dy,{delay:0.16,stroke:SOFT,sw:1.35});
+
+      // debt → monetize / restrictive / direct
+      const jx=520; // joint x after debt
+      polyline([[debt.x+debt.w,dy],[jx,dy],[jx,my],[mon.x,my]],{delay:0.3,stroke:GRID,sw:1.2});
+      polyline([[jx,dy],[jx,ry2],[rest.x,ry2]],{delay:0.34,stroke:GRID,sw:1.2});
+
+      // direct middle to depreciate
+      polyline([[debt.x+debt.w,dy],[730,dy],[730,dey],[dep.x,dey]],{delay:0.38,stroke:SOFT,sw:1.35});
+      label(640,dy-10,'direct effect',{delay:0.4,fs:9,fill:MUTED,weight:600,ls:'.04em',anchor:'middle'});
+
+      // monetize → depreciate
+      polyline([[mon.x+mon.w,my],[740,my],[740,dep.y+18],[dep.x,dep.y+18]],{delay:0.46,stroke:GRID,sw:1.2});
+      // restrictive → depreciate
+      polyline([[rest.x+rest.w,ry2],[740,ry2],[740,dep.y+dep.h-18],[dep.x,dep.y+dep.h-18]],{delay:0.5,stroke:GRID,sw:1.2});
+    }
+
+    render();
+    document.querySelector('#card').addEventListener('click', render);
+  </script>
+</body>
+</html>
