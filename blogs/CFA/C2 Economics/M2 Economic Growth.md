@@ -17,10 +17,12 @@
 }
 .fx-concept-chart.dmp-chart { height: 560px; }
 .fx-concept-chart.alpha-chart { height: 560px; }
+.fx-concept-chart.tfp-chart { height: 560px; }
 @media (max-width: 700px) {
     .fx-concept-chart { height: 500px; }
     .fx-concept-chart.dmp-chart { height: 980px; }
     .fx-concept-chart.alpha-chart { height: 980px; }
+    .fx-concept-chart.tfp-chart { height: 720px; }
 }
 </style>
 
@@ -162,8 +164,6 @@ Holding labor fixed, each extra unit of capital raises output by less than the l
 
 #### For per capita, smaller $\alpha$ will lead to stronger diminishing marginal productivity effect.
 
-Recall $y = Ak^{\alpha}$,
-
 From the per-capita production function above,
 
 $$
@@ -192,7 +192,22 @@ A smaller $\alpha$ therefore means a flatter contribution of capital deepening t
   loading="lazy"
   title="Smaller alpha bends the production curve sooner"
 ></iframe>
+#### Increase $A$ will move the function upwards
 
+From the same per-capita function $y = Ak^{\alpha}$ and growth decomposition
+
+$$
+\frac{dy}{y} = \frac{dA}{A} + \alpha\frac{dk}{k},
+$$
+
+output per worker can rise in two distinct ways while $\alpha$ stays fixed. Moving along a given curve (higher $k$, same $A$) is capital deepening — the $\alpha\,dk/k$ term. A parallel upward shift of the whole curve (higher $A$, same $k$) is an increase in TFP — the $dA/A$ term. That shift raises $y$ at every capital intensity and therefore softens how quickly diminishing marginal productivity constrains growth from capital deepening alone.
+
+<iframe
+  class="fx-concept-chart tfp-chart"
+  src="/charts/tfp-shift-capital-deepening.html"
+  loading="lazy"
+  title="Capital deepening versus increase in TFP"
+></iframe>
 
 >[!Important]
 >
