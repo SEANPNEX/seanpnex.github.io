@@ -37,3 +37,16 @@
 
 **Gap:** Did not address the IPO allocation ban.
 
+
+## 2026-10-12 — I(B) Issuer-paid research
+
+**Q:** Issuer-paid research — what fee arrangement is acceptable, and what’s the independence trap?
+
+**My answer:** Necessary items like normal travel/accommodation OK; obvious “gifts” not OK. Did not know the trap. (Answered travel/gifts instead of issuer-paid research.)
+
+**Correct:**
+- Acceptable: **flat fee** only (not contingent on conclusions / rating).
+- Trap: pay tied to favorable research, or compensation structure that buys the opinion (pay-to-play). Disclose issuer-paid nature.
+
+**Gap:** Missed flat-fee rule and contingent-fee independence trap; conflated with travel/gift rules.
+
