@@ -17,6 +17,7 @@ export const GROUP_LABELS = {
   "C7 Derivative": "Derivatives",
   "C8 Alternative": "Alternative Investments",
   "C9 Portfolio Theory": "Portfolio Management",
+  Quiz: "Quiz & Flashcards",
   coding_notes: "Technical Notes",
   system_design: "System Design",
 };
