@@ -164,6 +164,8 @@ Holding labor fixed, each extra unit of capital raises output by less than the l
 
 #### For per capita, smaller $\alpha$ will lead to stronger diminishing marginal productivity effect.
 
+Recall $y = Ak^{\alpha}$,
+
 From the per-capita production function above,
 
 $$
