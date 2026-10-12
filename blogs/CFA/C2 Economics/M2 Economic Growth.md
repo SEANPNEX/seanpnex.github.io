@@ -20,6 +20,7 @@
 .fx-concept-chart.tfp-chart { height: 560px; }
 .fx-concept-chart.solow-chart { height: 560px; }
 .fx-concept-chart.solow-s-chart { height: 560px; }
+.fx-concept-chart.solow-n-chart { height: 560px; }
 @media (max-width: 700px) {
     .fx-concept-chart { height: 500px; }
     .fx-concept-chart.dmp-chart { height: 980px; }
@@ -27,6 +28,7 @@
     .fx-concept-chart.tfp-chart { height: 720px; }
     .fx-concept-chart.solow-chart { height: 720px; }
     .fx-concept-chart.solow-s-chart { height: 720px; }
+    .fx-concept-chart.solow-n-chart { height: 720px; }
 }
 </style>
 
@@ -316,6 +318,15 @@ Since $sy=sAk^{\alpha}$ (this holds from the definition without assumptions), co
 ></iframe>
 
 An increase in the saving rate $s$ shifts the savings curve $sy = sAk^{\alpha}$ upward from $s_1 f(k)$ to $s_2 f(k)$, so the intersection with the fixed required-investment ray $[\delta + n + \theta/(1-\alpha)]k$ moves from steady state A to B — higher $k^*$ and $y^*$ — while the long-run growth rate $\theta/(1-\alpha)$ is unchanged. Because $s \in [0,1]$, raising $s$ to lift equilibrium $y$ and $k$ has a limit: $s$ cannot exceed 1.
+
+<iframe
+  class="fx-concept-chart solow-n-chart"
+  src="/charts/solow-labor-growth-shift.html"
+  loading="lazy"
+  title="Increase in labor force growth lowers steady state"
+></iframe>
+
+An increase in labor-force growth $n$ rotates the required-investment ray upward from $[\delta + n_1 + \theta/(1-\alpha)]k$ to the steeper $[\delta + n_2 + \theta/(1-\alpha)]k$, so the intersection with the fixed savings curve $sy = sAk^{\alpha}$ moves from A to B — lower $k^*$ and $y^*$ — while the long-run per-capita growth rate $\theta/(1-\alpha)$ stays the same (aggregate growth $G^*=n+\theta/(1-\alpha)$ rises with $n$).
 
 > [!Note]
 >
