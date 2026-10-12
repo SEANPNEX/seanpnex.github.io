@@ -40,6 +40,9 @@ How to read the stack:
 * Line 3–4: EPS growth is tied to the macro path — inflation $i$ and real growth $g$ — plus a share-count / earnings-mix term $\Delta S$ (buybacks and relative dynamism, i.e. whether corporate earnings grow faster or slower than the broad economy).
 
 So higher potential real growth $g$ raises the earnings component of $E(Re)$, even before any change in multiples.
+
+
+
 Potential growth matters to fixed income investor:
 
 * Higher growth translate into higher interest rate and expected return
@@ -67,6 +70,11 @@ y&=\frac{Y}{L}\\
 &=Ak^{\alpha}
 \end{align}
 $$
+> [!Note]
+> $$
+> Y = \frac{Y}{L}L = yL
+> $$
+
 The growth rate is obtained by taking log transform of both sides
 $$
 \begin{align}
@@ -74,27 +82,58 @@ $$
 \frac{d Y }{Y}&=\frac{dA}{A}+\alpha\frac{dK}{K}+(1-\alpha)\frac{dL}{L}
 \end{align}
 $$
+> [!Note]
+>
+> This step is not mathematical plausible. SImply take it as economic term.
+
 For growth rate per capita, the process is same:
 $$
 \frac{dy}{y}=\frac{dA}{A}+\alpha \frac{dk}{k}
 $$
-To maximize the total output with respect to capital, we take derivative to get marginal product of capital (MPK)
+> [!note]
+>
+> Similarly, take the same step on the third formula yields:
+> $$
+> =\frac{dY}{Y}=\frac{dy}{y}+\frac{dL}{L}
+> $$
+
+### Calculation of $\alpha$
+
+Recall that to maximize the total output with respect to capital, we take derivative to get marginal product of capital (MPK)
 $$
 MPK=\frac{dY}{dK}=\frac{d(AK^{\alpha}L^{1-\alpha})}{dK}= \alpha AK^{\alpha-1}L^{1-\alpha}=\alpha\frac{Y}{K}
 $$
-MPK maximize when it equals to rental price of capital, denoted as $r$:
+MPK maximize when it equals to rental price of capital (marginal cost), denoted as $r$:
 $$
 MPK = \alpha\frac{Y}{K}=r\to \alpha= rK/Y
 $$
 
->[!Note]
->
->The growth function has 2 important features:
->
->* Constant return to scale
->* Diminishing marginal productivity: Extra output obtained from additional input will decline
->* For per capita, smaller $\alpha$ will lead to stronger diminishing marginal productivity effect.
->* Increase $A$ will move the function upwards (reduce marginal productivity effect)
+### Features of growth function
+
+The growth function has 2 important features:
+
+* Constant return to scale
+* Diminishing marginal productivity: Extra output obtained from additional input will decline
+* For per capita, smaller $\alpha$ will lead to stronger diminishing marginal productivity effect.
+* Increase $A$ will move the function upwards (reduce marginal productivity effect)
+
+#### Constant return to Scale
+
+Scale both inputs by the same factor (here, double $K$ and $L$):
+$$
+K \to 2K,\quad L \to 2L
+$$
+Then
+$$
+\begin{align}
+A(2K)^{\alpha}(2L)^{1-\alpha}
+&= 2^{\alpha}\,2^{1-\alpha}\,AK^{\alpha}L^{1-\alpha}\\
+&= 2^{\alpha+(1-\alpha)}AK^{\alpha}L^{1-\alpha}\\
+&= 2AK^{\alpha}L^{1-\alpha}\\
+&= 2Y.
+\end{align}
+$$
+Doubling inputs doubles output, so the production function has constant returns to scale.
 
 >[!Important]
 >
