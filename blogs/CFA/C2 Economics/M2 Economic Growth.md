@@ -6,6 +6,20 @@
 .blur-hover:hover {
     filter: none;
 }
+.fx-concept-chart {
+    display: block;
+    width: 100%;
+    height: 440px;
+    margin: 24px 0 30px;
+    border: 0;
+    border-radius: 24px;
+    background: #F0EFEB;
+}
+.fx-concept-chart.dmp-chart { height: 560px; }
+@media (max-width: 700px) {
+    .fx-concept-chart { height: 500px; }
+    .fx-concept-chart.dmp-chart { height: 980px; }
+}
 </style>
 
 # Economic Growth
@@ -134,6 +148,14 @@ A(2K)^{\alpha}(2L)^{1-\alpha}
 \end{align}
 $$
 Doubling inputs doubles output, so the production function has constant returns to scale.
+#### Diminishing marginal productivity 
+
+<iframe
+  class="fx-concept-chart dmp-chart"
+  src="/charts/diminishing-marginal-productivity.html"
+  loading="lazy"
+  title="Diminishing marginal productivity"
+></iframe>
 
 >[!Important]
 >
