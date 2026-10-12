@@ -16,10 +16,10 @@
     border-radius: 24px;
     background: #F0EFEB;
 }
-.fx-concept-chart.parity-chart { height: 505px; }
+.fx-concept-chart.parity-chart { height: 600px; }
 @media (max-width: 700px) {
     .fx-concept-chart { height: 540px; }
-    .fx-concept-chart.parity-chart { height: 645px; }
+    .fx-concept-chart.parity-chart { height: 790px; }
 }
 </style>
 
@@ -488,6 +488,13 @@ Under a **floating exchange rate with high capital mobility**:
 
 - expansionary monetary policy lowers domestic interest rates, creates capital outflow pressure, and depreciates the currency; the depreciation supports net exports, making monetary policy relatively powerful;
 - expansionary fiscal policy raises output and interest rates, attracts capital inflows, and appreciates the currency; the appreciation crowds out some net exports, weakening the output effect.
+
+When both policies move together, the currency effect depends on whether the interest-rate pressures reinforce or offset:
+
+|  | Expansionary monetary policy | Restrictive monetary policy |
+| --- | --- | --- |
+| **Expansionary fiscal policy** | Indeterminate | Domestic currency appreciates |
+| **Restrictive fiscal policy** | Domestic currency depreciates | Indeterminate |
 
 Under a **credible fixed exchange rate with high capital mobility**:
 
