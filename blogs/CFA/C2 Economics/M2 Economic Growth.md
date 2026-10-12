@@ -157,6 +157,8 @@ Doubling inputs doubles output, so the production function has constant returns 
   title="Diminishing marginal productivity"
 ></iframe>
 
+Holding labor fixed, each extra unit of capital raises output by less than the last one: the production curve flattens and $\mathrm{MPK}=\alpha A k^{\alpha-1}$ falls as $k$ rises. That is why capital deepening alone cannot sustain long-run growth in per-capita output without growth in $A$.
+
 >[!Important]
 >
 >* Capital deeping: increase $k=\frac{K}{L}$.
