@@ -19,11 +19,13 @@
 .fx-concept-chart.parity-chart { height: 600px; }
 .fx-concept-chart.overshoot-chart { height: 820px; }
 .fx-concept-chart.portfolio-chart { height: 680px; }
+.fx-concept-chart.models-chart { height: 560px; }
 @media (max-width: 700px) {
     .fx-concept-chart { height: 540px; }
     .fx-concept-chart.parity-chart { height: 790px; }
     .fx-concept-chart.overshoot-chart { height: 1180px; }
     .fx-concept-chart.portfolio-chart { height: 980px; }
+    .fx-concept-chart.models-chart { height: 900px; }
 }
 </style>
 
@@ -476,6 +478,14 @@ Two longer-run channels are:
 - **Debt-sustainability channel:** rising external liabilities may eventually require higher risk premiums, expenditure adjustment, or currency depreciation if investors doubt repayment capacity.
 
 ## Monetary and Fiscal Policy
+
+<iframe
+  class="fx-concept-chart models-chart"
+  src="/charts/monetary-fiscal-policy-models.html"
+  loading="lazy"
+  title="Monetary and fiscal policy models compared"
+></iframe>
+
 
 ### Mundell–Fleming Framework
 
