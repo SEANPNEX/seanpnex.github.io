@@ -117,7 +117,7 @@ This project presents the development of a **cross-platform chatbot with integra
 | Deep Voice                   | Multilayer GRU encoder-decoder + hybrid of CNN & RNN   | Baidu in 2017 [2]        |
 | Deep Voice 2                 | Same as Deep Voice with more WaveNet layers            | Baidu in 2017 [5]        |
 | Deep Voice 3                 | FCN Encoder-Decoder                                    | Google in 2017 [17]      |
-| Tacotron                     | CHBG and RNN Encoder-Decoder                           | Google in 2017 [28]      |
+| Tacotron                     | CBHG and RNN Encoder-Decoder                           | Google in 2017 [28]      |
 | Tacotron 2                   | LSTM and RNN encoder-decoder                           | Google in 2018 [20]      |
 | VITS                         | cVAE + GAN                                             | Kim et al. in 2021 [9]   |
 

@@ -16,6 +16,56 @@
     <svg id="chart" viewBox="0 0 640 315" role="img" aria-label="Term frequencies in a sample of analyst reports"></svg>
     <div class="src">TICK ROWS · F5 MONO-BASIC · ILLUSTRATIVE CORPUS</div>
   </main>
+  <script src="i18n.js"></script>
+  <script>
+chartI18n.use({
+  zh: {
+    'Term frequency in analyst reports': '分析师报告中的词频',
+    'Risk language dominates this report sample.': '风险相关的措辞在这批报告中占主导。',
+    '50 illustrative analyst reports · one tick = one occurrence · dot marks every fifth': '50 份示例分析师报告 · 一道刻度 = 出现一次 · 每第五次加一个点',
+    'Term frequencies in a sample of analyst reports': '一批分析师报告中的词频',
+    'RISK': '风险',
+    'GROWTH': '增长',
+    'MARGIN': '利润率',
+    'DEMAND': '需求',
+    'COST': '成本',
+    'GUIDANCE': '业绩指引',
+    'RAW FREQUENCY DESCRIBES THE CORPUS · TF–IDF REWEIGHTS EACH DOCUMENT': '原始频率描述整个语料 · TF–IDF 对每篇文档重新加权',
+  },
+  ja: {
+    'Term frequency in analyst reports': 'アナリスト・レポートの単語頻度',
+    'Risk language dominates this report sample.': 'このレポート群ではリスクに関する言葉が目立つ。',
+    '50 illustrative analyst reports · one tick = one occurrence · dot marks every fifth': 'アナリスト・レポート 50 本の例 · 目盛り 1 本 = 出現 1 回 · 5 回ごとに点',
+    'Term frequencies in a sample of analyst reports': 'アナリスト・レポートの標本における単語頻度',
+    'RISK': 'リスク',
+    'GROWTH': '成長',
+    'MARGIN': '利益率',
+    'DEMAND': '需要',
+    'COST': 'コスト',
+    'GUIDANCE': '業績見通し',
+    'RAW FREQUENCY DESCRIBES THE CORPUS · TF–IDF REWEIGHTS EACH DOCUMENT': '生の頻度はコーパス全体を表す · TF–IDF は文書ごとに重みを付け直す',
+  },
+  fr: {
+    'Term frequency in analyst reports': 'Fréquence des termes dans des rapports d’analystes',
+    'Risk language dominates this report sample.': 'Le vocabulaire du risque domine cet échantillon de rapports.',
+    '50 illustrative analyst reports · one tick = one occurrence · dot marks every fifth': '50 rapports d’analystes fictifs · un trait = une occurrence · un point toutes les cinq',
+    'Term frequencies in a sample of analyst reports': 'Fréquences des termes dans un échantillon de rapports d’analystes',
+    'RISK': 'RISQUE',
+    'GROWTH': 'CROISSANCE',
+    'MARGIN': 'MARGE',
+    'DEMAND': 'DEMANDE',
+    'COST': 'COÛT',
+    'GUIDANCE': 'PRÉVISIONS',
+    'RAW FREQUENCY DESCRIBES THE CORPUS · TF–IDF REWEIGHTS EACH DOCUMENT': 'LA FRÉQUENCE BRUTE DÉCRIT LE CORPUS · LE TF–IDF REPONDÈRE CHAQUE DOCUMENT',
+  },
+}, {
+  patterns: {
+    zh: [[/^([A-Z]+): occurrence (\d+) of (\d+)$/, function (t, name, k, n) { return t(name) + '：第 ' + k + ' 次，共 ' + n + ' 次'; }]],
+    ja: [[/^([A-Z]+): occurrence (\d+) of (\d+)$/, function (t, name, k, n) { return t(name) + '：' + n + ' 回中 ' + k + ' 回目'; }]],
+    fr: [[/^([A-Z]+): occurrence (\d+) of (\d+)$/, function (t, name, k, n) { return t(name) + ' : occurrence ' + k + ' sur ' + n; }]],
+  },
+});
+  </script>
   <script>
     const NS='http://www.w3.org/2000/svg',INK='#1C1C1A',MUTED='#6A6963',GRID='#D8D6CE',PAPER='#F0EFEB';
     const DATA=[['RISK',34],['GROWTH',28],['MARGIN',23],['DEMAND',19],['COST',16],['GUIDANCE',12]];

@@ -41,10 +41,10 @@ Zero Sum Game (Fundamental of Future): $V_{l,t}+V_{s,t}=0$
 
 For the forward:
 
-* $V_{l,t}=S_t-\frac{F_0(T)}{(1+r_f)^{T-t}}$, where $S_t=\frac{F_t(T)}{(1+r_f)^{T-t}}$, think about [pricing](###Pricing).
+* $V_{l,t}=S_t-\frac{F_0(T)}{(1+r_f)^{T-t}}$, where $S_t=\frac{F_t(T)}{(1+r_f)^{T-t}}$, think about [pricing](#pricing).
 * $V_{s,t}=\frac{F_0(T)}{(1+r_f)^{T-t}}-S_t$
 
-Update the [pricing](###Pricing) with benefits and Costs:
+Update the [pricing](#pricing) with benefits and Costs:
 
 * $F_0(T)=(S_0-PVB+PVC)\times(1+t_f)^T$
 * $F_0(T)=S_0(1+r_f)^{T}-PVB+PVC$

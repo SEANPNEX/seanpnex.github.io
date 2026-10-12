@@ -85,10 +85,11 @@ function scan(dir, link) {
 
 const isPublished = (note) => note.status === "outline" || note.status === "written";
 
-const published = (items) => items.flatMap((item) => {
+// `labels` translates group names (English label → localized label).
+const published = (items, labels = {}) => items.flatMap((item) => {
   if (item.type === "note") return !isPublished(item) ? [] : [{ text: item.text, link: item.link }];
-  const children = published(item.items);
-  return children.length ? [{ text: item.text, collapsed: true, items: children }] : [];
+  const children = published(item.items, labels);
+  return children.length ? [{ text: labels[item.text] ?? item.text, collapsed: true, items: children }] : [];
 });
 
 /**
@@ -96,8 +97,14 @@ const published = (items) => items.flatMap((item) => {
  * so the sidebar is the single source of truth for page sequence.
  * `before` items (e.g. a link back to an overview page) are prepended.
  */
-export const set_sidebar = (pathname, { before = [] } = {}) =>
-  [...before, ...published(scan(path.join(ROOT, pathname), pathname))];
+export const set_sidebar = (pathname, { before = [], labels } = {}) =>
+  [...before, ...published(scan(path.join(ROOT, pathname), pathname), labels)];
+
+/** Every published note under `pathname`, flattened: [{ text, link }]. */
+export function publishedNotes(pathname) {
+  const flatten = (items) => items.flatMap((item) => (item.items ? flatten(item.items) : [item]));
+  return flatten(published(scan(path.join(ROOT, pathname), pathname)));
+}
 
 /** Unpublished notes, relative to the site root, for `srcExclude`. */
 export function unpublishedNotes(pathname) {

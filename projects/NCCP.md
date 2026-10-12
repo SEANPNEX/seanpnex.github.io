@@ -21,14 +21,14 @@ order: 1
   font-style: italic;
 }
 
-.resume-fallback {
+.pdf-embed-fallback {
   display: none;
 }
 @media (max-width: 768px) {
-  .resume-wrapper iframe {
+  .pdf-embed iframe {
     display: none;
   }
-  .resume-fallback {
+  .pdf-embed-fallback {
     display: block;
     text-align: center;
     margin-top: 1em;
@@ -155,7 +155,7 @@ Pre-Helene, counties exhibited varying levels of resiliency based on:
 
 
 ## The original slides
-<div class="resume-wrapper">
+<div class="pdf-embed">
   <iframe 
       src="/NCCP_slides.pdf#zoom=fitW" 
       type="application/pdf" 
@@ -163,10 +163,10 @@ Pre-Helene, counties exhibited varying levels of resiliency based on:
       height="800" 
       style="border: none; overflow: hidden;"
   ></iframe>
-  <div class="resume-fallback">
+  <div class="pdf-embed-fallback">
     <p>PDF preview unavailable in this view. Please download instead:</p>
     <p><a href="/NCCP_slides.pdf" target="_blank" download>📥 Download Slides</a></p>
   </div>
 </div>
 
-[📥 Download Report](/NCCP_Slides.pdf){target="_blank" download}
+[📥 Download Report](/NCCP_slides.pdf){target="_blank" download}

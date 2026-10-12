@@ -59,6 +59,98 @@ svg{display:block;width:100%;height:auto;margin-top:4px;overflow:visible}
     <div class="src">PLUMB SCATTER · F8 MONO-BASIC · SIMULATED QUANTILES</div>
   </section>
 </main>
+<script src="i18n.js"></script>
+<script>
+chartI18n.use({
+  zh: {
+    'Reading residual diagnostics': '解读残差诊断',
+    'Residuals reveal what the fitted equation hides': '残差揭示拟合方程所隐藏的东西',
+    'Four simulated patterns · every dot is one residual · click a panel to replay': '四种模拟模式 · 每个点是一个残差 · 点击面板重播',
+    'A random band supports linearity': '随机带支持线性',
+    'residuals stay centered on zero · vertical spread remains broadly stable': '残差围绕零分布 · 纵向离散程度大体稳定',
+    'Curvature signals missing structure': '弯曲意味着遗漏了结构',
+    'a U-shaped residual path · consider a transformation or nonlinear term': 'U 形的残差路径 · 考虑变量变换或非线性项',
+    'A widening fan breaks constant variance': '逐渐张开的扇形破坏了方差恒定',
+    'dispersion grows with fitted value · standard OLS errors may be unreliable': '离散程度随拟合值增大 · 标准 OLS 误差可能不可靠',
+    'A near-straight Q–Q path supports normality': '近乎笔直的 Q–Q 路径支持正态性',
+    'ordered residuals track theoretical normal quantiles · inspect the tails': '排序后的残差贴合理论正态分位数 · 注意检查尾部',
+    'Residual plot showing a random band around zero': '围绕零呈随机带状的残差图',
+    'Residual plot showing curvature': '呈弯曲形态的残差图',
+    'Residual plot showing heteroskedasticity': '呈异方差的残差图',
+    'Normal Q-Q plot with points close to its reference line': '点靠近参考线的正态 Q-Q 图',
+    'LOW FIT': '拟合值低',
+    'HIGH FIT': '拟合值高',
+    'LOW QUANTILE': '分位数低',
+    'HIGH QUANTILE': '分位数高',
+    'RESIDUAL ↑': '残差 ↑',
+    'ORDERED RESIDUAL ↑': '排序残差 ↑',
+    'EVERY DOT HANGS TO THE SAME FITTED-VALUE FLOOR': '每个点都垂直连到同一条拟合值基线',
+  },
+  ja: {
+    'Reading residual diagnostics': '残差診断の読み方',
+    'Residuals reveal what the fitted equation hides': '残差は、推定した式が隠しているものを明らかにする',
+    'Four simulated patterns · every dot is one residual · click a panel to replay': 'シミュレーションによる 4 つのパターン · 点 1 つが残差 1 つ · パネルをクリックで再生',
+    'A random band supports linearity': 'ランダムな帯は線形性を支持する',
+    'residuals stay centered on zero · vertical spread remains broadly stable': '残差はゼロを中心にとどまる · 縦方向のばらつきはおおむね安定',
+    'Curvature signals missing structure': '曲がりは欠けている構造のサイン',
+    'a U-shaped residual path · consider a transformation or nonlinear term': 'U 字型の残差の並び · 変数変換や非線形項を検討する',
+    'A widening fan breaks constant variance': '広がる扇形は分散一定を崩す',
+    'dispersion grows with fitted value · standard OLS errors may be unreliable': '予測値とともにばらつきが大きくなる · 通常の OLS の標準誤差は信頼できないかもしれない',
+    'A near-straight Q–Q path supports normality': 'ほぼ直線の Q–Q プロットは正規性を支持する',
+    'ordered residuals track theoretical normal quantiles · inspect the tails': '並べた残差が正規分布の理論分位点に沿う · 裾を確認する',
+    'Residual plot showing a random band around zero': 'ゼロの周りにランダムな帯を示す残差プロット',
+    'Residual plot showing curvature': '曲がりを示す残差プロット',
+    'Residual plot showing heteroskedasticity': '不均一分散を示す残差プロット',
+    'Normal Q-Q plot with points close to its reference line': '点が基準線の近くにある正規 Q-Q プロット',
+    'LOW FIT': '予測値 小',
+    'HIGH FIT': '予測値 大',
+    'LOW QUANTILE': '分位点 小',
+    'HIGH QUANTILE': '分位点 大',
+    'RESIDUAL ↑': '残差 ↑',
+    'ORDERED RESIDUAL ↑': '並べた残差 ↑',
+    'EVERY DOT HANGS TO THE SAME FITTED-VALUE FLOOR': 'どの点も同じ予測値の基線から垂れ下がる',
+  },
+  fr: {
+    'Reading residual diagnostics': 'Lire les diagnostics des résidus',
+    'Residuals reveal what the fitted equation hides': 'Les résidus révèlent ce que l’équation ajustée cache',
+    'Four simulated patterns · every dot is one residual · click a panel to replay': 'Quatre profils simulés · chaque point est un résidu · cliquer sur un panneau pour rejouer',
+    'A random band supports linearity': 'Une bande aléatoire soutient la linéarité',
+    'residuals stay centered on zero · vertical spread remains broadly stable': 'les résidus restent centrés sur zéro · la dispersion verticale reste à peu près stable',
+    'Curvature signals missing structure': 'Une courbure signale une structure manquante',
+    'a U-shaped residual path · consider a transformation or nonlinear term': 'résidus en forme de U · envisager une transformation ou un terme non linéaire',
+    'A widening fan breaks constant variance': 'Un éventail qui s’ouvre rompt la variance constante',
+    'dispersion grows with fitted value · standard OLS errors may be unreliable': 'la dispersion croît avec la valeur ajustée · les écarts-types MCO usuels peuvent être peu fiables',
+    'A near-straight Q–Q path supports normality': 'Un tracé Q–Q presque rectiligne soutient la normalité',
+    'ordered residuals track theoretical normal quantiles · inspect the tails': 'les résidus ordonnés suivent les quantiles normaux théoriques · examiner les queues',
+    'Residual plot showing a random band around zero': 'Graphique des résidus montrant une bande aléatoire autour de zéro',
+    'Residual plot showing curvature': 'Graphique des résidus montrant une courbure',
+    'Residual plot showing heteroskedasticity': 'Graphique des résidus montrant de l’hétéroscédasticité',
+    'Normal Q-Q plot with points close to its reference line': 'Graphique Q-Q normal avec des points proches de la droite de référence',
+    'LOW FIT': 'AJUSTÉ FAIBLE',
+    'HIGH FIT': 'AJUSTÉ ÉLEVÉ',
+    'LOW QUANTILE': 'QUANTILE FAIBLE',
+    'HIGH QUANTILE': 'QUANTILE ÉLEVÉ',
+    'RESIDUAL ↑': 'RÉSIDU ↑',
+    'ORDERED RESIDUAL ↑': 'RÉSIDU ORDONNÉ ↑',
+    'EVERY DOT HANGS TO THE SAME FITTED-VALUE FLOOR': 'CHAQUE POINT PEND DEPUIS LA MÊME BASE DES VALEURS AJUSTÉES',
+  },
+}, {
+  patterns: {
+    zh: [
+      [/^Theoretical quantile (.+) · ordered residual (.+)$/, '理论分位数 $1 · 排序残差 $2'],
+      [/^Fitted value (.+) · residual position (.+)$/, '拟合值 $1 · 残差位置 $2'],
+    ],
+    ja: [
+      [/^Theoretical quantile (.+) · ordered residual (.+)$/, '理論分位点 $1 · 並べた残差 $2'],
+      [/^Fitted value (.+) · residual position (.+)$/, '予測値 $1 · 残差の位置 $2'],
+    ],
+    fr: [
+      [/^Theoretical quantile (.+) · ordered residual (.+)$/, 'Quantile théorique $1 · résidu ordonné $2'],
+      [/^Fitted value (.+) · residual position (.+)$/, 'Valeur ajustée $1 · position du résidu $2'],
+    ],
+  },
+});
+</script>
 <script>
 const INK='#1C1C1A',PAPER='#F0EFEB',MUTED='#8F8E88',GRID='#DEDDD6';
 const NS='http://www.w3.org/2000/svg';

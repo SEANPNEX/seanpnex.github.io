@@ -34,7 +34,7 @@ Choose a track based on what you need today.
   </a>
 </div>
 
-## CFA Level II directory
+## CFA Level II directory {#cfa-level-ii-directory}
 
 Topics follow the curriculum order. Every note links to the previous and next module, so you can read straight through or jump in below.
 

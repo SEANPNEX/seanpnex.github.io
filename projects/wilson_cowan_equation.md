@@ -21,14 +21,14 @@ order: 2
   font-style: italic;
 }
 
-.resume-fallback {
+.pdf-embed-fallback {
   display: none;
 }
 @media (max-width: 768px) {
-  .resume-wrapper iframe {
+  .pdf-embed iframe {
     display: none;
   }
-  .resume-fallback {
+  .pdf-embed-fallback {
     display: block;
     text-align: center;
     margin-top: 1em;
@@ -169,7 +169,7 @@ The Wilson-Cowan model with modifications demonstrates that cortical columns can
 
 
 ## The original report
-<div class="resume-wrapper">
+<div class="pdf-embed">
   <iframe 
       src="/Wilson_Cowan_Equation.pdf#zoom=fitH" 
       type="application/pdf" 
@@ -177,9 +177,9 @@ The Wilson-Cowan model with modifications demonstrates that cortical columns can
       height="1200" 
       style="border: none; overflow: hidden;"
   ></iframe>
-  <div class="resume-fallback">
+  <div class="pdf-embed-fallback">
     <p>PDF preview unavailable in this view. Please download instead:</p>
-    <p><a href="/Rivalry_Network.pdf" target="_blank" download>📥 Download Report</a></p>
+    <p><a href="/Wilson_Cowan_Equation.pdf" target="_blank" download>📥 Download Report</a></p>
   </div>
 </div>
 

@@ -133,7 +133,7 @@ As a rough interpretation:
 
 The formal test uses lower and upper critical bounds and may be inconclusive. It is designed for first-order correlation and is not valid in its standard form when a lagged dependent variable is included among the regressors.
 
-#### Breusch–Godfrey Test
+#### Breusch–Godfrey Test {#breuschgodfrey-test}
 
 The Breusch–Godfrey test can examine serial correlation through order $p$. Estimate the auxiliary regression
 
