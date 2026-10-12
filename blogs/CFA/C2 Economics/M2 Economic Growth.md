@@ -3,7 +3,8 @@
     filter: blur(5px);
     transition: filter 0.3s;
 }
-.blur-hover:hover {
+.blur-hover:hover,
+.blur-hover:focus-within {
     filter: none;
 }
 .fx-concept-chart {
@@ -336,9 +337,9 @@ An increase in labor-force growth $n$ rotates the required-investment ray upward
 >
 > Some conclusions of neoclassical growth theory:
 >
-> * Capital accumulation affects the level of output but not the growth rate in the long run
+> * Capital accumulation affects the level of output but not the growth rate in the long run 
 > * Regardless of its initial capital to labor ratio or initial level of productivity, a growing economy will move to a point of steady-growth rate
-> * In a steady state, the growth rate of output is $G*=n+\frac{\theta}{1-\alpha}$
+> * In a steady state, the growth rate of output is $G^*=n+\frac{\theta}{1-\alpha}$
 >
 > Implications of the model:
 >
@@ -348,6 +349,33 @@ An increase in labor-force growth $n$ rotates the required-investment ray upward
 > Effect of saving:
 >
 > * Initial impact of higher saving rate is to temporarily raise the growth in the economy. Once an economy achieves steady-state growth, the growth rate does not depend on the percentage of incomee saved or invested.
+
+#### Example
+
+Calculate the steady-state growth rates from the neoclassical model for Country A and B.
+
+| Country | Labor Cost in Total Factor Cost (%) | TFP Growth (%) | Labor Force Growth (%) |
+| ------- | ----------------------------------- | -------------- | ---------------------- |
+| A | 56.1 | 2.9 | 1.2 |
+| B | 53.8 | 0.2 | 0 |
+
+Recall $G^*=\Delta Y/Y=\frac{\theta}{1-\alpha}+n$, with Labor Cost in Total Factor Cost $=1-\alpha$, TFP Growth $=\theta$, and Labor Force Growth $=n$.
+
+<span class="blur-hover" tabindex="0">
+
+**Country A:**
+
+$$
+G^*=\frac{2.9\%}{56.1\%}+1.2\%=6.37\%
+$$
+
+**Country B:**
+
+$$
+G^*=\frac{0.2\%}{53.8\%}+0\%=0.37\%
+$$
+
+</span>
 
 ### Endogenous growth theory
 
