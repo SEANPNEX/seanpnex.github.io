@@ -16,8 +16,10 @@
     border-radius: 24px;
     background: #F0EFEB;
 }
+.fx-concept-chart.parity-chart { height: 505px; }
 @media (max-width: 700px) {
     .fx-concept-chart { height: 540px; }
+    .fx-concept-chart.parity-chart { height: 645px; }
 }
 </style>
 
@@ -266,6 +268,13 @@ Exchange rates respond to relative—not standalone—economic conditions. The e
   loading="lazy"
 ></iframe>
 
+<iframe
+  class="fx-concept-chart parity-chart"
+  src="/charts/international-parity-conditions.html"
+  title="Relationship map of international parity conditions"
+  loading="lazy"
+></iframe>
+
 | Condition | Links | Central implication |
 | --- | --- | --- |
 | Covered interest-rate parity (CIRP) | Spot, forward, and interest rates | No arbitrage for a fully hedged investment |
@@ -277,6 +286,8 @@ Exchange rates respond to relative—not standalone—economic conditions. The e
 
 ### Covered Interest-Rate Parity
 
+**CIRP** states that an investment in a foreign money market instrument that is completely hedged against exchange rate tisk should yield exactly the same return as an otherwise identical domestic money market investment. 
+
 Let $S_{f/d}$ and $F_{f/d}$ be units of foreign currency per unit of domestic currency. A domestic money-market investment and a fully hedged foreign investment must provide the same domestic-currency payoff:
 
 $$
@@ -286,18 +297,32 @@ $$
 $$
 
 Therefore,
-
 $$
 F_{f/d}
 =S_{f/d}\frac{1+i_f}{1+i_d}.
 $$
 
-For maturities shorter than one year, use rates scaled to the appropriate horizon. If $i_f>i_d$, then $F_{f/d}>S_{f/d}$: one unit of domestic currency buys more foreign currency forward, so the domestic currency is at a forward premium.
+> [!Note]
+>
+> For maturities shorter than one year, use rates scaled to the appropriate horizon. 
+
+**Lemma** If $i_f>i_d$, then $F_{f/d}>S_{f/d}$.
+
+It is inferred from:
+$$
+\begin{align}
+&F_{f/d} = S_{f/d}(\frac{1+i_f}{1+1_d})\\
+&\frac{F_{f/d}}{S_{f_d}}-1=(\frac{1+i_f}{1+i_d})-1\\
+&\frac{F_{f/d}-S_{f/d}}{S_{f/d}} = \frac{i_f-i_d}{1+1_d}
+\end{align}
+$$
+From this formula we can learn that the change rate in exchange rate $\Delta {f/d}\%$ is nearly equals to the change in interest rate $\Delta i$. Then the lemma can be inferred. 
 
 ### Uncovered Interest-Rate Parity
 
-UIRP states that the expected return advantage of a higher-yielding currency is offset by its expected depreciation. In the current convention, the approximate relation is
+**UIRP** states that the expected return advantage of a higher-yielding currency is offset by its expected depreciation. It is basically the same formula as **CIRP**, replacing the covered forward rate $F_{f/d}$ with a expectation value.
 
+In the current convention, the approximate relation is
 $$
 E(\%\Delta S_{f/d})
 \approx i_f-i_d.
@@ -312,9 +337,16 @@ E(\%\Delta S_{f/d})
 \approx \frac{n}{360}(i_f-i_d).
 $$
 
-UIRP is an equilibrium expectation, not a riskless arbitrage condition. It often fails over shorter horizons.
+**UIRP** is an equilibrium expectation, not a riskless arbitrage condition. It often fails over shorter horizons.
+
+**Lemma** In domestic currency term, the investment return on an uncovered foreign currency denominated investment is equal to:
+$$
+(1+i_f)(1-\%\Delta S_{f/d}^e)-1=i_d\\\simeq i_f-\%\Delta S_{f/d}^e = i_d
+$$
 
 ### Carry Trade
+
+If **UIRP** breaks, there is a carry trade opportunity.
 
 A carry trade borrows in a low-yield currency and invests in a high-yield currency without fully hedging the exchange-rate exposure. Its apparent interest advantage can be eliminated or reversed if the investment currency depreciates. It is therefore risky, not arbitrage.
 
@@ -360,12 +392,15 @@ $$
 F_{f/d}=E(S_{f/d,T}).
 $$
 
-The forward rate is then an unbiased predictor of the future spot rate **under those assumptions**. This is an expectation statement; an individual future spot realization will almost certainly differ from the forward rate.
+The forward rate is then an unbiased predictor of the future spot rate **under those assumptions**.
+
+> [!Note]
+>
+> **CIRP** must hold because it is enforced by **arbitrrage**. Therefore **FRP** depends on **UIRP**.
 
 ### Purchasing Power Parity
 
-**Absolute PPP** applies the law of one price to a representative basket. With $S_{f/d}$ quoted as foreign currency per domestic currency,
-
+**Absolute PPP** applies the law of one price to a representative basket. It is a extension to **One Price Law**. With $S_{f/d}$ quoted as foreign currency per domestic currency,
 $$
 S_{f/d}=\frac{P_f}{P_d}.
 $$
@@ -377,11 +412,17 @@ Absolute PPP is unlikely to hold exactly because of transportation costs, tariff
 $$
 \frac{S_{1,f/d}}{S_{0,f/d}}-1
 =
+\frac{P_{1,f}/P_{1,d}}{P_{0,f}/P_{0,d}}-1=\frac{P_{1,f}/P_{0,f}}{P_{1,d}/P_{0,d}}=
+=
 \frac{1+\pi_f}{1+\pi_d}-1
 =
 \frac{\pi_f-\pi_d}{1+\pi_d}
 \approx \pi_f-\pi_d.
 $$
+
+> [!note]
+>
+> $\pi$ is inflation with $\pi = \frac{p_1}{p_0}-1$.
 
 If domestic inflation is lower than foreign inflation, $S_{f/d}$ rises and the domestic base currency appreciates. **Ex-ante PPP** replaces realized inflation with expected inflation.
 
@@ -406,7 +447,7 @@ i_f-i_d
 \approx(r_f-r_d)+(E\pi_f-E\pi_d).
 $$
 
-If both UIRP and ex-ante PPP hold, their exchange-rate expectations are equal, implying
+If both UIRP and ex-ante PPP hold (**The International Fisher Effect** $i_f-i_d = \pi_f-\pi_d = \%\Delta S_{f/d}$) , their exchange-rate expectations are equal, implying **RIRP**
 
 $$
 r_f\approx r_d.
