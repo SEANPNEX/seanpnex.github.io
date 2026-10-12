@@ -14,12 +14,14 @@
 
 Developed vs. Developing Countries
 
-* Savings and investment
-* Financial markets and intermediaries
-* Political stablility, rule of law, and property rights
-* Education and health care systems
-* Tax and regulatory 
-* Free trade and unrestricted capital flows
+| Factor | Developed | Developing |
+|--------|-----------|------------|
+| Savings and investment | High savings; deep investment channels | Lower savings; limited investment |
+| Financial markets and intermediaries | Well-developed, liquid markets | Less developed, shallow markets |
+| Political stablility, rule of law, and property rights | Strong and enforceable | Weaker, less predictable |
+| Education and health care systems | Strong; high human capital | Weaker; lower human capital |
+| Tax and regulatory | Efficient, growth-friendly | Inefficient, often burdensome |
+| Free trade and unrestricted capital flows | Open trade and capital mobility | Often restricted trade/capital flows |
 
 Potential growth matters to equity investors:
 $$
