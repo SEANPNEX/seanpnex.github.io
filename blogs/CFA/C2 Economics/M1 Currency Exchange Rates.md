@@ -496,6 +496,13 @@ When both policies move together, the currency effect depends on whether the int
 | **Expansionary fiscal policy** | Indeterminate | Domestic currency appreciates |
 | **Restrictive fiscal policy** | Domestic currency depreciates | Indeterminate |
 
+Under a **floating exchange rate with low capital mobility**, trade flows dominate interest-sensitive capital flows. Expansionary policy that raises output tends to increase imports and put depreciation pressure on the currency:
+
+|  | Expansionary monetary policy | Restrictive monetary policy |
+| --- | --- | --- |
+| **Expansionary fiscal policy** | Domestic currency depreciates | Indeterminate |
+| **Restrictive fiscal policy** | Indeterminate | Domestic currency appreciates |
+
 Under a **credible fixed exchange rate with high capital mobility**:
 
 - independent monetary expansion is ineffective because the central bank must reverse it to maintain the peg;
