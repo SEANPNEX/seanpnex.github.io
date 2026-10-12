@@ -17,9 +17,11 @@
     background: #F0EFEB;
 }
 .fx-concept-chart.parity-chart { height: 600px; }
+.fx-concept-chart.overshoot-chart { height: 820px; }
 @media (max-width: 700px) {
     .fx-concept-chart { height: 540px; }
     .fx-concept-chart.parity-chart { height: 790px; }
+    .fx-concept-chart.overshoot-chart { height: 1180px; }
 }
 </style>
 
@@ -518,9 +520,28 @@ $$
 MV=PY,
 $$
 
-where $M$ is money supply, $V$ is velocity, $P$ is the price level, and $Y$ is real output. If velocity and real output are stable in the long run, faster domestic money growth raises the domestic price level. Relative PPP then implies long-run domestic-currency depreciation, all else equal.
+where $M$ is money supply, $V$ is velocity, $P$ is the price level, and $Y$ is real output. 
 
-When goods prices adjust slowly but financial markets adjust quickly, an unexpected monetary expansion can lower interest rates and cause the currency to depreciate beyond its long-run PPP level. The currency later appreciates toward that level as domestic prices gradually rise. This is **exchange-rate overshooting**.
+In the middle step, change it to 
+$$
+\frac{M}{P} = \frac{Y}{V}
+$$
+
+
+If velocity (V) and real output (Y) are stable in the **long run**, faster domestic money growth raises the domestic price level. Relative PPP then implies long-run domestic-currency depreciation, all else equal.
+
+> [!note]
+>
+> The left side of the equation $\frac{M}{P}$ can be called as **Real money supply**
+
+When goods prices adjust slowly but financial markets adjust quickly, an unexpected monetary expansion **real money supply** increase makes money cheaper) and cause the currency to depreciate beyond its long-run PPP level. The currency later appreciates toward that level as domestic prices gradually rise. This is **exchange-rate overshooting**.
+
+<iframe
+  class="fx-concept-chart overshoot-chart"
+  src="/charts/exchange-rate-overshooting.html"
+  loading="lazy"
+  title="Exchange-rate overshooting after monetary expansion"
+></iframe>
 
 ### Portfolio-Balance Approach
 
