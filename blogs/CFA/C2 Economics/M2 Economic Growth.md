@@ -18,11 +18,13 @@
 .fx-concept-chart.dmp-chart { height: 560px; }
 .fx-concept-chart.alpha-chart { height: 560px; }
 .fx-concept-chart.tfp-chart { height: 560px; }
+.fx-concept-chart.solow-chart { height: 560px; }
 @media (max-width: 700px) {
     .fx-concept-chart { height: 500px; }
     .fx-concept-chart.dmp-chart { height: 980px; }
     .fx-concept-chart.alpha-chart { height: 980px; }
     .fx-concept-chart.tfp-chart { height: 720px; }
+    .fx-concept-chart.solow-chart { height: 720px; }
 }
 </style>
 
@@ -246,44 +248,63 @@ Growth theory studies $\frac{dy}{y}$, the growth speed of GDP per capita.
 
 Recall from above:
 $$
-\frac{dy}{y}=\frac{dA}{A}+\alpha\frac{dk}{k},\qquad \frac{dY}{Y}=\frac{dy}{y}+\frac{dL}{L}.
+\frac{dy}{y}=\frac{dA}{A}+\alpha\frac{dk}{k},\qquad \frac{dY}{Y}=\frac{dy}{y}+\frac{dL}{L}=\frac{dA}{A}+\alpha\frac{dK}{K}+(1-\alpha)\frac{dL}{L}
 $$
 
-### Classical Growth Theory
+> [!note]
+>
+> The second meaning of $\alpha$ is the elasticity of output with respect to capital from the formula above.
+
+### Classical Growth Theory (Malthus)
 
 The key assumption is $L$ will increase and $Y$ will increase. $Y$ increase will further increase $L$: Tech advances $\to$ labor productivity $\uparrow$ $\to$ higher population growth $\to$ diminishing marginal returns of labor $\to$ per capita income.
 
 Therefore, for $y$, in the long run tech advance results in a larger but not richer population. There's no growth in per capita output.
 
-### Neoclassical Growth Theory
+### Neoclassical Growth Theory (Robert Solow)
+
+All assumptions below are in **long term equilibrium **status of economy. The goal of the model is to find $(k,y)$ when the status is reached.
 
 In the long run the growth rate of $y$ is related to:
 
 * Saving/Investment rate $s$
-* Rate of tech change $\theta$
-* population growth rate $n$
+* Rate of tech change $\theta=\frac{dA}{A}$
+* population growth rate $n=\frac{dL}{L}$
 
-Assuming in the long run $\frac{Y}{K}$ stays the same, then $\frac{Y/L}{K/L}$ is the same, then $\frac{y}{k}$ is the same. Then $\frac{dy}{y}=\frac{dk}{k}$. 
+**Assuming in the long run $\frac{Y}{K}$ stays the same**, then $\frac{Y/L}{K/L}$ is the same, then $\frac{y}{k}$ is the same. Then $\frac{dy}{y}=\frac{dk}{k}$. 
 
 From the previous growth formula $\frac{dy}{y}=\frac{dA}{A}+\alpha \frac{dk}{k}$.
 
-Combining the formulas above: $(1-\alpha)\frac{dk}{k}=\frac{dA}{A}$, $\frac{dy}{y}=\frac{dk}{k}=\frac{\theta}{1-\alpha}$. Denote it as $g*=\frac{\theta}{1-\alpha}$ . 
+Combining the formulas above: $(1-\alpha)\frac{dk}{k}=\frac{dA}{A}$, $\frac{dy}{y}=\frac{dk}{k}=\frac{\theta}{1-\alpha}$. Denote it as $g^*=\frac{\theta}{1-\alpha}$ . 
 
-From $Y=yl$, $G*=\frac{dY}{Y}=\frac{dy}{y}+\frac{dL}{L}=\frac{\theta}{1-\alpha}+n$.
+From $Y=yL$, $G^*=\frac{dY}{Y}=\frac{dy}{y}+\frac{dL}{L}=\frac{\theta}{1-\alpha}+n$.
 
-Assuming in the closed economy, investment must be funded by domestic savings. Let $s$ be the fraction of $Y$ saved, then $I=sY$. Then $dK = sY-\delta K$, let $\delta$ be the depreciation rate.
+**Assuming in the closed economy, investment must be funded by domestic savings**. Let $s$ be the fraction of $Y$ saved, then $I=sY$, where $I$ is the total investment. Then let $\delta$ be the depreciation rate, $dK = sY-\delta K$. 
 
-From $k=\frac{K}{L}$, $\frac{dk}{k}=\frac{dK}{K}-\frac{dL}{L}=\frac{sY-\delta K}{K}-n=\frac{sY}{K}-\delta-n$. With $\frac{dk}{k}=\frac{\theta}{1-\alpha}$, we cam have: 
+From $k=\frac{K}{L}$, $\frac{dk}{k}=\frac{dK}{K}-\frac{dL}{L}=\frac{sY-\delta K}{K}-n=\frac{sY}{K}-\delta-n$. With $\frac{dk}{k}=\frac{\theta}{1-\alpha}$, we can have: 
 $$
 \frac{Y}{K}=\frac{1}{s}(\frac{\theta}{1-\alpha}+\delta+n)\equiv\varphi
 $$
-Which gives our original assumption: In the long run, $\frac{Y}{K}$ is constant.
+Assuming all parameters $s, \theta, \alpha,\delta,n$ holds unchanged, $\varphi$ is some constant value.
 
-Then with $MPK = \alpha\frac{Y}{K}$ is also constant.
+Which gives our original assumption: **In the long run, $\frac{Y}{K}$ is constant.**
 
-Further $\frac{y}{k}=\frac{Y/L}{K/L}=\frac{1}{s}(\frac{\theta}{1-\alpha}+\delta+n)$. Then $sy = (\frac{\theta}{1-\alpha}+\delta+n)k$. 
+Then recall that $MPK = \alpha\frac{Y}{K}$. $\frac{Y}{K}$ is assumed to be constant, same as $\alpha$. $MPK$ is then a constant.
 
-Since $sy=sAk^{\alpha}$, we can find the $k$ such that $\frac{dy}{y}=\frac{\theta}{1-\alpha}$ is constant by solving the equation.
+Further $\frac{y}{k}=\frac{Y/L}{K/L}=\frac{1}{s}(\frac{\theta}{1-\alpha}+\delta+n)$. Then $sy = (\frac{\theta}{1-\alpha}+\delta+n)k$. $sy$ is roughly the gross investment per worker since $\frac{sY}{L}=\frac{I}{L}$. The new investment becomes three parts from the formula:
+
+* Capital deepening
+* Replace fixed assets against depreciation 
+* Provide capital for new workers
+
+Since $sy=sAk^{\alpha}$ (this holds from the definition without assumptions), combining $sy = (\frac{\theta}{1-\alpha}+\delta+n)k$ (the formula obtained from equilibrium status assumptions), we can find the $k$ and its corresponding $y$ such that $\frac{dy}{y}=\frac{\theta}{1-\alpha}$ is constant by solving the equation.
+
+<iframe
+  class="fx-concept-chart solow-chart"
+  src="/charts/solow-steady-state.html"
+  loading="lazy"
+  title="Solow steady-state savings vs required investment"
+></iframe>
 
 > [!Note]
 >
