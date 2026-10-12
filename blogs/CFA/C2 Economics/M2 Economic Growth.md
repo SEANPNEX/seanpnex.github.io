@@ -377,6 +377,20 @@ $$
 
 </span>
 
+#### Example
+
+The growth rate of potential GDP estimated for country A is 8.5% and for country B is 0.5%. From the prior example, $G^*=6.37\%$ for A and $G^*=0.37\%$ for B.
+
+Compare the steady-state growth rates to the growth rates in potential GDP and explain the results.
+
+<span class="blur-hover" tabindex="0">
+
+**Country A:** Potential GDP growth $8.5\% > G^*=6.37\%$, so the economy is still converging. Physical capital stock is below the steady state; capital deepening is a significant driver of productivity growth and potential GDP growth.
+
+**Country B:** Potential GDP growth $0.5\%$ vs $G^*=0.37\%$ — essentially at the steady state. Capital investment has no significant effect on the growth rate. Only changes in TFP growth, labor growth, and the labor share of output affect potential GDP growth.
+
+</span>
+
 ### Endogenous growth theory
 
 Unlike neoclassical model, assume there are no diminishing marginal returns to capital for the economy as a whole in the endogenous growth model. 
