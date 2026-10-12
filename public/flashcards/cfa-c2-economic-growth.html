@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Economic Growth — Solow flashcards</title>
+<style>
+:root{
+  --bg:#F0EFEB;--paper:#F0EFEB;--ink:#1C1C1A;--mid:#55554F;
+  --muted:#8F8E88;--faint:#C6C5BF;--grid:#DEDDD6;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body{padding:18px;min-height:100vh}
+.wrap{max-width:560px;margin:0 auto}
+.figure-head{margin:2px 4px 18px}
+.figure-head h1{margin:0 0 5px;font-size:22px;line-height:1.15;letter-spacing:-.035em}
+.figure-head p{margin:0;color:var(--muted);font-size:11px;line-height:1.5}
+.stage{perspective:1200px;margin-bottom:14px}
+.card{
+  position:relative;min-height:320px;border-radius:24px;background:var(--paper);
+  outline:1px solid var(--grid);cursor:pointer;transform-style:preserve-3d;
+  transition:transform .55s cubic-bezier(.165,.84,.44,1);
+  -webkit-tap-highlight-color:transparent;user-select:none;
+}
+.card.is-flipped{transform:rotateY(180deg)}
+.face{
+  position:absolute;inset:0;padding:28px 26px 24px;border-radius:24px;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  display:flex;flex-direction:column;
+}
+.face-back{transform:rotateY(180deg)}
+.badge{
+  display:inline-flex;align-self:flex-start;margin:0 0 14px;padding:4px 10px;
+  border-radius:999px;border:1px solid var(--grid);color:var(--muted);
+  font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+}
+.face h2{margin:0 0 12px;font-size:13px;font-weight:600;color:var(--mid);
+  letter-spacing:.02em;text-transform:uppercase}
+.face .q,.face .a{margin:0;flex:1;font-size:18px;line-height:1.45;letter-spacing:-.02em}
+.face .a{font-size:16px;line-height:1.55}
+.face .a strong{font-weight:700}
+.gap{
+  margin-top:16px;padding-top:14px;border-top:1px solid var(--grid);
+  color:var(--muted);font-size:12px;line-height:1.5
+}
+.hint{margin-top:auto;padding-top:18px;color:var(--faint);font-size:11px;letter-spacing:.04em}
+.controls{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:4px}
+.nav{display:flex;align-items:center;gap:8px}
+.btn{
+  appearance:none;border:1px solid var(--grid);background:transparent;color:var(--ink);
+  border-radius:999px;padding:8px 14px;font:inherit;font-size:12px;font-weight:600;
+  cursor:pointer;transition:background .15s ease,border-color .15s ease,opacity .15s ease;
+}
+.btn:hover:not(:disabled){background:rgba(28,28,26,.04);border-color:var(--faint)}
+.btn:disabled{opacity:.35;cursor:default}
+.btn.soft{color:var(--muted)}
+.btn.mark-miss{border-color:var(--faint)}
+.btn.mark-got{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.btn.mark-got:hover:not(:disabled){background:#2a2a27;border-color:#2a2a27}
+.index{color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums;min-width:3.5em;text-align:center}
+.actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.src{margin-top:16px;color:var(--muted);font-size:7px;font-weight:700;letter-spacing:.15em;text-transform:uppercase}
+@media(max-width:620px){
+  body{padding:12px}
+  .card{min-height:360px}
+  .face{padding:22px 18px 18px}
+  .face .q{font-size:17px}
+  .face .a{font-size:15px}
+  .controls{flex-direction:column;align-items:stretch}
+  .nav,.actions{justify-content:space-between}
+}
+@media(prefers-reduced-motion:reduce){
+  .card{transition:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="figure-head">
+    <h1>Economic Growth flashcards</h1>
+    <p>CFA L2 Economic Growth · Neoclassical / Solow · Quiz 2026-10-13 · click the card to flip</p>
+  </header>
+
+  <div class="stage">
+    <div class="card" id="card" role="button" tabindex="0" aria-live="polite" aria-label="Flashcard — press to flip">
+      <div class="face face-front">
+        <span class="badge" id="topic-front">Steady state</span>
+        <h2>Question</h2>
+        <p class="q" id="front"></p>
+        <div class="hint">Click · Space · Enter to flip</div>
+      </div>
+      <div class="face face-back">
+        <span class="badge" id="topic-back">Steady state</span>
+        <h2>Answer</h2>
+        <p class="a" id="back"></p>
+        <p class="gap" id="gap"></p>
+        <div class="hint">Click · Space · Enter to flip back</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <div class="nav">
+      <button type="button" class="btn" id="prev" aria-label="Previous card">Prev</button>
+      <span class="index" id="index">1/1</span>
+      <button type="button" class="btn" id="next" aria-label="Next card">Next</button>
+    </div>
+    <div class="actions">
+      <button type="button" class="btn soft mark-miss" id="miss" title="Keep reviewing this one">I still miss this</button>
+      <button type="button" class="btn mark-got" id="got" title="Mark as known and advance">Got it</button>
+    </div>
+  </div>
+  <div class="src">LIEFLAT FLASH · CFA L2 ECONOMIC GROWTH · NEOCLASSICAL / SOLOW · QUIZ 2026-10-13</div>
+</div>
+
+<script>
+/* Append future quiz cards here. */
+const CARDS = [
+  {
+    id: "c2-m2-steady-state-2026-10-13",
+    topic: "Steady state",
+    front: "When does capital deepening stop? Relate sy to required investment.",
+    back: "Steady state is where savings equal required investment:<br><br><strong>sy = sAk<sup>α</sup> = (θ/(1−α) + δ + n) k</strong><br><br>Capital deepening <strong>stops at k*</strong>. The matching output is y*.",
+    gap: "Focus: name both sides of the equality — the savings curve and the required-investment ray — and stop deepening at their intersection k*."
+  },
+  {
+    id: "c2-m2-saving-rate-2026-10-13",
+    topic: "Saving rate",
+    front: "What does a higher saving rate do to steady-state k and y, and to the long-run growth of y?",
+    back: "<strong>↑s → higher k* and y*</strong> — a <strong>level</strong> effect only.<br><br>Long-run growth of y is <strong>not permanently higher</strong>.<br><br>s ∈ [0, 1], so the rise in equilibrium k and y has a <strong>limit</strong>.",
+    gap: "Focus: level vs growth rate. A higher s lifts the steady-state level; it does not raise long-run growth of y forever, and s cannot exceed 1."
+  },
+  {
+    id: "c2-m2-convergence-2026-10-13",
+    topic: "Convergence",
+    front: "Country A’s potential GDP growth is well above G*; Country B is near G*. Where does each country’s growth come from?",
+    back: "<strong>A (G &gt; G*)</strong> is still <strong>converging via capital deepening</strong>.<br><br><strong>B (near G*)</strong> gets growth mostly from <strong>TFP</strong> (and labor), <strong>not</strong> from capital investment.",
+    gap: "Focus: above steady-state growth means capital deepening is still at work; once growth is near G*, further growth is TFP and labor, not investment in k."
+  },
+  {
+    id: "c2-m2-labor-growth-2026-10-13",
+    topic: "Labor growth",
+    front: "What happens to steady-state k and y when labor-force growth n rises?",
+    back: "<strong>↑n steepens the required-investment line</strong> (slope θ/(1−α) + δ + n).<br><br>The intersection moves left: <strong>lower k* and lower y*</strong>.",
+    gap: "Focus: n changes the ray, not the savings curve. A steeper ray cuts sy at a smaller k*."
+  },
+  {
+    id: "c2-m2-tfp-vs-deepening-2026-10-13",
+    topic: "TFP vs deepening",
+    front: "What shifts the production curve y = Ak^α, and what only moves along it?",
+    back: "Higher <strong>A (TFP)</strong> and <strong>α</strong> <strong>shape or shift</strong> the production curve.<br><br><strong>Capital deepening</strong> moves <strong>along</strong> a given curve — same A, higher k.",
+    gap: "Focus: a TFP shift changes the curve; capital deepening is a movement along the curve you already have."
+  }
+];
+
+let i = 0;
+let flipped = false;
+
+const el = {
+  card: document.getElementById("card"),
+  front: document.getElementById("front"),
+  back: document.getElementById("back"),
+  gap: document.getElementById("gap"),
+  topicF: document.getElementById("topic-front"),
+  topicB: document.getElementById("topic-back"),
+  index: document.getElementById("index"),
+  prev: document.getElementById("prev"),
+  next: document.getElementById("next"),
+  miss: document.getElementById("miss"),
+  got: document.getElementById("got"),
+};
+
+function reportHeight() {
+  const h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+  if (parent !== window) parent.postMessage({ chartHeight: h }, location.origin || "*");
+}
+
+function render() {
+  const c = CARDS[i];
+  el.front.textContent = c.front;
+  el.back.innerHTML = c.back;
+  el.gap.textContent = c.gap || "";
+  el.gap.hidden = !c.gap;
+  el.topicF.textContent = c.topic;
+  el.topicB.textContent = c.topic;
+  el.index.textContent = (i + 1) + "/" + CARDS.length;
+  el.prev.disabled = i === 0;
+  el.next.disabled = i >= CARDS.length - 1;
+  setFlip(false);
+  reportHeight();
+}
+
+function setFlip(on) {
+  flipped = on;
+  el.card.classList.toggle("is-flipped", on);
+  el.card.setAttribute("aria-label", on ? "Answer showing — press to flip" : "Question showing — press to flip");
+}
+
+function flip() { setFlip(!flipped); reportHeight(); }
+function go(delta) {
+  const n = i + delta;
+  if (n < 0 || n >= CARDS.length) return;
+  i = n;
+  render();
+}
+
+el.card.addEventListener("click", flip);
+el.card.addEventListener("keydown", (e) => {
+  if (e.key === " " || e.key === "Enter") { e.preventDefault(); flip(); }
+  if (e.key === "ArrowLeft") go(-1);
+  if (e.key === "ArrowRight") go(1);
+});
+el.prev.addEventListener("click", () => go(-1));
+el.next.addEventListener("click", () => go(1));
+el.miss.addEventListener("click", () => { setFlip(true); reportHeight(); });
+el.got.addEventListener("click", () => {
+  if (i < CARDS.length - 1) go(1);
+  else setFlip(false);
+});
+
+window.addEventListener("resize", reportHeight);
+render();
+requestAnimationFrame(reportHeight);
+</script>
+</body>
+</html>
