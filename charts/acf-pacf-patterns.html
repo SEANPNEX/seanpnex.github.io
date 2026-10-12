@@ -43,6 +43,71 @@
   <section class="grid" id="grid"></section>
   <div class="footer"><span>Barcode Lollipop · L3 mono-editorial</span><span>Illustrative patterns · T = 100</span></div>
 </main>
+<script src="i18n.js"></script>
+<script>
+chartI18n.use({
+  zh: {
+    'ACF and PACF identification patterns': 'ACF 与 PACF 的识别模式',
+    'Model identification · lag signatures': '模型识别 · 滞后特征',
+    'AR and MA models leave opposite fingerprints.': 'AR 与 MA 模型留下相反的指纹。',
+    'The ACF measures total correlation at each lag; the PACF removes the effects of the intervening lags. “Cuts off” means the theoretical correlations become zero—sample estimates usually remain small rather than exactly zero.': 'ACF 衡量每个滞后阶上的总相关；PACF 剔除了中间各滞后阶的影响。“截尾”指理论相关变为零——样本估计通常只是很小，而不会恰好为零。',
+    'sample correlation': '样本相关',
+    'approx. 95% bound, ±1.96/√T': '约 95% 界限，±1.96/√T',
+    'Illustrative patterns · T = 100': '示意模式 · T = 100',
+    'ACF tails off': 'ACF 拖尾',
+    'PACF cuts off after lag 1': 'PACF 在滞后 1 阶后截尾',
+    'ACF cuts off after lag 1': 'ACF 在滞后 1 阶后截尾',
+    'PACF tails off': 'PACF 拖尾',
+    'Persistence decays geometrically across many lags.': '持续性在许多滞后阶上按几何级数衰减。',
+    'Once lag 1 is controlled, later lags add no direct correlation.': '控制滞后 1 阶后，之后的滞后阶不再带来直接相关。',
+    'Only adjacent observations share the same one-period shock.': '只有相邻的观测值共享同一个单期冲击。',
+    'Partial correlations decay, often with alternating signs.': '偏相关逐渐衰减，并且符号常常交替。',
+    'LAG': '滞后',
+  },
+  ja: {
+    'ACF and PACF identification patterns': 'ACF と PACF による識別のパターン',
+    'Model identification · lag signatures': 'モデルの識別 · ラグの特徴',
+    'AR and MA models leave opposite fingerprints.': 'AR モデルと MA モデルは正反対の指紋を残す。',
+    'The ACF measures total correlation at each lag; the PACF removes the effects of the intervening lags. “Cuts off” means the theoretical correlations become zero—sample estimates usually remain small rather than exactly zero.': 'ACF は各ラグの相関全体を測り、PACF は間にあるラグの影響を取り除く。「途切れる」とは理論上の相関がゼロになることで、標本の推定値はちょうどゼロではなく小さい値にとどまるのが普通である。',
+    'sample correlation': '標本相関',
+    'approx. 95% bound, ±1.96/√T': '約 95% の境界、±1.96/√T',
+    'Illustrative patterns · T = 100': 'パターンの例 · T = 100',
+    'ACF tails off': 'ACF は徐々に減衰',
+    'PACF cuts off after lag 1': 'PACF はラグ 1 の後で途切れる',
+    'ACF cuts off after lag 1': 'ACF はラグ 1 の後で途切れる',
+    'PACF tails off': 'PACF は徐々に減衰',
+    'Persistence decays geometrically across many lags.': '持続性が多くのラグにわたって幾何級数的に減衰する。',
+    'Once lag 1 is controlled, later lags add no direct correlation.': 'ラグ 1 をコントロールすると、それ以降のラグは直接の相関を加えない。',
+    'Only adjacent observations share the same one-period shock.': '隣り合う観測値だけが同じ 1 期のショックを共有する。',
+    'Partial correlations decay, often with alternating signs.': '偏相関は減衰し、符号が交互に変わることが多い。',
+    'LAG': 'ラグ',
+  },
+  fr: {
+    'ACF and PACF identification patterns': 'Profils d’identification ACF et PACF',
+    'Model identification · lag signatures': 'Identification du modèle · signatures des retards',
+    'AR and MA models leave opposite fingerprints.': 'Les modèles AR et MA laissent des empreintes opposées.',
+    'The ACF measures total correlation at each lag; the PACF removes the effects of the intervening lags. “Cuts off” means the theoretical correlations become zero—sample estimates usually remain small rather than exactly zero.': 'L’ACF mesure la corrélation totale à chaque retard ; la PACF retire l’effet des retards intermédiaires. « S’annule » signifie que les corrélations théoriques deviennent nulles — les estimations empiriques restent en général petites plutôt qu’exactement nulles.',
+    'sample correlation': 'corrélation empirique',
+    'approx. 95% bound, ±1.96/√T': 'borne à 95 % env., ±1,96/√T',
+    'Illustrative patterns · T = 100': 'Profils illustratifs · T = 100',
+    'ACF tails off': 'L’ACF décroît progressivement',
+    'PACF cuts off after lag 1': 'La PACF s’annule après le retard 1',
+    'ACF cuts off after lag 1': 'L’ACF s’annule après le retard 1',
+    'PACF tails off': 'La PACF décroît progressivement',
+    'Persistence decays geometrically across many lags.': 'La persistance décroît géométriquement sur de nombreux retards.',
+    'Once lag 1 is controlled, later lags add no direct correlation.': 'Une fois le retard 1 contrôlé, les retards suivants n’ajoutent aucune corrélation directe.',
+    'Only adjacent observations share the same one-period shock.': 'Seules les observations voisines partagent le même choc d’une période.',
+    'Partial correlations decay, often with alternating signs.': 'Les corrélations partielles décroissent, souvent avec des signes alternés.',
+    'LAG': 'RETARD',
+  },
+}, {
+  patterns: {
+    zh: [[/^Lag (\d+): (.+)$/, '滞后 $1：$2']],
+    ja: [[/^Lag (\d+): (.+)$/, 'ラグ $1：$2']],
+    fr: [[/^Lag (\d+): (.+)$/, 'Retard $1 : $2']],
+  },
+});
+</script>
 <script>
   const NS='http://www.w3.org/2000/svg', INK='#1C1C1A', MUTED='#6A6963', SOFT='#B0AFA9', GRID='#D8D6CE', PAPER='#F7F6F2';
   const rnd=(a,b)=>{let x=Math.sin(a*127.1+b*311.7)*43758.5453;return x-Math.floor(x)};

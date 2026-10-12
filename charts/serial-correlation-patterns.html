@@ -46,6 +46,56 @@ svg text{font-family:Inter,ui-sans-serif,system-ui,sans-serif}
   </div>
   <div class="src">HAIRLINE LINE · F2 MONO-BASIC · DETERMINISTIC AR(1) ILLUSTRATION</div>
 </main>
+<script src="i18n.js"></script>
+<script>
+chartI18n.use({
+  zh: {
+    'Positive and negative serial correlation': '正序列相关与负序列相关',
+    'Persistence stays; reversals alternate': '持续性延续，反转交替出现',
+    'simulated first-order residuals · one dot = one period · horizontal rule = zero': '模拟的一阶残差 · 一个点 = 一期 · 水平线 = 零',
+    'Positive correlation forms runs': '正相关形成连续段',
+    'Neighboring residuals tend to keep the same sign and move in similar directions.': '相邻残差往往保持相同符号，并朝相似方向变动。',
+    'Negative correlation produces reversals': '负相关带来反转',
+    'Neighboring residuals tend to switch sign, creating an alternating or zigzag pattern.': '相邻残差往往变换符号，形成交替的锯齿形。',
+    'Time sequence of positively serially correlated residuals forming persistent runs': '正序列相关的残差按时间顺序形成持续的连续段',
+    'Time sequence of negatively serially correlated residuals alternating around zero': '负序列相关的残差按时间顺序围绕零交替',
+    'SAME-SIGN RUNS PERSIST': '同号连续段持续存在',
+    'SIGNS REVERSE PERIOD BY PERIOD': '符号逐期反转',
+  },
+  ja: {
+    'Positive and negative serial correlation': '正と負の系列相関',
+    'Persistence stays; reversals alternate': '持続は続き、反転は交互に起こる',
+    'simulated first-order residuals · one dot = one period · horizontal rule = zero': 'シミュレーションによる 1 次の残差 · 点 1 つ = 1 期 · 水平線 = ゼロ',
+    'Positive correlation forms runs': '正の相関は連続をつくる',
+    'Neighboring residuals tend to keep the same sign and move in similar directions.': '隣り合う残差は同じ符号を保ち、似た方向に動きやすい。',
+    'Negative correlation produces reversals': '負の相関は反転を生む',
+    'Neighboring residuals tend to switch sign, creating an alternating or zigzag pattern.': '隣り合う残差は符号が入れ替わりやすく、交互のジグザグ模様になる。',
+    'Time sequence of positively serially correlated residuals forming persistent runs': '正の系列相関をもつ残差の時系列が、持続的な連続をつくる',
+    'Time sequence of negatively serially correlated residuals alternating around zero': '負の系列相関をもつ残差の時系列が、ゼロの周りで交互に動く',
+    'SAME-SIGN RUNS PERSIST': '同符号の連続が続く',
+    'SIGNS REVERSE PERIOD BY PERIOD': '符号が期ごとに反転する',
+  },
+  fr: {
+    'Positive and negative serial correlation': 'Autocorrélation positive et négative',
+    'Persistence stays; reversals alternate': 'La persistance dure ; les inversions alternent',
+    'simulated first-order residuals · one dot = one period · horizontal rule = zero': 'résidus simulés d’ordre 1 · un point = une période · ligne horizontale = zéro',
+    'Positive correlation forms runs': 'La corrélation positive forme des séquences',
+    'Neighboring residuals tend to keep the same sign and move in similar directions.': 'Les résidus voisins tendent à garder le même signe et à évoluer dans le même sens.',
+    'Negative correlation produces reversals': 'La corrélation négative produit des inversions',
+    'Neighboring residuals tend to switch sign, creating an alternating or zigzag pattern.': 'Les résidus voisins tendent à changer de signe, d’où un motif alterné en zigzag.',
+    'Time sequence of positively serially correlated residuals forming persistent runs': 'Suite temporelle de résidus positivement autocorrélés formant des séquences persistantes',
+    'Time sequence of negatively serially correlated residuals alternating around zero': 'Suite temporelle de résidus négativement autocorrélés alternant autour de zéro',
+    'SAME-SIGN RUNS PERSIST': 'LES SÉQUENCES DE MÊME SIGNE PERSISTENT',
+    'SIGNS REVERSE PERIOD BY PERIOD': 'LE SIGNE S’INVERSE À CHAQUE PÉRIODE',
+  },
+}, {
+  patterns: {
+    zh: [[/^Period (\d+) · residual (.+)$/, '第 $1 期 · 残差 $2']],
+    ja: [[/^Period (\d+) · residual (.+)$/, '第 $1 期 · 残差 $2']],
+    fr: [[/^Period (\d+) · residual (.+)$/, 'Période $1 · résidu $2']],
+  },
+});
+</script>
 <script>
 const INK='#1C1C1A',PAPER='#F0EFEB',MUTED='#8F8E88',GRID='#DEDDD6';
 const NS='http://www.w3.org/2000/svg';

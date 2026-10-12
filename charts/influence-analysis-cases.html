@@ -47,6 +47,86 @@ svg text{font-family:Inter,ui-sans-serif,system-ui,sans-serif}
   </div>
   <div class="src">PLUMB SCATTER · F8 MONO-BASIC · SIMULATED INFLUENCE DIAGNOSTICS</div>
 </main>
+<script src="i18n.js"></script>
+<script>
+chartI18n.use({
+  zh: {
+    'Leverage, outliers, and influence': '杠杆、异常值与影响',
+    'Influence needs leverage and disagreement': '影响力需要高杠杆加上偏离趋势',
+    'simulated observations · dashed line excludes the labeled point · solid line includes it': '模拟观测值 · 虚线不含标注点 · 实线包含标注点',
+    'Far in X, but still on trend': 'X 方向偏远，但仍在趋势上',
+    'High leverage · small residual · the fitted line barely changes.': '高杠杆 · 残差小 · 拟合线几乎不变。',
+    'Far in Y, but near average X': 'Y 方向偏远，但 X 接近平均',
+    'Large residual · ordinary leverage · clearly an outlier, but with limited pull on slope.': '残差大 · 杠杆一般 · 显然是异常值，但对斜率的拉动有限。',
+    'Far in X and off the trend': 'X 方向偏远且偏离趋势',
+    'High leverage · large residual · the fitted line rotates materially.': '高杠杆 · 残差大 · 拟合线明显转动。',
+    'High-leverage observation lying close to the regression line': '紧贴回归线的高杠杆观测值',
+    'Vertical outlier near the center of the predictor distribution': '位于预测变量分布中心附近的纵向异常值',
+    'Influential observation with high leverage and a large residual': '高杠杆且残差大的强影响观测值',
+    'HIGH LEVERAGE': '高杠杆',
+    'OUTLIER': '异常值',
+    'INFLUENTIAL': '强影响',
+    'LOW X': 'X 低',
+    'HIGH X': 'X 高',
+    'DASHED = WITHOUT · SOLID = WITH': '虚线 = 不含 · 实线 = 包含',
+  },
+  ja: {
+    'Leverage, outliers, and influence': 'てこ比、外れ値、影響',
+    'Influence needs leverage and disagreement': '影響力には、てこ比とトレンドからのずれの両方が要る',
+    'simulated observations · dashed line excludes the labeled point · solid line includes it': 'シミュレーションの観測値 · 破線はラベルの点を除外 · 実線は含む',
+    'Far in X, but still on trend': 'X 方向に遠いが、トレンド上にある',
+    'High leverage · small residual · the fitted line barely changes.': '高いてこ比 · 小さい残差 · 回帰直線はほとんど変わらない。',
+    'Far in Y, but near average X': 'Y 方向に遠いが、X は平均付近',
+    'Large residual · ordinary leverage · clearly an outlier, but with limited pull on slope.': '大きい残差 · 普通のてこ比 · 明らかに外れ値だが、傾きを引っ張る力は限られる。',
+    'Far in X and off the trend': 'X 方向に遠く、トレンドから外れている',
+    'High leverage · large residual · the fitted line rotates materially.': '高いてこ比 · 大きい残差 · 回帰直線が大きく回転する。',
+    'High-leverage observation lying close to the regression line': '回帰直線の近くにある、てこ比の高い観測値',
+    'Vertical outlier near the center of the predictor distribution': '説明変数の分布の中心付近にある、縦方向の外れ値',
+    'Influential observation with high leverage and a large residual': 'てこ比が高く残差も大きい、影響力の大きい観測値',
+    'HIGH LEVERAGE': '高いてこ比',
+    'OUTLIER': '外れ値',
+    'INFLUENTIAL': '影響大',
+    'LOW X': 'X 小',
+    'HIGH X': 'X 大',
+    'DASHED = WITHOUT · SOLID = WITH': '破線 = 除外 · 実線 = 含む',
+  },
+  fr: {
+    'Leverage, outliers, and influence': 'Levier, valeurs aberrantes et influence',
+    'Influence needs leverage and disagreement': 'L’influence exige un levier et un désaccord avec la tendance',
+    'simulated observations · dashed line excludes the labeled point · solid line includes it': 'observations simulées · la ligne pointillée exclut le point signalé · la ligne pleine l’inclut',
+    'Far in X, but still on trend': 'Loin en X, mais sur la tendance',
+    'High leverage · small residual · the fitted line barely changes.': 'Levier élevé · petit résidu · la droite ajustée bouge à peine.',
+    'Far in Y, but near average X': 'Loin en Y, mais près du X moyen',
+    'Large residual · ordinary leverage · clearly an outlier, but with limited pull on slope.': 'Grand résidu · levier ordinaire · clairement aberrant, mais avec peu d’effet sur la pente.',
+    'Far in X and off the trend': 'Loin en X et hors tendance',
+    'High leverage · large residual · the fitted line rotates materially.': 'Levier élevé · grand résidu · la droite ajustée pivote nettement.',
+    'High-leverage observation lying close to the regression line': 'Observation à fort levier proche de la droite de régression',
+    'Vertical outlier near the center of the predictor distribution': 'Valeur aberrante verticale près du centre de la distribution du prédicteur',
+    'Influential observation with high leverage and a large residual': 'Observation influente à fort levier et grand résidu',
+    'HIGH LEVERAGE': 'FORT LEVIER',
+    'OUTLIER': 'ABERRANTE',
+    'INFLUENTIAL': 'INFLUENTE',
+    'LOW X': 'X FAIBLE',
+    'HIGH X': 'X ÉLEVÉ',
+    'DASHED = WITHOUT · SOLID = WITH': 'POINTILLÉ = SANS · PLEIN = AVEC',
+  },
+}, {
+  patterns: {
+    zh: [
+      [/^Observation (\d+) · X (.+) · Y (.+)$/, '观测值 $1 · X $2 · Y $3'],
+      [/^(HIGH LEVERAGE|OUTLIER|INFLUENTIAL) · X (.+) · Y (.+)$/, function (t, label, x, y) { return t(label) + ' · X ' + x + ' · Y ' + y; }],
+    ],
+    ja: [
+      [/^Observation (\d+) · X (.+) · Y (.+)$/, '観測値 $1 · X $2 · Y $3'],
+      [/^(HIGH LEVERAGE|OUTLIER|INFLUENTIAL) · X (.+) · Y (.+)$/, function (t, label, x, y) { return t(label) + ' · X ' + x + ' · Y ' + y; }],
+    ],
+    fr: [
+      [/^Observation (\d+) · X (.+) · Y (.+)$/, 'Observation $1 · X $2 · Y $3'],
+      [/^(HIGH LEVERAGE|OUTLIER|INFLUENTIAL) · X (.+) · Y (.+)$/, function (t, label, x, y) { return t(label) + ' · X ' + x + ' · Y ' + y; }],
+    ],
+  },
+});
+</script>
 <script>
 const INK='#1C1C1A',PAPER='#F0EFEB',MUTED='#8F8E88',GRID='#DEDDD6';
 const NS='http://www.w3.org/2000/svg';

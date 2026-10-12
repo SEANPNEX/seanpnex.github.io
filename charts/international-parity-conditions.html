@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>International parity conditions</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@6/dist/echarts.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--paper:#F0EFEB;--ink:#1C1C1A;--muted:#8F8E88;--faint:#55554F}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--paper);font-family:Inter,Arial,sans-serif;color:var(--ink)}
+    .card{min-height:518px;padding:28px 28px 20px;border-radius:24px;background:var(--ink);color:var(--paper)}
+    h2{margin:0 0 4px;font-size:19px;line-height:1.2;font-weight:700;letter-spacing:-.02em}
+    .sub{color:var(--muted);font-size:11.5px;line-height:1.5}
+    .ch{height:424px;width:100%;position:relative}
+    .center-label{position:absolute;z-index:2;left:50%;top:50%;transform:translate(-50%,-50%);padding:6px 9px;background:var(--ink);color:var(--paper);font-size:9px;font-weight:700;letter-spacing:.03em;white-space:nowrap;pointer-events:none}
+    .key{display:none;color:var(--muted);font-size:9px;line-height:1.55}
+    .src{color:var(--faint);font-size:9.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase}
+    @media(max-width:600px){.card{padding:22px 12px 16px;min-height:610px}.ch{height:440px}h2{font-size:17px}.center-label{font-size:10px}.key{display:grid;grid-template-columns:1fr 1fr;gap:2px 8px;margin:-3px 10px 11px}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h2>Four quantities, five parity links</h2>
+    <div class="sub">S = spot rate · F = forward rate · f/d = foreign currency per domestic currency · superscript e = expectation</div>
+    <div class="ch" id="parity" role="img" aria-label="Ex-ante purchasing power parity links expected inflation to expected spot change; forward-rate parity links expected spot change to the forward premium; international Fisher effect links expected inflation to interest rates; covered interest-rate parity links interest rates to the forward premium; uncovered interest-rate parity links interest rates to expected spot change."><div class="center-label">UNCOVERED INTEREST-RATE PARITY</div></div>
+    <div class="key"><span>PPP · Ex-ante purchasing power parity</span><span>FRP · Forward-rate parity</span><span>IFE · International Fisher effect</span><span>CIRP · Covered interest-rate parity</span><span>UIRP · Uncovered interest-rate parity</span></div>
+    <div class="src">PARITY NETWORK · ADAPTED FROM G6 CIRCULAR GRAPH · APPROXIMATE RELATIONS</div>
+  </main>
+  <script>
+    // G6 Circular Graph: graph nodes are quantities; each edge is one parity condition.
+    // Positions are pinned to retain the source diagram's four-way reading order.
+    const PAPER='#F0EFEB', INK='#1C1C1A', MUTED='#8F8E88', GRID='#2E2D29';
+    const quantities=[
+      {name:'Expected spot change',formula:'E[%ΔS(f/d)]',x:380,y:60},
+      {name:'Expected inflation gap',formula:'πᵉ(f) − πᵉ(d)',x:115,y:225},
+      {name:'Forward premium',formula:'(F − S) / S',x:645,y:225},
+      {name:'Interest-rate gap',formula:'i(f) − i(d)',x:380,y:390},
+    ];
+    const relations=[
+      {source:0,target:1,name:'EX-ANTE PPP',short:'PPP'},
+      {source:0,target:2,name:'FORWARD-RATE PARITY',short:'FRP'},
+      {source:1,target:3,name:'INTERNATIONAL FISHER EFFECT',short:'IFE'},
+      {source:2,target:3,name:'COVERED INTEREST-RATE PARITY',short:'CIRP'},
+      {source:0,target:3,name:'UNCOVERED INTEREST-RATE PARITY',short:'UIRP'},
+    ];
+    const chart=echarts.init(document.getElementById('parity'),null,{renderer:'svg'});
+    const mobile=()=>window.innerWidth<600;
+    function draw(){
+      const small=mobile();
+      document.querySelector('.center-label').textContent=small?'UIRP':'UNCOVERED INTEREST-RATE PARITY';
+      const nodes=quantities.map((q,i)=>({
+        name:q.name,value:q.formula,x:q.x,y:q.y,
+        symbol:'roundRect',symbolSize:small?[132,52]:[178,60],
+        itemStyle:{color:i===0||i===3?PAPER:'#C9C7BD',borderWidth:0},
+        label:{show:true,position:'inside',formatter:`{name|${q.name}}\n{formula|${q.formula}}`,
+          rich:{name:{fontFamily:'Inter',fontSize:small?8:9,fontWeight:600,color:'#4A4944',lineHeight:15},
+            formula:{fontFamily:'Inter',fontSize:small?13:17,fontWeight:800,color:INK,lineHeight:23}}}
+      }));
+      chart.setOption({
+        animationDuration:1200,animationEasing:'quarticOut',
+        tooltip:{backgroundColor:PAPER,borderWidth:0,textStyle:{color:INK,fontFamily:'Inter',fontSize:12},
+          formatter:p=>p.dataType==='edge'?p.data.name:p.data.name+'<br>'+p.data.value},
+        series:[{type:'graph',layout:'none',left:small?72:110,right:small?72:110,top:small?52:22,bottom:small?55:20,
+          data:nodes,links:relations.map((r,i)=>({source:r.source,target:r.target,name:r.name,
+            lineStyle:{width:i===4?1.8:1.2,color:i===4?PAPER:'#8F8E88',opacity:1,curveness:0}})),
+          edgeLabel:{show:true,color:PAPER,fontFamily:'Inter',fontWeight:700,fontSize:small?8:11,
+            backgroundColor:INK,padding:[4,5],formatter:p=>p.data.source===0&&p.data.target===3?'':small?p.data.short:p.data.name},
+          emphasis:{focus:'adjacency',lineStyle:{color:PAPER,width:2,opacity:1}},
+          select:{disabled:true},roam:false,
+        }]
+      },true);
+    }
+    const observer=new IntersectionObserver(entries=>{if(entries[0].isIntersecting){draw();observer.disconnect()}},{threshold:.3});
+    observer.observe(document.getElementById('parity'));
+    document.getElementById('parity').addEventListener('click',draw);
+    window.addEventListener('resize',()=>{chart.resize();draw()});
+  </script>
+</body>
+</html>
