@@ -244,6 +244,11 @@ Extending the production function:
 
 Growth theory studies $\frac{dy}{y}$, the growth speed of GDP per capita.
 
+Recall from above:
+$$
+\frac{dy}{y}=\frac{dA}{A}+\alpha\frac{dk}{k},\qquad \frac{dY}{Y}=\frac{dy}{y}+\frac{dL}{L}.
+$$
+
 ### Classical Growth Theory
 
 The key assumption is $L$ will increase and $Y$ will increase. $Y$ increase will further increase $L$: Tech advances $\to$ labor productivity $\uparrow$ $\to$ higher population growth $\to$ diminishing marginal returns of labor $\to$ per capita income.
