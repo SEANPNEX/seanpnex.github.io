@@ -34,3 +34,12 @@
 2026-10-10 05:25:47-SEANPNEX-Merge pull request #1 from SEANPNEX/lieflat-redesign
 
 Lieflat mono redesign, cleaner learning notes, resume removed
+2026-10-12 03:03:11-SEANPNEX-Translate site and CFA notes into Chinese, Japanese and French
+
+- Localized nav, sidebars, footer, search and component labels
+- 28 CFA notes per locale with stable English heading ids
+- Chart text translated via ?lang= and shared charts/i18n.js
+- English fallback for notes not yet translated
+- Fix broken Futures pricing and Breusch-Godfrey anchors
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
