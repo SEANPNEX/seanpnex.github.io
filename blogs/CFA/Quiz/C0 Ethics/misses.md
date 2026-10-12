@@ -23,3 +23,17 @@
 
 **Gap:** Named the acronyms but did not state which rule applies in each case (only gestured at MS).
 
+
+## 2026-10-12 — I(B) Gifts vs inducements / IPO allocations
+
+**Q:** Client gifts vs third-party inducements — what’s allowed, and are personal allocations from oversubscribed IPOs OK?
+
+**My answer:** Depends on value; key is not damaging independence. Expensive client gifts before work generally not OK; after work may be OK with disclosure + boss approval (loyalty). Third-party expensive gifts generally not OK.
+
+**Correct extras:**
+- Client gifts: often OK if disclosed / within policy and do not compromise independence; timing and size matter.
+- Third-party inducements: presume conflict — decline / firm policy; especially if meant to influence.
+- **Personal allocations from oversubscribed IPOs: banned** (not an OK “gift”).
+
+**Gap:** Did not address the IPO allocation ban.
+
