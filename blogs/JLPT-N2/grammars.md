@@ -226,3 +226,30 @@ Dialogue:
 - アイスクリームがいいです。暑いですから。 — Ice cream would be good. Because it’s hot.
 - A: 寒いですね。 — It’s cold, isn’t it?
 - B: そうですね。今日は雪ですから。 — Yes. Because it’s snowing today.
+
+## N はどうですか（asking about nature / opinion）
+
+**Rule:** **どう** means “how / what is it like.” **N はどうですか** asks about the **nature** of something or the listener’s **opinion** of it. Answer with an adjectival predicate (or a short evaluative phrase).
+
+- A: 日本の留学生生活はどうですか。 — How is life as an international student in Japan?
+- B: 順調ですよ。 — It’s going well.
+- A: 日本語はどうですか。 — How is Japanese?
+- B: 難しいです。 — It’s difficult.
+- A: この映画はどうですか。 — How is this movie?
+- B: とても面白いです。 — It’s very interesting.
+
+## 〜よ（assertion / emphasis）
+
+**Rule:** Sentence-final **よ** marks the speaker’s **assertion**, strong claim, or emphatic tone — often new information or a firm reminder for the listener.
+
+- 中村さんのおかげですよ。 — It’s thanks to Nakamura-san.
+- 山羊座の人はみんな真面目ですよ。 — Capricorns are all serious / diligent.
+- 日本語はそんなに難しくありませんよ。 — Japanese isn’t that difficult.
+
+## 〜ね（soft exclamation）
+
+**Rule:** Sentence-final **ね** can mark a **light exclamation / shared impression**. Read it with a **falling** tone (↘). For a softer stretch, lengthen it to **ねえ**.
+
+- 由加ちゃんはすごいですね。↘ — Yuka-chan is really amazing.
+- この洋服、かわいいですね。↘ — These clothes are cute.
+- 由加ちゃんのこのスマホケース、かわいいですね。↘ — Yuka-chan, this phone case of yours is cute.
