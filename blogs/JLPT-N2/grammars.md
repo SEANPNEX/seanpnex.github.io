@@ -161,3 +161,16 @@ Dialogue:
 
 - A *(outsider)*: 田中部長は、今日、お休みですか。 — Is Manager Tanaka off today?
 - B *(colleague)*: はい、休みでございます。 — Yes, he is off today.
+
+## どうなさいますか / ～はどうですか
+
+**Rule:** **どう** means “how / what (choice).” **なさいます** is the honorific form of **する**, so **どうなさいますか** is a very polite “What would you like?” / “How would you like it?” — common in service speech.
+
+- A: ホットコーヒーのサイズはどうなさいますか。 — What size hot coffee would you like?
+- B: Lサイズでお願いします。 — Large, please.
+
+**～はどうですか:** When **どう** is the predicate with **ですか**, **～はどうですか** asks for an opinion or how something is going.
+
+- このコーヒーはどうですか。 — How is this coffee?
+- 清華大学はどうですか。 — How is Tsinghua University?
+- 最近はどうですか。 — How have you been lately?
