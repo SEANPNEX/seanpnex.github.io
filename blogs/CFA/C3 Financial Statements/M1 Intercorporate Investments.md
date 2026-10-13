@@ -8,10 +8,12 @@
     border-radius: 24px;
     background: #F0EFEB;
 }
-.fx-concept-chart.fsa-cat-chart { height: 420px; }
+.fx-concept-chart.fsa-tree-chart { height: 560px; }
+.fx-concept-chart.fsa-own-chart { height: 420px; }
 @media (max-width: 700px) {
     .fx-concept-chart { height: 500px; }
-    .fx-concept-chart.fsa-cat-chart { height: 480px; }
+    .fx-concept-chart.fsa-tree-chart { height: 620px; }
+    .fx-concept-chart.fsa-own-chart { height: 480px; }
 }
 </style>
 
@@ -24,9 +26,9 @@
 The following graph describes the catagories of investment in terms of accounting.
 
 <iframe
-  class="fx-concept-chart fsa-cat-chart"
-  src="/charts/intercorporate-investment-categories.html"
-  title="Intercorporate investment categories"
+  class="fx-concept-chart fsa-tree-chart"
+  src="/charts/intercorporate-investment-tree.html"
+  title="Intercorporate investment categories (tree)"
   loading="lazy"
 ></iframe>
 
@@ -41,9 +43,14 @@ As noted above, there are 4 catgories of Long-term equity investment, depending 
 
 **Percentage of ownership** is typically used to determine the appropriate category:
 
-* $(0,20)$ Lack of influence
-* $(20,50)$ Significant influence 
-* $(50,100)$ Control
+<iframe
+  class="fx-concept-chart fsa-own-chart"
+  src="/charts/intercorporate-ownership-control.html"
+  title="Ownership percentage and power of control"
+  loading="lazy"
+></iframe>
+
+
 
 |                            | Financial Assets         | Associates            | Joint Ventures | Business Combination |
 | -------------------------- | ------------------------ | --------------------- | -------------- | -------------------- |
