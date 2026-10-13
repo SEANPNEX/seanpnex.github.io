@@ -10,10 +10,12 @@
 }
 .fx-concept-chart.fsa-tree-chart { height: 560px; }
 .fx-concept-chart.fsa-own-chart { height: 420px; }
+.fx-concept-chart.fsa-classify-chart { height: 700px; }
 @media (max-width: 700px) {
     .fx-concept-chart { height: 500px; }
     .fx-concept-chart.fsa-tree-chart { height: 620px; }
     .fx-concept-chart.fsa-own-chart { height: 480px; }
+    .fx-concept-chart.fsa-classify-chart { height: 780px; }
 }
 </style>
 
@@ -51,6 +53,11 @@ As noted above, there are 4 catgories of Long-term equity investment, depending 
 ></iframe>
 
 
+> [!Note]
+>
+> The distinction between the categories depends on the actual level of control.
+
+
 
 |                            | Financial Assets         | Associates            | Joint Ventures | Business Combination |
 | -------------------------- | ------------------------ | --------------------- | -------------- | -------------------- |
@@ -59,9 +66,8 @@ As noted above, there are 4 catgories of Long-term equity investment, depending 
 | **Term of Investee**       | -                        | associate             | -              | subsidiary           |
 | **Accounting Treatment**   | AMC, FVOCI, FVPL         | Equity Method         | Equity Method  | Acquisition Method   |
 
-> [!Note]
+> 
 >
-> Review the table with later contents. For specific methods
 
 
 > [!Important]
@@ -74,19 +80,51 @@ As noted above, there are 4 catgories of Long-term equity investment, depending 
 
 ### Classification of Financial Assets
 
+<iframe
+  class="fx-concept-chart fsa-classify-chart"
+  src="/charts/financial-asset-classification.html"
+  title="Financial asset classification decision flow"
+  loading="lazy"
+></iframe>
 
+> [!note]
+>
+> Financial Assets is a subcategory under Financial Instruments. It also includes Financial Liabilities, which is not covered in CFA curriculum.
 
+Now the categorization of Financial Assets are based on **Objective** cash flow of the asset, and the **Subjective** purpose of investment. Therefore, 2 criteria in the classificaiton:
 
+1. Cash flow characteristics test: Whether the contractual cash flows are solely payments of principal and interest on principal.
+2. Business Model test: How an entity mananges its financial assets in order to generate cash flows, by collecting contractual cash flows, selling the assets, or mixed.
 
+If Financial Assets meet the following 2 criteria are generally measured at **Amortized Cost (AMC)**:
 
+1. The contractual cash flows are solely payments of principal and interest on principal 
+2. The financial assets are being held to collect contractual cash flows
 
+If Financial Assets meets the first criteria, but may be sold in a "hold-to-collect + sell" mode. It may be measured at **Fair Value Through Other Comprehensive Income (FVOCI)**
 
+All oother remaining assets are classified into **Fair Value Profit or Loss (FVPL)**
 
+> [!note]
+>
+> Some examples:
+>
+> * **Account Receivable** is AMC
+> * **Mortgage** in banks is AMC
+> * **Other Debt Financing** is FVOCI
+> * **Account Receivable Financing** is FVOCI
+> * **Derivatives** are FVPL (except for hedging instruments)
+> * **Embedded derivatives** like convertible bond, the asset as a whole is FVPL
 
+#### Designated FVPL
 
+Only debt investment can be classified as *designated* FVPL (as equity investment mostly already fell into FVPL). 
 
+The purpose is to avoid accounting mismatch. In some cases, there are liabilities (in B/S) noted as FVPL. There is an corresponding financial investment in some bond to match the duration of the liability. Then this investment should be **Designated FVPL**. 
 
+#### Designated FVOCI
 
+This category is to manage non-tradable financial assets investment in equity. In this case only dividend income is recognized as profit or loss. If terminated, the past recognition only transfer to retained equity.
 
 
 
