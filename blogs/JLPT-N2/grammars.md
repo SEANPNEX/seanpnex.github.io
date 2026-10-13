@@ -324,3 +324,22 @@ Together, tense (non-past / past) × polarity (affirmative / negative) make the 
 - わたしは昨日、遅くまで日本語の試験でした。 — Yesterday my Japanese exam went until late.
 - 今日の授業はここまでです。 — Today’s class ends here. / That’s as far as today’s lesson goes.
 - あの歌手のライブツアーは来月20日までです。 — That singer’s live tour runs until the 20th of next month.
+
+## 全然 + adjective (negative)
+
+**Rule:** Like **あまり**, **全然** is a degree adverb that goes with a **negative** adjective: “not … at all” / “completely not …”. In spoken Japanese, **全然** alone can answer “not at all.”
+
+- A: 昨日の試験は難しかったですか。 — Was yesterday’s exam difficult?
+- B: 全然難しくなかったですよ。 — It wasn’t difficult at all.
+- わたしは運動が全然好きではありません。 — I don’t like exercise at all.
+- 彼女の料理は全然美味しくありません。 — Her cooking isn’t delicious at all.
+- A: 日本語の試験は難しかったですか。 — Was the Japanese exam difficult?
+- B: ううん、全然。 — No, not at all.
+
+## N とか（listing examples）
+
+**Rule:** **とか** attaches to nouns to **list examples** (things like …). Common in spoken Japanese; it can appear once or several times. With **とか**, topic/subject/object particles **は / が / を** can be omitted.
+
+- A: どんな飲み物が好きですか。 — What kind of drinks do you like?
+- B: ミルクティーとか、コーラとか。 — Milk tea, cola, that sort of thing.
+- 木曜日の午後以降とかはどうですか。 — How about something like Thursday afternoon onward?
