@@ -148,3 +148,16 @@ Counters used here: **枚** (flat objects), **一つ** (general), **本** (long/
 - Sサイズのコーヒーをお願いします。 — A small coffee, please. (names the item)
 - アリペイでお願いします。 — Alipay, please. (at payment)
 - Eメールでお願いします。 — By email, please. (when asking how to contact)
+
+## N でございます
+
+**Rule:** **でございます** is a more polite / formal equivalent of **です** (丁寧語). It is common in service speech, speeches, and other formal settings. It is typically used for the speaker, the speaker’s in-group, or things belonging to them — not usually for the respected listener or the listener’s things.
+
+- エレベーターはこちらでございます。 — The elevator is this way.
+- 私が担当者でございます。 — I am the person in charge.
+- 部長の田中でございます。 — This is Department Manager Tanaka. *(colleague introducing their own company’s manager to a client)*
+
+Dialogue:
+
+- A *(outsider)*: 田中部長は、今日、お休みですか。 — Is Manager Tanaka off today?
+- B *(colleague)*: はい、休みでございます。 — Yes, he is off today.
