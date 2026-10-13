@@ -274,3 +274,32 @@ Dialogue:
 - B: ううん、平日の昼間ですから、ばらばらでしたよ。 — No — it was a weekday afternoon, so they were sparse.
 - 子供の時、生活は豊かではありませんでした。 — When I was a child, life was not affluent.
 - 10年前の家賃はそんなに高くありませんでした。 — Ten years ago, the rent wasn’t that high.
+
+## ない（negation） / adjective–noun quadrants
+
+**Rule:** **ない** means “not / does not exist.” It is itself a **Type I** adjective, and it also works as an **auxiliary adjective** after other adjectives (and in noun/Type II patterns) to mark negation.
+
+Adding **です** after **ない** is more polite and pairs with the **ありません** forms:
+
+- Non-past: **ありません** ＝ **ないです**
+- Past: **ありませんでした** ＝ **なかったです**
+
+Together, tense (non-past / past) × polarity (affirmative / negative) make the **adjective / noun quadrants** (四象限).
+
+### Adjective quadrant (polite)
+
+| Category | Tense | Affirmative | Negative |
+| --- | --- | --- | --- |
+| Type I (e.g. 高い) | Non-past | 高いです | 高くありません ／ 高くないです |
+| | Past | 高かったです | 高くありませんでした ／ 高くなかったです |
+| Type II (e.g. 静か) | Non-past | 静かです | 静かではありません（じゃありません） ／ 静かではないです（じゃないです） |
+| | Past | 静かでした | 静かではありませんでした（じゃありませんでした） ／ 静かではなかったです（じゃなかったです） |
+
+### Noun quadrant (polite)
+
+| Class | Tense | Affirmative | Negative |
+| --- | --- | --- | --- |
+| Noun (e.g. 学生) | Non-past | 学生です | 学生ではありません（じゃありません） ／ 学生ではないです（じゃないです） |
+| | Past | 学生でした | 学生ではありませんでした（じゃありませんでした） ／ 学生ではなかったです（じゃなかったです） |
+
+**では** can be replaced by **じゃ** in spoken Japanese.
