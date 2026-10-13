@@ -253,3 +253,24 @@ Dialogue:
 - 由加ちゃんはすごいですね。↘ — Yuka-chan is really amazing.
 - この洋服、かわいいですね。↘ — These clothes are cute.
 - 由加ちゃんのこのスマホケース、かわいいですね。↘ — Yuka-chan, this phone case of yours is cute.
+
+## Adjective predicates (polite past)
+
+**Rule:** Past forms of adjectival predicates differ by type.
+
+1. **Past affirmative:** Type I → drop **い**, then **かったです**; Type II → **A₂ + でした**.
+2. **Past negative:** Type I → drop **い**, then **く + ありませんでした**; Type II → **A₂ + ではありませんでした** (spoken: **じゃありませんでした**).
+
+| Category | Tense | Affirmative (polite) | Negative (polite) |
+| --- | --- | --- | --- |
+| Type I (e.g. 高い) | Non-past | 高いです | 高くありません |
+| | Past | 高かったです | 高くありませんでした |
+| Type II (e.g. 静か) | Non-past | 静かです | 静かではありません（じゃありません） |
+| | Past | 静かでした | 静かではありませんでした（じゃありませんでした） |
+
+**では** can be replaced by **じゃ** in spoken Japanese.
+
+- A: お客さんは多かったですか。 — Were there many customers?
+- B: ううん、平日の昼間ですから、ばらばらでしたよ。 — No — it was a weekday afternoon, so they were sparse.
+- 子供の時、生活は豊かではありませんでした。 — When I was a child, life was not affluent.
+- 10年前の家賃はそんなに高くありませんでした。 — Ten years ago, the rent wasn’t that high.
