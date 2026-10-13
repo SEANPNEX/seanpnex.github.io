@@ -107,3 +107,17 @@ For example, 行きます → 行きました → 行った, while 食べます 
 - これは面白いです。 — This is interesting.
 - どの本があなたのですか。 — Which book is yours?
 - どれがあなたのですか。 — Which one is yours?
+
+## N を / N をください
+
+**Rule:** The particle **を** follows a noun and marks the **direct object**. Japanese is an SOV language, so the verb usually comes at the end of the sentence; the object appears earlier and needs を to mark it.
+
+**N をください:** ください is the imperative of くださる (“to give”). **N をください** means “please give me …” and is common when shopping or ordering.
+
+- 水族館の入場券をください。 — Please give me an aquarium admission ticket.
+- チーズバーガーセットをください。 — Please give me a cheeseburger set.
+- ビールをください。 — Please give me a beer.
+
+**も:** To say “also / too,” use **も**. も and を do not stack — も **replaces** を.
+
+- それから、ホットコーヒーもください。 — And then, please give me a hot coffee too.
