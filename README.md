@@ -1,99 +1,62 @@
-
-
 # seanpnex.github.io
 
-This is a VitePress-powered personal site built with simplicity, speed, and documentation-style content in mind.
+Sean Guo's personal site and public learning base, built with [VitePress](https://vitepress.dev) and deployed to GitHub Pages at **[seanpnex.github.io](https://seanpnex.github.io)**.
 
-## 🚀 Features
+It hosts research projects plus evolving study notes for CFA Level II, JLPT N2, and Business German, available in English, 简体中文, 日本語, and Français.
 
-- Built with [VitePress](https://vitepress.dev)
-- Clean personal homepage with a name card
-- Supports Markdown-based documents
-- Easy to customize and deploy
+## What's inside
 
----
+| Path | Contents |
+| --- | --- |
+| `index.md` | Home page |
+| `projects/` | Research and project write-ups (NCCP, TTS chatbot, rivalry network, Wilson–Cowan equation) |
+| `blogs/` | Learning base: `CFA/`, `JLPT-N2/`, `German/`, `coding_notes/` |
+| `zh/`, `jp/`, `fr/` | Translated pages, mirroring the English layout |
+| `public/charts/` | Standalone interactive HTML charts embedded in notes via `<iframe>` |
+| `public/flashcards/` | Standalone flashcard decks built from CFA quizzes |
+| `public/` | PDFs, images, and other static assets served as-is |
+| `.vitepress/` | Site config, auto-generated sidebar, and custom theme |
 
-## 🛠️ Getting Started
+## Run locally
 
-### 1. Fork This Repo
-
-Click the "Fork" button on the top-right of this page to make your own copy of the repo.
-
-### 2. Clone Your Fork
+Requires Node.js 18+ (CI uses Node 20).
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/seanpnex.github.io.git
-cd seanpnex.github.io
-```
-
-## **3. Install Dependencies**
-
-Make sure you have [Node.js](https://nodejs.org/) installed (version 18 or later recommended).
-
-```
 npm install
 ```
 
-## **4. Run Locally**
-
-```
+```bash
 npm run docs:dev
 ```
 
-Your site will be available at localhost 5173.
+The dev server runs at `localhost:5173`. To check a production build:
 
-## **🧪 Customize**
-
-​	•	Edit docs/index.md to update your homepage content
-
-​	•	Modify docs/.vitepress/theme/components/TeamPage.vue to change your name card or add links
-
-​	•	Organize additional pages inside the docs folder
-
-​	•	Update docs/.vitepress/config.ts to configure sidebar, navbar, site metadata, and theme settings
-
-## **🌐 Deploy to GitHub Pages**
-
-### **1. Update vite.config.ts**
-
-Make sure your base is set correctly:
-
-```
-export default defineConfig({
-  base: '/seanpnex.github.io/', // or '/your-repo-name/' if deployed under a project page
-});
+```bash
+npm run docs:build && npm run docs:preview
 ```
 
-### **2. Build the Site**
+## Writing notes
 
-```
-npm run docs:build
-```
+The sidebar is generated from the folder tree by [`.vitepress/auto-sidebar.mjs`](.vitepress/auto-sidebar.mjs), so adding a note is just adding a Markdown file.
 
-### **3. Deploy**
+- **Ordering** — files and folders sort by name; a prefix like `C2 ` or `M1 ` sets the order and is stripped from the label. Set `order:` in frontmatter to override.
+- **Labels** — `title:` in frontmatter sets the sidebar text. Curriculum folder names map to readable labels via `GROUP_LABELS` in `auto-sidebar.mjs` (translations live in `topics.mjs`).
+- **Publishing** — empty notes and notes with `draft: true` stay in the repo but are excluded from the build. Short notes (under ~1,500 characters) are published as outlines.
+- **Prev / next** — page sequence follows the sidebar, and each learning track has its own sidebar so navigation stays inside the track.
+- **Math and diagrams** — LaTeX math (`$…$`, `$$…$$`) and ```` ```mermaid ```` blocks are supported.
 
-You can use [vitepress-gh-pages](https://vitepress.dev/guide/deploy#github-pages) or follow the manual deploy method:
+### Charts
 
-```
-# Initialize a new git worktree for the `gh-pages` branch
-git worktree add -B gh-pages docs/.vitepress/dist origin/gh-pages
+Charts in `public/charts/` are self-contained HTML pages. Notes embed them with an iframe, adding `?lang=zh|ja|fr` for translated pages; each chart registers its own strings with [`i18n.js`](public/charts/i18n.js). Charts report their rendered height to the host page, so the iframe resizes itself. The hairline curve charts share drawing helpers in [`curve-kit.js`](public/charts/curve-kit.js).
 
-# Commit and push
-cd docs/.vitepress/dist
-git add .
-git commit -m "Deploy"
-git push origin gh-pages
-```
+## Translations
 
-Or automate deployment via GitHub Actions. See [VitePress Deploy Guide](https://vitepress.dev/guide/deploy#github-pages) for details.
+Locales are configured in [`.vitepress/config.mjs`](.vitepress/config.mjs) (`LOCALE_TEXT` holds the interface strings). Translated pages live under `/zh/`, `/jp/`, and `/fr/`. Learning notes are written in English first; when the language menu points to a translation that doesn't exist yet, it opens the English page instead of a 404.
 
-## **📄 License**
+## Deployment
 
-This project is licensed under the [GNU General Public License v3.0 (GPL-3.0)](https://www.gnu.org/licenses/gpl-3.0).
+Pushing to `main` triggers [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which builds the site and publishes `.vitepress/dist` to the `gh-pages` branch. A second workflow, [`commit_log.yml`](.github/workflows/commit_log.yml), appends each push to `workflow.log` and commits it back, so pull before pushing.
 
-## **🙌 Credits**
+## License
 
-Originally created by [@SEANPNEX](https://github.com/SEANPNEX).
-
-Powered by [VitePress](https://vitepress.dev).
-
+[GPL-3.0](https://github.com/SEANPNEX/seanpnex.github.io/blob/main/LICENSE)
