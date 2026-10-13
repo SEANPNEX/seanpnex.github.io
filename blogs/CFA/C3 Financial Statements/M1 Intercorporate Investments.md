@@ -14,7 +14,7 @@
 .fx-concept-chart.fsa-measure-chart { height: 820px; }
 .fx-concept-chart.fsa-timeline-chart { height: 600px; }
 .fx-concept-chart.fsa-impair-chart { height: 680px; }
-.fx-concept-chart.fsa-equity-ex-chart { height: 560px; }
+.fx-concept-chart.fsa-equity-ex-chart { height: 620px; }
 @media (max-width: 700px) {
     .fx-concept-chart { height: 500px; }
     .fx-concept-chart.fsa-tree-chart { height: 620px; }
@@ -23,7 +23,7 @@
     .fx-concept-chart.fsa-measure-chart { height: 920px; }
     .fx-concept-chart.fsa-timeline-chart { height: 680px; }
     .fx-concept-chart.fsa-impair-chart { height: 760px; }
-    .fx-concept-chart.fsa-equity-ex-chart { height: 640px; }
+    .fx-concept-chart.fsa-equity-ex-chart { height: 700px; }
 }
 </style>
 
@@ -264,11 +264,11 @@ The Equity method is often referred as "one-line consolidation": The investees p
 
 Under equity method, the equity investment is initially recorded on B/S at the value of the **cost**. In subsequent periods, the carrying amount of the investment is adjusted to recognize investors' proportionate share of the investee's earnings or losses, and these earnings or losses are reported in its income sheet.
 
-**Example.** A buys 30% of B for $100. After one year B earns net income $80. A recognizes $24 (= 30% × 80) as equity income on the I/S (into RE) and increases the associate investment on the B/S from 100 to 124. No dividend is mentioned — this is the basic pickup of share of NI only.
+**Example.** A buys 30% of B for $100. After one year B earns net income $80. A recognizes $24 (= 30% × 80) as equity income on the I/S (into RE) and increases the associate investment on the B/S from 100 to 124. Dividends or other distributions received from investees are treated as return of capital and reduce the carrying amount of the investment and are not reported in the investor's profit. If B then distributes $20, A’s 30% share is $6: Cash +6, Inv. 124 → 118 (−6); RE and I/S are unchanged — the dividend is not income under the equity method.
 
 <iframe
   class="fx-concept-chart fsa-equity-ex-chart"
   src="/charts/equity-method-basic-example.html"
-  title="Equity method basic example: 30% of associate NI"
+  title="Equity method: NI pickup then dividend to Inv. 118"
   loading="lazy"
 ></iframe>
