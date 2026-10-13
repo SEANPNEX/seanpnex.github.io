@@ -4,80 +4,306 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>International parity conditions</title>
-  <script src="https://cdn.jsdelivr.net/npm/echarts@6/dist/echarts.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root{--paper:#F0EFEB;--ink:#1C1C1A;--muted:#8F8E88;--faint:#55554F}
+    :root{--paper:#F0EFEB;--ink:#1C1C1A;--muted:#6A6963;--soft:#A8A7A0;--grid:#D8D6CE;--faint:#E3E2DB}
     *{box-sizing:border-box}
-    body{margin:0;background:var(--paper);font-family:Inter,Arial,sans-serif;color:var(--ink)}
-    .card{min-height:518px;padding:28px 28px 20px;border-radius:24px;background:var(--ink);color:var(--paper)}
-    h2{margin:0 0 4px;font-size:19px;line-height:1.2;font-weight:700;letter-spacing:-.02em}
-    .sub{color:var(--muted);font-size:11.5px;line-height:1.5}
-    .ch{height:424px;width:100%;position:relative}
-    .center-label{position:absolute;z-index:2;left:50%;top:50%;transform:translate(-50%,-50%);padding:6px 9px;background:var(--ink);color:var(--paper);font-size:9px;font-weight:700;letter-spacing:.03em;white-space:nowrap;pointer-events:none}
-    .key{display:none;color:var(--muted);font-size:9px;line-height:1.55}
-    .src{color:var(--faint);font-size:9.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase}
-    @media(max-width:600px){.card{padding:22px 12px 16px;min-height:610px}.ch{height:440px}h2{font-size:17px}.center-label{font-size:10px}.key{display:grid;grid-template-columns:1fr 1fr;gap:2px 8px;margin:-3px 10px 11px}}
-    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,sans-serif}
+    .card{padding:29px 30px 18px;border-radius:24px;overflow:hidden}
+    h2{max-width:760px;margin:0;font-size:clamp(25px,4vw,42px);font-weight:700;line-height:1.05;letter-spacing:-.035em}
+    .sub{margin:10px 0 14px;color:var(--muted);font-size:12px;line-height:1.5}
+    .modes{display:flex;flex-wrap:wrap;gap:6px}
+    .modes button{padding:8px 13px;border:1px solid var(--grid);border-radius:999px;background:transparent;color:var(--muted);font:600 11px/1 Inter,ui-sans-serif,system-ui,sans-serif;letter-spacing:.02em;cursor:pointer;transition:background .25s,color .25s,border-color .25s}
+    .modes button:hover{border-color:var(--soft);color:var(--ink)}
+    .modes button[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+    svg{display:block;width:100%;height:auto;margin:8px 0 6px;overflow:visible}
+    svg.narrow{max-width:420px;margin:8px auto 6px}
+    .note{max-width:660px;margin:0 0 12px;font-size:13px;line-height:1.5}
+    .src{color:#8A8983;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+
+    .edge line{fill:none;stroke-linecap:round;transition:stroke .3s,stroke-width .3s,opacity .3s}
+    .edge .solid{stroke:var(--ink);stroke-width:1.4;stroke-dasharray:1;stroke-dashoffset:1}
+    .edge .dash{stroke:var(--ink);stroke-width:2.2;stroke-dasharray:6 5;opacity:0}
+    .edge .pill{fill:var(--paper);stroke:var(--ink);stroke-width:1;transition:fill .3s,stroke .3s}
+    .edge text{fill:var(--ink);font-size:12px;font-weight:700;letter-spacing:.04em;text-anchor:middle;dominant-baseline:central;transition:fill .3s}
+    .edge .pill-g{opacity:0;transition:opacity .35s}
+    .edge.given .solid{stroke-width:2.6}
+    .edge.given .pill{fill:var(--ink)}
+    .edge.given text{fill:var(--paper)}
+    .edge.implied .solid{opacity:0}
+    .edge.implied .dash{opacity:1}
+    .edge.implied .pill{stroke-width:1.6;stroke-dasharray:3 2}
+    .edge.fade .solid{stroke:var(--grid)}
+    .edge.fade .pill{stroke:var(--grid)}
+    .edge.fade text{fill:var(--soft)}
+
+    .node{opacity:0;transition:opacity .3s}
+    .node rect{fill:var(--ink);transition:fill .3s}
+    .node .name{fill:var(--soft);font-size:10px;font-weight:600;letter-spacing:.1em;text-anchor:middle;transition:fill .3s}
+    .node .formula{fill:var(--paper);font-size:20px;font-weight:800;text-anchor:middle;transition:fill .3s}
+    .node .value{fill:var(--paper);font-size:12.5px;font-weight:700;text-anchor:middle;opacity:0;transition:opacity .3s}
+    .node.fade rect{fill:var(--faint)}
+    .node.fade .name{fill:var(--soft)}
+    .node.fade .formula{fill:var(--soft)}
+    .mode-all .node .value{opacity:1}
+
+    .tri{fill:var(--soft);font-size:10px;font-weight:700;letter-spacing:.14em;text-anchor:middle;opacity:0;transition:fill .3s,opacity .3s}
+    .tri.on{fill:var(--ink)}
+    .narrow .edge text{font-size:10.5px}.narrow .node .name{font-size:8.5px}.narrow .node .formula{font-size:17px}.narrow .node .value{font-size:11px}.narrow .tri{font-size:9px}
+
+    .shown .node,.shown .edge .pill-g,.shown .tri{opacity:1}
+    .shown .edge .solid{stroke-dashoffset:0;transition:stroke-dashoffset .9s cubic-bezier(.165,.84,.44,1) var(--d),stroke .3s,stroke-width .3s,opacity .3s}
+    .shown .node{transition:opacity .45s var(--d)}
+    .shown .edge .pill-g{transition:opacity .35s var(--d2)}
+    .shown .edge.implied .dash{animation:march 1.2s linear infinite}
+    @keyframes march{to{stroke-dashoffset:-22}}
+
+    @media(max-width:600px){.card{padding:22px 16px 16px}.note{font-size:12.5px}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important}}
   </style>
 </head>
 <body>
   <main class="card">
-    <h2>Four quantities, five parity links</h2>
-    <div class="sub">S = spot rate · F = forward rate · f/d = foreign currency per domestic currency · superscript e = expectation</div>
-    <div class="ch" id="parity" role="img" aria-label="Ex-ante purchasing power parity links expected inflation to expected spot change; forward-rate parity links expected spot change to the forward premium; international Fisher effect links expected inflation to interest rates; covered interest-rate parity links interest rates to the forward premium; uncovered interest-rate parity links interest rates to expected spot change."><div class="center-label">UNCOVERED INTEREST-RATE PARITY</div></div>
-    <div class="key"><span>PPP · Ex-ante purchasing power parity</span><span>FRP · Forward-rate parity</span><span>IFE · International Fisher effect</span><span>CIRP · Covered interest-rate parity</span><span>UIRP · Uncovered interest-rate parity</span></div>
-    <div class="src">PARITY NETWORK · ADAPTED FROM G6 CIRCULAR GRAPH · APPROXIMATE RELATIONS</div>
+    <h2>Any two parity links imply a third.</h2>
+    <div class="sub">S = units of foreign currency per unit of domestic currency · each line = one parity condition, equating the two quantities it joins · pick a view</div>
+    <div class="modes" role="group" aria-label="View">
+      <button type="button" data-mode="all">All five hold</button>
+      <button type="button" data-mode="fwd">CIRP + UIRP ⇒ FRP</button>
+      <button type="button" data-mode="infl">PPP + IFE ⇒ UIRP</button>
+    </div>
+    <svg id="chart" role="img" aria-label="Four quantities joined by five parity conditions"></svg>
+    <p class="note" id="note" aria-live="polite"></p>
+    <div class="src">PARITY NETWORK · 4 QUANTITIES · 5 CONDITIONS · LINEAR APPROXIMATIONS</div>
   </main>
+  <script src="i18n.js"></script>
   <script>
-    // G6 Circular Graph: graph nodes are quantities; each edge is one parity condition.
-    // Positions are pinned to retain the source diagram's four-way reading order.
-    const PAPER='#F0EFEB', INK='#1C1C1A', MUTED='#8F8E88', GRID='#2E2D29';
-    const quantities=[
-      {name:'Expected spot change',formula:'E[%ΔS(f/d)]',x:380,y:60},
-      {name:'Expected inflation gap',formula:'πᵉ(f) − πᵉ(d)',x:115,y:225},
-      {name:'Forward premium',formula:'(F − S) / S',x:645,y:225},
-      {name:'Interest-rate gap',formula:'i(f) − i(d)',x:380,y:390},
+chartI18n.use({
+  zh: {
+    'International parity conditions': '国际平价条件',
+    'Any two parity links imply a third.': '任意两条平价关系成立，就能推出第三条。',
+    'S = units of foreign currency per unit of domestic currency · each line = one parity condition, equating the two quantities it joins · pick a view': 'S = 每单位本币可兑换的外币数量 · 每条线 = 一个平价条件，令它连接的两个量相等 · 选择一个视图',
+    'View': '视图',
+    'All five hold': '五条同时成立',
+    'Four quantities joined by five parity conditions': '四个量由五个平价条件相连',
+    'INTEREST-RATE GAP': '利差',
+    'FORWARD PREMIUM': '远期升水',
+    'EXPECTED SPOT CHANGE': '预期即期汇率变动',
+    'EXPECTED INFLATION GAP': '预期通胀差',
+    'FORWARD TRIANGLE': '远期三角',
+    'INFLATION TRIANGLE': '通胀三角',
+    'Covered interest-rate parity': '抛补利率平价',
+    'Uncovered interest-rate parity': '非抛补利率平价',
+    'Forward-rate parity': '远期汇率平价',
+    'International Fisher effect': '国际费雪效应',
+    'Ex-ante purchasing power parity': '事前购买力平价',
+    'Each line sets the two quantities it joins equal. If all five conditions hold, a 2% interest-rate gap appears at every corner: the forward premium, the expected spot change and the expected inflation gap all come out near 2%.': '每条线都令它连接的两个量相等。五个条件同时成立时，2% 的利差会出现在每个角上：远期升水、预期即期汇率变动和预期通胀差都约为 2%。',
+    'CIRP sets the forward premium equal to the interest-rate gap; UIRP sets the expected spot change equal to the same gap. Two quantities equal to the same gap equal each other, so forward-rate parity follows: the forward rate is an unbiased forecast of the future spot rate.': 'CIRP 令远期升水等于利差；UIRP 令预期即期汇率变动等于同一个利差。两个量都等于同一个利差，所以彼此相等，远期汇率平价随之成立：远期汇率是未来即期汇率的无偏预测。',
+    'Ex-ante PPP sets the expected spot change equal to the expected inflation gap; the international Fisher effect sets the interest-rate gap equal to the same inflation gap. So the interest-rate gap equals the expected spot change, and UIRP follows.': '事前 PPP 令预期即期汇率变动等于预期通胀差；国际费雪效应令利差等于同一个通胀差。于是利差等于预期即期汇率变动，UIRP 随之成立。',
+    'PARITY NETWORK · 4 QUANTITIES · 5 CONDITIONS · LINEAR APPROXIMATIONS': '平价网络 · 4 个量 · 5 个条件 · 线性近似',
+  },
+  ja: {
+    'International parity conditions': '国際パリティ条件',
+    'Any two parity links imply a third.': 'パリティ関係が 2 つ成り立てば、3 つ目が導かれる。',
+    'S = units of foreign currency per unit of domestic currency · each line = one parity condition, equating the two quantities it joins · pick a view': 'S = 自国通貨 1 単位あたりの外貨の量 · 線 1 本 = パリティ条件 1 つ（結ぶ 2 つの量を等しくする） · 表示を選ぶ',
+    'View': '表示',
+    'All five hold': '5 つすべて成立',
+    'Four quantities joined by five parity conditions': '5 つのパリティ条件で結ばれた 4 つの量',
+    'INTEREST-RATE GAP': '金利差',
+    'FORWARD PREMIUM': 'フォワード・プレミアム',
+    'EXPECTED SPOT CHANGE': '直物レートの期待変化率',
+    'EXPECTED INFLATION GAP': '期待インフレ率格差',
+    'FORWARD TRIANGLE': 'フォワードの三角形',
+    'INFLATION TRIANGLE': 'インフレの三角形',
+    'Covered interest-rate parity': 'カバー付き金利平価',
+    'Uncovered interest-rate parity': 'カバーなし金利平価',
+    'Forward-rate parity': 'フォワード・レート・パリティ',
+    'International Fisher effect': '国際フィッシャー効果',
+    'Ex-ante purchasing power parity': '事前の購買力平価',
+    'Each line sets the two quantities it joins equal. If all five conditions hold, a 2% interest-rate gap appears at every corner: the forward premium, the expected spot change and the expected inflation gap all come out near 2%.': '各線は、結ぶ 2 つの量を等しくする。5 つの条件がすべて成り立てば、2% の金利差がすべての角に現れる。フォワード・プレミアム、直物レートの期待変化率、期待インフレ率格差はいずれも約 2% になる。',
+    'CIRP sets the forward premium equal to the interest-rate gap; UIRP sets the expected spot change equal to the same gap. Two quantities equal to the same gap equal each other, so forward-rate parity follows: the forward rate is an unbiased forecast of the future spot rate.': 'CIRP はフォワード・プレミアムを金利差に等しくし、UIRP は直物レートの期待変化率を同じ金利差に等しくする。同じ金利差に等しい 2 つの量は互いに等しいので、フォワード・レート・パリティが導かれる。フォワード・レートは将来の直物レートの不偏予測になる。',
+    'Ex-ante PPP sets the expected spot change equal to the expected inflation gap; the international Fisher effect sets the interest-rate gap equal to the same inflation gap. So the interest-rate gap equals the expected spot change, and UIRP follows.': '事前の PPP は直物レートの期待変化率を期待インフレ率格差に等しくし、国際フィッシャー効果は金利差を同じインフレ率格差に等しくする。したがって金利差は直物レートの期待変化率に等しく、UIRP が導かれる。',
+    'PARITY NETWORK · 4 QUANTITIES · 5 CONDITIONS · LINEAR APPROXIMATIONS': 'パリティのネットワーク · 量 4 つ · 条件 5 つ · 線形近似',
+  },
+  fr: {
+    'International parity conditions': 'Conditions de parité internationales',
+    'Any two parity links imply a third.': 'Deux relations de parité en impliquent une troisième.',
+    'S = units of foreign currency per unit of domestic currency · each line = one parity condition, equating the two quantities it joins · pick a view': 'S = unités de devise étrangère par unité de monnaie nationale · chaque ligne = une condition de parité, qui égalise les deux grandeurs qu’elle relie · choisir une vue',
+    'View': 'Vue',
+    'All five hold': 'Les cinq tiennent',
+    'Four quantities joined by five parity conditions': 'Quatre grandeurs reliées par cinq conditions de parité',
+    'INTEREST-RATE GAP': 'ÉCART DE TAUX',
+    'FORWARD PREMIUM': 'PRIME À TERME',
+    'EXPECTED SPOT CHANGE': 'VAR. ATTENDUE DU COMPTANT',
+    'EXPECTED INFLATION GAP': 'ÉCART D’INFLATION ATTENDU',
+    'FORWARD TRIANGLE': 'TRIANGLE DU TERME',
+    'INFLATION TRIANGLE': 'TRIANGLE DE L’INFLATION',
+    'Covered interest-rate parity': 'Parité couverte des taux d’intérêt',
+    'Uncovered interest-rate parity': 'Parité non couverte des taux d’intérêt',
+    'Forward-rate parity': 'Parité des taux à terme',
+    'International Fisher effect': 'Effet Fisher international',
+    'Ex-ante purchasing power parity': 'Parité ex ante des pouvoirs d’achat',
+    'Each line sets the two quantities it joins equal. If all five conditions hold, a 2% interest-rate gap appears at every corner: the forward premium, the expected spot change and the expected inflation gap all come out near 2%.': 'Chaque ligne égalise les deux grandeurs qu’elle relie. Si les cinq conditions tiennent, un écart de taux de 2 % se retrouve à chaque coin : la prime à terme, la variation attendue du comptant et l’écart d’inflation attendu valent tous environ 2 %.',
+    'CIRP sets the forward premium equal to the interest-rate gap; UIRP sets the expected spot change equal to the same gap. Two quantities equal to the same gap equal each other, so forward-rate parity follows: the forward rate is an unbiased forecast of the future spot rate.': 'La CIRP égalise la prime à terme et l’écart de taux ; l’UIRP égalise la variation attendue du comptant et ce même écart. Deux grandeurs égales au même écart sont égales entre elles : la parité des taux à terme en découle, et le cours à terme devient une prévision sans biais du comptant futur.',
+    'Ex-ante PPP sets the expected spot change equal to the expected inflation gap; the international Fisher effect sets the interest-rate gap equal to the same inflation gap. So the interest-rate gap equals the expected spot change, and UIRP follows.': 'La PPA ex ante égalise la variation attendue du comptant et l’écart d’inflation attendu ; l’effet Fisher international égalise l’écart de taux et ce même écart d’inflation. L’écart de taux égale donc la variation attendue du comptant : l’UIRP en découle.',
+    'PARITY NETWORK · 4 QUANTITIES · 5 CONDITIONS · LINEAR APPROXIMATIONS': 'RÉSEAU DE PARITÉS · 4 GRANDEURS · 5 CONDITIONS · APPROXIMATIONS LINÉAIRES',
+  },
+});
+  </script>
+  <script>
+    // Four quantities sit on a diamond. UIRP is the shared diagonal, so the two
+    // triangles it creates are the two chains of reasoning a reader can follow.
+    const QUANTITIES = {
+      rate: { name: 'INTEREST-RATE GAP',      formula: [['i'], ['f', 'sub'], [' − i'], ['d', 'sub']] },
+      fwd:  { name: 'FORWARD PREMIUM',        formula: [['(F − S) / S']] },
+      spot: { name: 'EXPECTED SPOT CHANGE',   formula: [['E[%ΔS]']] },
+      infl: { name: 'EXPECTED INFLATION GAP', formula: [['π'], ['f', 'sub'], [' − π'], ['d', 'sub']] },
+    };
+    const EXAMPLE = '≈ 2%';
+    const CONDITIONS = [
+      { id: 'CIRP', name: 'Covered interest-rate parity',    from: 'rate', to: 'fwd' },
+      { id: 'FRP',  name: 'Forward-rate parity',             from: 'fwd',  to: 'spot' },
+      { id: 'UIRP', name: 'Uncovered interest-rate parity',  from: 'rate', to: 'spot' },
+      { id: 'IFE',  name: 'International Fisher effect',     from: 'rate', to: 'infl' },
+      { id: 'PPP',  name: 'Ex-ante purchasing power parity', from: 'infl', to: 'spot' },
     ];
-    const relations=[
-      {source:0,target:1,name:'EX-ANTE PPP',short:'PPP'},
-      {source:0,target:2,name:'FORWARD-RATE PARITY',short:'FRP'},
-      {source:1,target:3,name:'INTERNATIONAL FISHER EFFECT',short:'IFE'},
-      {source:2,target:3,name:'COVERED INTEREST-RATE PARITY',short:'CIRP'},
-      {source:0,target:3,name:'UNCOVERED INTEREST-RATE PARITY',short:'UIRP'},
-    ];
-    const chart=echarts.init(document.getElementById('parity'),null,{renderer:'svg'});
-    const mobile=()=>window.innerWidth<600;
-    function draw(){
-      const small=mobile();
-      document.querySelector('.center-label').textContent=small?'UIRP':'UNCOVERED INTEREST-RATE PARITY';
-      const nodes=quantities.map((q,i)=>({
-        name:q.name,value:q.formula,x:q.x,y:q.y,
-        symbol:'roundRect',symbolSize:small?[132,52]:[178,60],
-        itemStyle:{color:i===0||i===3?PAPER:'#C9C7BD',borderWidth:0},
-        label:{show:true,position:'inside',formatter:`{name|${q.name}}\n{formula|${q.formula}}`,
-          rich:{name:{fontFamily:'Inter',fontSize:small?8:9,fontWeight:600,color:'#4A4944',lineHeight:15},
-            formula:{fontFamily:'Inter',fontSize:small?13:17,fontWeight:800,color:INK,lineHeight:23}}}
-      }));
-      chart.setOption({
-        animationDuration:1200,animationEasing:'quarticOut',
-        tooltip:{backgroundColor:PAPER,borderWidth:0,textStyle:{color:INK,fontFamily:'Inter',fontSize:12},
-          formatter:p=>p.dataType==='edge'?p.data.name:p.data.name+'<br>'+p.data.value},
-        series:[{type:'graph',layout:'none',left:small?72:110,right:small?72:110,top:small?52:22,bottom:small?55:20,
-          data:nodes,links:relations.map((r,i)=>({source:r.source,target:r.target,name:r.name,
-            lineStyle:{width:i===4?1.8:1.2,color:i===4?PAPER:'#8F8E88',opacity:1,curveness:0}})),
-          edgeLabel:{show:true,color:PAPER,fontFamily:'Inter',fontWeight:700,fontSize:small?8:11,
-            backgroundColor:INK,padding:[4,5],formatter:p=>p.data.source===0&&p.data.target===3?'':small?p.data.short:p.data.name},
-          emphasis:{focus:'adjacency',lineStyle:{color:PAPER,width:2,opacity:1}},
-          select:{disabled:true},roam:false,
-        }]
-      },true);
+    const MODES = {
+      all: {
+        given: [], implied: [], nodes: ['rate', 'fwd', 'spot', 'infl'], tri: [],
+        note: 'Each line sets the two quantities it joins equal. If all five conditions hold, a 2% interest-rate gap appears at every corner: the forward premium, the expected spot change and the expected inflation gap all come out near 2%.',
+      },
+      fwd: {
+        given: ['CIRP', 'UIRP'], implied: ['FRP'], nodes: ['rate', 'fwd', 'spot'], tri: ['fwd'],
+        note: 'CIRP sets the forward premium equal to the interest-rate gap; UIRP sets the expected spot change equal to the same gap. Two quantities equal to the same gap equal each other, so forward-rate parity follows: the forward rate is an unbiased forecast of the future spot rate.',
+      },
+      infl: {
+        given: ['PPP', 'IFE'], implied: ['UIRP'], nodes: ['rate', 'spot', 'infl'], tri: ['infl'],
+        note: 'Ex-ante PPP sets the expected spot change equal to the expected inflation gap; the international Fisher effect sets the interest-rate gap equal to the same inflation gap. So the interest-rate gap equals the expected spot change, and UIRP follows.',
+      },
+    };
+    const LAYOUTS = {
+      wide:   { w: 760, h: 340, nw: 206, nh: 82, sub: 13, pos: { rate: [113, 170], spot: [647, 170], fwd: [380, 47], infl: [380, 293] } },
+      narrow: { w: 360, h: 440, nw: 150, nh: 70, sub: 11, pos: { rate: [82, 220],  spot: [278, 220], fwd: [180, 52], infl: [180, 388] } },
+    };
+
+    const NS = 'http://www.w3.org/2000/svg';
+    const svg = document.getElementById('chart');
+    const note = document.getElementById('note');
+    const buttons = [...document.querySelectorAll('.modes button')];
+    const T = (s) => (window.chartI18n ? chartI18n.t(s) : s);
+    let mode = 'all', layoutKey = null, seen = false;
+
+    function el(tag, attrs, parent) {
+      const node = document.createElementNS(NS, tag);
+      for (const [k, v] of Object.entries(attrs || {})) node.setAttribute(k, v);
+      if (parent) parent.appendChild(node);
+      return node;
     }
-    const observer=new IntersectionObserver(entries=>{if(entries[0].isIntersecting){draw();observer.disconnect()}},{threshold:.3});
-    observer.observe(document.getElementById('parity'));
-    document.getElementById('parity').addEventListener('click',draw);
-    window.addEventListener('resize',()=>{chart.resize();draw()});
+
+    function render() {
+      const L = LAYOUTS[layoutKey];
+      svg.setAttribute('viewBox', `0 0 ${L.w} ${L.h}`);
+      svg.classList.toggle('narrow', layoutKey === 'narrow');
+      svg.innerHTML = '';
+      const edges = el('g', {}, svg);
+      const P = L.pos;
+
+      const [cx, cy] = P.fwd, [, ry] = P.rate, [, by] = P.infl;
+      el('text', { class: 'tri', 'data-tri': 'fwd', x: cx, y: (cy + 2 * ry) / 3 + 3 }, svg).textContent = 'FORWARD TRIANGLE';
+      el('text', { class: 'tri', 'data-tri': 'infl', x: cx, y: (by + 2 * ry) / 3 + 3 }, svg).textContent = 'INFLATION TRIANGLE';
+
+      CONDITIONS.forEach((c, i) => {
+        const [x1, y1] = P[c.from], [x2, y2] = P[c.to];
+        const g = el('g', { class: 'edge', 'data-id': c.id, style: `--d:${380 + i * 110}ms;--d2:${780 + i * 110}ms` }, edges);
+        el('line', { class: 'solid', x1, y1, x2, y2, pathLength: 1 }, g);
+        el('line', { class: 'dash', x1, y1, x2, y2 }, g);
+        const pill = el('g', { class: 'pill-g', transform: `translate(${(x1 + x2) / 2},${(y1 + y2) / 2})` }, g);
+        el('title', {}, pill).textContent = c.name;
+        const w = c.id.length * (layoutKey === 'narrow' ? 8 : 9) + 20, h = layoutKey === 'narrow' ? 21 : 24;
+        el('rect', { class: 'pill', x: -w / 2, y: -h / 2, width: w, height: h, rx: h / 2 }, pill);
+        el('text', { y: 0.5 }, pill).textContent = c.id;
+      });
+
+      Object.entries(QUANTITIES).forEach(([key, q], i) => {
+        const [x, y] = P[key];
+        const g = el('g', { class: 'node', 'data-key': key, transform: `translate(${x},${y})`, style: `--d:${i * 80}ms` }, svg);
+        el('rect', { x: -L.nw / 2, y: -L.nh / 2, width: L.nw, height: L.nh, rx: 14 }, g);
+        el('text', { class: 'name', y: -L.nh / 2 + (layoutKey === 'narrow' ? 19 : 22) }, g).textContent = q.name;
+        const f = el('text', { class: 'formula', y: layoutKey === 'narrow' ? 7 : 8 }, g);
+        let lowered = false;
+        q.formula.forEach(([text, role]) => {
+          const span = el('tspan', {}, f);
+          if (role === 'sub' && !lowered) { span.setAttribute('dy', 4); span.setAttribute('font-size', L.sub); lowered = true; }
+          else if (role === 'sub') span.setAttribute('font-size', L.sub);
+          else if (lowered) { span.setAttribute('dy', -4); lowered = false; }
+          span.textContent = text;
+        });
+        el('text', { class: 'value', y: L.nh / 2 - (layoutKey === 'narrow' ? 11 : 13) }, g).textContent = EXAMPLE;
+      });
+
+      // Translated node names can run longer than the English; shrink to fit.
+      requestAnimationFrame(() => svg.querySelectorAll('.node .name').forEach((t) => {
+        const room = L.nw - 18, len = t.getComputedTextLength();
+        if (len > room) t.style.fontSize = `${parseFloat(getComputedStyle(t).fontSize) * room / len}px`;
+      }));
+      apply();
+    }
+
+    function apply() {
+      const m = MODES[mode];
+      svg.classList.toggle('mode-all', mode === 'all');
+      svg.querySelectorAll('.edge').forEach((g) => {
+        const id = g.dataset.id;
+        const given = m.given.includes(id), implied = m.implied.includes(id);
+        g.classList.toggle('given', given);
+        g.classList.toggle('implied', implied);
+        g.classList.toggle('fade', mode !== 'all' && !given && !implied);
+      });
+      svg.querySelectorAll('.node').forEach((g) => g.classList.toggle('fade', !m.nodes.includes(g.dataset.key)));
+      svg.querySelectorAll('.tri').forEach((t) => t.classList.toggle('on', m.tri.includes(t.dataset.tri)));
+      buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.mode === mode)));
+      note.textContent = T(m.note);
+    }
+
+    function reveal() {
+      svg.classList.remove('shown');
+      void svg.getBoundingClientRect();
+      requestAnimationFrame(() => svg.classList.add('shown'));
+    }
+
+    function layout() {
+      const key = svg.getBoundingClientRect().width < 520 ? 'narrow' : 'wide';
+      if (key === layoutKey) return;
+      layoutKey = key;
+      render();
+      if (seen) svg.classList.add('shown');
+    }
+
+    // Reserve room for the longest caption so switching views never shifts the
+    // page, then tell the host page how tall the card is.
+    function fit() {
+      note.style.minHeight = '';
+      const current = note.textContent;
+      let tallest = 0;
+      for (const m of Object.values(MODES)) {
+        note.textContent = T(m.note);
+        tallest = Math.max(tallest, note.getBoundingClientRect().height);
+      }
+      note.textContent = current;
+      note.style.minHeight = `${tallest}px`;
+      if (parent !== window) parent.postMessage({ chartHeight: document.querySelector('.card').scrollHeight }, location.origin);
+    }
+
+    buttons.forEach((b) => b.addEventListener('click', () => { mode = b.dataset.mode; apply(); }));
+    svg.addEventListener('click', reveal);
+    window.addEventListener('resize', () => { layout(); fit(); });
+    layout();
+    fit();
+    document.fonts?.ready.then(fit);
+    new IntersectionObserver((entries, obs) => {
+      if (!entries[0].isIntersecting) return;
+      seen = true; reveal(); obs.disconnect();
+    }, { threshold: 0.3 }).observe(svg);
   </script>
 </body>
 </html>

@@ -35,7 +35,7 @@
       scrollbar-color:var(--soft) transparent;scrollbar-width:thin;
     }
     table{
-      width:100%;min-width:640px;border-collapse:collapse;
+      width:100%;border-collapse:collapse;
       border-top:1px solid var(--grid);border-bottom:1px solid var(--grid);
     }
     thead th{
@@ -71,7 +71,7 @@
     }
     .fade{opacity:0;animation:fade .5s ease both}
     @keyframes fade{to{opacity:1}}
-    @media(max-width:640px){
+    @media(max-width:560px){
       .card{padding:22px 14px 12px}
       h2{font-size:22px}
       .sub{font-size:11px}
@@ -93,8 +93,7 @@
         font-size:8px;font-weight:800;letter-spacing:.12em;
         text-transform:uppercase;color:var(--soft);
       }
-      tbody td.assume::before{content:"Assumption"}
-      tbody td.conclude::before{content:"Conclusion"}
+      tbody td.assume::before,tbody td.conclude::before{content:attr(data-label)}
     }
     @media(prefers-reduced-motion:reduce){
       .fade{opacity:1;animation:none}
@@ -254,6 +253,17 @@ chartI18n.use({
     'MONETARY & FISCAL POLICY · THREE MODELS · MODEL · ASSUMPTION · CONCLUSION': 'POLITIQUE MONÉTAIRE ET BUDGÉTAIRE · TROIS MODÈLES · MODÈLE · HYPOTHÈSE · CONCLUSION',
   },
 });
+  </script>
+  <script>
+    // Stacked rows on phones label each cell; the labels come from the
+    // translated column headers. Then tell the host page how tall the card is.
+    const heads=[...document.querySelectorAll('thead th')].map((th)=>th.textContent.trim());
+    document.querySelectorAll('td.assume').forEach((td)=>{td.dataset.label=heads[1]});
+    document.querySelectorAll('td.conclude').forEach((td)=>{td.dataset.label=heads[2]});
+    const fit=()=>{if(parent!==window)parent.postMessage({chartHeight:document.querySelector('#card').scrollHeight},location.origin)};
+    fit();
+    window.addEventListener('resize',fit);
+    document.fonts?.ready.then(fit);
   </script>
 </body>
 </html>

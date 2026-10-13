@@ -6,52 +6,25 @@
   <title>Capital deepening vs increase in TFP</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root{--paper:#F0EFEB;--ink:#1C1C1A;--muted:#8F8E88;--faint:#C6C5BF;--grid:#DEDDD6}
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{background:var(--paper);color:var(--ink);font-family:'Inter',ui-sans-serif,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
-    .card{padding:28px 28px 18px;border-radius:24px;overflow:hidden}
-    h2{max-width:820px;margin:0;font-size:clamp(22px,3.6vw,36px);font-weight:700;line-height:1.08;letter-spacing:-.03em}
-    .sub{margin:10px 0 18px;color:var(--muted);font-size:12px;line-height:1.55;max-width:720px}
-    .panel{background:var(--paper);border:1px solid var(--grid);border-radius:18px;padding:14px 12px 8px;min-width:0}
-    .panel h3{margin:0 0 2px;font-size:13px;font-weight:700;letter-spacing:-.01em}
-    .panel .hint{margin:0 0 6px;font-size:10px;color:var(--muted);line-height:1.4}
-    svg{display:block;width:100%;height:auto}
-    svg text{font-family:'Inter',ui-sans-serif,system-ui,sans-serif}
-    .src{margin-top:14px;color:#8A8983;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
-    .draw{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.1s cubic-bezier(.4,0,.2,1) both}
-    .pop{transform-box:fill-box;transform-origin:center;animation:pop .45s cubic-bezier(.2,.7,.3,1.3) both}
-    .fade{animation:fade .8s ease both}
-    @keyframes draw{to{stroke-dashoffset:0}}
-    @keyframes pop{from{transform:scale(0)}to{transform:none}}
-    @keyframes fade{from{opacity:0}}
-    @media(max-width:640px){
-      .card{padding:22px 14px 14px}
-      h2{font-size:24px}
-      .panel svg{max-width:520px;margin:0 auto}
-    }
-    @media(prefers-reduced-motion:reduce){
-      .draw{stroke-dashoffset:0;animation:none}
-      .pop,.fade{opacity:1;transform:none;animation:none}
-    }
-  </style>
+  <script src="curve-kit.js"></script>
 </head>
 <body>
   <main class="card" id="card">
     <h2>Higher A lifts the whole curve.</h2>
-    <div class="sub">y = A k<sup>α</sup> · α fixed · along-curve = capital deepening · vertical shift = TFP ↑</div>
+    <div class="sub" id="sub"></div>
     <section class="panel">
       <h3>Production function</h3>
       <div class="hint">Ink = higher A · gray = baseline A · A→B along curve · B→C at same k</div>
-      <svg id="prod" viewBox="0 0 560 320" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Capital deepening versus TFP shift"></svg>
+      <svg id="prod" role="img" aria-label="Capital deepening versus TFP shift"></svg>
     </section>
-    <div class="src">CAPITAL DEEPENING VS TFP · F2 HAIRLINE LINE · y = A k^α</div>
+    <div class="src" id="src"></div>
   </main>
   <script src="i18n.js"></script>
   <script>
 chartI18n.use({
   zh: {
     'Capital deepening vs increase in TFP': '资本深化与全要素生产率提高',
+    'Capital deepening versus TFP shift': '资本深化与全要素生产率提高',
     'Higher A lifts the whole curve.': '提高 A 会使整条曲线上移。',
     'y = A kα · α fixed · along-curve = capital deepening · vertical shift = TFP ↑': 'y = A kα · α 不变 · 沿曲线 = 资本深化 · 垂直上移 = TFP ↑',
     'Production function': '生产函数',
@@ -59,21 +32,14 @@ chartI18n.use({
     'CAPITAL DEEPENING VS TFP · F2 HAIRLINE LINE · y = A kα': '资本深化 vs TFP · F2 发丝折线 · y = A kα',
     'capital intensity k →': '资本强度 k →',
     'output y': '产出 y',
-    'Effect of Capital Deepening': '资本深化的效应',
-    'Effect of Increase in TFP': 'TFP 提高的效应',
-    'A': 'A',
-    'B': 'B',
-    'C': 'C',
-    'k_A': 'k_A',
-    'k_B': 'k_B',
-    'y_A': 'y_A',
-    'y_B': 'y_B',
-    'y_C': 'y_C',
+    'capital deepening': '资本深化',
+    'TFP ↑': 'TFP ↑',
     'baseline A': '基准 A',
     'higher A': '更高 A',
   },
   ja: {
     'Capital deepening vs increase in TFP': '資本深化とTFP上昇',
+    'Capital deepening versus TFP shift': '資本深化とTFP上昇',
     'Higher A lifts the whole curve.': 'A を上げると曲線全体が上へ移る。',
     'y = A kα · α fixed · along-curve = capital deepening · vertical shift = TFP ↑': 'y = A kα · α は一定 · 曲線上 = 資本深化 · 垂直シフト = TFP ↑',
     'Production function': '生産関数',
@@ -81,21 +47,14 @@ chartI18n.use({
     'CAPITAL DEEPENING VS TFP · F2 HAIRLINE LINE · y = A kα': '資本深化 vs TFP · F2 ヘアライン · y = A kα',
     'capital intensity k →': '資本集約度 k →',
     'output y': '産出 y',
-    'Effect of Capital Deepening': '資本深化の効果',
-    'Effect of Increase in TFP': 'TFP上昇の効果',
-    'A': 'A',
-    'B': 'B',
-    'C': 'C',
-    'k_A': 'k_A',
-    'k_B': 'k_B',
-    'y_A': 'y_A',
-    'y_B': 'y_B',
-    'y_C': 'y_C',
+    'capital deepening': '資本深化',
+    'TFP ↑': 'TFP ↑',
     'baseline A': '基準 A',
     'higher A': '高い A',
   },
   fr: {
     'Capital deepening vs increase in TFP': 'Approfondissement du capital vs hausse de la PTF',
+    'Capital deepening versus TFP shift': 'Approfondissement du capital vs hausse de la PTF',
     'Higher A lifts the whole curve.': 'Un A plus élevé soulève toute la courbe.',
     'y = A kα · α fixed · along-curve = capital deepening · vertical shift = TFP ↑': 'y = A kα · α fixe · le long de la courbe = approfondissement · décalage vertical = PTF ↑',
     'Production function': 'Fonction de production',
@@ -103,16 +62,8 @@ chartI18n.use({
     'CAPITAL DEEPENING VS TFP · F2 HAIRLINE LINE · y = A kα': 'APPROFONDISSEMENT VS PTF · LIGNE F2 · y = A kα',
     'capital intensity k →': 'intensité capitalistique k →',
     'output y': 'produit y',
-    'Effect of Capital Deepening': 'Effet de l’approfondissement du capital',
-    'Effect of Increase in TFP': 'Effet d’une hausse de la PTF',
-    'A': 'A',
-    'B': 'B',
-    'C': 'C',
-    'k_A': 'k_A',
-    'k_B': 'k_B',
-    'y_A': 'y_A',
-    'y_B': 'y_B',
-    'y_C': 'y_C',
+    'capital deepening': 'capital par tête ↑',
+    'TFP ↑': 'PTF ↑',
     'baseline A': 'A de base',
     'higher A': 'A élevé',
   },
@@ -120,257 +71,61 @@ chartI18n.use({
   </script>
   <script>
 (() => {
-  const INK = '#1C1C1A', PAPER = '#F0EFEB', MUTED = '#8F8E88', GRID = '#DEDDD6', FAINT = '#C6C5BF';
-  const NS = 'http://www.w3.org/2000/svg';
-  const T = (s) => (window.chartI18n ? chartI18n.t(s) : s);
-  const el = (p, t, a) => {
-    const n = document.createElementNS(NS, t);
-    for (const k in a) n.setAttribute(k, a[k]);
-    p.appendChild(n);
-    return n;
-  };
-  const txt = (p, a, s) => { const n = el(p, 'text', a); n.textContent = s; return n; };
-  const tip = (n, s) => { const t = document.createElementNS(NS, 'title'); t.textContent = s; n.appendChild(t); };
+  const { C, T, el, label, frame, axes, curve, beads, guide, dot, arrow, points, mount, html } = curveKit;
+  const ALPHA = 0.4, A0 = 1, A1 = 1.55, K = 8;
+  const lo = (k) => A0 * Math.pow(k, ALPHA), hi = (k) => A1 * Math.pow(k, ALPHA);
+  // A → B moves along the baseline curve; B → C lifts it at the same k.
+  const kA = 1.6, kB = 3.6;
+  const height = (w) => Math.max(250, Math.min(290, w * 0.52));
 
-  const ALPHA = 0.4;
-  const A_LO = 1.0, A_HI = 1.55;
-  const yOf = (k, a) => a * Math.pow(k, ALPHA);
+  html('#sub', 'y = A kα · α fixed · along-curve = capital deepening · vertical shift = TFP ↑', [['kα', 'k<sup>α</sup>']]);
+  html('#src', 'CAPITAL DEEPENING VS TFP · F2 HAIRLINE LINE · y = A kα', [['y = A kα', '<span class="f">y = A k<sup>α</sup></span>']]);
 
-  const K_MIN = 0.35, K_MAX = 7.5;
-  const N = 44;
-  const ks = Array.from({ length: N }, (_, i) => K_MIN + (i / (N - 1)) * (K_MAX - K_MIN));
-  const yLo = ks.map((k) => yOf(k, A_LO));
-  const yHi = ks.map((k) => yOf(k, A_HI));
+  mount(document.getElementById('prod'), (s, W, H) => {
+    const F = frame(s, W, H, { l: 34, r: 12, t: 30, b: 32 }, K, hi(K) * 1.1);
+    axes(s, F, T('capital intensity k →'), T('output y'));
+    const P = { A: [kA, lo(kA)], B: [kB, lo(kB)], C: [kB, hi(kB)] };
+    const px = (n) => [F.x(P[n][0]), F.y(P[n][1])];
 
-  // Key points matching the slide: A → B along lower curve, B → C vertical
-  const kA = 1.4, kB = 3.6;
-  const yA = yOf(kA, A_LO), yB = yOf(kB, A_LO), yC = yOf(kB, A_HI);
-
-  function obsReveal(id, fn) {
-    const n = document.getElementById(id);
-    const go = () => { n.innerHTML = ''; fn(n); };
-    const io = new IntersectionObserver((es) => {
-      if (es[0].isIntersecting) { go(); io.disconnect(); }
-    }, { threshold: .25 });
-    io.observe(n);
-    n.style.cursor = 'pointer';
-    n.addEventListener('click', go);
-  }
-
-  function arrowHead(s, x1, y1, x2, y2, stroke, delay) {
-    const ang = Math.atan2(y2 - y1, x2 - x1);
-    const len = 7;
-    const a1 = ang + Math.PI * .82, a2 = ang - Math.PI * .82;
-    el(s, 'line', {
-      x1: x2, y1: y2, x2: x2 + len * Math.cos(a1), y2: y2 + len * Math.sin(a1),
-      stroke, 'stroke-width': 1.15, 'stroke-linecap': 'round',
-      class: 'fade', style: `animation-delay:${delay}s`
+    // Guides from each point to both axes.
+    ['A', 'B', 'C'].forEach((n, i) => {
+      const [x, y] = px(n);
+      guide(s, F.X0, y, x, y, 0.45 + i * 0.05);
+      label(s, F.X0 - 5, y + 4, `y_{${n}}`, { size: 10.5, weight: 700, fill: n === 'C' ? C.INK : C.MUTED, anchor: 'end', delay: 0.5 + i * 0.05 });
     });
-    el(s, 'line', {
-      x1: x2, y1: y2, x2: x2 + len * Math.cos(a2), y2: y2 + len * Math.sin(a2),
-      stroke, 'stroke-width': 1.15, 'stroke-linecap': 'round',
-      class: 'fade', style: `animation-delay:${delay}s`
-    });
-  }
-
-  function drawProd(s) {
-    const X0 = 52, X1 = 520, TOP = 36, BASE = 250;
-    const yMax = yOf(K_MAX, A_HI) * 1.12;
-    const x = (k) => X0 + ((k - K_MIN) / (K_MAX - K_MIN)) * (X1 - X0);
-    const mapY = (v) => BASE - (v / yMax) * (BASE - TOP);
-
-    el(s, 'line', { x1: X0, y1: BASE, x2: X1 + 4, y2: BASE, stroke: GRID, 'stroke-width': .8, class: 'fade' });
-    el(s, 'line', { x1: X0, y1: BASE, x2: X0, y2: TOP - 4, stroke: GRID, 'stroke-width': .8, class: 'fade' });
-
-    ks.forEach((k, i) => {
-      el(s, 'line', {
-        x1: x(k), y1: BASE, x2: x(k), y2: BASE - 5,
-        stroke: '#CFCEC7', 'stroke-width': .55,
-        class: 'fade', style: `animation-delay:${i * .006}s`
-      });
+    ['A', 'B'].forEach((n, i) => {
+      const [x, y] = px(n);
+      guide(s, x, y + 5, x, F.BASE, 0.45 + i * 0.05);
+      label(s, x, F.BASE + 15, `k_{${n}}`, { size: 10.5, weight: 700, fill: C.MUTED, anchor: 'middle', delay: 0.5 + i * 0.05 });
     });
 
-    // lower curve (baseline A) — gray
-    const ptsLo = ks.map((k, i) => `${x(k)} ${mapY(yLo[i])}`).join(' L ');
-    el(s, 'path', {
-      d: 'M' + ptsLo, fill: 'none', stroke: MUTED, 'stroke-width': 1.25, pathLength: 1,
-      class: 'draw', style: 'animation-duration:1.15s'
-    });
-    // upper curve (higher A) — ink
-    const ptsHi = ks.map((k, i) => `${x(k)} ${mapY(yHi[i])}`).join(' L ');
-    el(s, 'path', {
-      d: 'M' + ptsHi, fill: 'none', stroke: INK, 'stroke-width': 1.4, pathLength: 1,
-      class: 'draw', style: 'animation-duration:1.25s;animation-delay:.08s'
-    });
+    curve(s, F, lo, 0, K, { stroke: C.SOFT, width: 1.3 });
+    curve(s, F, hi, 0, K, { delay: 0.08 });
+    beads(s, F, lo, 0.4, K, { fill: C.SOFT, r: 1.4, avoid: [kA, kB] });
+    beads(s, F, hi, 0.4, K, { avoid: [kB] });
+    label(s, F.X1, F.y(hi(K)) - 9, T('higher A'), { anchor: 'end', delay: 0.8 });
+    label(s, F.X1, F.y(lo(K)) - 9, T('baseline A'), { fill: C.MUTED, anchor: 'end', delay: 0.7 });
 
-    // sample dots (sparse)
-    ks.forEach((k, i) => {
-      if (i % 3 !== 0 && i !== 0 && i !== N - 1) return;
-      el(s, 'circle', {
-        cx: x(k), cy: mapY(yLo[i]), r: 1.5, fill: MUTED,
-        class: 'pop', style: `animation-delay:${.1 + i * .012}s`
-      });
-      el(s, 'circle', {
-        cx: x(k), cy: mapY(yHi[i]), r: 1.7, fill: INK,
-        class: 'pop', style: `animation-delay:${.15 + i * .012}s`
-      });
+    // Capital deepening: an arrow that follows the baseline curve just beneath it.
+    const along = points(F, lo, kA + 0.2, kB - 0.25, 30).map(([x, y]) => [x, y + 11]);
+    arrow(s, along, { stroke: C.MUTED, delay: 0.85 });
+    const room = F.x(kB) - F.x(kA) - 14;
+    label(s, (F.x(kA) + F.x(kB)) / 2 + 4, F.y(lo((kA + kB) / 2)) + 34, T('capital deepening'), {
+      size: 10.5, fill: C.MUTED, anchor: 'middle', maxWidth: room, delay: 0.95,
     });
 
-    // curve labels near right end
-    const kLab = K_MAX * 0.78;
-    txt(s, {
-      x: x(kLab), y: mapY(yOf(kLab, A_LO)) + 16,
-      'font-size': 10, 'font-weight': 800, fill: MUTED,
-      'text-anchor': 'middle',
-      style: `paint-order:stroke;stroke:${PAPER};stroke-width:3px;animation-delay:.7s`,
-      class: 'fade'
-    }, T('baseline A'));
-    txt(s, {
-      x: x(kLab), y: mapY(yOf(kLab, A_HI)) - 10,
-      'font-size': 10, 'font-weight': 800, fill: INK,
-      'text-anchor': 'middle',
-      style: `paint-order:stroke;stroke:${PAPER};stroke-width:3px;animation-delay:.8s`,
-      class: 'fade'
-    }, T('higher A'));
+    // TFP: B straight up to C.
+    const [bx, by] = px('B'), [, cy] = px('C');
+    arrow(s, [[bx, by - 7], [bx, cy + 7]], { width: 1.6, delay: 1.0 });
+    label(s, bx + 8, (by + cy) / 2 + 4, T('TFP ↑'), { size: 12, delay: 1.05 });
 
-    // Key points A, B, C
-    const pts = [
-      { k: kA, y: yA, lab: 'A', fill: MUTED },
-      { k: kB, y: yB, lab: 'B', fill: MUTED },
-      { k: kB, y: yC, lab: 'C', fill: INK },
-    ];
-    pts.forEach((p, i) => {
-      const c = el(s, 'circle', {
-        cx: x(p.k), cy: mapY(p.y), r: 4.2, fill: p.fill,
-        class: 'pop', style: `animation-delay:${.55 + i * .08}s`
-      });
-      tip(c, `${p.lab}: k=${p.k.toFixed(2)}, y=${p.y.toFixed(2)}`);
-      txt(s, {
-        x: x(p.k) + (p.lab === 'C' ? 10 : -10),
-        y: mapY(p.y) + (p.lab === 'C' ? -8 : (p.lab === 'A' ? 4 : 14)),
-        'font-size': 12, 'font-weight': 800, fill: p.fill,
-        'text-anchor': p.lab === 'C' ? 'start' : 'end',
-        style: `paint-order:stroke;stroke:${PAPER};stroke-width:3px;animation-delay:${.65 + i * .08}s`,
-        class: 'fade'
-      }, T(p.lab));
-    });
-
-    // A → B along-curve arrow (capital deepening)
-    // sample a few points between kA and kB on lower curve for a chord arrow
-    const midK = (kA + kB) / 2;
-    const midY = yOf(midK, A_LO);
-    // place arrow slightly above the curve
-    const ax1 = x(kA + 0.15), ay1 = mapY(yOf(kA + 0.15, A_LO)) - 8;
-    const ax2 = x(kB - 0.25), ay2 = mapY(yOf(kB - 0.25, A_LO)) - 8;
-    el(s, 'line', {
-      x1: ax1, y1: ay1, x2: ax2, y2: ay2,
-      stroke: MUTED, 'stroke-width': 1.2,
-      class: 'fade', style: 'animation-delay:.85s'
-    });
-    arrowHead(s, ax1, ay1, ax2, ay2, MUTED, 0.9);
-    txt(s, {
-      x: x(midK), y: mapY(midY) - 22,
-      'font-size': 11, 'font-weight': 800, fill: MUTED,
-      'text-anchor': 'middle',
-      style: `paint-order:stroke;stroke:${PAPER};stroke-width:3.5px;animation-delay:.95s`,
-      class: 'fade'
-    }, T('Effect of Capital Deepening'));
-
-    // B → C vertical arrow (TFP)
-    const vx = x(kB) + 14;
-    const vy1 = mapY(yB) - 4, vy2 = mapY(yC) + 4;
-    el(s, 'line', {
-      x1: vx, y1: vy1, x2: vx, y2: vy2,
-      stroke: INK, 'stroke-width': 1.25,
-      class: 'fade', style: 'animation-delay:1.05s'
-    });
-    arrowHead(s, vx, vy1, vx, vy2, INK, 1.1);
-    txt(s, {
-      x: vx + 10, y: (vy1 + vy2) / 2 + 4,
-      'font-size': 11, 'font-weight': 800, fill: INK,
-      'text-anchor': 'start',
-      style: `paint-order:stroke;stroke:${PAPER};stroke-width:3.5px;animation-delay:1.15s`,
-      class: 'fade'
-    }, T('Effect of Increase in TFP'));
-
-    // axis drop lines + tick labels for k_A, k_B and y levels
-    [[kA, MUTED], [kB, MUTED]].forEach(([k, col], i) => {
-      el(s, 'line', {
-        x1: x(k), y1: mapY(yOf(k, A_LO)), x2: x(k), y2: BASE,
-        stroke: FAINT, 'stroke-width': .9, 'stroke-dasharray': '3 2',
-        class: 'fade', style: `animation-delay:${.5 + i * .05}s`
-      });
-    });
-    // horizontal guides to y axis for A, B, C
-    [
-      [yA, MUTED],
-      [yB, MUTED],
-      [yC, INK],
-    ].forEach(([yv, col], i) => {
-      const xEnd = i === 2 ? x(kB) : (i === 0 ? x(kA) : x(kB));
-      el(s, 'line', {
-        x1: X0, y1: mapY(yv), x2: xEnd, y2: mapY(yv),
-        stroke: FAINT, 'stroke-width': .85, 'stroke-dasharray': '3 2',
-        class: 'fade', style: `animation-delay:${.48 + i * .05}s`
-      });
-    });
-
-    txt(s, {
-      x: x(kA), y: BASE + 16, 'font-size': 10, 'font-weight': 700, fill: MUTED,
-      'text-anchor': 'middle', class: 'fade', style: 'animation-delay:.55s'
-    }, T('k_A'));
-    txt(s, {
-      x: x(kB), y: BASE + 16, 'font-size': 10, 'font-weight': 700, fill: MUTED,
-      'text-anchor': 'middle', class: 'fade', style: 'animation-delay:.6s'
-    }, T('k_B'));
-
-    txt(s, {
-      x: X0 - 6, y: mapY(yA) + 3, 'font-size': 10, 'font-weight': 700, fill: MUTED,
-      'text-anchor': 'end', class: 'fade', style: 'animation-delay:.55s'
-    }, T('y_A'));
-    txt(s, {
-      x: X0 - 6, y: mapY(yB) + 3, 'font-size': 10, 'font-weight': 700, fill: MUTED,
-      'text-anchor': 'end', class: 'fade', style: 'animation-delay:.6s'
-    }, T('y_B'));
-    txt(s, {
-      x: X0 - 6, y: mapY(yC) + 3, 'font-size': 10, 'font-weight': 700, fill: INK,
-      'text-anchor': 'end', class: 'fade', style: 'animation-delay:.65s'
-    }, T('y_C'));
-
-    txt(s, {
-      x: X1, y: BASE + 28, 'font-size': 9.5, 'font-weight': 600, fill: MUTED,
-      'text-anchor': 'end', 'letter-spacing': '.04em', class: 'fade'
-    }, T('capital intensity k →'));
-    txt(s, {
-      x: X0 - 10, y: TOP + 2, 'font-size': 9.5, 'font-weight': 600, fill: MUTED,
-      'text-anchor': 'end', class: 'fade'
-    }, T('output y'));
-  }
-
-  function localizeDom() {
-    document.title = T('Capital deepening vs increase in TFP');
-    document.querySelector('h2').textContent = T('Higher A lifts the whole curve.');
-    document.querySelector('.sub').innerHTML = T('y = A kα · α fixed · along-curve = capital deepening · vertical shift = TFP ↑')
-      .replace('kα', 'k<sup>α</sup>');
-    const panel = document.querySelector('.panel');
-    panel.querySelector('h3').textContent = T('Production function');
-    panel.querySelector('.hint').textContent = T('Ink = higher A · gray = baseline A · A→B along curve · B→C at same k');
-    panel.querySelector('svg').setAttribute('aria-label', T('Capital deepening vs increase in TFP'));
-    document.querySelector('.src').textContent = T('CAPITAL DEEPENING VS TFP · F2 HAIRLINE LINE · y = A kα');
-  }
-
-  localizeDom();
-  obsReveal('prod', drawProd);
-
-  function fit() {
-    if (parent !== window) {
-      parent.postMessage({ chartHeight: document.querySelector('.card').scrollHeight }, location.origin);
-    }
-  }
-  window.addEventListener('resize', fit);
-  document.fonts?.ready.then(fit);
-  setTimeout(fit, 100);
-  fit();
+    dot(s, ...px('A'), 4.4, C.SOFT, 0.55, `A: k=${kA}, y=${lo(kA).toFixed(2)}`);
+    dot(s, ...px('B'), 4.4, C.SOFT, 0.63, `B: k=${kB}, y=${lo(kB).toFixed(2)}`);
+    dot(s, ...px('C'), 4.6, C.INK, 0.71, `C: k=${kB}, y=${hi(kB).toFixed(2)}`);
+    label(s, px('A')[0] - 7, px('A')[1] - 7, 'A', { size: 12.5, fill: C.MUTED, anchor: 'end', delay: 0.65 });
+    label(s, px('B')[0] + 9, px('B')[1] + 16, 'B', { size: 13, fill: C.MUTED, delay: 0.73 });
+    label(s, px('C')[0] - 8, px('C')[1] - 8, 'C', { size: 13, anchor: 'end', delay: 0.81 });
+  }, height);
 })();
   </script>
 </body>

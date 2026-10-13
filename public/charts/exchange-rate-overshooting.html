@@ -28,9 +28,10 @@
     @keyframes fade{from{opacity:0}}
     @media(max-width:640px){
       .card{padding:22px 14px 14px}
-      .grid{grid-template-columns:1fr;gap:12px}
+      .grid{gap:12px}
       h2{font-size:24px}
     }
+    @media(max-width:520px){.grid{grid-template-columns:1fr}.panel svg{max-width:360px;margin:0 auto}}
     @media(prefers-reduced-motion:reduce){
       .draw{stroke-dashoffset:0;animation:none}
       .pop,.fade{opacity:1;transform:none;animation:none}
@@ -45,22 +46,22 @@
       <section class="panel">
         <h3>Money supply</h3>
         <div class="hint">Step jump at t₁; stays at the new level</div>
-        <svg id="ms" viewBox="0 0 360 210" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Money supply"></svg>
+        <svg id="ms" viewBox="0 0 300 178" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Money supply"></svg>
       </section>
       <section class="panel">
         <h3>Price level</h3>
         <div class="hint">Rises slowly after t₁ — sticky prices</div>
-        <svg id="price" viewBox="0 0 360 210" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Price level"></svg>
+        <svg id="price" viewBox="0 0 300 178" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Price level"></svg>
       </section>
       <section class="panel">
         <h3>Interest rate</h3>
         <div class="hint">Sharp drop at t₁, then gradual recovery</div>
-        <svg id="rate" viewBox="0 0 360 210" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Interest rate"></svg>
+        <svg id="rate" viewBox="0 0 300 178" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Interest rate"></svg>
       </section>
       <section class="panel">
         <h3>Domestic currency value</h3>
         <div class="hint">Overshoots below PPP, then recovers toward it</div>
-        <svg id="fx" viewBox="0 0 360 210" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Domestic currency value"></svg>
+        <svg id="fx" viewBox="0 0 300 178" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Domestic currency value"></svg>
       </section>
     </div>
     <div class="src">EXCHANGE-RATE OVERSHOOTING · F2 HAIRLINE LINE · MONETARY EXPANSION AT t₁</div>
@@ -84,6 +85,8 @@ chartI18n.use({
     'Long-term PPP implied value': '长期 PPP 隐含价值',
     'EXCHANGE-RATE OVERSHOOTING · F2 HAIRLINE LINE · MONETARY EXPANSION AT t₁': '汇率超调 · F2 发丝折线 · t₁ 货币扩张',
     'rising slowly': '上升缓慢',
+    'overshoot': '超调',
+    'time →': '时间 →',
   },
   ja: {
     'Exchange-rate overshooting': '為替レートのオーバーシューティング',
@@ -101,6 +104,8 @@ chartI18n.use({
     'Long-term PPP implied value': '長期 PPP が示唆する価値',
     'EXCHANGE-RATE OVERSHOOTING · F2 HAIRLINE LINE · MONETARY EXPANSION AT t₁': '為替オーバーシューティング · F2 ヘアライン · t₁ 金融緩和',
     'rising slowly': 'ゆっくり上昇',
+    'overshoot': 'オーバーシュート',
+    'time →': '時間 →',
   },
   fr: {
     'Exchange-rate overshooting': 'Surajustement du taux de change',
@@ -118,6 +123,8 @@ chartI18n.use({
     'Long-term PPP implied value': 'Valeur implicite de long terme (PPA)',
     'EXCHANGE-RATE OVERSHOOTING · F2 HAIRLINE LINE · MONETARY EXPANSION AT t₁': 'SURAJUSTEMENT DU CHANGE · LIGNE F2 · EXPANSION MONÉTAIRE EN t₁',
     'rising slowly': 'hausse lente',
+    'overshoot': 'surajustement',
+    'time →': 'temps →',
   },
 });
   </script>
@@ -137,7 +144,7 @@ chartI18n.use({
 
   const N = 36;
   const t1 = 10; // shock index
-  const X0 = 36, X1 = 340, BASE = 168, TOP = 28;
+  const X0 = 18, X1 = 286, BASE = 150, TOP = 30;
   const x = (i) => X0 + (i / (N - 1)) * (X1 - X0);
   const mapY = (v, lo, hi) => BASE - ((v - lo) / (hi - lo)) * (BASE - TOP);
 
@@ -190,13 +197,13 @@ chartI18n.use({
 
   function shockLine(s) {
     el(s, 'line', {
-      x1: x(t1), y1: TOP - 4, x2: x(t1), y2: BASE,
+      x1: x(t1), y1: TOP - 6, x2: x(t1), y2: BASE,
       stroke: FAINT, 'stroke-width': 1, 'stroke-dasharray': '3 3',
       class: 'fade', style: 'animation-delay:.15s'
     });
     txt(s, {
-      x: x(t1), y: TOP - 8, 'font-size': 8, 'font-weight': 700, fill: MUTED,
-      'text-anchor': 'middle', 'letter-spacing': '.06em', class: 'fade', style: 'animation-delay:.2s'
+      x: x(t1), y: TOP - 10, 'font-size': 10, 'font-weight': 700, fill: MUTED,
+      'text-anchor': 'middle', class: 'fade', style: 'animation-delay:.2s'
     }, 't₁');
   }
 
@@ -221,7 +228,7 @@ chartI18n.use({
         txt(s, {
           x: x(i) + (lab.dx || 0),
           y: mapY(v, lo, hi) + (lab.dy || -10),
-          'font-size': 9.5, 'font-weight': 800, fill: INK,
+          'font-size': 11, 'font-weight': 800, fill: INK,
           'text-anchor': lab.anchor || 'middle',
           style: `paint-order:stroke;stroke:${PAPER};stroke-width:3px;animation-delay:${.9 + i * .01}s`,
           class: 'fade'
@@ -231,13 +238,9 @@ chartI18n.use({
     });
     // time axis labels
     txt(s, {
-      x: x(0), y: BASE + 18, 'font-size': 7.5, 'font-weight': 600, fill: MUTED,
-      'text-anchor': 'middle', 'letter-spacing': '.1em', class: 'fade'
-    }, 't');
-    txt(s, {
-      x: x(N - 1), y: BASE + 18, 'font-size': 7.5, 'font-weight': 600, fill: MUTED,
-      'text-anchor': 'middle', 'letter-spacing': '.1em', class: 'fade'
-    }, 't →');
+      x: X1, y: BASE + 18, 'font-size': 9, 'font-weight': 600, fill: MUTED,
+      'text-anchor': 'end', 'letter-spacing': '.06em', class: 'fade'
+    }, 'time →');
     if (opts.extra) opts.extra(s, vs, lo, hi);
   }
 
@@ -252,7 +255,7 @@ chartI18n.use({
       tip: (i) => i < t1 ? 'Money supply = M₁' : 'Money supply = M₂',
       extra(s) {
         txt(s, {
-          x: x(t1) + 8, y: TOP + 10, 'font-size': 8, 'font-weight': 700, fill: MUTED,
+          x: x(t1) + 7, y: TOP - 10, 'font-size': 9.5, 'font-weight': 700, fill: MUTED,
           'text-anchor': 'start', class: 'fade', style: 'animation-delay:.35s'
         }, T('Expansion'));
       }
@@ -265,10 +268,10 @@ chartI18n.use({
       keyDots: new Set([t1, N - 1]),
       tip: (i) => i < t1 ? 'Price level sticky' : 'Price level rising slowly',
       extra(s, vs, lo, hi) {
-        const mid = Math.floor(t1 + (N - 1 - t1) * 0.45);
+        const at = Math.floor(t1 + (N - 1 - t1) * 0.72);
         txt(s, {
-          x: x(mid), y: mapY(vs[mid], lo, hi) - 14,
-          'font-size': 8, 'font-weight': 700, fill: MUTED,
+          x: x(at), y: mapY(vs[at], lo, hi) + 20,
+          'font-size': 9.5, 'font-weight': 700, fill: MUTED,
           'text-anchor': 'middle', class: 'fade', style: 'animation-delay:.5s'
         }, T('rising slowly'));
       }
@@ -294,30 +297,23 @@ chartI18n.use({
       keyDots: new Set([t1, N - 1]),
       tip: (i) => i < t1 ? 'Domestic currency value' : 'Overshoot then recovery toward PPP',
       extra(s, vs, lo, hi) {
-        // long-term PPP implied value reference
+        // Long-run PPP value: the curve approaches it from below, so the label sits above.
         const y = mapY(ppp, lo, hi);
         el(s, 'line', {
-          x1: x(t1), y1: y, x2: X1 + 2, y2: y,
+          x1: x(t1), y1: y, x2: X1, y2: y,
           stroke: FAINT, 'stroke-width': 1.1, 'stroke-dasharray': '4 3',
           class: 'fade', style: 'animation-delay:.25s'
         });
         txt(s, {
-          x: X1 - 2, y: y - 8,
-          'font-size': 7.5, 'font-weight': 700, fill: MUTED,
+          x: X1, y: y - 7,
+          'font-size': 9.5, 'font-weight': 700, fill: MUTED,
           'text-anchor': 'end', class: 'fade', style: 'animation-delay:.4s'
         }, T('Long-term PPP implied value'));
-        // small arrow hint on recovery path
-        const a = Math.floor(t1 + (N - 1 - t1) * 0.55);
-        const b = Math.min(N - 2, a + 4);
-        el(s, 'path', {
-          d: `M${x(a)} ${mapY(vs[a], lo, hi) - 10} L${x(b)} ${mapY(vs[b], lo, hi) - 10}`,
-          fill: 'none', stroke: MUTED, 'stroke-width': .9,
-          'marker-end': 'url(#arr)',
-          class: 'fade', style: 'animation-delay:.7s'
-        });
-        const defs = el(s, 'defs', {});
-        const m = el(defs, 'marker', { id: 'arr', markerWidth: 6, markerHeight: 6, refX: 5, refY: 3, orient: 'auto' });
-        el(m, 'path', { d: 'M0,0 L6,3 L0,6 Z', fill: MUTED });
+        txt(s, {
+          x: x(t1) + 7, y: mapY(vs[t1], lo, hi) + 16,
+          'font-size': 9.5, 'font-weight': 700, fill: MUTED,
+          'text-anchor': 'start', class: 'fade', style: 'animation-delay:.5s'
+        }, T('overshoot'));
       }
     });
   }

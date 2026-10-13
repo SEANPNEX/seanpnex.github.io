@@ -14,6 +14,18 @@ const englishFallback = (href) => {
   return english && !published.has(page) && published.has(english) ? english + hash : null;
 };
 
+// Charts embedded as iframes can report their rendered height, so the frame
+// fits every width and language without a hand-tuned CSS height.
+if (typeof window !== 'undefined') {
+  window.addEventListener('message', (event) => {
+    const height = event.data?.chartHeight;
+    if (event.origin !== window.location.origin || typeof height !== 'number') return;
+    for (const frame of document.querySelectorAll('iframe')) {
+      if (frame.contentWindow === event.source) frame.style.height = `${Math.ceil(height)}px`;
+    }
+  });
+}
+
 /** @type {import('vitepress').Theme} */
 export default {
   extends: DefaultTheme,

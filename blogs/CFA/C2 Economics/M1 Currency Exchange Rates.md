@@ -10,22 +10,23 @@
 .fx-concept-chart {
     display: block;
     width: 100%;
-    height: 480px;
+    height: 440px;
     margin: 24px 0 30px;
     border: 0;
     border-radius: 24px;
     background: #F0EFEB;
 }
-.fx-concept-chart.parity-chart { height: 600px; }
-.fx-concept-chart.overshoot-chart { height: 820px; }
-.fx-concept-chart.portfolio-chart { height: 680px; }
-.fx-concept-chart.models-chart { height: 560px; }
+/* Starting heights only: each chart reports its rendered height once loaded. */
+.fx-concept-chart.parity-chart { height: 550px; }
+.fx-concept-chart.overshoot-chart { height: 620px; }
+.fx-concept-chart.portfolio-chart { height: 400px; }
+.fx-concept-chart.models-chart { height: 500px; }
 @media (max-width: 700px) {
-    .fx-concept-chart { height: 540px; }
-    .fx-concept-chart.parity-chart { height: 790px; }
-    .fx-concept-chart.overshoot-chart { height: 1180px; }
-    .fx-concept-chart.portfolio-chart { height: 980px; }
-    .fx-concept-chart.models-chart { height: 900px; }
+    .fx-concept-chart { height: 500px; }
+    .fx-concept-chart.parity-chart { height: 770px; }
+    .fx-concept-chart.overshoot-chart { height: 1170px; }
+    .fx-concept-chart.portfolio-chart { height: 530px; }
+    .fx-concept-chart.models-chart { height: 840px; }
 }
 </style>
 

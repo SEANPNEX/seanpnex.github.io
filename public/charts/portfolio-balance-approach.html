@@ -13,7 +13,7 @@
     .card{padding:28px 28px 16px;border-radius:24px;overflow:hidden}
     h2{max-width:820px;margin:0;font-size:clamp(22px,3.4vw,34px);font-weight:700;line-height:1.08;letter-spacing:-.03em}
     .sub{margin:10px 0 16px;color:var(--muted);font-size:12px;line-height:1.55;max-width:760px}
-    svg{display:block;width:100%;height:auto}
+    svg{display:block;width:100%;height:auto;overflow:visible}
     svg text{font-family:'Inter',ui-sans-serif,system-ui,sans-serif}
     .src{margin-top:12px;color:#8A8983;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
     .draw{stroke-dasharray:1;stroke-dashoffset:1;animation:draw .85s cubic-bezier(.25,.9,.35,1) both}
@@ -37,7 +37,7 @@
   <main class="card" id="card">
     <h2>Fiscal expansion: appreciate first, depreciate later.</h2>
     <div class="sub">Short-run Mundell–Fleming vs long-run portfolio balance · debt supply, risk premium, and monetization risk</div>
-    <svg id="chart" viewBox="0 0 860 500" role="img" aria-label="Portfolio balance approach flowchart"></svg>
+    <svg id="chart" viewBox="0 0 860 344" role="img" aria-label="Portfolio balance approach flowchart"></svg>
     <div class="src">PORTFOLIO BALANCE APPROACH · TREND LINEAGE · FISCAL EXPANSION PATHS</div>
   </main>
   <script src="i18n.js"></script>
@@ -105,30 +105,6 @@ chartI18n.use({
       svg.append(n);
       return n;
     }
-    function wrapLines(label, maxChars){
-      const words=String(label).split(/\s+/);
-      const lines=[];
-      let cur='';
-      words.forEach(w=>{
-        const next=cur?cur+' '+w:w;
-        if(next.length>maxChars && cur){lines.push(cur);cur=w;}
-        else cur=next;
-      });
-      if(cur) lines.push(cur);
-      return lines.length?lines:[''];
-    }
-    function box(x,y,w,h,label,{dark=false,delay=0,maxChars=18,fs=11}={}){
-      el('rect',{x,y,width:w,height:h,rx:14,fill:dark?INK:FAINT,class:'pop',style:`animation-delay:${delay}s`});
-      const lines=wrapLines(label,maxChars);
-      const lh=fs+3;
-      const start=y+h/2-((lines.length-1)*lh)/2+fs*0.35;
-      lines.forEach((ln,i)=>{
-        el('text',{
-          x:x+w/2,y:start+i*lh,fill:dark?PAPER:INK,'text-anchor':'middle',
-          'font-size':fs,'font-weight':800,class:'fade',style:`animation-delay:${delay+.08}s`
-        },ln);
-      });
-    }
     function arrow(x1,y1,x2,y2,{delay=0,stroke=GRID,sw=1.25}={}){
       const d=`M${x1} ${y1} L${x2} ${y2}`;
       el('path',{d,fill:'none',stroke, 'stroke-width':sw, pathLength:1, class:'draw', style:`animation-delay:${delay}s`});
@@ -156,60 +132,97 @@ chartI18n.use({
       }
     }
 
-    function render(){
-      svg.innerHTML='';
+    const T=(s)=>(window.chartI18n?chartI18n.t(s):s);
+    const CJK=/[぀-ヿ㐀-鿿]/;
+    // Wrap a translated label to the box width. Latin text breaks at spaces;
+    // CJK text has none, so it breaks between characters.
+    function fitLines(label,width,fs){
+      const charW=(c)=>CJK.test(c)?fs:fs*.6;
+      const textW=(s)=>[...s].reduce((n,c)=>n+charW(c),0);
+      const tokens=CJK.test(label)&&!label.includes(' ')?[...label]:label.split(/\s+/);
+      const sep=CJK.test(label)&&!label.includes(' ')?'':' ';
+      const lines=[];let cur='';
+      tokens.forEach((tok)=>{const next=cur?cur+sep+tok:tok;if(textW(next)>width&&cur){lines.push(cur);cur=tok}else cur=next});
+      if(cur)lines.push(cur);
+      // Balance CJK lines so a single character is never left on its own line.
+      if(!sep&&lines.length>1){const per=Math.ceil(tokens.length/lines.length);return lines.map((_,i)=>tokens.slice(i*per,(i+1)*per).join('')).filter(Boolean)}
+      return lines;
+    }
+    function node(b,label,{dark=false,delay=0,fs=12.5}={}){
+      el('rect',{x:b.x,y:b.y,width:b.w,height:b.h,rx:12,fill:dark?INK:FAINT,class:'pop',style:`animation-delay:${delay}s`});
+      const lines=fitLines(T(label),b.w-18,fs),lh=fs+3;
+      const start=b.y+b.h/2-((lines.length-1)*lh)/2+fs*.36;
+      lines.forEach((ln,i)=>el('text',{x:b.x+b.w/2,y:start+i*lh,fill:dark?PAPER:INK,'text-anchor':'middle','font-size':fs,'font-weight':800,class:'fade',style:`animation-delay:${delay+.08}s`},ln));
+    }
+    const lane=(x,y,s,delay,fs=10)=>label(x,y,T(s),{delay,fs,fill:INK,weight:800,ls:'.08em'});
+    const cy=(b)=>b.y+b.h/2, right=(b)=>b.x+b.w;
+    const ROAD={stroke:SOFT,sw:1.35}, BRANCH={stroke:GRID,sw:1.25};
 
-      // Columns: root | mid | branch | outcome
-      const root={x:28,y:220,w:170,h:78};
-      const midSR={x:280,y:48,w:220,h:68};
-      const outSR={x:600,y:56,w:180,h:52};
-      const debt={x:280,y:220,w:200,h:68};
-      const mon={x:540,y:158,w:180,h:58};
-      const rest={x:540,y:300,w:180,h:58};
-      const dep={x:760,y:214,w:84,h:90};
-
-      label(280,30,'SHORT-RUN RESPONSE · MUNDELL–FLEMING',{delay:0.05,fs:9,fill:INK,weight:800,ls:'.08em'});
-      label(280,198,'LONG-RUN RESPONSE · PORTFOLIO BALANCE APPROACH',{delay:0.12,fs:9,fill:INK,weight:800,ls:'.08em'});
-
-      box(root.x,root.y,root.w,root.h,'Expansionary Fiscal Policy',{dark:true,delay:0.05,maxChars:14,fs:12});
-      box(midSR.x,midSR.y,midSR.w,midSR.h,'Increase in Real Interest Rate Differential',{delay:0.2,maxChars:18,fs:11});
-      box(outSR.x,outSR.y,outSR.w,outSR.h,'Currency Appreciates',{dark:true,delay:0.35,maxChars:12,fs:12});
-      box(debt.x,debt.y,debt.w,debt.h,'Government Debt Buildup',{delay:0.22,maxChars:14,fs:12});
-      box(mon.x,mon.y,mon.w,mon.h,'Central Bank Monetizes Debt',{delay:0.38,maxChars:14,fs:11});
-      box(rest.x,rest.y,rest.w,rest.h,'Fiscal Stance Turns Restrictive',{delay:0.42,maxChars:14,fs:11});
-      box(dep.x,dep.y,dep.w,dep.h,'Currency Depreciates',{dark:true,delay:0.55,maxChars:10,fs:11});
-
-      const rx=root.x+root.w, ryc=root.y+root.h/2;
-      const sry=midSR.y+midSR.h/2;
-      const dy=debt.y+debt.h/2;
-      const my=mon.y+mon.h/2;
-      const ry2=rest.y+rest.h/2;
-      const dey=dep.y+dep.h/2;
-
-      // root → short-run mid
-      polyline([[rx,ryc],[248,ryc],[248,sry],[midSR.x,sry]],{delay:0.1,stroke:SOFT,sw:1.35});
-      arrow(midSR.x+midSR.w,sry,outSR.x,outSR.y+outSR.h/2,{delay:0.26,stroke:SOFT,sw:1.35});
-
-      // root → debt
-      arrow(rx,ryc,debt.x,dy,{delay:0.16,stroke:SOFT,sw:1.35});
-
-      // debt → monetize / restrictive / direct
-      const jx=520; // joint x after debt
-      polyline([[debt.x+debt.w,dy],[jx,dy],[jx,my],[mon.x,my]],{delay:0.3,stroke:GRID,sw:1.2});
-      polyline([[jx,dy],[jx,ry2],[rest.x,ry2]],{delay:0.34,stroke:GRID,sw:1.2});
-
-      // direct middle to depreciate
-      polyline([[debt.x+debt.w,dy],[730,dy],[730,dey],[dep.x,dey]],{delay:0.38,stroke:SOFT,sw:1.35});
-      label(640,dy-10,'direct effect',{delay:0.4,fs:9,fill:MUTED,weight:600,ls:'.04em',anchor:'middle'});
-
-      // monetize → depreciate
-      polyline([[mon.x+mon.w,my],[740,my],[740,dep.y+18],[dep.x,dep.y+18]],{delay:0.46,stroke:GRID,sw:1.2});
-      // restrictive → depreciate
-      polyline([[rest.x+rest.w,ry2],[740,ry2],[740,dep.y+dep.h-18],[dep.x,dep.y+dep.h-18]],{delay:0.5,stroke:GRID,sw:1.2});
+    function wide(){
+      svg.setAttribute('viewBox','0 0 860 344');
+      // Outcomes share a right-hand column so the two answers line up.
+      const root={x:24,y:212,w:172,h:76}, rate={x:252,y:52,w:226,h:58}, up={x:752,y:52,w:94,h:58};
+      const debt={x:252,y:222,w:196,h:56}, mon={x:540,y:162,w:176,h:52}, rest={x:540,y:286,w:176,h:52}, down={x:752,y:205,w:94,h:90};
+      lane(252,36,'SHORT-RUN RESPONSE · MUNDELL–FLEMING',.05);
+      lane(252,150,'LONG-RUN RESPONSE · PORTFOLIO BALANCE APPROACH',.12);
+      node(root,'Expansionary Fiscal Policy',{dark:true,delay:.05,fs:13.5});
+      node(rate,'Increase in Real Interest Rate Differential',{delay:.2});
+      node(up,'Currency Appreciates',{dark:true,delay:.35});
+      node(debt,'Government Debt Buildup',{delay:.22,fs:13});
+      node(mon,'Central Bank Monetizes Debt',{delay:.38});
+      node(rest,'Fiscal Stance Turns Restrictive',{delay:.42});
+      node(down,'Currency Depreciates',{dark:true,delay:.55});
+      polyline([[right(root),cy(root)],[224,cy(root)],[224,cy(rate)],[rate.x,cy(rate)]],{delay:.1,...ROAD});
+      arrow(right(rate),cy(rate),up.x,cy(up),{delay:.26,...ROAD});
+      arrow(right(root),cy(root),debt.x,cy(debt),{delay:.16,...ROAD});
+      const jx=500;
+      polyline([[right(debt),cy(debt)],[jx,cy(debt)],[jx,cy(mon)],[mon.x,cy(mon)]],{delay:.3,...BRANCH});
+      polyline([[jx,cy(debt)],[jx,cy(rest)],[rest.x,cy(rest)]],{delay:.34,...BRANCH});
+      arrow(right(debt),cy(debt),down.x,cy(down),{delay:.38,...ROAD});
+      label(628,cy(debt)-8,T('direct effect'),{delay:.4,fs:10.5,fill:MUTED,weight:600,ls:'.04em',anchor:'middle'});
+      polyline([[right(mon),cy(mon)],[734,cy(mon)],[734,cy(down)-20],[down.x,cy(down)-20]],{delay:.46,...BRANCH});
+      polyline([[right(rest),cy(rest)],[734,cy(rest)],[734,cy(down)+20],[down.x,cy(down)+20]],{delay:.5,...BRANCH});
     }
 
-    render();
-    document.querySelector('#card').addEventListener('click', render);
+    function narrow(){
+      svg.setAttribute('viewBox','0 0 360 408');
+      // One column read top to bottom; a left rail feeds both responses.
+      const root={x:24,y:6,w:312,h:42}, rate={x:24,y:96,w:176,h:56}, up={x:222,y:96,w:114,h:56};
+      const debt={x:24,y:200,w:200,h:50}, mon={x:24,y:280,w:148,h:52}, rest={x:188,y:280,w:126,h:52}, down={x:24,y:360,w:290,h:44};
+      lane(24,86,'SHORT-RUN RESPONSE · MUNDELL–FLEMING',.05,9);
+      lane(24,190,'LONG-RUN RESPONSE · PORTFOLIO BALANCE APPROACH',.12,9);
+      node(root,'Expansionary Fiscal Policy',{dark:true,delay:.05,fs:11.5});
+      node(rate,'Increase in Real Interest Rate Differential',{delay:.2,fs:10.5});
+      node(up,'Currency Appreciates',{dark:true,delay:.35,fs:10.5});
+      node(debt,'Government Debt Buildup',{delay:.22,fs:10.5});
+      node(mon,'Central Bank Monetizes Debt',{delay:.38,fs:10.5});
+      node(rest,'Fiscal Stance Turns Restrictive',{delay:.42,fs:10.5});
+      node(down,'Currency Depreciates',{dark:true,delay:.55,fs:11});
+      polyline([[root.x,cy(root)],[10,cy(root)],[10,cy(rate)],[rate.x,cy(rate)]],{delay:.1,...ROAD});
+      polyline([[10,cy(rate)],[10,cy(debt)],[debt.x,cy(debt)]],{delay:.16,...ROAD});
+      arrow(right(rate),cy(rate),up.x,cy(up),{delay:.26,...ROAD});
+      const mx=mon.x+mon.w/2, rx=rest.x+rest.w/2, jy=266;
+      polyline([[mx,debt.y+debt.h],[mx,mon.y]],{delay:.3,...BRANCH});
+      polyline([[mx,jy],[rx,jy],[rx,rest.y]],{delay:.34,...BRANCH});
+      arrow(mx,mon.y+mon.h,mx,down.y,{delay:.46,...BRANCH});
+      arrow(rx,rest.y+rest.h,rx,down.y,{delay:.5,...BRANCH});
+      polyline([[right(debt),cy(debt)],[346,cy(debt)],[346,cy(down)],[right(down),cy(down)]],{delay:.38,...ROAD});
+      label(286,cy(debt)-7,T('direct effect'),{delay:.4,fs:9,fill:MUTED,weight:600,ls:'.04em',anchor:'middle'});
+    }
+
+    let layout=null;
+    function render(force){
+      const small=svg.getBoundingClientRect().width<560;
+      if(!force&&small===layout)return;
+      layout=small;svg.innerHTML='';
+      (small?narrow:wide)();
+      if(parent!==window)parent.postMessage({chartHeight:document.querySelector('#card').scrollHeight},location.origin);
+    }
+
+    render(true);
+    document.querySelector('#card').addEventListener('click',()=>render(true));
+    window.addEventListener('resize',()=>render(false));
+    document.fonts?.ready.then(()=>render(true));
   </script>
 </body>
 </html>

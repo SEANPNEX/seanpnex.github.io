@@ -16,20 +16,24 @@
     border-radius: 24px;
     background: #F0EFEB;
 }
-.fx-concept-chart.dmp-chart { height: 560px; }
-.fx-concept-chart.alpha-chart { height: 560px; }
-.fx-concept-chart.tfp-chart { height: 560px; }
-.fx-concept-chart.solow-chart { height: 560px; }
-.fx-concept-chart.solow-s-chart { height: 560px; }
-.fx-concept-chart.solow-n-chart { height: 560px; }
+/* Starting heights only: each chart reports its rendered height once loaded. */
+.fx-concept-chart.dmp-chart { height: 420px; }
+.fx-concept-chart.alpha-chart { height: 420px; }
+.fx-concept-chart.tfp-chart { height: 480px; }
+.fx-concept-chart.solow-chart { height: 500px; }
+.fx-concept-chart.solow-s-chart { height: 500px; }
+.fx-concept-chart.solow-n-chart { height: 500px; }
 @media (max-width: 700px) {
     .fx-concept-chart { height: 500px; }
-    .fx-concept-chart.dmp-chart { height: 980px; }
-    .fx-concept-chart.alpha-chart { height: 980px; }
-    .fx-concept-chart.tfp-chart { height: 720px; }
-    .fx-concept-chart.solow-chart { height: 720px; }
-    .fx-concept-chart.solow-s-chart { height: 720px; }
-    .fx-concept-chart.solow-n-chart { height: 720px; }
+    .fx-concept-chart.tfp-chart { height: 520px; }
+    .fx-concept-chart.solow-chart { height: 520px; }
+    .fx-concept-chart.solow-s-chart { height: 520px; }
+    .fx-concept-chart.solow-n-chart { height: 530px; }
+}
+/* The two-panel charts stack their panels on phones. */
+@media (max-width: 587px) {
+    .fx-concept-chart.dmp-chart { height: 760px; }
+    .fx-concept-chart.alpha-chart { height: 770px; }
 }
 </style>
 
