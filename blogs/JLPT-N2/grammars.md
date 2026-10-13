@@ -134,3 +134,17 @@ For example, 行きます → 行きました → 行った, while 食べます 
 Quantifiers also come before other verbs: 兄が2人います。 — I have two older brothers. / スマホが2台あります。 — There are two smartphones.
 
 Counters used here: **枚** (flat objects), **一つ** (general), **本** (long/cylindrical), **人** (people), **台** (machines).
+
+## N をお願いします / N でお願いします
+
+**Rule:** **お願いします** is a polite request (“please”). It can replace **ください** in many ordering contexts.
+
+- ホットコーヒーをお願いします。 — A hot coffee, please.
+- これを４つお願いします。 — Four of these, please.
+
+**N でお願いします:** The particle **で** marks the **means / method / chosen option**. Use it when specifying size, payment, channel, and so on — especially when the item itself is already clear in context.
+
+- Sサイズでお願いします。 — Small, please. (natural when the clerk already asked about size)
+- Sサイズのコーヒーをお願いします。 — A small coffee, please. (names the item)
+- アリペイでお願いします。 — Alipay, please. (at payment)
+- Eメールでお願いします。 — By email, please. (when asking how to contact)
