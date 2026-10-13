@@ -121,3 +121,16 @@ For example, 行きます → 行きました → 行った, while 食べます 
 **も:** To say “also / too,” use **も**. も and を do not stack — も **replaces** を.
 
 - それから、ホットコーヒーもください。 — And then, please give me a hot coffee too.
+
+## N を (quantity) ください
+
+**Rule:** To say how many you want, put the **quantifier** (数量詞) before ください: **N を [quantifier] ください**. Quantifiers generally sit before the verb in Japanese.
+
+- この水族館の入場券を3枚ください。 — Please give me three admission tickets for this aquarium. / はい、3000円です。 — Sure, that’ll be 3000 yen.
+- チーズバーガーセットを一つください。 — Please give me one cheeseburger set.
+- あのう、これを2本ください。 — Um, please give me two of these.
+- シャツを3枚ください。 — Please give me three shirts.
+
+Quantifiers also come before other verbs: 兄が2人います。 — I have two older brothers. / スマホが2台あります。 — There are two smartphones.
+
+Counters used here: **枚** (flat objects), **一つ** (general), **本** (long/cylindrical), **人** (people), **台** (machines).
