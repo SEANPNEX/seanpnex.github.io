@@ -303,3 +303,16 @@ Together, tense (non-past / past) × polarity (affirmative / negative) make the 
 | | Past | 学生でした | 学生ではありませんでした（じゃありませんでした） ／ 学生ではなかったです（じゃなかったです） |
 
 **では** can be replaced by **じゃ** in spoken Japanese.
+
+## Adjective 中顿（连用形）— connecting adjectives
+
+**Rule:** To link adjectives in a parallel / sequential chain (中顿), use the **continuative** form of the **preceding** adjective. The form depends only on that adjective, not on what follows. Tense is carried by the **final** predicate; the middle form does not mark tense.
+
+- **Type I:** drop **い** → **くて** (A₁ い → く + て)
+- **Type II:** **A₂ + で**
+
+- 映画の主人公は背が高くて、魅力的です。 — The movie’s protagonist is tall and charming. *(高くて = Type I; 魅力的 = Type II)*
+- 昨日の試験問題は複雑で、難しかったです。 — Yesterday’s exam questions were complicated and difficult. *(複雑で = Type II; final past on 難しい)*
+- 映画の主人公は背が高くて、かっこいいです。 — …tall and cool. *(Type I + Type I — still 高くて)*
+- 映画の主人公は背が高くて、魅力的です。 — …tall and charming. *(Type I + Type II — still 高くて)*
+- 昨日の映画の主人公は背が高くて、魅力的でした。 — Yesterday’s protagonist was tall and charming. *(middle stays 高くて; past only on でした)*
