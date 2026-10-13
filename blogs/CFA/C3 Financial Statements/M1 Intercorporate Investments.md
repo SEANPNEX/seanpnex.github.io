@@ -13,6 +13,7 @@
 .fx-concept-chart.fsa-classify-chart { height: 700px; }
 .fx-concept-chart.fsa-measure-chart { height: 820px; }
 .fx-concept-chart.fsa-timeline-chart { height: 600px; }
+.fx-concept-chart.fsa-impair-chart { height: 680px; }
 @media (max-width: 700px) {
     .fx-concept-chart { height: 500px; }
     .fx-concept-chart.fsa-tree-chart { height: 620px; }
@@ -20,6 +21,7 @@
     .fx-concept-chart.fsa-classify-chart { height: 780px; }
     .fx-concept-chart.fsa-measure-chart { height: 920px; }
     .fx-concept-chart.fsa-timeline-chart { height: 680px; }
+    .fx-concept-chart.fsa-impair-chart { height: 760px; }
 }
 </style>
 
@@ -183,4 +185,24 @@ $$114.24 + 115.94 + 117.86 = 128.04 + 119 + 101 = 348.04$$
 
 That 348.04 is the economic profit implied at purchase: time value of money $300$ (coupons) + price discount $38.04$ ($=1000-951.96$).
 
+
+
+####  Impairment of Financial Assets
+
+The new standard moves the recognition criteria from an "incurred loss" model to an **"expected loss" model.**
+
+> [!note]
+>
+> The **expected loss model** name only is everything needed to know for CFA exam. Following content will not be tested.
+
+In the **Financial Instruments**, for **Financial Liabilities **, only Financial Guarantee Commitments and Loan Agreements can be impaired. For Financial Assets, FVPL will never be impaired because the whole mark-to-market move already hits P&L. There’s nothing left for a separate impairment test.
+
+The measurement of AMC impairment is same as how inventory impairment is done.
+
+<iframe
+  class="fx-concept-chart fsa-impair-chart"
+  src="/charts/financial-asset-impairment-bs.html"
+  title="AMC vs FVOCI impairment: B/S and I/S two stories"
+  loading="lazy"
+></iframe>
 
