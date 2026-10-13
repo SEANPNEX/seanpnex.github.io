@@ -8,10 +8,10 @@
     border-radius: 24px;
     background: #F0EFEB;
 }
-.fx-concept-chart.fsa-cat-chart { height: 560px; }
+.fx-concept-chart.fsa-cat-chart { height: 420px; }
 @media (max-width: 700px) {
     .fx-concept-chart { height: 500px; }
-    .fx-concept-chart.fsa-cat-chart { height: 620px; }
+    .fx-concept-chart.fsa-cat-chart { height: 480px; }
 }
 </style>
 
