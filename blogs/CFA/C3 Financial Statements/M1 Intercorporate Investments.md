@@ -206,3 +206,26 @@ The measurement of AMC impairment is same as how inventory impairment is done.
   loading="lazy"
 ></iframe>
 
+
+**How impairment is measured (chart example).**
+
+Expected credit loss (ECL) is the impairment amount. Only **AMC** and **debt FVOCI** run this test — FVPL does not.
+
+**AMC.** Carrying amount is amortized cost. ECL reduces the asset (allowance / direct write-down) and hits I/S in one step — same shape as inventory impairment.
+
+- Carrying amount $960$, ECL $15$
+- Asset: $960 - 15$
+- RE (I/S): $-15$
+
+**FVOCI (debt).** The asset is always reported at **fair value**. ECL still goes to I/S, but it does **not** change carrying amount again — it splits the total fair-value move into two stories:
+
+1. **Credit loss → I/S / RE** (impairment)
+2. **Other FV move → AOCI** (rates, liquidity, etc.)
+
+In the chart: FV falls $980 \to 960$ (total $-20$), ECL $=15$.
+
+- Asset stays at FV $960$
+- RE (I/S): $-15$
+- AOCI: $-20 + 15 = -5$
+
+So AMC and debt FVOCI put the **same $15$** through earnings; FVOCI also parks the leftover $-5$ in OCI because the balance sheet already shows full fair value.
