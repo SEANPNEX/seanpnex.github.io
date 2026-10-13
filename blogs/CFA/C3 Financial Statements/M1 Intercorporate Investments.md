@@ -12,12 +12,14 @@
 .fx-concept-chart.fsa-own-chart { height: 420px; }
 .fx-concept-chart.fsa-classify-chart { height: 700px; }
 .fx-concept-chart.fsa-measure-chart { height: 820px; }
+.fx-concept-chart.fsa-timeline-chart { height: 600px; }
 @media (max-width: 700px) {
     .fx-concept-chart { height: 500px; }
     .fx-concept-chart.fsa-tree-chart { height: 620px; }
     .fx-concept-chart.fsa-own-chart { height: 480px; }
     .fx-concept-chart.fsa-classify-chart { height: 780px; }
     .fx-concept-chart.fsa-measure-chart { height: 920px; }
+    .fx-concept-chart.fsa-timeline-chart { height: 680px; }
 }
 </style>
 
@@ -142,6 +144,13 @@ First get the effective `rate` of the investment from the calculator, with the t
   class="fx-concept-chart fsa-measure-chart"
   src="/charts/financial-asset-measurement-bs.html"
   title="Financial asset measurement balance-sheet paths (AMC, FVOCI, FVPL)"
+  loading="lazy"
+></iframe>
+
+<iframe
+  class="fx-concept-chart fsa-timeline-chart"
+  src="/charts/financial-asset-measurement-timeline.html"
+  title="Financial asset measurement three-story timeline (AMC, FVOCI, FVPL)"
   loading="lazy"
 ></iframe>
 
