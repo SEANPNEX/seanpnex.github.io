@@ -1,3 +1,20 @@
+<style>
+.fx-concept-chart {
+    display: block;
+    width: 100%;
+    height: 440px;
+    margin: 24px 0 30px;
+    border: 0;
+    border-radius: 24px;
+    background: #F0EFEB;
+}
+.fx-concept-chart.fsa-cat-chart { height: 560px; }
+@media (max-width: 700px) {
+    .fx-concept-chart { height: 500px; }
+    .fx-concept-chart.fsa-cat-chart { height: 620px; }
+}
+</style>
+
 # Intercorporate Investment
 
 ## Basic Corporate Investment Categories
@@ -6,43 +23,12 @@
 
 The following graph describes the catagories of investment in terms of accounting.
 
-```mermaid
----
-config:
-  layout: elk
-  look: classic
----
-graph TD
-    %% Color legend
-    Legend[Legend:<br/>🔴 FVPL = Fair Value Through Profit or Loss<br/>🔵 FVOCI = Fair Value Through Other Comprehensive Income<br/>🟢 AMC = Amortized Cost]
-
-    A[Investment] --> B[Equity]
-    A --> C[Bond]
-    B --> D[Financial Assets]
-    B --> E[Long-term Equity]
-    C --> F[Other Bond Investment]
-    C --> G[Trading Securities]
-    C --> J[Bond Investment]
-    D --> H[Trading Security]
-    D --> I[Other Equity Investment]
-    
-    E --> K[Investment in Financial Assset]
-    E --> L[Investment in Associates]
-    E --> M[Joint Ventures]
-    E --> N[Business Combinationsß]
-    
-    Legend --> A
-
-    %% Class definitions
-    classDef fvpl fill:#ffdede,stroke:#f66,stroke-width:2px;
-    classDef fvoci fill:#ddeeff,stroke:#00f,stroke-width:2px;
-    classDef amc fill:#defde0,stroke:#090,stroke-width:2px;
-
-    %% Class assignments (only one class per node)
-    class G,H fvpl
-    class E,F,I fvoci
-    class J amc
-```
+<iframe
+  class="fx-concept-chart fsa-cat-chart"
+  src="/charts/intercorporate-investment-categories.html"
+  title="Intercorporate investment categories"
+  loading="lazy"
+></iframe>
 
 #### Long-Term Equity
 

@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Intercorporate investment categories</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@6/dist/echarts.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#F0EFEB;--ink:#1C1C1A;--muted:#8F8E88;--faint:#C6C5BF}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);font-family:'Inter',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+  .card{background:var(--bg);border-radius:24px;padding:28px 28px 18px}
+  h2{font-weight:700;font-size:16.5px;letter-spacing:-.02em;margin-bottom:3px;max-width:42em;line-height:1.25}
+  .sub{font-size:11.5px;color:var(--muted);margin-bottom:14px;line-height:1.5}
+  .src{font-size:9.5px;color:var(--faint);margin-top:10px;letter-spacing:.08em;font-weight:500;text-transform:uppercase}
+  .ch{height:450px;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){
+    .ch{cursor:default}
+  }
+</style>
+</head>
+<body>
+<div class="card" id="card">
+  <h2>Ownership and instrument decide the accounting path.</h2>
+  <div class="sub">equity vs bond · shade = FVPL / FVOCI / AMC · CFA L2 FSA M1</div>
+  <div class="ch" id="tree" role="img" aria-label="Left-to-right tree of intercorporate investment categories"></div>
+  <div class="src">TREE LR · LIEFLAT G7 · INTERCORPORATE INVESTMENTS</div>
+</div>
+<script>
+(() => {
+  const INK = '#1C1C1A';
+  const PAPER = '#F0EFEB';
+  const MUTED = '#8F8E88';
+  const L = ['#1C1C1A', '#4A4944', '#6A6963', '#8F8E88', '#B0AFA9', '#C6C5BF'];
+  const tipLight = {
+    backgroundColor: INK,
+    borderWidth: 0,
+    padding: [10, 14],
+    textStyle: { color: PAPER, fontFamily: 'Inter', fontSize: 12 },
+  };
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const n = (name, shade, kids, extra = {}) => ({
+    name,
+    itemStyle: { color: shade },
+    lineStyle: { color: shade },
+    children: kids,
+    ...extra,
+  });
+  const leaf = (name, full, shade) => ({
+    name,
+    full,
+    itemStyle: { color: shade },
+    lineStyle: { color: shade },
+  });
+
+  // Shade: FVPL darkest (L0), FVOCI mid (L2), AMC lightest (L4);
+  // long-term equity children share mid (L3); parents ink/muted.
+  const DATA = n('Investment', INK, [
+    n('Equity', L[1], [
+      n('Fin. assets', L[2], [
+        leaf('Trading · FVPL', 'Trading security · Fair value through P&L (FVPL)', L[0]),
+        leaf('Other · FVOCI', 'Other equity investment · Fair value through OCI (FVOCI)', L[2]),
+      ], { full: 'Financial assets' }),
+      n('Long-term eq.', L[3], [
+        leaf('No influence', 'Investment in financial assets — no significant influence', L[3]),
+        leaf('Associates', 'Investment in associates — significant influence', L[3]),
+        leaf('Joint ventures', 'Joint ventures — shared control', L[3]),
+        leaf('Combinations', 'Business combinations — control', L[3]),
+      ], { full: 'Long-term equity' }),
+    ]),
+    n('Bond', L[1], [
+      leaf('Trading · FVPL', 'Trading securities · Fair value through P&L (FVPL)', L[0]),
+      leaf('Other · FVOCI', 'Other bond investment · Fair value through OCI (FVOCI)', L[2]),
+      leaf('Bond · AMC', 'Bond investment · Amortized cost (AMC)', L[4]),
+    ]),
+  ], {
+    label: { fontSize: 11.5, color: INK, fontWeight: 700 },
+    lineStyle: { color: L[5] },
+    full: 'Intercorporate investment',
+  });
+
+  const timers = {};
+  const keep = (id, t) => { (timers[id] = timers[id] || []).push(t); };
+  const obsReveal = (id, fn) => {
+    const el = document.getElementById(id);
+    const go = () => {
+      (timers[id] || []).forEach(clearInterval);
+      timers[id] = [];
+      fn(el);
+    };
+    if (reduced) {
+      go();
+    } else {
+      const io = new IntersectionObserver((es) => {
+        if (es[0].isIntersecting) { go(); io.disconnect(); }
+      }, { threshold: 0.3 });
+      io.observe(el);
+      el.addEventListener('click', go);
+    }
+  };
+  const eReveal = (id, opt) => obsReveal(id, (elDom) => {
+    const g = echarts.getInstanceByDom(elDom) || echarts.init(elDom);
+    g.clear();
+    g.setOption(opt);
+    g.resize();
+  });
+
+  const option = {
+    animationDuration: reduced ? 0 : 1100,
+    animationEasing: 'quarticOut',
+    tooltip: {
+      ...tipLight,
+      trigger: 'item',
+      formatter: (p) => {
+        const d = p.data || {};
+        const title = d.full || d.name || '';
+        return `<b>${title}</b>`;
+      },
+    },
+    series: [{
+      type: 'tree',
+      layout: 'orthogonal',
+      orient: 'LR',
+      left: 88,
+      right: 118,
+      top: 12,
+      bottom: 12,
+      symbol: 'circle',
+      symbolSize: 7,
+      initialTreeDepth: 4,
+      expandAndCollapse: false,
+      roam: false,
+      itemStyle: { borderWidth: 0 },
+      lineStyle: { width: 1.4, curveness: 0.5 },
+      label: {
+        fontFamily: 'Inter',
+        fontSize: 10,
+        fontWeight: 600,
+        color: '#6A6963',
+        position: 'left',
+        distance: 8,
+      },
+      leaves: {
+        label: {
+          position: 'right',
+          color: MUTED,
+          fontWeight: 500,
+          fontSize: 10,
+          distance: 8,
+        },
+      },
+      emphasis: {
+        focus: 'ancestor',
+        lineStyle: { width: 1.8, color: INK },
+      },
+      data: [DATA],
+    }],
+  };
+
+  eReveal('tree', option);
+
+  const fit = () => {
+    if (parent !== window) {
+      parent.postMessage(
+        { chartHeight: document.querySelector('#card').scrollHeight },
+        location.origin,
+      );
+    }
+  };
+  addEventListener('load', fit);
+  addEventListener('resize', () => {
+    const el = document.getElementById('tree');
+    const g = echarts.getInstanceByDom(el);
+    g && g.resize();
+    fit();
+  });
+  // Keep unused keep() referenced for parity with gallery timer pattern.
+  void keep;
+})();
+</script>
+</body>
+</html>
