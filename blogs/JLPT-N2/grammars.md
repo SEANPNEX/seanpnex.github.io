@@ -304,9 +304,9 @@ Together, tense (non-past / past) × polarity (affirmative / negative) make the 
 
 **では** can be replaced by **じゃ** in spoken Japanese.
 
-## Adjective 中顿（连用形）— connecting adjectives
+## Connecting adjectives
 
-**Rule:** To link adjectives in a parallel / sequential chain (中顿), use the **continuative** form of the **preceding** adjective. The form depends only on that adjective, not on what follows. Tense is carried by the **final** predicate; the middle form does not mark tense.
+**Rule:** To link adjectives in a parallel / sequential chain, use the **continuative** form of the **preceding** adjective. The form depends only on that adjective, not on what follows. Tense is carried by the **final** predicate; the middle form does not mark tense.
 
 - **Type I:** drop **い** → **くて** (A₁ い → く + て)
 - **Type II:** **A₂ + で**
@@ -316,3 +316,11 @@ Together, tense (non-past / past) × polarity (affirmative / negative) make the 
 - 映画の主人公は背が高くて、かっこいいです。 — …tall and cool. *(Type I + Type I — still 高くて)*
 - 映画の主人公は背が高くて、魅力的です。 — …tall and charming. *(Type I + Type II — still 高くて)*
 - 昨日の映画の主人公は背が高くて、魅力的でした。 — Yesterday’s protagonist was tall and charming. *(middle stays 高くて; past only on でした)*
+
+## N まで（endpoint）
+
+**Rule:** **まで** follows a noun and marks an **endpoint / limit** (“until / up to / as far as”). It works with **time** nouns (this lesson) and with **place** nouns for a spatial endpoint. **N まで** can also take **です** as a noun-predicate sentence.
+
+- わたしは昨日、遅くまで日本語の試験でした。 — Yesterday my Japanese exam went until late.
+- 今日の授業はここまでです。 — Today’s class ends here. / That’s as far as today’s lesson goes.
+- あの歌手のライブツアーは来月20日までです。 — That singer’s live tour runs until the 20th of next month.
