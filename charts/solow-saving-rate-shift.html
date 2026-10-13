@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Higher saving lifts the steady-state levels</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+</head>
+<body>
+  <main class="card" id="card">
+    <h2>Higher saving lifts the steady-state levels.</h2>
+    <div class="sub" id="sub"></div>
+    <section class="panel">
+      <h3>Saving-rate shift</h3>
+      <div class="hint" id="hint"></div>
+      <svg id="chart" role="img" aria-label="Higher saving lifts the steady-state levels"></svg>
+    </section>
+    <div class="src" id="src"></div>
+  </main>
+  <script src="i18n.js"></script>
+  <script>
+chartI18n.use({
+  zh: {
+    'Higher saving lifts the steady-state levels': '更高储蓄抬升稳态水平',
+    'Higher saving lifts the steady-state levels.': '更高储蓄抬升稳态水平。',
+    's↑ shifts sy = sAkα up · ray fixed · A→B raises k* and y* · long-run growth rate unchanged': 's↑ 使 sy = sAkα 上移 · 射线不变 · A→B 提高 k*、y* · 长期增长率不变',
+    'Saving-rate shift': '储蓄率移动',
+    'Gray = s₁f(k) · ink = s₂f(k) · ray = required investment · A→B = higher steady state': '灰色 = s₁f(k) · 墨色 = s₂f(k) · 射线 = 必要投资 · A→B = 更高稳态',
+    'SOLOW SAVING-RATE SHIFT · F2 HAIRLINE LINE · s↑ → k*, y*': '索洛储蓄率移动 · F2 发丝折线 · s↑ → k*、y*',
+    'capital per worker k →': '人均资本 k →',
+    'output per worker y': '人均产出 y',
+    's₁ f(k)': 's₁ f(k)',
+    's₂ f(k)': 's₂ f(k)',
+    '[δ + n + θ/(1−α)]k': '[δ + n + θ/(1−α)]k',
+    's↑': 's↑',
+    'A': 'A',
+    'B': 'B',
+    'k_A': 'k_A',
+    'k_B': 'k_B',
+    'y_A': 'y_A',
+    'y_B': 'y_B',
+  },
+  ja: {
+    'Higher saving lifts the steady-state levels': '貯蓄率上昇は定常水準を押し上げる',
+    'Higher saving lifts the steady-state levels.': '貯蓄率上昇は定常水準を押し上げる。',
+    's↑ shifts sy = sAkα up · ray fixed · A→B raises k* and y* · long-run growth rate unchanged': 's↑ で sy = sAkα が上へ · 光線は固定 · A→B で k*・y* 上昇 · 長期成長率は不変',
+    'Saving-rate shift': '貯蓄率シフト',
+    'Gray = s₁f(k) · ink = s₂f(k) · ray = required investment · A→B = higher steady state': '灰 = s₁f(k) · 墨 = s₂f(k) · 光線 = 必要投資 · A→B = 高い定常状態',
+    'SOLOW SAVING-RATE SHIFT · F2 HAIRLINE LINE · s↑ → k*, y*': 'ソロー貯蓄率シフト · F2 ヘアライン · s↑ → k*、y*',
+    'capital per worker k →': '労働者あたり資本 k →',
+    'output per worker y': '労働者あたり産出 y',
+    's₁ f(k)': 's₁ f(k)',
+    's₂ f(k)': 's₂ f(k)',
+    '[δ + n + θ/(1−α)]k': '[δ + n + θ/(1−α)]k',
+    's↑': 's↑',
+    'A': 'A',
+    'B': 'B',
+    'k_A': 'k_A',
+    'k_B': 'k_B',
+    'y_A': 'y_A',
+    'y_B': 'y_B',
+  },
+  fr: {
+    'Higher saving lifts the steady-state levels': 'Une épargne plus élevée relève les niveaux stationnaires',
+    'Higher saving lifts the steady-state levels.': 'Une épargne plus élevée relève les niveaux stationnaires.',
+    's↑ shifts sy = sAkα up · ray fixed · A→B raises k* and y* · long-run growth rate unchanged': 's↑ déplace sy = sAkα vers le haut · rayon fixe · A→B relève k* et y* · taux de croissance de long terme inchangé',
+    'Saving-rate shift': 'Décalage du taux d’épargne',
+    'Gray = s₁f(k) · ink = s₂f(k) · ray = required investment · A→B = higher steady state': 'Gris = s₁f(k) · encre = s₂f(k) · rayon = investissement requis · A→B = état stationnaire plus élevé',
+    'SOLOW SAVING-RATE SHIFT · F2 HAIRLINE LINE · s↑ → k*, y*': 'SOLOW TAUX D’ÉPARGNE · LIGNE F2 · s↑ → k*, y*',
+    'capital per worker k →': 'capital par travailleur k →',
+    'output per worker y': 'produit par travailleur y',
+    's₁ f(k)': 's₁ f(k)',
+    's₂ f(k)': 's₂ f(k)',
+    '[δ + n + θ/(1−α)]k': '[δ + n + θ/(1−α)]k',
+    's↑': 's↑',
+    'A': 'A',
+    'B': 'B',
+    'k_A': 'k_A',
+    'k_B': 'k_B',
+    'y_A': 'y_A',
+    'y_B': 'y_B',
+  },
+});
+  </script>
+  <script>
+(() => {
+  const { C, T, label, frame, axes, curve, beads, guide, dot, arrow, mount, html } = curveKit;
+  // Illustrative parameters; PHI = δ + n + θ/(1−α).
+  const ALPHA = 0.33, A = 1.2, S1 = 0.22, S2 = 0.42, PHI = 0.15, K = 8.5;
+  const sf = (s) => (k) => s * A * Math.pow(k, ALPHA), ray = (k) => PHI * k;
+  // s A k^α = φ k  ⇒  k* = (s A / φ)^(1/(1−α))
+  const kStar = (s) => Math.pow((s * A) / PHI, 1 / (1 - ALPHA));
+  const kA = kStar(S1), kB = kStar(S2), yA = ray(kA), yB = ray(kB);
+  const height = (w) => Math.max(240, Math.min(310, w * 0.56));
+
+  html('#sub', 's↑ shifts sy = sAkα up · ray fixed · A→B raises k* and y* · long-run growth rate unchanged', [['sAkα', 'sAk<sup>α</sup>']]);
+  html('#hint', 'Gray = s₁f(k) · ink = s₂f(k) · ray = required investment · A→B = higher steady state');
+  html('#src', 'SOLOW SAVING-RATE SHIFT · F2 HAIRLINE LINE · s↑ → k*, y*', [['s↑ → k*, y*', '<span class="f">s↑ → k*, y*</span>']]);
+
+  mount(document.getElementById('chart'), (s, W, H) => {
+    const F = frame(s, W, H, { l: 30, r: 12, t: 30, b: 48 }, K, ray(K) * 1.06);
+    axes(s, F, T('capital per worker k →'), T('output per worker y'));
+    const pts = { A: [F.x(kA), F.y(yA)], B: [F.x(kB), F.y(yB)] };
+    Object.entries(pts).forEach(([n, [x, y]], i) => {
+      const fill = n === 'B' ? C.INK : C.MUTED, delay = 0.45 + i * 0.06;
+      guide(s, x, y + 6, x, F.BASE, delay);
+      guide(s, F.X0, y, x - 6, y, delay);
+      label(s, x, F.BASE + 15, `k_{${n}}`, { size: 11, fill, anchor: 'middle', delay: delay + 0.1 });
+      label(s, F.X0 - 5, y + 4, `y_{${n}}`, { size: 11, fill, anchor: 'end', delay: delay + 0.1 });
+    });
+
+    curve(s, F, ray, 0, K, { stroke: C.MUTED, width: 1.2 });
+    curve(s, F, sf(S1), 0, K, { stroke: C.SOFT, width: 1.3, delay: 0.04 });
+    curve(s, F, sf(S2), 0, K, { delay: 0.1 });
+    beads(s, F, sf(S1), 0.3, K, { fill: C.SOFT, r: 1.4, avoid: [kA] });
+    beads(s, F, sf(S2), 0.3, K, { avoid: [kB] });
+
+    // Savings curves are named under their right ends; the ray above-left of its top.
+    label(s, F.X1, F.y(sf(S2)(K)) + 17, 's_{2} f(k)', { anchor: 'end', delay: 0.72 });
+    label(s, F.X1, F.y(sf(S1)(K)) + 17, 's_{1} f(k)', { fill: C.MUTED, anchor: 'end', delay: 0.65 });
+    const kr = K * 0.94;
+    label(s, F.x(kr) - 10, F.y(ray(kr)), '[δ + n + θ/(1−α)]k', { size: 10.5, weight: 700, fill: C.MUTED, anchor: 'end', delay: 0.75 });
+
+    // s↑ lifts the savings curve.
+    const ku = 1.5, ux = F.x(ku), u1 = F.y(sf(S1)(ku)) - 6, u2 = F.y(sf(S2)(ku)) + 6;
+    arrow(s, [[ux, u1], [ux, u2]], { width: 1.5, delay: 0.95 });
+    label(s, ux + 7, (u1 + u2) / 2 + 4, 's↑', { size: 12, delay: 1.05 });
+
+    // k_A → k_B under the axis.
+    const ay = F.BASE + 28;
+    arrow(s, [[pts.A[0] + 12, ay], [pts.B[0] - 12, ay]], { stroke: C.MUTED, width: 1.2, delay: 1.1 });
+
+    dot(s, ...pts.A, 5, C.MUTED, 0.7, `A: k=${kA.toFixed(2)}, y=${yA.toFixed(2)}`);
+    dot(s, ...pts.B, 5.2, C.INK, 0.82, `B: k=${kB.toFixed(2)}, y=${yB.toFixed(2)}`);
+    label(s, pts.A[0] + 9, pts.A[1] + 17, 'A', { size: 13, fill: C.MUTED, delay: 0.78 });
+    label(s, pts.B[0] - 9, pts.B[1] - 9, 'B', { size: 13, anchor: 'end', delay: 0.9 });
+  }, height);
+})();
+  </script>
+</body>
+</html>

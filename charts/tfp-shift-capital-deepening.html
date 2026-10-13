@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Capital deepening vs increase in TFP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+</head>
+<body>
+  <main class="card" id="card">
+    <h2>Higher A lifts the whole curve.</h2>
+    <div class="sub" id="sub"></div>
+    <section class="panel">
+      <h3>Production function</h3>
+      <div class="hint">Ink = higher A · gray = baseline A · A→B along curve · B→C at same k</div>
+      <svg id="prod" role="img" aria-label="Capital deepening versus TFP shift"></svg>
+    </section>
+    <div class="src" id="src"></div>
+  </main>
+  <script src="i18n.js"></script>
+  <script>
+chartI18n.use({
+  zh: {
+    'Capital deepening vs increase in TFP': '资本深化与全要素生产率提高',
+    'Capital deepening versus TFP shift': '资本深化与全要素生产率提高',
+    'Higher A lifts the whole curve.': '提高 A 会使整条曲线上移。',
+    'y = A kα · α fixed · along-curve = capital deepening · vertical shift = TFP ↑': 'y = A kα · α 不变 · 沿曲线 = 资本深化 · 垂直上移 = TFP ↑',
+    'Production function': '生产函数',
+    'Ink = higher A · gray = baseline A · A→B along curve · B→C at same k': '墨色 = 更高 A · 灰色 = 基准 A · A→B 沿曲线 · B→C 同一 k',
+    'CAPITAL DEEPENING VS TFP · F2 HAIRLINE LINE · y = A kα': '资本深化 vs TFP · F2 发丝折线 · y = A kα',
+    'capital intensity k →': '资本强度 k →',
+    'output y': '产出 y',
+    'capital deepening': '资本深化',
+    'TFP ↑': 'TFP ↑',
+    'baseline A': '基准 A',
+    'higher A': '更高 A',
+  },
+  ja: {
+    'Capital deepening vs increase in TFP': '資本深化とTFP上昇',
+    'Capital deepening versus TFP shift': '資本深化とTFP上昇',
+    'Higher A lifts the whole curve.': 'A を上げると曲線全体が上へ移る。',
+    'y = A kα · α fixed · along-curve = capital deepening · vertical shift = TFP ↑': 'y = A kα · α は一定 · 曲線上 = 資本深化 · 垂直シフト = TFP ↑',
+    'Production function': '生産関数',
+    'Ink = higher A · gray = baseline A · A→B along curve · B→C at same k': '墨 = 高い A · 灰 = 基準 A · A→B は曲線上 · B→C は同じ k',
+    'CAPITAL DEEPENING VS TFP · F2 HAIRLINE LINE · y = A kα': '資本深化 vs TFP · F2 ヘアライン · y = A kα',
+    'capital intensity k →': '資本集約度 k →',
+    'output y': '産出 y',
+    'capital deepening': '資本深化',
+    'TFP ↑': 'TFP ↑',
+    'baseline A': '基準 A',
+    'higher A': '高い A',
+  },
+  fr: {
+    'Capital deepening vs increase in TFP': 'Approfondissement du capital vs hausse de la PTF',
+    'Capital deepening versus TFP shift': 'Approfondissement du capital vs hausse de la PTF',
+    'Higher A lifts the whole curve.': 'Un A plus élevé soulève toute la courbe.',
+    'y = A kα · α fixed · along-curve = capital deepening · vertical shift = TFP ↑': 'y = A kα · α fixe · le long de la courbe = approfondissement · décalage vertical = PTF ↑',
+    'Production function': 'Fonction de production',
+    'Ink = higher A · gray = baseline A · A→B along curve · B→C at same k': 'Encre = A élevé · gris = A de base · A→B le long de la courbe · B→C au même k',
+    'CAPITAL DEEPENING VS TFP · F2 HAIRLINE LINE · y = A kα': 'APPROFONDISSEMENT VS PTF · LIGNE F2 · y = A kα',
+    'capital intensity k →': 'intensité capitalistique k →',
+    'output y': 'produit y',
+    'capital deepening': 'capital par tête ↑',
+    'TFP ↑': 'PTF ↑',
+    'baseline A': 'A de base',
+    'higher A': 'A élevé',
+  },
+});
+  </script>
+  <script>
+(() => {
+  const { C, T, el, label, frame, axes, curve, beads, guide, dot, arrow, points, mount, html } = curveKit;
+  const ALPHA = 0.4, A0 = 1, A1 = 1.55, K = 8;
+  const lo = (k) => A0 * Math.pow(k, ALPHA), hi = (k) => A1 * Math.pow(k, ALPHA);
+  // A → B moves along the baseline curve; B → C lifts it at the same k.
+  const kA = 1.6, kB = 3.6;
+  const height = (w) => Math.max(250, Math.min(290, w * 0.52));
+
+  html('#sub', 'y = A kα · α fixed · along-curve = capital deepening · vertical shift = TFP ↑', [['kα', 'k<sup>α</sup>']]);
+  html('#src', 'CAPITAL DEEPENING VS TFP · F2 HAIRLINE LINE · y = A kα', [['y = A kα', '<span class="f">y = A k<sup>α</sup></span>']]);
+
+  mount(document.getElementById('prod'), (s, W, H) => {
+    const F = frame(s, W, H, { l: 34, r: 12, t: 30, b: 32 }, K, hi(K) * 1.1);
+    axes(s, F, T('capital intensity k →'), T('output y'));
+    const P = { A: [kA, lo(kA)], B: [kB, lo(kB)], C: [kB, hi(kB)] };
+    const px = (n) => [F.x(P[n][0]), F.y(P[n][1])];
+
+    // Guides from each point to both axes.
+    ['A', 'B', 'C'].forEach((n, i) => {
+      const [x, y] = px(n);
+      guide(s, F.X0, y, x, y, 0.45 + i * 0.05);
+      label(s, F.X0 - 5, y + 4, `y_{${n}}`, { size: 10.5, weight: 700, fill: n === 'C' ? C.INK : C.MUTED, anchor: 'end', delay: 0.5 + i * 0.05 });
+    });
+    ['A', 'B'].forEach((n, i) => {
+      const [x, y] = px(n);
+      guide(s, x, y + 5, x, F.BASE, 0.45 + i * 0.05);
+      label(s, x, F.BASE + 15, `k_{${n}}`, { size: 10.5, weight: 700, fill: C.MUTED, anchor: 'middle', delay: 0.5 + i * 0.05 });
+    });
+
+    curve(s, F, lo, 0, K, { stroke: C.SOFT, width: 1.3 });
+    curve(s, F, hi, 0, K, { delay: 0.08 });
+    beads(s, F, lo, 0.4, K, { fill: C.SOFT, r: 1.4, avoid: [kA, kB] });
+    beads(s, F, hi, 0.4, K, { avoid: [kB] });
+    label(s, F.X1, F.y(hi(K)) - 9, T('higher A'), { anchor: 'end', delay: 0.8 });
+    label(s, F.X1, F.y(lo(K)) - 9, T('baseline A'), { fill: C.MUTED, anchor: 'end', delay: 0.7 });
+
+    // Capital deepening: an arrow that follows the baseline curve just beneath it.
+    const along = points(F, lo, kA + 0.2, kB - 0.25, 30).map(([x, y]) => [x, y + 11]);
+    arrow(s, along, { stroke: C.MUTED, delay: 0.85 });
+    const room = F.x(kB) - F.x(kA) - 14;
+    label(s, (F.x(kA) + F.x(kB)) / 2 + 4, F.y(lo((kA + kB) / 2)) + 34, T('capital deepening'), {
+      size: 10.5, fill: C.MUTED, anchor: 'middle', maxWidth: room, delay: 0.95,
+    });
+
+    // TFP: B straight up to C.
+    const [bx, by] = px('B'), [, cy] = px('C');
+    arrow(s, [[bx, by - 7], [bx, cy + 7]], { width: 1.6, delay: 1.0 });
+    label(s, bx + 8, (by + cy) / 2 + 4, T('TFP ↑'), { size: 12, delay: 1.05 });
+
+    dot(s, ...px('A'), 4.4, C.SOFT, 0.55, `A: k=${kA}, y=${lo(kA).toFixed(2)}`);
+    dot(s, ...px('B'), 4.4, C.SOFT, 0.63, `B: k=${kB}, y=${lo(kB).toFixed(2)}`);
+    dot(s, ...px('C'), 4.6, C.INK, 0.71, `C: k=${kB}, y=${hi(kB).toFixed(2)}`);
+    label(s, px('A')[0] - 7, px('A')[1] - 7, 'A', { size: 12.5, fill: C.MUTED, anchor: 'end', delay: 0.65 });
+    label(s, px('B')[0] + 9, px('B')[1] + 16, 'B', { size: 13, fill: C.MUTED, delay: 0.73 });
+    label(s, px('C')[0] - 8, px('C')[1] - 8, 'C', { size: 13, anchor: 'end', delay: 0.81 });
+  }, height);
+})();
+  </script>
+</body>
+</html>

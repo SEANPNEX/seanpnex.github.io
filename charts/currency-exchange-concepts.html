@@ -6,7 +6,7 @@
   <title>Currency-exchange concepts</title>
   <style>
     :root{--paper:#F0EFEB;--ink:#1C1C1A;--muted:#6A6963;--soft:#A8A7A0;--grid:#D8D6CE;--faint:#E3E2DB}
-    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,sans-serif}.card{min-height:460px;padding:29px 30px 18px;border-radius:24px;overflow:hidden}h2{max-width:760px;margin:0;font-size:clamp(25px,4vw,42px);font-weight:700;line-height:1.05;letter-spacing:-.035em}.sub{margin:10px 0 7px;color:var(--muted);font-size:12px;line-height:1.5}svg{display:block;width:100%;height:315px}.src{color:#8A8983;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}.draw{stroke-dasharray:1;stroke-dashoffset:1;animation:draw .7s cubic-bezier(.25,.9,.35,1) forwards}.pop{opacity:0;transform-box:fill-box;transform-origin:center;animation:pop .4s cubic-bezier(.25,.9,.35,1) forwards}.fade{opacity:0;animation:fade .45s ease forwards}@keyframes draw{to{stroke-dashoffset:0}}@keyframes pop{to{opacity:1;transform:scale(1)}}@keyframes fade{to{opacity:1}}@media(max-width:600px){.card{padding:24px 15px 15px}.sub{font-size:11px}svg{height:355px}}@media(prefers-reduced-motion:reduce){.draw{stroke-dashoffset:0;animation:none}.pop,.fade{opacity:1;transform:none;animation:none}}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,sans-serif}.card{padding:29px 30px 18px;border-radius:24px;overflow:hidden}h2{max-width:760px;margin:0;font-size:clamp(25px,4vw,42px);font-weight:700;line-height:1.05;letter-spacing:-.035em}.sub{margin:10px 0 7px;color:var(--muted);font-size:12px;line-height:1.5}svg{display:block;width:100%;height:auto;margin:6px 0 10px;overflow:visible}.src{color:#8A8983;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}.draw{stroke-dasharray:1;stroke-dashoffset:1;animation:draw .7s cubic-bezier(.25,.9,.35,1) forwards}.pop{opacity:0;transform-box:fill-box;transform-origin:center;animation:pop .4s cubic-bezier(.25,.9,.35,1) forwards}.fade{opacity:0;animation:fade .45s ease forwards}@keyframes draw{to{stroke-dashoffset:0}}@keyframes pop{to{opacity:1;transform:scale(1)}}@keyframes fade{to{opacity:1}}@media(max-width:600px){.card{padding:24px 15px 15px}.sub{font-size:11px}}@media(prefers-reduced-motion:reduce){.draw{stroke-dashoffset:0;animation:none}.pop,.fade{opacity:1;transform:none;animation:none}}
   </style>
 </head>
 <body>
@@ -37,6 +37,8 @@ chartI18n.use({
     'CAPITAL INFLOW': '资本流入',
     'APPRECIATION': '升值',
     'REGIME MATTERS · UNDER A FIXED RATE THE CENTRAL BANK MUST DEFEND THE PEG': '汇率制度很重要 · 在固定汇率下，央行必须维护挂钩汇率',
+    'REGIME MATTERS': '汇率制度很重要',
+    'UNDER A FIXED RATE THE CENTRAL BANK MUST DEFEND THE PEG': '在固定汇率下，央行必须维护挂钩汇率',
   },
   ja: {
     'Currency-exchange concepts': '為替の概念',
@@ -61,6 +63,8 @@ chartI18n.use({
     'CAPITAL INFLOW': '資本流入',
     'APPRECIATION': '通貨高',
     'REGIME MATTERS · UNDER A FIXED RATE THE CENTRAL BANK MUST DEFEND THE PEG': '為替制度が重要 · 固定相場制では中央銀行がペッグを守らなければならない',
+    'REGIME MATTERS': '為替制度が重要',
+    'UNDER A FIXED RATE THE CENTRAL BANK MUST DEFEND THE PEG': '固定相場制では中央銀行がペッグを守らなければならない',
   },
   fr: {
     'Currency-exchange concepts': 'Notions de change',
@@ -85,29 +89,103 @@ chartI18n.use({
     'CAPITAL INFLOW': 'ENTRÉE DE CAPITAUX',
     'APPRECIATION': 'APPRÉCIATION',
     'REGIME MATTERS · UNDER A FIXED RATE THE CENTRAL BANK MUST DEFEND THE PEG': 'LE RÉGIME COMPTE · EN CHANGE FIXE, LA BANQUE CENTRALE DOIT DÉFENDRE L’ANCRAGE',
+    'REGIME MATTERS': 'LE RÉGIME COMPTE',
+    'UNDER A FIXED RATE THE CENTRAL BANK MUST DEFEND THE PEG': 'EN CHANGE FIXE, LA BANQUE CENTRALE DOIT DÉFENDRE L’ANCRAGE',
   },
 });
   </script>
   <script>
     const NS='http://www.w3.org/2000/svg',INK='#1C1C1A',PAPER='#F0EFEB',MUTED='#6A6963',SOFT='#A8A7A0',GRID='#D8D6CE',FAINT='#E3E2DB';
     const svg=document.querySelector('#chart');
+    const T=(s)=>(window.chartI18n?chartI18n.t(s):s);
     const el=(tag,a={},content='')=>{const n=document.createElementNS(NS,tag);Object.entries(a).forEach(([k,v])=>n.setAttribute(k,v));if(content)n.textContent=content;svg.append(n);return n};
     const txt=(x,y,s,a={})=>el('text',{x,y,fill:MUTED,'font-size':10,'font-weight':600,...a},s);
+    // Multi-line label: each line is its own <text>, so translations still match whole strings.
+    const lines=(x,y,list,a={},lh=11)=>list.forEach((s,i)=>txt(x,y+(i-(list.length-1)/2)*lh,s,a));
     const dot=(x,y,r=7,a={})=>el('circle',{cx:x,cy:y,r,fill:INK,class:'pop',...a});
     const path=(d,a={})=>el('path',{d,fill:'none',stroke:SOFT,'stroke-width':.9,pathLength:1,class:'draw',...a});
-    const box=(x,y,w,h,label,dark=false)=>{el('rect',{x,y,width:w,height:h,rx:14,fill:dark?INK:FAINT,class:'pop'});txt(x+w/2,y+h/2+4,label,{fill:dark?PAPER:INK,'text-anchor':'middle','font-size':10,'font-weight':800,class:'fade'})};
+    const box=(x,y,w,h,label,dark=false,delay=0)=>{el('rect',{x,y,width:w,height:h,rx:14,fill:dark?INK:FAINT,class:'pop',style:`animation-delay:${delay}s`});txt(x+w/2,y+h/2+3.5,label,{fill:dark?PAPER:INK,'text-anchor':'middle','font-size':10,'font-weight':800,class:'fade',style:`animation-delay:${delay}s`})};
+    const pill=(x,y,label,delay=0)=>{const w=label.length*6.4+16;el('rect',{x:x-w/2,y:y-9,width:w,height:18,rx:9,fill:PAPER,stroke:INK,'stroke-width':.9,class:'fade',style:`animation-delay:${delay}s`});txt(x,y+3.3,label,{fill:INK,'text-anchor':'middle','font-size':9,'font-weight':800,'letter-spacing':'.04em',class:'fade',style:`animation-delay:${delay}s`})};
+    const narrow=()=>svg.getBoundingClientRect().width<520;
+
     const V={
-      parity:{title:'Parity conditions connect prices, yields, and currency values.',sub:'each outer node = an observed or expected market quantity · lines converge on exchange-rate consistency',src:'RADIAL CONVERGENCE · L5 MONO-EDITORIAL · PARITY MAP',render(){
-        const cx=380,cy=160,R=125,items=[['SPOT',-145],['FORWARD',-85],['NOMINAL RATES',-25],['REAL RATES',35],['EXPECTED INFLATION',95],['PRICE LEVELS',155]];
-        items.forEach(([name,deg],i)=>{const a=deg*Math.PI/180,x=cx+R*Math.cos(a),y=cy+R*Math.sin(a),hx=cx+38*Math.cos(a),hy=cy+38*Math.sin(a);path(`M${x} ${y} C${cx+(x-cx)*.45} ${cy+(y-cy)*.45} ${cx+(hx-cx)*.30} ${cy+(hy-cy)*.30} ${hx} ${hy}`,{style:`animation-delay:${i*.08}s`});dot(x,y,3,{fill:MUTED,style:`animation-delay:${i*.08}s`});txt(x,y+(y<cy?-12:18),name,{'text-anchor':'middle','font-size':8,'letter-spacing':'.08em',class:'fade'});dot(hx,hy,8,{style:`animation-delay:${.4+i*.07}s`})});dot(cx,cy,27);txt(cx,cy+4,'FX',{fill:PAPER,'text-anchor':'middle','font-size':12,'font-weight':800,class:'fade'});[['CIRP',305,97],['UIRP',455,96],['PPP',472,225],['FISHER',284,226]].forEach(([s,x,y])=>txt(x,y,s,{fill:INK,'text-anchor':'middle','font-size':9,'font-weight':800,class:'fade'}));
+      parity:{title:'Parity conditions connect prices, yields, and currency values.',sub:'each outer node = an observed or expected market quantity · lines converge on exchange-rate consistency',src:'RADIAL CONVERGENCE · L5 MONO-EDITORIAL · PARITY MAP',render(small){
+        const L=small?{w:360,h:370,cx:180,cy:185,R:104,hub:32}:{w:760,h:340,cx:380,cy:170,R:132,hub:40};
+        svg.setAttribute('viewBox',`0 0 ${L.w} ${L.h}`);
+        const {cx,cy,R}=L;
+        const items=[['SPOT',-145],['FORWARD',-85],['NOMINAL RATES',-25],['REAL RATES',35],['EXPECTED INFLATION',95],['PRICE LEVELS',155]];
+        items.forEach(([name,deg],i)=>{
+          const a=deg*Math.PI/180,c=Math.cos(a),sn=Math.sin(a),x=cx+R*c,y=cy+R*sn,hx=cx+L.hub*c,hy=cy+L.hub*sn;
+          path(`M${x} ${y} C${cx+(x-cx)*.45} ${cy+(y-cy)*.45} ${cx+(hx-cx)*.30} ${cy+(hy-cy)*.30} ${hx} ${hy}`,{style:`animation-delay:${i*.08}s`});
+          dot(x,y,3,{fill:MUTED,style:`animation-delay:${i*.08}s`});
+          // Side labels sit beside their dot; top and bottom labels sit above or below it.
+          const side=Math.abs(c)>.3,anchor=side?(c>0?'start':'end'):'middle';
+          const lx=side?x+(c>0?10:-10):x,ly=side?y+3:y+(sn<0?-12:19);
+          const label=T(name),split=small&&side&&label.includes(' ')?label.split(' '):[label];
+          lines(lx,ly,split,{'text-anchor':anchor,'font-size':9,'letter-spacing':'.08em',class:'fade',style:`animation-delay:${.2+i*.06}s`});
+          dot(hx,hy,small?7:8,{style:`animation-delay:${.4+i*.07}s`});
+        });
+        const hubR=small?24:28,fx=T('FX');
+        dot(cx,cy,hubR);
+        // Translated hub labels (e.g. CHANGE) must still fit inside the circle.
+        const fs=Math.min(12,hubR*1.5/(fx.length*.62));
+        txt(cx,cy+fs*.36,fx,{fill:PAPER,'text-anchor':'middle','font-size':fs.toFixed(1),'font-weight':800,class:'fade'});
+        // Each condition sits in the sector between the quantities it relates.
+        [['CIRP',-115],['UIRP',-55],['FISHER',65],['PPP',125]].forEach(([s,deg],i)=>{
+          const a=deg*Math.PI/180;
+          pill(cx+R*.64*Math.cos(a),cy+R*.64*Math.sin(a),T(s),.7+i*.06);
+        });
       }},
-      policy:{title:'Policy reaches the currency through rates, capital, and trade.',sub:'floating exchange rate · high capital mobility · two short-run transmission paths',src:'TREND LINEAGE · L11 MONO-EDITORIAL · MUNDELL–FLEMING',render(){
-        const rows=[{y:92,name:'MONETARY EXPANSION',nodes:['LOWER RATE','CAPITAL OUTFLOW','DEPRECIATION']},{y:215,name:'FISCAL EXPANSION',nodes:['HIGHER RATE','CAPITAL INFLOW','APPRECIATION']}],xs=[285,475,665];
-        rows.forEach((r,ri)=>{txt(42,r.y+4,r.name,{fill:INK,'font-size':9,'font-weight':800,'letter-spacing':'.08em'});r.nodes.forEach((name,i)=>{if(i<2)path(`M${xs[i]+62} ${r.y} L${xs[i+1]-62} ${r.y}`,{stroke:GRID,'stroke-width':1.2,style:`animation-delay:${ri*.2+i*.12}s`});box(xs[i]-65,r.y-22,130,44,name,i===2);if(i<2){dot(xs[i]+82,r.y,2,{fill:SOFT,style:`animation-delay:${.25+i*.12}s`})}})});txt(380,292,'REGIME MATTERS · UNDER A FIXED RATE THE CENTRAL BANK MUST DEFEND THE PEG',{'text-anchor':'middle','font-size':8,'letter-spacing':'.1em',class:'fade'});
+      policy:{title:'Policy reaches the currency through rates, capital, and trade.',sub:'floating exchange rate · high capital mobility · two short-run transmission paths',src:'TREND LINEAGE · L11 MONO-EDITORIAL · MUNDELL–FLEMING',render(small){
+        const rows=[{name:'MONETARY EXPANSION',nodes:['LOWER RATE','CAPITAL OUTFLOW','DEPRECIATION']},{name:'FISCAL EXPANSION',nodes:['HIGHER RATE','CAPITAL INFLOW','APPRECIATION']}];
+        const head={fill:INK,'font-size':9,'font-weight':800,'letter-spacing':'.08em'};
+        const foot={'text-anchor':'middle','font-size':8,'letter-spacing':'.1em',class:'fade',style:'animation-delay:.6s'};
+        if(small){
+          // Two columns read top to bottom.
+          svg.setAttribute('viewBox','0 0 360 318');
+          const xs=[92,268],ys=[74,144,214],w=150,h=42;
+          rows.forEach((r,ri)=>{
+            const x=xs[ri];
+            txt(x,30,T(r.name),{...head,'text-anchor':'middle'});
+            r.nodes.forEach((name,i)=>{
+              if(i<2){path(`M${x} ${ys[i]+h/2} L${x} ${ys[i+1]-h/2}`,{stroke:GRID,'stroke-width':1.2,style:`animation-delay:${ri*.2+i*.12}s`});dot(x,(ys[i]+ys[i+1])/2,2,{fill:SOFT,style:`animation-delay:${.25+i*.12}s`})}
+              box(x-w/2,ys[i]-h/2,w,h,T(name),i===2,ri*.1+i*.1);
+            });
+          });
+          txt(180,276,T('REGIME MATTERS'),foot);
+          txt(180,292,T('UNDER A FIXED RATE THE CENTRAL BANK MUST DEFEND THE PEG'),{...foot,'letter-spacing':'.06em'});
+        }else{
+          svg.setAttribute('viewBox','0 0 760 236');
+          const ys=[52,150],xs=[285,475,665];
+          rows.forEach((r,ri)=>{
+            const y=ys[ri];
+            txt(42,y+4,T(r.name),head);
+            r.nodes.forEach((name,i)=>{
+              if(i<2){path(`M${xs[i]+65} ${y} L${xs[i+1]-65} ${y}`,{stroke:GRID,'stroke-width':1.2,style:`animation-delay:${ri*.2+i*.12}s`});dot((xs[i]+xs[i+1])/2,y,2,{fill:SOFT,style:`animation-delay:${.25+i*.12}s`})}
+              box(xs[i]-65,y-22,130,44,T(name),i===2,ri*.1+i*.1);
+            });
+          });
+          txt(380,222,T('REGIME MATTERS · UNDER A FIXED RATE THE CENTRAL BANK MUST DEFEND THE PEG'),foot);
+        }
       }}
     };
-    function render(){svg.innerHTML='';const key=new URLSearchParams(location.search).get('view')||'parity',v=V[key]||V.parity;document.querySelector('#title').textContent=v.title;document.querySelector('#sub').textContent=v.sub;document.querySelector('#src').textContent=v.src;svg.setAttribute('aria-label',v.title);v.render()}
-    render();document.querySelector('#card').addEventListener('click',render);
+
+    const key=new URLSearchParams(location.search).get('view')||'parity',v=V[key]||V.parity;
+    document.querySelector('#title').textContent=v.title;
+    document.querySelector('#sub').textContent=v.sub;
+    document.querySelector('#src').textContent=v.src;
+    svg.setAttribute('aria-label',T(v.title));
+    let layout=null;
+    function render(force){
+      const small=narrow();
+      if(!force&&small===layout)return;
+      layout=small;svg.innerHTML='';v.render(small);
+      if(parent!==window)parent.postMessage({chartHeight:document.querySelector('#card').scrollHeight},location.origin);
+    }
+    render(true);
+    document.querySelector('#card').addEventListener('click',()=>render(true));
+    window.addEventListener('resize',()=>render(false));
+    document.fonts?.ready.then(()=>render(true));
   </script>
 </body>
 </html>

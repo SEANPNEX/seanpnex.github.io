@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Faster labor growth lowers steady-state levels</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+</head>
+<body>
+  <main class="card" id="card">
+    <h2>Faster labor growth lowers steady-state levels.</h2>
+    <div class="sub" id="sub"></div>
+    <section class="panel">
+      <h3>Labor-force growth shift</h3>
+      <div class="hint" id="hint"></div>
+      <svg id="chart" role="img" aria-label="Faster labor growth lowers steady-state levels"></svg>
+    </section>
+    <div class="src" id="src"></div>
+  </main>
+  <script src="i18n.js"></script>
+  <script>
+chartI18n.use({
+  zh: {
+    'Faster labor growth lowers steady-state levels': '更快劳动力增长压低稳态水平',
+    'Faster labor growth lowers steady-state levels.': '更快劳动力增长压低稳态水平。',
+    'n↑ steepens required investment · savings fixed · A→B lowers k* and y* · long-run per-capita growth unchanged': 'n↑ 使必要投资变陡 · 储蓄曲线不变 · A→B 降低 k*、y* · 长期人均增长率不变',
+    'Labor-force growth shift': '劳动力增长移动',
+    'Ink = sAkα · gray = n₁ ray · ink = n₂ ray · A→B = lower steady state': '墨色 = sAkα · 灰色 = n₁ 射线 · 墨色 = n₂ 射线 · A→B = 更低稳态',
+    'SOLOW LABOR-GROWTH SHIFT · F2 HAIRLINE LINE · n↑ → lower k*, y*': '索洛劳动力增长移动 · F2 发丝折线 · n↑ → 更低 k*、y*',
+    'capital per worker k →': '人均资本 k →',
+    'output per worker y': '人均产出 y',
+    's₁ f(k)': 's₁ f(k)',
+    'sAkα': 'sAkα',
+    '[δ + n₁ + θ/(1−α)]k': '[δ + n₁ + θ/(1−α)]k',
+    '[δ + n₂ + θ/(1−α)]k': '[δ + n₂ + θ/(1−α)]k',
+    'n↑': 'n↑',
+    'A': 'A',
+    'B': 'B',
+    'k_A': 'k_A',
+    'k_B': 'k_B',
+    'y_A': 'y_A',
+    'y_B': 'y_B',
+  },
+  ja: {
+    'Faster labor growth lowers steady-state levels': '労働力成長の加速は定常水準を下げる',
+    'Faster labor growth lowers steady-state levels.': '労働力成長の加速は定常水準を下げる。',
+    'n↑ steepens required investment · savings fixed · A→B lowers k* and y* · long-run per-capita growth unchanged': 'n↑ で必要投資が急に · 貯蓄は固定 · A→B で k*・y* 低下 · 長期一人当たり成長率は不変',
+    'Labor-force growth shift': '労働力成長シフト',
+    'Ink = sAkα · gray = n₁ ray · ink = n₂ ray · A→B = lower steady state': '墨 = sAkα · 灰 = n₁ 光線 · 墨 = n₂ 光線 · A→B = 低い定常状態',
+    'SOLOW LABOR-GROWTH SHIFT · F2 HAIRLINE LINE · n↑ → lower k*, y*': 'ソロー労働力成長シフト · F2 ヘアライン · n↑ → 低い k*、y*',
+    'capital per worker k →': '労働者あたり資本 k →',
+    'output per worker y': '労働者あたり産出 y',
+    's₁ f(k)': 's₁ f(k)',
+    'sAkα': 'sAkα',
+    '[δ + n₁ + θ/(1−α)]k': '[δ + n₁ + θ/(1−α)]k',
+    '[δ + n₂ + θ/(1−α)]k': '[δ + n₂ + θ/(1−α)]k',
+    'n↑': 'n↑',
+    'A': 'A',
+    'B': 'B',
+    'k_A': 'k_A',
+    'k_B': 'k_B',
+    'y_A': 'y_A',
+    'y_B': 'y_B',
+  },
+  fr: {
+    'Faster labor growth lowers steady-state levels': 'Une croissance plus rapide de la main-d’œuvre abaisse les niveaux stationnaires',
+    'Faster labor growth lowers steady-state levels.': 'Une croissance plus rapide de la main-d’œuvre abaisse les niveaux stationnaires.',
+    'n↑ steepens required investment · savings fixed · A→B lowers k* and y* · long-run per-capita growth unchanged': 'n↑ raidit l’investissement requis · épargne fixe · A→B abaisse k* et y* · croissance par tête de long terme inchangée',
+    'Labor-force growth shift': 'Décalage de la croissance de la main-d’œuvre',
+    'Ink = sAkα · gray = n₁ ray · ink = n₂ ray · A→B = lower steady state': 'Encre = sAkα · gris = rayon n₁ · encre = rayon n₂ · A→B = état stationnaire plus bas',
+    'SOLOW LABOR-GROWTH SHIFT · F2 HAIRLINE LINE · n↑ → lower k*, y*': 'SOLOW CROISSANCE DE LA MAIN-D’ŒUVRE · LIGNE F2 · n↑ → k*, y* plus bas',
+    'capital per worker k →': 'capital par travailleur k →',
+    'output per worker y': 'produit par travailleur y',
+    's₁ f(k)': 's₁ f(k)',
+    'sAkα': 'sAkα',
+    '[δ + n₁ + θ/(1−α)]k': '[δ + n₁ + θ/(1−α)]k',
+    '[δ + n₂ + θ/(1−α)]k': '[δ + n₂ + θ/(1−α)]k',
+    'n↑': 'n↑',
+    'A': 'A',
+    'B': 'B',
+    'k_A': 'k_A',
+    'k_B': 'k_B',
+    'y_A': 'y_A',
+    'y_B': 'y_B',
+  },
+});
+  </script>
+  <script>
+(() => {
+  const { C, T, label, along, frame, axes, curve, beads, guide, dot, arrow, mount, html } = curveKit;
+  // Illustrative parameters; PHI = δ + n + θ/(1−α), larger for faster labor growth.
+  const ALPHA = 0.33, A = 1.2, S = 0.32, PHI1 = 0.12, PHI2 = 0.22, K = 8.5;
+  const sy = (k) => S * A * Math.pow(k, ALPHA), ray = (phi) => (k) => phi * k;
+  // s A k^α = φ k  ⇒  k* = (s A / φ)^(1/(1−α))
+  const kStar = (phi) => Math.pow((S * A) / phi, 1 / (1 - ALPHA));
+  const kA = kStar(PHI1), kB = kStar(PHI2), yA = sy(kA), yB = sy(kB);
+  // The scale follows the savings curve; the steep ray simply leaves through the top.
+  const Y_MAX = sy(K) * 1.6;
+  const height = (w) => Math.max(240, Math.min(310, w * 0.56));
+
+  html('#sub', 'n↑ steepens required investment · savings fixed · A→B lowers k* and y* · long-run per-capita growth unchanged');
+  html('#hint', 'Ink = sAkα · gray = n₁ ray · ink = n₂ ray · A→B = lower steady state', [['sAkα', 'sAk<sup>α</sup>']]);
+  html('#src', 'SOLOW LABOR-GROWTH SHIFT · F2 HAIRLINE LINE · n↑ → lower k*, y*');
+
+  mount(document.getElementById('chart'), (s, W, H) => {
+    const F = frame(s, W, H, { l: 30, r: 12, t: 30, b: 48 }, K, Y_MAX);
+    axes(s, F, T('capital per worker k →'), T('output per worker y'));
+    const pts = { A: [F.x(kA), F.y(yA)], B: [F.x(kB), F.y(yB)] };
+    Object.entries(pts).forEach(([n, [x, y]], i) => {
+      const fill = n === 'B' ? C.INK : C.MUTED, delay = 0.45 + i * 0.06;
+      guide(s, x, y + 6, x, F.BASE, delay);
+      guide(s, F.X0, y, x - 6, y, delay);
+      label(s, x, F.BASE + 15, `k_{${n}}`, { size: 11, fill, anchor: 'middle', delay: delay + 0.1 });
+      label(s, F.X0 - 5, y + 4, `y_{${n}}`, { size: 11, fill, anchor: 'end', delay: delay + 0.1 });
+    });
+
+    curve(s, F, ray(PHI1), 0, K, { stroke: C.SOFT, width: 1.3 });
+    curve(s, F, ray(PHI2), 0, K, { width: 1.3, delay: 0.06 });
+    curve(s, F, sy, 0, K, { width: 1.6, delay: 0.1 });
+    beads(s, F, sy, 0.3, K, { avoid: [kA, kB] });
+    label(s, F.X1, F.y(sy(K)) + 18, 'sAk^{α}', { anchor: 'end', delay: 0.68 });
+
+    // Each ray is named along its own line: n₂ near where it leaves the plot,
+    // n₁ underneath, between the k_B and k_A guides.
+    const end = (phi) => { const k = Math.min(K, Y_MAX / phi); return [F.x(k), F.y(phi * k)]; };
+    along(s, F.X0, F.BASE, ...end(PHI1), (kA + kB) / 2 / K, '[δ+n_{1}+θ/(1−α)]k', { size: 10, fill: C.MUTED, anchor: 'middle', below: true, delay: 0.72 });
+    along(s, F.X0, F.BASE, ...end(PHI2), 0.985, '[δ+n_{2}+θ/(1−α)]k', { size: 10, delay: 0.78 });
+
+    // n↑ rotates the ray upward: an arc from the n₁ ray to the n₂ ray, drawn
+    // just past A, where both rays run above the savings curve.
+    const ang = (phi) => Math.atan2(F.BASE - F.y(phi), F.x(1) - F.X0);
+    const a1 = ang(PHI1), a2 = ang(PHI2);
+    const r = Math.min(
+      Math.hypot(F.x(kA * 1.12) - F.X0, F.BASE - F.y(PHI1 * kA * 1.12)),
+      ((F.BASE - F.TOP) / Math.sin(a2)) * 0.96,
+    );
+    const gap = 5 / r;
+    const arc = Array.from({ length: 24 }, (_, i) => {
+      const a = a1 + gap + (a2 - a1 - 2 * gap) * (i / 23);
+      return [F.X0 + r * Math.cos(a), F.BASE - r * Math.sin(a)];
+    });
+    arrow(s, arc, { width: 1.5, delay: 0.95 });
+    const am = (a1 + a2) / 2;
+    label(s, F.X0 + (r + 9) * Math.cos(am), F.BASE - (r + 9) * Math.sin(am) + 4, 'n↑', { size: 12, delay: 1.05 });
+
+    // k_A → k_B under the axis, pointing left.
+    const ay = F.BASE + 28;
+    arrow(s, [[pts.A[0] - 12, ay], [pts.B[0] + 12, ay]], { stroke: C.MUTED, width: 1.2, delay: 1.1 });
+
+    dot(s, ...pts.A, 5, C.MUTED, 0.7, `A: k=${kA.toFixed(2)}, y=${yA.toFixed(2)}`);
+    dot(s, ...pts.B, 5.2, C.INK, 0.82, `B: k=${kB.toFixed(2)}, y=${yB.toFixed(2)}`);
+    label(s, pts.A[0] + 9, pts.A[1] + 17, 'A', { size: 13, fill: C.MUTED, delay: 0.78 });
+    label(s, pts.B[0] - 9, pts.B[1] - 9, 'B', { size: 13, anchor: 'end', delay: 0.9 });
+  }, height);
+})();
+  </script>
+</body>
+</html>

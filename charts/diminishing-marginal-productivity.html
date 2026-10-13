@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Diminishing marginal productivity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+</head>
+<body>
+  <main class="card" id="card">
+    <h2>Each extra unit of capital adds less output.</h2>
+    <div class="sub">Cobb–Douglas · diminishing MPK · capital deepening</div>
+    <div class="grid">
+      <section class="panel">
+        <h3>Production function</h3>
+        <div class="hint" id="hint-prod"></div>
+        <svg id="prod" role="img" aria-label="Production function"></svg>
+      </section>
+      <section class="panel">
+        <h3>Marginal product of capital</h3>
+        <div class="hint" id="hint-mpk"></div>
+        <svg id="mpk" role="img" aria-label="Marginal product of capital"></svg>
+      </section>
+    </div>
+    <div class="src" id="src"></div>
+  </main>
+  <script src="i18n.js"></script>
+  <script>
+chartI18n.use({
+  zh: {
+    'Diminishing marginal productivity': '边际生产力递减',
+    'Each extra unit of capital adds less output.': '每多一单位资本，带来的产出更少。',
+    'Cobb–Douglas · diminishing MPK · capital deepening': '柯布–道格拉斯 · 边际资本产出递减 · 资本深化',
+    'Production function': '生产函数',
+    'y = A kα · A = 1 · α = 0.33 · equal Δk, smaller Δy': 'y = A kα · A = 1 · α = 0.33 · 等量 Δk，更小的 Δy',
+    'Marginal product of capital': '资本的边际产出',
+    'MPK = α A kα−1 · declines as k rises': 'MPK = α A kα−1 · 随 k 上升而下降',
+    'DIMINISHING MARGINAL PRODUCTIVITY · F2 HAIRLINE LINE · y = A kα': '边际生产力递减 · F2 发丝折线 · y = A kα',
+    'capital intensity k →': '资本强度 k →',
+    'output y': '产出 y',
+    'same Δk, smaller Δy': '同样的 Δk，更小的 Δy',
+  },
+  ja: {
+    'Diminishing marginal productivity': '限界生産性逓減',
+    'Each extra unit of capital adds less output.': '資本を1単位増やしても、追加産出は小さくなる。',
+    'Cobb–Douglas · diminishing MPK · capital deepening': 'コブ＝ダグラス · 限界資本生産性の逓減 · 資本深化',
+    'Production function': '生産関数',
+    'y = A kα · A = 1 · α = 0.33 · equal Δk, smaller Δy': 'y = A kα · A = 1 · α = 0.33 · 同じ Δk でも Δy は縮小',
+    'Marginal product of capital': '資本の限界生産性',
+    'MPK = α A kα−1 · declines as k rises': 'MPK = α A kα−1 · k の上昇とともに低下',
+    'DIMINISHING MARGINAL PRODUCTIVITY · F2 HAIRLINE LINE · y = A kα': '限界生産性逓減 · F2 ヘアライン · y = A kα',
+    'capital intensity k →': '資本集約度 k →',
+    'output y': '産出 y',
+    'same Δk, smaller Δy': '同じ Δk でも Δy は縮小',
+  },
+  fr: {
+    'Diminishing marginal productivity': 'Productivité marginale décroissante',
+    'Each extra unit of capital adds less output.': 'Chaque unité de capital en plus ajoute moins de produit.',
+    'Cobb–Douglas · diminishing MPK · capital deepening': 'Cobb–Douglas · PMk décroissante · approfondissement du capital',
+    'Production function': 'Fonction de production',
+    'y = A kα · A = 1 · α = 0.33 · equal Δk, smaller Δy': 'y = A kα · A = 1 · α = 0,33 · Δk égal, Δy plus petit',
+    'Marginal product of capital': 'Produit marginal du capital',
+    'MPK = α A kα−1 · declines as k rises': 'PMk = α A kα−1 · diminue quand k augmente',
+    'DIMINISHING MARGINAL PRODUCTIVITY · F2 HAIRLINE LINE · y = A kα': 'PRODUCTIVITÉ MARGINALE DÉCROISSANTE · LIGNE F2 · y = A kα',
+    'capital intensity k →': 'intensité capitalistique k →',
+    'output y': 'produit y',
+    'MPK': 'PMk',
+    'same Δk, smaller Δy': 'même Δk, Δy plus petit',
+  },
+});
+  </script>
+  <script>
+(() => {
+  const { C, T, el, label, frame, axes, curve, beads, guide, dot, mount, html } = curveKit;
+  const ALPHA = 0.33, K = 8.4;
+  const yOf = (k) => Math.pow(k, ALPHA);
+  const mpkOf = (k) => ALPHA * Math.pow(k, ALPHA - 1);
+  // Two steps of the same size Δk = 2: one early, one late on the curve.
+  const STEPS = [[0.5, 2.5, 'Δy_{1}'], [5, 7, 'Δy_{2}']];
+  const height = (w) => Math.max(190, Math.min(240, w * 0.8));
+  const M = { l: 14, r: 12, t: 30, b: 28 };
+  const mpkName = T('MPK');
+
+  html('#hint-prod', 'y = A kα · A = 1 · α = 0.33 · equal Δk, smaller Δy', [['kα', 'k<sup>α</sup>']]);
+  html('#hint-mpk', 'MPK = α A kα−1 · declines as k rises', [['kα−1', 'k<sup>α−1</sup>']]);
+  html('#src', 'DIMINISHING MARGINAL PRODUCTIVITY · F2 HAIRLINE LINE · y = A kα', [['y = A kα', '<span class="f">y = A k<sup>α</sup></span>']]);
+
+  mount(document.getElementById('prod'), (s, W, H) => {
+    const F = frame(s, W, H, M, K, yOf(K) * 1.12);
+    axes(s, F, T('capital intensity k →'), T('output y'));
+    curve(s, F, yOf, 0, K);
+    beads(s, F, yOf, 0.3, K, { avoid: STEPS.flatMap(([a, b]) => [a, b]) });
+    STEPS.forEach(([k0, k1, name], i) => {
+      const delay = 0.5 + i * 0.2;
+      const x0 = F.x(k0), x1 = F.x(k1), y0 = F.y(yOf(k0)), y1 = F.y(yOf(k1));
+      // Rise-over-run triangle: dashed run Δk, solid rise Δy.
+      guide(s, x0, y0, x1, y0, delay);
+      el(s, 'line', { x1, y1: y0, x2: x1, y2: y1, stroke: C.INK, 'stroke-width': 2, 'stroke-linecap': 'round', class: 'fade', style: `animation-delay:${delay}s` });
+      dot(s, x0, y0, 3.2, C.INK, delay);
+      dot(s, x1, y1, 3.2, C.INK, delay + 0.05);
+      label(s, (x0 + x1) / 2, y0 + 14, 'Δk', { size: 10, weight: 700, fill: C.MUTED, anchor: 'middle', delay: delay + 0.1 });
+      // The second rise is short, so its label sits level with the run.
+      label(s, x1 + 6, i ? y0 + 4 : (y0 + y1) / 2 + 4, name, { size: 11.5, delay: delay + 0.15 });
+    });
+    label(s, F.X1, F.BASE - 10, T('same Δk, smaller Δy'), { size: 10.5, anchor: 'end', maxWidth: (F.X1 - F.X0) * 0.55, up: true, delay: 0.95 });
+  }, height);
+
+  mount(document.getElementById('mpk'), (s, W, H) => {
+    const F = frame(s, W, H, M, K, 0.9);
+    axes(s, F, T('capital intensity k →'), mpkName);
+    curve(s, F, mpkOf, 0.2, K);
+    beads(s, F, mpkOf, 0.4, K, { avoid: [1.5, 6] });
+    // MPK in the middle of each Δk step on the left.
+    [[1.5, 1], [6, 2]].forEach(([k, n], i) => {
+      const cx = F.x(k), cy = F.y(mpkOf(k)), delay = 0.6 + i * 0.15;
+      guide(s, cx, cy + 4, cx, F.BASE, delay);
+      dot(s, cx, cy, 3.8, C.INK, delay, `k=${k}, MPK=${mpkOf(k).toFixed(2)}`);
+      label(s, cx + 7, cy - 8, `${mpkName}_{${n}}`, { size: 11.5, delay: delay + 0.1 });
+    });
+  }, height);
+})();
+  </script>
+</body>
+</html>
