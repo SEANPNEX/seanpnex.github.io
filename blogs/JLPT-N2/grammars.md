@@ -175,7 +175,7 @@ Dialogue:
 - 清華大学はどうですか。 — How is Tsinghua University?
 - 最近はどうですか。 — How have you been lately?
 
-## 形容词谓语句 / Adjective predicates (polite non-past)
+## Adjective predicates (polite non-past)
 
 **Rule:** Adjectival predicates describe a **state** or a **constant property**. Japanese adjectives fall into two types: **Type I** (い-adjectives, ending in **い**) and **Type II** (な-adjectives / adjectival verbs).
 
@@ -199,3 +199,30 @@ Dialogue:
 **いい:** Conjugate from the older form **よい**. Negative of いいです → **よくありません**.
 
 - 成績はよくありません。 — The grades are not good.
+
+## N₁ は N₂ が 〜
+
+**Rule:** **は** marks the **topic** (what the sentence is about); **が** marks the **subject** of the predicate that follows. In **A は B が X です**, A is usually a person or a whole thing, B is a part or aspect of A, and **B が X です** describes a property of A. This “topic + part/aspect” pattern is common in Japanese and often differs from how Chinese or English packages the same idea.
+
+- 象は鼻が長いです。 — Elephants have long trunks. / An elephant’s trunk is long.
+- 富士山は形がいいです。 — Mt. Fuji has a nice shape.
+- 今日は天気がいいです。 — The weather is good today.
+- 彼女は性格が明るいです。 — She has a cheerful personality.
+
+## あまり / そんなに + adjective (negative)
+
+**Rule:** The degree adverbs **あまり** and **そんなに** with a **negative** adjective mean “not very …” / “not that …”. Use them with the polite negative forms of Type I and Type II adjectives (e.g. 寒くありません, 難しくありません).
+
+- A: 東京は寒いですか。 — Is Tokyo cold?
+- B: いいえ、あまり寒くありません。 — No, it’s not very cold.
+- 日本語はそんなに難しくありません。 — Japanese is not that difficult.
+- このパソコンはそんなに遅くありません。 — This computer is not that slow.
+
+## 〜から（reason）
+
+**Rule:** **から** at the end of a clause or sentence marks a **reason / cause** (“because …”). It can stand alone as an answer or follow a statement that gives the conclusion first.
+
+- （中村さんは）とても真面目ですから。 — Because (Nakamura-san) is very serious / diligent.
+- アイスクリームがいいです。暑いですから。 — Ice cream would be good. Because it’s hot.
+- A: 寒いですね。 — It’s cold, isn’t it?
+- B: そうですね。今日は雪ですから。 — Yes. Because it’s snowing today.
