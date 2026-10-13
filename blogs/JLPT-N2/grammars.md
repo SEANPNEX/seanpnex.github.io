@@ -174,3 +174,28 @@ Dialogue:
 - このコーヒーはどうですか。 — How is this coffee?
 - 清華大学はどうですか。 — How is Tsinghua University?
 - 最近はどうですか。 — How have you been lately?
+
+## 形容词谓语句 / Adjective predicates (polite non-past)
+
+**Rule:** Adjectival predicates describe a **state** or a **constant property**. Japanese adjectives fall into two types: **Type I** (い-adjectives, ending in **い**) and **Type II** (な-adjectives / adjectival verbs).
+
+**Polite non-past (敬体):**
+
+1. **Affirmative:** Type I → **A₁ + です**; Type II → **A₂ + です**.
+2. **Negative:** Type I → drop **い**, then **く + ありません**; Type II → **A₂ + ではありません** (spoken: **じゃありません**).
+
+| Category | Tense | Affirmative (polite) | Negative (polite) |
+| --- | --- | --- | --- |
+| Type I (e.g. 高い) | Non-past | 高いです | 高くありません |
+| Type II (e.g. 静か) | Non-past | 静かです | 静かではありません（じゃありません） |
+
+**では** can be replaced by **じゃ** in spoken Japanese.
+
+- 東京は寒いです。 — Tokyo is cold.
+- あの映画は面白くありません。 — That movie is not interesting.
+- 先生は親切です。 — The teacher is kind.
+- 日本語は簡単ではありません。 — Japanese is not easy.
+
+**いい:** Conjugate from the older form **よい**. Negative of いいです → **よくありません**.
+
+- 成績はよくありません。 — The grades are not good.
