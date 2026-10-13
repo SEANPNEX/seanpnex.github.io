@@ -14,6 +14,7 @@
 .fx-concept-chart.fsa-measure-chart { height: 820px; }
 .fx-concept-chart.fsa-timeline-chart { height: 600px; }
 .fx-concept-chart.fsa-impair-chart { height: 680px; }
+.fx-concept-chart.fsa-equity-ex-chart { height: 560px; }
 @media (max-width: 700px) {
     .fx-concept-chart { height: 500px; }
     .fx-concept-chart.fsa-tree-chart { height: 620px; }
@@ -22,6 +23,7 @@
     .fx-concept-chart.fsa-measure-chart { height: 920px; }
     .fx-concept-chart.fsa-timeline-chart { height: 680px; }
     .fx-concept-chart.fsa-impair-chart { height: 760px; }
+    .fx-concept-chart.fsa-equity-ex-chart { height: 640px; }
 }
 </style>
 
@@ -195,7 +197,7 @@ The new standard moves the recognition criteria from an "incurred loss" model to
 >
 > The **expected loss model** name only is everything needed to know for CFA exam. Following content will not be tested.
 
-In the **Financial Instruments**, for **Financial Liabilities **, only Financial Guarantee Commitments and Loan Agreements can be impaired. For Financial Assets, FVPL will never be impaired because the whole mark-to-market move already hits P&L. There’s nothing left for a separate impairment test.
+In the **Financial Instruments**, for Financial Liabilities, only Financial Guarantee Commitments and Loan Agreements can be impaired. For Financial Assets, FVPL will never be impaired because the whole mark-to-market move already hits P&L. There’s nothing left for a separate impairment test.
 
 The measurement of AMC impairment is same as how inventory impairment is done.
 
@@ -229,3 +231,44 @@ In the chart: FV falls $980 \to 960$ (total $-20$), ECL $=15$.
 - AOCI: $-20 + 15 = -5$
 
 So AMC and debt FVOCI put the **same $15$** through earnings; FVOCI also parks the leftover $-5$ in OCI because the balance sheet already shows full fair value.
+
+### Reclassification of Financial Assets
+
+Equity Investment are not allowed to reclassification. It is only permitted if in the business model for finnancial assets has changed in a way that significantly affects operations.
+
+> [!note]
+>
+> The reclassification date is the beginning of next accounting cycle. Past accounting cannot be changed. Future change start at classification date.
+
+## Investments in Associates
+
+### Equity Method of Accounting
+
+#### Basic Principles
+
+Remember when a company holds 20% to 50% of the voting rights of an invested, *either directly or indirectly*, it is presumed that the company has significant influence but not control. 
+
+> [!note]
+>
+> When considering **influence**, under IFRS, current exersicable or convertible warrants, call options, or convertible securities will also be accounted, Under US GAAP, only consider the voting shares owned.
+
+The accounting standards note that the significant influence may be evidenced by:
+
+* Represenation on the Board of Directors 
+* Participation in the policy-making process
+* Material Transactions
+* Interchange of managerial personnel.
+* Technological Dependency
+
+The Equity method is often referred as "one-line consolidation": The investees portional net asset is disclosed in one line "equity investment in associate" on its balance sheet. On I/S, equity income is after operation income.
+
+Under equity method, the equity investment is initially recorded on B/S at the value of the **cost**. In subsequent periods, the carrying amount of the investment is adjusted to recognize investors' proportionate share of the investee's earnings or losses, and these earnings or losses are reported in its income sheet.
+
+**Example.** A buys 30% of B for $100. After one year B earns net income $80. A recognizes $24 (= 30% × 80) as equity income on the I/S (into RE) and increases the associate investment on the B/S from 100 to 124. No dividend is mentioned — this is the basic pickup of share of NI only.
+
+<iframe
+  class="fx-concept-chart fsa-equity-ex-chart"
+  src="/charts/equity-method-basic-example.html"
+  title="Equity method basic example: 30% of associate NI"
+  loading="lazy"
+></iframe>
