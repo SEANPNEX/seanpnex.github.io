@@ -4,6 +4,12 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>CFA Economic Growth — Solow flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 <style>
 :root{
   --bg:#F0EFEB;--paper:#F0EFEB;--ink:#1C1C1A;--mid:#55554F;
@@ -11,41 +17,62 @@
 }
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--ink);
-  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  -webkit-font-smoothing:antialiased}
 body{padding:18px;min-height:100vh}
 .wrap{max-width:560px;margin:0 auto}
 .figure-head{margin:2px 4px 18px}
-.figure-head h1{margin:0 0 5px;font-size:22px;line-height:1.15;letter-spacing:-.035em}
-.figure-head p{margin:0;color:var(--muted);font-size:11px;line-height:1.5}
+.figure-head h1{margin:0 0 5px;font-size:22px;line-height:1.15;letter-spacing:-.035em;font-weight:700}
+.figure-head p{margin:0;color:var(--muted);font-size:11.5px;line-height:1.5}
 .stage{perspective:1200px;margin-bottom:14px}
 .card{
-  position:relative;min-height:320px;border-radius:24px;background:var(--paper);
+  display:grid;grid-template:1fr / 1fr;
+  position:relative;min-height:340px;border-radius:24px;background:var(--paper);
   outline:1px solid var(--grid);cursor:pointer;transform-style:preserve-3d;
   transition:transform .55s cubic-bezier(.165,.84,.44,1);
   -webkit-tap-highlight-color:transparent;user-select:none;
 }
 .card.is-flipped{transform:rotateY(180deg)}
 .face{
-  position:absolute;inset:0;padding:28px 26px 24px;border-radius:24px;
+  grid-area:1 / 1;
+  padding:28px 26px 22px;border-radius:24px;background:var(--paper);
   backface-visibility:hidden;-webkit-backface-visibility:hidden;
-  display:flex;flex-direction:column;
+  display:flex;flex-direction:column;min-height:340px;min-width:0;
 }
 .face-back{transform:rotateY(180deg)}
 .badge{
-  display:inline-flex;align-self:flex-start;margin:0 0 14px;padding:4px 10px;
+  display:inline-flex;align-self:flex-start;margin:0 0 12px;padding:4px 10px;
   border-radius:999px;border:1px solid var(--grid);color:var(--muted);
   font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
 }
-.face h2{margin:0 0 12px;font-size:13px;font-weight:600;color:var(--mid);
-  letter-spacing:.02em;text-transform:uppercase}
-.face .q,.face .a{margin:0;flex:1;font-size:18px;line-height:1.45;letter-spacing:-.02em}
-.face .a{font-size:16px;line-height:1.55}
-.face .a strong{font-weight:700}
+.face h2{margin:0 0 10px;font-size:12px;font-weight:600;color:var(--mid);
+  letter-spacing:.06em;text-transform:uppercase}
+.face-body{flex:1 1 auto;min-height:0;overflow:auto;-webkit-overflow-scrolling:touch}
+.face .q,.face .a{margin:0;font-size:17px;line-height:1.5;letter-spacing:-.015em}
+.face .a{font-size:15.5px;line-height:1.55}
+.face .a strong,.face .q strong{font-weight:700}
+.ans p{margin:0 0 10px}
+.ans p:last-child{margin-bottom:0}
+.ans ul{margin:0 0 10px;padding-left:1.15em}
+.ans li{margin:0 0 6px}
+.ans li:last-child{margin-bottom:0}
+.eq-block{
+  margin:12px 0 14px;padding:16px 14px;border-radius:16px;
+  border:1px solid var(--grid);background:#E8E7E1;overflow-x:auto;text-align:center;
+}
+.eq-block .katex-display{margin:0}
+.eq-block .katex{font-size:1.05em}
+.face-body .katex{font-size:1.02em}
 .gap{
-  margin-top:16px;padding-top:14px;border-top:1px solid var(--grid);
+  margin-top:14px;padding:12px 14px;border-radius:14px;
+  border:1px solid var(--grid);background:transparent;
   color:var(--muted);font-size:12px;line-height:1.5
 }
-.hint{margin-top:auto;padding-top:18px;color:var(--faint);font-size:11px;letter-spacing:.04em}
+.gap-label{
+  display:block;margin-bottom:4px;
+  font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);
+}
+.hint{margin-top:16px;padding-top:4px;color:var(--faint);font-size:11px;letter-spacing:.04em;flex-shrink:0}
 .controls{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:4px}
 .nav{display:flex;align-items:center;gap:8px}
 .btn{
@@ -61,13 +88,13 @@ body{padding:18px;min-height:100vh}
 .btn.mark-got:hover:not(:disabled){background:#2a2a27;border-color:#2a2a27}
 .index{color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums;min-width:3.5em;text-align:center}
 .actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
-.src{margin-top:16px;color:var(--muted);font-size:7px;font-weight:700;letter-spacing:.15em;text-transform:uppercase}
+.src{margin-top:16px;color:var(--faint);font-size:9.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase}
 @media(max-width:620px){
   body{padding:12px}
-  .card{min-height:360px}
+  .card,.face{min-height:360px}
   .face{padding:22px 18px 18px}
-  .face .q{font-size:17px}
-  .face .a{font-size:15px}
+  .face .q{font-size:16px}
+  .face .a{font-size:14.5px}
   .controls{flex-direction:column;align-items:stretch}
   .nav,.actions{justify-content:space-between}
 }
@@ -88,14 +115,16 @@ body{padding:18px;min-height:100vh}
       <div class="face face-front">
         <span class="badge" id="topic-front">Steady state</span>
         <h2>Question</h2>
-        <p class="q" id="front"></p>
+        <div class="face-body"><div class="q" id="front"></div></div>
         <div class="hint">Click · Space · Enter to flip</div>
       </div>
       <div class="face face-back">
         <span class="badge" id="topic-back">Steady state</span>
         <h2>Answer</h2>
-        <p class="a" id="back"></p>
-        <p class="gap" id="gap"></p>
+        <div class="face-body">
+          <div class="a" id="back"></div>
+          <div class="gap" id="gap" hidden></div>
+        </div>
         <div class="hint">Click · Space · Enter to flip back</div>
       </div>
     </div>
@@ -112,7 +141,7 @@ body{padding:18px;min-height:100vh}
       <button type="button" class="btn mark-got" id="got" title="Mark as known and advance">Got it</button>
     </div>
   </div>
-  <div class="src">LIEFLAT FLASH · CFA L2 ECONOMIC GROWTH · NEOCLASSICAL / SOLOW · QUIZ 2026-10-13</div>
+  <div class="src">Lieflat flash · CFA L2 Economic Growth · Neoclassical / Solow · Quiz 2026-10-13</div>
 </div>
 
 <script>
@@ -121,37 +150,60 @@ const CARDS = [
   {
     id: "c2-m2-steady-state-2026-10-13",
     topic: "Steady state",
-    front: "When does capital deepening stop? Relate sy to required investment.",
-    back: "Steady state is where savings equal required investment:<br><br><strong>sy = sAk<sup>α</sup> = (θ/(1−α) + δ + n) k</strong><br><br>Capital deepening <strong>stops at k*</strong>. The matching output is y*.",
-    gap: "Focus: name both sides of the equality — the savings curve and the required-investment ray — and stop deepening at their intersection k*."
+    front: "When does capital deepening stop? Relate \\(sy\\) to required investment.",
+    back: `<div class="ans">
+<p>Steady state is where savings equal required investment:</p>
+<div class="eq-block">$$sy = sAk^{\\alpha} = \\left(\\frac{\\theta}{1-\\alpha}+\\delta+n\\right)k$$</div>
+<p>Capital deepening <strong>stops at \\(k^*\\)</strong>. The matching output is \\(y^*\\).</p>
+</div>`,
+    gap: "name both sides of the equality — the savings curve and the required-investment ray — and stop deepening at their intersection \\(k^*\\)."
   },
   {
     id: "c2-m2-saving-rate-2026-10-13",
     topic: "Saving rate",
-    front: "What does a higher saving rate do to steady-state k and y, and to the long-run growth of y?",
-    back: "<strong>↑s → higher k* and y*</strong> — a <strong>level</strong> effect only.<br><br>Long-run growth of y is <strong>not permanently higher</strong>.<br><br>s ∈ [0, 1], so the rise in equilibrium k and y has a <strong>limit</strong>.",
-    gap: "Focus: level vs growth rate. A higher s lifts the steady-state level; it does not raise long-run growth of y forever, and s cannot exceed 1."
+    front: "What does a higher saving rate do to steady-state \\(k\\) and \\(y\\), and to the long-run growth of \\(y\\)?",
+    back: `<div class="ans">
+<p><strong>\\(\\uparrow s \\rightarrow\\) higher \\(k^*\\) and \\(y^*\\)</strong> — a <strong>level</strong> effect only.</p>
+<ul>
+<li>Long-run growth of \\(y\\) is <strong>not permanently higher</strong>.</li>
+<li>\\(s \\in [0, 1]\\), so the rise in equilibrium \\(k\\) and \\(y\\) has a <strong>limit</strong>.</li>
+</ul>
+</div>`,
+    gap: "level vs growth rate. A higher \\(s\\) lifts the steady-state level; it does not raise long-run growth of \\(y\\) forever, and \\(s\\) cannot exceed 1."
   },
   {
     id: "c2-m2-convergence-2026-10-13",
     topic: "Convergence",
-    front: "Country A’s potential GDP growth is well above G*; Country B is near G*. Where does each country’s growth come from?",
-    back: "<strong>A (G &gt; G*)</strong> is still <strong>converging via capital deepening</strong>.<br><br><strong>B (near G*)</strong> gets growth mostly from <strong>TFP</strong> (and labor), <strong>not</strong> from capital investment.",
-    gap: "Focus: above steady-state growth means capital deepening is still at work; once growth is near G*, further growth is TFP and labor, not investment in k."
+    front: "Country A’s potential GDP growth is well above \\(G^*\\); Country B is near \\(G^*\\). Where does each country’s growth come from?",
+    back: `<div class="ans">
+<ul>
+<li><strong>A (\\(G &gt; G^*\\))</strong> is still <strong>converging via capital deepening</strong>.</li>
+<li><strong>B (near \\(G^*\\))</strong> gets growth mostly from <strong>TFP</strong> (and labor), <strong>not</strong> from capital investment.</li>
+</ul>
+</div>`,
+    gap: "above steady-state growth means capital deepening is still at work; once growth is near \\(G^*\\), further growth is TFP and labor, not investment in \\(k\\)."
   },
   {
     id: "c2-m2-labor-growth-2026-10-13",
     topic: "Labor growth",
-    front: "What happens to steady-state k and y when labor-force growth n rises?",
-    back: "<strong>↑n steepens the required-investment line</strong> (slope θ/(1−α) + δ + n).<br><br>The intersection moves left: <strong>lower k* and lower y*</strong>.",
-    gap: "Focus: n changes the ray, not the savings curve. A steeper ray cuts sy at a smaller k*."
+    front: "What happens to steady-state \\(k\\) and \\(y\\) when labor-force growth \\(n\\) rises?",
+    back: `<div class="ans">
+<p><strong>\\(\\uparrow n\\) steepens the required-investment line</strong> (slope \\(\\frac{\\theta}{1-\\alpha} + \\delta + n\\)).</p>
+<p>The intersection moves left: <strong>lower \\(k^*\\) and lower \\(y^*\\)</strong>.</p>
+</div>`,
+    gap: "\\(n\\) changes the ray, not the savings curve. A steeper ray cuts \\(sy\\) at a smaller \\(k^*\\)."
   },
   {
     id: "c2-m2-tfp-vs-deepening-2026-10-13",
     topic: "TFP vs deepening",
-    front: "What shifts the production curve y = Ak^α, and what only moves along it?",
-    back: "Higher <strong>A (TFP)</strong> and <strong>α</strong> <strong>shape or shift</strong> the production curve.<br><br><strong>Capital deepening</strong> moves <strong>along</strong> a given curve — same A, higher k.",
-    gap: "Focus: a TFP shift changes the curve; capital deepening is a movement along the curve you already have."
+    front: "What shifts the production curve \\(y = Ak^{\\alpha}\\), and what only moves along it?",
+    back: `<div class="ans">
+<ul>
+<li>Higher <strong>\\(A\\) (TFP)</strong> and <strong>\\(\\alpha\\)</strong> <strong>shape or shift</strong> the production curve.</li>
+<li><strong>Capital deepening</strong> moves <strong>along</strong> a given curve — same \\(A\\), higher \\(k\\).</li>
+</ul>
+</div>`,
+    gap: "a TFP shift changes the curve; capital deepening is a movement along the curve you already have."
   }
 ];
 
@@ -172,6 +224,21 @@ const el = {
   got: document.getElementById("got"),
 };
 
+const KATEX_OPTS = {
+  delimiters: [
+    {left: "$$", right: "$$", display: true},
+    {left: "\\(", right: "\\)", display: false},
+    {left: "\\[", right: "\\]", display: true}
+  ],
+  throwOnError: false
+};
+
+function typeset(node) {
+  if (window.renderMathInElement && node) {
+    renderMathInElement(node, KATEX_OPTS);
+  }
+}
+
 function reportHeight() {
   const h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
   if (parent !== window) parent.postMessage({ chartHeight: h }, location.origin || "*");
@@ -179,17 +246,25 @@ function reportHeight() {
 
 function render() {
   const c = CARDS[i];
-  el.front.textContent = c.front;
+  el.front.innerHTML = c.front;
   el.back.innerHTML = c.back;
-  el.gap.textContent = c.gap || "";
-  el.gap.hidden = !c.gap;
+  if (c.gap) {
+    el.gap.innerHTML = '<span class="gap-label">Focus</span>' + c.gap;
+    el.gap.hidden = false;
+  } else {
+    el.gap.innerHTML = "";
+    el.gap.hidden = true;
+  }
   el.topicF.textContent = c.topic;
   el.topicB.textContent = c.topic;
   el.index.textContent = (i + 1) + "/" + CARDS.length;
   el.prev.disabled = i === 0;
   el.next.disabled = i >= CARDS.length - 1;
+  typeset(el.front);
+  typeset(el.back);
+  typeset(el.gap);
   setFlip(false);
-  reportHeight();
+  requestAnimationFrame(reportHeight);
 }
 
 function setFlip(on) {
