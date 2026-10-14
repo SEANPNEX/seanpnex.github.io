@@ -335,3 +335,40 @@ Under the **mosaic theory**, an analyst may base recommendations on conclusions 
 
 **Example 3 — Selective disclosure (Elizabeth Levenson).** Among the 10 largest shareholders invited to meet a manufacturer’s finance director, she learns the workforce will strike next Friday and cripple operations. She wants to cut the rating from buy to sell.  
 **Takeaway:** Material information shared in a small group is still **nonpublic**. Until the company disseminates it to the market generally, she must not act on it.
+
+### Standard II(B) Market Manipulation
+
+> Members and Candidates must not engage in practices that distort prices or artificially inflate trading volume with the intent to mislead market participants.
+
+II(B) protects market integrity. Manipulation lowers trust, raises risk premiums, and can spill across borders as markets interconnect. New products and faster communication channels create more ways to distort prices or volume — the standard covers both **information-based** and **transaction-based** schemes. **Intent** is the key test: legitimate strategies that exploit real inefficiencies are not violations.
+
+#### Two forms
+
+| Form | What it looks like |
+| --- | --- |
+| **Information-based** | Spreading false or misleading info (or overly optimistic “independent” analysis) to induce trading — classic **pump and dump**: talk the price up, then sell into the artificial demand. |
+| **Transaction-based** | Trades you knew (or should have known) could affect pricing: fake volume/price signals that divert from a fair market, or securing a dominant position to squeeze a related derivative / underlying. |
+
+Both can run together (rumors **plus** wash trades). Profiting personally is **not** required — misleading the market is enough.
+
+#### What is *not* II(B)
+
+- Trading on a real view of mispricing or inefficiency.
+- Liquidity “pump-priming” (e.g. exchange launch volume deals) **if fully disclosed** so participants are not misled about true liquidity.
+- Honest research with a reasonable basis, distributed fairly — even if the call is aggressive — vs. sensational, speculative reports timed to move price for a client’s short.
+
+#### Exam traps
+
+- “Independent” microcap promotion paid in stock/cash → II(B) + often V(A) (no basis) and VI(A) (undisclosed conflict).
+- Cross-fund or multi-account wash trades to juice volume/price so you can exit → still II(B) even if “for the benefit of fund participants.”
+- Exaggerating earnings to a momentum subset to force a company comment / quick pop → II(B); selective preview also risks III(B) Fair Dealing.
+- False chat-room rumors to harm a colleague (no personal profit) → still II(B).
+- Cooking model inputs to win a rating / sale → information manipulation under II(B).
+
+#### Application cases
+
+**Example 7 — Pump and dump (Steve Weinberg).** To lift Moosehead & Belfast, Weinberg posts in investor chat rooms that the railroad will expand for a large lumber-shipping contract.  
+**Takeaway:** Disseminating **false** information with intent to mislead is classic **information-based** II(B).
+
+**Example 4 — Artificial volume between funds (Rajesh Sekar).** Sekar’s equity and balanced funds are both overweight illiquid Digital Design. He trades DD back and forth between the two funds to lift volume and price so outside buyers appear, letting him cut the overweight without marking the books down — “for participants,” even with extra commissions.  
+**Takeaway:** Artificial distortion of **volume and price** is **transaction-based** II(B), regardless of a claimed client benefit.
