@@ -343,3 +343,14 @@ Together, tense (non-past / past) × polarity (affirmative / negative) make the 
 - A: どんな飲み物が好きですか。 — What kind of drinks do you like?
 - B: ミルクティーとか、コーラとか。 — Milk tea, cola, that sort of thing.
 - 木曜日の午後以降とかはどうですか。 — How about something like Thursday afternoon onward?
+
+
+## Adjectives modifying nouns (attributive form / 连体形)
+
+**Rule:** Besides acting as predicates, adjectives can sit **before a noun** and modify it. That form is the **attributive form** (连体形).
+
+- **Type I** (い-adjectives): **A₁ + noun** — the adjective attaches to the noun **directly** (keeps its **い** ending).
+- **Type II** (な-adjectives): **A₂ + な + noun** — insert **な** before the noun. Some books call these **な-adjectives** for that reason.
+
+- 白いパソコン — white computer *(Type I: 白い + パソコン)*
+- きれいな町 — clean / beautiful town *(Type II: きれい + な + 町)*
