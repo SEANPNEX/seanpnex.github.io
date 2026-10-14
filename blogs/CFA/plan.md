@@ -4,84 +4,97 @@ title: CFA Level II Plan
 
 # CFA Level II Learning Plan
 
-> **Working assumption:** a 24-week runway and about **12 hours per week**. If the exam is closer, keep the sequence but compress the first two phases; do not cut the final review and mock phase.
+> **Working assumption:** exam on **Wednesday 18 November 2026**. Intensive runway through **31 October** (~**40 hours per week**, FSA-first) to finish the remaining curriculum, then **1–16 November** for review and **3–4 mocks**, with **17–18 November** light only. Do not cut the mock-and-review phase.
 
 ## Definition of done
 
-- Complete every curriculum reading and its end-of-reading questions.
-- Build one compact formula-and-errors notebook, not a second textbook.
-- Reach **70%+ across three timed mocks**, with no topic repeatedly below 60%.
-- Explain each major valuation method, assumption, and common trap without notes.
+- Finish first-pass coverage of every remaining topic by **Friday 31 October** (Equity, Fixed Income, Portfolio Management, Corporate Issuers, Alternatives, plus FSA and Ethics leftovers).
+- Complete end-of-reading questions for each module studied; keep one compact formula-and-errors notebook, not a second textbook.
+- Sit **3–4 timed mocks** (target dates below) and review each at least as long as taking it; FSA first in every review week.
+- Enter exam week with no topic repeatedly collapsing under timed conditions; protect sleep on 17–18 November.
 
-## Weekly rhythm
+## Current focus (as of 14 Oct 2026)
 
-| Session | Time | Work |
+**Already done (no first-pass needed):** Derivatives, Quantitative Methods.
+
+**Partial:** Economics ~½ remaining. Ethics underway — Standards I(C), I(D), I(E), and II(A) covered.
+
+**In progress:** FSA Module 1 (Intercorporate Investments) through equity-method basic example (investment carried at 118 after dividend). Behind the ideal “M1 finish + M2 start” day map — catch-up nights through Sunday.
+
+**Untouched full pass:** Equity, Fixed Income, Portfolio Management, Corporate Issuers, Alternative Investments. Weakest area = FSA.
+
+**Next actions:** finish M1 EOCs → **M2 Employee Compensation** → M3–M6 (stubs OK while catching up) + Ethics leftovers + close the remaining half of Economics.
+
+## Weekly rhythm (workdays)
+
+| Block | Time | Work |
 | --- | ---: | --- |
-| 3 weekday sessions | 90 min each | Learn one concept block, then do 15–25 questions closed-book. |
-| 1 short weekday session | 45 min | Formula recall and error-log review. |
-| Weekend deep work | 5–6 hr | Finish the topic set, mixed practice, and one item-set review. |
+| Evening CFA | 20:00–02:00 | Primary curriculum and practice block. |
+| Workout | 18:00–20:00 | Personal — keep clear of CFA. |
+| Weekly report | Mon 08:00–10:00 | Work admin — keep clear of CFA. |
 
-Use a **40/60 split**: no more than 40% reading or watching; at least 60% retrieval, calculation, and item-set practice.
+Animus quizzes only after the **02:00** notes check or an explicit end-of-day handoff — not mid-session.
 
-## 24-week roadmap
+Use a **40/60 split** inside the CFA block: no more than 40% reading; at least 60% retrieval, calculation, and item-set practice.
 
-### Phase 1 — Map and diagnose (Weeks 1–2)
+## Intensive roadmap
 
-- Confirm the exam date and current curriculum version in the CFA candidate resources.
-- Take a 60–90 question diagnostic without preparation.
-- Tag every miss: `knowledge`, `formula`, `interpretation`, `calculator`, or `time`.
-- Set up one error log: question source, why the wrong answer felt right, correct rule, revisit date.
+### Phase 1 — Finish curriculum (12–31 Oct · ~40 h/wk · FSA-first)
 
-### Phase 2 — First pass (Weeks 3–14)
+#### This week (13–18 Oct)
 
-Study in an order that compounds understanding:
+| Focus | Hours | Target by Sun 18 Oct |
+| --- | ---: | --- |
+| FSA deep pass | 22–24 | ≥80–100% first-pass + EOCs |
+| Ethics remainder | 6–8 | Standards after II(A) underway |
+| Economics close-out | 3–4 | Remaining half closed |
 
-1. Quantitative Methods and Economics
-2. Financial Statement Analysis
-3. Corporate Issuers
-4. Equity Valuation
-5. Fixed Income
-6. Derivatives
-7. Alternative Investments
-8. Portfolio Management
+#### Week of 19–25 Oct
 
-Keep Ethics active with one short set every week. At the end of each topic, complete a timed mixed set and write a one-page synthesis: key decisions, formulas, and failure modes.
+- Equity: full first pass.
+- Fixed Income: majority of first pass.
+- FSA reinforcement: 6–8 hours mixed practice.
 
-### Phase 3 — Integration (Weeks 15–19)
+#### Week of 26–31 Oct
 
-- Replace chapter-by-chapter work with mixed item sets.
-- Run two 45–60 minute timed blocks each week.
-- Rework every logged error after 2 days, 1 week, and 3 weeks.
-- Pair related areas: FSA ↔ equity, economics ↔ portfolio management, fixed income ↔ derivatives.
-- Finish each week with a scorecard by topic and error type.
+- Finish Fixed Income.
+- Portfolio Management, Corporate Issuers, Alternative Investments.
+- Ethics vignette practice.
+- **Curriculum complete by Friday 31 October.**
 
-### Phase 4 — Exam mode (Weeks 20–23)
+### Phase 2 — Review and mocks (1–16 Nov)
 
-- Complete one full timed mock each weekend under exam conditions.
-- Spend at least as long reviewing a mock as taking it.
-- On weekdays, repair the two weakest topics only; avoid random rereading.
-- Recreate the core formula sheet from memory once per week.
+| Mock | Date | Note |
+| --- | --- | --- |
+| Mock 1 | Sat 1 Nov | Full timed; FSA first in review. |
+| Mock 2 | Sat 8 Nov | Full timed; repair weakest two topics mid-week. |
+| Mock 3 | Wed 12 Nov | Full timed. |
+| Optional Mock 4 | Sat 15 Nov | Only if energy and review backlog allow. |
 
-### Phase 5 — Taper (Week 24)
+Every review week: FSA first, then the topics that scored worst on the latest mock. Rework logged errors; recreate the core formula sheet from memory once per week.
 
-- Do short, high-quality mixed sets; stop full mocks several days before the exam.
-- Review Ethics, formulas, recurring errors, calculator steps, and exam logistics.
-- Protect sleep and preserve confidence; add no new resources.
+### Phase 3 — Taper (17–18 Nov)
+
+- Light mixed sets only; no full mocks.
+- Ethics, formulas, recurring errors, calculator steps, and exam logistics.
+- Protect sleep; add no new resources.
 
 ## Weekly review template
 
 ```text
 Hours planned / completed:
+FSA / Ethics / other topic progress:
 Questions attempted / accuracy:
 Weakest topic and error pattern:
 One concept I can now teach:
 One change for next week:
 ```
 
-## First seven days
+## Next seven days (14–20 Oct)
 
-- [ ] Record the exam date, remaining weeks, and weekly time budget.
-- [ ] Take and score the diagnostic.
-- [ ] Create the error log and formula deck.
-- [ ] Choose the first two topic blocks.
-- [ ] Put all sessions on the calendar before the week begins.
+- [ ] Finish FSA M1 EOCs and start **M2 Employee Compensation**.
+- [ ] Advance FSA M3–M6 (stubs acceptable while catching up).
+- [ ] Continue Ethics past II(A); keep one short Ethics set in the week.
+- [ ] Close the remaining half of Economics.
+- [ ] Hit the Sun 18 checkpoint: FSA first-pass ≥80–100% + EOCs; Ethics underway; Econ closed.
+- [ ] By Mon 20: begin Equity first pass (start of the 19–25 Oct week).

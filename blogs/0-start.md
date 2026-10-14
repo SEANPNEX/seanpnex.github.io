@@ -17,13 +17,13 @@ Choose a track based on what you need today.
   <a class="directory-card directory-card--primary" href="/blogs/CFA/plan">
     <span class="directory-card__number">01 · CFA LEVEL II</span>
     <strong>Start the CFA notes</strong>
-    <span class="directory-card__description">Begin with the study plan, then follow “Next” at the bottom of each page through the curriculum in order.</span>
+    <span class="directory-card__description">Intensive runway to the 18 Nov exam (FSA-first through Oct, mocks in Nov). Open the plan, then follow “Next” through the curriculum.</span>
     <span class="directory-card__action">Open the plan <b>→</b></span>
   </a>
   <a class="directory-card" href="/blogs/JLPT-N2/plan">
     <span class="directory-card__number">02 · JLPT N2</span>
     <strong>Japanese learning plan</strong>
-    <span class="directory-card__description">Reading, listening, grammar, and vocabulary practiced in context.</span>
+    <span class="directory-card__description">2 h/day hard cap through mid-November (exam 6 Dec): vocab, video, grammar, and rotated practice.</span>
     <span class="directory-card__action">View the plan <b>↗</b></span>
   </a>
   <a class="directory-card" href="/blogs/German/plan">

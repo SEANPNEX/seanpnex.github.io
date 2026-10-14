@@ -4,77 +4,89 @@ title: JLPT N2 Plan
 
 # JLPT N2 Learning Plan
 
-> **Working assumption:** a 24-week runway and about **7 hours per week**. The plan targets both the exam and useful Japanese, so reading and listening stay connected to real material.
+> **Working assumption:** exam on **Sunday 6 December 2026**. Intensive coverage **13 October → Friday 14 November** (soft close **16 November**) at a hard cap of **2.0 hours per day** (~**14 hours per week**). **1–5 December** is buffer only (≤1 hour review); **no new first-pass** in December. Do not expand into a heavier December ramp.
 
 ## Definition of done
 
-- Recognize the core N2 vocabulary and kanji in context, not only on flashcards.
-- Read an N2-length passage with a clear purpose, structure map, and controlled pace.
-- Follow the main claim, stance, and important details in one-pass listening.
-- Pass three timed practice tests with a margin above the required sectional and total scores.
+- Clear the remaining vocabulary queue (~**2000** items at ~**60 per day**) and remaining video lessons (~**180** at ~**5–6 per day**) by mid-November.
+- Keep grammar notes, example sentences, and miss-driven flashcards current with Caligo support — recognition in context, not cards alone.
+- Rotate evening practice across grammar, exam practice, reading, and listening so no skill goes dark for a full week.
+- Enter December with first-pass complete; use Dec 1–5 only for light review and logistics before the 6 December exam.
 
-## Weekly rhythm
+## Current focus (as of 14 Oct 2026)
 
-| Frequency | Time | Work |
+**Today:** vocabulary app session in the morning slot.
+
+**Tracks in flight**
+
+| Track | Remaining (approx.) | Daily pace |
+| --- | ---: | ---: |
+| Vocabulary (app) | ~2000 | ~60 / day |
+| Video lessons | ~180 | ~5–6 / day |
+| Grammar / notes / cards | Ongoing with Caligo | Mon & Wed evening |
+| Practice / reading / listening | Rotate evenings | See rhythm below |
+
+Grammar and video deep-work with Caligo follow when the vocabulary block is done for the day — tap Caligo to start those parts; do not invent a heavier evening load.
+
+## Daily rhythm (hard cap 2.0 h)
+
+Slots must not overlap CFA (20:00–02:00), workout (18:00–20:00), or the Monday weekly-report block (08:00–10:00).
+
+| Slot | Time | Work |
 | --- | ---: | --- |
-| Daily | 20 min | Spaced review: vocabulary, kanji, and one example sentence aloud. |
-| 3× weekly | 35 min | Grammar pattern → contrast with a similar pattern → 8–12 questions. |
-| 3× weekly | 30 min | Active listening: predict, listen once, summarize, then check transcript. |
-| 2× weekly | 45 min | Timed reading followed by structure and error analysis. |
-| Weekend | 90 min | Mixed section practice plus weekly review. |
+| Morning vocab | 06:45–07:15 | App vocabulary (~60 items). |
+| Morning video | 07:15–08:05 | Video lessons (~5–6). |
+| Evening rotate | 21:00–21:40 | Skill of the day (table below). |
 
-## 24-week roadmap
+### Evening rotation (21:00–21:40)
 
-### Phase 1 — Baseline and system (Weeks 1–2)
+| Day | Focus |
+| --- | --- |
+| Mon | Grammar · notes / cards (Caligo) |
+| Tue | Practice (exam-style sets) |
+| Wed | Grammar · notes / cards (Caligo) |
+| Thu | Reading |
+| Fri | Listening |
+| Sat | Practice (exam-style sets) |
+| Sun | Listening |
 
-- Take a timed sample covering language knowledge, reading, and listening.
-- Classify mistakes: vocabulary, grammar nuance, sentence connection, reading speed, missed cue, or attention.
-- Choose one main course or book for each skill. Extra resources go on a waiting list.
-- Start a sentence-based review deck; cap new items so reviews stay below 25 minutes.
+## Intensive roadmap
 
-### Phase 2 — Coverage (Weeks 3–12)
+### Phase A — Coverage (13 Oct → Fri 14 Nov)
 
-- Learn 12–15 vocabulary items and 4–6 kanji per day, six days per week.
-- Learn 8–10 grammar patterns per week in contrast groups such as cause, concession, limitation, and tendency.
-- Read one short authentic text daily: NHK, an essay, a product page, or a workplace notice.
-- Listen to 15–20 minutes of Japanese daily. On three days, do an intensive replay with a transcript.
+- Hold the **2.0 h/day** cap; missed morning time does not spill into the CFA evening block.
+- Vocabulary and video run every day at the rates above until queues clear.
+- Grammar evenings: contrast patterns, short example sentences, and miss-driven flashcards — not a second textbook.
+- Practice / reading / listening evenings: timed or one-pass work; log misses for the next grammar or card session.
 
-Every Sunday, write a 150–250 character summary using two of the week’s grammar patterns.
+**Soft close: 16 November** — finish any leftover first-pass items; stop opening new grammar chapters or video series after that.
 
-### Phase 3 — Speed and integration (Weeks 13–18)
+### Phase B — Buffer (1–5 Dec)
 
-- Shift from isolated questions to timed reading and listening sets.
-- For reading, mark the author’s claim, contrast words, referents, and paragraph job.
-- For listening, predict the question type and capture only decision-changing details.
-- Shadow one 60–90 second clip three times per week for sound recognition and rhythm.
-- Maintain old vocabulary; reduce new cards if recall drops below 85%.
+- ≤**1 hour per day** review only.
+- High-confusion grammar pairs, weak listening cues, and recurring vocab misses.
+- Confirm exam logistics; protect sleep.
+- **No new first-pass material.**
 
-### Phase 4 — Test readiness (Weeks 19–23)
+### Exam day — Sun 6 Dec
 
-- Alternate full section tests and full practice exams each weekend.
-- Recreate actual timing, breaks, audio playback, and answer-sheet behavior.
-- Review why each distractor is wrong, especially when the correct answer was guessed.
-- Use weekday sessions to repair one weak subskill at a time.
+- Light warm-up only if useful; no cramming.
 
-### Phase 5 — Taper (Week 24)
+## Weekly check (optional Sunday note)
 
-- Review high-confusion grammar pairs, recurring kanji readings, and listening cue words.
-- Do brief timed sets without exhausting full tests.
-- Confirm logistics and protect sleep.
+```text
+Vocab done / remaining:
+Videos done / remaining:
+Evening slots hit (grammar / practice / reading / listening):
+One pattern or passage that still feels fragile:
+Adjust pace next week? (stay at cap — do not add hours)
+```
 
-## Monthly real-world checkpoint
+## Next seven days (14–20 Oct)
 
-Once every four weeks:
-
-- read one article and give a two-minute spoken summary;
-- hold a 20-minute conversation or language exchange;
-- write one short professional message and have it corrected;
-- note what the test study is—and is not—improving.
-
-## First seven days
-
-- [ ] Take the baseline sample and record sectional scores.
-- [ ] Select one core resource per skill.
-- [ ] Create the review deck and error log.
-- [ ] Save three reliable reading and listening sources.
-- [ ] Schedule the first 90-minute mixed practice block.
+- [ ] Keep morning vocab (06:45–07:15) and video (07:15–08:05) every day.
+- [ ] Mon 14 / Wed 16 evening: grammar with Caligo when tapped — notes and example cards, not a longer session.
+- [ ] Tue 15 / Sat 18 evening: practice sets; log misses.
+- [ ] Thu 17 evening: reading; Fri 18 / Sun 20 evening: listening.
+- [ ] Stay inside the 2.0 h/day cap; do not borrow from the CFA night block.
+- [ ] Do not plan a December first-pass ramp.
