@@ -405,3 +405,12 @@ Together, tense (non-past / past) × polarity (affirmative / negative) make the 
 - 歴史の授業は難しいですが、面白いです。 — History class is difficult, but interesting.
 - 失礼ですが、お名前は？ — Excuse me — what’s your name?
 - 新しいパソコンがほしいのですが。 — I’d like a new computer… *(Clause₂ left open / soft request.)*
+
+
+## N₁ も N₂ も（both … and …）
+
+**Rule:** Put **も** after each of two nouns in parallel: **N₁ も N₂ も ～**. It lists both items as sharing the same predicate — “both N₁ and N₂ …” / “N₁ and N₂ alike …”.
+
+- 兄も姉も会社員です。 — Both my older brother and older sister are company employees.
+- 日本料理も中華料理も美味しいです。 — Both Japanese food and Chinese food are delicious.
+- メモリーもストレージも大きいです。 — Both the memory and the storage are large.
