@@ -372,3 +372,27 @@ Together, tense (non-past / past) × polarity (affirmative / negative) make the 
 - B: ええ、文法**が**難しいです。 — Yes — **the grammar** is what’s difficult. *(specifying the hard part as new focus → **が**.)*
 - A: だれ**が**留学生ですか。 — **Who** is the international student? *(だれが — always **が**.)*
 - B: あの人**が**留学生で、ジョージさんです。ジョージさん**は**今、先生の研究室にいます。 — **That person** is the international student — George. George is in the teacher’s lab now. *(identify with **が**, then known George → **は**.)*
+
+
+## N と同じ（same as N）
+
+**Rule:** **同じ** is a **Type II** adjective meaning “the same / identical.” Attach **と** after the noun you compare with: **N と同じ** = “the same as N.”
+
+**Exception (easy miss):** When **同じ** modifies a noun **attributively**, do **not** add **な** — write **同じ + noun** directly (not *同じな*).
+
+- 白いパソコンと同じ大きさです。 — It’s the same size as the white computer.
+- 李さんは中村さんと同じ大学です。 — Li is at the same university as Nakamura.
+- 経済学部は法学部と同じ建物です。 — The economics department is in the same building as the law department.
+
+## N がほしいです（want N）
+
+**Rule:** **ほしい** is a **Type I** adjective meaning “want (to obtain something).” Conjugate it like other Type I adjectives. The thing wanted is usually marked with **が**: **N がほしいです** ≈ “I want N.”
+
+**Person restriction:** Use **ほしい** mainly for the **speaker’s** desire (first person). Avoid it for third-person wants; for the listener, it is mostly OK with close family/friends.
+
+**ほしい** can also modify a noun attributively (**ほしい + noun**).
+
+- （私は）新しいスーツケースがほしいです。 — I want a new suitcase.
+- 地下鉄がなかった時は、車がほしかったです。 — When there was no subway, I wanted a car.
+- A: ほしいものはありますか。 — Is there anything you want?
+- B: ありますよ。お金がほしいです。 — Yes. I want money.
