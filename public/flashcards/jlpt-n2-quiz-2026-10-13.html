@@ -4,209 +4,52 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>JLPT — Quiz misses 2026-10-13</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-<style>
-:root{
-  --bg:#F0EFEB;--paper:#F0EFEB;--ink:#1C1C1A;--mid:#55554F;
-  --muted:#8F8E88;--faint:#C6C5BF;--grid:#DEDDD6;
-}
-*{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--ink);
-  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  -webkit-font-smoothing:antialiased}
-body{padding:18px;min-height:100vh}
-.wrap{max-width:560px;margin:0 auto}
-.figure-head{margin:2px 4px 18px}
-.figure-head h1{margin:0 0 5px;font-size:22px;line-height:1.15;letter-spacing:-.035em;font-weight:700}
-.figure-head p{margin:0;color:var(--muted);font-size:11px;line-height:1.5}
-.stage{perspective:1200px;margin-bottom:14px}
-.card{
-  position:relative;min-height:340px;border-radius:24px;background:var(--paper);
-  outline:1px solid var(--grid);cursor:pointer;transform-style:preserve-3d;
-  transition:transform .55s cubic-bezier(.165,.84,.44,1);
-  -webkit-tap-highlight-color:transparent;user-select:none;
-  display:grid;
-}
-.card.is-flipped{transform:rotateY(180deg)}
-.face{
-  grid-area:1/1;padding:28px 26px 24px;border-radius:24px;
-  backface-visibility:hidden;-webkit-backface-visibility:hidden;
-  display:flex;flex-direction:column;min-height:340px;
-}
-.face-back{transform:rotateY(180deg)}
-.badge{
-  display:inline-flex;align-self:flex-start;margin:0 0 14px;padding:4px 10px;
-  border-radius:999px;border:1px solid var(--grid);color:var(--muted);
-  font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-}
-.face h2{margin:0 0 12px;font-size:13px;font-weight:600;color:var(--mid);
-  letter-spacing:.02em;text-transform:uppercase}
-.face-body{flex:1;overflow:auto;min-height:0}
-.face .q,.face .a{margin:0;font-size:18px;line-height:1.45;letter-spacing:-.02em}
-.face .a{font-size:16px;line-height:1.55}
-.face .a p{margin:0 0 10px}
-.face .a p:last-child{margin-bottom:0}
-.face .a strong{font-weight:700}
-.face .a .jp{font-size:17px;letter-spacing:0}
-.gap{
-  margin-top:16px;padding:12px 14px;border-radius:14px;border:1px solid var(--grid);
-  color:var(--muted);font-size:12px;line-height:1.5;background:rgba(28,28,26,.02)
-}
-.hint{margin-top:auto;padding-top:18px;color:var(--faint);font-size:11px;letter-spacing:.04em}
-.controls{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:4px}
-.nav{display:flex;align-items:center;gap:8px}
-.btn{
-  appearance:none;border:1px solid var(--grid);background:transparent;color:var(--ink);
-  border-radius:999px;padding:8px 14px;font:inherit;font-size:12px;font-weight:600;
-  cursor:pointer;transition:background .15s ease,border-color .15s ease,opacity .15s ease;
-}
-.btn:hover:not(:disabled){background:rgba(28,28,26,.04);border-color:var(--faint)}
-.btn:disabled{opacity:.35;cursor:default}
-.btn.soft{color:var(--muted)}
-.btn.mark-got{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.btn.mark-got:hover:not(:disabled){background:#2a2a27;border-color:#2a2a27}
-.index{color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums;min-width:3.5em;text-align:center}
-.actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
-.src{margin-top:16px;color:var(--muted);font-size:7px;font-weight:700;letter-spacing:.15em;text-transform:uppercase}
-@media(max-width:620px){
-  body{padding:12px}
-  .face{padding:22px 18px 18px;min-height:360px}
-  .face .q{font-size:17px}
-  .face .a{font-size:15px}
-  .controls{flex-direction:column;align-items:stretch}
-  .nav,.actions{justify-content:space-between}
-}
-@media(prefers-reduced-motion:reduce){.card{transition:none}}
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
 </head>
 <body>
-<div class="wrap">
-  <header class="figure-head">
-    <h1>JLPT flashcards</h1>
-    <p>N2 foundations · Quiz 2026-10-13 · click the card to flip</p>
-  </header>
-  <div class="stage">
-    <div class="card" id="card" role="button" tabindex="0" aria-live="polite" aria-label="Flashcard — press to flip">
-      <div class="face face-front">
-        <span class="badge" id="topic-front">Topic</span>
-        <h2>Question</h2>
-        <div class="face-body"><p class="q" id="front"></p></div>
-        <div class="hint">Click · Space · Enter to flip</div>
-      </div>
-      <div class="face face-back">
-        <span class="badge" id="topic-back">Topic</span>
-        <h2>Answer</h2>
-        <div class="face-body">
-          <div class="a" id="back"></div>
-          <div class="gap" id="gap"></div>
-        </div>
-        <div class="hint">Click · Space · Enter to flip back</div>
-      </div>
-    </div>
-  </div>
-  <div class="controls">
-    <div class="nav">
-      <button type="button" class="btn" id="prev" aria-label="Previous card">Prev</button>
-      <span class="index" id="index">1/1</span>
-      <button type="button" class="btn" id="next" aria-label="Next card">Next</button>
-    </div>
-    <div class="actions">
-      <button type="button" class="btn soft" id="miss" title="Keep reviewing this one">I still miss this</button>
-      <button type="button" class="btn mark-got" id="got" title="Mark as known and advance">Got it</button>
-    </div>
-  </div>
-  <div class="src">LIEFLAT FLASH · JLPT N2 · QUIZ 2026-10-13</div>
-</div>
 <script>
+/* Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
 const CARDS = [
   {
     id: "jlpt-quantifier-枚-2026-10-13",
     topic: "Quantifier + ください",
     front: "You want two flat tickets. Which is natural — 「Nを2枚ください」 or 「二枚でお願いします」?",
     back: "<p class=\"jp\"><strong>Nを2枚ください</strong> is the natural order: object + <strong>を</strong> + quantifier + ください.</p><p><strong>二枚でお願いします</strong> uses <strong>で</strong> (means / chosen option) — fine for size/payment once the item is clear, not the default for “give me two (of N).”</p>",
-    gap: "Focus: counting what you want stays in the を slot — Nを [quantity] ください."
+    gap: "counting what you want stays in the を slot — Nを [quantity] ください."
   },
   {
     id: "jlpt-type1-neg-寒く-2026-10-13",
     topic: "Type I negative",
     front: "Polite negative of 寒い — and with あまり?",
     back: "<p class=\"jp\"><strong>寒くありません</strong> (drop い → く + ありません).</p><p class=\"jp\">With the degree adverb: <strong>あまり寒くありません</strong> (“not very cold”).</p><p>Not <strong>寒くではありません</strong> — that mixes Type I continuative with the Type II / noun では pattern.</p>",
-    gap: "Focus: Type I negative is くありません / くないです — ではありません is for Type II and nouns."
+    gap: "Type I negative is くありません / くないです — ではありません is for Type II and nouns."
   },
   {
     id: "jlpt-も-replaces-を-2026-10-13",
     topic: "も vs を",
     front: "Add “hot coffee too” after an order. How do も and を interact?",
     back: "<p class=\"jp\"><strong>ホットコーヒーもください</strong>.</p><p><strong>も</strong> (“also / too”) <strong>replaces</strong> <strong>を</strong> — they do not stack. Wrong: ホットコーヒーをもください.</p>",
-    gap: "Focus: も takes the object slot; drop を."
+    gap: "も takes the object slot; drop を."
   },
   {
     id: "jlpt-past-neg-ありませんでした-2026-10-13",
     topic: "Past negative",
     front: "Past polite negative with 全然 for 難しい — watch the ありませんでした spelling.",
     back: "<p class=\"jp\"><strong>全然難しくありませんでした</strong>.</p><p>Type I past negative: く + <strong>ありませんでした</strong> (or くなかったです).</p><p>Slip to avoid: writing <strong>ではありませんでした</strong> on a Type I adjective (that’s Type II / noun past negative).</p>",
-    gap: "Focus: 全然 + Type I past neg → くありませんでした, not ではありませんでした."
+    gap: "全然 + Type I past neg → くありませんでした, not ではありませんでした."
   }
 ];
 
-let i = 0, flipped = false;
-const el = {
-  card: document.getElementById("card"),
-  front: document.getElementById("front"),
-  back: document.getElementById("back"),
-  gap: document.getElementById("gap"),
-  topicF: document.getElementById("topic-front"),
-  topicB: document.getElementById("topic-back"),
-  index: document.getElementById("index"),
-  prev: document.getElementById("prev"),
-  next: document.getElementById("next"),
-  miss: document.getElementById("miss"),
-  got: document.getElementById("got"),
-};
-function reportHeight() {
-  const h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
-  if (parent !== window) parent.postMessage({ chartHeight: h }, location.origin || "*");
-}
-function render() {
-  const c = CARDS[i];
-  el.front.textContent = c.front;
-  el.back.innerHTML = c.back;
-  el.gap.textContent = c.gap || "";
-  el.gap.hidden = !c.gap;
-  el.topicF.textContent = c.topic;
-  el.topicB.textContent = c.topic;
-  el.index.textContent = (i + 1) + "/" + CARDS.length;
-  el.prev.disabled = i === 0;
-  el.next.disabled = i >= CARDS.length - 1;
-  setFlip(false);
-  reportHeight();
-}
-function setFlip(on) {
-  flipped = on;
-  el.card.classList.toggle("is-flipped", on);
-  el.card.setAttribute("aria-label", on ? "Answer showing — press to flip" : "Question showing — press to flip");
-}
-function flip() { setFlip(!flipped); reportHeight(); }
-function go(delta) {
-  const n = i + delta;
-  if (n < 0 || n >= CARDS.length) return;
-  i = n; render();
-}
-el.card.addEventListener("click", flip);
-el.card.addEventListener("keydown", (e) => {
-  if (e.key === " " || e.key === "Enter") { e.preventDefault(); flip(); }
-  if (e.key === "ArrowLeft") go(-1);
-  if (e.key === "ArrowRight") go(1);
+flashDeck({
+  key: "jlpt-n2-quiz-2026-10-13",
+  source: "JLPT N2 · Quiz 2026-10-13",
+  gapLabel: "Focus",
+  cards: CARDS,
 });
-el.prev.addEventListener("click", () => go(-1));
-el.next.addEventListener("click", () => go(1));
-el.miss.addEventListener("click", () => { setFlip(true); reportHeight(); });
-el.got.addEventListener("click", () => { if (i < CARDS.length - 1) go(1); else setFlip(false); });
-window.addEventListener("resize", reportHeight);
-render();
-requestAnimationFrame(reportHeight);
 </script>
 </body>
 </html>

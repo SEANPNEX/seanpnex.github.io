@@ -1,356 +1,117 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Financial asset classification</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-  :root{--bg:#F0EFEB;--ink:#1C1C1A;--muted:#8F8E88;--faint:#C6C5BF;--grid:#DEDDD6}
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{background:var(--bg);font-family:'Inter',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
-  .card{background:var(--bg);border-radius:24px;padding:24px 24px 16px}
-  h2{font-weight:700;font-size:16.5px;letter-spacing:-.02em;margin-bottom:3px;max-width:48em;line-height:1.25}
-  .sub{font-size:11.5px;color:var(--muted);margin-bottom:12px;line-height:1.5}
-  .src{font-size:9.5px;color:var(--faint);margin-top:8px;letter-spacing:.08em;font-weight:500;text-transform:uppercase}
-  svg{display:block;width:100%;height:auto;max-height:640px;cursor:pointer}
-  svg text{font-family:'Inter',sans-serif}
-  .pop{transform-box:fill-box;transform-origin:center;animation:pop .45s cubic-bezier(.2,.7,.3,1.3) both}
-  @keyframes pop{from{transform:scale(0)}to{transform:none}}
-  .fade{animation:fade .85s ease both}
-  @keyframes fade{from{opacity:0}}
-  .draw{stroke-dasharray:1;stroke-dashoffset:1;animation:draw .95s cubic-bezier(.4,0,.2,1) both}
-  @keyframes draw{to{stroke-dashoffset:0}}
-  @media (prefers-reduced-motion:reduce){
-    .pop,.fade{animation:none}
-    .draw{animation:none;stroke-dasharray:none;stroke-dashoffset:0}
-    svg{cursor:default}
-  }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Financial asset classification</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <style>
+    .lanes{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+    .entry{
+      padding:8px 12px;border-radius:10px;background:var(--ink);color:var(--paper);
+      font-size:12.5px;font-weight:800;letter-spacing:-.005em;
+    }
+    /* A question; the main path continues down, the exit sits on the right. */
+    .step{
+      display:flex;align-items:center;gap:10px;padding:9px 10px 9px 12px;
+      border:1px solid var(--ink);border-radius:10px;
+    }
+    .step.key{outline:1.5px dashed var(--ink);outline-offset:3px}
+    .q{flex:1;min-width:0;font-size:12px;font-weight:700;line-height:1.3}
+    .q small{display:block;margin-top:2px;font-size:10.5px;font-weight:500;color:var(--muted);line-height:1.35}
+    .exit{display:flex;flex-direction:column;align-items:flex-end;gap:3px;font-size:10px;font-weight:700;color:var(--muted);white-space:nowrap}
+    /* Connector down to the next question, labelled with the answer that leads there. */
+    .go{
+      height:26px;margin-left:20px;padding:6px 0 0 8px;border-left:1.2px solid #8F8E88;
+      font-size:10px;font-weight:700;color:var(--muted);
+    }
+    .tag{display:inline-block;padding:3px 8px;border-radius:7px;font-size:10.5px;font-weight:800;letter-spacing:.02em}
+    .fvpl{background:#1C1C1A;color:#F0EFEB}
+    .fvoci{background:#6A6963;color:#F0EFEB}
+    .amc{background:#C6C5BF;color:#1C1C1A}
+    .results{display:flex;gap:8px}
+    .result{flex:1;padding:9px 12px;border-radius:10px}
+    .result b{display:block;font-size:14px;font-weight:800}
+    .result small{display:block;margin-top:1px;font-size:10.5px;font-weight:500;opacity:.8;line-height:1.35}
+    .deriv{
+      display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:16px;padding-top:12px;
+      border-top:1px solid var(--grid);font-size:12px;font-weight:700;
+    }
+    .deriv .entry{padding:6px 10px}
+    .deriv small{font-size:10.5px;font-weight:500;color:var(--muted)}
+    .legend{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px;font-size:10.5px;color:var(--muted)}
+    .legend span{display:inline-flex;align-items:center;gap:5px}
+    .legend i{width:10px;height:10px;border-radius:3px}
+    .lane>*{animation:fade .5s ease both}
+    @media(max-width:539px){.lanes{grid-template-columns:1fr;gap:22px}}
+  </style>
 </head>
 <body>
-<div class="card" id="card">
-  <h2>Instrument type and tests decide AMC, FVOCI, or FVPL.</h2>
-  <div class="sub">debt · derivatives · equity · SPPI + business model + designation · CFA L2 FSA M1</div>
-  <svg id="flow" viewBox="0 0 1080 640" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Financial asset classification decision flow: debt, derivatives, equity to AMC, FVOCI, or FVPL"></svg>
-  <div class="src">DECISION FLOW · LIEFLAT G7→ · FINANCIAL ASSET CLASSIFICATION</div>
-</div>
-<script>
-(() => {
-  const INK = '#1C1C1A';
-  const PAPER = '#F0EFEB';
-  const MUTED = '#8F8E88';
-  const FAINT = '#C6C5BF';
-  const GRID = '#DEDDD6';
-  // Ladder: FVPL darkest, FVOCI mid, AMC lightest (matches prior M1 charts)
-  const L = ['#1C1C1A', '#4A4944', '#6A6963', '#8F8E88', '#B0AFA9', '#C6C5BF', '#D8D7D1'];
-  const NS = 'http://www.w3.org/2000/svg';
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  const el = (p, t, a) => {
-    const n = document.createElementNS(NS, t);
-    for (const k in a) n.setAttribute(k, a[k]);
-    p.appendChild(n);
-    return n;
-  };
-  const txt = (p, a, s) => {
-    const n = el(p, 'text', a);
-    n.textContent = s;
-    return n;
-  };
-  const tip = (n, s) => {
-    const t = document.createElementNS(NS, 'title');
-    t.textContent = s;
-    n.appendChild(t);
-  };
-
-  const timers = {};
-  const keep = (id, t) => { (timers[id] = timers[id] || []).push(t); };
-  const obsReveal = (id, fn) => {
-    const n = document.getElementById(id);
-    const go = () => {
-      (timers[id] || []).forEach(clearInterval);
-      timers[id] = [];
-      n.innerHTML = '';
-      fn(n);
-    };
-    if (reduced) {
-      go();
-    } else {
-      const io = new IntersectionObserver((es) => {
-        if (es[0].isIntersecting) { go(); io.disconnect(); }
-      }, { threshold: 0.25 });
-      io.observe(n);
-      n.addEventListener('click', go);
-    }
-  };
-  void keep;
-
-  // Explicit geometry — library-外 decision ladder from G7 hierarchy grammar
-  // Three entry lanes → four outcomes. Hairline elbows; no decorative color.
-  const CX = { debt: 200, der: 540, eq: 880 };
-  const OUT_Y = 560;
-  const OUT = {
-    amc:   { x: 70,  w: 150, fill: L[5], ink: INK,   label: 'Amortized cost', tip: 'Amortized cost (AMC) · Model 1 hold-to-collect, SPPI pass, no fair value option' },
-    fvocid:{ x: 260, w: 150, fill: L[2], ink: PAPER, label: 'FVOCI',         tip: 'FVOCI (debt) · Model 2 hold-to-collect-and-sell, SPPI pass, no fair value option' },
-    fvpl:  { x: 470, w: 170, fill: L[0], ink: PAPER, label: 'FVPL',          tip: 'Fair value through profit or loss (FVPL) · catch-all hub' },
-    fvocie:{ x: 820, w: 150, fill: L[2], ink: PAPER, label: 'FVOCI',         tip: 'FVOCI (equity) · non-trading equity irrevocably designated at FVOCI' },
-  };
-
-  const nodeBox = (s, o) => {
-    const g = el(s, 'g', {
-      class: 'pop',
-      style: `animation-delay:${o.delay || 0}s`,
+  <main class="card" id="card">
+    <h2>Instrument type and two tests decide AMC, FVOCI, or FVPL.</h2>
+    <div class="sub">Follow a column down · each question's exit sits on its right · SPPI test + business-model test for debt, trading + designation for equity</div>
+    <div class="lanes">
+      <section class="lane" aria-label="Debt instruments">
+        <div class="entry">Debt instruments</div>
+        <div class="go"></div>
+        <div class="step">
+          <div class="q">Solely principal + interest?<small>SPPI cash-flow test</small></div>
+          <div class="exit">No<span class="tag fvpl">FVPL</span></div>
+        </div>
+        <div class="go">Yes</div>
+        <div class="step">
+          <div class="q">Business model?<small>M1 hold to collect · M2 collect and sell</small></div>
+          <div class="exit">Neither<span class="tag fvpl">FVPL</span></div>
+        </div>
+        <div class="go">M1 or M2</div>
+        <div class="step">
+          <div class="q">Fair value option?<small>elected to reduce an accounting mismatch</small></div>
+          <div class="exit">Yes<span class="tag fvpl">FVPL</span></div>
+        </div>
+        <div class="go">No</div>
+        <div class="results">
+          <div class="result amc"><b>AMC</b><small>M1 · hold to collect</small></div>
+          <div class="result fvoci"><b>FVOCI</b><small>M2 · collect and sell</small></div>
+        </div>
+      </section>
+      <section class="lane" aria-label="Equity instruments">
+        <div class="entry">Equity instruments</div>
+        <div class="go"></div>
+        <div class="step">
+          <div class="q">Held for trading?</div>
+          <div class="exit">Yes<span class="tag fvpl">FVPL</span></div>
+        </div>
+        <div class="go">No</div>
+        <div class="step key">
+          <div class="q">Designate at FVOCI?<small>irrevocable election</small></div>
+          <div class="exit">No<span class="tag fvpl">FVPL</span></div>
+        </div>
+        <div class="go">Yes</div>
+        <div class="results">
+          <div class="result fvoci"><b>FVOCI</b><small>only dividends reach profit or loss</small></div>
+        </div>
+      </section>
+    </div>
+    <div class="deriv">
+      <span class="entry">Derivatives</span>
+      <span>always <span class="tag fvpl">FVPL</span></span>
+      <small>except hedging instruments</small>
+    </div>
+    <div class="legend">
+      <span><i class="fvpl"></i>FVPL · fair value through profit or loss</span>
+      <span><i class="fvoci"></i>FVOCI · fair value through OCI</span>
+      <span><i class="amc"></i>AMC · amortized cost</span>
+    </div>
+    <div class="src">DECISION FLOW · LIEFLAT G7 · FINANCIAL ASSET CLASSIFICATION</div>
+  </main>
+  <script>
+    // Stagger the ladders top to bottom.
+    document.querySelectorAll('.lane').forEach((lane, j) => {
+      [...lane.children].forEach((n, i) => { n.style.animationDelay = `${j * 0.1 + i * 0.05}s`; });
     });
-    if (o.emphasize) {
-      el(g, 'rect', {
-        x: o.x - 7, y: o.y - 7, width: o.w + 14, height: o.h + 14,
-        rx: 12, ry: 12,
-        fill: 'none', stroke: INK, 'stroke-width': 1.6,
-        'stroke-dasharray': '4 3',
-      });
-    }
-    const r = el(g, 'rect', {
-      x: o.x, y: o.y, width: o.w, height: o.h,
-      rx: o.rx || 8, ry: o.rx || 8,
-      fill: o.fill || PAPER,
-      stroke: o.stroke || INK,
-      'stroke-width': o.sw || 1.2,
-    });
-    if (o.tip) tip(r, o.tip);
-    const lines = o.lines || [o.label];
-    const lineH = 12;
-    const startY = o.y + o.h / 2 - ((lines.length - 1) * lineH) / 2 + 4;
-    lines.forEach((ln, i) => {
-      txt(g, {
-        x: o.x + o.w / 2,
-        y: startY + i * lineH,
-        'font-size': o.fs || 10,
-        'font-weight': o.fw || 600,
-        fill: o.ink || INK,
-        'text-anchor': 'middle',
-      }, ln);
-    });
-    return { cx: o.x + o.w / 2, cy: o.y + o.h / 2, x: o.x, y: o.y, w: o.w, h: o.h, r: o.x + o.w, b: o.y + o.h };
-  };
-
-  const edgeLabel = (s, x, y, label, delay) => {
-    txt(s, {
-      x, y,
-      'font-size': 8, 'font-weight': 700, fill: MUTED,
-      'text-anchor': 'middle',
-      'letter-spacing': '.02em',
-      class: 'fade', style: `animation-delay:${delay || 0}s`,
-    }, label);
-  };
-
-  const path = (s, d, delay, sw) => {
-    el(s, 'path', {
-      d,
-      fill: 'none',
-      stroke: L[3],
-      'stroke-width': sw || 1.15,
-      'stroke-linecap': 'round',
-      'stroke-linejoin': 'round',
-      pathLength: 1,
-      class: 'draw',
-      style: `animation-delay:${delay || 0}s;animation-duration:1.05s`,
-    });
-  };
-
-  // Orthogonal elbow helpers (hairline G7→ connectors)
-  const vline = (x, y1, y2) => `M${x} ${y1} V${y2}`;
-  const hline = (x1, x2, y) => `M${x1} ${y} H${x2}`;
-  const elbow = (x1, y1, x2, y2, midY) => {
-    const my = midY != null ? midY : (y1 + y2) / 2;
-    return `M${x1} ${y1} V${my} H${x2} V${y2}`;
-  };
-  const elbowH = (x1, y1, x2, y2, midX) => {
-    const mx = midX != null ? midX : (x1 + x2) / 2;
-    return `M${x1} ${y1} H${mx} V${y2} H${x2}`;
-  };
-
-  obsReveal('flow', (s) => {
-    // Soft column guides (furniture, not data)
-    [CX.debt, CX.der, CX.eq].forEach((x, i) => {
-      el(s, 'line', {
-        x1: x, y1: 18, x2: x, y2: 500,
-        stroke: GRID, 'stroke-width': 1, 'stroke-dasharray': '2 6',
-        class: 'fade', style: `animation-delay:${0.05 * i}s`,
-      });
-    });
-
-    // ── Entries ──
-    const debt = nodeBox(s, {
-      x: CX.debt - 78, y: 22, w: 156, h: 30,
-      label: 'Debt instruments',
-      tip: 'Debt instruments',
-      delay: 0.05, fw: 700, fs: 10.5,
-    });
-    const der = nodeBox(s, {
-      x: CX.der - 68, y: 22, w: 136, h: 30,
-      label: 'Derivatives',
-      tip: 'Derivatives → measured at FVPL',
-      delay: 0.1, fw: 700, fs: 10.5,
-    });
-    const eq = nodeBox(s, {
-      x: CX.eq - 78, y: 22, w: 156, h: 30,
-      label: 'Equity instruments',
-      tip: 'Equity instruments',
-      delay: 0.15, fw: 700, fs: 10.5,
-    });
-
-    // ── Debt: SPPI ──
-    const sppi = nodeBox(s, {
-      x: CX.debt - 78, y: 88, w: 156, h: 42,
-      lines: ['SPPI?', 'principal + interest'],
-      tip: 'Are contractual cash flows solely payments of principal and interest (SPPI)?',
-      delay: 0.22, fs: 9.5,
-    });
-    path(s, vline(debt.cx, debt.b, sppi.y), 0.18);
-
-    // ── Debt: Business model ──
-    const bm = nodeBox(s, {
-      x: CX.debt - 92, y: 178, w: 184, h: 54,
-      lines: ['Business model', 'M1 collect · M2 collect+sell'],
-      tip: 'Model 1: hold to collect contractual cash flows only. Model 2: hold to collect and sell. Neither → FVPL.',
-      delay: 0.32, fs: 9.5,
-    });
-    path(s, vline(sppi.cx, sppi.b, bm.y), 0.28);
-    edgeLabel(s, sppi.cx + 14, sppi.b + 18, 'Yes', 0.3);
-
-    // SPPI No → FVPL rail (x=390)
-    const rail = 390;
-    path(s, elbowH(sppi.r, sppi.cy, rail, 470, 340), 0.35);
-    edgeLabel(s, sppi.r + 28, sppi.cy - 8, 'No', 0.36);
-
-    // BM Neither → same rail, staggered midY
-    path(s, `M${bm.r} ${bm.cy + 8} H${rail} V470`, 0.4);
-    edgeLabel(s, bm.r + 36, bm.cy + 2, 'Neither', 0.42);
-
-    // ── Debt: Fair value option ──
-    const fvo = nodeBox(s, {
-      x: CX.debt - 92, y: 280, w: 184, h: 44,
-      lines: ['Fair value option?', 'reduce mismatch'],
-      tip: 'Does the entity use the fair value option to reduce an accounting mismatch?',
-      delay: 0.42, fs: 9.5,
-    });
-    path(s, vline(bm.cx, bm.b, fvo.y), 0.38);
-    edgeLabel(s, bm.cx + 18, bm.b + 16, 'M1 / M2', 0.4);
-
-    // FVO Yes → rail
-    path(s, `M${fvo.r} ${fvo.cy} H${rail} V470`, 0.48);
-    edgeLabel(s, fvo.r + 22, fvo.cy - 8, 'Yes', 0.5);
-
-    // FVO No → split to AMC (M1) and FVOCI debt (M2)
-    // Split node under FVO
-    const splitY = 370;
-    path(s, vline(fvo.cx, fvo.b, splitY), 0.5);
-    edgeLabel(s, fvo.cx + 14, fvo.b + 16, 'No', 0.52);
-
-    // M1 → AMC
-    const amcBox = OUT.amc;
-    const amcCx = amcBox.x + amcBox.w / 2;
-    path(s, `M${fvo.cx} ${splitY} H${amcCx} V${OUT_Y}`, 0.55);
-    edgeLabel(s, (fvo.cx + amcCx) / 2, splitY - 8, 'Model 1', 0.56);
-
-    // M2 → FVOCI debt
-    const fvdCx = OUT.fvocid.x + OUT.fvocid.w / 2;
-    path(s, `M${fvo.cx} ${splitY} H${fvdCx} V${OUT_Y}`, 0.58);
-    edgeLabel(s, (fvo.cx + fvdCx) / 2 + 10, splitY + 14, 'Model 2', 0.59);
-
-    // ── Derivatives straight to FVPL ──
-    const fvplCx = OUT.fvpl.x + OUT.fvpl.w / 2;
-    path(s, `M${der.cx} ${der.b} V440 H${fvplCx} V${OUT_Y}`, 0.25, 1.3);
-    edgeLabel(s, der.cx + 28, 250, '→ FVPL', 0.3);
-
-    // Rail into FVPL top (from left feeders)
-    path(s, `M${rail} 470 H${fvplCx} V${OUT_Y}`, 0.62);
-
-    // ── Equity path ──
-    const trade = nodeBox(s, {
-      x: CX.eq - 78, y: 88, w: 156, h: 42,
-      lines: ['Held for trading?'],
-      tip: 'Is the equity instrument held for trading?',
-      delay: 0.28, fs: 10,
-    });
-    path(s, vline(eq.cx, eq.b, trade.y), 0.22);
-
-    // Trading Yes → FVPL (via right rail then left)
-    const eqRail = 720;
-    path(s, `M${trade.x} ${trade.cy} H${eqRail} V470 H${fvplCx}`, 0.45);
-    edgeLabel(s, trade.x - 22, trade.cy - 10, 'Yes', 0.46);
-
-    // Designate FVOCI (emphasized — was red circle in source)
-    const desig = nodeBox(s, {
-      x: CX.eq - 92, y: 190, w: 184, h: 50,
-      lines: ['Designate FVOCI?', 'irrevocable election'],
-      tip: 'Whether to irrevocably designate the equity instrument as measured at FVOCI',
-      delay: 0.4, fs: 9.5, emphasize: true, sw: 1.5,
-    });
-    path(s, vline(trade.cx, trade.b, desig.y), 0.36);
-    edgeLabel(s, trade.cx + 14, trade.b + 18, 'No', 0.38);
-
-    // Designate Yes → FVOCI equity
-    const fveCx = OUT.fvocie.x + OUT.fvocie.w / 2;
-    path(s, `M${desig.cx} ${desig.b} V${OUT_Y - 20} H${fveCx} V${OUT_Y}`, 0.55);
-    edgeLabel(s, desig.cx + 18, desig.b + 36, 'Yes', 0.56);
-
-    // Designate No → FVPL
-    path(s, `M${desig.x} ${desig.cy} H${eqRail + 20} V470 H${fvplCx}`, 0.58);
-    edgeLabel(s, desig.x - 16, desig.cy - 8, 'No', 0.59);
-
-    // ── Outcome boxes ──
-    const outMeta = [
-      { key: 'amc',    tag: 'AMC',    sub: 'Model 1 debt' },
-      { key: 'fvocid', tag: 'debt',   sub: 'Model 2 debt' },
-      { key: 'fvpl',   tag: 'hub',    sub: 'catch-all' },
-      { key: 'fvocie', tag: 'equity', sub: 'designated' },
-    ];
-    outMeta.forEach((m, i) => {
-      const o = OUT[m.key];
-      const g = el(s, 'g', {
-        class: 'pop',
-        style: `animation-delay:${0.7 + i * 0.08}s`,
-      });
-      const r = el(g, 'rect', {
-        x: o.x, y: OUT_Y, width: o.w, height: 44,
-        rx: 10, ry: 10, fill: o.fill, stroke: 'none',
-      });
-      tip(r, o.tip);
-      txt(g, {
-        x: o.x + o.w / 2, y: OUT_Y + 18,
-        'font-size': 11, 'font-weight': 800, fill: o.ink,
-        'text-anchor': 'middle',
-      }, o.label);
-      txt(g, {
-        x: o.x + o.w / 2, y: OUT_Y + 34,
-        'font-size': 8, 'font-weight': 600, fill: o.ink === PAPER ? FAINT : MUTED,
-        'text-anchor': 'middle',
-      }, m.sub);
-    });
-
-    // Outcome row caption
-    txt(s, {
-      x: 70, y: 624,
-      'font-size': 8, 'font-weight': 600, fill: FAINT,
-      'letter-spacing': '.1em',
-      class: 'fade', style: 'animation-delay:.95s',
-    }, 'SHADE · FVPL DARKEST · FVOCI MID · AMC LIGHTEST');
-  });
-
-  const fit = () => {
-    if (parent !== window) {
-      parent.postMessage(
-        { chartHeight: document.querySelector('#card').scrollHeight },
-        location.origin,
-      );
-    }
-  };
-  addEventListener('load', fit);
-  addEventListener('resize', fit);
-})();
-</script>
+    curveKit.fit();
+  </script>
 </body>
 </html>

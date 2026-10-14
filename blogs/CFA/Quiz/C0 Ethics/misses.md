@@ -50,3 +50,13 @@
 
 **Gap:** Missed flat-fee rule and contingent-fee independence trap; conflated with travel/gift rules.
 
+
+## 2026-10-14 — II(A) Mosaic documentation
+
+**Q:** Mosaic theory under II(A): can you issue a sell from public filings plus nonmaterial private color, and what should you do to protect yourself if challenged?
+
+**My answer:** Yes — can use nonpublic nonmaterial + all public material under mosaic. Did not know how to protect yourself.
+
+**Correct:** Mosaic is allowed. Protect yourself by **documenting** the public + nonmaterial nonpublic sources (also ties to V(C) Record Retention).
+
+**Gap:** Knew mosaic OK; forgot documentation / evidence trail.

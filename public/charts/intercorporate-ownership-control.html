@@ -1,249 +1,62 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Ownership · power of control</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-  :root{--bg:#F0EFEB;--ink:#1C1C1A;--muted:#8F8E88;--faint:#C6C5BF;--grid:#DEDDD6}
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{background:var(--bg);font-family:'Inter',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
-  .card{background:var(--bg);border-radius:24px;padding:28px 28px 18px}
-  h2{font-weight:700;font-size:16.5px;letter-spacing:-.02em;margin-bottom:3px;max-width:42em;line-height:1.25}
-  .sub{font-size:11.5px;color:var(--muted);margin-bottom:14px;line-height:1.5}
-  .src{font-size:9.5px;color:var(--faint);margin-top:10px;letter-spacing:.08em;font-weight:500;text-transform:uppercase}
-  svg{display:block;width:100%;height:auto;max-height:300px;cursor:pointer}
-  svg text{font-family:'Inter',sans-serif}
-  .pop{transform-box:fill-box;transform-origin:center;animation:pop .5s cubic-bezier(.2,.7,.3,1.3) both}
-  @keyframes pop{from{transform:scale(0)}to{transform:none}}
-  .fade{animation:fade .9s ease both}
-  @keyframes fade{from{opacity:0}}
-  .draw{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1s cubic-bezier(.4,0,.2,1) both}
-  @keyframes draw{to{stroke-dashoffset:0}}
-  @media (prefers-reduced-motion:reduce){
-    .pop,.fade{animation:none}
-    .draw{animation:none;stroke-dasharray:none;stroke-dashoffset:0}
-    svg{cursor:default}
-  }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Ownership · power of control</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <style>
+    /* Segment widths are the ownership ranges themselves: 20, 30, 50 points. */
+    .scale{display:grid;grid-template-columns:20fr 30fr 50fr;column-gap:4px}
+    .bar{height:26px;border-radius:999px;transform-origin:left;animation:grow .7s cubic-bezier(.2,.7,.3,1) both}
+    @keyframes grow{from{transform:scaleX(0)}}
+    .s1{background:#A8A7A0}.s2{background:#6A6963}.s3{background:#1C1C1A}
+    .ticks{position:relative;height:18px;margin-top:5px;font-size:10.5px;font-weight:700;color:var(--muted)}
+    .ticks span{position:absolute;top:0;transform:translateX(-50%)}
+    .ticks span:first-child{transform:none}
+    .ticks span:last-of-type{left:auto!important;right:0;transform:none}
+    .ticks em{position:absolute;right:0;top:18px;font-style:normal;font-size:9.5px;letter-spacing:.1em;color:#8A8983}
+    .labels{margin-top:16px}
+    .lab{padding:9px 6px 0 0;border-top:2px solid;animation:fade .6s ease both}
+    .lab b{display:block;font-size:12.5px;font-weight:800;line-height:1.25}
+    .lab .pct{display:block;margin-top:3px;font-size:11px;font-weight:700;color:var(--ink)}
+    .lab small{display:block;margin-top:2px;font-size:10.5px;color:var(--muted);line-height:1.35}
+    .l1{border-color:#A8A7A0}.l2{border-color:#6A6963}.l3{border-color:#1C1C1A}
+    .jv{
+      display:flex;align-items:center;gap:10px;margin-top:18px;padding:9px 12px;
+      border:1.2px dashed #8F8E88;border-radius:10px;font-size:11.5px;color:var(--muted)
+    }
+    .jv b{color:var(--ink);font-size:12.5px}
+    /* On a phone the three labels stack, each tagged with its segment's shade. */
+    @media(max-width:439px){
+      .labels.scale{grid-template-columns:1fr;row-gap:10px}
+      .lab{border-top:0;border-left:4px solid;padding:0 0 0 10px}
+    }
+  </style>
 </head>
 <body>
-<div class="card" id="card">
-  <h2>Ownership percentage maps power of control.</h2>
-  <div class="sub">shade = Control darkest · Significant influence mid · Lack of influence lightest · CFA L2 FSA M1</div>
-  <svg id="axis" viewBox="0 0 640 268" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Ownership percentage axis with three separated power-of-control bands"></svg>
-  <div class="src">SEPARATED AXIS · LIEFLAT L7→ · INTERCORPORATE INVESTMENTS</div>
-</div>
-<script>
-(() => {
-  const INK = '#1C1C1A';
-  const PAPER = '#F0EFEB';
-  const MUTED = '#8F8E88';
-  const FAINT = '#C6C5BF';
-  const GRID = '#DEDDD6';
-  // L ladder: darkest band = Control (most consequential)
-  const L = ['#1C1C1A', '#4A4944', '#6A6963', '#8F8E88', '#B0AFA9', '#C6C5BF', '#D8D7D1'];
-  const NS = 'http://www.w3.org/2000/svg';
-  const el = (p, t, a) => {
-    const n = document.createElementNS(NS, t);
-    for (const k in a) n.setAttribute(k, a[k]);
-    p.appendChild(n);
-    return n;
-  };
-  const txt = (p, a, s) => {
-    const n = el(p, 'text', a);
-    n.textContent = s;
-    return n;
-  };
-  const tip = (n, s) => {
-    const t = document.createElementNS(NS, 'title');
-    t.textContent = s;
-    n.appendChild(t);
-  };
-
-  const timers = {};
-  const keep = (id, t) => { (timers[id] = timers[id] || []).push(t); };
-  const obsReveal = (id, fn) => {
-    const n = document.getElementById(id);
-    const go = () => {
-      (timers[id] || []).forEach(clearInterval);
-      timers[id] = [];
-      n.innerHTML = '';
-      fn(n);
-    };
-    const io = new IntersectionObserver((es) => {
-      if (es[0].isIntersecting) { go(); io.disconnect(); }
-    }, { threshold: 0.3 });
-    io.observe(n);
-    n.addEventListener('click', go);
-  };
-  void keep;
-
-  // Data: three mutually exclusive ownership intervals (library-外 from L7 Brand Spectrum)
-  // Gaps at 20 and 50 so bands read as separated, not one continuous bar.
-  // Shade: Control = L[0] darkest; Significant = L[2]; Lack = L[4] lightest.
-  const BANDS = [
-    {
-      lo: 0, hi: 20,
-      influence: 'Lack of influence',
-      range: '(0, 20)',
-      category: 'Financial assets',
-      accounting: 'AMC · FVOCI · FVPL',
-      shade: L[4],
-      labelSide: 'above',
-    },
-    {
-      lo: 20, hi: 50,
-      influence: 'Significant influence',
-      range: '(20, 50)',
-      category: 'Associates',
-      accounting: 'Equity method',
-      shade: L[2],
-      labelSide: 'below',
-    },
-    {
-      lo: 50, hi: 100,
-      influence: 'Control',
-      range: '(50, 100)',
-      category: 'Business combinations',
-      accounting: 'Acquisition method',
-      shade: L[0],
-      labelSide: 'above',
-    },
-  ];
-
-  const TICKS = [0, 20, 50, 100];
-  const X0 = 48;
-  const X1 = 592;
-  const AXIS_Y = 128;
-  const BAND_H = 28;
-  const GAP_PX = 10; // visible separation at 20 and 50 boundaries
-
-  const px = (pct) => X0 + (pct / 100) * (X1 - X0);
-
-  // Capsule geometry with half-gap inset at interior boundaries
-  const bandGeom = (lo, hi) => {
-    let xL = px(lo);
-    let xR = px(hi);
-    if (lo > 0) xL += GAP_PX / 2;
-    if (hi < 100) xR -= GAP_PX / 2;
-    return { x: xL, w: Math.max(8, xR - xL) };
-  };
-
-  obsReveal('axis', (s) => {
-    // Hairline track (L7 axis furniture)
-    el(s, 'line', {
-      x1: X0, y1: AXIS_Y, x2: X1, y2: AXIS_Y,
-      stroke: '#B0AFA9', 'stroke-width': 1,
-      pathLength: 1, class: 'draw',
-      style: 'animation-duration:1.1s',
-    });
-
-    // End + boundary ticks
-    TICKS.forEach((t, i) => {
-      const x = px(t);
-      const tall = (t === 0 || t === 100) ? 7 : 5;
-      el(s, 'line', {
-        x1: x, y1: AXIS_Y - tall, x2: x, y2: AXIS_Y + tall,
-        stroke: '#B0AFA9', 'stroke-width': 1,
-        class: 'fade', style: `animation-delay:${0.05 + i * 0.06}s`,
-      });
-      txt(s, {
-        x, y: AXIS_Y + 22,
-        'font-size': 9.5, 'font-weight': 600, fill: MUTED,
-        'text-anchor': 'middle',
-        class: 'fade', style: `animation-delay:${0.12 + i * 0.06}s`,
-      }, String(t));
-    });
-
-    // Axis unit label
-    txt(s, {
-      x: X1, y: AXIS_Y + 38,
-      'font-size': 7.5, 'font-weight': 600, fill: FAINT,
-      'text-anchor': 'end', 'letter-spacing': '.1em',
-      class: 'fade', style: 'animation-delay:.45s',
-    }, '% OWNERSHIP');
-
-    // Separated band capsules
-    BANDS.forEach((b, i) => {
-      const { x, w } = bandGeom(b.lo, b.hi);
-      const y = AXIS_Y - BAND_H / 2;
-      const g = el(s, 'g', {
-        class: 'pop',
-        style: `animation-delay:${0.35 + i * 0.12}s`,
-      });
-      const cap = el(g, 'rect', {
-        x, y, width: w, height: BAND_H, rx: BAND_H / 2, ry: BAND_H / 2,
-        fill: b.shade,
-      });
-      tip(cap,
-        `${b.influence} ${b.range}\n→ ${b.category}\nAccounting: ${b.accounting}`);
-
-      // Invisible wider hit target for hover comfort
-      const hit = el(g, 'rect', {
-        x: x - 2, y: y - 36, width: w + 4, height: BAND_H + 72,
-        fill: 'transparent',
-      });
-      tip(hit,
-        `${b.influence} ${b.range}\n→ ${b.category}\nAccounting: ${b.accounting}`);
-
-      const cx = x + w / 2;
-      const above = b.labelSide === 'above';
-      const infY = above ? y - 28 : y + BAND_H + 40;
-      const catY = above ? y - 14 : y + BAND_H + 54;
-
-      // Influence (primary) — short
-      const infLabel = b.influence === 'Significant influence'
-        ? 'Significant influence'
-        : b.influence === 'Lack of influence'
-          ? 'Lack of influence'
-          : 'Control';
-      txt(s, {
-        x: cx, y: infY,
-        'font-size': 10, 'font-weight': 700,
-        fill: b.shade === L[0] ? INK : (b.shade === L[2] ? L[1] : MUTED),
-        'text-anchor': 'middle',
-        class: 'fade', style: `animation-delay:${0.5 + i * 0.1}s`,
-      }, infLabel);
-
-      // Range + category secondary
-      txt(s, {
-        x: cx, y: catY,
-        'font-size': 8.5, 'font-weight': 500, fill: MUTED,
-        'text-anchor': 'middle',
-        class: 'fade', style: `animation-delay:${0.58 + i * 0.1}s`,
-      }, `${b.range} · ${b.category}`);
-    });
-
-    // Joint ventures annotation — off the continuum (shared control, % varies)
-    const noteX = 48;
-    const noteY = 236;
-    el(s, 'line', {
-      x1: noteX, y1: noteY - 10, x2: noteX + 18, y2: noteY - 10,
-      stroke: FAINT, 'stroke-width': 1.2, 'stroke-dasharray': '2 2',
-      class: 'fade', style: 'animation-delay:.85s',
-    });
-    txt(s, {
-      x: noteX + 24, y: noteY - 7,
-      'font-size': 8, 'font-weight': 600, fill: MUTED,
-      'letter-spacing': '.04em',
-      class: 'fade', style: 'animation-delay:.85s',
-    }, 'Joint ventures · shared control · % varies');
-  });
-
-  const fit = () => {
-    if (parent !== window) {
-      parent.postMessage(
-        { chartHeight: document.querySelector('#card').scrollHeight },
-        location.origin,
-      );
-    }
-  };
-  addEventListener('load', fit);
-  addEventListener('resize', fit);
-})();
-</script>
+  <main class="card" id="card">
+    <h2>Ownership percentage maps power of control.</h2>
+    <div class="sub">Share of voting rights held · darker = more control · the actual level of control decides the category</div>
+    <div class="scale" aria-hidden="true">
+      <div class="bar s1"></div>
+      <div class="bar s2" style="animation-delay:.12s"></div>
+      <div class="bar s3" style="animation-delay:.24s"></div>
+    </div>
+    <div class="ticks" aria-hidden="true">
+      <span style="left:0">0</span><span style="left:20%">20</span><span style="left:50%">50</span><span style="left:100%">100</span>
+      <em>% OWNERSHIP</em>
+    </div>
+    <div class="labels scale">
+      <div class="lab l1" style="animation-delay:.3s"><b>Lack of influence</b><span class="pct">&lt; 20%</span><small>Financial assets</small></div>
+      <div class="lab l2" style="animation-delay:.38s"><b>Significant influence</b><span class="pct">20–50%</span><small>Associates · equity method</small></div>
+      <div class="lab l3" style="animation-delay:.46s"><b>Control</b><span class="pct">&gt; 50%</span><small>Business combinations · acquisition method</small></div>
+    </div>
+    <div class="jv"><b>Joint ventures</b><span>shared control · percentage varies · equity method</span></div>
+    <div class="src">SEPARATED AXIS · LIEFLAT L7 · INTERCORPORATE INVESTMENTS</div>
+  </main>
+  <script>curveKit.fit();</script>
 </body>
 </html>

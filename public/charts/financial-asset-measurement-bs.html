@@ -1,393 +1,78 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Financial asset measurement · B/S paths</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-  :root{--bg:#F0EFEB;--ink:#1C1C1A;--muted:#8F8E88;--faint:#C6C5BF;--grid:#DEDDD6}
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{background:var(--bg);font-family:'Inter',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
-  .card{background:var(--bg);border-radius:24px;padding:22px 22px 14px}
-  h2{font-weight:700;font-size:16.5px;letter-spacing:-.02em;margin-bottom:3px;max-width:48em;line-height:1.25}
-  .sub{font-size:11.5px;color:var(--muted);margin-bottom:10px;line-height:1.5}
-  .src{font-size:9.5px;color:var(--faint);margin-top:8px;letter-spacing:.08em;font-weight:500;text-transform:uppercase}
-  svg{display:block;width:100%;height:auto;max-height:820px;cursor:pointer}
-  svg text{font-family:'Inter',sans-serif}
-  .pop{transform-box:fill-box;transform-origin:center;animation:pop .45s cubic-bezier(.2,.7,.3,1.3) both}
-  @keyframes pop{from{transform:scale(0)}to{transform:none}}
-  .fade{animation:fade .75s ease both}
-  @keyframes fade{from{opacity:0}}
-  .draw{stroke-dasharray:1;stroke-dashoffset:1;animation:draw .9s cubic-bezier(.4,0,.2,1) both}
-  @keyframes draw{to{stroke-dashoffset:0}}
-  @media (prefers-reduced-motion:reduce){
-    .pop,.fade{animation:none}
-    .draw{animation:none;stroke-dasharray:none;stroke-dashoffset:0}
-    svg{cursor:default}
-  }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Financial asset measurement · B/S paths</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <link rel="stylesheet" href="ledger.css">
 </head>
 <body>
-<div class="card" id="card">
-  <h2>Same bond, three balance-sheet paths.</h2>
-  <div class="sub">AMC · FVOCI · FVPL · t = 0…3 · coupon 100 · YTM 12%</div>
-  <svg id="ledger" viewBox="0 0 920 780" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Balance-sheet period deltas for AMC, FVOCI, and FVPL across t0 to t3"></svg>
-  <div class="src">LEDGER GRID · LIEFLAT L9→ · FINANCIAL ASSET MEASUREMENT</div>
-</div>
-<script>
+  <main class="card" id="card">
+    <h2>Same bond, three balance-sheet paths.</h2>
+    <div class="sub">Change in each account per period · bought at 951.96 · coupon 100 · YTM 12% · fair value 980 → 999 → 1,000</div>
+    <div class="ledger-wrap"><table class="ledger" aria-label="Balance-sheet changes for AMC, FVOCI and FVPL from t0 to t3">
+      <thead>
+        <tr><th>Account</th><th>t0</th><th>t1</th><th>t2</th><th>t3</th><th>Life</th></tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table></div>
+    <div class="note">Each period balances: cash + asset change = RE + AOCI change. Over the bond's life all three methods put the same <b>348.04</b> into retained earnings, matching the net cash received.</div>
+    <div class="src">LEDGER GRID · LIEFLAT L9 · FINANCIAL ASSET MEASUREMENT</div>
+  </main>
+  <script>
 (() => {
-  const INK = '#1C1C1A';
-  const PAPER = '#F0EFEB';
-  const MUTED = '#8F8E88';
-  const FAINT = '#C6C5BF';
-  const GRID = '#DEDDD6';
-  const HAIR = '#E4E3DC';
-  const ROWLINE = '#D3D2CA';
-  const L = ['#1C1C1A', '#4A4944', '#6A6963', '#8F8E88', '#B0AFA9', '#C6C5BF', '#D8D7D1'];
-  const NS = 'http://www.w3.org/2000/svg';
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  const el = (p, t, a) => {
-    const n = document.createElementNS(NS, t);
-    for (const k in a) n.setAttribute(k, a[k]);
-    p.appendChild(n);
-    return n;
-  };
-  const txt = (p, a, s) => {
-    const n = el(p, 'text', a);
-    n.textContent = s;
-    return n;
-  };
-  const tip = (n, s) => {
-    const t = document.createElementNS(NS, 'title');
-    t.textContent = s;
-    n.appendChild(t);
-  };
-
-  const timers = {};
-  const keep = (id, t) => { (timers[id] = timers[id] || []).push(t); };
-  const obsReveal = (id, fn) => {
-    const n = document.getElementById(id);
-    const go = () => {
-      (timers[id] || []).forEach(clearInterval);
-      timers[id] = [];
-      n.innerHTML = '';
-      fn(n);
-    };
-    if (reduced) {
-      go();
-    } else {
-      const io = new IntersectionObserver((es) => {
-        if (es[0].isIntersecting) { go(); io.disconnect(); }
-      }, { threshold: 0.15 });
-      io.observe(n);
-      n.addEventListener('click', go);
-    }
-  };
-  void keep;
-
-  // ── Data: period Δ only (library-外 ledger from L9 Bubble Almanac hairlines) ──
-  // AMC t3: show amort + write-off. FVPL t3 RE = +100 coupon + +1 FV (notes wrote RE+1; B/S needs both).
-  const PANELS = [
+  // Each cell is a list of entries; several entries in one period stack.
+  const CASH = ['cash', ['−951.96'], ['+100'], ['+100'], ['+100', '+1,000'], ['+348.04']];
+  const METHODS = [
+    { name: 'Cash', note: 'same for all three methods', rows: [CASH] },
     {
-      title: 'AMC',
-      tip: 'Amortized cost · effective interest 12% · FV ignored after purchase',
-      assets: ['cash', 'AMC'],
-      equity: ['RE'],
-      cells: {
-        cash: [
-          { lines: ['−951.96'], tip: 't0 buy · cash −951.96' },
-          { lines: ['+100'], tip: 't1 coupon · cash +100 · ending AMC 966.2' },
-          { lines: ['+100'], tip: 't2 coupon · cash +100 · ending AMC 982.14' },
-          { lines: ['+100', '+1,000'], tip: 't3 coupon +100 and principal +1,000' },
-        ],
-        AMC: [
-          { lines: ['+951.96'], tip: 't0 recognize asset at cost 951.96' },
-          { lines: ['+14.24'], tip: 't1 amort · 951.96×12% − 100 = 14.24 → 966.2' },
-          { lines: ['+15.94'], tip: 't2 amort · 966.2×12% − 100 = 15.94 → 982.14' },
-          { lines: ['+17.86', '−1,000'], tip: 't3 amort +17.86 then write off −1,000 at maturity' },
-        ],
-        RE: [
-          { lines: ['—'], tip: 't0 no P/L' },
-          { lines: ['+114.24'], tip: 't1 interest income = 951.96×12%' },
-          { lines: ['+115.94'], tip: 't2 interest income = 966.2×12%' },
-          { lines: ['+117.86'], tip: 't3 interest income = 982.14×12%' },
-        ],
-      },
+      name: 'AMC', note: 'carried at amortized cost · 951.96 → 966.2 → 982.14 → par',
+      rows: [
+        ['AMC asset', ['+951.96'], ['+14.24'], ['+15.94'], ['+17.86', '−1,000'], ['0']],
+        ['RE', [], ['+114.24'], ['+115.94'], ['+117.86'], ['+348.04'], 'eq'],
+      ],
     },
     {
-      title: 'FVOCI',
-      tip: 'FVOCI debt · interest like AMC in RE · FV Δ to AOCI · cumulative AOCI → 0',
-      assets: ['cash', 'FVOCI'],
-      equity: ['RE', 'AOCI'],
-      cells: {
-        cash: [
-          { lines: ['−951.96'], tip: 't0 buy · cash −951.96' },
-          { lines: ['+100'], tip: 't1 coupon · cash +100' },
-          { lines: ['+100'], tip: 't2 coupon · cash +100' },
-          { lines: ['+100', '+1,000'], tip: 't3 coupon +100 and principal +1,000' },
-        ],
-        FVOCI: [
-          { lines: ['+951.96'], tip: 't0 at cost 951.96' },
-          { lines: ['+28.04'], tip: 't1 mark to FV 980 · Δ +28.04' },
-          { lines: ['+19'], tip: 't2 mark to FV 999 · Δ +19' },
-          { lines: ['+1', '−1,000'], tip: 't3 mark to 1000 (+1) then derecognize −1,000' },
-        ],
-        RE: [
-          { lines: ['—'], tip: 't0 no P/L' },
-          { lines: ['+114.24'], tip: 't1 interest = AMC path' },
-          { lines: ['+115.94'], tip: 't2 interest = AMC path (100 + 15.94)' },
-          { lines: ['+117.86'], tip: 't3 interest = AMC path (100 + 17.86)' },
-        ],
-        AOCI: [
-          { lines: ['—'], tip: 't0 no OCI' },
-          { lines: ['+13.8'], tip: 't1 AOCI = FV Δ − amort = 28.04 − 14.24' },
-          { lines: ['+3.06'], tip: 't2 AOCI = 19 − 15.94' },
-          { lines: ['−16.86'], tip: 't3 AOCI = 1 − 17.86 · life sum 13.8+3.06−16.86 = 0' },
-        ],
-      },
+      name: 'FVOCI', note: 'carried at fair value · interest to RE, the rest of the move to AOCI',
+      rows: [
+        ['FVOCI asset', ['+951.96'], ['+28.04'], ['+19'], ['+1', '−1,000'], ['0']],
+        ['RE', [], ['+114.24'], ['+115.94'], ['+117.86'], ['+348.04'], 'eq'],
+        ['AOCI', [], ['+13.8'], ['+3.06'], ['−16.86'], ['0']],
+      ],
     },
     {
-      title: 'FVPL',
-      tip: 'FVPL · coupon + fair-value change both through RE',
-      assets: ['cash', 'FVPL'],
-      equity: ['RE'],
-      cells: {
-        cash: [
-          { lines: ['−951.96'], tip: 't0 buy · cash −951.96' },
-          { lines: ['+100'], tip: 't1 coupon · cash +100' },
-          { lines: ['+100'], tip: 't2 coupon · cash +100' },
-          { lines: ['+100', '+1,000'], tip: 't3 coupon +100 and principal +1,000' },
-        ],
-        FVPL: [
-          { lines: ['+951.96'], tip: 't0 at cost 951.96' },
-          { lines: ['+28.04'], tip: 't1 mark to FV 980' },
-          { lines: ['+19'], tip: 't2 mark to FV 999' },
-          { lines: ['+1', '−1,000'], tip: 't3 mark +1 then write off −1,000' },
-        ],
-        RE: [
-          { lines: ['—'], tip: 't0 no P/L' },
-          { lines: ['+128.04'], tip: 't1 RE = coupon 100 + FV Δ 28.04' },
-          { lines: ['+119'], tip: 't2 RE = coupon 100 + FV Δ 19' },
-          { lines: ['+100', '+1'], tip: 't3 RE = coupon 100 + FV Δ 1 (notes highlighted +1; both hit P/L)' },
-        ],
-      },
+      name: 'FVPL', note: 'carried at fair value · coupon and the whole fair-value move to RE',
+      rows: [
+        ['FVPL asset', ['+951.96'], ['+28.04'], ['+19'], ['+1', '−1,000'], ['0']],
+        ['RE', [], ['+128.04'], ['+119'], ['+100', '+1'], ['+348.04'], 'eq'],
+      ],
     },
   ];
 
-  obsReveal('ledger', (s) => {
-    const W = 920;
-    const marginX = 18;
-    const panelGap = 14;
-    const titleH = 22;
-    const headH = 22;
-    const labelW = 58;
-    const midGap = 10; // space around center spine for side labels
-    const panelW = W - marginX * 2;
-    const halfInner = (panelW - midGap * 2) / 2;
-    const colW = (halfInner - labelW) / 4;
+  const cell = (entries, life, key) => {
+    if (!entries.length) return '<td class="nil">·</td>';
+    const strong = life && key === 'RE';
+    const cls = life && !strong ? ' class="soft"' : '';
+    if (entries.length === 1) return `<td${cls}>${entries[0]}</td>`;
+    return `<td${cls}><span class="st">${entries.map((e) => `<span>${e}</span>`).join('')}</span></td>`;
+  };
 
-    // Row heights by panel (2 asset rows; equity 1 or 2)
-    const rowH = 36;
-    const panelHeights = PANELS.map((p) => {
-      const rows = Math.max(p.assets.length, p.equity.length);
-      return titleH + headH + rows * rowH + 8;
-    });
-    let y0 = 8;
-    const panelYs = panelHeights.map((h) => {
-      const y = y0;
-      y0 += h + panelGap;
-      return y;
-    });
-
-    // Soft ledger hairlines across whole card (L9 grammar)
-    for (let y = 4; y < 770; y += 6.8) {
-      el(s, 'line', {
-        x1: marginX, y1: y, x2: W - marginX, y2: y,
-        stroke: HAIR, 'stroke-width': 0.45,
-        class: 'fade', style: `animation-delay:${(y * 0.0004).toFixed(3)}s`,
-      });
-    }
-
-    PANELS.forEach((panel, pi) => {
-      const py = panelYs[pi];
-      const ph = panelHeights[pi];
-      const rows = Math.max(panel.assets.length, panel.equity.length);
-      const gridTop = py + titleH + headH;
-      const gridH = rows * rowH;
-      const xL = marginX;
-      const xMid = marginX + halfInner + midGap;
-      const xR0 = xMid + midGap;
-      const delay = pi * 0.12;
-
-      // Panel title bar
-      txt(s, {
-        x: W / 2, y: py + 15,
-        'font-size': 12, 'font-weight': 800, fill: INK,
-        'text-anchor': 'middle', 'letter-spacing': '0.14em',
-        class: 'fade', style: `animation-delay:${delay}s`,
-      }, panel.title);
-      tip(
-        el(s, 'rect', {
-          x: W / 2 - 40, y: py + 2, width: 80, height: 18,
-          fill: 'transparent',
-        }),
-        panel.tip
-      );
-
-      // Thick title underline (sketch grammar)
-      el(s, 'line', {
-        x1: xL, y1: py + titleH, x2: xL + panelW, y2: py + titleH,
-        stroke: INK, 'stroke-width': 2.2,
-        class: 'draw', style: `animation-delay:${delay + 0.05}s`,
-        pathLength: 1,
-      });
-
-      // Side headers Assets / Equity
-      txt(s, {
-        x: xL + labelW / 2, y: py + titleH + 15,
-        'font-size': 8, 'font-weight': 700, fill: MUTED,
-        'text-anchor': 'middle', 'letter-spacing': '0.1em',
-        class: 'fade', style: `animation-delay:${delay + 0.08}s`,
-      }, 'ASSETS');
-      txt(s, {
-        x: xR0 + labelW / 2, y: py + titleH + 15,
-        'font-size': 8, 'font-weight': 700, fill: MUTED,
-        'text-anchor': 'middle', 'letter-spacing': '0.1em',
-        class: 'fade', style: `animation-delay:${delay + 0.08}s`,
-      }, 'EQUITY');
-
-      // Column numbers 0–3 both sides
-      for (let c = 0; c < 4; c++) {
-        const lx = xL + labelW + colW * (c + 0.5);
-        const rx = xR0 + labelW + colW * (c + 0.5);
-        txt(s, {
-          x: lx, y: py + titleH + 15,
-          'font-size': 10, 'font-weight': 700, fill: INK,
-          'text-anchor': 'middle',
-          class: 'fade', style: `animation-delay:${delay + 0.1 + c * 0.03}s`,
-        }, String(c));
-        txt(s, {
-          x: rx, y: py + titleH + 15,
-          'font-size': 10, 'font-weight': 700, fill: INK,
-          'text-anchor': 'middle',
-          class: 'fade', style: `animation-delay:${delay + 0.1 + c * 0.03}s`,
-        }, String(c));
-      }
-
-      // Head rule under column numbers
-      el(s, 'line', {
-        x1: xL, y1: gridTop, x2: xL + halfInner, y2: gridTop,
-        stroke: INK, 'stroke-width': 1.6,
-      });
-      el(s, 'line', {
-        x1: xR0, y1: gridTop, x2: xR0 + halfInner, y2: gridTop,
-        stroke: INK, 'stroke-width': 1.6,
-      });
-
-      // Vertical column hairlines (assets)
-      for (let c = 0; c <= 4; c++) {
-        const x = xL + labelW + colW * c;
-        el(s, 'line', {
-          x1: x, y1: gridTop, x2: x, y2: gridTop + gridH,
-          stroke: c === 0 ? L[4] : GRID, 'stroke-width': c === 0 ? 1 : 0.7,
-        });
-      }
-      // Equity verticals
-      for (let c = 0; c <= 4; c++) {
-        const x = xR0 + labelW + colW * c;
-        el(s, 'line', {
-          x1: x, y1: gridTop, x2: x, y2: gridTop + gridH,
-          stroke: c === 0 ? L[4] : GRID, 'stroke-width': c === 0 ? 1 : 0.7,
-        });
-      }
-
-      // Center spine (thick)
-      el(s, 'line', {
-        x1: xMid, y1: py + titleH, x2: xMid, y2: gridTop + gridH,
-        stroke: INK, 'stroke-width': 2.4,
-        class: 'draw', style: `animation-delay:${delay + 0.05}s`,
-        pathLength: 1,
-      });
-
-      // Row lines + labels + cells
-      const drawSide = (side, names, x0) => {
-        names.forEach((name, ri) => {
-          const y = gridTop + ri * rowH;
-          // row baseline
-          el(s, 'line', {
-            x1: x0, y1: y + rowH, x2: x0 + halfInner, y2: y + rowH,
-            stroke: ROWLINE, 'stroke-width': 0.9,
-          });
-          // row label
-          txt(s, {
-            x: x0 + 6, y: y + rowH / 2 + 3.5,
-            'font-size': 9.5, 'font-weight': 600, fill: L[2],
-            class: 'fade', style: `animation-delay:${delay + 0.15 + ri * 0.05}s`,
-          }, name);
-          // cells
-          const series = panel.cells[name] || [];
-          for (let c = 0; c < 4; c++) {
-            const cell = series[c] || { lines: ['—'], tip: '' };
-            const cx = x0 + labelW + colW * (c + 0.5);
-            const cy = y + rowH / 2;
-            const g = el(s, 'g', {
-              class: 'pop',
-              style: `animation-delay:${delay + 0.2 + ri * 0.06 + c * 0.04}s`,
-            });
-            const hit = el(g, 'rect', {
-              x: x0 + labelW + colW * c + 1,
-              y: y + 2,
-              width: colW - 2,
-              height: rowH - 4,
-              fill: 'transparent',
-            });
-            if (cell.tip) tip(hit, cell.tip);
-
-            const lines = cell.lines;
-            const n = lines.length;
-            const lineGap = n > 1 ? 11 : 0;
-            const startY = cy - ((n - 1) * lineGap) / 2 + 3.5;
-            lines.forEach((line, li) => {
-              const isEmDash = line === '—';
-              const isNeg = line.startsWith('−') || line.startsWith('-');
-              txt(g, {
-                x: cx, y: startY + li * lineGap,
-                'font-size': n > 1 ? 9 : 10.5,
-                'font-weight': isEmDash ? 500 : 800,
-                fill: isEmDash ? FAINT : (isNeg ? L[1] : INK),
-                'text-anchor': 'middle',
-              }, line);
-            });
-          }
-        });
-        // fill empty rows visually if fewer labels on this side
-        for (let ri = names.length; ri < rows; ri++) {
-          const y = gridTop + ri * rowH;
-          el(s, 'line', {
-            x1: x0, y1: y + rowH, x2: x0 + halfInner, y2: y + rowH,
-            stroke: ROWLINE, 'stroke-width': 0.9,
-          });
-        }
-      };
-
-      drawSide('L', panel.assets, xL);
-      drawSide('R', panel.equity, xR0);
-
-      // Bottom outer rule
-      el(s, 'line', {
-        x1: xL, y1: gridTop + gridH, x2: xL + halfInner, y2: gridTop + gridH,
-        stroke: L[3], 'stroke-width': 1.1,
-      });
-      el(s, 'line', {
-        x1: xR0, y1: gridTop + gridH, x2: xR0 + halfInner, y2: gridTop + gridH,
-        stroke: L[3], 'stroke-width': 1.1,
-      });
-    });
-  });
+  let i = 0;
+  document.getElementById('rows').innerHTML = METHODS.map((m) => {
+    const head = `<tr class="grp row-in" style="animation-delay:${i++ * 0.04}s"><td colspan="6">${m.name}<span>${m.note}</span></td></tr>`;
+    const body = m.rows.map(([key, ...rest]) => {
+      const eq = rest[5] === 'eq';
+      const cells = rest.slice(0, 5).map((entries, c) => cell(entries, c === 4, key)).join('');
+      const label = key === 'RE' || key === 'AOCI' ? `<b>${key}</b>` : key;
+      return `<tr class="row-in${eq ? ' eq' : ''}" style="animation-delay:${i++ * 0.04}s"><td class="k">${label}</td>${cells}</tr>`;
+    }).join('');
+    return head + body;
+  }).join('');
+  curveKit.fit();
 })();
-</script>
+  </script>
 </body>
 </html>

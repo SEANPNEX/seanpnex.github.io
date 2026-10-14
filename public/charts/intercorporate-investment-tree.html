@@ -1,185 +1,115 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Intercorporate investment categories</title>
-<script src="https://cdn.jsdelivr.net/npm/echarts@6/dist/echarts.min.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-  :root{--bg:#F0EFEB;--ink:#1C1C1A;--muted:#8F8E88;--faint:#C6C5BF}
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{background:var(--bg);font-family:'Inter',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
-  .card{background:var(--bg);border-radius:24px;padding:28px 28px 18px}
-  h2{font-weight:700;font-size:16.5px;letter-spacing:-.02em;margin-bottom:3px;max-width:42em;line-height:1.25}
-  .sub{font-size:11.5px;color:var(--muted);margin-bottom:14px;line-height:1.5}
-  .src{font-size:9.5px;color:var(--faint);margin-top:10px;letter-spacing:.08em;font-weight:500;text-transform:uppercase}
-  .ch{height:450px;cursor:pointer}
-  @media (prefers-reduced-motion:reduce){
-    .ch{cursor:default}
-  }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Intercorporate investment categories</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
 </head>
 <body>
-<div class="card" id="card">
-  <h2>Ownership and instrument decide the accounting path.</h2>
-  <div class="sub">equity vs bond · shade = FVPL / FVOCI / AMC · CFA L2 FSA M1</div>
-  <div class="ch" id="tree" role="img" aria-label="Left-to-right tree of intercorporate investment categories"></div>
-  <div class="src">TREE LR · LIEFLAT G7 · INTERCORPORATE INVESTMENTS</div>
-</div>
-<script>
+  <main class="card" id="card">
+    <h2>Ownership and instrument decide the accounting path.</h2>
+    <div class="sub">Equity vs bond, then purpose and influence · shade = FVPL darkest · FVOCI mid · AMC lightest · equity and acquisition methods in gray</div>
+    <svg id="tree" role="img" aria-label="Intercorporate investment categories tree"></svg>
+    <div class="src">TREE LR · LIEFLAT G7 · INTERCORPORATE INVESTMENTS</div>
+  </main>
+  <script>
 (() => {
-  const INK = '#1C1C1A';
-  const PAPER = '#F0EFEB';
-  const MUTED = '#8F8E88';
-  const L = ['#1C1C1A', '#4A4944', '#6A6963', '#8F8E88', '#B0AFA9', '#C6C5BF'];
-  const tipLight = {
-    backgroundColor: INK,
-    borderWidth: 0,
-    padding: [10, 14],
-    textStyle: { color: PAPER, fontFamily: 'Inter', fontSize: 12 },
+  const { C, el, label, mount } = curveKit;
+  const SHADE = { FVPL: C.INK, FVOCI: '#6A6963', AMC: '#A8A7A0', method: '#8F8E88' };
+  // Leaves: [name, treatment, shade key].
+  const TREE = {
+    name: 'Investment',
+    kids: [
+      { name: 'Equity', kids: [
+        { name: 'Fin. assets', kids: [['Trading', 'FVPL', 'FVPL'], ['Other', 'FVOCI', 'FVOCI']] },
+        { name: 'Long-term eq.', kids: [
+          ['No influence', 'FVPL / FVOCI', 'method'],
+          ['Associates', 'equity method', 'method'],
+          ['Joint ventures', 'equity method', 'method'],
+          ['Combinations', 'acquisition method', 'method'],
+        ] },
+      ] },
+      { name: 'Bond', kids: [['Trading', 'FVPL', 'FVPL'], ['Other', 'FVOCI', 'FVOCI'], ['Bond', 'AMC', 'AMC']] },
+    ],
   };
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const LEAVES = 9, GROUPS = 3;
+  // Narrow cards put a leaf's treatment on a second line.
+  const stacked = (w) => w < 470;
+  const ROW = (w) => (stacked(w) ? 30 : 24), GAP = 12, PAD = 14;
+  const height = (w) => PAD * 2 + LEAVES * ROW(w) + (GROUPS - 1) * GAP;
 
-  const n = (name, shade, kids, extra = {}) => ({
-    name,
-    itemStyle: { color: shade },
-    lineStyle: { color: shade },
-    children: kids,
-    ...extra,
-  });
-  const leaf = (name, full, shade) => ({
-    name,
-    full,
-    itemStyle: { color: shade },
-    lineStyle: { color: shade },
-  });
+  mount(document.getElementById('tree'), (s, W, H) => {
+    const two = stacked(W), row = ROW(W);
+    // Measure the widest leaf label so the leaf column ends flush right.
+    const probe = el(s, 'text', { 'font-size': 11.5, 'font-weight': 700, visibility: 'hidden' });
+    const width = (t, size, weight) => { probe.setAttribute('font-size', size); probe.setAttribute('font-weight', weight); probe.textContent = t; return probe.getComputedTextLength(); };
+    const leafW = (k) => (two ? Math.max(width(k[0], 11.5, 700), width(k[1], 10.5, 500)) : width(`${k[0]} · ${k[1]}`, 11.5, 700));
+    const all = [];
+    const walk = (n) => (Array.isArray(n) ? all.push(n) : n.kids.forEach(walk));
+    walk(TREE);
+    const rootW = width(TREE.name, 12.5, 800);
+    const xLeaf = W - Math.max(...all.map(leafW)) - 12;
+    probe.remove();
 
-  // Shade: FVPL darkest (L0), FVOCI mid (L2), AMC lightest (L4);
-  // long-term equity children share mid (L3); parents ink/muted.
-  const DATA = n('Investment', INK, [
-    n('Equity', L[1], [
-      n('Fin. assets', L[2], [
-        leaf('Trading · FVPL', 'Trading security · Fair value through P&L (FVPL)', L[0]),
-        leaf('Other · FVOCI', 'Other equity investment · Fair value through OCI (FVOCI)', L[2]),
-      ], { full: 'Financial assets' }),
-      n('Long-term eq.', L[3], [
-        leaf('No influence', 'Investment in financial assets — no significant influence', L[3]),
-        leaf('Associates', 'Investment in associates — significant influence', L[3]),
-        leaf('Joint ventures', 'Joint ventures — shared control', L[3]),
-        leaf('Combinations', 'Business combinations — control', L[3]),
-      ], { full: 'Long-term equity' }),
-    ]),
-    n('Bond', L[1], [
-      leaf('Trading · FVPL', 'Trading securities · Fair value through P&L (FVPL)', L[0]),
-      leaf('Other · FVOCI', 'Other bond investment · Fair value through OCI (FVOCI)', L[2]),
-      leaf('Bond · AMC', 'Bond investment · Amortized cost (AMC)', L[4]),
-    ]),
-  ], {
-    label: { fontSize: 11.5, color: INK, fontWeight: 700 },
-    lineStyle: { color: L[5] },
-    full: 'Intercorporate investment',
-  });
+    // Narrow cards stand the root label on its side to free a column's width.
+    const xRoot = two ? 24 : rootW + 12;
+    const col = (d) => xRoot + ((xLeaf - xRoot) * d) / 3;
 
-  const timers = {};
-  const keep = (id, t) => { (timers[id] = timers[id] || []).push(t); };
-  const obsReveal = (id, fn) => {
-    const el = document.getElementById(id);
-    const go = () => {
-      (timers[id] || []).forEach(clearInterval);
-      timers[id] = [];
-      fn(el);
+    // Lay leaves top to bottom, with a gap between the three leaf groups.
+    let y = PAD + row / 2;
+    const place = (n, depth) => {
+      if (Array.isArray(n)) {
+        const p = { leaf: n, x: xLeaf, y };
+        y += row;
+        return p;
+      }
+      const kids = n.kids.map((k) => place(k, depth + 1));
+      if (kids.every((k) => k.leaf)) y += GAP;
+      return { name: n.name, x: col(depth), y: (kids[0].y + kids[kids.length - 1].y) / 2, kids };
     };
-    if (reduced) {
-      go();
-    } else {
-      const io = new IntersectionObserver((es) => {
-        if (es[0].isIntersecting) { go(); io.disconnect(); }
-      }, { threshold: 0.3 });
-      io.observe(el);
-      el.addEventListener('click', go);
-    }
-  };
-  const eReveal = (id, opt) => obsReveal(id, (elDom) => {
-    const g = echarts.getInstanceByDom(elDom) || echarts.init(elDom);
-    g.clear();
-    g.setOption(opt);
-    g.resize();
-  });
+    const root = place(TREE, 0);
 
-  const option = {
-    animationDuration: reduced ? 0 : 1100,
-    animationEasing: 'quarticOut',
-    tooltip: {
-      ...tipLight,
-      trigger: 'item',
-      formatter: (p) => {
-        const d = p.data || {};
-        const title = d.full || d.name || '';
-        return `<b>${title}</b>`;
-      },
-    },
-    series: [{
-      type: 'tree',
-      layout: 'orthogonal',
-      orient: 'LR',
-      left: 88,
-      right: 118,
-      top: 12,
-      bottom: 12,
-      symbol: 'circle',
-      symbolSize: 7,
-      initialTreeDepth: 4,
-      expandAndCollapse: false,
-      roam: false,
-      itemStyle: { borderWidth: 0 },
-      lineStyle: { width: 1.4, curveness: 0.5 },
-      label: {
-        fontFamily: 'Inter',
-        fontSize: 10,
-        fontWeight: 600,
-        color: '#6A6963',
-        position: 'left',
-        distance: 8,
-      },
-      leaves: {
-        label: {
-          position: 'right',
-          color: MUTED,
-          fontWeight: 500,
-          fontSize: 10,
-          distance: 8,
-        },
-      },
-      emphasis: {
-        focus: 'ancestor',
-        lineStyle: { width: 1.8, color: INK },
-      },
-      data: [DATA],
-    }],
-  };
-
-  eReveal('tree', option);
-
-  const fit = () => {
-    if (parent !== window) {
-      parent.postMessage(
-        { chartHeight: document.querySelector('#card').scrollHeight },
-        location.origin,
-      );
-    }
-  };
-  addEventListener('load', fit);
-  addEventListener('resize', () => {
-    const el = document.getElementById('tree');
-    const g = echarts.getInstanceByDom(el);
-    g && g.resize();
-    fit();
-  });
-  // Keep unused keep() referenced for parity with gallery timer pattern.
-  void keep;
+    const link = (a, b, stroke, delay) => {
+      const mx = (a.x + b.x) / 2;
+      el(s, 'path', {
+        d: `M${a.x} ${a.y} C${mx} ${a.y} ${mx} ${b.y} ${b.x} ${b.y}`,
+        fill: 'none', stroke, 'stroke-width': 1.3, pathLength: 1, class: 'draw',
+        style: `animation-delay:${delay}s;animation-duration:.9s`,
+      });
+    };
+    const draw = (n, parent, depth) => {
+      if (n.leaf) {
+        const [name, how, shade] = n.leaf, fill = SHADE[shade], delay = 0.35 + depth * 0.05 + n.y * 0.0008;
+        link(parent, n, fill, 0.15 + depth * 0.08);
+        el(s, 'circle', { cx: n.x, cy: n.y, r: 3.6, fill, class: 'pop', style: `animation-delay:${delay}s` });
+        const t = el(s, 'text', { x: n.x + 9, y: n.y + (two ? -1 : 4), 'font-size': 11.5, 'font-weight': 700, fill: C.INK, class: 'fade', style: `animation-delay:${delay}s` });
+        el(t, 'tspan', {}, name);
+        if (two) el(t, 'tspan', { x: n.x + 9, dy: 12.5, 'font-size': 10.5, 'font-weight': 500, fill: C.MUTED }, how);
+        else el(t, 'tspan', { 'font-weight': 500, fill: C.MUTED }, ` · ${how}`);
+        return;
+      }
+      if (parent) link(parent, n, '#8F8E88', 0.1 + depth * 0.08);
+      n.kids.forEach((k) => draw(k, n, depth + 1));
+      el(s, 'circle', { cx: n.x, cy: n.y, r: depth ? 3.8 : 4.6, fill: C.INK, class: 'pop', style: `animation-delay:${0.1 + depth * 0.1}s` });
+      if (!parent && two) {
+        el(s, 'text', { x: 12, y: n.y, transform: `rotate(-90 12 ${n.y})`, 'font-size': 12, 'font-weight': 800, fill: C.INK, 'text-anchor': 'middle', class: 'fade' }, n.name);
+      } else if (!parent) {
+        label(s, n.x - 9, n.y + 4.5, n.name, { size: 12.5, anchor: 'end' });
+      } else {
+        // The incoming link arrives from the parent's side; label the other side.
+        // Wrap to the column width so a long name never reaches the previous column's links.
+        const below = parent.y < n.y;
+        label(s, n.x + 4, below ? n.y + 17 : n.y - 9, n.name, {
+          size: 11.5, weight: 700, anchor: 'end', up: !below, maxWidth: n.x - parent.x - 4, delay: 0.2 + depth * 0.1,
+        });
+      }
+    };
+    draw(root, null, 0);
+  }, height);
 })();
-</script>
+  </script>
 </body>
 </html>

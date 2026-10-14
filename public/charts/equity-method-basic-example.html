@@ -1,381 +1,44 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Equity method · NI pickup + dividend</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-  :root{--bg:#F0EFEB;--ink:#1C1C1A;--muted:#8F8E88;--faint:#C6C5BF;--grid:#DEDDD6}
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{background:var(--bg);font-family:'Inter',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
-  .card{background:var(--bg);border-radius:24px;padding:22px 22px 14px}
-  h2{font-weight:700;font-size:16.5px;letter-spacing:-.02em;margin-bottom:3px;max-width:48em;line-height:1.25}
-  .sub{font-size:11.5px;color:var(--muted);margin-bottom:10px;line-height:1.5}
-  .src{font-size:9.5px;color:var(--faint);margin-top:8px;letter-spacing:.08em;font-weight:500;text-transform:uppercase}
-  .foot{font-size:10px;color:var(--muted);margin-top:6px;line-height:1.45;max-width:52em}
-  svg{display:block;width:100%;height:auto;max-height:620px;cursor:pointer}
-  svg text{font-family:'Inter',sans-serif}
-  .pop{transform-box:fill-box;transform-origin:center;animation:pop .45s cubic-bezier(.2,.7,.3,1.3) both}
-  @keyframes pop{from{transform:scale(0)}to{transform:none}}
-  .fade{animation:fade .75s ease both}
-  @keyframes fade{from{opacity:0}}
-  .draw{stroke-dasharray:1;stroke-dashoffset:1;animation:draw .9s cubic-bezier(.4,0,.2,1) both}
-  @keyframes draw{to{stroke-dashoffset:0}}
-  @media (prefers-reduced-motion:reduce){
-    .pop,.fade{animation:none}
-    .draw{animation:none;stroke-dasharray:none;stroke-dashoffset:0}
-    svg{cursor:default}
-  }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Equity method · NI pickup + dividend</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <link rel="stylesheet" href="ledger.css">
+  <style>
+    .ledger th small{display:block;margin-top:2px;font-size:10px;font-weight:500;color:var(--muted)}
+    .ledger th.end,.ledger td.end{background:var(--faint)}
+    .ledger td.end{padding-right:8px}
+    .ledger th.end{padding-right:8px;padding-top:6px}
+    .ledger td small{display:block;font-size:10px;font-weight:500;color:var(--muted)}
+  </style>
 </head>
 <body>
-<div class="card" id="card">
-  <h2>NI lifts RE; dividend only swaps cash for investment.</h2>
-  <div class="sub">Company A · 30% of B · cost $100 · B NI $80 → pickup $24 · B div. $20 → A’s $6 · end Inv. $118</div>
-  <svg id="ledger" viewBox="0 0 920 540" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Equity method: NI pickup then dividend reduces investment to 118; RE and I/S silent on dividend"></svg>
-  <div class="foot">t0 buy · share of NI · dividend. Dividend is return of capital under equity method — not income.</div>
-  <div class="src">LEDGER GRID · LIEFLAT L9→ · EQUITY METHOD NI + DIVIDEND</div>
-</div>
-<script>
-(() => {
-  // L9 Bubble Almanac → library-外 ledger (same hairline + T-spine as impairment-bs / measurement-bs)
-  const INK = '#1C1C1A';
-  const PAPER = '#F0EFEB';
-  const MUTED = '#8F8E88';
-  const FAINT = '#C6C5BF';
-  const HAIR = '#E4E3DC';
-  const ROWLINE = '#D3D2CA';
-  const L = ['#1C1C1A', '#4A4944', '#6A6963', '#8F8E88', '#B0AFA9', '#C6C5BF', '#D8D7D1'];
-  const NS = 'http://www.w3.org/2000/svg';
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  const el = (p, t, a) => {
-    const n = document.createElementNS(NS, t);
-    for (const k in a) n.setAttribute(k, a[k]);
-    p.appendChild(n);
-    return n;
-  };
-  const txt = (p, a, s) => {
-    const n = el(p, 'text', a);
-    n.textContent = s;
-    return n;
-  };
-  const tip = (n, s) => {
-    const t = document.createElementNS(NS, 'title');
-    t.textContent = s;
-    n.appendChild(t);
-  };
-
-  const timers = {};
-  const obsReveal = (id, fn) => {
-    const n = document.getElementById(id);
-    const go = () => {
-      (timers[id] || []).forEach(clearInterval);
-      timers[id] = [];
-      n.innerHTML = '';
-      fn(n);
-    };
-    if (reduced) {
-      go();
-    } else {
-      const io = new IntersectionObserver((es) => {
-        if (es[0].isIntersecting) { go(); io.disconnect(); }
-      }, { threshold: 0.15 });
-      io.observe(n);
-      n.addEventListener('click', go);
-    }
-  };
-
-  const PANEL = {
-    title: 'COMPANY A',
-    tip: 'Investor A · significant influence · equity method · one-line consolidation',
-    sub: 'cost 100 · NI +24 · div −6 · end 118',
-    story: 'END INV. 118',
-    storyTip: '100 + 24 NI − 6 dividend = 118 · RE only moved on the NI pickup',
-    assets: [
-      {
-        label: 'Cash',
-        lines: [
-          { t: '−100', tip: 't0 · cash paid for 30% stake in B = 100' },
-          { t: '+6', tip: 'Dividend received · A’s 30% × B’s distribution 20 = +6' },
-        ],
-      },
-      {
-        label: 'Inv.',
-        lines: [
-          { t: '100', tip: 't0 · initial carrying amount at cost = 100' },
-          { t: '+24', tip: 'Share of B NI · 30% × 80 = +24 → 124' },
-          { t: '−6', tip: 'Dividend reduces investment · 30% × 20 = −6 (return of capital)' },
-          { t: '118', tip: 'Ending associate investment = 100 + 24 − 6 = 118' },
-        ],
-      },
-    ],
-    equity: [
-      {
-        label: 'RE',
-        lines: [
-          { t: '+24', tip: 'Equity income +24 from share of NI → retained earnings' },
-          { t: 'div. · 0', tip: 'Dividend does not change RE — not income under equity method' },
-        ],
-        isBadge: true,
-      },
-    ],
-  };
-
-  obsReveal('ledger', (s) => {
-    const W = 920;
-    const marginX = 18;
-    const titleH = 28;
-    const headH = 22;
-    const labelW = 64;
-    const midGap = 12;
-    const panelW = W - marginX * 2;
-    const halfInner = (panelW - midGap * 2) / 2;
-    const valW = halfInner - labelW;
-    const delay = 0;
-
-    const rowHFor = (side) => {
-      const maxLines = Math.max(...side.map((r) => r.lines.length), 1);
-      return Math.max(52, 22 + maxLines * 14);
-    };
-
-    const aHeights = PANEL.assets.map((r) => rowHFor([r]));
-    const eHeights = PANEL.equity.map((r) => rowHFor([r]));
-    const aH = aHeights.reduce((a, b) => a + b, 0);
-    const eH = eHeights.reduce((a, b) => a + b, 0);
-    const gridH = Math.max(aH, eH);
-    const py = 8;
-    const noteH = 36;
-    const totalH = titleH + headH + gridH + noteH + 16;
-    s.setAttribute('viewBox', `0 0 ${W} ${Math.max(480, totalH + 24)}`);
-
-    for (let y = 4; y < totalH + 10; y += 6.8) {
-      el(s, 'line', {
-        x1: marginX, y1: y, x2: W - marginX, y2: y,
-        stroke: HAIR, 'stroke-width': 0.45,
-        class: 'fade', style: `animation-delay:${(y * 0.0004).toFixed(3)}s`,
-      });
-    }
-
-    const xL = marginX;
-    const xMid = marginX + halfInner + midGap;
-    const xR0 = xMid + midGap;
-
-    txt(s, {
-      x: xL + 2, y: py + 16,
-      'font-size': 12, 'font-weight': 800, fill: INK,
-      'letter-spacing': '0.14em',
-      class: 'fade', style: `animation-delay:${delay}s`,
-    }, PANEL.title);
-    tip(
-      el(s, 'rect', {
-        x: xL, y: py + 2, width: 110, height: 18, fill: 'transparent',
-      }),
-      PANEL.tip
-    );
-
-    txt(s, {
-      x: xL + 118, y: py + 15,
-      'font-size': 9, 'font-weight': 600, fill: MUTED,
-      class: 'fade', style: `animation-delay:${delay + 0.04}s`,
-    }, PANEL.sub);
-
-    const storyX = W - marginX - 122;
-    el(s, 'rect', {
-      x: storyX, y: py + 3, width: 120, height: 18, rx: 9,
-      fill: PAPER,
-      stroke: L[3], 'stroke-width': 1,
-      class: 'fade', style: `animation-delay:${delay + 0.06}s`,
-    });
-    const storyTxt = txt(s, {
-      x: storyX + 60, y: py + 15.5,
-      'font-size': 8, 'font-weight': 700, fill: L[1],
-      'text-anchor': 'middle', 'letter-spacing': '0.06em',
-      class: 'fade', style: `animation-delay:${delay + 0.08}s`,
-    }, PANEL.story);
-    tip(storyTxt, PANEL.storyTip);
-
-    el(s, 'line', {
-      x1: xL, y1: py + titleH, x2: xL + panelW, y2: py + titleH,
-      stroke: INK, 'stroke-width': 2.2,
-      class: 'draw', style: `animation-delay:${delay + 0.05}s`,
-      pathLength: 1,
-    });
-
-    txt(s, {
-      x: xL + labelW / 2, y: py + titleH + 15,
-      'font-size': 8, 'font-weight': 700, fill: MUTED,
-      'text-anchor': 'middle', 'letter-spacing': '0.1em',
-      class: 'fade', style: `animation-delay:${delay + 0.08}s`,
-    }, 'ASSETS');
-    txt(s, {
-      x: xR0 + labelW / 2, y: py + titleH + 15,
-      'font-size': 8, 'font-weight': 700, fill: MUTED,
-      'text-anchor': 'middle', 'letter-spacing': '0.1em',
-      class: 'fade', style: `animation-delay:${delay + 0.08}s`,
-    }, 'EQUITY');
-
-    txt(s, {
-      x: xL + labelW + valW / 2, y: py + titleH + 15,
-      'font-size': 8, 'font-weight': 600, fill: FAINT,
-      'text-anchor': 'middle', 'letter-spacing': '0.06em',
-      class: 'fade', style: `animation-delay:${delay + 0.1}s`,
-    }, 'B/S');
-    txt(s, {
-      x: xR0 + labelW + valW / 2, y: py + titleH + 15,
-      'font-size': 8, 'font-weight': 600, fill: FAINT,
-      'text-anchor': 'middle', 'letter-spacing': '0.06em',
-      class: 'fade', style: `animation-delay:${delay + 0.1}s`,
-    }, 'B/S · I/S');
-
-    const gridTop = py + titleH + headH;
-
-    el(s, 'line', {
-      x1: xL, y1: gridTop, x2: xL + halfInner, y2: gridTop,
-      stroke: INK, 'stroke-width': 1.6,
-    });
-    el(s, 'line', {
-      x1: xR0, y1: gridTop, x2: xR0 + halfInner, y2: gridTop,
-      stroke: INK, 'stroke-width': 1.6,
-    });
-
-    el(s, 'line', {
-      x1: xL + labelW, y1: gridTop, x2: xL + labelW, y2: gridTop + gridH,
-      stroke: L[4], 'stroke-width': 1,
-    });
-    el(s, 'line', {
-      x1: xR0 + labelW, y1: gridTop, x2: xR0 + labelW, y2: gridTop + gridH,
-      stroke: L[4], 'stroke-width': 1,
-    });
-
-    el(s, 'line', {
-      x1: xMid, y1: py + titleH, x2: xMid, y2: gridTop + gridH,
-      stroke: INK, 'stroke-width': 2.4,
-      class: 'draw', style: `animation-delay:${delay + 0.05}s`,
-      pathLength: 1,
-    });
-
-    const drawSide = (rows, heights, x0, sideDelay) => {
-      let y = gridTop;
-      rows.forEach((row, ri) => {
-        const rh = heights[ri];
-        el(s, 'line', {
-          x1: x0, y1: y + rh, x2: x0 + halfInner, y2: y + rh,
-          stroke: ROWLINE, 'stroke-width': 0.9,
-        });
-
-        txt(s, {
-          x: x0 + 8, y: y + rh / 2 + 3.5,
-          'font-size': 10, 'font-weight': 600, fill: L[2],
-          class: 'fade', style: `animation-delay:${sideDelay + ri * 0.06}s`,
-        }, row.label);
-
-        const n = row.lines.length;
-        const lineGap = n > 1 ? 13.5 : 0;
-        const cy = y + rh / 2;
-        const startY = cy - ((n - 1) * lineGap) / 2 + 3.5;
-        const cx = x0 + labelW + valW / 2;
-
-        const g = el(s, 'g', {
-          class: 'pop',
-          style: `animation-delay:${sideDelay + 0.08 + ri * 0.07}s`,
-        });
-
-        row.lines.forEach((line, li) => {
-          const isNeg = line.t.startsWith('−') || line.t.startsWith('-');
-          const isSilent = line.t.indexOf('div.') === 0;
-          const isFinal = li === n - 1 && n > 1 && !isSilent;
-          const node = txt(g, {
-            x: cx, y: startY + li * lineGap,
-            'font-size': n > 3 ? 11 : (n > 2 ? 11.5 : 13),
-            'font-weight': isSilent ? 600 : 800,
-            fill: isSilent ? MUTED : (isNeg ? L[1] : INK),
-            'text-anchor': 'middle',
-            'text-decoration': isFinal && row.label === 'Inv.' ? 'underline' : 'none',
-          }, line.t);
-          tip(node, line.tip);
-        });
-
-        if (row.isBadge) {
-          // I/S +24 on the NI line only (first line)
-          const badgeY = startY - 10;
-          const bx = x0 + labelW + valW - 78;
-          const badge = el(g, 'g', {});
-          el(badge, 'rect', {
-            x: bx, y: badgeY, width: 70, height: 18, rx: 9,
-            fill: INK,
-          });
-          txt(badge, {
-            x: bx + 35, y: badgeY + 12.5,
-            'font-size': 8.5, 'font-weight': 800, fill: '#F0EFEB',
-            'text-anchor': 'middle', 'letter-spacing': '0.04em',
-          }, 'I/S +24');
-          tip(badge, 'Equity income +24 on I/S (= 30% × B NI 80). Dividend does not hit I/S.');
-          el(g, 'line', {
-            x1: cx + 28, y1: startY - 1, x2: bx - 2, y2: startY - 1,
-            stroke: L[3], 'stroke-width': 0.8, 'stroke-dasharray': '2 2',
-          });
-
-          // Silent pill on dividend line
-          if (n > 1) {
-            const sy = startY + lineGap;
-            const sx = x0 + labelW + valW - 78;
-            const silent = el(g, 'g', {});
-            el(silent, 'rect', {
-              x: sx, y: sy - 10, width: 70, height: 18, rx: 9,
-              fill: PAPER, stroke: L[3], 'stroke-width': 1,
-            });
-            txt(silent, {
-              x: sx + 35, y: sy + 2.5,
-              'font-size': 8, 'font-weight': 700, fill: L[2],
-              'text-anchor': 'middle', 'letter-spacing': '0.04em',
-            }, 'I/S · 0');
-            tip(silent, 'Dividend: Cash +6 / Inv. −6 only · I/S and RE unchanged');
-            el(g, 'line', {
-              x1: cx + 36, y1: sy - 1, x2: sx - 2, y2: sy - 1,
-              stroke: L[4], 'stroke-width': 0.8, 'stroke-dasharray': '2 2',
-            });
-          }
-        }
-
-        y += rh;
-      });
-      if (y < gridTop + gridH) {
-        el(s, 'line', {
-          x1: x0, y1: gridTop + gridH, x2: x0 + halfInner, y2: gridTop + gridH,
-          stroke: ROWLINE, 'stroke-width': 0.9,
-        });
-      }
-    };
-
-    drawSide(PANEL.assets, aHeights, xL, delay + 0.16);
-    drawSide(PANEL.equity, eHeights, xR0, delay + 0.2);
-
-    el(s, 'line', {
-      x1: xL, y1: gridTop + gridH, x2: xL + halfInner, y2: gridTop + gridH,
-      stroke: L[3], 'stroke-width': 1.1,
-    });
-    el(s, 'line', {
-      x1: xR0, y1: gridTop + gridH, x2: xR0 + halfInner, y2: gridTop + gridH,
-      stroke: L[3], 'stroke-width': 1.1,
-    });
-
-    txt(s, {
-      x: xMid, y: gridTop + gridH + 16,
-      'font-size': 9, 'font-weight': 600, fill: MUTED,
-      'text-anchor': 'middle',
-      class: 'fade', style: `animation-delay:${delay + 0.35}s`,
-    }, 'Inv. 100 → 124 → 118 · RE +24 from NI only');
-    txt(s, {
-      x: xMid, y: gridTop + gridH + 30,
-      'font-size': 9, 'font-weight': 600, fill: MUTED,
-      'text-anchor': 'middle',
-      class: 'fade', style: `animation-delay:${delay + 0.4}s`,
-    }, 'Dividend $6: Cash +6 / Inv. −6 · RE & I/S silent');
-  });
-})();
-</script>
+  <main class="card" id="card">
+    <h2>NI lifts RE; the dividend only swaps cash for investment.</h2>
+    <div class="sub">Company A buys 30% of B for 100 · B earns NI 80 → A picks up 24 · B pays dividend 20 → A receives 6</div>
+    <div class="ledger-wrap"><table class="ledger" aria-label="Company A balance-sheet changes under the equity method">
+      <thead>
+        <tr>
+          <th>A's account</th>
+          <th>Buy<small>t0</small></th>
+          <th>B's NI 80<small>30% → 24</small></th>
+          <th>B's div. 20<small>30% → 6</small></th>
+          <th class="end">End<small>net change</small></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="row-in"><td class="k">Cash</td><td>−100</td><td class="nil">·</td><td>+6</td><td class="end">−94</td></tr>
+        <tr class="row-in" style="animation-delay:.06s"><td class="k">Investment in B</td><td>+100</td><td>+24</td><td>−6</td><td class="end">+118</td></tr>
+        <tr class="eq row-in" style="animation-delay:.12s"><td class="k"><b>RE</b></td><td class="nil">·</td><td>+24<span class="pill">I/S</span></td><td><span class="soft">0</span><small>not income</small></td><td class="end">+24</td></tr>
+      </tbody>
+    </table></div>
+    <div class="note">Under the equity method a dividend is a <b>return of capital</b>: cash +6, investment −6, and nothing reaches the income statement. The investment ends at <b>118</b> = 100 + 24 − 6.</div>
+    <div class="src">LEDGER GRID · LIEFLAT L9 · EQUITY METHOD NI + DIVIDEND</div>
+  </main>
+  <script>curveKit.fit();</script>
 </body>
 </html>

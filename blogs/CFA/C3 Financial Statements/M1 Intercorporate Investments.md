@@ -8,22 +8,24 @@
     border-radius: 24px;
     background: #F0EFEB;
 }
-.fx-concept-chart.fsa-tree-chart { height: 560px; }
-.fx-concept-chart.fsa-own-chart { height: 420px; }
-.fx-concept-chart.fsa-classify-chart { height: 700px; }
-.fx-concept-chart.fsa-measure-chart { height: 820px; }
-.fx-concept-chart.fsa-timeline-chart { height: 600px; }
-.fx-concept-chart.fsa-impair-chart { height: 680px; }
-.fx-concept-chart.fsa-equity-ex-chart { height: 620px; }
-@media (max-width: 700px) {
+/* Starting heights only: each chart reports its rendered height once loaded. */
+.fx-concept-chart.fsa-tree-chart { height: 455px; }
+.fx-concept-chart.fsa-own-chart { height: 355px; }
+.fx-concept-chart.fsa-classify-chart { height: 625px; }
+.fx-concept-chart.fsa-measure-chart { height: 670px; }
+.fx-concept-chart.fsa-timeline-chart { height: 475px; }
+.fx-concept-chart.fsa-impair-chart { height: 455px; }
+.fx-concept-chart.fsa-equity-ex-chart { height: 375px; }
+/* Phones: the two-column charts stack. */
+@media (max-width: 587px) {
     .fx-concept-chart { height: 500px; }
-    .fx-concept-chart.fsa-tree-chart { height: 620px; }
-    .fx-concept-chart.fsa-own-chart { height: 480px; }
-    .fx-concept-chart.fsa-classify-chart { height: 780px; }
-    .fx-concept-chart.fsa-measure-chart { height: 920px; }
-    .fx-concept-chart.fsa-timeline-chart { height: 680px; }
-    .fx-concept-chart.fsa-impair-chart { height: 760px; }
-    .fx-concept-chart.fsa-equity-ex-chart { height: 700px; }
+    .fx-concept-chart.fsa-tree-chart { height: 560px; }
+    .fx-concept-chart.fsa-own-chart { height: 495px; }
+    .fx-concept-chart.fsa-classify-chart { height: 1000px; }
+    .fx-concept-chart.fsa-measure-chart { height: 760px; }
+    .fx-concept-chart.fsa-timeline-chart { height: 885px; }
+    .fx-concept-chart.fsa-impair-chart { height: 730px; }
+    .fx-concept-chart.fsa-equity-ex-chart { height: 435px; }
 }
 </style>
 
