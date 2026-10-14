@@ -462,7 +462,7 @@ body {
 :lang(zh) .project-case-study .vp-doc > div > h2, :lang(ja) .project-case-study .vp-doc > div > h2 { letter-spacing: 0; }
 :lang(zh) .vp-doc p, :lang(ja) .vp-doc p, :lang(zh) .vp-doc li, :lang(ja) .vp-doc li { line-height: 1.85; }
 
-/* Quiz answers: content blurred until hover, focus or tap (tabindex=0); hint label stays sharp.
+/* Quiz answers: content blurred until hover, focus or tap (tabindex=0).
    Usage in markdown: <div class="reveal" tabindex="0">  (blank line)  markdown…  (blank line)  </div> */
 .vp-doc .reveal {
   position: relative;
@@ -478,22 +478,9 @@ body {
   user-select: none;
   transition: filter 160ms ease;
 }
-.vp-doc .reveal::before {
-  content: "Answer — hover or tap to reveal";
-  position: absolute; top: 50%; left: 50%; z-index: 1;
-  transform: translate(-50%, -50%);
-  padding: 3px 10px;
-  border-radius: 999px;
-  background: var(--vp-c-bg);
-  font-size: 12px; font-weight: 600; color: var(--vp-c-text-2);
-  pointer-events: none;
-}
 .vp-doc .reveal:hover > *,
 .vp-doc .reveal:focus > *,
 .vp-doc .reveal:focus-within > * { filter: none; user-select: auto; }
-.vp-doc .reveal:hover::before,
-.vp-doc .reveal:focus::before,
-.vp-doc .reveal:focus-within::before { content: none; }
 .vp-doc .reveal:focus-visible { box-shadow: 0 0 0 2px var(--vp-c-brand-1); }
 @media (prefers-reduced-motion: reduce) { .vp-doc .reveal > * { transition: none; } }
-@media print { .vp-doc .reveal > * { filter: none; } .vp-doc .reveal::before { content: none; } }
+@media print { .vp-doc .reveal > * { filter: none; } }
