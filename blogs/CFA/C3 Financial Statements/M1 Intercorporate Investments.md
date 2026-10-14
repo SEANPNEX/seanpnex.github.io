@@ -471,3 +471,41 @@ The key idea is to avoid profit inflation through upstream/downstream transactio
 ></iframe>
 
 *Illustrative: whichever way the goods move, A eliminates $30\%\times40=12$ of unrealized profit and recognizes it only when the goods are sold to a third party.*
+
+The accounting standards therefore specified the internal sales gain are unrealized. If it is to sell, realize when sold to independent third party. If is to use, realize based on amortization. Note the the unrealized case is often directly recognized as realized (the standard say depend on case, if due to quality issue, recognize the loss).
+
+Same as prev sections, the unrealized part on NI should be adjusted. The profit is added when realized
+
+##### Upstream
+
+The profit recorded on associates' I/S. The investor's I/S adjust the NI as specified above.
+
+
+> [!note]
+>
+> **Unrealized vs realized.** Intercompany profit is *unrealized* while the goods are still held inside the investor–associate pair: no outside party has paid for them. It becomes *realized* when the goods are sold to an independent third party, or, for assets used in operations, as they are depreciated or amortized.
+
+**Eliminate your share.** Only the investor's ownership share of the unrealized profit is removed:
+
+$$
+\text{Elimination} = \text{investor }\%\times\text{unrealized profit}
+$$
+
+The textbook adjusts the associate's NI by the full unrealized profit and then multiplies by the ownership %. That gives the same result: $\%\times(NI-\text{unrealized}) = \%\times NI - \%\times\text{unrealized}$.
+
+- **Upstream** (associate → investor): the profit sits in the associate's NI, so the investor's equity income is reduced.
+- **Downstream** (investor → associate): the profit sits in the investor's own sales, and the same $\%\times$ unrealized profit is eliminated (through equity income / the investment account). The treatment is symmetric.
+- **Release.** The deferred amount is recognized pro rata as the buyer sells the goods outside: if a fraction $s$ is sold in a later year, add back $s\times$ unrealized profit (times % at the investor level) in that year.
+
+**Example (upstream).** Amounts are in 10k (万), as on the slide. In Jan 2017, BY acquires 20% of SY's voting shares and has significant influence. At acquisition, the FV of SY's net assets equals BV. In Aug 2017, SY sells goods costing 600 to BY for 1,000, and BY holds them as inventory. At 12/31/2017, BY has not sold any to outsiders. In 2018, BY sells 60% of the goods to an independent third party. SY's NI is 3,200 in 2017 and 4,000 in 2018.
+
+| | 2017 | 2018 |
+|---|---:|---:|
+| SY's reported NI | 3,200 | 4,000 |
+| Unrealized profit adjustment | $-(1{,}000-600)\times100\% = -400$ | $+(1{,}000-600)\times60\% = +240$ |
+| **Adjusted NI** | **2,800** | **4,240** |
+| **BY's investment income (× 20%)** | **560** | **848** |
+
+Assuming no dividends, the investment account moves as follows: $\text{Cost} \to \text{Cost}+560 \to \text{Cost}+560+848 = \text{Cost}+1{,}408$.
+
+Check: $400\times20\%=80$ is deferred in 2017. Of that, $80\times60\%=48$ is released in 2018, and $80-48=32$ is still unrealized (the 40% of goods still held by BY).
