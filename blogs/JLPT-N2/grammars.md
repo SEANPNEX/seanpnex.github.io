@@ -396,3 +396,12 @@ Together, tense (non-past / past) × polarity (affirmative / negative) make the 
 - 地下鉄がなかった時は、車がほしかったです。 — When there was no subway, I wanted a car.
 - A: ほしいものはありますか。 — Is there anything you want?
 - B: ありますよ。お金がほしいです。 — Yes. I want money.
+
+
+## Clause₁ が、Clause₂（adversative / softener）
+
+**Rule:** Mid-sentence **が** can link two clauses with a **contrast / turning** sense (“…, but …” / “although Clause₁, Clause₂”). Soften the tone after set phrases like **すみませんが** / **失礼ですが** — the adversative feel is weak and often need not be translated as “but.” Clause₂ can also be **omitted**, leaving a trailing **が** that softens a request or wish.
+
+- 歴史の授業は難しいですが、面白いです。 — History class is difficult, but interesting.
+- 失礼ですが、お名前は？ — Excuse me — what’s your name?
+- 新しいパソコンがほしいのですが。 — I’d like a new computer… *(Clause₂ left open / soft request.)*
