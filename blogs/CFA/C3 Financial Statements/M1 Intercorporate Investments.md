@@ -297,5 +297,33 @@ In all accounting standards, long-term equity investment purchase price (PP) sho
   loading="lazy"
 ></iframe>
 
+**Example.** BY pays €100,000 for 30% of SY's outstanding shares. At the acquisition date, SY's recorded assets and liabilities are:
+
+| SY (€) | Book value | Fair value | FV − BV |
+|---|---:|---:|---:|
+| Current assets | 10,000 | 10,000 | 0 |
+| Plant & equipment | 190,000 | 220,000 | 30,000 |
+| Land | 120,000 | 140,000 | 20,000 |
+| Total assets | 320,000 | 370,000 | 50,000 |
+| Liabilities | 100,000 | 100,000 | 0 |
+| **Net assets** | **220,000** | **270,000** | **50,000** |
+
+BY carries the investment as a single non-current line item, Investment in SY €100,000, at the acquisition date.
+
+| Allocation of BY's purchase price | € | Chart layer |
+|---|---:|---|
+| Purchase price | 100,000 | whole column |
+| − 30% × BV 220,000 | 66,000 | book value share |
+| **Excess purchase price** | **34,000** | top two layers |
+| P&E: 30% × 30,000 | 9,000 | fair value appreciation |
+| Land: 30% × 20,000 | 6,000 | fair value appreciation |
+| **Goodwill (residual)** | **19,000** | goodwill |
+
+$$
+\underbrace{66{,}000}_{BV\times30\%}+\underbrace{15{,}000}_{\text{FV appreciation}}=\underbrace{81{,}000}_{FV\times30\%},\qquad 81{,}000+\underbrace{19{,}000}_{\text{goodwill}}=100{,}000=PP
+$$
+
+Afterwards, the P&E step-up of 9,000 is amortized over its useful life, reducing BY's equity income. The land step-up of 6,000 is not depreciated, and the goodwill of 19,000 is not amortized but is tested for impairment.
+
 
 
