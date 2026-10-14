@@ -414,3 +414,39 @@ Together, tense (non-past / past) × polarity (affirmative / negative) make the 
 - 兄も姉も会社員です。 — Both my older brother and older sister are company employees.
 - 日本料理も中華料理も美味しいです。 — Both Japanese food and Chinese food are delicious.
 - メモリーもストレージも大きいです。 — Both the memory and the storage are large.
+
+
+## Comparison patterns（比較）
+
+Japanese has several fixed frames for comparing two nouns. The four below are the core set from this lesson.
+
+### (1) N₁ は N₂ より ～
+
+**Rule:** **より** marks the **baseline** of comparison. **N₁ は N₂ より ～** means N₁ has more of the predicate property than N₂ (“N₁ is …-er than N₂”). When the gap is large, add **ずっと** (“much more …”).
+
+- 中国は日本より広いです。 — China is larger than Japan.
+- （こちらのパソコンは）さっきのよりメモリーがずっと大きいですよ。 — (This PC’s) memory is much larger than the one just now.
+- スマホはパソコンより値段が高いです。 — Smartphones cost more than computers.
+
+### (2) N₂ より N₁ のほうが ～
+
+**Rule:** Same comparison, different packaging: **N₂ より N₁ のほうが ～** = “compared with N₂, N₁ is the one that is …”. **ほう** (方) means “side / one of the two.” Often used to **answer** pattern (4); in answers, **N₂ より** is frequently dropped → **N₁ のほうが ～**.
+
+- 日本より中国のほうが広いです。 — Compared with Japan, China is larger.
+- パソコンよりスマホのほうが値段が高いです。 — Compared with PCs, smartphones are more expensive.
+
+### (3) N₂ は N₁ ほど ～（negative）
+
+**Rule:** **ほど** after a noun marks **degree**. With a **negative** predicate, **N₂ は N₁ ほど ～ない** means N₂ does **not** reach N₁’s degree — “N₂ is not as … as N₁.”
+
+- 日本は中国ほど広くありません。 — Japan is not as large as China.
+- パソコンはスマホほど値段が高くありません。 — Computers are not as expensive as smartphones.
+
+### (4) N₁ と N₂ とどちら（のほう）が ～か
+
+**Rule:** Ask which of two is more …: **N₁ と N₂ とどちら（のほう）が ～か**. Answer with pattern (2), usually just **N のほうが ～**.
+
+- A: 中国と日本とどちら（のほう）が広いですか。 — Between China and Japan, which is larger?
+- B: 中国のほうが広いです。 — China is larger.
+- A: パソコンとスマホとどちらが高いですか。 — Between a PC and a smartphone, which is more expensive?
+- B: スマホのほうが高いです。 — The smartphone is.
