@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Excess purchase price · goodwill split</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+</head>
+<body>
+  <main class="card" id="card">
+    <h2>Excess PP = fair-value step-ups + goodwill.</h2>
+    <div class="sub">Illustrative: PP 100 · FV × share% 80 · BV × share% 60 · darkest = book value, lightest = goodwill</div>
+    <svg id="ch" role="img" aria-label="Waterfall from BV times share 60, plus FV minus BV step-up 20, plus goodwill 20, to purchase price 100"></svg>
+    <div class="src">RUNG WATERFALL · LIEFLAT F9 · EXCESS PURCHASE PRICE (ILLUSTRATIVE)</div>
+  </main>
+  <script>
+  // ── Data (illustrative) ──
+  var BV = 60, FV = 80, PP = 100;
+  var STEPS = [
+    { name: 'BV × share%', sub: 'book value', from: 0, to: BV, fill: '#1C1C1A' },
+    { name: '(FV − BV) × share%', sub: 'step-ups: PP&E, inventory', from: BV, to: FV, fill: '#6A6963' },
+    { name: 'Goodwill', sub: 'unidentifiable', from: FV, to: PP, fill: '#BEBDB6' },
+    { name: 'Purchase price', sub: 'PP', stack: true },
+  ];
+  var K = curveKit, C = K.C;
+  K.mount(document.getElementById('ch'), function (svg, W, H) {
+    var narrow = W < 520;
+    var X0 = 4, RIGHT = narrow ? 118 : 190, X1 = W - RIGHT, TOP = 20, BASE = H - (narrow ? 50 : 40);
+    var y = function (v) { return BASE - v / (PP * 1.08) * (BASE - TOP); };
+    var n = STEPS.length, slot = (X1 - X0) / n, bw = Math.min(64, slot * 0.58);
+    var cx = function (i) { return X0 + slot * (i + 0.5); };
+    // reference levels
+    [[BV, 'BV × %  60'], [FV, 'FV × %  80'], [PP, 'PP  100']].forEach(function (r, i) {
+      K.guide(svg, X0, y(r[0]), X1 + 8, y(r[0]), 0.1 + i * 0.05);
+    });
+    K.el(svg, 'line', { x1: X0, y1: BASE, x2: X1 + 8, y2: BASE, stroke: C.GRID, 'stroke-width': 0.9 });
+    STEPS.forEach(function (s, i) {
+      var x = cx(i) - bw / 2, d = 0.15 + i * 0.11;
+      var parts = s.stack ? STEPS.slice(0, 3) : [s];
+      parts.forEach(function (p) {
+        K.el(svg, 'rect', { x: x, y: y(p.to), width: bw, height: y(p.from) - y(p.to), fill: p.fill, class: 'fade', style: 'animation-delay:' + d + 's' });
+      });
+      if (!s.stack && i < 2) K.guide(svg, x + bw, y(s.to), cx(i + 1) - bw / 2, y(s.to), d + 0.1);
+      var top = s.stack ? PP : s.to, val = s.stack ? PP : s.to - s.from;
+      K.label(svg, cx(i), y(top) - 6, (s.stack || i === 0 ? '' : '+') + val, { size: 12, anchor: 'middle', delay: d + 0.1 });
+      var lb = K.label(svg, cx(i), BASE + 14, s.name, { size: narrow ? 9 : 10, weight: 700, anchor: 'middle', maxWidth: slot - 4, delay: d });
+      if (!narrow) K.label(svg, cx(i), lb.bottom + 11, s.sub, { size: 9, weight: 500, fill: C.MUTED, anchor: 'middle', maxWidth: slot - 4, delay: d });
+    });
+    // brackets on the PP bar
+    var bx = cx(n - 1) + bw / 2;
+    function bracket(x, lo, hi, d) {
+      var a = y(hi) + 1, b = y(lo) - 1;
+      K.el(svg, 'path', { d: 'M' + (x - 5) + ' ' + a + ' H' + x + ' V' + b + ' H' + (x - 5), fill: 'none', stroke: C.INK, 'stroke-width': 1.1, class: 'fade', style: 'animation-delay:' + d + 's' });
+    }
+    function note(x, mid, title, formula, d) {
+      K.label(svg, x, mid - 3, title, { size: narrow ? 10 : 11, weight: 800, delay: d });
+      K.label(svg, x, mid + 10, formula, { size: narrow ? 8.5 : 9.5, weight: 600, fill: C.MUTED, maxWidth: W - x - 4, delay: d });
+    }
+    // outer: Excess PP spans BV→PP; its note sits in the BV→FV band, clear of the inner bracket
+    bracket(bx + 9, BV, PP, 0.7);
+    note(bx + 16, y((BV + FV) / 2), 'Excess PP  40', '= PP − BV × %', 0.75);
+    // inner: Goodwill spans FV→PP
+    bracket(bx + 21, FV, PP, 0.85);
+    note(bx + 28, y((FV + PP) / 2), 'Goodwill  20', '= PP − FV × %', 0.9);
+  }, function (W) { return W < 520 ? 300 : 320; });
+  </script>
+</body>
+</html>

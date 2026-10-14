@@ -274,3 +274,28 @@ Under equity method, the equity investment is initially recorded on B/S at the v
   title="Equity method: NI pickup then dividend to Inv. 118"
   loading="lazy"
 ></iframe>
+
+
+> [!note]
+>
+> For the case under **cost method**, dividend will be accounted as cash +6; RE +6. Cost method only recognizes actual income. Therefore, it is less misleading for cost method than equity method from this perspective.
+
+> [!note]
+>
+> In extreme cases, if the subsidiary losses more than its equity value. The max value deducted to the equity investment is its book value. Exceeding value will be internally documented to deduct potential future earnings.
+
+
+
+#### Excess Purchase Price
+
+In all accounting standards, long-term equity investment purchase price (PP) should be compared with the fair value and book value of  **identifiable net assets**. However, usually $PP\ge FV\times share\% > BV\times share\%$. The excess part $PV-FV\%$ is **good will**, and $PV-BV\%$ is **Excess Purchase Price (Excess PP)**. 
+
+<iframe
+  class="fx-concept-chart"
+  src="/charts/excess-purchase-price.html"
+  title="Excess purchase price: FV step-ups plus goodwill"
+  loading="lazy"
+></iframe>
+
+
+
