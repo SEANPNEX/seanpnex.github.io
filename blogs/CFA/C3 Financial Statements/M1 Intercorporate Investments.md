@@ -250,6 +250,8 @@ Equity Investment are not allowed to reclassification. It is only permitted if i
 
 Remember when a company holds 20% to 50% of the voting rights of an invested, *either directly or indirectly*, it is presumed that the company has significant influence but not control. 
 
+
+
 > [!note]
 >
 > When considering **influence**, under IFRS, current exersicable or convertible warrants, call options, or convertible securities will also be accounted, Under US GAAP, only consider the voting shares owned.
@@ -288,7 +290,9 @@ Under equity method, the equity investment is initially recorded on B/S at the v
 
 #### Excess Purchase Price
 
-In all accounting standards, long-term equity investment purchase price (PP) should be compared with the fair value and book value of  **identifiable net assets**. However, usually $PP\ge FV\times share\% > BV\times share\%$. The excess part $PV-FV\%$ is **good will**, and $PV-BV\%$ is **Excess Purchase Price (Excess PP)**. 
+In all accounting standards, long-term equity investment purchase price (PP) should be compared with the fair value and book value of  **identifiable net assets**. However, usually $PP\ge FV\times share\% > BV\times share\%$. The excess part $PV-FV\%$ is **good will**, and $PV-BV\%$ is **Excess Purchase Price (Excess PP)**. $FV\%-BV\%$ is the fair value appreciation. 
+
+
 
 <iframe
   class="fx-concept-chart"
@@ -296,6 +300,16 @@ In all accounting standards, long-term equity investment purchase price (PP) sho
   title="Excess purchase price: FV step-ups plus goodwill"
   loading="lazy"
 ></iframe>
+
+
+##### Good will
+
+> [!note]
+>
+> In some cases like market crash, there might be situations where $PP<FV\%$. In this case, negative good will is recognized through Non-opearting Revenue. 
+
+Goodwill is not amortized because it does not have an identifiable life (not an identifiable asset). A regular impairment test should be carried on. Good will is included in the carrying amout of the investment. 
+
 
 **Example.** BY pays €100,000 for 30% of SY's outstanding shares. At the acquisition date, SY's recorded assets and liabilities are:
 
@@ -325,5 +339,126 @@ $$
 
 Afterwards, the P&E step-up of 9,000 is amortized over its useful life, reducing BY's equity income. The land step-up of 6,000 is not depreciated, and the goodwill of 19,000 is not amortized but is tested for impairment.
 
+##### Amortization of Fair Value Appreciation
+
+The amortization of Fair Value Appreciation uses same method as the underlying asset. 
+
+**Example** Suppose BY buys 30% of SY. In the assets of SY, PPE has BV of 110 and FV of 120 at purchase. In some year, SY has NI of 1000. SY amortize the PPE use straight-line method, the -11 is included in calculation of NI. For BY, the invesment income confirmed as 300, in its I/S, RE and investment asset increase. However, as the FV at purchase excess BV by 10. The **FV appreciation** should also be amortized, that is -1. The value is extra and in the accounting process of BY, the NI of SY is then 999. All other accounting value should change correspondingly.
+
+<iframe
+  class="fx-concept-chart"
+  src="/charts/fv-appreciation-amortization.html"
+  title="Equity method: amortizing the FV appreciation, 300 to 299.7"
+  loading="lazy"
+></iframe>
+
+**Step by step.**
+
+1. SY's own books depreciate PPE at book value: $110/10 = 11$ per year (so a 10-year straight-line life). This $-11$ is already inside SY's NI of 1,000.
+2. BY paid for the PPE at fair value, so from BY's view the asset should be depreciated on 120: $120/10 = 12$ per year. The extra $(120-110)/10 = 1$ per year is the amortization of the FV appreciation.
+3. Restate SY's NI on a fair-value basis, then take BY's share:
+
+$$
+\text{Equity income} = 30\%\times(1{,}000-1) = 300 - 0.3 = 299.7
+$$
+
+4. BY records I/S equity income $+299.7$, RE $+299.7$, and Investment in SY $+299.7$ (instead of $+300$).
+
+**Later periods.** The $-0.3$ repeats every year for 10 years, until BY's share of the step-up, $30\%\times10 = 3$, is fully amortized ($0.3\times10 = 3$). After that, BY picks up the plain $30\%$ of SY's reported NI. If SY sells the PPE early, the unamortized step-up is written off in that year. A land step-up would never be amortized, and goodwill is only tested for impairment.
 
 
+
+> [!note]
+>
+> The key is that the equity is measured in FV at buyer side. Not limited to amortiation, same applies to COGS
+
+
+**Example (multi-asset step-ups).** On Jan 10, Y1, BY buys 30% of SY for 3,300 and sends a representative to take part in SY's financial and operating decisions, so BY has significant influence and uses the equity method. At the acquisition date, the FV of SY's identifiable net assets is 9,000. All other assets and liabilities have FV = BV except:
+
+| SY item | Cost | Accum. dep./amort. | BV | FV | Step-up (FV − BV) | Total life |
+|---|---:|---:|---:|---:|---:|---:|
+| Inventory | – | – | 750 | 1,050 | 300 | – |
+| Fixed assets | 1,800 | 360 | 1,440 | 2,400 | 960 | 20 yrs |
+| Intangible | 1,050 | 210 | 840 | 1,200 | 360 | 10 yrs |
+| **Total** | | | | | **1,620** | |
+
+Assumptions: the inventory is used up 80% in Y1 and 20% in Y2. SY's NI is 900 in Y1 and 965 in Y2. There are no dividends. For simplicity, Y1 is treated as a full year even though the purchase was on Jan 10.
+
+Try each question first, then hover over (or tap) the blurred answer.
+
+**Q1.** How much goodwill is inside BY's investment, and how is it treated afterwards?
+
+<div class="reveal" tabindex="0">
+
+$$
+\text{Goodwill} = 3{,}300 - 30\%\times9{,}000 = 3{,}300-2{,}700 = 600
+$$
+
+Goodwill is not amortized. It stays inside the investment line and is tested for impairment.
+
+</div>
+
+**Q2.** At SY level (100%), what extra expense does each step-up create each year? Find the remaining lives first.
+
+<div class="reveal" tabindex="0">
+
+- Inventory: the step-up of 300 flows into extra COGS as the goods are sold: $80\%\times300=240$ in Y1 and $20\%\times300=60$ in Y2.
+- Fixed assets: depreciation is $1{,}800/20=90$ a year, so $360/90=4$ years are used and $16$ remain. Extra depreciation is $960/16=60$ a year for 16 years.
+- Intangible: amortization is $1{,}050/10=105$ a year, so $210/105=2$ years are used and $8$ remain. Extra amortization is $360/8=45$ a year for 8 years.
+
+</div>
+
+**Q3.** What is SY's adjusted NI, and BY's equity income, in Y1 and Y2?
+
+<div class="reveal" tabindex="0">
+
+| | Y1 | Y2 |
+|---|---:|---:|
+| SY's reported NI | 900 | 965 |
+| − Inventory step-up (extra COGS) | −240 | −60 |
+| − Fixed-asset extra depreciation | −60 | −60 |
+| − Intangible extra amortization | −45 | −45 |
+| **Adjusted NI** | **555** | **800** |
+| **BY's equity income (× 30%)** | **166.5** | **240** |
+
+</div>
+
+**Q4.** What is BY's 30% share of each step-up (and goodwill) still inside the investment at the end of Y1 and Y2?
+
+<div class="reveal" tabindex="0">
+
+| BY's 30% share | Acquisition | Y1 | Y2 | Pattern after Y2 |
+|---|---:|---:|---:|---|
+| Inventory (300 × 30% = 90) | 90 | 18 | 0 | gone: 72 in Y1, 18 in Y2 |
+| Fixed assets (960 × 30% = 288) | 288 | 270 | 252 | −18 a year until Y16 |
+| Intangible (360 × 30% = 108) | 108 | 94.5 | 81 | −13.5 a year until Y8 |
+| Goodwill | 600 | 600 | 600 | not amortized; impairment test |
+| **Total excess over 30% × BV** | **1,086** | **982.5** | **933** | |
+
+Check: $30\%\times(9{,}000-1{,}620)=2{,}214$ and $3{,}300-2{,}214=1{,}086$ = the step-ups $486$ + goodwill $600$. In Y1, $270-103.5=166.5$ (with $103.5=72+18+13.5$). In Y2, $289.5-49.5=240$.
+
+</div>
+
+**Q5.** What is the carrying amount of Investment in SY at the end of Y1 and Y2?
+
+<div class="reveal" tabindex="0">
+
+$$
+3{,}300 + 166.5 = 3{,}466.5 \quad\text{(end Y1)},\qquad 3{,}466.5 + 240 = 3{,}706.5 \quad\text{(end Y2)}
+$$
+
+</div>
+
+**Q6.** Over the remaining lives, how much extra amortization does BY book in total for each step-up?
+
+<div class="reveal" tabindex="0">
+
+Fixed assets: $18\times16 = 288$. Intangible: $13.5\times8 = 108$. Inventory: $72+18 = 90$, used up within two years. Goodwill: none (impairment test only).
+
+</div>
+
+**Takeaway:** BY measures SY's income on a fair-value basis. Each step-up leaves BY's equity income at the same pace as the underlying asset leaves SY's books (COGS for inventory, depreciation or amortization for long-lived assets), while goodwill stays put until it is impaired.
+
+#### Transactions with Associates
+
+The key idea is to avoid profit inflation through upstream/downstream transactions.
