@@ -497,7 +497,7 @@ The textbook adjusts the associate's NI by the full unrealized profit and then m
 - **Downstream** (investor → associate): the profit sits in the investor's own sales, and the same $\%\times$ unrealized profit is eliminated (through equity income / the investment account). The treatment is symmetric.
 - **Release.** The deferred amount is recognized pro rata as the buyer sells the goods outside: if a fraction $s$ is sold in a later year, add back $s\times$ unrealized profit (times % at the investor level) in that year.
 
-**Example (upstream).** Amounts are in 10k (万), as on the slide. In Jan 2017, BY acquires 20% of SY's voting shares and has significant influence. At acquisition, the FV of SY's net assets equals BV. In Aug 2017, SY sells goods costing 600 to BY for 1,000, and BY holds them as inventory. At 12/31/2017, BY has not sold any to outsiders. In 2018, BY sells 60% of the goods to an independent third party. SY's NI is 3,200 in 2017 and 4,000 in 2018.
+**Example (upstream).** Amounts are in 10k. In Jan 2017, BY acquires 20% of SY's voting shares and has significant influence. At acquisition, the FV of SY's net assets equals BV. In Aug 2017, SY sells goods costing 600 to BY for 1,000, and BY holds them as inventory. At 12/31/2017, BY has not sold any to outsiders. In 2018, BY sells 60% of the goods to an independent third party. SY's NI is 3,200 in 2017 and 4,000 in 2018.
 
 | | 2017 | 2018 |
 |---|---:|---:|
@@ -509,3 +509,23 @@ The textbook adjusts the associate's NI by the full unrealized profit and then m
 Assuming no dividends, the investment account moves as follows: $\text{Cost} \to \text{Cost}+560 \to \text{Cost}+560+848 = \text{Cost}+1{,}408$.
 
 Check: $400\times20\%=80$ is deferred in 2017. Of that, $80\times60\%=48$ is released in 2018, and $80-48=32$ is still unrealized (the 40% of goods still held by BY).
+
+**Example (upstream, asset used by the buyer).** Amounts are in 10k. On 12/31/2019, DJ acquires 20% of EJ's voting shares and has significant influence. At acquisition, the FV of EJ's net assets equals BV. On the same day, EJ sells goods costing 600 to DJ for 900. DJ uses them as a fixed asset: 10-year life, straight-line, residual value 0. At 12/31/2020, DJ has not sold the asset to outsiders. EJ's NI for 2020 is 1,600.
+
+Because DJ uses the asset rather than reselling it, the profit is realized through depreciation. DJ depreciates $900/10=90$ a year, versus $600/10=60$ on the original cost, so the extra $30$ a year is the share of the profit realized each year.
+
+1. Intercompany profit: $900-600=300$.
+2. Realized each year: $300/10=30$.
+3. Unrealized at 12/31/2020: $300-30=270$.
+
+| 2020 | Amount |
+|---|---:|
+| EJ's reported NI | 1,600 |
+| Eliminate the full intercompany profit | −300 |
+| Add back the part realized via depreciation | +30 |
+| **Adjusted NI** | **1,330** |
+| **DJ's investment income (× 20%)** | **266** |
+
+Check: $20\%\times300=60$ is deferred. Of that, $6$ a year is released through depreciation (2020–2029), so $60-6=54$ is still deferred at the end of 2020.
+
+*Extension beyond the slide:* in 2021–2029, if the asset isn't sold, adjusted NI $=$ reported NI $+30$, so DJ recognizes $20\%\times NI+6$ each year.
