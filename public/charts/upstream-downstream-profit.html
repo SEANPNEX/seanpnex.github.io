@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Equity method · upstream vs downstream unrealized profit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <style>
+    .flow{display:flex;align-items:center;gap:8px;margin:8px 0 12px;font-size:12px;font-weight:700}
+    .flow .node{padding:4px 10px;border-radius:999px;background:var(--ink);color:var(--paper)}
+    .flow .node.b{background:#BEBDB6;color:var(--ink)}
+    .flow .arr{flex:1;height:0;border-top:1.5px solid var(--ink);position:relative;min-width:24px}
+    .flow .arr::after{content:"";position:absolute;right:-1px;top:-5.5px;border:5px solid transparent;border-left:7px solid var(--ink);border-right:0}
+    .flow .arr span{position:absolute;left:50%;top:-17px;transform:translateX(-50%);font-size:10px;font-weight:600;color:var(--muted);white-space:nowrap}
+    .row{margin:10px 0 2px;font-size:11px;font-weight:600;color:var(--muted)}
+    .bar{display:flex;height:16px;width:100%;max-width:100%}
+    .bar i{display:block;height:100%}
+    .keep{background:var(--ink)}
+    .ghost{background:repeating-linear-gradient(135deg,transparent 0 4px,#BEBDB6 4px 5.5px);border:1px dashed #9A9992}
+    .val{display:flex;justify-content:space-between;margin-top:3px;font-size:11px;font-weight:800}
+    .val s{color:var(--muted);font-weight:700}
+    .later{margin:12px 0 8px;font-size:10.5px;color:var(--muted);line-height:1.45}
+  </style>
+</head>
+<body>
+  <main class="card" id="card">
+    <h2>Unsold intra-group goods inflate profit; A removes its 30% share either way.</h2>
+    <div class="sub">Illustrative · A owns 30% of associate B · goods cost 60, sold for 100 → intra-group profit 40 · buyer still holds the goods at year end · solid = A keeps, hatched = A eliminates (30% × 40 = 12)</div>
+    <div class="grid">
+      <section class="panel">
+        <h3>Downstream: A sells to B</h3>
+        <div class="flow"><span class="node">A</span><span class="arr"><span>sells for 100 (cost 60)</span></span><span class="node b">B 30%</span></div>
+        <div class="row">Profit in A's own I/S before elimination: 40</div>
+        <div class="bar"><i class="keep" style="width:70%"></i><i class="ghost" style="width:30%"></i></div>
+        <div class="val"><span>Kept 28 · B's other 70% owners' share</span><s>−12</s></div>
+        <div class="hint later">A's 30% share is profit A made by selling to itself. 12 waits until B sells the goods to an outside party.</div>
+      </section>
+      <section class="panel">
+        <h3>Upstream: B sells to A</h3>
+        <div class="flow"><span class="node b">B 30%</span><span class="arr"><span>sells for 100 (cost 60)</span></span><span class="node">A</span></div>
+        <div class="row">B's NI includes 40 → A's equity pickup before elimination: 30% × 40 = 12</div>
+        <div class="bar" style="width:30%"><i class="ghost" style="width:100%"></i></div>
+        <div class="val" style="max-width:100%"><span>Kept 0</span><s>−12</s></div>
+        <div class="hint later">The goods sit in A's own inventory. 12 waits until A sells them to an outside party.</div>
+      </section>
+    </div>
+    <div class="src">PAIRED LANES · LIEFLAT F6 · UPSTREAM / DOWNSTREAM UNREALIZED PROFIT (ILLUSTRATIVE)</div>
+  </main>
+  <script>curveKit.fit();</script>
+</body>
+</html>

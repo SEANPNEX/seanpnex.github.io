@@ -462,3 +462,12 @@ Fixed assets: $18\times16 = 288$. Intangible: $13.5\times8 = 108$. Inventory: $7
 #### Transactions with Associates
 
 The key idea is to avoid profit inflation through upstream/downstream transactions.
+
+<iframe
+  class="fx-concept-chart"
+  src="/charts/upstream-downstream-profit.html"
+  title="Upstream vs downstream: eliminating A's 30% share of unrealized profit"
+  loading="lazy"
+></iframe>
+
+*Illustrative: whichever way the goods move, A eliminates $30\%\times40=12$ of unrealized profit and recognizes it only when the goods are sold to a third party.*
