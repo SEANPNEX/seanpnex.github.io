@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Equity method · amortizing the FV appreciation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <link rel="stylesheet" href="ledger.css">
+  <style>
+    .ledger th small,.ledger td small{display:block;margin-top:2px;font-size:10px;font-weight:500;color:var(--muted)}
+    .ledger th.end,.ledger td.end{background:var(--faint)}
+    .ledger td.end,.ledger th.end{padding-right:8px}
+  </style>
+</head>
+<body>
+  <main class="card" id="card">
+    <h2>BY picks up 299.7, not 300: the FV step-up depreciates too.</h2>
+    <div class="sub">BY owns 30% of SY · SY's PPE: BV 110, FV 120, 10-year straight line · SY reports NI 1,000 after its own −11 depreciation</div>
+    <div class="ledger-wrap"><table class="ledger" aria-label="Equity income adjusted for amortization of fair value appreciation">
+      <thead>
+        <tr>
+          <th>Line</th>
+          <th>SY level<small>100%</small></th>
+          <th class="end">BY's share<small>× 30%</small></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="row-in"><td class="k">SY's reported NI<small>already net of BV depreciation 110 / 10 = 11</small></td><td>1,000</td><td class="end">300</td></tr>
+        <tr class="row-in" style="animation-delay:.06s"><td class="k">Amortize FV appreciation<small>(120 − 110) / 10 years</small></td><td>−1</td><td class="end">−0.3</td></tr>
+        <tr class="eq row-in" style="animation-delay:.12s"><td class="k"><b>NI on a fair-value basis</b><small>FV depreciation 120 / 10 = 12</small></td><td>999</td><td class="end">299.7<span class="pill">I/S</span></td></tr>
+      </tbody>
+    </table></div>
+    <div class="note">BY records equity income of <b>299.7</b>: RE +299.7 and Investment in SY +299.7. The 0.3 trims the carrying amount each year until BY's 30% × 10 = <b>3</b> step-up is fully amortized after 10 years.</div>
+    <div class="src">LEDGER GRID · LIEFLAT L9 · FV APPRECIATION AMORTIZATION</div>
+  </main>
+  <script>curveKit.fit();</script>
+</body>
+</html>
