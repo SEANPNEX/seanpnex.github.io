@@ -354,3 +354,21 @@ Together, tense (non-past / past) × polarity (affirmative / negative) make the 
 
 - 白いパソコン — white computer *(Type I: 白い + パソコン)*
 - きれいな町 — clean / beautiful town *(Type II: きれい + な + 町)*
+
+
+## N が（subject）— は vs が as subject markers
+
+> [!IMPORTANT]
+>
+> Easy to confuse for a long time: both **は** and **が** can mark what looks like a “subject,” but they answer different information questions. **が** = the subject is **new / unknown** to the listener (focus on the noun before **が**). **は** = the subject is **already known** (old information); focus falls on what **comes after** **は**.
+
+**Rule:** When introducing or identifying something the listener does not yet have as given, use **が**. Once that referent is established in the conversation, switch to **は**. Wh-questions about the subject (**だれが**, **何が**, …) take **が**; the answer usually keeps **が** on the identified item, then later sentences about that person/thing use **は**.
+
+- ほら、あそこの男の人。あの人**は**中村さんのお兄さんですよ。 — Look, that man over there. He is Nakamura’s older brother. *(あの人 is already pointed out → **は**; focus on who he is.)*
+- A: へえ、小学校の時の記念写真ですか。中村さんは、これ？ — Oh, an elementary-school commemorative photo? Nakamura, is this you?
+- B: 違いますよ。これ**が**わたしです。 — No. **This** is me. *(identifying which one → **が**; focus on これ.)*
+- こちらのパソコン**が**、今お得ですよ。 — **This** PC is a good deal right now. *(picking out this one as new focus → **が**.)*
+- A: 日本語**は**難しいですか。 — Is Japanese difficult? *(topic = Japanese → **は**.)*
+- B: ええ、文法**が**難しいです。 — Yes — **the grammar** is what’s difficult. *(specifying the hard part as new focus → **が**.)*
+- A: だれ**が**留学生ですか。 — **Who** is the international student? *(だれが — always **が**.)*
+- B: あの人**が**留学生で、ジョージさんです。ジョージさん**は**今、先生の研究室にいます。 — **That person** is the international student — George. George is in the teacher’s lab now. *(identify with **が**, then known George → **は**.)*
