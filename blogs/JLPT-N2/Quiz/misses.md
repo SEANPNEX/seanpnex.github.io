@@ -29,3 +29,27 @@
 **Covered:** **全然難しくありませんでした**. Slip: writing **ではありませんでした** on a Type I adjective.
 
 **Gap:** Past-negative spelling / pattern confusion with Type II–noun では.
+
+## 2026-10-14 — だれが → then は
+
+**Q:** After だれが留学生ですか, once the person is named, が or は?
+
+**Correct:** Keep が on the identifying answer; later reference uses **は** (known topic). Ex: ジョージさん**は**今、先生の研究室にいます。
+
+**Gap:** Answered with が on the known name.
+
+## 2026-10-14 — ほしい third person
+
+**Q:** Third-person “want” with ほしいです?
+
+**Correct:** ほしいです ≈ speaker only. Third person → **ほしがっています**.
+
+**Gap:** Used ほしいです for third person.
+
+## 2026-10-14 — ほど～ない
+
+**Q:** “Not as … as …” comparison frame?
+
+**Correct:** N₂ は N₁ ほど ～ない（e.g. 日本は中国ほど広くありません）.
+
+**Gap:** より / のほうが solid; ほど～ない missed.
