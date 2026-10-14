@@ -10,61 +10,55 @@
 </head>
 <body>
   <main class="card" id="card">
-    <h2>Excess PP = fair-value step-ups + goodwill.</h2>
-    <div class="sub">Illustrative: PP 100 · FV × share% 80 · BV × share% 60 · darkest = book value, lightest = goodwill</div>
-    <svg id="ch" role="img" aria-label="Waterfall from BV times share 60, plus FV minus BV step-up 20, plus goodwill 20, to purchase price 100"></svg>
-    <div class="src">RUNG WATERFALL · LIEFLAT F9 · EXCESS PURCHASE PRICE (ILLUSTRATIVE)</div>
+    <h2>Excess PP splits into an amortized step-up and unamortized goodwill.</h2>
+    <div class="sub">Schematic · one purchase price stacked bottom-up: book-value share → fair value appreciation → goodwill · darkest = book value, lightest = goodwill</div>
+    <svg id="ch" role="img" aria-label="Stacked column: proportionate share of book value, fair value appreciation, goodwill; purchase price spans all, fair value share spans bottom two, excess purchase price spans top two"></svg>
+    <div class="src">STACKED RUNGS · LIEFLAT F7 · EXCESS PURCHASE PRICE (SCHEMATIC)</div>
   </main>
   <script>
-  // ── Data (illustrative) ──
-  var BV = 60, FV = 80, PP = 100;
-  var STEPS = [
-    { name: 'BV × share%', sub: 'book value', from: 0, to: BV, fill: '#1C1C1A' },
-    { name: '(FV − BV) × share%', sub: 'step-ups: PP&E, inventory', from: BV, to: FV, fill: '#6A6963' },
-    { name: 'Goodwill', sub: 'unidentifiable', from: FV, to: PP, fill: '#BEBDB6' },
-    { name: 'Purchase price', sub: 'PP', stack: true },
+  // ── Layers, bottom to top (schematic heights) ──
+  var LAYERS = [
+    { name: 'Share of book value of net identifiable assets', short: 'Book value share', h: 0.5, fill: '#1C1C1A', text: '#F0EFEB' },
+    { name: 'Fair value appreciation', short: 'FV appreciation', h: 0.25, fill: '#6A6963', text: '#F0EFEB',
+      note: 'IS amortized', detail: "against the investee's profit, reducing the equity-method pickup, over the economic lives of the related assets" },
+    { name: 'Goodwill', short: 'Goodwill', h: 0.25, fill: '#BEBDB6', text: '#1C1C1A',
+      note: 'NOT amortized', detail: 'reviewed for impairment instead' },
   ];
   var K = curveKit, C = K.C;
   K.mount(document.getElementById('ch'), function (svg, W, H) {
-    var narrow = W < 520;
-    var X0 = 4, RIGHT = narrow ? 118 : 190, X1 = W - RIGHT, TOP = 20, BASE = H - (narrow ? 50 : 40);
-    var y = function (v) { return BASE - v / (PP * 1.08) * (BASE - TOP); };
-    var n = STEPS.length, slot = (X1 - X0) / n, bw = Math.min(64, slot * 0.58);
-    var cx = function (i) { return X0 + slot * (i + 0.5); };
-    // reference levels
-    [[BV, 'BV × %  60'], [FV, 'FV × %  80'], [PP, 'PP  100']].forEach(function (r, i) {
-      K.guide(svg, X0, y(r[0]), X1 + 8, y(r[0]), 0.1 + i * 0.05);
+    var nw = W < 520;
+    var TOP = 10, BASE = H - 6, span = BASE - TOP;
+    var LEFT = nw ? Math.round(W * 0.27) : Math.round(W * 0.26), CW = nw ? 72 : 130;
+    var cx0 = LEFT, cx1 = LEFT + CW;
+    var bounds = [], acc = 0;
+    LAYERS.forEach(function (l) { bounds.push([BASE - acc * span, BASE - (acc + l.h) * span]); acc += l.h; });
+    LAYERS.forEach(function (l, i) {
+      var y0 = bounds[i][0], y1 = bounds[i][1], d = 0.1 + i * 0.12;
+      K.el(svg, 'rect', { x: cx0, y: y1, width: CW, height: y0 - y1 - (i < 2 ? 0 : 0), fill: l.fill, class: 'fade', style: 'animation-delay:' + d + 's' });
+      if (i) K.el(svg, 'line', { x1: cx0, y1: y0, x2: cx1, y2: y0, stroke: C.PAPER, 'stroke-width': 1.5 });
+      K.label(svg, (cx0 + cx1) / 2, (y0 + y1) / 2 + 3, nw ? l.short : l.name, { size: nw ? 9 : 10.5, weight: 700, fill: l.text, anchor: 'middle', middle: true, maxWidth: CW - 10, halo: 0, delay: d + 0.1 });
     });
-    K.el(svg, 'line', { x1: X0, y1: BASE, x2: X1 + 8, y2: BASE, stroke: C.GRID, 'stroke-width': 0.9 });
-    STEPS.forEach(function (s, i) {
-      var x = cx(i) - bw / 2, d = 0.15 + i * 0.11;
-      var parts = s.stack ? STEPS.slice(0, 3) : [s];
-      parts.forEach(function (p) {
-        K.el(svg, 'rect', { x: x, y: y(p.to), width: bw, height: y(p.from) - y(p.to), fill: p.fill, class: 'fade', style: 'animation-delay:' + d + 's' });
-      });
-      if (!s.stack && i < 2) K.guide(svg, x + bw, y(s.to), cx(i + 1) - bw / 2, y(s.to), d + 0.1);
-      var top = s.stack ? PP : s.to, val = s.stack ? PP : s.to - s.from;
-      K.label(svg, cx(i), y(top) - 6, (s.stack || i === 0 ? '' : '+') + val, { size: 12, anchor: 'middle', delay: d + 0.1 });
-      var lb = K.label(svg, cx(i), BASE + 14, s.name, { size: narrow ? 9 : 10, weight: 700, anchor: 'middle', maxWidth: slot - 4, delay: d });
-      if (!narrow) K.label(svg, cx(i), lb.bottom + 11, s.sub, { size: 9, weight: 500, fill: C.MUTED, anchor: 'middle', maxWidth: slot - 4, delay: d });
+    function br(x, a, b, dir, d) {
+      K.el(svg, 'path', { d: 'M' + (x + 5 * dir) + ' ' + (a + 1) + ' H' + x + ' V' + (b - 1) + ' H' + (x + 5 * dir), fill: 'none', stroke: C.INK, 'stroke-width': 1.1, class: 'fade', style: 'animation-delay:' + d + 's' });
+    }
+    var sz = nw ? 9.5 : 11;
+    // left, inner: FV share = bottom two layers
+    var xi = cx0 - 10; br(xi, bounds[1][1], BASE, 1, 0.5);
+    K.label(svg, xi - 6, (bounds[1][1] + BASE) / 2, 'Share of fair value of net identifiable assets', { size: sz, weight: 800, anchor: 'end', middle: true, maxWidth: xi - 26, delay: 0.55 });
+    // left, outer: purchase price = whole column; label sits in the goodwill band, above the inner bracket
+    br(6, TOP, BASE, 1, 0.6);
+    K.label(svg, 14, (bounds[2][0] + TOP) / 2 + 4, 'Purchase price', { size: sz, weight: 800, middle: true, maxWidth: xi - 22, delay: 0.65 });
+    // right: excess PP = top two layers, label rotated along the bracket
+    var xr = cx1 + 10; br(xr, TOP, bounds[1][0], -1, 0.7);
+    K.along(svg, xr, bounds[1][0], xr, TOP, 0.5, 'Excess purchase price', { size: nw ? 9.5 : 10.5, weight: 800, anchor: 'middle', below: true, offset: 4, delay: 0.75 });
+    // notes per layer
+    var nx = xr + (nw ? 22 : 26), mw = W - nx - 4;
+    [2, 1].forEach(function (i, k) {
+      var l = LAYERS[i], y1 = bounds[i][1], d = 0.85 + k * 0.1;
+      var t = K.label(svg, nx, y1 + 14, l.note, { size: sz, weight: 800, maxWidth: mw, delay: d });
+      K.label(svg, nx, t.bottom + (nw ? 10 : 12), l.detail, { size: nw ? 8.5 : 9.5, weight: 500, fill: C.MUTED, maxWidth: mw, delay: d });
     });
-    // brackets on the PP bar
-    var bx = cx(n - 1) + bw / 2;
-    function bracket(x, lo, hi, d) {
-      var a = y(hi) + 1, b = y(lo) - 1;
-      K.el(svg, 'path', { d: 'M' + (x - 5) + ' ' + a + ' H' + x + ' V' + b + ' H' + (x - 5), fill: 'none', stroke: C.INK, 'stroke-width': 1.1, class: 'fade', style: 'animation-delay:' + d + 's' });
-    }
-    function note(x, mid, title, formula, d) {
-      K.label(svg, x, mid - 3, title, { size: narrow ? 10 : 11, weight: 800, delay: d });
-      K.label(svg, x, mid + 10, formula, { size: narrow ? 8.5 : 9.5, weight: 600, fill: C.MUTED, maxWidth: W - x - 4, delay: d });
-    }
-    // outer: Excess PP spans BV→PP; its note sits in the BV→FV band, clear of the inner bracket
-    bracket(bx + 9, BV, PP, 0.7);
-    note(bx + 16, y((BV + FV) / 2), 'Excess PP  40', '= PP − BV × %', 0.75);
-    // inner: Goodwill spans FV→PP
-    bracket(bx + 21, FV, PP, 0.85);
-    note(bx + 28, y((FV + PP) / 2), 'Goodwill  20', '= PP − FV × %', 0.9);
-  }, function (W) { return W < 520 ? 300 : 320; });
+  }, function (W) { return W < 520 ? 330 : 320; });
   </script>
 </body>
 </html>
