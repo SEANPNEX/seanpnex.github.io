@@ -26,6 +26,32 @@ const CARDS = [
 </ul>
 </div>`,
     gap: "confused AMC-style asset write-down with FVOCI’s FV carrying amount; AOCI split was otherwise close."
+  },
+  {
+    id: "fsa-2026-10-15-a",
+    topic: "Equity method · upstream unrealized profit",
+    front: "Upstream: SY sells goods costing 600 to BY (20% investor) for 1,000; BY still holds them at year end. How much does BY eliminate from equity income, and when does it come back?",
+    back: `<div class="ans">
+<ul>
+<li>Eliminate only BY's share: 20% × 400 = <strong>80</strong>, not the full 400</li>
+<li>Same thing: adjusted NI = SY's NI − 400, then × 20%</li>
+<li>Comes back pro rata when BY sells the goods to a third party</li>
+</ul>
+</div>`,
+    gap: "eliminated the full 400 instead of the investor's 20% share (80); the third-party release was right."
+  },
+  {
+    id: "fsa-2026-10-15-b",
+    topic: "Equity method · unrealized profit on a fixed asset",
+    front: "Upstream: EJ sells goods costing 600 to DJ (20% investor) for 900, and DJ uses them as a fixed asset (10 years, straight line). How does the 300 profit come back, and how much per year?",
+    back: `<div class="ans">
+<ul>
+<li>Through <strong>depreciation</strong>: DJ depreciates 90 vs 60 on cost</li>
+<li>Gross 300 / 10 = <strong>30</strong> a year; DJ's share 20% × 30 = <strong>6</strong> a year</li>
+<li>2020 income: (1,600 − 300 + 30) × 20% = 266</li>
+</ul>
+</div>`,
+    gap: "said amortization; a fixed asset releases the profit through depreciation (amortization is for intangibles)."
   }
 ];
 
