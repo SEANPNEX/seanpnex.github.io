@@ -1,0 +1,56 @@
+/*
+ * Balance-sheet ledger tables for the FSA charts. Loaded after curve-kit.js,
+ * which supplies the card, title and source-line styles.
+ */
+:root{--soft:#A8A7A0;--faint:#E3E2DB;--mid:#6A6963}
+/* Very narrow screens scroll the table sideways rather than clip it. */
+.ledger-wrap{overflow-x:auto;overscroll-behavior-inline:contain}
+.ledger{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.ledger th{
+  padding:0 8px 7px;text-align:right;vertical-align:bottom;
+  font-size:10.5px;font-weight:700;letter-spacing:.03em;color:var(--muted);
+  border-bottom:1.5px solid var(--ink);
+}
+.ledger th:first-child,.ledger td:first-child{text-align:left;padding-left:0}
+.ledger th:last-child,.ledger td:last-child{padding-right:0}
+.ledger td{
+  padding:6px 8px;text-align:right;vertical-align:top;
+  font-size:12.5px;font-weight:700;line-height:1.3;white-space:nowrap;
+  border-bottom:1px solid var(--grid);
+}
+.ledger td.k{font-size:11.5px;font-weight:600;color:var(--muted);white-space:normal}
+.ledger td.k b{color:var(--ink);font-weight:700}
+.ledger .nil{color:var(--soft);font-weight:500}
+.ledger .soft{color:var(--muted);font-weight:600}
+/* A group header row names the method or account side. */
+.ledger tr.grp td{
+  padding:12px 0 5px;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink);border-bottom:1px solid var(--ink);text-align:left;white-space:normal;
+}
+.ledger tr.grp td span{margin-left:8px;font-size:10.5px;font-weight:500;letter-spacing:0;text-transform:none;color:var(--muted)}
+.ledger tr:first-child.grp td{padding-top:6px}
+/* Assets above, equity below: a dashed rule marks the balance-sheet split. */
+.ledger tr.eq td{border-top:1.5px dashed var(--soft)}
+/* Several entries in one period stack, the result underlined. */
+.st{display:inline-flex;flex-direction:column;align-items:flex-end}
+.st .sum{border-top:1px solid var(--ink);margin-top:2px;padding-top:1px}
+.pill{
+  display:inline-block;margin-left:6px;padding:2px 6px;border-radius:999px;vertical-align:1px;
+  font-size:9px;font-weight:800;letter-spacing:.06em;line-height:1.2;
+  background:var(--ink);color:var(--paper);
+}
+.pill.ghost{background:none;color:var(--muted);box-shadow:inset 0 0 0 1px var(--soft)}
+.note{margin-top:10px;font-size:11.5px;line-height:1.5;color:var(--muted)}
+.note b{color:var(--ink)}
+.row-in{animation:fade .6s ease both}
+@media(max-width:420px){
+  .ledger th{padding:0 3px 7px;font-size:10px;letter-spacing:0}
+  .ledger td{padding:6px 3px;font-size:10.5px}
+  .ledger td.k{font-size:10px}
+  .pill{margin-left:3px;padding:2px 4px}
+}
+@media(max-width:300px){
+  .ledger th{padding:0 1.5px 7px;font-size:9.5px}
+  .ledger td{padding:6px 1.5px;font-size:9.5px}
+  .ledger td.k{font-size:9.5px}
+}

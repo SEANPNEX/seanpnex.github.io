@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>JLPT — Quiz misses 2026-10-13</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    id: "jlpt-quantifier-枚-2026-10-13",
+    topic: "Quantifier + ください",
+    front: "You want two flat tickets. Which is natural — 「Nを2枚ください」 or 「二枚でお願いします」?",
+    back: "<p class=\"jp\"><strong>Nを2枚ください</strong> is the natural order: object + <strong>を</strong> + quantifier + ください.</p><p><strong>二枚でお願いします</strong> uses <strong>で</strong> (means / chosen option) — fine for size/payment once the item is clear, not the default for “give me two (of N).”</p>",
+    gap: "counting what you want stays in the を slot — Nを [quantity] ください."
+  },
+  {
+    id: "jlpt-type1-neg-寒く-2026-10-13",
+    topic: "Type I negative",
+    front: "Polite negative of 寒い — and with あまり?",
+    back: "<p class=\"jp\"><strong>寒くありません</strong> (drop い → く + ありません).</p><p class=\"jp\">With the degree adverb: <strong>あまり寒くありません</strong> (“not very cold”).</p><p>Not <strong>寒くではありません</strong> — that mixes Type I continuative with the Type II / noun では pattern.</p>",
+    gap: "Type I negative is くありません / くないです — ではありません is for Type II and nouns."
+  },
+  {
+    id: "jlpt-も-replaces-を-2026-10-13",
+    topic: "も vs を",
+    front: "Add “hot coffee too” after an order. How do も and を interact?",
+    back: "<p class=\"jp\"><strong>ホットコーヒーもください</strong>.</p><p><strong>も</strong> (“also / too”) <strong>replaces</strong> <strong>を</strong> — they do not stack. Wrong: ホットコーヒーをもください.</p>",
+    gap: "も takes the object slot; drop を."
+  },
+  {
+    id: "jlpt-past-neg-ありませんでした-2026-10-13",
+    topic: "Past negative",
+    front: "Past polite negative with 全然 for 難しい — watch the ありませんでした spelling.",
+    back: "<p class=\"jp\"><strong>全然難しくありませんでした</strong>.</p><p>Type I past negative: く + <strong>ありませんでした</strong> (or くなかったです).</p><p>Slip to avoid: writing <strong>ではありませんでした</strong> on a Type I adjective (that’s Type II / noun past negative).</p>",
+    gap: "全然 + Type I past neg → くありませんでした, not ではありませんでした."
+  }
+];
+
+flashDeck({
+  key: "jlpt-n2-quiz-2026-10-13",
+  source: "JLPT N2 · Quiz 2026-10-13",
+  gapLabel: "Focus",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

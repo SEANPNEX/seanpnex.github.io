@@ -1,6 +1,6 @@
 /*
- * Shared drawing kit for the hairline curve charts (production function,
- * MPK, Solow diagrams). Load it in <head>, after nothing else:
+ * Shared card shell and drawing kit for the lieflat charts (production
+ * function, Solow diagrams, the FSA ledgers and trees). Load it in <head>:
  *
  *   <script src="curve-kit.js"></script>
  *
@@ -19,6 +19,8 @@
   var css = [
     ':root{--paper:#F0EFEB;--ink:#1C1C1A;--muted:#6A6963;--grid:#D8D6CE}',
     '*{margin:0;padding:0;box-sizing:border-box}',
+    // Phones must not enlarge chart text on their own; the layouts are sized for these exact pixels.
+    "html{-webkit-text-size-adjust:100%;text-size-adjust:100%}",
     "body{background:var(--paper);color:var(--ink);font-family:'Inter',ui-sans-serif,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}",
     '.card{padding:28px 28px 18px;border-radius:24px;overflow:hidden}',
     'h2{max-width:820px;font-size:clamp(22px,3.6vw,34px);font-weight:700;line-height:1.1;letter-spacing:-.03em}',
@@ -143,17 +145,18 @@
     return text;
   }
 
-  // Axes, floor ticks and value→pixel maps for a plot with origin at (0, 0).
+  // Axes, floor ticks and value→pixel maps. Domains start at 0 unless
+  // m.xMin / m.yMin say otherwise.
   function frame(p, W, H, m, xMax, yMax) {
-    var X0 = m.l, X1 = W - m.r, TOP = m.t, BASE = H - m.b;
-    var x = function (k) { return X0 + (k / xMax) * (X1 - X0); };
-    var y = function (v) { return BASE - (v / yMax) * (BASE - TOP); };
+    var X0 = m.l, X1 = W - m.r, TOP = m.t, BASE = H - m.b, xMin = m.xMin || 0, yMin = m.yMin || 0;
+    var x = function (k) { return X0 + ((k - xMin) / (xMax - xMin)) * (X1 - X0); };
+    var y = function (v) { return BASE - ((v - yMin) / (yMax - yMin)) * (BASE - TOP); };
     el(p, 'line', { x1: X0, y1: BASE, x2: X1, y2: BASE, stroke: C.GRID, 'stroke-width': 0.9, class: 'fade' });
     el(p, 'line', { x1: X0, y1: BASE, x2: X0, y2: TOP - 6, stroke: C.GRID, 'stroke-width': 0.9, class: 'fade' });
-    for (var tx = X0 + 12, i = 0; tx < X1 - 2; tx += 12, i++) {
+    for (var tx = X0 + 12, i = 0; !m.noTicks && tx < X1 - 2; tx += 12, i++) {
       el(p, 'line', { x1: tx, y1: BASE, x2: tx, y2: BASE - 4, stroke: C.TICK, 'stroke-width': 0.6, class: 'fade', style: 'animation-delay:' + i * 0.006 + 's' });
     }
-    return { X0: X0, X1: X1, TOP: TOP, BASE: BASE, W: W, H: H, x: x, y: y, xMax: xMax, yMax: yMax };
+    return { X0: X0, X1: X1, TOP: TOP, BASE: BASE, W: W, H: H, x: x, y: y, xMin: xMin, xMax: xMax, yMax: yMax };
   }
 
   // Axis names: y above the axis top, x under the right end of the axis.
@@ -188,7 +191,7 @@
     o = o || {};
     var gap = o.gap || 26, i = 0;
     for (var px = F.x(from); px <= F.x(to) + 0.5; px += gap, i++) {
-      var k = ((px - F.X0) / (F.X1 - F.X0)) * F.xMax, v = f(k);
+      var k = F.xMin + ((px - F.X0) / (F.X1 - F.X0)) * (F.xMax - F.xMin), v = f(k);
       if (v > F.yMax) continue;
       // Leave room around highlighted points so beads don't crowd them.
       if ((o.avoid || []).some(function (ak) { return Math.abs(F.x(ak) - px) < 9; })) continue;
@@ -268,6 +271,7 @@
 
   window.addEventListener('resize', fit);
   window.addEventListener('load', fit);
+  if (document.fonts) document.fonts.ready.then(fit);
 
   window.curveKit = {
     C: C, T: T, el: el, label: label, along: along, frame: frame, axes: axes, curve: curve, beads: beads,

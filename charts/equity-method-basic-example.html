@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Equity method · NI pickup + dividend</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <link rel="stylesheet" href="ledger.css">
+  <style>
+    .ledger th small{display:block;margin-top:2px;font-size:10px;font-weight:500;color:var(--muted)}
+    .ledger th.end,.ledger td.end{background:var(--faint)}
+    .ledger td.end{padding-right:8px}
+    .ledger th.end{padding-right:8px;padding-top:6px}
+    .ledger td small{display:block;font-size:10px;font-weight:500;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <main class="card" id="card">
+    <h2>NI lifts RE; the dividend only swaps cash for investment.</h2>
+    <div class="sub">Company A buys 30% of B for 100 · B earns NI 80 → A picks up 24 · B pays dividend 20 → A receives 6</div>
+    <div class="ledger-wrap"><table class="ledger" aria-label="Company A balance-sheet changes under the equity method">
+      <thead>
+        <tr>
+          <th>A's account</th>
+          <th>Buy<small>t0</small></th>
+          <th>B's NI 80<small>30% → 24</small></th>
+          <th>B's div. 20<small>30% → 6</small></th>
+          <th class="end">End<small>net change</small></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="row-in"><td class="k">Cash</td><td>−100</td><td class="nil">·</td><td>+6</td><td class="end">−94</td></tr>
+        <tr class="row-in" style="animation-delay:.06s"><td class="k">Investment in B</td><td>+100</td><td>+24</td><td>−6</td><td class="end">+118</td></tr>
+        <tr class="eq row-in" style="animation-delay:.12s"><td class="k"><b>RE</b></td><td class="nil">·</td><td>+24<span class="pill">I/S</span></td><td><span class="soft">0</span><small>not income</small></td><td class="end">+24</td></tr>
+      </tbody>
+    </table></div>
+    <div class="note">Under the equity method a dividend is a <b>return of capital</b>: cash +6, investment −6, and nothing reaches the income statement. The investment ends at <b>118</b> = 100 + 24 − 6.</div>
+    <div class="src">LEDGER GRID · LIEFLAT L9 · EQUITY METHOD NI + DIVIDEND</div>
+  </main>
+  <script>curveKit.fit();</script>
+</body>
+</html>

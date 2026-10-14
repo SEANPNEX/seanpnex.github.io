@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Financial asset measurement · three stories</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+</head>
+<body>
+  <main class="card" id="card">
+    <h2>Three classifications, one bond life.</h2>
+    <div class="sub">Same bond, t0 → t3 · AMC accretes toward par while FVOCI and FVPL carry fair value · income differs by year, never in total</div>
+    <div class="grid">
+      <section class="panel">
+        <h3>Carrying amount on the B/S</h3>
+        <div class="hint">ink = amortized cost (AMC) · gray = fair value (FVOCI, FVPL) · both reach par 1,000 · shaded gap = FVOCI's AOCI balance</div>
+        <svg id="carry" role="img" aria-label="Carrying amount from t0 to t3 under amortized cost and fair value"></svg>
+      </section>
+      <section class="panel">
+        <h3>Income through RE, per year</h3>
+        <div class="hint">ink = AMC and FVOCI (identical) · gray = FVPL · each totals 348.04</div>
+        <svg id="income" role="img" aria-label="Income recognized in each year under AMC, FVOCI and FVPL"></svg>
+      </section>
+    </div>
+    <div class="src">TREND LINEAGE · LIEFLAT L11 · FINANCIAL ASSET MEASUREMENT</div>
+  </main>
+  <script>
+(() => {
+  const { C, el, label, frame, guide, dot, mount } = curveKit;
+  const GRAY = '#8F8E88', BAND = '#E3E2DB';
+  const AMC = [951.96, 966.2, 982.14, 1000];
+  const FV = [951.96, 980, 999, 1000];
+  const INC = { amc: [114.24, 115.94, 117.86], fvpl: [128.04, 119, 101] };
+  const fmt = (v) => v.toLocaleString('en-US', { maximumFractionDigits: 2 });
+  const height = (w) => Math.max(216, Math.min(256, w * 0.9));
+
+  mount(document.getElementById('carry'), (s, W, H) => {
+    const F = frame(s, W, H, { l: 12, r: 12, t: 30, b: 44, xMin: -0.45, yMin: 940, noTicks: true }, 3.35, 1014);
+    label(s, F.X0 - 4, F.TOP - 13, 'carrying amount', { size: 10, weight: 600, fill: C.MUTED });
+    const pts = (vals) => vals.map((v, t) => [F.x(t), F.y(v)]);
+    const a = pts(AMC), f = pts(FV);
+    // The gap between fair value and amortized cost is FVOCI's AOCI balance.
+    el(s, 'path', { d: `M${f.map((p) => p.join(' ')).join(' L')} L${a.slice().reverse().map((p) => p.join(' ')).join(' L')}Z`, fill: BAND, class: 'fade', style: 'animation-delay:.5s' });
+    [0, 1, 2, 3].forEach((t) => {
+      el(s, 'line', { x1: F.x(t), y1: F.BASE, x2: F.x(t), y2: F.BASE + 4, stroke: GRAY, 'stroke-width': 1 });
+      label(s, F.x(t), F.BASE + 16, `t${t}`, { size: 10.5, weight: 700, fill: C.MUTED, anchor: 'middle' });
+    });
+    const line = (p, stroke, delay) => el(s, 'path', { d: 'M' + p.map((q) => q.join(' ')).join(' L'), fill: 'none', stroke, 'stroke-width': 1.6, 'stroke-linejoin': 'round', pathLength: 1, class: 'draw', style: `animation-delay:${delay}s` });
+    line(f, GRAY, 0.1);
+    line(a, C.INK, 0.2);
+    // Values: fair value above its line, amortized cost below its line.
+    [1, 2].forEach((t) => {
+      dot(s, ...f[t], 3.4, GRAY, 0.5 + t * 0.1);
+      dot(s, ...a[t], 3.4, C.INK, 0.55 + t * 0.1);
+      // Both lines climb left to right, so above-left and below-right of each point stay clear.
+      label(s, f[t][0] - 5, f[t][1] - 8, fmt(FV[t]), { size: 10.5, weight: 700, fill: C.MUTED, anchor: 'end', delay: 0.6 + t * 0.1 });
+      label(s, a[t][0] + 6, a[t][1] + 15, fmt(AMC[t]), { size: 10.5, delay: 0.65 + t * 0.1 });
+    });
+    dot(s, ...a[0], 3.8, C.INK, 0.4);
+    label(s, a[0][0] + 2, a[0][1] + 17, fmt(AMC[0]), { size: 10.5, anchor: 'start', delay: 0.5 });
+    dot(s, ...a[3], 3.8, C.INK, 0.9);
+    label(s, a[3][0], a[3][1] - 9, '1,000', { size: 10.5, anchor: 'middle', delay: 1 });
+    // FVOCI's AOCI balance (the shaded gap) under each date.
+    const ay = F.BASE + 34;
+    label(s, 2, ay, 'AOCI', { size: 9.5, weight: 700, fill: C.MUTED });
+    [1, 2, 3].forEach((t) => {
+      const gap = FV[t] - AMC[t];
+      label(s, F.x(t), ay, gap ? `+${fmt(gap)}` : '0', { size: 10.5, weight: 700, fill: C.MUTED, anchor: 'middle', delay: 0.9 });
+    });
+  }, height);
+
+  mount(document.getElementById('income'), (s, W, H) => {
+    const F = frame(s, W, H, { l: 26, r: 48, t: 30, b: 26, noTicks: true }, 140, 1);
+    label(s, F.X0 - 4, F.TOP - 13, 'income recognized', { size: 10, weight: 600, fill: C.MUTED });
+    [0, 50, 100].forEach((v) => {
+      if (v) guide(s, F.x(v), F.TOP - 4, F.x(v), F.BASE);
+      label(s, F.x(v), F.BASE + 16, String(v), { size: 10, weight: 600, fill: C.MUTED, anchor: 'middle' });
+    });
+    // One row per year; the AMC/FVOCI bar sits above the FVPL bar.
+    const band = (F.BASE - F.TOP) / 3, bar = Math.min(14, band * 0.3);
+    [0, 1, 2].forEach((i) => {
+      const yc = F.TOP + band * (i + 0.5);
+      label(s, F.X0 - 7, yc + 4, `t${i + 1}`, { size: 10.5, weight: 700, fill: C.MUTED, anchor: 'end' });
+      [['amc', C.INK, -1], ['fvpl', '#A8A7A0', 1]].forEach(([k, fill, side], j) => {
+        const v = INC[k][i], y = yc + (side < 0 ? -bar - 1.5 : 1.5), delay = 0.15 + i * 0.12 + j * 0.06;
+        el(s, 'rect', { x: F.X0, y, width: F.x(v) - F.X0, height: bar, rx: 2, fill, class: 'grow', style: `transform-origin:${F.X0}px 0;animation-delay:${delay}s` });
+        label(s, F.x(v) + 5, y + bar / 2 + 3.6, fmt(v), { size: 10.5, weight: 700, fill: k === 'amc' ? C.INK : C.MUTED, delay: delay + 0.3 });
+      });
+    });
+  }, height);
+})();
+  </script>
+  <style>
+    .grow{animation:grow .7s cubic-bezier(.2,.7,.3,1) both}
+    @keyframes grow{from{transform:scaleX(0)}}
+    .still .grow{animation:none}
+  </style>
+</body>
+</html>

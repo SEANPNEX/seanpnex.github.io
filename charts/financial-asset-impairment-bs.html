@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Financial asset impairment · B/S two stories</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <link rel="stylesheet" href="ledger.css">
+  <style>
+    .panel{padding:14px 14px 10px}
+    .panel h3{display:flex;align-items:center;justify-content:space-between;gap:8px}
+    .panel .hint{margin-bottom:10px}
+    .ledger td.k small{display:block;margin-top:1px;font-size:10px;font-weight:500;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <main class="card" id="card">
+    <h2>Same −15 credit loss; two balance-sheet stories.</h2>
+    <div class="sub">Expected credit loss 15 hits earnings under both · AMC writes the asset down · FVOCI keeps fair value and splits the move</div>
+    <div class="grid">
+      <section class="panel row-in">
+        <h3>AMC <span class="pill ghost">one story</span></h3>
+        <div class="hint">carrying amount 960 · ECL 15</div>
+        <div class="ledger-wrap"><table class="ledger" aria-label="AMC impairment entries">
+          <thead><tr><th>Account</th><th>Entry</th></tr></thead>
+          <tbody>
+            <tr><td class="k">Debt asset<small>allowance / write-down</small></td>
+              <td><span class="st"><span class="soft">960</span><span>−15</span><span class="sum">945</span></span></td></tr>
+            <tr class="eq"><td class="k"><b>RE</b><small>impairment loss</small></td><td>−15<span class="pill">I/S</span></td></tr>
+            <tr><td class="k"><b>AOCI</b></td><td class="nil">·</td></tr>
+          </tbody>
+        </table></div>
+      </section>
+      <section class="panel row-in" style="animation-delay:.12s">
+        <h3>FVOCI <span class="pill ghost">two stories</span></h3>
+        <div class="hint">fair value 980 → 960 (−20) · ECL 15</div>
+        <div class="ledger-wrap"><table class="ledger" aria-label="FVOCI impairment entries">
+          <thead><tr><th>Account</th><th>Entry</th></tr></thead>
+          <tbody>
+            <tr><td class="k">FVOCI asset<small>stays at fair value</small></td>
+              <td><span class="st"><span class="soft">980</span><span>−20</span><span class="sum">960</span></span></td></tr>
+            <tr class="eq"><td class="k"><b>RE</b><small>credit loss</small></td><td>−15<span class="pill">I/S</span></td></tr>
+            <tr><td class="k"><b>AOCI</b><small>rest of the fair-value move</small></td>
+              <td><span class="st"><span class="soft">−20</span><span>+15</span><span class="sum">−5</span></span></td></tr>
+          </tbody>
+        </table></div>
+      </section>
+    </div>
+    <div class="note">FVPL has no separate impairment line: its whole fair-value move already runs through profit or loss.</div>
+    <div class="src">LEDGER GRID · LIEFLAT L9 · FINANCIAL ASSET IMPAIRMENT</div>
+  </main>
+  <script>curveKit.fit();</script>
+</body>
+</html>

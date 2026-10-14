@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Financial Statements — quiz misses flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    id: "c3-debt-fvoci-impairment-2026-10-14",
+    topic: "Debt FVOCI impairment",
+    front: "Debt FVOCI: FV falls 980→960, ECL $15. What hits I/S, what hits AOCI, and what carrying amount on B/S?",
+    back: `<div class="ans">
+<ul>
+<li>I/S / RE: <strong>−15</strong> (ECL)</li>
+<li>AOCI: <strong>−5</strong> (= −20 FV drop + 15 ECL already in earnings)</li>
+<li>B/S asset stays at <strong>FV 960</strong> — ECL does <strong>not</strong> write the asset down again (unlike AMC)</li>
+</ul>
+</div>`,
+    gap: "confused AMC-style asset write-down with FVOCI’s FV carrying amount; AOCI split was otherwise close."
+  }
+];
+
+flashDeck({
+  key: "cfa-c3-financial-statements",
+  source: "CFA L2 Financial Statements · Intercorporate / financial assets · Quiz misses",
+  gapLabel: "Gap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

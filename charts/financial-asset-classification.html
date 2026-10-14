@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Financial asset classification</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <style>
+    .lanes{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+    .entry{
+      padding:8px 12px;border-radius:10px;background:var(--ink);color:var(--paper);
+      font-size:12.5px;font-weight:800;letter-spacing:-.005em;
+    }
+    /* A question; the main path continues down, the exit sits on the right. */
+    .step{
+      display:flex;align-items:center;gap:10px;padding:9px 10px 9px 12px;
+      border:1px solid var(--ink);border-radius:10px;
+    }
+    .step.key{outline:1.5px dashed var(--ink);outline-offset:3px}
+    .q{flex:1;min-width:0;font-size:12px;font-weight:700;line-height:1.3}
+    .q small{display:block;margin-top:2px;font-size:10.5px;font-weight:500;color:var(--muted);line-height:1.35}
+    .exit{display:flex;flex-direction:column;align-items:flex-end;gap:3px;font-size:10px;font-weight:700;color:var(--muted);white-space:nowrap}
+    /* Connector down to the next question, labelled with the answer that leads there. */
+    .go{
+      height:26px;margin-left:20px;padding:6px 0 0 8px;border-left:1.2px solid #8F8E88;
+      font-size:10px;font-weight:700;color:var(--muted);
+    }
+    .tag{display:inline-block;padding:3px 8px;border-radius:7px;font-size:10.5px;font-weight:800;letter-spacing:.02em}
+    .fvpl{background:#1C1C1A;color:#F0EFEB}
+    .fvoci{background:#6A6963;color:#F0EFEB}
+    .amc{background:#C6C5BF;color:#1C1C1A}
+    .results{display:flex;gap:8px}
+    .result{flex:1;padding:9px 12px;border-radius:10px}
+    .result b{display:block;font-size:14px;font-weight:800}
+    .result small{display:block;margin-top:1px;font-size:10.5px;font-weight:500;opacity:.8;line-height:1.35}
+    .deriv{
+      display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:16px;padding-top:12px;
+      border-top:1px solid var(--grid);font-size:12px;font-weight:700;
+    }
+    .deriv .entry{padding:6px 10px}
+    .deriv small{font-size:10.5px;font-weight:500;color:var(--muted)}
+    .legend{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px;font-size:10.5px;color:var(--muted)}
+    .legend span{display:inline-flex;align-items:center;gap:5px}
+    .legend i{width:10px;height:10px;border-radius:3px}
+    .lane>*{animation:fade .5s ease both}
+    @media(max-width:539px){.lanes{grid-template-columns:1fr;gap:22px}}
+  </style>
+</head>
+<body>
+  <main class="card" id="card">
+    <h2>Instrument type and two tests decide AMC, FVOCI, or FVPL.</h2>
+    <div class="sub">Follow a column down · each question's exit sits on its right · SPPI test + business-model test for debt, trading + designation for equity</div>
+    <div class="lanes">
+      <section class="lane" aria-label="Debt instruments">
+        <div class="entry">Debt instruments</div>
+        <div class="go"></div>
+        <div class="step">
+          <div class="q">Solely principal + interest?<small>SPPI cash-flow test</small></div>
+          <div class="exit">No<span class="tag fvpl">FVPL</span></div>
+        </div>
+        <div class="go">Yes</div>
+        <div class="step">
+          <div class="q">Business model?<small>M1 hold to collect · M2 collect and sell</small></div>
+          <div class="exit">Neither<span class="tag fvpl">FVPL</span></div>
+        </div>
+        <div class="go">M1 or M2</div>
+        <div class="step">
+          <div class="q">Fair value option?<small>elected to reduce an accounting mismatch</small></div>
+          <div class="exit">Yes<span class="tag fvpl">FVPL</span></div>
+        </div>
+        <div class="go">No</div>
+        <div class="results">
+          <div class="result amc"><b>AMC</b><small>M1 · hold to collect</small></div>
+          <div class="result fvoci"><b>FVOCI</b><small>M2 · collect and sell</small></div>
+        </div>
+      </section>
+      <section class="lane" aria-label="Equity instruments">
+        <div class="entry">Equity instruments</div>
+        <div class="go"></div>
+        <div class="step">
+          <div class="q">Held for trading?</div>
+          <div class="exit">Yes<span class="tag fvpl">FVPL</span></div>
+        </div>
+        <div class="go">No</div>
+        <div class="step key">
+          <div class="q">Designate at FVOCI?<small>irrevocable election</small></div>
+          <div class="exit">No<span class="tag fvpl">FVPL</span></div>
+        </div>
+        <div class="go">Yes</div>
+        <div class="results">
+          <div class="result fvoci"><b>FVOCI</b><small>only dividends reach profit or loss</small></div>
+        </div>
+      </section>
+    </div>
+    <div class="deriv">
+      <span class="entry">Derivatives</span>
+      <span>always <span class="tag fvpl">FVPL</span></span>
+      <small>except hedging instruments</small>
+    </div>
+    <div class="legend">
+      <span><i class="fvpl"></i>FVPL · fair value through profit or loss</span>
+      <span><i class="fvoci"></i>FVOCI · fair value through OCI</span>
+      <span><i class="amc"></i>AMC · amortized cost</span>
+    </div>
+    <div class="src">DECISION FLOW · LIEFLAT G7 · FINANCIAL ASSET CLASSIFICATION</div>
+  </main>
+  <script>
+    // Stagger the ladders top to bottom.
+    document.querySelectorAll('.lane').forEach((lane, j) => {
+      [...lane.children].forEach((n, i) => { n.style.animationDelay = `${j * 0.1 + i * 0.05}s`; });
+    });
+    curveKit.fit();
+  </script>
+</body>
+</html>
