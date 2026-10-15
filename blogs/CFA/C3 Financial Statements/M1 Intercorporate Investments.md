@@ -639,7 +639,31 @@ No, for two reasons. Under IFRS the option is limited to venture capital organiz
 
 ## Basic Concepts
 
-**Controls** 
+
+
+**Control** is what makes an investment a business combination: the investor (the **parent**) consolidates the investee (the **subsidiary**) line by line instead of carrying it as one investment. The two standards define control differently.
+
+**IFRS: one model for every investee.** Control is the power to govern an entity's financial and operating policies so as to obtain benefits from its activities. IFRS 10 tests it with three elements, all of which must be present:
+
+1. **Power** over the investee's relevant activities, the ones that drive its returns;
+2. **Exposure, or rights, to variable returns** from the involvement;
+3. **The ability to use that power** to affect those returns.
+
+**US GAAP: two models.**
+
+- **Voting interest model:** control is a **controlling financial interest**, normally owning **more than 50% of the voting shares**.
+- **Variable interest model:** for a **variable interest entity (VIE)**, voting shares do not decide control. A VIE is an entity whose equity at risk is too small to fund it, or whose equity holders lack real decision rights. Instead, the **primary beneficiary** consolidates: the party that directs the activities that most affect the VIE's performance **and** absorbs its losses or receives its benefits.
+
+**Equity investors vs debt investors.**
+
+- **Equity investors** normally gain control through **voting rights**, usually a majority of the votes. Under IFRS a smaller stake can still give control: for example, agreements with other shareholders or exercisable potential voting rights (options, convertibles) can give the investor power.
+- **Debt investors** have no votes, so a lender ordinarily **does not control** the borrower. Covenants and collateral are **protective rights**: they guard the lender's claim but give no power over the business.
+- **The exception is a structured entity or special purpose entity (SPE).** Here the contracts, not the shares, decide who has power and who bears the risk. If a lender, guarantor or sponsor directs the entity's key activities and carries most of its variable returns, that party has control even without owning a voting share. Under US GAAP it is the **primary beneficiary** of a VIE; under IFRS it passes the same three-element test as any equity owner.
+
+> [!note]
+>
+> *Example.* A company moves its receivables into an SPE. Outside investors hold a thin slice of equity, and the SPE is funded mostly by debt that the company guarantees, while the company keeps collecting the receivables. The equity holders do not control the SPE. The company directs its main activity and bears its losses through the guarantee, so it consolidates the SPE and the debt comes back onto its balance sheet.
+
 
 
 ## Consolidation Process
