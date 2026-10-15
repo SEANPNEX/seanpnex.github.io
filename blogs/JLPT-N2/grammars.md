@@ -489,3 +489,12 @@ Japanese has several fixed frames for comparing two nouns. The four below are th
 - 日本語は上手ですが、英語は下手です。 — I'm good at Japanese, but bad at English.
 - 昨日は寒かったですが、今日はとても暑いです。 — It was cold yesterday, but it's very hot today.
 - 私は学生ですが、妹は会社員です。 — I'm a student, but my younger sister is a company employee.
+
+## N に～（target of a state or quality）
+
+**Rule:** After a noun, the particle **に** marks the target that a following ability, attitude, or quality applies to, like English "for / about / at N". The predicate is usually an adjective of **quality**, **state**, or **ability**, such as 必要, 便利, or 詳しい.
+
+- マスクは外出に必要です。 — Masks are necessary for going out.
+- 横の中国語訳は日本語学習に便利です。 — The Chinese translation beside it is useful for studying Japanese.
+- 兄は中国の歴史にも、日本の歴史にも詳しいです。 — My older brother knows a lot about both Chinese and Japanese history.
+- 駅の近くのアパートは、買い物に便利です。 — The apartment near the station is convenient for shopping.
