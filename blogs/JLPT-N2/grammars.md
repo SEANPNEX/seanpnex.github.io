@@ -450,3 +450,11 @@ Japanese has several fixed frames for comparing two nouns. The four below are th
 - B: 中国のほうが広いです。 — China is larger.
 - A: パソコンとスマホとどちらが高いですか。 — Between a PC and a smartphone, which is more expensive?
 - B: スマホのほうが高いです。 — The smartphone is.
+
+## N なので、～（cause and reason II）
+
+**Rule:** **ので** connects two clauses to express a cause and its result. With a noun predicate, use **N + な + ので**, meaning “because (it is) N, …” (see Lesson 5, Grammar 1). Compared with **から** (Lesson 9, Grammar 4), **ので** emphasizes an objective cause and sounds softer and more formal.
+
+- 僕は神奈川県の湘南の出身なので、僕も『スラムダンク』が大好きですよ。 — Because I’m from Shōnan in Kanagawa Prefecture, I love *Slam Dunk*, too.
+- 雨なので、運動会は中止です。 — Because of the rain, the sports day is canceled.
+- 学生なので、お金がないです。 — Because I’m a student, I don’t have any money.
