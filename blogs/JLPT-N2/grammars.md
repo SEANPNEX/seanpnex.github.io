@@ -458,3 +458,16 @@ Japanese has several fixed frames for comparing two nouns. The four below are th
 - 僕は神奈川県の湘南の出身なので、僕も『スラムダンク』が大好きですよ。 — Because I’m from Shōnan in Kanagawa Prefecture, I love *Slam Dunk*, too.
 - 雨なので、運動会は中止です。 — Because of the rain, the sports day is canceled.
 - 学生なので、お金がないです。 — Because I’m a student, I don’t have any money.
+
+## N が～（object marker が III）
+
+**Rule:** Besides marking the subject, the particle **が** can also mark an object. In this lesson, **が** marks the object of an ability or skill level. These expressions are mainly **Type II (na-) adjectives** and **verbs**.
+
+- **Type II (na-) adjectives:** N が 上手／下手 (good／poor at), 好き／嫌い (like／dislike), 得意／苦手 (strong／weak at) です。
+- **Verbs:** N が できます (can do), わかります (understand).
+
+- 私は運動が嫌いです。 — I don’t like exercise.
+- 辛いものが苦手です。 — I can’t handle spicy food.
+- 兄は歴史が得意です。 — My older brother is good at history.
+- 先生の話がよくわかりません。 — I don’t understand the teacher’s explanation very well.
+- 父は料理ができます。 — My father can cook.
