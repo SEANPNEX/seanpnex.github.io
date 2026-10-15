@@ -24,6 +24,8 @@
     .lab .pct{display:block;margin-top:3px;font-size:11px;font-weight:700;color:var(--ink)}
     .lab small{display:block;margin-top:2px;font-size:10.5px;color:var(--muted);line-height:1.35}
     .l1{border-color:#A8A7A0}.l2{border-color:#6A6963}.l3{border-color:#1C1C1A}
+    .bar{cursor:default;transition:transform .2s ease}
+    .bar.fx-hot{transform:scaleY(1.25)}
     .jv{
       display:flex;align-items:center;gap:10px;margin-top:18px;padding:9px 12px;
       border:1.2px dashed #8F8E88;border-radius:10px;font-size:11.5px;color:var(--muted)
@@ -35,24 +37,25 @@
       .lab{border-top:0;border-left:4px solid;padding:0 0 0 10px}
     }
   </style>
+  <script src="chart-fx.js"></script>
 </head>
 <body>
   <main class="card" id="card">
     <h2>Ownership percentage maps power of control.</h2>
     <div class="sub">Share of voting rights held · darker = more control · the actual level of control decides the category</div>
-    <div class="scale" aria-hidden="true">
-      <div class="bar s1"></div>
-      <div class="bar s2" style="animation-delay:.12s"></div>
-      <div class="bar s3" style="animation-delay:.24s"></div>
+    <div class="scale">
+      <div class="bar s1" data-hl="s1" data-tip="0–20% · lack of influence&#10;Financial assets: FVPL or FVOCI"></div>
+      <div class="bar s2" data-hl="s2" data-tip="20–50% · significant influence&#10;Associates: equity method" style="animation-delay:.12s"></div>
+      <div class="bar s3" data-hl="s3" data-tip="Over 50% · control&#10;Business combinations: acquisition method" style="animation-delay:.24s"></div>
     </div>
     <div class="ticks" aria-hidden="true">
       <span style="left:0">0</span><span style="left:20%">20</span><span style="left:50%">50</span><span style="left:100%">100</span>
       <em>% OWNERSHIP</em>
     </div>
     <div class="labels scale">
-      <div class="lab l1" style="animation-delay:.3s"><b>Lack of influence</b><span class="pct">&lt; 20%</span><small>Financial assets</small></div>
-      <div class="lab l2" style="animation-delay:.38s"><b>Significant influence</b><span class="pct">20–50%</span><small>Associates · equity method</small></div>
-      <div class="lab l3" style="animation-delay:.46s"><b>Control</b><span class="pct">&gt; 50%</span><small>Business combinations · acquisition method</small></div>
+      <div class="lab l1" data-hl="s1" style="animation-delay:.3s"><b>Lack of influence</b><span class="pct">&lt; 20%</span><small>Financial assets</small></div>
+      <div class="lab l2" data-hl="s2" style="animation-delay:.38s"><b>Significant influence</b><span class="pct">20–50%</span><small>Associates · equity method</small></div>
+      <div class="lab l3" data-hl="s3" style="animation-delay:.46s"><b>Control</b><span class="pct">&gt; 50%</span><small>Business combinations · acquisition method</small></div>
     </div>
     <div class="jv"><b>Joint ventures</b><span>shared control · percentage varies · equity method</span></div>
     <div class="src">SEPARATED AXIS · LIEFLAT L7 · INTERCORPORATE INVESTMENTS</div>

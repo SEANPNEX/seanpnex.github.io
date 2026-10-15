@@ -8,45 +8,60 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="curve-kit.js"></script>
   <style>
-    .flow{display:flex;align-items:center;gap:8px;margin:8px 0 12px;font-size:12px;font-weight:700}
-    .flow .node{padding:4px 10px;border-radius:999px;background:var(--ink);color:var(--paper)}
+    .panel{padding:14px 14px 14px}
+    .flow{display:flex;align-items:center;gap:8px;margin:12px 0 4px;font-size:12px;font-weight:700}
+    .flow .node{flex:none;padding:4px 10px;border-radius:999px;background:var(--ink);color:var(--paper)}
     .flow .node.b{background:#BEBDB6;color:var(--ink)}
     .flow .arr{flex:1;height:0;border-top:1.5px solid var(--ink);position:relative;min-width:24px}
     .flow .arr::after{content:"";position:absolute;right:-1px;top:-5.5px;border:5px solid transparent;border-left:7px solid var(--ink);border-right:0}
     .flow .arr span{position:absolute;left:50%;top:-17px;transform:translateX(-50%);font-size:10px;font-weight:600;color:var(--muted);white-space:nowrap}
-    .row{margin:10px 0 2px;font-size:11px;font-weight:600;color:var(--muted)}
-    .barrow{display:flex;align-items:center;gap:8px}
-    .bar{display:flex;height:16px;width:100%;max-width:100%;border-radius:0 8px 8px 0;overflow:hidden}
-    .bar i{display:block;height:100%}
-    .keep{background:var(--ink)}
-    .ghost{background:#D8D6CE;border:1px dashed #9A9992;border-left:0;border-radius:0 8px 8px 0}
-    .val{display:flex;justify-content:space-between;margin-top:3px;font-size:11px;font-weight:800}
-    .val s{color:var(--muted);font-weight:700}
-    .later{margin:12px 0 8px;font-size:10.5px;color:var(--muted);line-height:1.45}
+    .lede{margin:14px 0 6px;font-size:11px;font-weight:600;line-height:1.4;color:var(--muted)}
+    .lede b{color:var(--ink);font-weight:800}
+    /* One bar = the 40 profit, split 70 / 30 by B's ownership; widths are to scale. */
+    .bar{display:flex;height:26px}
+    .seg{display:grid;place-items:center;min-width:0;font-size:12px;font-style:normal;font-weight:800}
+    .seg:last-child{border-radius:0 13px 13px 0}
+    .keep{background:var(--ink);color:var(--paper)}
+    .out{box-shadow:inset 0 0 0 1px #BEBDB6;color:var(--muted)}
+    .cut{background:#E3E2DB;border:1px dashed #9A9992;border-left:1.5px solid var(--paper);color:var(--ink)}
+    .seg{cursor:default}
+    .cap{display:flex;margin-top:4px;font-size:10px;font-weight:600;line-height:1.3;color:var(--muted)}
+    .cap span{padding-right:6px}
+    .cap span:last-child{padding:0;color:var(--ink);font-weight:800}
+    .res{display:flex;justify-content:space-between;gap:8px;margin-top:12px;padding-top:8px;border-top:1px solid var(--grid);font-size:11.5px;font-weight:600;color:var(--muted)}
+    .res b{color:var(--ink);font-size:14px;font-weight:800;white-space:nowrap}
+    .note{margin-top:12px;font-size:11.5px;line-height:1.5;color:var(--muted)}
+    .note b{color:var(--ink)}
   </style>
+  <script src="chart-fx.js"></script>
 </head>
 <body>
   <main class="card" id="card">
-    <h2>Unsold intra-group goods inflate profit; A removes its 30% share either way.</h2>
-    <div class="sub">Illustrative · A owns 30% of associate B · goods cost 60, sold for 100 → intra-group profit 40 · buyer still holds the goods at year end · solid = A keeps, pale dashed = A eliminates (30% × 40 = 12)</div>
-    <div class="grid">
-      <section class="panel">
+    <h2>Either direction, A eliminates the same 12: its 30% of the unsold profit.</h2>
+    <div class="sub">Illustrative · A owns 30% of associate B · goods cost 60, sold for 100 → intra-group profit 40, still unsold at year end · each bar is that 40, split by B's ownership (70% other owners · 30% A) · ink = A keeps · dashed = A eliminates · outline = never A's</div>
+    <div class="grid" data-fx-scope>
+      <section class="panel fade">
         <h3>Downstream: A sells to B</h3>
         <div class="flow"><span class="node">A</span><span class="arr"><span>sells for 100 (cost 60)</span></span><span class="node b">B 30%</span></div>
-        <div class="row">Profit in A's own I/S before elimination: 40</div>
-        <div class="bar fade"><i class="keep" style="width:70%"></i><i class="ghost" style="width:30%"></i></div>
-        <div class="val"><span>Kept 28 · realized with B's outside (70%) owners</span><s>−12</s></div>
-        <div class="hint later">A's 30% share is profit A made by selling to itself. 12 waits until B sells the goods to an outside party.</div>
+        <div class="lede">The 40 sits in <b>A's own sales</b></div>
+        <div class="bar" role="img" aria-label="Of the 40 profit, A keeps 28 and eliminates 12">
+          <i class="seg keep" style="width:70%" data-hl="kept" data-tip="Kept: 28&#10;70% of the profit, earned from B's other owners">28</i><i class="seg cut" style="width:30%" data-hl="cut" data-tip="Eliminated: 12&#10;A's 30% share, until the goods leave the group">−12</i>
+        </div>
+        <div class="cap"><span style="width:70%">sold, in effect, to B's other owners</span><span style="width:30%">A selling to itself</span></div>
+        <div class="res"><span>A's profit from the sale</span><b>28</b></div>
       </section>
-      <section class="panel">
+      <section class="panel fade" style="animation-delay:.12s">
         <h3>Upstream: B sells to A</h3>
         <div class="flow"><span class="node b">B 30%</span><span class="arr"><span>sells for 100 (cost 60)</span></span><span class="node">A</span></div>
-        <div class="row">B's NI includes 40 → A's equity pickup before elimination: 30% × 40 = 12</div>
-        <div class="barrow fade" style="animation-delay:.12s"><div class="bar" style="width:30%"><i class="ghost" style="width:100%;border-left:1px dashed #9A9992"></i></div><s class="val" style="margin:0;color:var(--muted)">−12</s></div>
-        <div class="val"><span>Kept 0</span></div>
-        <div class="hint later">The goods sit in A's own inventory. 12 waits until A sells them to an outside party.</div>
+        <div class="lede">The 40 sits in <b>B's NI</b>; A would pick up 30%</div>
+        <div class="bar" role="img" aria-label="Of the 40 profit, 28 belongs to B's other owners and A eliminates its 12">
+          <i class="seg out" style="width:70%" data-hl="out" data-tip="28 belongs to B's other owners&#10;never part of A's equity income">28</i><i class="seg cut" style="width:30%" data-hl="cut" data-tip="Eliminated: 12&#10;30% × 40, out of A's equity pickup">−12</i>
+        </div>
+        <div class="cap"><span style="width:70%">B's other owners' share, never in A's books</span><span style="width:30%">goods in A's own inventory</span></div>
+        <div class="res"><span>A's equity income from it</span><b>0</b></div>
       </section>
     </div>
+    <div class="note"><b>Later, the 12 comes back.</b> When the buyer sells the goods to an outside party, A adds the 12 back; if only part is sold, it adds back that fraction. If the buyer uses the goods as a fixed asset, the 12 comes back through depreciation instead.</div>
     <div class="src">PAIRED LANES · LIEFLAT F6 · UPSTREAM / DOWNSTREAM UNREALIZED PROFIT (ILLUSTRATIVE)</div>
   </main>
   <script>curveKit.fit();</script>

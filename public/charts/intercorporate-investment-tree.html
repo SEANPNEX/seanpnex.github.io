@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="curve-kit.js"></script>
+  <script src="chart-fx.js"></script>
 </head>
 <body>
   <main class="card" id="card">
@@ -72,28 +73,31 @@
     };
     const root = place(TREE, 0);
 
-    const link = (a, b, stroke, delay) => {
+    // Every mark carries its tree position, so hovering lights the branch above and below it.
+    const link = (a, b, stroke, delay, path) => {
       const mx = (a.x + b.x) / 2;
       el(s, 'path', {
+        'data-path': path,
         d: `M${a.x} ${a.y} C${mx} ${a.y} ${mx} ${b.y} ${b.x} ${b.y}`,
         fill: 'none', stroke, 'stroke-width': 1.3, pathLength: 1, class: 'draw',
         style: `animation-delay:${delay}s;animation-duration:.9s`,
       });
     };
-    const draw = (n, parent, depth) => {
+    const draw = (n, parent, depth, path) => {
       if (n.leaf) {
         const [name, how, shade] = n.leaf, fill = SHADE[shade], delay = 0.35 + depth * 0.05 + n.y * 0.0008;
-        link(parent, n, fill, 0.15 + depth * 0.08);
-        el(s, 'circle', { cx: n.x, cy: n.y, r: 3.6, fill, class: 'pop', style: `animation-delay:${delay}s` });
-        const t = el(s, 'text', { x: n.x + 9, y: n.y + (two ? -1 : 4), 'font-size': 11.5, 'font-weight': 700, fill: C.INK, class: 'fade', style: `animation-delay:${delay}s` });
+        const trail = path.split('/').slice(1).map((p) => p.replace(/#\d+$/, '')).join(' → ');
+        link(parent, n, fill, 0.15 + depth * 0.08, path);
+        el(s, 'circle', { cx: n.x, cy: n.y, r: 3.6, fill, class: 'pop', style: `animation-delay:${delay}s`, 'data-path': path, 'data-tip': `${trail}\n${how}` });
+        const t = el(s, 'text', { x: n.x + 9, y: n.y + (two ? -1 : 4), 'font-size': 11.5, 'font-weight': 700, fill: C.INK, class: 'fade', style: `animation-delay:${delay}s`, 'data-path': path, 'data-tip': `${trail}\n${how}` });
         el(t, 'tspan', {}, name);
         if (two) el(t, 'tspan', { x: n.x + 9, dy: 12.5, 'font-size': 10.5, 'font-weight': 500, fill: C.MUTED }, how);
         else el(t, 'tspan', { 'font-weight': 500, fill: C.MUTED }, ` · ${how}`);
         return;
       }
-      if (parent) link(parent, n, '#8F8E88', 0.1 + depth * 0.08);
-      n.kids.forEach((k) => draw(k, n, depth + 1));
-      el(s, 'circle', { cx: n.x, cy: n.y, r: depth ? 3.8 : 4.6, fill: C.INK, class: 'pop', style: `animation-delay:${0.1 + depth * 0.1}s` });
+      if (parent) link(parent, n, '#8F8E88', 0.1 + depth * 0.08, path);
+      n.kids.forEach((k, i) => draw(k, n, depth + 1, `${path}/${k.leaf ? k.leaf[0] : k.name}#${i}`));
+      el(s, 'circle', { cx: n.x, cy: n.y, r: depth ? 3.8 : 4.6, fill: C.INK, class: 'pop', style: `animation-delay:${0.1 + depth * 0.1}s`, 'data-path': path });
       if (!parent && two) {
         el(s, 'text', { x: 12, y: n.y, transform: `rotate(-90 12 ${n.y})`, 'font-size': 12, 'font-weight': 800, fill: C.INK, 'text-anchor': 'middle', class: 'fade' }, n.name);
       } else if (!parent) {
@@ -105,9 +109,10 @@
         label(s, n.x + 4, below ? n.y + 17 : n.y - 9, n.name, {
           size: 11.5, weight: 700, anchor: 'end', up: !below, maxWidth: n.x - parent.x - 4, delay: 0.2 + depth * 0.1,
         });
+        s.lastElementChild.setAttribute('data-path', path);
       }
     };
-    draw(root, null, 0);
+    draw(root, null, 0, 'Investment');
   }, height);
 })();
   </script>

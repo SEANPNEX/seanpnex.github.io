@@ -38,12 +38,17 @@
     .note:nth-child(2){border-color:var(--g3)}.note:nth-child(3){border-color:var(--g5)}
     .note h2{margin:0 0 5px;font-size:11px;letter-spacing:.02em}
     .note p{margin:0;color:var(--g2);font-size:9.5px;line-height:1.55}
+    .preflight div,.gate,.model,.note{transition:background-color .18s ease,border-color .18s ease}
+    .preflight div:hover,.gate:hover{background:#E9E8E3}
+    .model:hover{background:#DCDBD4}
+    .note:hover{border-left-color:var(--ink)}
     .src{display:flex;justify-content:space-between;gap:15px;margin-top:20px;color:var(--g3);font-size:8.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
     @media(max-width:700px){
       .card{min-height:2050px;padding:25px 16px 18px}.preflight{grid-template-columns:1fr 1fr}.preflight div{min-height:64px}
       #tree{height:650px}.gates,.models{grid-template-columns:1fr}.gate{min-height:78px}.model{min-height:82px}.notes{grid-template-columns:1fr;gap:10px}.note p{font-size:9px}.src{display:block;line-height:1.8}
     }
   </style>
+  <script src="chart-fx.js"></script>
 </head>
 <body>
   <main class="card" id="card" aria-label="Click to replay the workflow animation">
@@ -375,6 +380,7 @@ chartI18n.use({
         tooltip:{
           trigger:'item',backgroundColor:INK,borderWidth:0,padding:[10,13],
           textStyle:{color:PAPER,fontFamily:'Inter',fontSize:11,lineHeight:17},
+          extraCssText:'border-radius:9px;box-shadow:none;max-width:260px;white-space:normal;',
           formatter:p=>`<b>${p.data.name}</b><br>${p.data.description||''}`
         },
         series:[{
@@ -393,6 +399,8 @@ chartI18n.use({
     },{threshold:.12});
     observer.observe(document.getElementById('tree'));
     document.getElementById('card').addEventListener('click',render);
+    // Clicking or tapping a node reads its tooltip; it should not restart the tree.
+    document.getElementById('tree').addEventListener('click',(e)=>e.stopPropagation());
     addEventListener('resize',()=>chart?.resize());
   </script>
 </body>

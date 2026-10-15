@@ -62,6 +62,7 @@
     @media(max-width:600px){.card{padding:22px 16px 16px}.note{font-size:12.5px}}
     @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important}}
   </style>
+  <script src="chart-fx.js"></script>
 </head>
 <body>
   <main class="card">
@@ -214,11 +215,12 @@ chartI18n.use({
 
       CONDITIONS.forEach((c, i) => {
         const [x1, y1] = P[c.from], [x2, y2] = P[c.to];
-        const g = el('g', { class: 'edge', 'data-id': c.id, style: `--d:${380 + i * 110}ms;--d2:${780 + i * 110}ms` }, edges);
+        // A condition lights the two quantities it equates; a quantity lights every condition on it.
+        const g = el('g', { class: 'edge', 'data-id': c.id, 'data-edge': `${c.from}>${c.to}`, 'data-tip': `${T(c.name)}\n${T(QUANTITIES[c.from].name).toLowerCase()} = ${T(QUANTITIES[c.to].name).toLowerCase()}`, style: `--d:${380 + i * 110}ms;--d2:${780 + i * 110}ms` }, edges);
+        el('line', { x1, y1, x2, y2, stroke: 'transparent', 'stroke-width': 14 }, g);
         el('line', { class: 'solid', x1, y1, x2, y2, pathLength: 1 }, g);
         el('line', { class: 'dash', x1, y1, x2, y2 }, g);
         const pill = el('g', { class: 'pill-g', transform: `translate(${(x1 + x2) / 2},${(y1 + y2) / 2})` }, g);
-        el('title', {}, pill).textContent = c.name;
         const w = c.id.length * (layoutKey === 'narrow' ? 8 : 9) + 20, h = layoutKey === 'narrow' ? 21 : 24;
         el('rect', { class: 'pill', x: -w / 2, y: -h / 2, width: w, height: h, rx: h / 2 }, pill);
         el('text', { y: 0.5 }, pill).textContent = c.id;
@@ -226,7 +228,8 @@ chartI18n.use({
 
       Object.entries(QUANTITIES).forEach(([key, q], i) => {
         const [x, y] = P[key];
-        const g = el('g', { class: 'node', 'data-key': key, transform: `translate(${x},${y})`, style: `--d:${i * 80}ms` }, svg);
+        const links = CONDITIONS.filter((c) => c.from === key || c.to === key).map((c) => c.id).join(', ');
+        const g = el('g', { class: 'node', 'data-key': key, 'data-node': key, 'data-tip': `${T(q.name)}\nlinked by ${links}`, transform: `translate(${x},${y})`, style: `--d:${i * 80}ms` }, svg);
         el('rect', { x: -L.nw / 2, y: -L.nh / 2, width: L.nw, height: L.nh, rx: 14 }, g);
         el('text', { class: 'name', y: -L.nh / 2 + (layoutKey === 'narrow' ? 19 : 22) }, g).textContent = q.name;
         const f = el('text', { class: 'formula', y: layoutKey === 'narrow' ? 7 : 8 }, g);

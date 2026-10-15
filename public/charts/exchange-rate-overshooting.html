@@ -37,12 +37,13 @@
       .pop,.fade{opacity:1;transform:none;animation:none}
     }
   </style>
+  <script src="chart-fx.js"></script>
 </head>
 <body>
   <main class="card" id="card">
     <h2>Prices stick; the currency overshoots.</h2>
     <div class="sub">Sticky goods prices vs fast financial markets · unexpected monetary expansion at t₁ · Dornbusch overshooting</div>
-    <div class="grid">
+    <div class="grid" data-fx-scope>
       <section class="panel">
         <h3>Money supply</h3>
         <div class="hint">Step jump at t₁; stays at the new level</div>
@@ -234,7 +235,9 @@ chartI18n.use({
           class: 'fade'
         }, lab.text);
       }
-      tip(c, opts.tip ? opts.tip(i, v) : `t=${i}`);
+      // The same period lights in all four panels (the grid is one hover scope).
+      c.setAttribute('data-hl', `t${i}`);
+      tip(c, `${opts.tip ? opts.tip(i, v) : ''}\n${i < t1 ? `${t1 - i} period${t1 - i > 1 ? 's' : ''} before t₁` : i === t1 ? 'at t₁, the expansion' : `${i - t1} period${i - t1 > 1 ? 's' : ''} after t₁`}`);
     });
     // time axis labels
     txt(s, {

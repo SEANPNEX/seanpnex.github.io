@@ -23,6 +23,7 @@ svg text{font-family:Inter,ui-sans-serif,system-ui,sans-serif}
 @media(max-width:720px){body{padding:10px}.card{padding:20px 16px}.plots{grid-template-columns:1fr;gap:22px}.plot p{min-height:0}}
 @media(prefers-reduced-motion:reduce){.fade,.draw,.pop{animation:none!important;opacity:1!important;stroke-dashoffset:0!important}}
 </style>
+  <script src="chart-fx.js"></script>
 </head>
 <body>
 <main class="card">
@@ -145,8 +146,10 @@ function render(id){
     for(let g=0;g<=20;g++){const x=X0+g/20*(X1-X0);el(s,'line',{x1:x,y1:base,x2:x,y2:base-(g%5===0?7:4),stroke:'#C6C5BF','stroke-width':.6,class:'fade',style:`animation-delay:${g*.01}s`})}
     el(s,'line',{x1:X0-5,y1:base,x2:X1+5,y2:base,stroke:GRID,'stroke-width':.8,class:'fade'});
     const [a0,b0]=fit(BASE),[a1,b1]=fit(all);
-    el(s,'line',{x1:mapX(8),y1:mapY(a0+b0*8),x2:mapX(98),y2:mapY(a0+b0*98),stroke:'#8F8E88','stroke-width':1,'stroke-dasharray':'4 4',class:'fade'});
-    el(s,'line',{x1:mapX(8),y1:mapY(a1+b1*8),x2:mapX(98),y2:mapY(a1+b1*98),stroke:INK,'stroke-width':1.4,pathLength:1,class:'draw'});
+    // Each fit line names its slope, so the change the labeled point causes can be read off.
+    el(s,'line',{x1:mapX(8),y1:mapY(a0+b0*8),x2:mapX(98),y2:mapY(a0+b0*98),stroke:'#8F8E88','stroke-width':1,'stroke-dasharray':'4 4',class:'fade','data-hl':'without','data-tip':`Fit without ${special[2].toLowerCase()} point\nslope ${b0.toFixed(2)}`});
+    el(s,'line',{x1:mapX(8),y1:mapY(a1+b1*8),x2:mapX(98),y2:mapY(a1+b1*98),stroke:INK,'stroke-width':1.4,pathLength:1,class:'draw','data-hl':'with','data-tip':`Fit with it\nslope ${b1.toFixed(2)} (${b1>=b0?'+':''}${(b1-b0).toFixed(2)})`});
+    [[a0,b0,'without'],[a1,b1,'with']].forEach(([a,b,k])=>el(s,'line',{x1:mapX(8),y1:mapY(a+b*8),x2:mapX(98),y2:mapY(a+b*98),stroke:'transparent','stroke-width':10,'data-hl':k,'data-tip':k==='without'?`Fit without ${special[2].toLowerCase()} point\nslope ${b0.toFixed(2)}`:`Fit with it\nslope ${b1.toFixed(2)} (${b1>=b0?'+':''}${(b1-b0).toFixed(2)})`}));
     all.forEach(([px,py,label],i)=>{const x=mapX(px),y=mapY(py),hero=i===all.length-1;el(s,'line',{x1:x,y1:base,x2:x,y2:y,stroke:'#B0AFA9','stroke-width':.55,opacity:.55,class:'fade',style:`animation-delay:${.15+i*.04}s`});const dot=el(s,'circle',{cx:x,cy:y,r:hero?5:2.7,fill:hero?INK:'#55554F',class:'pop',style:`animation-delay:${.2+i*.04}s`});tip(dot,hero?`${label} · X ${px} · Y ${py}`:`Observation ${i+1} · X ${px.toFixed(0)} · Y ${py.toFixed(0)}`);if(hero){const anchor=px>80?'end':'middle',dx=px>80?-8:0;txt(s,{x:x+dx,y:y-11,'font-size':8,'font-weight':800,fill:INK,'text-anchor':anchor,style:`paint-order:stroke;stroke:${PAPER};stroke-width:3px`,class:'fade'},label)}});
     txt(s,{x:X0,y:base+17,'font-size':7,'font-weight':600,fill:MUTED,class:'fade'},'LOW X');txt(s,{x:X1,y:base+17,'font-size':7,'font-weight':600,fill:MUTED,'text-anchor':'end',class:'fade'},'HIGH X');txt(s,{x:21,y:top+2,'font-size':7,'font-weight':600,fill:MUTED,transform:`rotate(-90 21 ${top+2})`,'text-anchor':'end','letter-spacing':'.08em',class:'fade'},'Y ↑');
     txt(s,{x:200,y:288,'font-size':7,'font-weight':600,fill:'#B0AFA9','text-anchor':'middle','letter-spacing':'.11em',class:'fade',style:'animation-delay:.95s'},'DASHED = WITHOUT · SOLID = WITH');

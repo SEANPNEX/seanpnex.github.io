@@ -8,6 +8,7 @@
     :root{--paper:#F0EFEB;--ink:#1C1C1A;--muted:#6A6963;--soft:#B0AFA9;--grid:#D8D6CE}
     *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,sans-serif}.card{min-height:450px;padding:30px;border-radius:24px;background:var(--paper);overflow:hidden}h2{max-width:760px;margin:0;font-size:clamp(25px,4vw,42px);font-weight:700;line-height:1.05;letter-spacing:-.035em}.sub{margin:10px 0 8px;color:var(--muted);font-size:12px;line-height:1.5}svg{display:block;width:100%;height:315px}.src{margin-top:4px;color:#8A8983;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}.fade{opacity:0;animation:fade .45s cubic-bezier(.25,.9,.35,1) forwards}@keyframes fade{to{opacity:1}}@media(max-width:600px){.card{padding:24px 15px}.sub{font-size:11px}}@media(prefers-reduced-motion:reduce){.fade{opacity:1;animation:none}}
   </style>
+  <script src="chart-fx.js"></script>
 </head>
 <body>
   <main class="card" id="card">
@@ -71,20 +72,23 @@ chartI18n.use({
     const DATA=[['RISK',34],['GROWTH',28],['MARGIN',23],['DEMAND',19],['COST',16],['GUIDANCE',12]];
     const rnd=(a,b)=>{let x=Math.sin(a*127.1+b*311.7)*43758.5453;return x-Math.floor(x)};
     const svg=document.querySelector('#chart');
-    function el(tag,attrs={},content=''){const n=document.createElementNS(NS,tag);Object.entries(attrs).forEach(([k,v])=>n.setAttribute(k,v));if(content)n.textContent=content;svg.append(n);return n}
+    function el(tag,attrs={},content='',parent=svg){const n=document.createElementNS(NS,tag);Object.entries(attrs).forEach(([k,v])=>n.setAttribute(k,v));if(content)n.textContent=content;parent.append(n);return n}
+    const TOTAL=DATA.reduce((n,[,v])=>n+v,0);
     function render(){
       svg.innerHTML='';const y0=i=>42+i*43,X0=128,PX=10.2;
       DATA.forEach(([name,value],i)=>{
         const y=y0(i),delay=i*.08;
-        el('text',{x:115,y:y+3,fill:MUTED,'font-size':10,'font-weight':700,'text-anchor':'end','letter-spacing':'.08em',class:'fade',style:`animation-delay:${delay}s`},name);
-        el('line',{x1:X0,y1:y+10,x2:X0+34*PX,y2:y+10,stroke:GRID,'stroke-width':.7,class:'fade',style:`animation-delay:${delay}s`});
+        // One row = one term; hovering anywhere on it reads the count and dims the other rows.
+        const row=el('g',{'data-hl':`row${i}`,'data-tip':`${name}\n${value} occurrences · ${Math.round(value/TOTAL*100)}% of the ${TOTAL} counted`});
+        el('rect',{x:0,y:y-14,width:X0+34*PX+40,height:36,fill:'transparent'},'',row);
+        el('text',{x:115,y:y+3,fill:MUTED,'font-size':10,'font-weight':700,'text-anchor':'end','letter-spacing':'.08em',class:'fade',style:`animation-delay:${delay}s`},name,row);
+        el('line',{x1:X0,y1:y+10,x2:X0+34*PX,y2:y+10,stroke:GRID,'stroke-width':.7,class:'fade',style:`animation-delay:${delay}s`},'',row);
         for(let k=0;k<value;k++){
           const x=X0+k*PX+PX/2,height=10+rnd(k+1,i+2)*7;
-          const tick=el('line',{x1:x,y1:y+10,x2:x,y2:y+10-height,stroke:INK,'stroke-width':1,opacity:.55+rnd(k+3,i+5)*.45,class:'fade',style:`animation-delay:${delay+k*.012}s`});
-          const title=document.createElementNS(NS,'title');title.textContent=`${name}: occurrence ${k+1} of ${value}`;tick.append(title);
-          if(k%5===4)el('circle',{cx:x,cy:y+14,r:1,fill:'#C6C5BF',class:'fade',style:`animation-delay:${delay+k*.012}s`});
+          el('line',{x1:x,y1:y+10,x2:x,y2:y+10-height,stroke:INK,'stroke-width':1,opacity:.55+rnd(k+3,i+5)*.45,class:'fade',style:`animation-delay:${delay+k*.012}s`},'',row);
+          if(k%5===4)el('circle',{cx:x,cy:y+14,r:1,fill:'#C6C5BF',class:'fade',style:`animation-delay:${delay+k*.012}s`},'',row);
         }
-        el('text',{x:X0+value*PX+12,y:y+4,fill:INK,'font-size':13,'font-weight':800,class:'fade',style:`animation-delay:${.4+delay}s`},String(value));
+        el('text',{x:X0+value*PX+12,y:y+4,fill:INK,'font-size':13,'font-weight':800,class:'fade',style:`animation-delay:${.4+delay}s`},String(value),row);
       });
       el('text',{x:320,y:307,fill:'#B0AFA9','font-size':8,'font-weight':600,'text-anchor':'middle','letter-spacing':'.12em',class:'fade',style:'animation-delay:.9s'},'RAW FREQUENCY DESCRIBES THE CORPUS · TF–IDF REWEIGHTS EACH DOCUMENT');
     }

@@ -26,7 +26,8 @@
     'h2{max-width:820px;font-size:clamp(22px,3.6vw,34px);font-weight:700;line-height:1.1;letter-spacing:-.03em}',
     '.sub{margin:10px 0 16px;color:var(--muted);font-size:12px;line-height:1.55;max-width:720px}',
     '.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}',
-    '.panel{border:1px solid var(--grid);border-radius:18px;padding:14px 12px 6px;min-width:0}',
+    '.panel{border:1px solid var(--grid);border-radius:18px;padding:14px 12px 6px;min-width:0;transition:border-color .2s ease}',
+    '.panel:hover{border-color:#BEBDB6}',
     '.panel h3{font-size:13px;font-weight:700;letter-spacing:-.01em}',
     '.panel .hint{margin:3px 0 6px;font-size:10.5px;color:var(--muted);line-height:1.45}',
     'svg{display:block;width:100%;height:auto;overflow:visible}',
@@ -156,7 +157,7 @@
     for (var tx = X0 + 12, i = 0; !m.noTicks && tx < X1 - 2; tx += 12, i++) {
       el(p, 'line', { x1: tx, y1: BASE, x2: tx, y2: BASE - 4, stroke: C.TICK, 'stroke-width': 0.6, class: 'fade', style: 'animation-delay:' + i * 0.006 + 's' });
     }
-    return { X0: X0, X1: X1, TOP: TOP, BASE: BASE, W: W, H: H, x: x, y: y, xMin: xMin, xMax: xMax, yMax: yMax };
+    return { X0: X0, X1: X1, TOP: TOP, BASE: BASE, W: W, H: H, x: x, y: y, xMin: xMin, xMax: xMax, yMin: yMin, yMax: yMax };
   }
 
   // Axis names: y above the axis top, x under the right end of the axis.
@@ -203,10 +204,46 @@
     el(p, 'line', { x1: x1, y1: y1, x2: x2, y2: y2, stroke: C.FAINT, 'stroke-width': 0.9, 'stroke-dasharray': '3 3', class: 'fade', style: 'animation-delay:' + (delay || 0) + 's' });
   }
 
+  // A tip is shown by chart-fx.js on hover or tap.
   function dot(p, x, y, r, fill, delay, tip) {
-    var c = el(p, 'circle', { cx: x, cy: y, r: r, fill: fill || C.INK, class: 'pop', style: 'animation-delay:' + (delay || 0) + 's' });
-    if (tip) el(c, 'title', {}, tip);
-    return c;
+    return el(p, 'circle', { cx: x, cy: y, r: r, fill: fill || C.INK, class: 'pop', style: 'animation-delay:' + (delay || 0) + 's', 'data-tip': tip });
+  }
+
+  /*
+   * Hover readout for function curves: a guide at the pointer's x, a ring on
+   * each series and their values in chart-fx's tooltip. Call it last, so its
+   * hit area sits on top. series: [{ name, f, from, to, stroke }];
+   * o: { xName, fmt }.
+   */
+  function probe(p, F, series, o) {
+    o = o || {};
+    var fmt = o.fmt || function (v) { return v.toFixed(2); };
+    var g = el(p, 'g', { class: 'fx-guide', visibility: 'hidden' });
+    var rule = el(g, 'line', { y1: F.TOP - 6, y2: F.BASE, stroke: C.INK, 'stroke-width': 0.8, 'stroke-dasharray': '2 3' });
+    var rings = series.map(function (s) { return el(g, 'circle', { r: 3.6, fill: C.PAPER, stroke: s.stroke || C.INK, 'stroke-width': 1.7 }); });
+    var hit = el(p, 'rect', { x: F.X0, y: F.TOP - 6, width: F.X1 - F.X0, height: F.BASE - F.TOP + 6, fill: 'transparent', 'data-probe': '' });
+    hit.__fxProbe = {
+      move: function (e) {
+        var svg = root(p), box = svg.getBoundingClientRect(), scale = box.width / svg.viewBox.baseVal.width;
+        var px = (e.clientX - box.left) / scale;
+        if (px < F.X0 || px > F.X1) { this.leave(); return null; }
+        var k = F.xMin + ((px - F.X0) / (F.X1 - F.X0)) * (F.xMax - F.xMin), top = F.BASE, rows = [];
+        rule.setAttribute('x1', px); rule.setAttribute('x2', px);
+        series.forEach(function (s, i) {
+          var v = k >= (s.from == null ? F.xMin : s.from) && k <= (s.to == null ? F.xMax : s.to) ? s.f(k) : NaN;
+          var shown = isFinite(v) && v <= F.yMax && v >= F.yMin;
+          rings[i].setAttribute('visibility', shown ? 'visible' : 'hidden');
+          if (!shown) return;
+          rings[i].setAttribute('cx', px); rings[i].setAttribute('cy', F.y(v));
+          top = Math.min(top, F.y(v));
+          rows.push(T(s.name) + ' = ' + fmt(v));
+        });
+        g.setAttribute('visibility', 'visible');
+        return { text: (o.xName || 'k') + ' = ' + fmt(k) + '\n' + rows.join('\n'), x: box.left + px * scale, y: box.top + (top - 8) * scale, bottom: box.top + (top + 8) * scale };
+      },
+      leave: function () { g.setAttribute('visibility', 'hidden'); },
+    };
+    return hit;
   }
 
   // Straight or polyline arrow; the head sits on the last point.
@@ -248,10 +285,12 @@
       fit();
     };
     size();
-    var io = new IntersectionObserver(function (es) {
-      if (es[0].isIntersecting) { io.disconnect(); shown = true; render(true); }
-    }, { threshold: 0.2 });
-    io.observe(svg);
+    var first = function () { if (!shown) { shown = true; render(true); } };
+    if (window.chartFx) chartFx.onView(svg, first);
+    else {
+      var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { io.disconnect(); first(); } }, { threshold: 0.2 });
+      io.observe(svg);
+    }
     svg.style.cursor = 'pointer';
     svg.addEventListener('click', function () { shown = true; render(true); });
     window.addEventListener('resize', function () {
@@ -275,6 +314,6 @@
 
   window.curveKit = {
     C: C, T: T, el: el, label: label, along: along, frame: frame, axes: axes, curve: curve, beads: beads,
-    guide: guide, dot: dot, arrow: arrow, points: points, mount: mount, html: html, fit: fit,
+    guide: guide, dot: dot, arrow: arrow, points: points, probe: probe, mount: mount, html: html, fit: fit,
   };
 })();
