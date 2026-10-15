@@ -480,3 +480,12 @@ Japanese has several fixed frames for comparing two nouns. The four below are th
 - スポーツの中でバスケットボールがいちばん好きです。 — Among sports, I like basketball the most.
 - クラスの中で、李さんがいちばん頭がいいです。 — In the class, Li is the smartest.
 - 日本料理の中で、お寿司がいちばん好きです。 — Among Japanese dishes, I like sushi the most.
+
+## ～は～が、～は～。（contrastive は II）
+
+**Rule:** In an adversative sentence joined by **が** ("but"), when the two clauses have a similar shape and contrast with each other, both topics are marked with **は**. The **は … は** pair carries the contrast.
+
+- バスケットボールはできませんが、サッカーとテニスはすこしできます。 — I can't play basketball, but I can play a little soccer and tennis.
+- 日本語は上手ですが、英語は下手です。 — I'm good at Japanese, but bad at English.
+- 昨日は寒かったですが、今日はとても暑いです。 — It was cold yesterday, but it's very hot today.
+- 私は学生ですが、妹は会社員です。 — I'm a student, but my younger sister is a company employee.
