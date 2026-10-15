@@ -529,3 +529,120 @@ Because DJ uses the asset rather than reselling it, the profit is realized throu
 Check: $20\%\times300=60$ is deferred. Of that, $6$ a year is released through depreciation (2020–2029), so $60-6=54$ is still deferred at the end of 2020.
 
 *Extension beyond the slide:* in 2021–2029, if the asset isn't sold, adjusted NI $=$ reported NI $+30$, so DJ recognizes $20\%\times NI+6$ each year.
+
+##### Downstream Transactions
+
+Under accounting standards, downstream transaction is processed same as upstream. 
+
+### Other Issues
+
+Two loose ends complete the equity method: what happens when the investment loses value, and the option to skip the equity method altogether and carry the investment at fair value.
+
+#### Impairment
+
+An equity-method investment is carried at cost, plus the investor's share of earnings, minus dividends. Nothing in that formula looks at the market, so the carrying amount can drift well above what the stake is really worth. Both IFRS and US GAAP therefore require a **periodic impairment review**.
+
+> [!note]
+>
+> **Recall from Level I** (long-lived assets): under IFRS an asset is impaired when its carrying amount exceeds its **recoverable amount**, the higher of
+>
+> - **fair value less costs to sell**, and
+> - **value in use** (the present value of the cash flows the asset is expected to generate).
+>
+> Net realizable value (NRV) is the inventory version of the same idea; for investments the yardstick is recoverable amount.
+
+**When to test (the trigger).** The two standards set different bars:
+
+- **IFRS:** there must be **objective evidence** of one or more **loss events**, such as the investee's financial difficulty, a breach of contract or a likely bankruptcy, and the event must affect the investment's **future cash flows** in a way that can be **reliably estimated**. A drop in fair value alone is not automatically enough.
+- **US GAAP:** the investment's **fair value falls below its carrying amount** and the decline is judged **other than temporary** (in effect, permanent).
+
+**What is tested.** The **whole carrying amount** of the investment is tested as one asset. Goodwill sits inside that carrying amount (see *Good will* above) and is never recognized separately, so it is **not tested on its own**. Its impairment is simply part of the single impairment loss on the investment.
+
+**How it is recorded.** The loss equals the carrying amount minus the recoverable amount (IFRS) or minus fair value (US GAAP):
+
+$$
+\text{Impairment loss} = \text{Carrying amount} - \text{Recoverable amount (IFRS) or Fair value (US GAAP)}
+$$
+
+- **I/S:** the loss is recognized in profit or loss, so it reduces RE.
+- **B/S:** the investment is written down, either **directly** or through an **allowance account** (a contra account).
+- Later equity-method pickups start from the **new, lower** carrying amount.
+
+**Can it be reversed?**
+
+- **US GAAP:** **no.** Reversal is prohibited, even if fair value later recovers.
+- **IFRS:** **yes**, if the recoverable amount increases. The reversal is capped at the carrying amount the investment would have had without the impairment. Because the goodwill inside the investment is not a separate asset, the cap applies to the investment as a whole.
+
+**Example (impairment, illustrative).** Continue the multi-asset BY/SY example above: at the end of Y2 BY's investment in SY is carried at $3{,}706.5$. Early in Y3, SY loses its largest customer. BY estimates fair value less costs to sell of its stake at $3{,}150$ and value in use at $3{,}250$.
+
+1. **IFRS.** The loss of a major customer is objective evidence of a loss event. Recoverable amount $=\max(3{,}150,\ 3{,}250)=3{,}250$, so the impairment is $3{,}706.5-3{,}250=456.5$.
+2. **Entries.** I/S impairment loss $-456.5$ (RE $-456.5$); Investment in SY $-456.5$, to $3{,}250$.
+3. **Later.** Equity income is added to the $3{,}250$ base. If the stake's value recovers in Y4, US GAAP keeps the write-down, while IFRS may reverse it, but never above the carrying amount the investment would have had without the impairment.
+
+#### Fair Value Option
+
+Here *option* means an **accounting election**, not a derivative contract. Instead of applying the equity method, the investor may measure an investment in an associate at **fair value through profit or loss (FVPL)**, the same treatment as a trading security.
+
+**Who can elect it.**
+
+- **US GAAP:** available to **all entities**.
+- **IFRS:** restricted to **venture capital organizations, mutual funds, unit trusts and similar entities**, including investment-linked insurance funds. These are investors that manage a portfolio on a fair-value basis.
+
+**When.** The election is made **at initial recognition** ($t=0$) and is **irrevocable**: the investor cannot switch methods later to manage earnings.
+
+**What changes once it is elected.**
+
+- **B/S:** the investment is carried at **fair value** each period. It **no longer reflects the investor's proportionate share** of the investee's equity.
+- **I/S:** income is the **unrealized fair-value gain or loss** plus **dividends and interest received**. Dividends are income again, as under the cost method, rather than a return of capital.
+- **No equity-method mechanics:** there is no share of the investee's NI and no amortization of excess purchase price (step-up depreciation, see *Amortization of Fair Value Appreciation* above). There is also no elimination of unrealized intercompany profit and no separate impairment test, because every change in value already runs through profit or loss.
+
+| | Equity method | Fair value option |
+|---|---|---|
+| B/S carrying amount | Cost + share of NI − dividends | Fair value |
+| Income | Share of investee's NI, after step-up amortization and intercompany eliminations | Fair-value change + dividends and interest |
+| Dividends received | Reduce the investment (return of capital) | Income |
+| Excess purchase price amortization | Yes | No |
+| Unrealized intercompany profit | Eliminated | Not adjusted |
+| Impairment test | Yes | Not needed |
+
+**Example (equity method vs fair value option).** Take the basic example from *Basic Principles*: Company A buys 30% of B for $100$, B earns NI of $80$ and pays dividends of $20$. Suppose the stake is worth $112$ at year end.
+
+| | Equity method | Fair value option |
+|---|---:|---:|
+| Investment at year end | $100+24-6=118$ | $112$ |
+| Income for the year | $30\%\times80=24$ | dividend $6$ + FV gain $(112-100)=12$, total $18$ |
+| Cash received | $6$ | $6$ |
+
+The two methods report different income ($24$ vs $18$) and different carrying amounts ($118$ vs $112$). The equity method follows the investee's **earnings**; the fair value option follows the **market price** of the stake.
+
+**Quick check.** Try each question first, then hover over (or tap) the blurred answer.
+
+**Q1.** A US GAAP reporter wrote down an equity-method investment last year. This year the investee's share price has fully recovered. What happens to the write-down?
+
+<div class="reveal" tabindex="0">
+
+Nothing. US GAAP prohibits reversing an impairment loss on an equity-method investment, so the lower carrying amount stays. Under IFRS, a reversal would be allowed up to the carrying amount the investment would have had without the impairment.
+
+</div>
+
+**Q2.** An industrial company reporting under IFRS holds 25% of a supplier. Can it choose the fair value option two years after buying the stake, because the supplier's shares have risen?
+
+<div class="reveal" tabindex="0">
+
+No, for two reasons. Under IFRS the option is limited to venture capital organizations, mutual funds, unit trusts and similar entities, which an industrial company is not. And under either standard the election must be made at initial recognition and cannot be changed later.
+
+</div>
+
+
+
+# Business Combinations
+
+## Basic Concepts
+
+**Controls** 
+
+
+## Consolidation Process
+
+## Accounting Treatment
+
