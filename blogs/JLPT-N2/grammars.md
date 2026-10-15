@@ -498,3 +498,40 @@ Japanese has several fixed frames for comparing two nouns. The four below are th
 - 横の中国語訳は日本語学習に便利です。 — The Chinese translation beside it is useful for studying Japanese.
 - 兄は中国の歴史にも、日本の歴史にも詳しいです。 — My older brother knows a lot about both Chinese and Japanese history.
 - 駅の近くのアパートは、買い物に便利です。 — The apartment near the station is convenient for shopping.
+
+## ～の（／ん）です（explanation I: adjectives and nouns）
+
+> [!IMPORTANT]
+>
+> The most important pattern in this lesson. **～の（／ん）です** turns a plain statement into an **explanation**: it presents the fact as the reason, background, or "the thing is…" behind the situation. Speech usually shortens it to **～んです**. Chinese and English have no direct equivalent, so it is usually left untranslated.
+
+**Connection:**
+- N + な + の（／ん）です
+- Aɪ (い-adjective) + の（／ん）です
+- Aɪɪ (な-adjective) + な + の（／ん）です
+
+**Rule:** This pattern is very common in conversation. It attaches to the **attributive (連体形) form of an adjective** or to **N + な**, and in speech **～んです** is preferred. It states the speaker's own view, or explains or clarifies a situation. It has three main uses.
+
+### (1) Explaining a situation or giving a reason
+
+Gives the **reason or cause** behind something already mentioned, mostly to explain the speaker's own circumstances.
+
+- 実は『キャプテン翼』も『テニスの王子様』も好きなんですよ。 — Actually, I like both *Captain Tsubasa* and *The Prince of Tennis*, too.
+- すみません、今はちょっと忙しいんです。 — Sorry, I'm a bit busy right now.
+- 私は冷たい飲み物が苦手なんです。 — I don't really like cold drinks.
+
+### (2) Agreement and realization
+
+What was said before becomes the reason for the のです sentence. The speaker uses it to **accept or confirm** the conclusion, as in "so that's how it is", often confirming their own guess.
+
+- 由加さんは本当に漫画ファンなのですね。 — So you really are a manga fan, Yuka.
+
+### (3) Giving background for a tactful suggestion or request
+
+**～の（／ん）ですが、～** sets out the background first, and what the speaker actually wants is linked to it. Often the sentence stops at **が** and the listener infers the request.
+
+- 新しいパソコンがほしいのですが。 — I'd like a new computer… (to a shop assistant)
+- マックの最新モデルがいちばん軽いのですが。 — The latest Mac is the lightest one… (would you consider it?)
+- あのう、テレビの音が大きいのですが。 — Um, the TV is rather loud… (could you turn it down?)
+
+**Notes:** The first example is how you tell a shop assistant what you need. The second explains a fact while hinting "why not consider it?". The third politely describes the situation and implies the request to lower the volume.
