@@ -734,5 +734,138 @@ Under the acquisition method the combined balance sheet shows what A actually pa
 
 ## Consolidation Process
 
-## Accounting Treatment
+Once A controls B, A still keeps one line on its own books, *Investment in B*. The group's **consolidated statements**, however, show B line by line, as if A owned B's assets and owed B's liabilities directly. Consolidation is the process of replacing that one investment line with everything behind it.
+
+**The big map.**
+
+1. **Restate B at fair value.** Step B's identifiable assets and liabilities up (or down) to their fair values at the acquisition date.
+2. **Add A and B together**, line by line: A at **book value** (the parent's own balance sheet is never revalued), B at **fair value**.
+3. **Eliminate A's investment against B's equity.** A's *Investment in B* and B's (fair-value) equity are two views of the same thing, so both are removed. Whatever the investment exceeds B's net assets by is **goodwill**; if A owns less than 100%, B's equity that A did not buy becomes the **noncontrolling interest (NCI)**.
+
+$$
+\underbrace{\text{Investment in B}}_{\text{price paid}} - \underbrace{\text{FV of B's identifiable net assets}}_{\text{B's equity at FV}} = \text{Goodwill}
+$$
+
+B's pre-acquisition retained earnings and share capital **never appear** in consolidated equity. They were bought, not earned by the group.
+
+All the cases below use the same two companies. **Before the deal:**
+
+| | A (book value) | B (book value) | B (fair value) |
+|---|---:|---:|---:|
+| Cash | 1,500 | – | – |
+| Other assets | 3,000 | 1,000 | 1,200 |
+| **Total assets** | **4,500** | **1,000** | **1,200** |
+| Liabilities | 1,500 | 400 | 400 |
+| Equity | 3,000 | 600 | 800 |
+
+B's identifiable net assets are 600 at book value and 800 at fair value: a **step-up of 200** on B's other assets.
+
+### Case 1: buy 100% for cash
+
+A pays **1,000 cash** for all of B.
+
+**On A's own books.** One asset is swapped for another: cash −1,000, *Investment in B* +1,000. A's liabilities and equity do not change. Nothing changes on B's books either; B simply has a new owner.
+
+**Consolidation worksheet.**
+
+| | A | B at FV | Eliminate | Consolidated |
+|---|---:|---:|---:|---:|
+| Cash | 500 | – | | 500 |
+| Other assets | 3,000 | 1,200 | | 4,200 |
+| Investment in B | 1,000 | – | −1,000 | 0 |
+| Goodwill | – | – | +200 | 200 |
+| **Total assets** | **4,500** | **1,200** | | **4,900** |
+| Liabilities | 1,500 | 400 | | 1,900 |
+| Equity | 3,000 | 800 | −800 | 3,000 |
+| **Total L + E** | **4,500** | **1,200** | | **4,900** |
+
+- **Goodwill** $=1{,}000-800=200$: the part of the price not explained by B's identifiable net assets.
+- **Consolidated equity is A's equity only**, 3,000. B's equity of 800 is eliminated against the investment.
+- **A's own assets stay at book value.** Only B's are restated to fair value.
+
+### Case 1b: buy 100% with new shares
+
+Same deal, but A **issues shares** worth 1,000 (par 100) instead of paying cash.
+
+**On A's own books.** *Investment in B* +1,000 and equity +1,000: common stock +100 and additional paid-in capital +900. Retained earnings do not change, because issuing shares is not income. Cash stays at 1,500.
+
+**Consolidated.** Steps 2 and 3 are unchanged, so goodwill is again $1{,}000-800=200$.
+
+| | Consolidated |
+|---|---:|
+| Cash + other assets | $1{,}500+3{,}000+1{,}200=5{,}700$ |
+| Goodwill | 200 |
+| **Total assets** | **5,900** |
+| Liabilities | 1,900 |
+| Equity | $3{,}000+1{,}000=4{,}000$ |
+
+Compared with Case 1, the group has 1,000 more cash and 1,000 more equity. Paying in shares grows the balance sheet; paying in cash only reshuffles it.
+
+### Case 2: buy less than 100% (noncontrolling interest)
+
+When A buys less than all of B, consolidation still adds **100%** of B's assets and liabilities, because A controls all of them. The part of B's equity that belongs to the other owners is shown as **noncontrolling interest (NCI)**, a separate line **within equity**, not a liability.
+
+The goodwill figure depends on how NCI is measured:
+
+| | Full goodwill | Partial goodwill |
+|---|---|---|
+| NCI measured at | **Fair value** of the NCI's shares | NCI's share of B's **identifiable net assets** at FV |
+| Goodwill | FV of **all of B** − FV of identifiable net assets | Price paid − A's share of FV of identifiable net assets |
+| Allowed under | US GAAP (required) and IFRS | IFRS only |
+
+**Example (90% acquired).** A pays **900 cash for 90%** of B. The price implies that all of B is worth $900/90\%=1{,}000$, so the other owners' 10% is worth 100.
+
+| | Full goodwill | Partial goodwill |
+|---|---:|---:|
+| Goodwill | $1{,}000-800=200$ | $900-90\%\times800=180$ |
+| NCI | $10\%\times1{,}000=100$ | $10\%\times800=80$ |
+| Cash ($1{,}500-900$) + other assets ($3{,}000+1{,}200$) | 4,800 | 4,800 |
+| **Total assets** | **5,000** | **4,980** |
+| Liabilities | 1,900 | 1,900 |
+| Equity of A's shareholders | 3,000 | 3,000 |
+| NCI | 100 | 80 |
+| **Total L + E** | **5,000** | **4,980** |
+
+The only difference is the 20 of goodwill that belongs to the NCI: full goodwill recognizes it, partial goodwill does not. Total assets, equity and therefore ROA and ROE all differ slightly between the two methods.
+
+### Income Statement
+
+1. **Add 100% of A's and B's revenues and expenses**, even when A owns less than 100%.
+2. **Eliminate intercompany transactions.** A sale from A to B is not a sale for the group, so both the revenue and the matching cost are removed, along with any profit still unrealized in the buyer's inventory.
+3. **Adjust for the fair-value step-up.** B's books depreciate its assets at book value; the group must depreciate them at fair value, so the extra depreciation on the step-up is an expense of the group.
+4. **Split consolidated NI** between A's shareholders and the NCI. The NCI share is an **allocation of profit, not an expense**.
+
+**Example (90% acquired, year 1).** Continue Case 2. During the year:
+
+- A's own revenue is 2,000 and its expenses are 1,600, so A's NI is 400 (before any income from B).
+- B's revenue is 800 and its expenses are 600, so B's NI is 200.
+- A sold goods to B for 100, and B resold all of them to outside customers within the year.
+- The 200 step-up is on equipment with a remaining life of 10 years, so the group depreciates an extra 20 a year.
+
+| | A | B | Adjust | Consolidated |
+|---|---:|---:|---:|---:|
+| Revenue | 2,000 | 800 | drop 100 intercompany | 2,700 |
+| Expenses | (1,600) | (600) | drop 100 intercompany; add 20 step-up depr. | (2,120) |
+| **Consolidated NI** | | | | **580** |
+| Attributable to NCI | | | 10% of B's 180 | 18 |
+| **Attributable to A's shareholders** | | | 400 + 90% of 180 | **562** |
+
+- The intercompany sale **does not change profit** here, because B resold all the goods. It only removes 100 of double-counted revenue and cost. Had B still held some of the goods, the unrealized profit in them would also have been eliminated.
+- The NCI's share is based on B's NI **after** the step-up depreciation, $200-20=180$: the step-up belongs to all of B's owners.
+- At year end, NCI on the balance sheet is $100+18=118$ (full goodwill, no dividends).
+
+### Contingent Consideration
+
+Part of the price is often **contingent**: an **earn-out** paid only if the target hits a target, such as a revenue or profit level, after the deal.
+
+- **At acquisition:** the contingent payment is measured at **fair value** and included in the consideration transferred, so it **increases goodwill**.
+- **Classification:** it is a **liability** if it will be settled in cash or in a variable number of shares, or **equity** if it is a fixed number of shares.
+- **Afterwards:**
+  - **Liability:** remeasured at fair value every period, with changes in **profit or loss**. **Goodwill does not change.**
+  - **Equity:** **not remeasured**; the settlement is recorded within equity.
+- **Measurement period:** for up to **one year** after the acquisition date, new information about **facts that existed at the acquisition date** adjusts the provisional amounts, and therefore goodwill. Changes caused by events **after** the acquisition (such as the target beating its forecast) go to profit or loss.
+
+**Example.** In Case 1, A also agrees to pay 100 more in cash if B's revenue exceeds 1,000 within two years. At acquisition the earn-out's fair value is 40, so the consideration is $1{,}000+40=1{,}040$ and goodwill is $1{,}040-800=240$. A year later B is doing better than expected and the earn-out's fair value rises to 70: A recognizes a **loss of 30** in profit or loss and the liability rises to 70, while goodwill stays at 240.
+
+## Accounting Treatment of Goodwill
 
