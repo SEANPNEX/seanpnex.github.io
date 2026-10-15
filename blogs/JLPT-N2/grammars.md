@@ -471,3 +471,12 @@ Japanese has several fixed frames for comparing two nouns. The four below are th
 - 兄は歴史が得意です。 — My older brother is good at history.
 - 先生の話がよくわかりません。 — I don’t understand the teacher’s explanation very well.
 - 父は料理ができます。 — My father can cook.
+
+## （N₁の中で）N₂がいちばん～（superlative; で marks range）
+
+**Rule:** Building on the comparison patterns, this is the **superlative**: within the range given by **N₁**, **N₂** has the most of the quality the predicate describes. The particle **で** after a noun limits the range, and the adverb **いちばん** means "most". A superlative singles out the most outstanding person or thing among three or more. Translate as "(Among/In N₁,) N₂ is the most ～."
+
+- 日本の漫画の中で、『スラムダンク』がいちばん好きです。 — Among Japanese manga, I like *Slam Dunk* the most.
+- スポーツの中でバスケットボールがいちばん好きです。 — Among sports, I like basketball the most.
+- クラスの中で、李さんがいちばん頭がいいです。 — In the class, Li is the smartest.
+- 日本料理の中で、お寿司がいちばん好きです。 — Among Japanese dishes, I like sushi the most.
