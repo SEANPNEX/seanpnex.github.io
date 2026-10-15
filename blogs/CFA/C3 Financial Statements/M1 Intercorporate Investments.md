@@ -639,7 +639,7 @@ No, for two reasons. Under IFRS the option is limited to venture capital organiz
 
 ## Basic Concepts
 
-
+### Controls
 
 **Control** is what makes an investment a business combination: the investor (the **parent**) consolidates the investee (the **subsidiary**) line by line instead of carrying it as one investment. The two standards define control differently.
 
@@ -664,7 +664,73 @@ No, for two reasons. Under IFRS the option is limited to venture capital organiz
 >
 > *Example.* A company moves its receivables into an SPE. Outside investors hold a thin slice of equity, and the SPE is funded mostly by debt that the company guarantees, while the company keeps collecting the receivables. The equity holders do not control the SPE. The company directs its main activity and bears its losses through the guarantee, so it consolidates the SPE and the debt comes back onto its balance sheet.
 
+### Business Combinations
 
+A **business combination** brings two separate businesses under one control: two entities become one economic unit. What changes from one form to the next is which legal entities survive. US GAAP names three forms; IFRS does not distinguish between them, and all three are accounted for the same way (the acquisition method below).
+
+| Form | Shorthand | What happens | Entities after the deal |
+|---|---|---|---|
+| **Merger** | $A + B = A$ | A absorbs B's assets and liabilities; B ceases to exist | A only |
+| **Acquisition** | $A + B = (A + B)$ | A buys a controlling interest in B; both keep their legal identity | A (parent) and B (subsidiary) |
+| **Consolidation** | $A + B = C$ | A new entity C takes over both; A and B cease to exist | C only |
+
+A fourth case in the curriculum is the **special purpose / variable interest entity**. As shown under *Controls* above, the sponsor that controls it consolidates it, even without a majority of the votes.
+
+> [!note]
+>
+> **Check for a common controller before the deal.** If A and B are already controlled by the same party, such as two subsidiaries of one parent, the combination does not change who controls the business. It is outside the acquisition method and is accounted for differently (see below).
+
+**Q: In the three forms, who prepares individual and consolidated statements? What if A and B have a common controller?**
+
+| Form | Individual (separate) statements | Consolidated statements |
+|---|---|---|
+| Merger | A only; B's assets and liabilities now sit directly in A's books | Not needed: there is only one entity |
+| Acquisition | A **and** B each keep preparing their own | **A, as the parent**, consolidates B line by line |
+| Consolidation | C only | Not needed: C is a single new entity |
+
+Only the **acquisition** form leaves a parent and a subsidiary side by side, so it is the form that needs **consolidated statements**. Merger and consolidation leave a single legal entity, whose own books already contain everything.
+
+**Common control.** When the same party controls A and B before and after the deal, nothing is really bought from an outsider, so there is no new basis for fair values:
+
+- assets and liabilities are carried over at their **existing carrying amounts**, not stepped up to fair value;
+- **no new goodwill** arises; any difference between the price paid and the book value goes to **equity**;
+- US GAAP presents the combined entities **as if they had always been combined**. IFRS has no specific standard, and in practice this book-value ("predecessor") approach is common.
+
+### Acquisition Method
+
+**From pooling to purchase to acquisition.** Combinations used to be accounted for in one of two ways:
+
+- **Pooling of interests** (IFRS: *uniting of interests*): treated as a merger of equals. The two companies' **book values** were simply added together, with **no fair-value step-ups and no goodwill**. Prior periods were restated as if the companies had always been combined.
+- **Purchase method:** treated as one company buying the other, with the target recorded at what was paid for it.
+
+Pooling flattered later earnings: with no step-ups and no goodwill there was less depreciation and amortization. It also made otherwise similar deals hard to compare. US GAAP abolished it in 2001 (SFAS 141) and IFRS in 2004 (IFRS 3). The purchase method was then refined into today's **acquisition method** (SFAS 141R and revised IFRS 3, effective 2009). **Pooling now survives only, in substance, for combinations under common control**, as described above.
+
+**The acquisition method in four steps.**
+
+1. **Identify the acquirer**, the entity that obtains control. This is usually the one that pays cash or issues shares, or the larger entity.
+2. **Determine the acquisition date**, the day control passes. Fair values are measured on this date.
+3. **Recognize and measure the identifiable assets and liabilities at fair value.** This includes items the target never recorded, such as brand names, customer lists and patents developed internally, as well as contingent liabilities. Contingent consideration (an earn-out) is also measured at fair value.
+4. **Recognize goodwill, or a bargain purchase gain.**
+
+$$
+\text{Goodwill} = \text{Consideration transferred} + \text{Noncontrolling interest} - \text{Fair value of identifiable net assets}
+$$
+
+- **Goodwill** is not amortized; it is tested for impairment.
+- If the result is negative, it is a **bargain purchase**: the gain goes straight to **profit or loss** after the fair values have been rechecked.
+- **Acquisition-related costs** (advisers, lawyers) are **expensed**, not added to the price.
+- With less than 100% ownership, the noncontrolling interest and the full vs partial goodwill choice come into play. They are covered in *Consolidation Process*.
+
+**Example (pooling vs acquisition, illustrative).** A issues shares worth 1,000 for 100% of B. Pooling applied only to share-for-share deals like this one. B's identifiable net assets have a book value of 600 and a fair value of 800.
+
+| | Pooling of interests (old) | Acquisition method (now) |
+|---|---:|---:|
+| B's net assets recorded at | 600 (book value) | 800 (fair value) |
+| Goodwill | none | $1{,}000 - 800 = 200$ |
+| Later depreciation and amortization of the step-up | none | the 200 step-up from book to fair value |
+| Comparable to buying the assets one by one? | no | yes |
+
+Under the acquisition method the combined balance sheet shows what A actually paid: 800 of identifiable net assets plus 200 of goodwill, or 1,000 in total. Pooling would have recorded both B's net assets and A's new shares at 600, so the other 400 of the price would never have appeared.
 
 ## Consolidation Process
 
