@@ -535,3 +535,11 @@ What was said before becomes the reason for the のです sentence. The speaker 
 - あのう、テレビの音が大きいのですが。 — Um, the TV is rather loud… (could you turn it down?)
 
 **Notes:** The first example is how you tell a shop assistant what you need. The second explains a fact while hinting "why not consider it?". The third politely describes the situation and implies the request to lower the volume.
+
+## N（place）＋へ（／に）＋movement verb（direction of movement）
+
+**Rule:** After a noun for a place, the particle **へ** marks the **direction** of movement. It pairs with movement verbs such as **行く** (go), **来る** (come), and **帰る** (go/come home). In this use **へ** is pronounced **e**, not *he*. **へ** can also be replaced by **に**.
+
+- 毎朝、会社へ行きます。 — I go to work every morning.
+- いつ帰りますか。 — When are you going home?
+- 去年、家族と大阪に来ました。 — I came to Osaka with my family last year.
