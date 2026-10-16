@@ -605,3 +605,39 @@ What was said before becomes the reason for the のです sentence. The speaker 
 | Class II | 一段動詞 | Dictionary form ends in **る**, preceded by an **い-row or え-row kana** | 寝る、起きる、忘れる |
 | Class III | サ変動詞 | **する** on its own, or **Sino-Japanese word + する** | する、勉強する、運動する、運転する |
 | Class III | カ変動詞 | Only one verb: **来る** | 来る |
+
+## V ます形（polite form and the ます-stem）
+
+**Rule:** In use, a verb usually takes the polite ending **ます** after its dictionary form. Before **ます** is added, the verb changes according to its **conjugation class** (see the table above). This change is called **verb conjugation（動詞の活用）**.
+
+### Class I（五段動詞）
+
+Change the final kana from the **う-row** to the matching **い-row** kana, then add **ます**.
+
+- 休む: む → み + ます = 休みます
+- 願う: う → い + ます = 願います
+- ある: る → り + ます = あります
+
+### Class II（一段動詞）
+
+Drop the final **る**, then add **ます**.
+
+- 起きる: drop る + ます = 起きます
+- 寝る: drop る + ます = 寝ます
+- 忘れる: drop る + ます = 忘れます
+
+### Class III（サ変・カ変）
+
+- **サ変 する:** する → し + ます = します; 勉強する → 勉強し + ます = 勉強します
+- **カ変 来る:** 来る（くる）→ 来（き）+ ます = 来ます（きます）
+
+### The ます-stem
+
+What is left after removing **ます** from the polite form is the **ます-stem**, labelled **V ます形** in these notes. Japanese school grammar calls it the **（第一）連用形**. For example, ある has the polite form **あります**, so its ます-stem is **あり**.
+
+| Class | Dictionary form | Polite form | ます-stem（連用形） |
+|---|---|---|---|
+| Class I | わかる | わかります | わかり |
+| Class II | 忘れる | 忘れます | 忘れ |
+| Class III | する | します | し |
+| Class III | 来る（くる） | 来ます（きます） | 来（き） |
