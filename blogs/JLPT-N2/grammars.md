@@ -579,3 +579,12 @@ What was said before becomes the reason for the のです sentence. The speaker 
 - とても有名な研究所じゃありませんか。 — Why, this is a really famous research institute!
 - もう12時50分じゃありませんか。 — It's already 12:50!
 - あ、あの人は、鈴木さんじゃありませんか。 — Oh, isn't that Suzuki over there?
+
+## …けど。（sentence-final softened contrast）
+
+**Rule:** The conjunction **けど** is short for **けれども** and marks contrast ("but"). Here it comes at the **end of the sentence** as a **softened contrast**: the speaker stops partway and leaves the second half unsaid. That makes the tone **gentle and indirect**, and it is used mostly in speech. Besides **けど**, けれども also shortens to **けれど** and **けども**.
+
+- これから会議なんですけど。 — We're about to start the meeting… (so, if you don't mind)
+- そろそろお時間ですけれども。 — It's about time…
+- A：中村さんはいますか。 — A: Is Nakamura here?
+- B：はい、私ですけど。 — B: Yes, that's me… (what is it?)
