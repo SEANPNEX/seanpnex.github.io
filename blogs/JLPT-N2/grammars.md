@@ -649,3 +649,12 @@ What is left after removing **ます** from the polite form is the **ます-stem
 - 日曜日の午後1時半に会いましょうか。 — Shall we meet at 1:30 on Sunday afternoon?
 - いつも夜9時に寝ます。 — I always go to bed at 9 p.m.
 - 13日に中村さんの誕生日パーティーがあります。 — There's a birthday party for Nakamura on the 13th.
+
+## N（time）＋ごろ（approximate time）
+
+**Rule:** The suffix **ごろ** (also written **頃**) after a specific time noun means **"around / about"** that time. With **ごろ**, the time-point particle **に** can be **dropped**: both 2時ごろ帰ります and 2時ごろに帰ります work.
+
+- いつも夜11時ごろ寝ます。 — I always go to bed around 11 p.m.
+- 今日は2時ごろに帰ります。 — Today I'll go home around 2.
+- 3月ごろ、桜が咲きます。 — Cherry blossoms bloom around March.
+- 2000年ごろから、車が多くなりました。 — From around 2000, there have been more and more cars.
