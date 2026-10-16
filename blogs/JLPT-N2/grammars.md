@@ -669,3 +669,16 @@ What is left after removing **ます** from the polite form is the **ます-stem
 - 発表は全部で2時間ぐらいでした。 — The presentation took about two hours in all.
 - 食費は毎月3万円ぐらいです。 — Food costs about 30,000 yen a month.
 - 教室には学生が5人ぐらいいます。 — There are about five students in the classroom.
+
+## なる（change of state）
+
+**Rule:** **なる** ("to become") describes a thing or its state **changing naturally**. It combines with nouns, adjectives, and verbs; this lesson covers nouns and adjectives.
+
+| Word type | Pattern | Example |
+|---|---|---|
+| Noun | **N ＋ に ＋ なる** | 会社員 → 会社員になる |
+| い-adjective | **drop い → く ＋ なる** | 寒い → 寒くなる |
+| な-adjective | **A ＋ に ＋ なる** | 静か → 静かになる |
+
+- 11月の初めから寒くなります。 — It starts getting cold from early November.
+- 体調が大分よくなりました。 — My health has gotten a lot better.
