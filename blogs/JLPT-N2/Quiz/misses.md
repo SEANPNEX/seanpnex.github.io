@@ -53,3 +53,19 @@
 **Correct:** N₂ は N₁ ほど ～ない（e.g. 日本は中国ほど広くありません）.
 
 **Gap:** より / のほうが solid; ほど～ない missed.
+
+## 2026-10-16 — 帰る is a u-verb
+
+**Q:** Is 帰る a ru-verb? What is its ます形?
+
+**Correct:** 帰る looks like a ru-verb but is a **u-verb (godan)**: ます形 **帰ります**.
+
+**Gap:** Treated 帰る as ichidan.
+
+## 2026-10-16 — Advice: ほうがいい
+
+**Q:** How do you give advice with a verb vs a noun?
+
+**Correct:** **Vたほうがいい** (休んだほうがいい); for nouns **Nのほうがいい** (水のほうがいい). じゃありませんか is not advice.
+
+**Gap:** Mixed advice with じゃありませんか.
