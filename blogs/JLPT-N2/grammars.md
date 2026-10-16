@@ -682,3 +682,8 @@ What is left after removing **ます** from the polite form is the **ます-stem
 
 - 11月の初めから寒くなります。 — It starts getting cold from early November.
 - 体調が大分よくなりました。 — My health has gotten a lot better.
+- 日本語がかなり上手になりました。 — My Japanese has gotten quite good.
+- 今週末のイベントは中止になりました。 — This weekend's event has been called off.
+- でも、午後から眠くなるから、何もできなくなります。 — But from the afternoon on I get sleepy, so I can't do anything anymore.
+
+**Note:** 何もできなくなります means "(it comes to the point that) I can't do anything." できない is the negative of **できる** (can, be able to). When a negative ない form is followed by なる, **ない becomes なく**: できない → **できなくなる**, a change into not being able to.
