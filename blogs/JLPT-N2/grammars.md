@@ -697,3 +697,17 @@ What is left after removing **ます** from the polite form is the **ます-stem
 - B：そうしましょう。 — B: Yes, let's do that.
 - A：今晩、家でゲームしましょうか。 — A: Shall we play games at my place tonight?
 - B：いいですね。 — B: Sounds good.
+
+## ～ほうがいい（advice: it's better that…, with nouns and adjectives）
+
+**Rule:** **ほう** means "side / direction". Attaching **ほうがいい** gives the speaker's **advice** to the listener: "… would be better."
+
+| Word type | Pattern | Example |
+|---|---|---|
+| Noun | **N ＋ の ＋ ほうがいい** | 効率的なもの → 効率的なもののほうがいい |
+| い-adjective | **dictionary form ＋ ほうがいい** | 近い → 近いほうがいい |
+| な-adjective | **A ＋ な ＋ ほうがいい** | 安全 → 安全なほうがいい |
+
+- もっと効率的なもののほうがいいですよ。 — Something more efficient would be better.
+- 新しいアパートは会社に近いほうがいいです。 — It's better if the new apartment is close to the office.
+- 毎日の食材は安全なほうがいいです。 — Everyday ingredients had better be safe.
