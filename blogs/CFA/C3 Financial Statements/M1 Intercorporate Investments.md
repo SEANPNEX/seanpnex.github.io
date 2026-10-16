@@ -869,3 +869,82 @@ Part of the price is often **contingent**: an **earn-out** paid only if the targ
 
 ## Accounting Treatment of Goodwill
 
+Goodwill is the part of the purchase price that cannot be attached to any identifiable asset or liability: synergies, an assembled workforce, market position. It is recognized only in an acquisition. A company never records goodwill it builds up itself.
+
+### Full vs Partial Goodwill
+
+When the parent buys **less than 100%**, goodwill can be measured two ways. The difference is whether goodwill is recognized for the **whole** subsidiary or only for the **parent's share**.
+
+$$
+\text{Partial goodwill} = \text{Purchase price} - \text{Parent's \% share} \times \text{FV of identifiable net assets}
+$$
+
+$$
+\text{Full goodwill} = \text{FV of the subsidiary as a whole} - \text{FV of identifiable net assets}
+$$
+
+*Identifiable net assets* are all identifiable tangible and intangible assets, minus liabilities and contingent liabilities, at fair value.
+
+- **Partial goodwill** counts only the goodwill the parent paid for. The goodwill in the equity-method sections above (*Excess Purchase Price*) is of this kind: the investor's share only, inside a single investment line.
+- **Full goodwill** also counts the goodwill attributable to the **noncontrolling interest (NCI)**, so NCI is measured at **fair value**.
+- At **100% ownership** the two are the same.
+
+| | Full goodwill | Partial goodwill |
+|---|---|---|
+| US GAAP | **Required** | Not allowed |
+| IFRS | Allowed (choice for each acquisition) | Allowed |
+| NCI measured at | Fair value of the NCI | NCI share of FV of identifiable net assets |
+
+**Example (from Case 2 above).** A pays 900 for 90% of B, so all of B is worth 1,000. B's identifiable net assets have a fair value of 800.
+
+| | Full goodwill | Partial goodwill |
+|---|---:|---:|
+| Goodwill | $1{,}000-800=200$ | $900-90\%\times800=180$ |
+| NCI | $10\%\times1{,}000=100$ | $10\%\times800=80$ |
+| Total assets | 5,000 | 4,980 |
+| Total equity (A's 3,000 + NCI) | 3,100 | 3,080 |
+
+**Effect on the ratios.** Full goodwill adds the NCI's 20 of goodwill to **assets** and to **equity** (via NCI). Net income is the same under both methods, so full goodwill gives slightly **lower ROA and ROE**. A later goodwill impairment is also **larger** under full goodwill, because there is more goodwill to write off. Keep this in mind when comparing an IFRS company that chose partial goodwill with a US GAAP company.
+
+### Impairment of Goodwill
+
+Goodwill is **not amortized**. Instead it is **tested for impairment at least once a year**, and whenever events suggest its value has fallen. At acquisition, goodwill is assigned to the units that are expected to benefit from it: **cash-generating units (CGUs)** under IFRS, **reporting units** under US GAAP.
+
+**IFRS: one step.**
+
+1. Compare the **carrying amount of the CGU, including its goodwill**, with its **recoverable amount** (the higher of fair value less costs to sell and value in use).
+2. If the carrying amount is higher, the difference is the impairment loss. It is charged **first against goodwill**; anything left over reduces the CGU's other assets in proportion to their carrying amounts.
+
+**US GAAP: two steps** (as in the curriculum).
+
+1. **Test for impairment.** Goodwill is impaired if the **carrying amount** of the reporting unit, including goodwill, exceeds its **fair value**.
+2. **Measure the loss.** Work out the **implied goodwill**: the fair value of the reporting unit minus the fair value of its identifiable net assets. The loss is the carrying amount of goodwill minus implied goodwill.
+
+> [!note]
+>
+> Since ASU 2017-04, US GAAP has dropped step 2: the loss is simply the carrying amount of the reporting unit minus its fair value, **capped at the goodwill** allocated to it. That is close to the IFRS approach. The exam may still use the two-step version.
+
+**Under both standards:** the impairment loss goes to the **income statement** (usually as a separate line in operating income), and goodwill impairment **can never be reversed**.
+
+**Example (goodwill impairment, illustrative).** Continue the 90% acquisition with full goodwill. A year later, B (its own CGU or reporting unit) is carried at **1,000**: identifiable net assets of 800 plus goodwill of 200. Trading worsens, and B as a whole is now worth only **900**. Its identifiable net assets are now worth **760**.
+
+| | IFRS (one step) | US GAAP (two steps) |
+|---|---|---|
+| Test | Carrying 1,000 > recoverable 900 | Step 1: carrying 1,000 > FV 900 → impaired |
+| Measure | Loss $=1{,}000-900=100$, all against goodwill | Step 2: implied goodwill $=900-760=140$; loss $=200-140=60$ |
+| Goodwill after | 100 | 140 |
+
+The IFRS loss is larger here because it compares the whole unit, not just goodwill: part of the 100 drop reflects the identifiable assets losing value (800 → 760). Under the newer one-step US GAAP rule, the loss would also be $1{,}000-900=100$, within the 200 cap.
+
+If B's recoverable amount had fallen to **700** under IFRS, the loss of 300 would wipe out all 200 of goodwill, and the remaining 100 would reduce B's other assets in proportion to their carrying amounts.
+
+### Negative Goodwill (Bargain Purchase)
+
+If the price paid is **less** than the fair value of the identifiable net assets, the acquirer first **rechecks** that every asset and liability was identified and measured correctly. Any excess that remains is a **gain on bargain purchase**, recognized **immediately in profit or loss** under both IFRS and US GAAP. It is not recorded as an asset, and it is not deferred.
+
+### Analyst Notes
+
+- **Goodwill impairments are non-cash**, and companies often exclude them from "adjusted" earnings. They still show that the company **overpaid**, or that the acquisition is doing worse than planned.
+- **Impairments can be timed.** Management judgment drives the cash-flow forecasts and discount rates behind the test, so impairments often arrive late, after the bad news is already in the share price.
+- **When comparing companies**, consider removing goodwill from assets and equity, or at least use the same method on both sides (full vs partial goodwill), before comparing ROA, ROE or leverage. Acquisitive companies and companies that grew organically can otherwise look very different for reasons that have nothing to do with operations.
+
