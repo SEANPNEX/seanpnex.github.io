@@ -562,3 +562,20 @@ What was said before becomes the reason for the のです sentence. The speaker 
 - A：あのう、すみません。誰かいますか。 — A: Um, excuse me. Is anyone there?
 - B：はい。 — B: Yes.
 - 以前、何回か来ました。 — I've been here a few times before.
+
+## N から（starting point）
+
+**Rule:** After a noun of **time**, **place**, or **order**, the particle **から** marks the **starting point**, like English "from". **から** can be followed directly by **です** to make a noun-predicate sentence ("…starts from N"). The starting-point **から** also pairs with **まで**, which marks the end point: **N₁ から N₂ まで**, "from N₁ to N₂".
+
+- 体のトレーニングは明日からです。 — Physical training starts tomorrow.
+- 今から成績の発表です。 — We'll now announce the results.
+- ここからはテストの内容です。 — From here on is what's on the test.
+- 会議は今月の4日から6日までです。 — The meeting runs from the 4th to the 6th of this month.
+
+## N じゃありませんか（surprised "isn't it…?"）
+
+**Rule:** This is the **rhetorical-question** form of the noun sentence **N です**, like "isn't it N?" or "why, it's N!". It doesn't really ask anything. It carries **surprise or exclamation**, and is used mainly in **speech**.
+
+- とても有名な研究所じゃありませんか。 — Why, this is a really famous research institute!
+- もう12時50分じゃありませんか。 — It's already 12:50!
+- あ、あの人は、鈴木さんじゃありませんか。 — Oh, isn't that Suzuki over there?
