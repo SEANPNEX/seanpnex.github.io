@@ -687,3 +687,13 @@ What is left after removing **ます** from the polite form is the **ます-stem
 - でも、午後から眠くなるから、何もできなくなります。 — But from the afternoon on I get sleepy, so I can't do anything anymore.
 
 **Note:** 何もできなくなります means "(it comes to the point that) I can't do anything." できない is the negative of **できる** (can, be able to). When a negative ない form is followed by なる, **ない becomes なく**: できない → **できなくなる**, a change into not being able to.
+
+## Vましょう／Vましょうか（invitation: let's / shall we）
+
+**Rule:** **ます-stem ＋ ましょう** invites the listener to do something **together** with you, often with **いっしょに**: "let's …". Adding the question particle **か** (**Vましょうか**) makes it **softer**: you are asking whether the other person agrees.
+
+- そろそろ帰りましょう。 — Let's head home soon.
+- A：昼休みは、あそこの店へ行きましょうか。 — A: Shall we go to that place over there at lunch?
+- B：そうしましょう。 — B: Yes, let's do that.
+- A：今晩、家でゲームしましょうか。 — A: Shall we play games at my place tonight?
+- B：いいですね。 — B: Sounds good.
