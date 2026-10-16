@@ -552,3 +552,13 @@ What was said before becomes the reason for the のです sentence. The speaker 
 - 引き出しには何もありません。 — There is nothing in the drawer.
 - ここのカレー料理はどれもおいしくないです。 — None of the curry dishes here taste good.
 - この週末はどこにも行きません。 — I'm not going anywhere this weekend.
+
+## 疑問詞 ＋ か（indefinite: some-）
+
+**Rule:** A **question word + か** makes it **indefinite**: someone, something, some number of. 誰か means someone, 何人か several people, いくつか a few, and 何回か a few times. It works in **statements** as well as questions. When **疑問詞か** appears in a question, the question becomes an ordinary **yes/no question**, so the answer usually starts with **はい** or **いいえ**. Compare 疑問詞 + も + negative, which means "no one / nothing".
+
+- あのレストランにお客さんが何人かいます。 — There are a few customers in that restaurant.
+- 特に重要な理由がいくつかあります。 — There are a few especially important reasons.
+- A：あのう、すみません。誰かいますか。 — A: Um, excuse me. Is anyone there?
+- B：はい。 — B: Yes.
+- 以前、何回か来ました。 — I've been here a few times before.
