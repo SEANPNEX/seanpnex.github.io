@@ -658,3 +658,14 @@ What is left after removing **ます** from the polite form is the **ます-stem
 - 今日は2時ごろに帰ります。 — Today I'll go home around 2.
 - 3月ごろ、桜が咲きます。 — Cherry blossoms bloom around March.
 - 2000年ごろから、車が多くなりました。 — From around 2000, there have been more and more cars.
+
+## 数量詞＋くらい／ぐらい（about, approximately）
+
+**Rule:** **くらい** (also **ぐらい**) after a quantity word for time, money, or a count means **"about / approximately"** that amount, like "or so" in English.
+
+> [!TIP]
+> Compare it with **ごろ**: ごろ marks an approximate **point in time** (2時ごろ, around 2 o'clock), while くらい marks an approximate **amount or length** (2時間ぐらい, about two hours).
+
+- 発表は全部で2時間ぐらいでした。 — The presentation took about two hours in all.
+- 食費は毎月3万円ぐらいです。 — Food costs about 30,000 yen a month.
+- 教室には学生が5人ぐらいいます。 — There are about five students in the classroom.
