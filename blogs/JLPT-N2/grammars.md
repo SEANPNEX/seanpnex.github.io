@@ -588,3 +588,20 @@ What was said before becomes the reason for the のです sentence. The speaker 
 - そろそろお時間ですけれども。 — It's about time…
 - A：中村さんはいますか。 — A: Is Nakamura here?
 - B：はい、私ですけど。 — B: Yes, that's me… (what is it?)
+
+---
+
+> [!NOTE]
+>
+> **Start of verbs（動詞）.** Everything above covers nouns, adjectives and particles. From here on, the notes cover verbs.
+
+## Verb conjugation classes（動詞の活用分類）
+
+**Rule:** Sorting verbs by **conjugation class** is the first step to using verb sentences well. Traditional Japanese school grammar and today's popular textbooks classify verbs a little differently, but mostly only the **names** differ. The **dictionary form**, also called the **basic form**, is the unconjugated form a verb has as a dictionary entry.
+
+| Class | Japanese name | Form | Examples |
+|---|---|---|---|
+| Class I | 五段動詞 | Dictionary form ends in a **う-row kana** | 休む、願う、わかる、ある |
+| Class II | 一段動詞 | Dictionary form ends in **る**, preceded by an **い-row or え-row kana** | 寝る、起きる、忘れる |
+| Class III | サ変動詞 | **する** on its own, or **Sino-Japanese word + する** | する、勉強する、運動する、運転する |
+| Class III | カ変動詞 | Only one verb: **来る** | 来る |
