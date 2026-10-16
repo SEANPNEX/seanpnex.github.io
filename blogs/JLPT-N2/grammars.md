@@ -543,3 +543,12 @@ What was said before becomes the reason for the のです sentence. The speaker 
 - 毎朝、会社へ行きます。 — I go to work every morning.
 - いつ帰りますか。 — When are you going home?
 - 去年、家族と大阪に来ました。 — I came to Osaka with my family last year.
+
+## 疑問詞 ＋ も（total negation）
+
+**Rule:** A **question word + も** used with a **negative predicate** gives total negation: "no one / nothing / none / nowhere". 誰も means no one, 何も nothing, どれも none of them, and どこにも nowhere. A particle like **に** goes between the question word and **も**, as in どこ**に**も.
+
+- 夜中の博物館には誰もいません。 — There is no one in the museum in the middle of the night.
+- 引き出しには何もありません。 — There is nothing in the drawer.
+- ここのカレー料理はどれもおいしくないです。 — None of the curry dishes here taste good.
+- この週末はどこにも行きません。 — I'm not going anywhere this weekend.
