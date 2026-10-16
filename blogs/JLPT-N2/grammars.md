@@ -641,3 +641,11 @@ What is left after removing **ます** from the polite form is the **ます-stem
 | Class II | 忘れる | 忘れます | 忘れ |
 | Class III | する | します | し |
 | Class III | 来る（くる） | 来ます（きます） | 来（き） |
+
+## N（time）に（point in time）
+
+**Rule:** After a time noun, the particle **に** marks the **point in time** when an action happens, like English "at / on".
+
+- 日曜日の午後1時半に会いましょうか。 — Shall we meet at 1:30 on Sunday afternoon?
+- いつも夜9時に寝ます。 — I always go to bed at 9 p.m.
+- 13日に中村さんの誕生日パーティーがあります。 — There's a birthday party for Nakamura on the 13th.
