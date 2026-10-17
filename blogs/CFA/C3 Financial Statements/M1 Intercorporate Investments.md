@@ -17,6 +17,8 @@
 .fx-concept-chart.fsa-impair-chart { height: 455px; }
 .fx-concept-chart.fsa-equity-ex-chart { height: 375px; }
 .fx-concept-chart.fsa-methods-chart { height: 630px; }
+.fx-concept-chart.fsa-ni-eq-chart { height: 520px; }
+.fx-concept-chart.fsa-ratio-chart { height: 390px; }
 /* Phones: the two-column charts stack. */
 @media (max-width: 587px) {
     .fx-concept-chart { height: 500px; }
@@ -28,6 +30,8 @@
     .fx-concept-chart.fsa-impair-chart { height: 730px; }
     .fx-concept-chart.fsa-equity-ex-chart { height: 435px; }
     .fx-concept-chart.fsa-methods-chart { height: 1060px; }
+    .fx-concept-chart.fsa-ni-eq-chart { height: 595px; }
+    .fx-concept-chart.fsa-ratio-chart { height: 455px; }
 }
 </style>
 
@@ -1062,3 +1066,56 @@ Consolidation shows the deal for what it is: **borrowing secured on receivables*
 
 ## Net Income and Sharholder's Equity
 
+Net income is the same for the methods used to account for investment in investee:
+
+* Equity method
+* Proportionated Consolidation
+* Acquisition Method
+
+**Example (illustrative).** Take the 50% joint venture from *Joint Ventures* above. A and its partner each put in 300; JV earns NI of 200 (revenue 1,000, expenses 800) and ends the year with assets 1,600, liabilities 800 and equity 800. A's own business has assets of 2,000, liabilities of 1,000, revenue of 3,000 and expenses of 2,700. For comparison, the acquisition column shows what A's statements would look like if A controlled JV and consolidated it in full, with the partner's 50% as NCI.
+
+| A's statements | Equity method | Proportionate consolidation | Acquisition method |
+|---|---:|---:|---:|
+| Revenue | 3,000 | 3,500 | 4,000 |
+| Expenses | (2,700) | (3,100) | (3,500) |
+| Equity income from JV | 100 | – | – |
+| Consolidated NI | 400 | 400 | 500 |
+| NI attributable to NCI | – | – | (100) |
+| **NI attributable to A's shareholders** | **400** | **400** | **400** |
+| Total assets | 2,400 | 2,800 | 3,600 |
+| Liabilities | 1,000 | 1,400 | 1,800 |
+| **A's shareholders' equity** | **1,400** | **1,400** | **1,400** |
+| NCI | – | – | 400 |
+| Total equity | 1,400 | 1,400 | 1,800 |
+
+The total shareholder's equity of the investor is the smae under equity method and proportionate consolidation
+
+* Acquisition NE = NE of other methods + NCI
+
+<iframe
+  class="fx-concept-chart fsa-ni-eq-chart"
+  src="/charts/method-ni-equity.html"
+  title="Net income and shareholders' equity under the three methods"
+  loading="lazy"
+></iframe>
+
+The methods differ only in **how much of JV they bring onto A's statements**: nothing but one line (equity method), A's 50% of each line (proportionate), or 100% of each line (acquisition). Whatever belongs to the other owners under the acquisition method is set aside as NCI, so A's own shareholders end up with the same 400 of NI and 1,400 of equity in every case.
+
+## Two Common Analysis Frameworks
+
+### One-line Consolidation vs. line-by-line consolidation 
+
+<iframe
+  class="fx-concept-chart fsa-ratio-chart"
+  src="/charts/method-ratios.html"
+  title="Net profit margin, ROA and ROE under the three methods"
+  loading="lazy"
+></iframe>
+
+**Why the ratios rank this way.** The numerator, NI to A's shareholders, is the **same 400** under every method, so each ratio moves only with its **denominator**: the more of JV a method pulls onto A's statements, the bigger the denominator and the lower the ratio.
+
+- **Net profit margin** (NI / revenue): the equity method adds **none** of JV's revenue (its profit arrives as one line of equity income), proportionate consolidation adds **50%**, the acquisition method adds **100%**. So margin is highest under the equity method (13.3%), middle under proportionate consolidation (11.4%) and lowest under the acquisition method (10.0%).
+- **ROA** (NI / total assets): the same logic for assets. The equity method shows one investment line of 400, proportionate consolidation 50% of JV's assets, the acquisition method all of them: 16.7% vs 14.3% vs 11.1%.
+- **ROE** (NI / equity): equity is **1,400 under both** the equity method and proportionate consolidation, so ROE is the same (28.6%). Only the acquisition method adds the **NCI** (400) to total equity, which lowers ROE to 22.2%.
+
+**What it means for analysis.** The equity method keeps the investee's revenue, assets and **debt** off the investor's statements, so the investor looks more profitable per unit of sales and assets and less leveraged than it really is. When comparing a company that uses the equity method with one that consolidates, restate one of them (often onto a proportionate basis) before comparing margins, ROA or leverage.

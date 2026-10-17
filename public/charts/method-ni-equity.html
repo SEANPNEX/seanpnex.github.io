@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Net income and equity across methods</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <script src="chart-fx.js"></script>
+  <style>
+    /* Panels stack so the bars get the full width and the NCI slice can hold its label. */
+    .grid{grid-template-columns:1fr}
+    .rows{display:grid;gap:9px;margin-top:4px}
+    .row{display:grid;grid-template-columns:118px 1fr;align-items:center;gap:10px}
+    .name{font-size:11.5px;font-weight:700;line-height:1.25}
+    .name small{display:block;font-size:10px;font-weight:500;color:var(--muted)}
+    .track{display:flex;align-items:center;gap:8px}
+    .bar{display:flex;height:22px;transform-origin:left;animation:grow .7s cubic-bezier(.2,.7,.3,1) both}
+    .bar i{display:grid;place-items:center;font-style:normal;font-size:10.5px;font-weight:800}
+    .bar i:last-child{border-radius:0 11px 11px 0}
+    .own{background:var(--ink);color:var(--paper)}
+    .nci{background:#A8A7A0;color:var(--ink);border-left:1.5px solid var(--paper)}
+    .val{font-size:12px;font-weight:800;white-space:nowrap}
+    .bar i{min-width:30px}
+    .val s{text-decoration:none;font-weight:600;color:var(--muted)}
+    @keyframes grow{from{transform:scaleX(0)}}
+    @media(max-width:420px){.row{grid-template-columns:92px 1fr}.name{font-size:10.5px}}
+    @media(prefers-reduced-motion:reduce){.bar{animation:none}}
+  </style>
+</head>
+<body>
+  <main class="card" id="card">
+    <h2>Same profit for A's owners; only consolidation adds NCI.</h2>
+    <div class="sub">A owns 50% of JV, shown three ways · bars to scale · ink = attributable to A's shareholders · gray = noncontrolling interest (NCI), the other 50% owners</div>
+    <div class="grid">
+      <section class="panel">
+        <h3>Net income</h3>
+        <div class="hint">NI to A's shareholders is 400 under every method</div>
+        <div class="rows" id="ni" data-fx-scope></div>
+      </section>
+      <section class="panel">
+        <h3>Shareholders' equity</h3>
+        <div class="hint">acquisition method = the other two + NCI</div>
+        <div class="rows" id="eq" data-fx-scope></div>
+      </section>
+    </div>
+    <div class="src">TICK ROWS · LIEFLAT F5 · NET INCOME AND EQUITY BY METHOD (ILLUSTRATIVE)</div>
+  </main>
+  <script>
+  // ── Data: [method, note, A's share, NCI] ──
+  var NI = [['Equity method', 'one line: 50% × 200', 400, 0], ['Proportionate', '50% of each line', 400, 0], ['Acquisition', '100% of JV, NCI split off', 400, 100]];
+  var EQ = [['Equity method', 'A’s equity', 1400, 0], ['Proportionate', 'A’s equity', 1400, 0], ['Acquisition', 'A’s equity + NCI', 1400, 400]];
+  var fmt = function (v) { return v.toLocaleString('en-US'); };
+  function draw(id, rows, max, what) {
+    document.getElementById(id).innerHTML = rows.map(function (r, i) {
+      var tot = r[2] + r[3], w = (tot / max) * 100;
+      var tip = r[0] + ' · ' + what + ' ' + fmt(tot) + '&#10;A’s shareholders ' + fmt(r[2]) + (r[3] ? ' + NCI ' + fmt(r[3]) : '');
+      var segs = '<i class="own" style="width:' + (r[2] / tot) * 100 + '%">' + fmt(r[2]) + '</i>' + (r[3] ? '<i class="nci" style="width:' + (r[3] / tot) * 100 + '%">' + fmt(r[3]) + '</i>' : '');
+      return '<div class="row" data-hl="m' + i + '" data-tip="' + tip + '"><div class="name">' + r[0] + '<small>' + r[1] + '</small></div>' +
+        '<div class="track"><div class="bar" style="width:' + w + '%;animation-delay:' + (0.1 + i * 0.1) + 's">' + segs + '</div>' +
+        '<span class="val">' + fmt(tot) + (r[3] ? ' <s>total</s>' : '') + '</span></div></div>';
+    }).join('');
+  }
+  // Scales leave room for the value label after the longest bar.
+  draw('ni', NI, 500 / 0.72, 'NI');
+  draw('eq', EQ, 1800 / 0.72, 'equity');
+  curveKit.fit();
+  </script>
+</body>
+</html>
