@@ -1,121 +1,32 @@
-# Compensation
+# Types of Employee Compensation
 
-| Types                    | Examples                                                     |
-| ------------------------ | ------------------------------------------------------------ |
-| Short-term benefits      | • Salaries, annual bonuses<br>• Medical care, Contributions to social security schemes |
-| Long-term benefits       | • Long-term paid leave<br>• Long-term disability benefits    |
-| Termination benefits     | • Severance<br>• Counseling and outplacement services        |
-| Share-based compensation | • Restricted stock unit<br>• Stock options                   |
-| Post-employment benefits | • Pension payments to retirees<br>• Retiree life insurance and medical care |
+Accounting standards divide compensation into 5 general types, with distinctions on:
 
-## Share based compensation
+* Time between emolyee service and payment 
+* Form of payment
 
-### Restricted Stock Unit 
+1. Short term benefits: Salaries, annual bonuses, non-monetary benefits 
+2. Long term benefits: Compensation expected to be paid after 12 months, e.g paid leave, disability benefits 
+3. Share-based compensation: share or derivatives of employer's stock
+4. Post-empolyment benefits: pension
 
-Cost depending on grant date (beginning)
+# Terminology
 
-#### B/S
+* Grant Date
+* Vesting Period
+* Settlement date
 
-At beginning: Nothiong
+The division of periods is similar to the terms in **option**.
 
-At time 1: Retained earning $\downarrow$. Recognize Share-baed compensation reserve increase.
+[Add a lieflat chart to explain the idea in timeline]
 
-At time 2: RE down, SBCR up
+The cost and responsibilities of employers are amortized in vesting period
 
-At time 3 RE down, SBCR up
+Vesting refers to when an employee earns or becomes unconditionally entitled to compensation, therefore creating obligation for employers
 
-At  Vesting/Settlement: SBCR clear, Capital increase
+Vesting is followed by settlements
 
-#### I/S
+* During vesting period: Compensation expense and a corresponding current liability are recognized as compensation vests. Or costs are capitalized as an asset, with expense on the income statement deferred to when the service is consumed (management vs worker - expense in SG&A vs Inventory).
 
-At beginning (0-1): amortized share-based compensation expense 
-
-* To COGS or SG&A, depending on receiver
-
-At (1-2): amortized share-based compensation expense 
-
-At(2-3): amortized share-based compensation expense 
-
-#### C/F
-
-Nothing to state.
-
-### Stock Option Accounting Treatment
-
-| Factor                 | Change     | Value of Call Option |
-| ---------------------- | ---------- | -------------------- |
-| Volatility (σ)         | Increase ↑ | Increase ↑           |
-| Risk-free rate (Rₓ)    | Increase ↑ | Increase ↑           |
-| Time to expiration (T) | Increase ↑ | Increase ↑           |
-| Dividend yield         | Increase ↑ | Decrease ↓           |
-
-#### B/S
-
-At time 0: RE down. SBCR up
-
-At time 1: RE down SBCR up
-
-At vesting: RE down SBCR up
-
-At settlement: SBCR down Capital up
-
-* From the receiver exercise: Cash up, Capital up 
-
-#### I/S
-
-At (0-1): amortized share-based compensation expense (SBCE)
-
-At (1-2): amortized share-based compensation expense (SBCE)
-
-At vesting: Nothing
-
-At settlement: Nothing
-
-#### C/F
-
-At settlement: Cash (CFF) from exercise
-
-### Tax Treeatment
-
-| Condition                                                    | IFRS                                                   | US GAAP                                   |
-| ------------------------------------------------------------ | ------------------------------------------------------ | ----------------------------------------- |
-| **RSUs: Share price on settlement date > grant date**        | Excess tax benefit / Tax windfall<br>**B/S**: Equity + | **I/S**: Income tax expense –<br>Equity + |
-| **Options: Intrinsic value at exercise > grant-date fair value** | Excess tax benefit / Tax windfall<br>**B/S**: Equity + | **I/S**: Income tax expense –             |
-| **RSUs: Share price on settlement date < grant date**        | Tax shortfall<br>**B/S**: Equity –                     | **I/S**: Income tax expense +             |
-| **Options: Intrinsic value at exercise < grant-date fair value** | Tax shortfall<br>**B/S**: Equity –                     | **I/S**: Income tax expense +             |
-
-### Diluted Shares
-
-$$
-\text{Diluted Shares}=\text{Basiac Shares}+\text{Unvested Shares}-\frac{\text{Assumed Proceeds}}{\text{Avg Share Price}}
-$$
-
-Assumed proceed: 
-
-* RSUs: Unrecognized share based compensation  (beg+end)/2
-* Option: Unrecognized share based compensation (beg+end)/2 + exercise value (price$\times$ amount)
-
-### Modelling 
-
-Forecast COGS and SGA based on % of Rev. 
-
-### Valuation considering
-
-* Use diluted shares for outstanding but unvested share-based awards (SBA)
-* Dilution from future SBA: Deduct share-based expense from FCFF (view as cash cost)
-
-
-
-## Post-Empolyment Compensation 养老金
-
-
-Fund Status = PA - PBO
-
-### PPC Classification
-
-Generally we consider negative fund status (PA < PBO)
-
-Then we let Net_PBO + PBO - PA = Net_PBO + I-AG+S-AR-C = Net_PBO_End
-
-Note I-AG+S-AR as Total periodic Pension Cost (TPPC)
+# Accounting Principles
 

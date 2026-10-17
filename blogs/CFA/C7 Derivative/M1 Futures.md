@@ -33,7 +33,7 @@ $F_0(T)=S_0(1+r_f)^T, F_0(T)=S_0e^{r_fT}$, where $S_0$
 * $F_0(T)>S_0(1+r_f)^T$, then arbitrage can be done by **borrow fund $S_0$ at $r_f$ and buy asset at $t_0$**, then at $t_1$, **sell the asset at $F_0(T)$**.
 * $F_0(T)<S_0(1+r_f)^T$,  buy riskfree asset and sell short spot asset. 
 
-买空卖空$\to$融资融券(borrow money or borrow asset)
+borrow money or borrow asset
 
 ### Valuation 
 
@@ -97,7 +97,7 @@ Assuming a forward contract 100 days until maturity on a stock, the stock price 
 
 ##### Example
 
-One month ago, BM had a short position for **five** euro-bond forward contracts with 2 months to expiration and a contract notional of $\texteuro 100,000$ each at price $145$. The euro-bond forward contract now is 148. The risk-free rate is $0.1\%$. Calculate the value of BM's position. 
+One month ago, BM had a short position for **five** euro-bond forward contracts with 2 months to expiration and a contract notional of $\euro 100,000$ each at price $145$. The euro-bond forward contract now is 148. The risk-free rate is $0.1\%$. Calculate the value of BM's position. 
 
 * Judge first: Short position and price rise $\to$ negative value
 
@@ -248,7 +248,7 @@ $$
 >
 > This part should be focuesed for the exam
 
-A fixed-income futures has more than one bond that can be delivered by the short(delivery option-choose to deliver from a basket-preventing liquid issues 多方逼空).
+A fixed-income futures has more than one bond that can be delivered by the short(delivery option-choose to deliver from a basket-preventing liquid issues).
 
 The underlying asset is a hypothetical bond to give the quote (since actual is a basket of bonds). In market, it is usually 30 year T-bond of 6% semiannual coupon.
 
