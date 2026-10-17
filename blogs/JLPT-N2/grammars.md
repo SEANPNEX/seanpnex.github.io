@@ -711,3 +711,59 @@ What is left after removing **ます** from the polite form is the **ます-stem
 - もっと効率的なもののほうがいいですよ。 — Something more efficient would be better.
 - 新しいアパートは会社に近いほうがいいです。 — It's better if the new apartment is close to the office.
 - 毎日の食材は安全なほうがいいです。 — Everyday ingredients had better be safe.
+
+## Transitive verbs and を（marking the direct object）
+
+**Rule:** Japanese verbs can be **intransitive** or **transitive**. An intransitive verb does not take a direct object; a transitive verb can. Some verbs can be used in both ways. With a transitive verb, put **を** after the noun that is its direct object.
+
+- 本を読みます。 — I read a book.
+- 資料を調べます。 — I examine the materials.
+
+When the direct object becomes the **topic** or is marked as **also**, **は** or **も** can replace **を**.
+
+- メールはよく送りますが、手紙はあまり書きません。 — I often send emails, but I do not write letters very often.
+- 休みの日は、よく映画を見ます。買い物もします。 — On my days off, I often watch movies. I also go shopping.
+
+## N で（place of an action; means or tool）
+
+### Place of an action
+
+**Rule:** Put **で** after a place noun to show **where an action takes place**. In English, it often corresponds to "at" or "in".
+
+- 伊藤先生のゼミでデータを集めました。 — I collected data in Professor Ito's seminar.
+- 私はよく喫茶店で小説を読みます。 — I often read novels at a coffee shop.
+- 日本では、口頭試験はどんな準備をしますか。 — In Japan, how do you prepare for oral exams?
+
+### Means or tool
+
+**Rule:** Put **で** after a noun to show **the tool or means used to do an action**. In English, it often corresponds to "with" or "by".
+
+- スマホで外国語を勉強します。 — I study foreign languages with my smartphone.
+- インターネットで資料を調べます。 — I look up information on the internet.
+- 日本人はお箸で料理を食べます。 — Japanese people eat food with chopsticks.
+
+## N に（recipient or target of an action）
+
+**Rule:** Put **に** after a noun to mark the **person an action is directed toward**. Depending on the verb, this person may be the recipient of something, someone you meet, or someone you ask.
+
+- 中村さんにメールで資料を送ります。 — I send the materials to Nakamura by email.
+- 午後、ジョージさんに会います。 — I will meet George in the afternoon.
+- 友達に簡単なやり方を聞きます。 — I ask a friend for a simple way to do it.
+
+## N なら（bringing up a topic）
+
+**Rule:** Put **なら** after a noun to bring that noun forward as the **topic** of what follows. The topic is often something already mentioned or something the listener can infer from the conversation. **N なら、～** can mean "as for N, …" or, when responding to someone's interest or request, "if it's N you're talking about, …".
+
+- 日本語の小説なら、家には何冊かありますよ。 — As for Japanese novels, I have a few at home.
+- A：新しいパソコンがほしいんですが。 — I'd like a new computer.
+- B：パソコンなら、こちらがいいですよ。 — If you're looking for a computer, this one is good.
+- A：一緒に喫茶店に行きましょうか。 — Shall we go to a coffee shop together?
+- B：コーヒーなら、スタバのがいいですね。 — If we're going for coffee, Starbucks would be good.
+
+## N について（about a topic）
+
+**Rule:** Put **について** after a noun to introduce the subject being discussed: **"about N"**. It can be followed by **です** to form a predicate, or it can appear before a verb phrase describing what someone says, writes, or asks about that topic.
+
+- 経済のグローバリゼーションについてです。 — It's about economic globalization.
+- 先週の旅行について作文を書きました。 — I wrote an essay about last week's trip.
+- 今日の授業について、何か質問はありますか。 — Do you have any questions about today's class?
