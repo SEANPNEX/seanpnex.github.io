@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Quant M4 — Extensions of Multiple Regression review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    id: "q4-three-cases",
+    topic: "Influence · three concepts",
+    front: "Distinguish high leverage, an outlier and an influential observation, and give each one\\'s measure.",
+    back: "<div class=\"ans\"><ul><li><strong>High leverage</strong>: unusual \\(X\\) values → leverage \\(h_{ii}\\)</li><li><strong>Outlier</strong>: \\(Y_i\\) far from its fitted value → studentized residual</li><li><strong>Influential</strong>: removing it materially changes the fit → Cook's distance</li></ul></div>",
+    gap: "Leverage or a large residual alone only creates the potential for influence."
+  },
+  {
+    id: "q4-leverage",
+    topic: "Influence · leverage",
+    front: "What range does leverage \\(h_{ii}\\) take, what is its average, and what is the screening rule?",
+    back: "<div class=\"ans\"><p>\\(0\\le h_{ii}\\le1\\), \\(\\sum h_{ii}=k+1\\), so the average is \\(\\bar h=(k+1)/n\\).</p><div class=\"eq-block\">$$\\text{investigate if } h_{ii}>3\\left(\\frac{k+1}{n}\\right)$$</div><p>A screening guide, not a rejection rule; a high-leverage point on the line has little influence.</p></div>"
+  },
+  {
+    id: "q4-studentized",
+    topic: "Influence · studentized residual",
+    front: "Give the externally studentized (deleted) residual and its distribution. What does a large value indicate?",
+    back: "<div class=\"ans\"><div class=\"eq-block\">$$t_i^*=\\frac{e_i}{s_{(i)}\\sqrt{1-h_{ii}}}\\sim t_{n-k-2}$$</div><p>\\(s_{(i)}\\) is the standard error with observation \\(i\\) deleted. A large \\(|t_i^*|\\) flags a <strong>potential outlier</strong>, not influence.</p></div>",
+    gap: "Screening many points with |t*| > 2 will flag some by chance (multiple testing)."
+  },
+  {
+    id: "q4-cook",
+    topic: "Influence · Cook\\'s distance",
+    front: "Write Cook\\'s distance. What makes it large, and what are the usual cut-offs?",
+    back: "<div class=\"ans\"><div class=\"eq-block\">$$D_i=\\frac{e_i^2}{(k+1)MSE}\\left(\\frac{h_{ii}}{(1-h_{ii})^2}\\right)$$</div><p>Grows with a <strong>large residual</strong>, <strong>high leverage</strong>, or both. \\(D_i>1\\): strongly influential; \\(D_i>4/n\\): screen.</p></div>"
+  },
+  {
+    id: "q4-influence-response",
+    topic: "Influence · responses",
+    front: "You find an influential observation. What should you do (and not do)?",
+    back: "<div class=\"ans\"><ul><li>Check for data-entry, measurement or unit errors</li><li>Ask whether it belongs to the population being modeled</li><li>Ask whether it reveals a missing variable, interaction, break or wrong functional form</li><li>Compare the model with and without it; report the sensitivity</li></ul><p><strong>Do not</strong> delete a valid observation just because it weakens the result.</p></div>"
+  },
+  {
+    id: "q4-dummies",
+    topic: "Dummy variables",
+    front: "A categorical variable has \\(g\\) categories. How many dummies do you use with an intercept, and why?",
+    back: "<div class=\"ans\"><p><strong>\\(g-1\\)</strong>. The omitted category is the <strong>reference</strong>; each dummy coefficient is an intercept difference from it, holding \\(X\\) constant.</p><p>Using all \\(g\\) with an intercept creates perfect multicollinearity, the <strong>dummy-variable trap</strong>.</p></div>",
+    gap: "Changing the reference category changes the coefficients, not the fitted values."
+  },
+  {
+    id: "q4-dummy-example",
+    topic: "Dummy variables · interpretation",
+    front: "\\(Y=\\beta_0+\\beta_1X+\\gamma_1D_{Tech}+\\gamma_2D_{Health}+\\varepsilon\\), financial firms as reference. Interpret \\(\\beta_0\\), \\(\\gamma_1\\), \\(\\gamma_2\\).",
+    back: "<div class=\"ans\"><ul><li>\\(\\beta_0\\): intercept for <strong>financial</strong> firms</li><li>\\(\\gamma_1\\): intercept difference, <strong>tech vs financial</strong>, holding \\(X\\) constant</li><li>\\(\\gamma_2\\): intercept difference, <strong>healthcare vs financial</strong></li></ul></div>"
+  },
+  {
+    id: "q4-interaction",
+    topic: "Interaction terms",
+    front: "In \\(Y=\\beta_0+\\beta_1X+\\gamma D+\\delta(XD)+\\varepsilon\\), what are the intercept and slope of each group?",
+    back: "<div class=\"ans\"><ul><li>\\(D=0\\): intercept \\(\\beta_0\\), slope \\(\\beta_1\\)</li><li>\\(D=1\\): intercept \\(\\beta_0+\\gamma\\), slope \\(\\beta_1+\\delta\\)</li></ul><p>\\(\\gamma\\) = intercept difference; \\(\\delta\\) = <strong>slope difference</strong>. Test them jointly with a restricted F-test.</p></div>"
+  },
+  {
+    id: "q4-why-logit",
+    topic: "Binary outcome · why logit",
+    front: "Why not use ordinary linear regression for a 0/1 dependent variable such as default?",
+    back: "<div class=\"ans\"><p>The linear model can predict <strong>probabilities below 0 or above 1</strong>, and it imposes <strong>heteroskedastic errors</strong>. A logit maps the predictors into a probability through the logistic function.</p></div>"
+  },
+  {
+    id: "q4-logit",
+    topic: "Binary outcome · logit model",
+    front: "Write the logit model in log-odds form and in probability form.",
+    back: "<div class=\"ans\"><div class=\"eq-block\">$$\\ln\\!\\left(\\frac{p}{1-p}\\right)=\\beta_0+\\beta_1X_1+\\cdots+\\beta_kX_k$$</div><div class=\"eq-block\">$$p=\\frac{1}{1+e^{-(\\beta_0+\\beta_1X_1+\\cdots+\\beta_kX_k)}}$$</div><p>\\(Y\\) given \\(X\\) is Bernoulli(\\(p\\)); there is no additive error term in the probability equation.</p></div>"
+  },
+  {
+    id: "q4-logit-coef",
+    topic: "Binary outcome · coefficients",
+    front: "A logit slope is \\(\\hat\\beta_j=0.40\\). What happens to the odds and to the probability when \\(X_j\\) rises by one?",
+    back: "<div class=\"ans\"><p>Log odds rise by 0.40; the <strong>odds multiply by \\(e^{0.40}\\approx1.49\\)</strong>, about a 49% increase in the odds.</p><p>The <strong>probability</strong> does not rise by 49%: its change depends on the starting probability and the other predictors.</p></div>"
+  },
+  {
+    id: "q4-mle",
+    topic: "Binary outcome · estimation and fit",
+    front: "How is a logit estimated, and how do you judge its fit?",
+    back: "<div class=\"ans\"><ul><li><strong>Maximum likelihood</strong>: the coefficients that make the observed 0s and 1s most likely</li><li>Higher (closer to zero) <strong>log-likelihood</strong> = better in-sample fit, same data and \\(Y\\)</li><li><strong>Pseudo \\(R^2\\)</strong> compares with an intercept-only model; it is <strong>not</strong> a share of variance explained and not comparable with OLS \\(R^2\\)</li></ul></div>"
+  },
+  {
+    id: "q4-lr",
+    topic: "Binary outcome · likelihood-ratio test",
+    front: "Logit: unrestricted \\(\\ell_U=-118\\), restricted (two industry variables dropped) \\(\\ell_R=-125\\). Test at 5% (\\(\\chi^2_2\\) critical ≈ 5.99).",
+    back: "<div class=\"ans\"><div class=\"eq-block\">$$LR=2(\\ell_U-\\ell_R)\\sim\\chi^2_q$$</div><div class=\"eq-block\">$$LR=2[-118-(-125)]=14$$</div><p>\\(q=2\\), and \\(14>5.99\\) → <strong>reject</strong>: the industry variables are jointly significant.</p></div>",
+    gap: "The LR test is the maximum-likelihood counterpart of the restricted F-test for OLS."
+  }
+];
+
+flashDeck({
+  key: "cfa-c1-m4-review",
+  source: "CFA L2 Quantitative Methods \u00b7 M4 Extensions of Multiple Regression \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

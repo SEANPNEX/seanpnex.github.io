@@ -8,6 +8,7 @@
     :root{--paper:#F0EFEB;--ink:#1C1C1A;--muted:#6A6963;--soft:#A8A7A0;--grid:#D8D6CE;--faint:#E3E2DB}
     *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,sans-serif}.card{padding:29px 30px 18px;border-radius:24px;overflow:hidden}h2{max-width:760px;margin:0;font-size:clamp(25px,4vw,42px);font-weight:700;line-height:1.05;letter-spacing:-.035em}.sub{margin:10px 0 7px;color:var(--muted);font-size:12px;line-height:1.5}svg{display:block;width:100%;height:auto;margin:6px 0 10px;overflow:visible}.src{color:#8A8983;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}.draw{stroke-dasharray:1;stroke-dashoffset:1;animation:draw .7s cubic-bezier(.25,.9,.35,1) forwards}.pop{opacity:0;transform-box:fill-box;transform-origin:center;animation:pop .4s cubic-bezier(.25,.9,.35,1) forwards}.fade{opacity:0;animation:fade .45s ease forwards}@keyframes draw{to{stroke-dashoffset:0}}@keyframes pop{to{opacity:1;transform:scale(1)}}@keyframes fade{to{opacity:1}}@media(max-width:600px){.card{padding:24px 15px 15px}.sub{font-size:11px}}@media(prefers-reduced-motion:reduce){.draw{stroke-dashoffset:0;animation:none}.pop,.fade{opacity:1;transform:none;animation:none}}
   </style>
+  <script src="chart-fx.js"></script>
 </head>
 <body>
   <main class="card" id="card"><h2 id="title"></h2><div class="sub" id="sub"></div><svg id="chart" viewBox="0 0 760 315" role="img"></svg><div class="src" id="src"></div></main>
@@ -104,8 +105,8 @@ chartI18n.use({
     const lines=(x,y,list,a={},lh=11)=>list.forEach((s,i)=>txt(x,y+(i-(list.length-1)/2)*lh,s,a));
     const dot=(x,y,r=7,a={})=>el('circle',{cx:x,cy:y,r,fill:INK,class:'pop',...a});
     const path=(d,a={})=>el('path',{d,fill:'none',stroke:SOFT,'stroke-width':.9,pathLength:1,class:'draw',...a});
-    const box=(x,y,w,h,label,dark=false,delay=0)=>{el('rect',{x,y,width:w,height:h,rx:14,fill:dark?INK:FAINT,class:'pop',style:`animation-delay:${delay}s`});txt(x+w/2,y+h/2+3.5,label,{fill:dark?PAPER:INK,'text-anchor':'middle','font-size':10,'font-weight':800,class:'fade',style:`animation-delay:${delay}s`})};
-    const pill=(x,y,label,delay=0)=>{const w=label.length*6.4+16;el('rect',{x:x-w/2,y:y-9,width:w,height:18,rx:9,fill:PAPER,stroke:INK,'stroke-width':.9,class:'fade',style:`animation-delay:${delay}s`});txt(x,y+3.3,label,{fill:INK,'text-anchor':'middle','font-size':9,'font-weight':800,'letter-spacing':'.04em',class:'fade',style:`animation-delay:${delay}s`})};
+    const box=(x,y,w,h,label,dark=false,delay=0,hover={})=>{el('rect',{x,y,width:w,height:h,rx:14,fill:dark?INK:FAINT,class:'pop',style:`animation-delay:${delay}s`,...hover});txt(x+w/2,y+h/2+3.5,label,{fill:dark?PAPER:INK,'text-anchor':'middle','font-size':10,'font-weight':800,class:'fade',style:`animation-delay:${delay}s`,...hover})};
+    const pill=(x,y,label,delay=0,hover={})=>{const w=label.length*6.4+16;el('rect',{x:x-w/2,y:y-9,width:w,height:18,rx:9,fill:PAPER,stroke:INK,'stroke-width':.9,class:'fade',style:`animation-delay:${delay}s`,...hover});txt(x,y+3.3,label,{fill:INK,'text-anchor':'middle','font-size':9,'font-weight':800,'letter-spacing':'.04em',class:'fade',style:`animation-delay:${delay}s`,...hover})};
     const narrow=()=>svg.getBoundingClientRect().width<520;
 
     const V={
@@ -114,16 +115,20 @@ chartI18n.use({
         svg.setAttribute('viewBox',`0 0 ${L.w} ${L.h}`);
         const {cx,cy,R}=L;
         const items=[['SPOT',-145],['FORWARD',-85],['NOMINAL RATES',-25],['REAL RATES',35],['EXPECTED INFLATION',95],['PRICE LEVELS',155]];
+        // Which conditions tie each quantity in: hovering a spoke lights them, hovering a condition lights its spokes.
+        const CONDS={CIRP:{q:[0,1,2],tip:'Covered interest rate parity\nforward premium = interest-rate differential'},UIRP:{q:[0,2],tip:'Uncovered interest rate parity\nexpected spot change = interest-rate differential'},FISHER:{q:[2,3,4],tip:'Fisher effect\nnominal rate = real rate + expected inflation'},PPP:{q:[0,4,5],tip:'Purchasing power parity\nspot change = inflation differential'}};
+        const linked=(i)=>Object.keys(CONDS).filter((k)=>CONDS[k].q.includes(i)).join(', ');
         items.forEach(([name,deg],i)=>{
           const a=deg*Math.PI/180,c=Math.cos(a),sn=Math.sin(a),x=cx+R*c,y=cy+R*sn,hx=cx+L.hub*c,hy=cy+L.hub*sn;
-          path(`M${x} ${y} C${cx+(x-cx)*.45} ${cy+(y-cy)*.45} ${cx+(hx-cx)*.30} ${cy+(hy-cy)*.30} ${hx} ${hy}`,{style:`animation-delay:${i*.08}s`});
-          dot(x,y,3,{fill:MUTED,style:`animation-delay:${i*.08}s`});
+          const hover={'data-hl':`q${i}`,'data-tip':`${T(name)}\nlinked by ${linked(i)}`};
+          path(`M${x} ${y} C${cx+(x-cx)*.45} ${cy+(y-cy)*.45} ${cx+(hx-cx)*.30} ${cy+(hy-cy)*.30} ${hx} ${hy}`,{style:`animation-delay:${i*.08}s`,...hover});
+          dot(x,y,3,{fill:MUTED,style:`animation-delay:${i*.08}s`,...hover});
           // Side labels sit beside their dot; top and bottom labels sit above or below it.
           const side=Math.abs(c)>.3,anchor=side?(c>0?'start':'end'):'middle';
           const lx=side?x+(c>0?10:-10):x,ly=side?y+3:y+(sn<0?-12:19);
           const label=T(name),split=small&&side&&label.includes(' ')?label.split(' '):[label];
-          lines(lx,ly,split,{'text-anchor':anchor,'font-size':9,'letter-spacing':'.08em',class:'fade',style:`animation-delay:${.2+i*.06}s`});
-          dot(hx,hy,small?7:8,{style:`animation-delay:${.4+i*.07}s`});
+          lines(lx,ly,split,{'text-anchor':anchor,'font-size':9,'letter-spacing':'.08em',class:'fade',style:`animation-delay:${.2+i*.06}s`,...hover});
+          dot(hx,hy,small?7:8,{style:`animation-delay:${.4+i*.07}s`,...hover});
         });
         const hubR=small?24:28,fx=T('FX');
         dot(cx,cy,hubR);
@@ -133,11 +138,13 @@ chartI18n.use({
         // Each condition sits in the sector between the quantities it relates.
         [['CIRP',-115],['UIRP',-55],['FISHER',65],['PPP',125]].forEach(([s,deg],i)=>{
           const a=deg*Math.PI/180;
-          pill(cx+R*.64*Math.cos(a),cy+R*.64*Math.sin(a),T(s),.7+i*.06);
+          pill(cx+R*.64*Math.cos(a),cy+R*.64*Math.sin(a),T(s),.7+i*.06,{'data-hl':CONDS[s].q.map((q)=>`q${q}`).join(' '),'data-tip':CONDS[s].tip});
         });
       }},
       policy:{title:'Policy reaches the currency through rates, capital, and trade.',sub:'floating exchange rate · high capital mobility · two short-run transmission paths',src:'TREND LINEAGE · L11 MONO-EDITORIAL · MUNDELL–FLEMING',render(small){
-        const rows=[{name:'MONETARY EXPANSION',nodes:['LOWER RATE','CAPITAL OUTFLOW','DEPRECIATION']},{name:'FISCAL EXPANSION',nodes:['HIGHER RATE','CAPITAL INFLOW','APPRECIATION']}];
+        const rows=[{name:'MONETARY EXPANSION',nodes:['LOWER RATE','CAPITAL OUTFLOW','DEPRECIATION'],tips:['Domestic interest rates fall','Capital leaves for higher yields abroad','Selling the currency weakens it']},{name:'FISCAL EXPANSION',nodes:['HIGHER RATE','CAPITAL INFLOW','APPRECIATION'],tips:['Government borrowing pushes rates up','Higher yields draw capital in','Buying the currency strengthens it']}];
+        // A step lights its whole path; the other path dims.
+        const hover=(ri,i)=>({'data-hl':`row${ri}`,'data-tip':`${T(rows[ri].nodes[i])}\n${rows[ri].tips[i]}`});
         const head={fill:INK,'font-size':9,'font-weight':800,'letter-spacing':'.08em'};
         const foot={'text-anchor':'middle','font-size':8,'letter-spacing':'.1em',class:'fade',style:'animation-delay:.6s'};
         if(small){
@@ -148,8 +155,8 @@ chartI18n.use({
             const x=xs[ri];
             txt(x,30,T(r.name),{...head,'text-anchor':'middle'});
             r.nodes.forEach((name,i)=>{
-              if(i<2){path(`M${x} ${ys[i]+h/2} L${x} ${ys[i+1]-h/2}`,{stroke:GRID,'stroke-width':1.2,style:`animation-delay:${ri*.2+i*.12}s`});dot(x,(ys[i]+ys[i+1])/2,2,{fill:SOFT,style:`animation-delay:${.25+i*.12}s`})}
-              box(x-w/2,ys[i]-h/2,w,h,T(name),i===2,ri*.1+i*.1);
+              if(i<2){path(`M${x} ${ys[i]+h/2} L${x} ${ys[i+1]-h/2}`,{stroke:GRID,'stroke-width':1.2,style:`animation-delay:${ri*.2+i*.12}s`,'data-hl':`row${ri}`});dot(x,(ys[i]+ys[i+1])/2,2,{fill:SOFT,style:`animation-delay:${.25+i*.12}s`,'data-hl':`row${ri}`})}
+              box(x-w/2,ys[i]-h/2,w,h,T(name),i===2,ri*.1+i*.1,hover(ri,i));
             });
           });
           txt(180,276,T('REGIME MATTERS'),foot);
@@ -161,8 +168,8 @@ chartI18n.use({
             const y=ys[ri];
             txt(42,y+4,T(r.name),head);
             r.nodes.forEach((name,i)=>{
-              if(i<2){path(`M${xs[i]+65} ${y} L${xs[i+1]-65} ${y}`,{stroke:GRID,'stroke-width':1.2,style:`animation-delay:${ri*.2+i*.12}s`});dot((xs[i]+xs[i+1])/2,y,2,{fill:SOFT,style:`animation-delay:${.25+i*.12}s`})}
-              box(xs[i]-65,y-22,130,44,T(name),i===2,ri*.1+i*.1);
+              if(i<2){path(`M${xs[i]+65} ${y} L${xs[i+1]-65} ${y}`,{stroke:GRID,'stroke-width':1.2,style:`animation-delay:${ri*.2+i*.12}s`,'data-hl':`row${ri}`});dot((xs[i]+xs[i+1])/2,y,2,{fill:SOFT,style:`animation-delay:${.25+i*.12}s`,'data-hl':`row${ri}`})}
+              box(xs[i]-65,y-22,130,44,T(name),i===2,ri*.1+i*.1,hover(ri,i));
             });
           });
           txt(380,222,T('REGIME MATTERS · UNDER A FIXED RATE THE CENTRAL BANK MUST DEFEND THE PEG'),foot);

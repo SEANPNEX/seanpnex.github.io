@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="curve-kit.js"></script>
+  <script src="chart-fx.js"></script>
 </head>
 <body>
   <main class="card" id="card">
@@ -42,25 +43,25 @@
     const pts = (vals) => vals.map((v, t) => [F.x(t), F.y(v)]);
     const a = pts(AMC), f = pts(FV);
     // The gap between fair value and amortized cost is FVOCI's AOCI balance.
-    el(s, 'path', { d: `M${f.map((p) => p.join(' ')).join(' L')} L${a.slice().reverse().map((p) => p.join(' ')).join(' L')}Z`, fill: BAND, class: 'fade', style: 'animation-delay:.5s' });
+    el(s, 'path', { d: `M${f.map((p) => p.join(' ')).join(' L')} L${a.slice().reverse().map((p) => p.join(' ')).join(' L')}Z`, fill: BAND, class: 'fade', style: 'animation-delay:.5s', 'data-tip': `FVOCI's AOCI balance\nfair value − amortized cost: +${fmt(FV[1] - AMC[1])} at t1, +${fmt(FV[2] - AMC[2])} at t2, 0 at t3` });
     [0, 1, 2, 3].forEach((t) => {
       el(s, 'line', { x1: F.x(t), y1: F.BASE, x2: F.x(t), y2: F.BASE + 4, stroke: GRAY, 'stroke-width': 1 });
       label(s, F.x(t), F.BASE + 16, `t${t}`, { size: 10.5, weight: 700, fill: C.MUTED, anchor: 'middle' });
     });
-    const line = (p, stroke, delay) => el(s, 'path', { d: 'M' + p.map((q) => q.join(' ')).join(' L'), fill: 'none', stroke, 'stroke-width': 1.6, 'stroke-linejoin': 'round', pathLength: 1, class: 'draw', style: `animation-delay:${delay}s` });
-    line(f, GRAY, 0.1);
-    line(a, C.INK, 0.2);
+    const line = (p, stroke, delay, hl, tip) => el(s, 'path', { d: 'M' + p.map((q) => q.join(' ')).join(' L'), fill: 'none', stroke, 'stroke-width': 1.6, 'stroke-linejoin': 'round', pathLength: 1, class: 'draw', style: `animation-delay:${delay}s`, 'data-hl': hl, 'data-tip': tip });
+    line(f, GRAY, 0.1, 'fv', 'Fair value · FVOCI and FVPL\n951.96 → 980 → 999 → 1,000');
+    line(a, C.INK, 0.2, 'amc', 'Amortized cost · AMC\n951.96 → 966.2 → 982.14 → 1,000');
     // Values: fair value above its line, amortized cost below its line.
     [1, 2].forEach((t) => {
-      dot(s, ...f[t], 3.4, GRAY, 0.5 + t * 0.1);
-      dot(s, ...a[t], 3.4, C.INK, 0.55 + t * 0.1);
+      dot(s, ...f[t], 3.4, GRAY, 0.5 + t * 0.1, `t${t} · fair value ${fmt(FV[t])}\nFVOCI and FVPL carrying amount`).setAttribute('data-hl', 'fv');
+      dot(s, ...a[t], 3.4, C.INK, 0.55 + t * 0.1, `t${t} · amortized cost ${fmt(AMC[t])}\nAMC carrying amount`).setAttribute('data-hl', 'amc');
       // Both lines climb left to right, so above-left and below-right of each point stay clear.
       label(s, f[t][0] - 5, f[t][1] - 8, fmt(FV[t]), { size: 10.5, weight: 700, fill: C.MUTED, anchor: 'end', delay: 0.6 + t * 0.1 });
       label(s, a[t][0] + 6, a[t][1] + 15, fmt(AMC[t]), { size: 10.5, delay: 0.65 + t * 0.1 });
     });
-    dot(s, ...a[0], 3.8, C.INK, 0.4);
+    dot(s, ...a[0], 3.8, C.INK, 0.4, 't0 · bought at 951.96\nall three methods start here');
     label(s, a[0][0] + 2, a[0][1] + 17, fmt(AMC[0]), { size: 10.5, anchor: 'start', delay: 0.5 });
-    dot(s, ...a[3], 3.8, C.INK, 0.9);
+    dot(s, ...a[3], 3.8, C.INK, 0.9, 't3 · par 1,000\nall three methods end here, then the bond is repaid');
     label(s, a[3][0], a[3][1] - 9, '1,000', { size: 10.5, anchor: 'middle', delay: 1 });
     // FVOCI's AOCI balance (the shaded gap) under each date.
     const ay = F.BASE + 34;
@@ -85,7 +86,7 @@
       label(s, F.X0 - 7, yc + 4, `t${i + 1}`, { size: 10.5, weight: 700, fill: C.MUTED, anchor: 'end' });
       [['amc', C.INK, -1], ['fvpl', '#A8A7A0', 1]].forEach(([k, fill, side], j) => {
         const v = INC[k][i], y = yc + (side < 0 ? -bar - 1.5 : 1.5), delay = 0.15 + i * 0.12 + j * 0.06;
-        el(s, 'rect', { x: F.X0, y, width: F.x(v) - F.X0, height: bar, rx: 2, fill, class: 'grow', style: `transform-origin:${F.X0}px 0;animation-delay:${delay}s` });
+        el(s, 'rect', { x: F.X0, y, width: F.x(v) - F.X0, height: bar, rx: 2, fill, class: 'grow', style: `transform-origin:${F.X0}px 0;animation-delay:${delay}s`, 'data-hl': k, 'data-tip': `t${i + 1} · ${k === 'amc' ? 'AMC and FVOCI' : 'FVPL'} ${fmt(v)}\n${k === 'amc' ? 'effective interest, 12% × opening amortized cost' : 'coupon 100 + the year\'s fair-value change'}` });
         label(s, F.x(v) + 5, y + bar / 2 + 3.6, fmt(v), { size: 10.5, weight: 700, fill: k === 'amc' ? C.INK : C.MUTED, delay: delay + 0.3 });
       });
     });

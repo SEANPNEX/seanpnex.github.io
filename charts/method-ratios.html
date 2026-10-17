@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Profitability ratios across methods</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <script src="chart-fx.js"></script>
+  <style>
+    .tbl{display:grid;grid-template-columns:110px repeat(3,minmax(0,1fr));gap:6px}
+    .head{padding:0 2px 6px;border-bottom:1.5px solid var(--ink);font-size:12px;font-weight:800;line-height:1.2;align-self:end}
+    .rname{display:flex;flex-direction:column;justify-content:center;font-size:12px;font-weight:800;line-height:1.25}
+    .rname small{font-size:10px;font-weight:500;color:var(--muted)}
+    .cell{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:52px;padding:6px;border-radius:12px;
+      text-align:center;font-size:12.5px;font-weight:800;line-height:1.2;animation:fade .6s ease both}
+    .cell small{margin-top:3px;font-size:10.5px;font-weight:600;opacity:.8}
+    /* Darker = the method that shows the ratio highest. */
+    .r1{background:var(--ink);color:var(--paper)}
+    .r2{background:#6A6963;color:var(--paper)}
+    .r3{background:#D8D6CE;color:var(--ink)}
+    .span2{grid-column:span 2}
+    [data-tip]{cursor:default}
+    @media(max-width:440px){.tbl{grid-template-columns:72px repeat(3,minmax(0,1fr));gap:4px}.head{font-size:10.5px}.cell{font-size:11px;padding:5px 3px}.cell small{font-size:9.5px}.rname{font-size:10.5px}}
+    @media(prefers-reduced-motion:reduce){.cell{animation:none}}
+  </style>
+</head>
+<body>
+  <main class="card" id="card">
+    <h2>The equity method flatters every profitability ratio.</h2>
+    <div class="sub">Same investee, same NI to A's shareholders (400) · darker = the method that shows the ratio highest · figures from the 50% JV example: revenue 3,000 / 3,500 / 4,000 · assets 2,400 / 2,800 / 3,600 · equity 1,400 / 1,400 / 1,800</div>
+    <div class="tbl" id="tbl" data-fx-scope></div>
+    <div class="src">LEDGER GRID · LIEFLAT L9 · RATIOS BY ACCOUNTING METHOD (ILLUSTRATIVE)</div>
+  </main>
+  <script>
+  // ── Rows: name, formula, cells [rank, label, value, span] ──
+  var M = ['Equity method', 'Proportionate consolidation', 'Acquisition method'];
+  var ROWS = [
+    ['Net profit margin', 'NI / revenue', [[1, 'Highest', '13.3%'], [2, 'Middle', '11.4%'], [3, 'Lowest', '10.0%']],
+      'same NI over more revenue: none, 50% or 100% of JV’s sales is added'],
+    ['ROA', 'NI / total assets', [[1, 'Highest', '16.7%'], [2, 'Middle', '14.3%'], [3, 'Lowest', '11.1%']],
+      'same NI over more assets: one investment line, 50% or 100% of JV’s assets'],
+    ['ROE', 'NI / total equity', [[1, 'Higher', '28.6%', 2], [3, 'Lower', '22.2%']],
+      'equity is 1,400 under both one-line and proportionate; the acquisition method adds NCI of 400'],
+  ];
+  var h = '<div></div>' + M.map(function (m) { return '<div class="head">' + m + '</div>'; }).join('');
+  ROWS.forEach(function (r, i) {
+    h += '<div class="rname">' + r[0] + '<small>' + r[1] + '</small></div>';
+    r[2].forEach(function (c, j) {
+      var methods = c[3] ? M[0] + ' and ' + M[1].toLowerCase() : M[r[2].length === 2 ? 2 : j];
+      h += '<div class="cell r' + c[0] + (c[3] ? ' span2' : '') + '" data-hl="row' + i + '" data-tip="' + r[0] + ' · ' + methods + ': ' + c[2] + '&#10;' + r[3] + '" style="animation-delay:' + (i * 0.12 + j * 0.06) + 's">' +
+        c[1] + '<small>' + c[2] + '</small></div>';
+    });
+  });
+  document.getElementById('tbl').innerHTML = h;
+  curveKit.fit();
+  </script>
+</body>
+</html>

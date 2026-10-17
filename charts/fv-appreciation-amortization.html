@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Equity method · amortizing the FV appreciation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <link rel="stylesheet" href="ledger.css">
+  <style>
+    .ledger th small,.ledger td small{display:block;margin-top:2px;font-size:10px;font-weight:500;color:var(--muted)}
+    .ledger th.end,.ledger td.end{background:var(--faint)}
+    .ledger td.end,.ledger th.end{padding-right:8px}
+    /* Run-off: BY's 3 step-up left inside the investment at each year end, to scale. */
+    .runoff{margin-top:18px}
+    .runoff h3{font-size:12px;font-weight:700;letter-spacing:-.01em}
+    .runoff h3 span{margin-left:6px;font-weight:500;color:var(--muted)}
+    .rungs{display:flex;align-items:flex-end;gap:4px;height:92px;margin-top:8px;border-bottom:1px solid var(--ink)}
+    .rung{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;min-width:0;height:100%}
+    .rung b{margin-bottom:3px;font-size:10px;font-weight:800;font-variant-numeric:tabular-nums}
+    .rung i{display:block;width:100%;max-width:30px;border-radius:5px 5px 0 0;background:#6A6963;transform-origin:bottom;animation:grow .6s cubic-bezier(.2,.8,.2,1) both}
+    .rung.buy i{background:none;box-shadow:inset 0 0 0 1.5px var(--ink)}
+    .rung.zero b{color:var(--muted)}
+    .rung{cursor:default}
+    .rung i{transition:background-color .15s ease}
+    .rung.fx-hot i{background:var(--ink)}
+    .rung.buy.fx-hot i{background:none}
+    .years{display:flex;gap:4px;margin-top:4px}
+    .years span{flex:1;min-width:0;text-align:center;font-size:9.5px;font-weight:600;color:var(--muted)}
+    @keyframes grow{from{transform:scaleY(0)}}
+    @media(max-width:420px){.rungs,.years{gap:2px}.rung b{font-size:9px}.years span{font-size:8.5px}}
+    @media(prefers-reduced-motion:reduce){.rung i{animation:none}}
+  </style>
+  <script src="chart-fx.js"></script>
+</head>
+<body>
+  <main class="card" id="card">
+    <h2>BY picks up 299.7, not 300: the FV step-up depreciates too.</h2>
+    <div class="sub">BY owns 30% of SY · SY's PPE: BV 110, FV 120, 10-year straight line · SY reports NI 1,000 after its own −11 depreciation</div>
+    <div class="ledger-wrap"><table class="ledger" aria-label="Equity income adjusted for amortization of fair value appreciation">
+      <thead>
+        <tr>
+          <th>Equity income bridge</th>
+          <th>SY level<small>100%</small></th>
+          <th class="end">BY's share<small>× 30%</small></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="row-in"><td class="k">SY's reported NI<small>already net of BV depreciation 110 / 10 = 11</small></td><td>1,000</td><td class="end">300</td></tr>
+        <tr class="row-in" style="animation-delay:.06s"><td class="k">Amortize FV appreciation<small>(120 − 110) / 10 years</small></td><td>−1</td><td class="end">−0.3</td></tr>
+        <tr class="eq row-in" style="animation-delay:.12s"><td class="k"><b>NI on a fair-value basis</b><small>FV depreciation 120 / 10 = 12</small></td><td>999</td><td class="end">299.7<span class="pill">I/S</span></td></tr>
+      </tbody>
+    </table></div>
+    <div class="note">BY records equity income of <b>299.7</b>: RE +299.7 and Investment in SY +299.7.</div>
+    <section class="runoff">
+      <h3>The −0.3 repeats for 10 years<span>BY's step-up left in the investment, 30% × 10 = 3 at purchase</span></h3>
+      <div class="rungs" id="rungs" role="img" aria-label="BY's share of the step-up falls by 0.3 a year, from 3 at purchase to 0 after year 10"></div>
+      <div class="years" id="years"></div>
+    </section>
+    <div class="src">LEDGER GRID · LIEFLAT L9 · FV APPRECIATION AMORTIZATION</div>
+  </main>
+  <script>
+  // ── Run-off: BY's share of the step-up and the yearly amortization ──
+  var STEP_UP = 3, PER_YEAR = 0.3, YEARS = 10;
+  var rungs = document.getElementById('rungs'), years = document.getElementById('years');
+  for (var k = 0; k <= YEARS; k++) {
+    var left = Math.round((STEP_UP - PER_YEAR * k) * 10) / 10;
+    var cls = k === 0 ? 'buy' : left === 0 ? 'zero' : '';
+    var r = document.createElement('div');
+    r.className = 'rung ' + cls;
+    r.dataset.tip = k === 0 ? 'At purchase\nBY\'s step-up 30% × (120 − 110) = 3' : 'Year ' + k + ' · ' + (left === 0 ? '0' : left.toFixed(1)) + ' left\n−0.3 to equity income this year' + (left === 0 ? '; fully amortized' : '');
+    r.innerHTML = '<b>' + (left === 0 ? '0' : left.toFixed(1)) + '</b><i style="height:' + (left / STEP_UP) * 64 + 'px;animation-delay:' + (0.2 + k * 0.05) + 's"></i>';
+    rungs.append(r);
+    var y = document.createElement('span');
+    y.textContent = k === 0 ? 'Buy' : 'Y' + k;
+    years.append(y);
+  }
+  curveKit.fit();
+  </script>
+</body>
+</html>

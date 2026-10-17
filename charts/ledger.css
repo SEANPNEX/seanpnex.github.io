@@ -43,6 +43,11 @@
 .note{margin-top:10px;font-size:11.5px;line-height:1.5;color:var(--muted)}
 .note b{color:var(--ink)}
 .row-in{animation:fade .6s ease both}
+/* The row under the pointer reads across as one line. */
+.ledger tbody tr:not(.grp) td{transition:background-color .15s ease,color .15s ease}
+.ledger tbody tr:not(.grp):hover td{background-color:rgba(28,28,26,.055)}
+.ledger tbody tr:not(.grp):hover td.end{background-color:#D9D8D1}
+.ledger tbody tr:not(.grp):hover td.k{color:var(--ink)}
 @media(max-width:420px){
   .ledger th{padding:0 3px 7px;font-size:10px;letter-spacing:0}
   .ledger td{padding:6px 3px;font-size:10.5px}

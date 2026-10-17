@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="curve-kit.js"></script>
+  <script src="chart-fx.js"></script>
 </head>
 <body>
   <main class="card" id="card">
@@ -86,7 +87,7 @@ chartI18n.use({
   </script>
   <script>
 (() => {
-  const { C, T, label, frame, axes, curve, beads, guide, dot, arrow, mount, html } = curveKit;
+  const { C, T, label, frame, axes, curve, beads, guide, dot, arrow, probe, mount, html } = curveKit;
   // Illustrative parameters; PHI = δ + n + θ/(1−α).
   const ALPHA = 0.33, A = 1.2, S1 = 0.22, S2 = 0.42, PHI = 0.15, K = 8.5;
   const sf = (s) => (k) => s * A * Math.pow(k, ALPHA), ray = (k) => PHI * k;
@@ -132,10 +133,11 @@ chartI18n.use({
     const ay = F.BASE + 28;
     arrow(s, [[pts.A[0] + 12, ay], [pts.B[0] - 12, ay]], { stroke: C.MUTED, width: 1.2, delay: 1.1 });
 
-    dot(s, ...pts.A, 5, C.MUTED, 0.7, `A: k=${kA.toFixed(2)}, y=${yA.toFixed(2)}`);
-    dot(s, ...pts.B, 5.2, C.INK, 0.82, `B: k=${kB.toFixed(2)}, y=${yB.toFixed(2)}`);
+    dot(s, ...pts.A, 5, C.MUTED, 0.7, `A · steady state at s₁\nk* = ${kA.toFixed(2)} · investment = ${yA.toFixed(2)}`);
+    dot(s, ...pts.B, 5.2, C.INK, 0.82, `B · steady state at s₂\nk* = ${kB.toFixed(2)} · investment = ${yB.toFixed(2)}`);
     label(s, pts.A[0] + 9, pts.A[1] + 17, 'A', { size: 13, fill: C.MUTED, delay: 0.78 });
     label(s, pts.B[0] - 9, pts.B[1] - 9, 'B', { size: 13, anchor: 'end', delay: 0.9 });
+    probe(s, F, [{ name: 's₂ f(k)', f: sf(S2) }, { name: 's₁ f(k)', f: sf(S1), stroke: C.SOFT }, { name: 'required investment', f: ray, stroke: C.MUTED }]);
   }, height);
 })();
   </script>

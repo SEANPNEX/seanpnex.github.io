@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Quant M1 — Multiple Regression review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    id: "q1-slope-meaning",
+    topic: "Model · slope coefficient",
+    front: "In \\(Y_i=\\beta_0+\\beta_1X_{1i}+\\cdots+\\beta_kX_{ki}+\\varepsilon_i\\), what does a slope \\(\\beta_j\\) measure?",
+    back: "<div class=\"ans\"><p>The expected change in \\(Y\\) for a <strong>one-unit increase in \\(X_j\\)</strong>, <strong>holding all other independent variables constant</strong> (a partial effect).</p></div>",
+    gap: "It is not the total effect of \\(X_j\\), and a significant slope is not proof of causality."
+  },
+  {
+    id: "q1-uses",
+    topic: "Uses",
+    front: "Name three uses of multiple linear regression.",
+    back: "<div class=\"ans\"><ul><li><strong>Identify and quantify</strong> relationships between variables</li><li><strong>Test theories</strong>, e.g. whether several risk factors explain returns</li><li><strong>Forecast</strong> the dependent variable from a set of predictors</li></ul></div>"
+  },
+  {
+    id: "q1-assumptions",
+    topic: "Assumptions",
+    front: "List the six classical assumptions of multiple linear regression.",
+    back: "<div class=\"ans\"><ul><li><strong>Linearity</strong> in the parameters</li><li><strong>Zero conditional mean</strong>: \\(E(\\varepsilon\\mid X)=0\\) (exogeneity)</li><li><strong>Homoskedasticity</strong>: \\(\\operatorname{Var}(\\varepsilon\\mid X)=\\sigma^2\\)</li><li><strong>Independent</strong> (uncorrelated) errors</li><li><strong>No perfect multicollinearity</strong></li><li><strong>Normal errors</strong>, for exact small-sample tests</li></ul></div>",
+    gap: "The assumptions are about the unobservable errors; in practice you inspect the residuals \\(e_i=Y_i-\\hat Y_i\\) as proxies."
+  },
+  {
+    id: "q1-linearity-curve",
+    topic: "Assumptions · linearity",
+    front: "Does \"linear in the parameters\" rule out a curved relationship between \\(Y\\) and \\(X\\)?",
+    back: "<div class=\"ans\"><p><strong>No.</strong> Linearity is about the <strong>coefficients</strong>. A curve can be modeled by adding transformed variables such as \\(X^2\\) or \\(\\ln X\\); the model is still linear in the \\(\\beta\\)s.</p></div>"
+  },
+  {
+    id: "q1-multicollinearity",
+    topic: "Assumptions · multicollinearity",
+    front: "Does high (but not perfect) correlation between two predictors violate the regression assumptions?",
+    back: "<div class=\"ans\"><p><strong>No.</strong> Only <strong>perfect</strong> multicollinearity (one predictor an exact linear combination of others) violates the assumption.</p><p>High correlation is allowed but <strong>inflates standard errors</strong>, so individual \\(t\\)-statistics can look small.</p></div>",
+    gap: "Check VIFs (tolerance = 1/VIF); pairwise correlations alone can miss a combination of several predictors."
+  },
+  {
+    id: "q1-normality",
+    topic: "Assumptions · normality",
+    front: "Is normality of the errors needed for the OLS coefficients to be unbiased?",
+    back: "<div class=\"ans\"><p><strong>No.</strong> Unbiasedness needs exogeneity, not normality. Normality supports <strong>exact \\(t\\)- and \\(F\\)-tests in small samples</strong>; with large samples, asymptotic inference still works.</p></div>"
+  },
+  {
+    id: "q1-diagnostics",
+    topic: "Diagnostics",
+    front: "Which assumption does each residual pattern threaten: (1) curvature in residuals vs fitted, (2) a funnel shape, (3) runs or cycles in time order, (4) an S-shaped Q–Q plot?",
+    back: "<div class=\"ans\"><ul><li>(1) Curvature → <strong>linearity</strong>: missing transformation, interaction or nonlinear term</li><li>(2) Funnel or fan → <strong>heteroskedasticity</strong></li><li>(3) Runs, cycles → <strong>serial correlation</strong> (independence); check the ACF or Durbin–Watson</li><li>(4) S-shaped Q–Q → <strong>non-normal tails</strong>; one bent tail = skewness, isolated points = outliers</li></ul></div>"
+  },
+  {
+    id: "q1-ols-blue",
+    topic: "OLS",
+    front: "What does OLS minimize, and when is it BLUE?",
+    back: "<div class=\"ans\"><p>OLS chooses the coefficients that minimize the <strong>sum of squared errors</strong>:</p><div class=\"eq-block\">$$SSE=\\sum_{i=1}^{n}(Y_i-\\hat Y_i)^2$$</div><p>Under the Gauss–Markov assumptions (exogeneity, homoskedasticity, uncorrelated errors, no perfect multicollinearity) it is the <strong>best linear unbiased estimator</strong>: lowest variance among linear unbiased estimators.</p></div>"
+  },
+  {
+    id: "q1-t-test",
+    topic: "Inference · t-test",
+    front: "How do you test whether one slope \\(\\beta_j\\) is significant? Give the statistic, its degrees of freedom and the confidence interval.",
+    back: "<div class=\"ans\"><p>\\(H_0:\\beta_j=0\\) vs \\(H_a:\\beta_j\\ne0\\)</p><div class=\"eq-block\">$$t=\\frac{\\hat\\beta_j}{SE(\\hat\\beta_j)}$$</div><div class=\"eq-block\">$$df=n-k-1$$</div><p>Reject if \\(|t|>t_{\\alpha/2,\\,n-k-1}\\) (or \\(p<\\alpha\\)). CI: \\(\\hat\\beta_j\\pm t_{\\alpha/2}\\,SE(\\hat\\beta_j)\\).</p></div>",
+    gap: "Statistical significance is not economic significance."
+  },
+  {
+    id: "q1-anova",
+    topic: "ANOVA",
+    front: "Write the ANOVA decomposition with degrees of freedom and mean squares.",
+    back: "<div class=\"ans\"><div class=\"eq-block\">$$\\underbrace{SST}_{n-1}=\\underbrace{SSR}_{k}+\\underbrace{SSE}_{n-k-1}$$</div><ul><li>\\(SSR\\): explained variation, \\(MSR=SSR/k\\)</li><li>\\(SSE\\): unexplained variation, \\(MSE=SSE/(n-k-1)\\)</li></ul></div>"
+  },
+  {
+    id: "q1-see-r2",
+    topic: "Fit · SEE and R²",
+    front: "Define the standard error of estimate (SEE) and \\(R^2\\). What does a high \\(R^2\\) not prove?",
+    back: "<div class=\"ans\"><div class=\"eq-block\">$$SEE=\\sqrt{\\frac{SSE}{n-k-1}}=\\sqrt{MSE}$$</div><div class=\"eq-block\">$$R^2=\\frac{SSR}{SST}=1-\\frac{SSE}{SST}$$</div><p>\\(R^2\\) is the share of sample variation in \\(Y\\) explained. It does <strong>not</strong> prove the model is correctly specified.</p></div>"
+  },
+  {
+    id: "q1-f-test",
+    topic: "Inference · overall F-test",
+    front: "State the overall F-test: hypotheses, statistic and degrees of freedom. Does a significant F mean every slope is significant?",
+    back: "<div class=\"ans\"><p>\\(H_0:\\beta_1=\\cdots=\\beta_k=0\\) vs at least one slope \\(\\ne0\\)</p><div class=\"eq-block\">$$F=\\frac{MSR}{MSE}$$</div><div class=\"eq-block\">$$df=(k,\\;n-k-1)$$</div><p><strong>No.</strong> The predictors can be jointly useful while individual \\(t\\)-statistics are small, e.g. because of multicollinearity.</p></div>"
+  }
+];
+
+flashDeck({
+  key: "cfa-c1-m1-review",
+  source: "CFA L2 Quantitative Methods \u00b7 M1 Multiple Regression \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

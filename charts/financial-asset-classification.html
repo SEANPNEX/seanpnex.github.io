@@ -45,8 +45,12 @@
     .legend span{display:inline-flex;align-items:center;gap:5px}
     .legend i{width:10px;height:10px;border-radius:3px}
     .lane>*{animation:fade .5s ease both}
+    .step{transition:background-color .15s ease}
+    .step:hover{background-color:rgba(28,28,26,.05)}
+    [data-hl]{cursor:default}
     @media(max-width:539px){.lanes{grid-template-columns:1fr;gap:22px}}
   </style>
+  <script src="chart-fx.js"></script>
 </head>
 <body>
   <main class="card" id="card">
@@ -58,22 +62,22 @@
         <div class="go"></div>
         <div class="step">
           <div class="q">Solely principal + interest?<small>SPPI cash-flow test</small></div>
-          <div class="exit">No<span class="tag fvpl">FVPL</span></div>
+          <div class="exit">No<span class="tag fvpl" data-hl="fvpl">FVPL</span></div>
         </div>
         <div class="go">Yes</div>
         <div class="step">
           <div class="q">Business model?<small>M1 hold to collect · M2 collect and sell</small></div>
-          <div class="exit">Neither<span class="tag fvpl">FVPL</span></div>
+          <div class="exit">Neither<span class="tag fvpl" data-hl="fvpl">FVPL</span></div>
         </div>
         <div class="go">M1 or M2</div>
         <div class="step">
           <div class="q">Fair value option?<small>elected to reduce an accounting mismatch</small></div>
-          <div class="exit">Yes<span class="tag fvpl">FVPL</span></div>
+          <div class="exit">Yes<span class="tag fvpl" data-hl="fvpl">FVPL</span></div>
         </div>
         <div class="go">No</div>
         <div class="results">
-          <div class="result amc"><b>AMC</b><small>M1 · hold to collect</small></div>
-          <div class="result fvoci"><b>FVOCI</b><small>M2 · collect and sell</small></div>
+          <div class="result amc" data-hl="amc"><b>AMC</b><small>M1 · hold to collect</small></div>
+          <div class="result fvoci" data-hl="fvoci"><b>FVOCI</b><small>M2 · collect and sell</small></div>
         </div>
       </section>
       <section class="lane" aria-label="Equity instruments">
@@ -81,28 +85,28 @@
         <div class="go"></div>
         <div class="step">
           <div class="q">Held for trading?</div>
-          <div class="exit">Yes<span class="tag fvpl">FVPL</span></div>
+          <div class="exit">Yes<span class="tag fvpl" data-hl="fvpl">FVPL</span></div>
         </div>
         <div class="go">No</div>
         <div class="step key">
           <div class="q">Designate at FVOCI?<small>irrevocable election</small></div>
-          <div class="exit">No<span class="tag fvpl">FVPL</span></div>
+          <div class="exit">No<span class="tag fvpl" data-hl="fvpl">FVPL</span></div>
         </div>
         <div class="go">Yes</div>
         <div class="results">
-          <div class="result fvoci"><b>FVOCI</b><small>only dividends reach profit or loss</small></div>
+          <div class="result fvoci" data-hl="fvoci"><b>FVOCI</b><small>only dividends reach profit or loss</small></div>
         </div>
       </section>
     </div>
     <div class="deriv">
       <span class="entry">Derivatives</span>
-      <span>always <span class="tag fvpl">FVPL</span></span>
+      <span>always <span class="tag fvpl" data-hl="fvpl">FVPL</span></span>
       <small>except hedging instruments</small>
     </div>
     <div class="legend">
-      <span><i class="fvpl"></i>FVPL · fair value through profit or loss</span>
-      <span><i class="fvoci"></i>FVOCI · fair value through OCI</span>
-      <span><i class="amc"></i>AMC · amortized cost</span>
+      <span data-hl="fvpl"><i class="fvpl"></i>FVPL · fair value through profit or loss</span>
+      <span data-hl="fvoci"><i class="fvoci"></i>FVOCI · fair value through OCI</span>
+      <span data-hl="amc"><i class="amc"></i>AMC · amortized cost</span>
     </div>
     <div class="src">DECISION FLOW · LIEFLAT G7 · FINANCIAL ASSET CLASSIFICATION</div>
   </main>

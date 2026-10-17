@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Quant M3 — Model Misspecification review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    id: "q3-forms",
+    topic: "Misspecification · forms",
+    front: "Name the six common forms of model misspecification.",
+    back: "<div class=\"ans\"><ul><li>Omitted relevant variable</li><li>Irrelevant included variable</li><li>Incorrect functional form</li><li>Incorrect variable definition or scaling</li><li>Improper data pooling</li><li>Endogenous explanatory variable</li></ul></div>"
+  },
+  {
+    id: "q3-ovb",
+    topic: "Misspecification · omitted variable",
+    front: "When does omitting a variable bias an included slope coefficient?",
+    back: "<div class=\"ans\"><p>When <strong>both</strong> hold:</p><ul><li>the omitted variable <strong>affects \\(Y\\)</strong>, and</li><li>it is <strong>correlated with the included predictor</strong>.</li></ul><p>If it is uncorrelated with the included predictors, it only raises unexplained variance.</p></div>",
+    gap: "Omitted-variable bias makes the coefficients biased and inconsistent; robust standard errors do not fix it."
+  },
+  {
+    id: "q3-irrelevant",
+    topic: "Misspecification · irrelevant variable",
+    front: "What does including an irrelevant variable do to the OLS estimates?",
+    back: "<div class=\"ans\"><p>OLS stays <strong>unbiased</strong> (other assumptions holding), but the coefficient estimates may become <strong>less precise</strong>.</p></div>"
+  },
+  {
+    id: "q3-pooling-endog",
+    topic: "Misspecification · pooling and endogeneity",
+    front: "What goes wrong with (1) improper pooling and (2) an endogenous predictor?",
+    back: "<div class=\"ans\"><ul><li><strong>Pooling</strong> groups with different intercepts or slopes hides structural differences and gives unstable coefficients. Fix with indicators, interactions, panel methods or separate models.</li><li><strong>Endogeneity</strong> (jointly determined with \\(Y\\), or measured with error) gives \\(E(\\varepsilon\\mid X)\\ne0\\): <strong>biased and inconsistent</strong> OLS. Fix with a better design or instrumental variables.</li></ul></div>"
+  },
+  {
+    id: "q3-form-tests",
+    topic: "Checks · functional form and breaks",
+    front: "Which tests check functional form, groups of extra terms, and a known structural break?",
+    back: "<div class=\"ans\"><ul><li><strong>Ramsey RESET</strong>: general functional-form problems (does not say which term is missing)</li><li><strong>Restricted F-test</strong>: whether polynomial, interaction or group terms are jointly significant</li><li><strong>Chow test</strong>: a restricted F-test for a <strong>known break point</strong></li></ul></div>"
+  },
+  {
+    id: "q3-hetero-types",
+    topic: "Heteroskedasticity · types",
+    front: "Unconditional vs conditional heteroskedasticity: which one is a problem, and why?",
+    back: "<div class=\"ans\"><ul><li><strong>Unconditional</strong>: variance changes for reasons unrelated to the \\(X\\)s; generally <strong>no major inference problem</strong>.</li><li><strong>Conditional</strong>: variance is related to the \\(X\\)s; conventional standard errors become unreliable, <strong>usually too small</strong>, so \\(t\\)-stats are inflated and <strong>Type I errors</strong> become more likely.</li></ul></div>",
+    gap: "Coefficients stay unbiased (under exogeneity); only the standard errors and efficiency suffer."
+  },
+  {
+    id: "q3-bp",
+    topic: "Heteroskedasticity · Breusch–Pagan",
+    front: "Describe the Breusch–Pagan test: null, auxiliary regression, statistic.",
+    back: "<div class=\"ans\"><p>\\(H_0\\): <strong>homoskedastic</strong> errors (no conditional heteroskedasticity).</p><p>Regress the <strong>squared residuals</strong> on the \\(k\\) predictors, then</p><div class=\"eq-block\">$$LM=nR^2_{\\text{aux}}\\sim\\chi^2_k$$</div><p>A large \\(LM\\) (small \\(p\\)) supports conditional heteroskedasticity.</p></div>"
+  },
+  {
+    id: "q3-hetero-fix",
+    topic: "Heteroskedasticity · responses",
+    front: "How do you respond to conditional heteroskedasticity? Do robust standard errors change the coefficients?",
+    back: "<div class=\"ans\"><ul><li><strong>Robust (White) standard errors</strong> to correct inference</li><li><strong>Weighted / generalized least squares</strong> if the variance structure can be modeled</li><li>Revisit the <strong>functional form</strong> (a missing transformation or variable)</li></ul><p>Robust SEs change only the <strong>standard errors</strong>, not the coefficients or fitted values.</p></div>"
+  },
+  {
+    id: "q3-serial-patterns",
+    topic: "Serial correlation · patterns and effects",
+    front: "What do positive and negative serial correlation look like in residuals, and what do they do to OLS?",
+    back: "<div class=\"ans\"><ul><li><strong>Positive</strong> (\\(\\rho>0\\)): persistent runs above or below zero</li><li><strong>Negative</strong> (\\(\\rho<0\\)): alternating, zigzag signs</li></ul><p>Under strict exogeneity the slopes stay unbiased but are <strong>inefficient</strong>; standard errors are unreliable (positive serial correlation usually <strong>understates</strong> them).</p></div>",
+    gap: "With a lagged dependent variable among the regressors, serial correlation makes OLS coefficients inconsistent too."
+  },
+  {
+    id: "q3-dw",
+    topic: "Serial correlation · Durbin–Watson",
+    front: "How do you read a Durbin–Watson statistic, and when is it not valid?",
+    back: "<div class=\"ans\"><p>\\(0\\le DW\\le4\\): \\(DW\\approx2\\) little first-order correlation; \\(DW<2\\) <strong>positive</strong>; \\(DW>2\\) <strong>negative</strong>. The formal test uses lower and upper bounds and can be inconclusive.</p><p><strong>Not valid</strong> in its standard form when a <strong>lagged dependent variable</strong> is a regressor, and it only tests first order.</p></div>"
+  },
+  {
+    id: "q3-bg",
+    topic: "Serial correlation · Breusch–Godfrey",
+    front: "How does the Breusch–Godfrey test work, and why keep the original regressors in the auxiliary regression?",
+    back: "<div class=\"ans\"><p>Regress the residual on the original \\(X\\)s <strong>plus \\(p\\) lagged residuals</strong>; test \\(H_0:\\rho_1=\\cdots=\\rho_p=0\\) with an F-test, \\(df=(p,\\;n_{\\text{aux}}-k-p-1)\\).</p><p>Keeping the \\(X\\)s asks: <strong>after controlling for the model's variables, do lagged residuals still explain the current residual?</strong></p></div>",
+    gap: "Rejection means correlation at one or more of the tested lags, not at every lag."
+  },
+  {
+    id: "q3-bg-example",
+    topic: "Serial correlation · worked example",
+    front: "Breusch–Godfrey F-test: \\(n_{\\text{aux}}=120\\), \\(k=3\\), \\(p=2\\), \\(SSE_R=110\\), \\(SSE_U=96\\). Compute \\(F\\) (5% critical ≈ 3.08).",
+    back: "<div class=\"ans\"><div class=\"eq-block\">$$F=\\frac{(110-96)/2}{96/(120-3-2-1)}=\\frac{7}{0.842}\\approx8.31$$</div><p>\\(8.31>3.08\\) → <strong>reject</strong>: serial correlation at lag 1, lag 2, or both.</p></div>"
+  },
+  {
+    id: "q3-serial-fix",
+    topic: "Serial correlation · responses",
+    front: "How do you respond to serial correlation?",
+    back: "<div class=\"ans\"><ul><li><strong>Newey–West</strong> (HAC) standard errors when the issue is inference; they do not remove the correlation or change the coefficients</li><li><strong>Model the dynamics</strong>: add justified lags or missing structure</li><li><strong>Generalized least squares</strong> when the error process can be specified</li></ul></div>"
+  },
+  {
+    id: "q3-mc",
+    topic: "Multicollinearity · symptoms and VIF",
+    front: "What are the symptoms of multicollinearity, and how is the VIF computed?",
+    back: "<div class=\"ans\"><ul><li>Large standard errors, small \\(|t|\\) (<strong>Type II</strong> errors)</li><li>Unstable coefficient sizes or signs</li><li>Significant overall F but few significant individual \\(t\\)s</li></ul><div class=\"eq-block\">$$VIF_j=\\frac{1}{1-R_j^2}$$</div><p>\\(R_j^2\\) from regressing \\(X_j\\) on the other predictors; 1 = none; 5 or 10 are rules of thumb for investigation.</p></div>",
+    gap: "Coefficients stay unbiased. Dropping a variable that belongs in the model trades imprecision for omitted-variable bias."
+  },
+  {
+    id: "q3-summary",
+    topic: "Summary",
+    front: "For each problem, are the OLS coefficients biased? (1) correlated omitted variable, (2) conditional heteroskedasticity, (3) serial correlation, (4) multicollinearity",
+    back: "<div class=\"ans\"><ul><li>(1) <strong>Biased and inconsistent</strong></li><li>(2) Unbiased but inefficient; standard errors inconsistent</li><li>(3) Unbiased but inefficient (strict exogeneity); standard errors generally inconsistent</li><li>(4) Unbiased; standard errors correct but <strong>large</strong></li></ul></div>"
+  }
+];
+
+flashDeck({
+  key: "cfa-c1-m3-review",
+  source: "CFA L2 Quantitative Methods \u00b7 M3 Model Misspecification \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

@@ -13,7 +13,8 @@ body{padding:18px}
 .figure-head h1{margin:0 0 5px;font-size:24px;line-height:1.12;letter-spacing:-.035em}
 .figure-head p{margin:0;color:var(--muted);font-size:11px;line-height:1.5}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.card{min-width:0;padding:20px 20px 15px;border-radius:24px;background:var(--paper);outline:1px solid var(--grid)}
+.card{min-width:0;padding:20px 20px 15px;border-radius:24px;background:var(--paper);outline:1px solid var(--grid);transition:outline-color .2s ease}
+.card:hover{outline-color:var(--faint)}
 .card h2{margin:0 0 4px;font-size:16px;line-height:1.2;letter-spacing:-.025em}
 .sub{min-height:34px;color:var(--muted);font-size:10px;line-height:1.45}
 svg{display:block;width:100%;height:auto;margin-top:4px;overflow:visible}
@@ -27,6 +28,7 @@ svg{display:block;width:100%;height:auto;margin-top:4px;overflow:visible}
 @media(max-width:620px){body{padding:12px}.grid{grid-template-columns:1fr}.card{padding:18px}.sub{min-height:0;margin-bottom:3px}}
 @media(prefers-reduced-motion:reduce){.fade,.pop,.draw{animation:none!important;opacity:1!important;stroke-dashoffset:0!important}}
 </style>
+  <script src="chart-fx.js"></script>
 </head>
 <body>
 <header class="figure-head">
@@ -193,7 +195,7 @@ function renderPlumb(id,kind){
       const x=mapX(px),y=mapY(py);
       el(s,'line',{x1:x,y1:base,x2:x,y2:y,stroke:'#B0AFA9','stroke-width':.55,opacity:.62,class:'fade',style:`animation-delay:${.16+i*.035}s`});
       const dot=el(s,'circle',{cx:x,cy:y,r:2.7,fill:i%6===0?INK:'#55554F',class:'pop',style:`animation-delay:${.22+i*.035}s`});
-      tip(dot,kind==='qq'?`Theoretical quantile ${px.toFixed(0)} · ordered residual ${py.toFixed(0)}`:`Fitted value ${px.toFixed(0)} · residual position ${py.toFixed(0)}`);
+      tip(dot,kind==='qq'?`Observation ${i+1}\ntheoretical quantile ${px.toFixed(0)} · ordered residual ${py.toFixed(0)}`:`Observation ${i+1}\nfitted value ${px.toFixed(0)} · residual ${(50-py)>=0?'+':''}${(50-py).toFixed(0)} from zero`);
     });
     txt(s,{x:X0,y:base+17,'font-size':7,'font-weight':600,fill:'#8F8E88',class:'fade'},kind==='qq'?'LOW QUANTILE':'LOW FIT');
     txt(s,{x:X1,y:base+17,'font-size':7,'font-weight':600,fill:'#8F8E88','text-anchor':'end',class:'fade'},kind==='qq'?'HIGH QUANTILE':'HIGH FIT');

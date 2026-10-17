@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="curve-kit.js"></script>
+  <script src="chart-fx.js"></script>
 </head>
 <body>
   <main class="card" id="card">
@@ -65,7 +66,7 @@ chartI18n.use({
   </script>
   <script>
 (() => {
-  const { C, T, label, frame, axes, curve, beads, guide, dot, arrow, mount, html } = curveKit;
+  const { C, T, label, frame, axes, curve, beads, guide, dot, arrow, probe, mount, html } = curveKit;
   // Illustrative parameters; PHI = θ/(1−α) + δ + n.
   const ALPHA = 0.33, A = 1.2, S = 0.3, PHI = 0.15, K = 8.2;
   const sy = (k) => S * A * Math.pow(k, ALPHA), ray = (k) => PHI * k;
@@ -99,12 +100,13 @@ chartI18n.use({
     arrow(s, [[F.x(1), ay], [xs - 12, ay]], { stroke: C.MUTED, width: 1.2, delay: 1.05 });
     arrow(s, [[F.x(K * 0.94), ay], [xs + 12, ay]], { stroke: C.MUTED, width: 1.2, delay: 1.1 });
 
-    dot(s, xs, ys, 5.2, C.INK, 0.72, `k*=${KS.toFixed(2)}, sy*=${YS.toFixed(2)}`);
+    dot(s, xs, ys, 5.2, C.INK, 0.72, `Steady state\nk* = ${KS.toFixed(2)} · y* = sy* = ${YS.toFixed(2)}`);
     // Stack the steady-state note upward from just above the dot.
     const room = xs - 10 - F.X0 - 4;
     let top = label(s, xs - 10, ys - 10, T('Steady-state'), { size: 12, anchor: 'end', maxWidth: room, up: true, delay: 0.85 }).top;
     top = label(s, xs - 10, top - 5, T('constant growth rate'), { size: 10.5, weight: 700, fill: C.MUTED, anchor: 'end', maxWidth: room, up: true, delay: 0.95 }).top;
     label(s, xs - 10, top - 4, 'dy/y = θ/(1−α)', { size: 10.5, anchor: 'end', delay: 1 });
+    probe(s, F, [{ name: 'sy', f: sy }, { name: 'required investment', f: ray, stroke: C.SOFT }]);
   }, height);
 })();
   </script>

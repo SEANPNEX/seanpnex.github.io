@@ -17,7 +17,8 @@
     .mark { width:20px; height:0; border-top:1px solid var(--ink); }
     .mark.bound { border-top:1px dashed var(--soft); }
     .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
-    article { min-width:0; padding:18px 17px 13px; border:1px solid var(--grid); border-radius:3px; background:var(--card); cursor:pointer; }
+    article { min-width:0; padding:18px 17px 13px; border:1px solid var(--grid); border-radius:3px; background:var(--card); cursor:pointer; transition:border-color .2s ease; }
+    article:hover { border-color:var(--soft); }
     article:focus-visible { outline:2px solid var(--ink); outline-offset:2px; }
     .model { margin:0 0 3px; color:var(--muted); font-size:10px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; }
     h2 { margin:0; font-size:16px; line-height:1.25; }
@@ -33,6 +34,7 @@
     @media (max-width:650px) { main{padding:25px 16px}.grid{grid-template-columns:1fr}.footer{display:block;line-height:1.7} }
     @media (prefers-reduced-motion:reduce) { .fade,.stem,.pop { opacity:1; transform:none; animation:none; } }
   </style>
+  <script src="chart-fx.js"></script>
 </head>
 <body>
 <main>
@@ -126,9 +128,10 @@ chartI18n.use({
     [bound,-bound].forEach(v=>svg.append(el('line',{x1:42,y1:y(v),x2:407,y2:y(v),stroke:SOFT,'stroke-width':1,'stroke-dasharray':'4 4',class:'fade'})));
     p.values.forEach((v,i)=>{
       const delay=.08+i*.035, xx=x(i), yy=y(v), zero=y(0);
-      const stem=el('line',{x1:xx,y1:zero,x2:xx,y2:yy,stroke:INK,'stroke-width':1.4,class:'stem',style:`animation-delay:${delay}s`});
-      const dot=el('circle',{cx:xx,cy:yy,r:3.3,fill:Math.abs(v)>bound?INK:PAPER,stroke:INK,'stroke-width':1.1,class:'pop',style:`animation-delay:${delay+.18}s`});
-      const title=el('title',{},`Lag ${i+1}: ${v.toFixed(2)}`); dot.append(title); svg.append(stem,dot);
+      // Stem and dot are one reading; the tip says whether it clears the 95% bound.
+      const stem=el('line',{x1:xx,y1:zero,x2:xx,y2:yy,stroke:INK,'stroke-width':1.4,class:'stem',style:`animation-delay:${delay}s`,'data-hl':`lag${i}`});
+      const dot=el('circle',{cx:xx,cy:yy,r:3.3,fill:Math.abs(v)>bound?INK:PAPER,stroke:INK,'stroke-width':1.1,class:'pop',style:`animation-delay:${delay+.18}s`,'data-hl':`lag${i}`,'data-tip':`Lag ${i+1}: ${v.toFixed(2)}\n${Math.abs(v)>bound?'outside':'inside'} the ±0.196 bound`});
+      svg.append(stem,dot);
       svg.append(el('text',{x:xx,y:218,fill:MUTED,'font-size':8,'text-anchor':'middle',class:'fade',style:`animation-delay:${delay}s`},String(i+1)));
     });
     svg.append(el('text',{x:407,y:218,fill:MUTED,'font-size':8,'text-anchor':'end'},'LAG'));

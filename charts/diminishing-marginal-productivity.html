@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="curve-kit.js"></script>
+  <script src="chart-fx.js"></script>
 </head>
 <body>
   <main class="card" id="card">
@@ -73,7 +74,7 @@ chartI18n.use({
   </script>
   <script>
 (() => {
-  const { C, T, el, label, frame, axes, curve, beads, guide, dot, mount, html } = curveKit;
+  const { C, T, el, label, frame, axes, curve, beads, guide, dot, probe, mount, html } = curveKit;
   const ALPHA = 0.33, K = 8.4;
   const yOf = (k) => Math.pow(k, ALPHA);
   const mpkOf = (k) => ALPHA * Math.pow(k, ALPHA - 1);
@@ -98,13 +99,15 @@ chartI18n.use({
       // Rise-over-run triangle: dashed run Δk, solid rise Δy.
       guide(s, x0, y0, x1, y0, delay);
       el(s, 'line', { x1, y1: y0, x2: x1, y2: y1, stroke: C.INK, 'stroke-width': 2, 'stroke-linecap': 'round', class: 'fade', style: `animation-delay:${delay}s` });
-      dot(s, x0, y0, 3.2, C.INK, delay);
-      dot(s, x1, y1, 3.2, C.INK, delay + 0.05);
+      const step = `Δk = ${k1 - k0} · Δy = ${(yOf(k1) - yOf(k0)).toFixed(2)}`;
+      dot(s, x0, y0, 3.2, C.INK, delay, `k = ${k0} · y = ${yOf(k0).toFixed(2)}\n${step}`);
+      dot(s, x1, y1, 3.2, C.INK, delay + 0.05, `k = ${k1} · y = ${yOf(k1).toFixed(2)}\n${step}`);
       label(s, (x0 + x1) / 2, y0 + 14, 'Δk', { size: 10, weight: 700, fill: C.MUTED, anchor: 'middle', delay: delay + 0.1 });
       // The second rise is short, so its label sits level with the run.
       label(s, x1 + 6, i ? y0 + 4 : (y0 + y1) / 2 + 4, name, { size: 11.5, delay: delay + 0.15 });
     });
     label(s, F.X1, F.BASE - 10, T('same Δk, smaller Δy'), { size: 10.5, anchor: 'end', maxWidth: (F.X1 - F.X0) * 0.55, up: true, delay: 0.95 });
+    probe(s, F, [{ name: 'y', f: yOf }]);
   }, height);
 
   mount(document.getElementById('mpk'), (s, W, H) => {
@@ -116,9 +119,10 @@ chartI18n.use({
     [[1.5, 1], [6, 2]].forEach(([k, n], i) => {
       const cx = F.x(k), cy = F.y(mpkOf(k)), delay = 0.6 + i * 0.15;
       guide(s, cx, cy + 4, cx, F.BASE, delay);
-      dot(s, cx, cy, 3.8, C.INK, delay, `k=${k}, MPK=${mpkOf(k).toFixed(2)}`);
+      dot(s, cx, cy, 3.8, C.INK, delay, `${mpkName}_${n}\nk = ${k} · MPK = ${mpkOf(k).toFixed(2)}`);
       label(s, cx + 7, cy - 8, `${mpkName}_{${n}}`, { size: 11.5, delay: delay + 0.1 });
     });
+    probe(s, F, [{ name: mpkName, f: mpkOf, from: 0.2 }]);
   }, height);
 })();
   </script>

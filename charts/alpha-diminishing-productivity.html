@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="curve-kit.js"></script>
+  <script src="chart-fx.js"></script>
 </head>
 <body>
   <main class="card" id="card">
@@ -81,7 +82,7 @@ chartI18n.use({
   </script>
   <script>
 (() => {
-  const { C, T, label, frame, axes, curve, beads, mount, html } = curveKit;
+  const { C, T, label, frame, axes, curve, beads, probe, mount, html } = curveKit;
   const LO = 0.3, HI = 0.7, K = 8;
   const yOf = (a) => (k) => Math.pow(k, a);
   const mpkOf = (a) => (k) => a * Math.pow(k, a - 1);
@@ -108,6 +109,7 @@ chartI18n.use({
     ends(s, F, yOf, 0.75);
     // The knee of the α = 0.3 curve: most of its rise is already used up by k ≈ 2.
     label(s, F.x(1.6), F.y(yOf(LO)(1.6)) + 18, T('bends sooner'), { size: 10.5, fill: C.MUTED, weight: 700, maxWidth: F.X1 - F.x(1.6) - 4, delay: 0.95 });
+    probe(s, F, [{ name: 'y (α = 0.3)', f: yOf(LO) }, { name: 'y (α = 0.7)', f: yOf(HI), stroke: C.SOFT }]);
   }, height);
 
   mount(document.getElementById('mpk'), (s, W, H) => {
@@ -118,6 +120,7 @@ chartI18n.use({
     beads(s, F, mpkOf(HI), 0.5, K, { fill: C.SOFT, r: 1.4 });
     beads(s, F, mpkOf(LO), 0.5, K);
     ends(s, F, mpkOf, 0.7);
+    probe(s, F, [{ name: 'MPK (α = 0.3)', f: mpkOf(LO), from: 0.1 }, { name: 'MPK (α = 0.7)', f: mpkOf(HI), from: 0.2, stroke: C.SOFT }]);
   }, height);
 })();
   </script>

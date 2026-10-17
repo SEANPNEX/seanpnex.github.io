@@ -32,6 +32,7 @@
       .pop,.fade{opacity:1;transform:none;animation:none}
     }
   </style>
+  <script src="chart-fx.js"></script>
 </head>
 <body>
   <main class="card" id="card">
@@ -105,30 +106,30 @@ chartI18n.use({
       svg.append(n);
       return n;
     }
-    function arrow(x1,y1,x2,y2,{delay=0,stroke=GRID,sw=1.25}={}){
+    function arrow(x1,y1,x2,y2,{delay=0,stroke=GRID,sw=1.25,edge}={}){
       const d=`M${x1} ${y1} L${x2} ${y2}`;
-      el('path',{d,fill:'none',stroke, 'stroke-width':sw, pathLength:1, class:'draw', style:`animation-delay:${delay}s`});
+      el('path',{d,fill:'none',stroke, 'stroke-width':sw, pathLength:1, class:'draw', style:`animation-delay:${delay}s`, 'data-edge':edge});
       // small arrowhead
       const ang=Math.atan2(y2-y1,x2-x1);
       const ah=6;
       const p1=[x2-ah*Math.cos(ang-0.45), y2-ah*Math.sin(ang-0.45)];
       const p2=[x2-ah*Math.cos(ang+0.45), y2-ah*Math.sin(ang+0.45)];
-      el('path',{d:`M${x2} ${y2} L${p1[0]} ${p1[1]} M${x2} ${y2} L${p2[0]} ${p2[1]}`, fill:'none', stroke, 'stroke-width':sw, 'stroke-linecap':'round', class:'draw', style:`animation-delay:${delay+.15}s`});
+      el('path',{d:`M${x2} ${y2} L${p1[0]} ${p1[1]} M${x2} ${y2} L${p2[0]} ${p2[1]}`, fill:'none', stroke, 'stroke-width':sw, 'stroke-linecap':'round', class:'draw', style:`animation-delay:${delay+.15}s`, 'data-edge':edge});
     }
     function label(x,y,s,{delay=0,anchor='start',fs=9,fill=MUTED,weight=700,ls='.06em'}={}){
       el('text',{x,y,fill,'text-anchor':anchor,'font-size':fs,'font-weight':weight,'letter-spacing':ls,class:'fade',style:`animation-delay:${delay}s`},s);
     }
-    function polyline(pts,{delay=0,stroke=GRID,sw=1.25,head=true}={}){
+    function polyline(pts,{delay=0,stroke=GRID,sw=1.25,head=true,edge}={}){
       let d='';
       pts.forEach((p,i)=>{d+=(i?'L':'M')+p[0]+' '+p[1]+' ';});
-      el('path',{d:d.trim(),fill:'none',stroke,'stroke-width':sw,pathLength:1,class:'draw',style:`animation-delay:${delay}s`});
+      el('path',{d:d.trim(),fill:'none',stroke,'stroke-width':sw,pathLength:1,class:'draw',style:`animation-delay:${delay}s`,'data-edge':edge});
       if(head && pts.length>=2){
         const a=pts[pts.length-2], b=pts[pts.length-1];
         const ang=Math.atan2(b[1]-a[1],b[0]-a[0]);
         const ah=6;
         const p1=[b[0]-ah*Math.cos(ang-0.45), b[1]-ah*Math.sin(ang-0.45)];
         const p2=[b[0]-ah*Math.cos(ang+0.45), b[1]-ah*Math.sin(ang+0.45)];
-        el('path',{d:`M${b[0]} ${b[1]} L${p1[0]} ${p1[1]} M${b[0]} ${b[1]} L${p2[0]} ${p2[1]}`,fill:'none',stroke,'stroke-width':sw,'stroke-linecap':'round',class:'draw',style:`animation-delay:${delay+.15}s`});
+        el('path',{d:`M${b[0]} ${b[1]} L${p1[0]} ${p1[1]} M${b[0]} ${b[1]} L${p2[0]} ${p2[1]}`,fill:'none',stroke,'stroke-width':sw,'stroke-linecap':'round',class:'draw',style:`animation-delay:${delay+.15}s`,'data-edge':edge});
       }
     }
 
@@ -148,12 +149,27 @@ chartI18n.use({
       if(!sep&&lines.length>1){const per=Math.ceil(tokens.length/lines.length);return lines.map((_,i)=>tokens.slice(i*per,(i+1)*per).join('')).filter(Boolean)}
       return lines;
     }
+    // What each step means; hovering a step lights its arrows and the steps they join.
+    const TIPS={
+      'Expansionary Fiscal Policy':'more government spending or lower taxes',
+      'Increase in Real Interest Rate Differential':'government borrowing lifts domestic real rates above foreign ones',
+      'Currency Appreciates':'short run: capital flows in for the higher return',
+      'Government Debt Buildup':'investors must hold ever more of the country\'s bonds',
+      'Central Bank Monetizes Debt':'printing money to buy the debt weakens the currency',
+      'Fiscal Stance Turns Restrictive':'the government reverses course to contain the debt',
+      'Currency Depreciates':'long run: holders want a lower price, or a higher return, for the extra debt',
+    };
+    const KEY=(label)=>label.toLowerCase().replace(/[^a-z]+/g,'-');
     function node(b,label,{dark=false,delay=0,fs=12.5}={}){
-      el('rect',{x:b.x,y:b.y,width:b.w,height:b.h,rx:12,fill:dark?INK:FAINT,class:'pop',style:`animation-delay:${delay}s`});
+      const hover={'data-node':KEY(label),'data-tip':`${T(label)}\n${T(TIPS[label]||'')}`};
+      el('rect',{x:b.x,y:b.y,width:b.w,height:b.h,rx:12,fill:dark?INK:FAINT,class:'pop',style:`animation-delay:${delay}s`,...hover});
       const lines=fitLines(T(label),b.w-18,fs),lh=fs+3;
       const start=b.y+b.h/2-((lines.length-1)*lh)/2+fs*.36;
-      lines.forEach((ln,i)=>el('text',{x:b.x+b.w/2,y:start+i*lh,fill:dark?PAPER:INK,'text-anchor':'middle','font-size':fs,'font-weight':800,class:'fade',style:`animation-delay:${delay+.08}s`},ln));
+      lines.forEach((ln,i)=>el('text',{x:b.x+b.w/2,y:start+i*lh,fill:dark?PAPER:INK,'text-anchor':'middle','font-size':fs,'font-weight':800,class:'fade',style:`animation-delay:${delay+.08}s`,...hover},ln));
     }
+    const E=(a,b)=>`${KEY(a)}>${KEY(b)}`;
+    const N={root:'Expansionary Fiscal Policy',rate:'Increase in Real Interest Rate Differential',up:'Currency Appreciates',debt:'Government Debt Buildup',mon:'Central Bank Monetizes Debt',rest:'Fiscal Stance Turns Restrictive',down:'Currency Depreciates'};
+    const edge=(a,b)=>E(N[a],N[b]);
     const lane=(x,y,s,delay,fs=10)=>label(x,y,T(s),{delay,fs,fill:INK,weight:800,ls:'.08em'});
     const cy=(b)=>b.y+b.h/2, right=(b)=>b.x+b.w;
     const ROAD={stroke:SOFT,sw:1.35}, BRANCH={stroke:GRID,sw:1.25};
@@ -172,16 +188,16 @@ chartI18n.use({
       node(mon,'Central Bank Monetizes Debt',{delay:.38});
       node(rest,'Fiscal Stance Turns Restrictive',{delay:.42});
       node(down,'Currency Depreciates',{dark:true,delay:.55});
-      polyline([[right(root),cy(root)],[224,cy(root)],[224,cy(rate)],[rate.x,cy(rate)]],{delay:.1,...ROAD});
-      arrow(right(rate),cy(rate),up.x,cy(up),{delay:.26,...ROAD});
-      arrow(right(root),cy(root),debt.x,cy(debt),{delay:.16,...ROAD});
+      polyline([[right(root),cy(root)],[224,cy(root)],[224,cy(rate)],[rate.x,cy(rate)]],{delay:.1,...ROAD,edge:edge('root','rate')});
+      arrow(right(rate),cy(rate),up.x,cy(up),{delay:.26,...ROAD,edge:edge('rate','up')});
+      arrow(right(root),cy(root),debt.x,cy(debt),{delay:.16,...ROAD,edge:edge('root','debt')});
       const jx=500;
-      polyline([[right(debt),cy(debt)],[jx,cy(debt)],[jx,cy(mon)],[mon.x,cy(mon)]],{delay:.3,...BRANCH});
-      polyline([[jx,cy(debt)],[jx,cy(rest)],[rest.x,cy(rest)]],{delay:.34,...BRANCH});
-      arrow(right(debt),cy(debt),down.x,cy(down),{delay:.38,...ROAD});
+      polyline([[right(debt),cy(debt)],[jx,cy(debt)],[jx,cy(mon)],[mon.x,cy(mon)]],{delay:.3,...BRANCH,edge:edge('debt','mon')});
+      polyline([[jx,cy(debt)],[jx,cy(rest)],[rest.x,cy(rest)]],{delay:.34,...BRANCH,edge:edge('debt','rest')});
+      arrow(right(debt),cy(debt),down.x,cy(down),{delay:.38,...ROAD,edge:edge('debt','down')});
       label(628,cy(debt)-8,T('direct effect'),{delay:.4,fs:10.5,fill:MUTED,weight:600,ls:'.04em',anchor:'middle'});
-      polyline([[right(mon),cy(mon)],[734,cy(mon)],[734,cy(down)-20],[down.x,cy(down)-20]],{delay:.46,...BRANCH});
-      polyline([[right(rest),cy(rest)],[734,cy(rest)],[734,cy(down)+20],[down.x,cy(down)+20]],{delay:.5,...BRANCH});
+      polyline([[right(mon),cy(mon)],[734,cy(mon)],[734,cy(down)-20],[down.x,cy(down)-20]],{delay:.46,...BRANCH,edge:edge('mon','down')});
+      polyline([[right(rest),cy(rest)],[734,cy(rest)],[734,cy(down)+20],[down.x,cy(down)+20]],{delay:.5,...BRANCH,edge:edge('rest','down')});
     }
 
     function narrow(){
@@ -198,15 +214,15 @@ chartI18n.use({
       node(mon,'Central Bank Monetizes Debt',{delay:.38,fs:10.5});
       node(rest,'Fiscal Stance Turns Restrictive',{delay:.42,fs:10.5});
       node(down,'Currency Depreciates',{dark:true,delay:.55,fs:11});
-      polyline([[root.x,cy(root)],[10,cy(root)],[10,cy(rate)],[rate.x,cy(rate)]],{delay:.1,...ROAD});
-      polyline([[10,cy(rate)],[10,cy(debt)],[debt.x,cy(debt)]],{delay:.16,...ROAD});
-      arrow(right(rate),cy(rate),up.x,cy(up),{delay:.26,...ROAD});
+      polyline([[root.x,cy(root)],[10,cy(root)],[10,cy(rate)],[rate.x,cy(rate)]],{delay:.1,...ROAD,edge:edge('root','rate')});
+      polyline([[10,cy(rate)],[10,cy(debt)],[debt.x,cy(debt)]],{delay:.16,...ROAD,edge:edge('root','debt')});
+      arrow(right(rate),cy(rate),up.x,cy(up),{delay:.26,...ROAD,edge:edge('rate','up')});
       const mx=mon.x+mon.w/2, rx=rest.x+rest.w/2, jy=266;
-      polyline([[mx,debt.y+debt.h],[mx,mon.y]],{delay:.3,...BRANCH});
-      polyline([[mx,jy],[rx,jy],[rx,rest.y]],{delay:.34,...BRANCH});
-      arrow(mx,mon.y+mon.h,mx,down.y,{delay:.46,...BRANCH});
-      arrow(rx,rest.y+rest.h,rx,down.y,{delay:.5,...BRANCH});
-      polyline([[right(debt),cy(debt)],[346,cy(debt)],[346,cy(down)],[right(down),cy(down)]],{delay:.38,...ROAD});
+      polyline([[mx,debt.y+debt.h],[mx,mon.y]],{delay:.3,...BRANCH,edge:edge('debt','mon')});
+      polyline([[mx,jy],[rx,jy],[rx,rest.y]],{delay:.34,...BRANCH,edge:edge('debt','rest')});
+      arrow(mx,mon.y+mon.h,mx,down.y,{delay:.46,...BRANCH,edge:edge('mon','down')});
+      arrow(rx,rest.y+rest.h,rx,down.y,{delay:.5,...BRANCH,edge:edge('rest','down')});
+      polyline([[right(debt),cy(debt)],[346,cy(debt)],[346,cy(down)],[right(down),cy(down)]],{delay:.38,...ROAD,edge:edge('debt','down')});
       label(286,cy(debt)-7,T('direct effect'),{delay:.4,fs:9,fill:MUTED,weight:600,ls:'.04em',anchor:'middle'});
     }
 

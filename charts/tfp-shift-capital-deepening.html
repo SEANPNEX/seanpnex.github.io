@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="curve-kit.js"></script>
+  <script src="chart-fx.js"></script>
 </head>
 <body>
   <main class="card" id="card">
@@ -71,7 +72,7 @@ chartI18n.use({
   </script>
   <script>
 (() => {
-  const { C, T, el, label, frame, axes, curve, beads, guide, dot, arrow, points, mount, html } = curveKit;
+  const { C, T, el, label, frame, axes, curve, beads, guide, dot, arrow, points, probe, mount, html } = curveKit;
   const ALPHA = 0.4, A0 = 1, A1 = 1.55, K = 8;
   const lo = (k) => A0 * Math.pow(k, ALPHA), hi = (k) => A1 * Math.pow(k, ALPHA);
   // A → B moves along the baseline curve; B → C lifts it at the same k.
@@ -119,12 +120,13 @@ chartI18n.use({
     arrow(s, [[bx, by - 7], [bx, cy + 7]], { width: 1.6, delay: 1.0 });
     label(s, bx + 8, (by + cy) / 2 + 4, T('TFP ↑'), { size: 12, delay: 1.05 });
 
-    dot(s, ...px('A'), 4.4, C.SOFT, 0.55, `A: k=${kA}, y=${lo(kA).toFixed(2)}`);
-    dot(s, ...px('B'), 4.4, C.SOFT, 0.63, `B: k=${kB}, y=${lo(kB).toFixed(2)}`);
-    dot(s, ...px('C'), 4.6, C.INK, 0.71, `C: k=${kB}, y=${hi(kB).toFixed(2)}`);
+    dot(s, ...px('A'), 4.4, C.SOFT, 0.55, `A · capital deepening starts\nk = ${kA} · y = ${lo(kA).toFixed(2)}`);
+    dot(s, ...px('B'), 4.4, C.SOFT, 0.63, `B · more k, same A\nk = ${kB} · y = ${lo(kB).toFixed(2)}`);
+    dot(s, ...px('C'), 4.6, C.INK, 0.71, `C · same k, higher A\nk = ${kB} · y = ${hi(kB).toFixed(2)}`);
     label(s, px('A')[0] - 7, px('A')[1] - 7, 'A', { size: 12.5, fill: C.MUTED, anchor: 'end', delay: 0.65 });
     label(s, px('B')[0] + 9, px('B')[1] + 16, 'B', { size: 13, fill: C.MUTED, delay: 0.73 });
     label(s, px('C')[0] - 8, px('C')[1] - 8, 'C', { size: 13, anchor: 'end', delay: 0.81 });
+    probe(s, F, [{ name: 'higher A', f: hi }, { name: 'baseline A', f: lo, stroke: C.SOFT }]);
   }, height);
 })();
   </script>

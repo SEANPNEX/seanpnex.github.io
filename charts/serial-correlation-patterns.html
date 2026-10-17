@@ -27,6 +27,7 @@ svg text{font-family:Inter,ui-sans-serif,system-ui,sans-serif}
 @media(max-width:620px){body{padding:10px}.card{padding:20px 16px}.plots{grid-template-columns:1fr;gap:22px}.plot p{min-height:0}}
 @media(prefers-reduced-motion:reduce){.fade,.draw,.pop{animation:none!important;opacity:1!important;stroke-dashoffset:0!important}}
 </style>
+  <script src="chart-fx.js"></script>
 </head>
 <body>
 <main class="card">
@@ -118,7 +119,8 @@ function render(id){
     el(s,'path',{d:'M'+pts,fill:'none',stroke:INK,'stroke-width':1,pathLength:1,class:'draw',style:'animation-duration:1.2s'});
     values.forEach((v,d)=>{
       const dot=el(s,'circle',{cx:x(d),cy:map(v),r:2.3,fill:v>=0?INK:PAPER,stroke:INK,'stroke-width':1,class:'pop',style:`animation-delay:${.18+d*.025}s`});
-      tip(dot,`Period ${d+1} · residual ${v.toFixed(2)}`);
+      const prev=values[d-1];
+      tip(dot,`Period ${d+1} · residual ${v.toFixed(2)}\n${d===0?'first period':(prev>=0)===(v>=0)?'same sign as the period before':'sign flips from the period before'}`);
     });
     [[0,'T1'],[14,'T15'],[29,'T30']].forEach(([d,label])=>txt(s,{x:x(d),y:zero+108,'font-size':7.5,'font-weight':600,fill:MUTED,'text-anchor':'middle','letter-spacing':'.1em',class:'fade'},label));
     txt(s,{x:18,y:zero-5,'font-size':7,'font-weight':600,fill:MUTED,'text-anchor':'end',class:'fade'},'0');

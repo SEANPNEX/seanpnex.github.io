@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Intercorporate investments · accounting methods</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <script src="chart-fx.js"></script>
+  <style>
+    /* Wide: a label column plus one column per category. Narrow: one card per category. */
+    .matrix{display:grid;grid-template-columns:92px repeat(4,minmax(0,1fr));gap:6px 6px;align-items:stretch}
+    .rowname{display:flex;align-items:center;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);line-height:1.3}
+    .head{padding:0 2px 6px;border-bottom:1.5px solid var(--ink);font-size:12.5px;font-weight:800;line-height:1.2;align-self:end}
+    .inf{display:flex;align-items:center;justify-content:center;min-height:46px;padding:8px;border-radius:12px;
+      text-align:center;font-size:12px;font-weight:700;line-height:1.25;animation:fade .6s ease both}
+    .k0{background:#A8A7A0;color:var(--ink)}.k1{background:#6A6963;color:var(--paper)}
+    .k2{background:#4A4944;color:var(--paper)}.k3{background:var(--ink);color:var(--paper)}
+    .how{display:flex;flex-direction:column;justify-content:flex-start;min-height:62px;padding:8px 10px;border:1px solid var(--grid);
+      border-radius:12px;font-size:13px;font-weight:800;line-height:1.25;animation:fade .6s ease both}
+    .how small{display:block;margin-top:4px;font-size:10.5px;font-weight:500;color:var(--muted);line-height:1.35}
+    .how .rare{margin-top:7px;padding-top:6px;border-top:1px dashed var(--soft);font-size:11px;font-weight:700}
+    .how .rare small{margin-top:2px}
+    /* Consolidation bands: where the investee's numbers enter the investor's statements. */
+    .band{position:relative;display:flex;flex-direction:column;justify-content:center;gap:1px;min-height:40px;padding:6px 12px;
+      border-radius:14px;font-size:11.5px;font-weight:800;line-height:1.25;transform-origin:left;animation:grow .7s cubic-bezier(.2,.7,.3,1) both}
+    .band span{font-weight:500;font-size:10.5px}
+    /* Outline = one line; filled = line by line, ink for the full 100%, gray for the rare x%. */
+    .one{border:1.5px solid var(--ink);color:var(--ink)}
+    .line{background:var(--ink);color:var(--paper)}
+    .line.x{background:#6A6963}
+    .line span{color:#CFCEC7}
+    .line.x span{color:#E3E2DB}
+    .none{display:flex;align-items:center;justify-content:center;font-size:11px;color:#8A8983}
+    .key{margin-top:12px;font-size:11.5px;line-height:1.5;color:var(--muted)}
+    .key b{color:var(--ink)}
+    @keyframes grow{from{transform:scaleX(0)}}
+    [data-hl]{cursor:default}
+    /* Phones: one card per category, read top to bottom. */
+    .cards{display:grid;gap:10px}
+    .cardx{display:grid;grid-template-columns:1fr;gap:6px;padding:12px;border:1px solid var(--grid);border-radius:16px;animation:fade .6s ease both}
+    .cardx h3{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:13.5px;font-weight:800}
+    .cardx .inf{min-height:0;justify-content:flex-start;padding:6px 10px;font-size:11.5px}
+    .cardx .how{min-height:0;border:0;padding:2px 0}
+    .tag{display:inline-block;padding:3px 8px;border-radius:999px;font-size:10px;font-weight:800;white-space:nowrap}
+    .tag.one{box-shadow:inset 0 0 0 1.2px var(--ink)}
+    .tag.line{background:var(--ink);color:var(--paper)}
+    .tag.line.x{background:#6A6963}
+    @media(prefers-reduced-motion:reduce){.inf,.how,.band,.cardx{animation:none}}
+  </style>
+</head>
+<body>
+  <main class="card" id="card">
+    <h2>Influence sets the method: one line for associates, line by line for control.</h2>
+    <div class="sub">Degree of influence → accounting treatment · darker = more control · one-line = the investee is one asset and one income line · line-by-line = every asset, liability, revenue and expense is added (x% or 100%)</div>
+    <div id="out"></div>
+    <div class="key"><b>One-line</b> (equity method): the investor shows only <i>Investment in</i> on the B/S and its share of the investee's NI on the I/S. <b>Line-by-line</b>: proportionate consolidation adds the venturer's x% of each line; the acquisition method adds 100% of each line, with the outside owners' share shown as noncontrolling interest.</div>
+    <div class="src">LEDGER GRID · LIEFLAT L9 · INTERCORPORATE INVESTMENT CATEGORIES</div>
+  </main>
+  <script>
+  // ── Categories, left to right by degree of control ──
+  var CATS = [
+    { name: 'Financial assets', inf: 'No significant influence', how: 'AMC / FVOCI / FVPL', sub: 'carried at amortized cost or fair value',
+      tip: 'Financial assets · usually < 20%\nno significant influence: AMC, FVOCI or FVPL' },
+    { name: 'Associates', inf: 'Significant influence', how: 'Equity method', sub: 'cost + share of NI − dividends',
+      tip: 'Associates · usually 20–50%\nsignificant influence: equity method (one-line consolidation)' },
+    { name: 'Joint ventures', inf: 'Shared control', how: 'Equity method', sub: 'same one line as an associate',
+      rare: 'Proportionate consolidation', raresub: 'rare: + x% of each line',
+      tip: 'Joint ventures · percentage varies\nshared control: equity method; proportionate consolidation only in rare cases' },
+    { name: 'Business combination', inf: 'Control', how: 'Acquisition method', sub: 'subsidiary consolidated in full',
+      tip: 'Business combination · usually > 50%\ncontrol: acquisition method, + 100% of each line' },
+  ];
+  var out = document.getElementById('out');
+  var esc = function (s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); };
+  var at = function (i, d) { return 'style="animation-delay:' + (i * 0.08 + (d || 0)).toFixed(2) + 's"'; };
+  var hl = function (i) { return 'data-hl="c' + i + '" data-tip="' + esc(CATS[i].tip) + '"'; };
+  var ONE = 'data-hl="c1 c2" data-tip="One-line consolidation&#10;equity method: Investment in … on the B/S, share of NI on the I/S"';
+  var LINE_X = 'data-hl="c2" data-tip="Proportionate consolidation (rare)&#10;the venturer adds its x% of each asset, liability, revenue and expense"';
+  var LINE = 'data-hl="c3" data-tip="Acquisition method&#10;100% of each line is added; the outside owners\' share is noncontrolling interest"';
+
+  function wide() {
+    var h = '<div class="matrix" data-fx-scope>';
+    h += '<div></div>' + CATS.map(function (c, i) { return '<div class="head" ' + hl(i) + '>' + c.name + '</div>'; }).join('');
+    h += '<div class="rowname">Degree of influence</div>' + CATS.map(function (c, i) {
+      return '<div class="inf k' + i + '" ' + hl(i) + ' ' + at(i) + '>' + c.inf + '</div>';
+    }).join('');
+    h += '<div class="rowname">Accounting treatment</div>' + CATS.map(function (c, i) {
+      var rare = c.rare ? '<div class="rare">' + c.rare + '<small>' + c.raresub + '</small></div>' : '';
+      return '<div class="how" ' + hl(i) + ' ' + at(i, 0.15) + '>' + c.how + '<small>' + c.sub + '</small>' + rare + '</div>';
+    }).join('');
+    // Bands: one-line spans associates + joint ventures; line-by-line spans joint ventures (rare) + combinations.
+    h += '<div class="rowname" style="grid-row:span 2">Consolidation</div><div class="none">none</div>';
+    h += '<div class="band one" style="grid-column:3 / span 2;animation-delay:.5s" ' + ONE + '>One-line<span>Investment + share of NI</span></div>';
+    h += '<div style="grid-column:5"></div><div></div><div></div>';
+    h += '<div class="band line x" style="grid-column:4;animation-delay:.65s" ' + LINE_X + '>Line-by-line<span>+ x% · rare</span></div>';
+    h += '<div class="band line" style="grid-column:5;animation-delay:.75s" ' + LINE + '>Line-by-line<span>+ 100%</span></div>';
+    return h + '</div>';
+  }
+
+  function narrow() {
+    var tags = [[], ['one'], ['one', 'line-x'], ['line']];
+    return '<div class="cards" data-fx-scope>' + CATS.map(function (c, i) {
+      var t = tags[i].map(function (k) {
+        return k === 'one' ? '<span class="tag one">one-line</span>' : k === 'line' ? '<span class="tag line">line-by-line · + 100%</span>' : '<span class="tag line x">rare: line-by-line + x%</span>';
+      }).join(' ') || '<span class="tag" style="color:#8A8983">no consolidation</span>';
+      var rare = c.rare ? '<div class="rare">' + c.rare + '<small>' + c.raresub + '</small></div>' : '';
+      return '<section class="cardx" ' + hl(i) + ' ' + at(i) + '><h3>' + c.name + '</h3>' +
+        '<div class="inf k' + i + '">' + c.inf + '</div>' +
+        '<div class="how">' + c.how + '<small>' + c.sub + '</small>' + rare + '</div>' +
+        '<div>' + t + '</div></section>';
+    }).join('') + '</div>';
+  }
+
+  var layout = null;
+  function render() {
+    var small = out.getBoundingClientRect().width < 520;
+    if (small === layout) return;
+    layout = small;
+    out.innerHTML = small ? narrow() : wide();
+    curveKit.fit();
+  }
+  render();
+  window.addEventListener('resize', render);
+  if (document.fonts) document.fonts.ready.then(curveKit.fit);
+  </script>
+</body>
+</html>
