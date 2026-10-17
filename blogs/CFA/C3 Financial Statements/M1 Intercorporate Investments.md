@@ -948,3 +948,103 @@ If the price paid is **less** than the fair value of the identifiable net assets
 - **Impairments can be timed.** Management judgment drives the cash-flow forecasts and discount rates behind the test, so impairments often arrive late, after the bad news is already in the share price.
 - **When comparing companies**, consider removing goodwill from assets and equity, or at least use the same method on both sides (full vs partial goodwill), before comparing ROA, ROE or leverage. Acquisitive companies and companies that grew organically can otherwise look very different for reasons that have nothing to do with operations.
 
+# Joint Venture and SPEs/VIEs
+
+Business combinations are about **control by one party**. This chapter covers two other ways a company can be tied to another entity: **joint control** shared with partners, and **control through contracts** rather than votes.
+
+## Joint Ventures
+
+A **joint venture** is an entity that is **controlled jointly by two or more parties** (the *venturers*), typically to share the cost and risk of a large project: an oil field, a new market, a factory.
+
+**Joint control** means the venturers have agreed by contract that decisions about the venture's relevant activities need the **unanimous consent** of the parties sharing control. No single venturer controls the venture, so none of them consolidates it.
+
+**Accounting.**
+
+- **Both IFRS and US GAAP require the equity method** (see [Equity Method of Accounting](#equity-method-of-accounting) above). Each venturer shows its share of the venture as one investment line on the balance sheet and its share of the venture's net income as one line on the income statement.
+- **Proportionate consolidation** is allowed only **in rare circumstances**. Under US GAAP this is mainly for unincorporated entities in industries where it is established practice, such as oil and gas or construction. IFRS 11 instead separates out **joint operations**: arrangements where each party has direct rights to the assets and obligations for the liabilities. There, each party recognizes **its own share** of the assets, liabilities, revenues and expenses, which has much the same effect.
+
+**Proportionate consolidation** adds the venturer's **percentage share of every line item** of the venture to its own statements, instead of the single equity-method line. There is no noncontrolling interest, because only the venturer's own share is brought in.
+
+**Example (50% joint venture, illustrative).** A and a partner set up JV, each contributing 300 for 50%. In year 1, JV earns NI of 200 and pays no dividends. At year end:
+
+| JV (100%) | |
+|---|---:|
+| Assets | 1,600 |
+| Liabilities | 800 |
+| Equity ($600+200$) | 800 |
+| Revenue | 1,000 |
+| Expenses | 800 |
+| **NI** | **200** |
+
+A's own business, excluding JV: assets 2,000, liabilities 1,000, revenue 3,000, expenses 2,700.
+
+| A's statements | Equity method | Proportionate consolidation |
+|---|---:|---:|
+| Investment in JV | $300+50\%\times200=400$ | – |
+| Other assets | 2,000 | $2{,}000+50\%\times1{,}600=2{,}800$ |
+| **Total assets** | **2,400** | **2,800** |
+| Liabilities | 1,000 | $1{,}000+50\%\times800=1{,}400$ |
+| **Equity** | **1,400** | **1,400** |
+| Revenue | 3,000 | $3{,}000+50\%\times1{,}000=3{,}500$ |
+| Expenses | (2,700) | $(2{,}700+50\%\times800)=(3{,}100)$ |
+| Equity income from JV | $50\%\times200=100$ | – |
+| **Net income** | **400** | **400** |
+
+**Same net income and equity; different size.** Proportionate consolidation brings in A's share of JV's assets, liabilities, revenue and expenses, so the ratios move:
+
+| Ratio | Equity method | Proportionate consolidation |
+|---|---:|---:|
+| Net profit margin (NI / revenue) | $400/3{,}000=13.3\%$ | $400/3{,}500=11.4\%$ |
+| ROA (NI / total assets) | $400/2{,}400=16.7\%$ | $400/2{,}800=14.3\%$ |
+| Leverage (liabilities / equity) | $1{,}000/1{,}400=0.71$ | $1{,}400/1{,}400=1.00$ |
+
+Under the equity method, A's share of JV's **debt stays off A's balance sheet**, and JV's revenue is invisible. A looks less leveraged and more profitable per unit of sales and assets. Analysts often restate a company's joint ventures on a proportionate basis to see the real scale of its operations and debt.
+
+## Special Purpose Entities
+
+A **special purpose entity (SPE)** is a legal entity, often a trust, partnership or company, set up by a **sponsor** for one **narrow, specific purpose**, for example:
+
+- **securitizing receivables** (buying the sponsor's loans or receivables and funding them with debt);
+- **leasing** assets back to the sponsor;
+- funding **research and development** or a single project;
+- **holding assets** apart from the sponsor's other risks.
+
+Typical features: **little equity**, so most of the funding is debt, often supported by the sponsor's guarantee; few employees; and activities fixed in advance by contracts rather than decided by voting shareholders.
+
+Because the sponsor often owns little or none of the SPE's equity, SPEs were historically used to keep assets and especially **debt off the sponsor's balance sheet**, with Enron the best-known abuse. The current rules close that gap: **an SPE that the sponsor controls must be consolidated by the sponsor**, whatever its share of the voting equity.
+
+- **IFRS** has no separate SPE rule. The same control test as for any subsidiary applies (power, exposure to variable returns, and the link between them; see [Controls](#controls)). IFRS calls these entities **structured entities** and requires extra disclosure about them.
+- **US GAAP** handles them through the **variable interest entity** model below.
+
+## Variable Interest Entities
+
+A **variable interest entity (VIE)** is US GAAP's term for an entity whose control **cannot be judged by voting shares**. An entity is a VIE if either:
+
+1. its **equity at risk is insufficient** to finance its activities without additional subordinated financial support; or
+2. its equity holders, as a group, **lack the features of a controlling financial interest**: the power to direct its activities through voting rights, the obligation to absorb its expected losses, or the right to receive its expected residual returns.
+
+A **variable interest** is any contractual, ownership or other interest whose value **changes with the VIE's performance**. Equity, subordinated debt and guarantees all qualify.
+
+**Who consolidates: the primary beneficiary.** The party with a variable interest that gives it **both**
+
+- the **power to direct the activities** that most significantly affect the VIE's economic performance, **and**
+- the **obligation to absorb losses or the right to receive benefits** that could be significant to the VIE
+
+is the **primary beneficiary**, and it **must consolidate the VIE**, whether or not it owns any voting shares.
+
+**SPEs and VIEs.** Most SPEs meet the VIE definition: they have thin equity and are run by contracts, so most SPEs are VIEs and are consolidated by their primary beneficiary, usually the sponsor. The two terms are not identical, though. An SPE with enough equity, whose equity holders really control it, is not a VIE.
+
+**Example (receivables securitization, illustrative).** Sponsor S sells 1,000 of receivables to an SPE for 1,000 cash. The SPE funds the purchase with 950 of bank debt, which S guarantees, and 50 of equity from outside investors. S keeps servicing the receivables.
+
+S directs the SPE's key activity (collecting the receivables) and absorbs its losses through the guarantee, so S is the **primary beneficiary** and must consolidate.
+
+| Change in S's balance sheet | Not consolidated (old off-balance-sheet result) | Consolidated (required) |
+|---|---:|---:|
+| Receivables | −1,000 (sold) | 0 (still in the group) |
+| Cash | +1,000 | +1,000 |
+| **Total assets** | **0** | **+1,000** |
+| Liabilities: SPE's bank debt | – | +950 |
+| Noncontrolling interest (SPE's outside equity) | – | +50 |
+
+Consolidation shows the deal for what it is: **borrowing secured on receivables**, not a sale. S's assets and liabilities are both higher, so its leverage ratios rise. On the cash flow statement, the 1,000 is mainly **financing** (borrowing) rather than an operating inflow from collecting receivables.
+
