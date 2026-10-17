@@ -16,6 +16,7 @@
 .fx-concept-chart.fsa-timeline-chart { height: 475px; }
 .fx-concept-chart.fsa-impair-chart { height: 455px; }
 .fx-concept-chart.fsa-equity-ex-chart { height: 375px; }
+.fx-concept-chart.fsa-methods-chart { height: 630px; }
 /* Phones: the two-column charts stack. */
 @media (max-width: 587px) {
     .fx-concept-chart { height: 500px; }
@@ -26,6 +27,7 @@
     .fx-concept-chart.fsa-timeline-chart { height: 885px; }
     .fx-concept-chart.fsa-impair-chart { height: 730px; }
     .fx-concept-chart.fsa-equity-ex-chart { height: 435px; }
+    .fx-concept-chart.fsa-methods-chart { height: 1060px; }
 }
 </style>
 
@@ -1047,4 +1049,16 @@ S directs the SPE's key activity (collecting the receivables) and absorbs its lo
 | Noncontrolling interest (SPE's outside equity) | – | +50 |
 
 Consolidation shows the deal for what it is: **borrowing secured on receivables**, not a sale. S's assets and liabilities are both higher, so its leverage ratios rise. On the cash flow statement, the 1,000 is mainly **financing** (borrowing) rather than an operating inflow from collecting receivables.
+
+# Intercorporate Investment
+
+<iframe
+  class="fx-concept-chart fsa-methods-chart"
+  src="/charts/intercorporate-accounting-methods.html"
+  title="Degree of influence and accounting treatment: one-line vs line-by-line consolidation"
+  loading="lazy"
+></iframe>
+
+
+## Net Income and Sharholder's Equity
 
