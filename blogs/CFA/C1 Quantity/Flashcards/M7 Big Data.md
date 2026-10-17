@@ -4,7 +4,7 @@ title: M7 Big Data
 
 # M7 Big Data · Review Flashcards
 
-Unit review of [M7 Big Data](../../../C1%20Quantity/M7%20Big%20Data.md): 16 cards covering the unit's key definitions, formulas and exam traps. Flip a card, then mark it **Again** or **Got it**; your marks stay in this browser.
+Unit review of [M7 Big Data](../M7%20Big%20Data.md): 16 cards covering the unit's key definitions, formulas and exam traps. Flip a card, then mark it **Again** or **Got it**; your marks stay in this browser.
 
 <iframe
   class="flash-deck"

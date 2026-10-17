@@ -4,7 +4,7 @@ title: M5 Time Series
 
 # M5 Time Series · Review Flashcards
 
-Unit review of [M5 Time Series](../../../C1%20Quantity/M5%20Time%20Series.md): 15 cards covering the unit's key definitions, formulas and exam traps. Flip a card, then mark it **Again** or **Got it**; your marks stay in this browser.
+Unit review of [M5 Time Series](../M5%20Time%20Series.md): 15 cards covering the unit's key definitions, formulas and exam traps. Flip a card, then mark it **Again** or **Got it**; your marks stay in this browser.
 
 <iframe
   class="flash-deck"

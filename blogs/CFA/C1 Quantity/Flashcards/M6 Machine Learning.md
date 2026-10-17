@@ -4,7 +4,7 @@ title: M6 Machine Learning
 
 # M6 Machine Learning · Review Flashcards
 
-Unit review of [M6 Machine Learning](../../../C1%20Quantity/M6%20Machine%20Learning.md): 16 cards covering the unit's key definitions, formulas and exam traps. Flip a card, then mark it **Again** or **Got it**; your marks stay in this browser.
+Unit review of [M6 Machine Learning](../M6%20Machine%20Learning.md): 16 cards covering the unit's key definitions, formulas and exam traps. Flip a card, then mark it **Again** or **Got it**; your marks stay in this browser.
 
 <iframe
   class="flash-deck"

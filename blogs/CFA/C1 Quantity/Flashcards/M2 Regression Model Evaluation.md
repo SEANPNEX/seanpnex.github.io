@@ -4,7 +4,7 @@ title: M2 Regression Model Evaluation
 
 # M2 Regression Model Evaluation · Review Flashcards
 
-Unit review of [M2 Regression Model Evaluation](../../../C1%20Quantity/M2%20Regression%20Model%20Evaluation.md): 11 cards covering the unit's key definitions, formulas and exam traps. Flip a card, then mark it **Again** or **Got it**; your marks stay in this browser.
+Unit review of [M2 Regression Model Evaluation](../M2%20Regression%20Model%20Evaluation.md): 11 cards covering the unit's key definitions, formulas and exam traps. Flip a card, then mark it **Again** or **Got it**; your marks stay in this browser.
 
 <iframe
   class="flash-deck"

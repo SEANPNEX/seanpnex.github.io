@@ -4,7 +4,7 @@ title: M1 Currency Exchange Rates
 
 # M1 Currency Exchange Rates · Review Flashcards
 
-Unit review of [M1 Currency Exchange Rates](../../../C2%20Economics/M1%20Currency%20Exchange%20Rates.md): 18 cards covering the unit's key definitions, formulas and exam traps. Flip a card, then mark it **Again** or **Got it**; your marks stay in this browser.
+Unit review of [M1 Currency Exchange Rates](../M1%20Currency%20Exchange%20Rates.md): 18 cards covering the unit's key definitions, formulas and exam traps. Flip a card, then mark it **Again** or **Got it**; your marks stay in this browser.
 
 <iframe
   class="flash-deck"

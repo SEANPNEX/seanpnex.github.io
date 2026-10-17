@@ -4,7 +4,7 @@ title: M1 Multiple Regression
 
 # M1 Multiple Regression · Review Flashcards
 
-Unit review of [M1 Multiple Regression](../../../C1%20Quantity/M1%20Multiple%20Regression.md): 12 cards covering the unit's key definitions, formulas and exam traps. Flip a card, then mark it **Again** or **Got it**; your marks stay in this browser.
+Unit review of [M1 Multiple Regression](../M1%20Multiple%20Regression.md): 12 cards covering the unit's key definitions, formulas and exam traps. Flip a card, then mark it **Again** or **Got it**; your marks stay in this browser.
 
 <iframe
   class="flash-deck"

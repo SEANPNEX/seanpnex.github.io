@@ -115,14 +115,20 @@ export function unpublishedNotes(pathname) {
     .map((file) => file.split(path.sep).join("/").replace(/[()[\]{}*?!]/g, "\\$&"));
 }
 
-/** Every curriculum note including planned (empty) ones, grouped by top-level folder — for directory pages. */
+/**
+ * Every curriculum note including planned (empty) ones, grouped by top-level folder — for directory pages.
+ * A topic's `Flashcards` subfolder is listed separately, so review decks don't count as modules.
+ */
 export function noteIndex(pathname) {
   const flatten = (items) => items.flatMap((item) => (item.type === "group" ? flatten(item.items) : [item]));
+  const isDeck = (item) => item.type === "group" && item.text === "Flashcards";
   const tree = scan(path.join(ROOT, pathname), pathname);
   return tree
     .filter((item) => item.type === "group")
     .map((group) => ({
       text: group.text,
-      notes: flatten(group.items).filter((note) => note.status !== "draft").map(({ text, link, status }) => ({ text, link, status })),
+      notes: flatten(group.items.filter((item) => !isDeck(item)))
+        .filter((note) => note.status !== "draft").map(({ text, link, status }) => ({ text, link, status })),
+      flashcards: flatten(group.items.filter(isDeck)).filter(isPublished).map(({ text, link }) => ({ text, link })),
     }));
 }
