@@ -32,3 +32,53 @@
 **Correct:** Through **depreciation** of the fixed asset: $300/10=30$ a year gross, investor share $20\%\times30=\mathbf{6}$ a year.
 
 **Gap:** Wording: a fixed asset is depreciated, not amortized (amortization is for intangibles).
+
+## 2026-10-17 — Goodwill, equity method, JVs and share-based pay
+
+**Q1:** Full vs partial goodwill: if goodwill is fully impaired, which method shows the larger loss, and is NI the same under both?
+
+**My answer:** NI is the same under both methods.
+
+**Correct:**
+- Full goodwill gives the larger impairment loss: **200** vs **180** under partial goodwill
+- NI is the same under both only **before** any impairment
+
+**Gap:** Missed that an impairment is larger under full goodwill.
+
+**Q2:** Equity-method income for a 30% stake in an investee with NI of 300.
+
+**My answer:** Deducted dividends from income.
+
+**Correct:** Income $=30\%\times300=\mathbf{90}$. Dividends do **not** reduce income; they only reduce the carrying amount of the investment.
+
+**Gap:** Netted dividends against equity-method income (second miss on this point).
+
+**Q3:** Restating an equity-method JV with proportionate consolidation: what changes?
+
+**My answer:** Thought NI or equity would change.
+
+**Correct:**
+- NI and equity: **unchanged**
+- Revenue, assets and liabilities: **higher**; only the presentation changes
+
+**Gap:** Proportionate consolidation changes presentation, not NI or equity.
+
+**Q4:** Share-based pay with a market condition that is not met: what happens to the expense?
+
+**My answer:** Reverse the expense.
+
+**Correct:**
+- Market condition missed: the expense **stays recognized** (no true-up)
+- Service and non-market performance conditions: **trued up** to the awards that actually vest
+
+**Gap:** Treated a market condition like a service or non-market condition.
+
+**Q5:** Direction of the inputs to an employee stock option's fair value.
+
+**My answer:** Mixed up the directions.
+
+**Correct:**
+- Higher risk-free rate, longer term, higher volatility: fair value **rises**
+- Higher dividend yield: fair value **falls**
+
+**Gap:** Option-pricing input directions; only dividends lower the value.

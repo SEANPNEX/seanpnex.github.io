@@ -69,3 +69,51 @@
 **Correct:** **Vたほうがいい** (休んだほうがいい); for nouns **Nのほうがいい** (水のほうがいい). じゃありませんか is not advice.
 
 **Gap:** Mixed advice with じゃありませんか.
+
+## 2026-10-17 — Nに marks the recipient
+
+**Q:** In 中村さんに資料をメールで送りました, who sent and who received?
+
+**Correct:** **Nに** = recipient: “I sent the documents **to** Nakamura-san.” The sender would take **が**.
+
+**Gap:** Read Nakamura as the sender.
+
+## 2026-10-17 — Nなら for advice
+
+**Q:** Reply “If it’s a computer, this one is good.”
+
+**Correct:** **パソコンなら、こちらがいいですよ** / **日本料理なら、駅前の店がいいですよ**. なら picks up the listener’s topic; について just means “about”.
+
+**Gap:** Chose について instead of なら.
+
+## 2026-10-17 — ほしいなら vs ながら
+
+**Q:** “If you want one, …”
+
+**Correct:** **ほしいなら**. ながら means “while” and attaches to a verb stem.
+
+**Gap:** Wrote ほしながら.
+
+## 2026-10-17 — 聞く: ask, past tense
+
+**Q:** “I asked my friend about the plans.”
+
+**Correct:** **友達に予定について聞きました**. 聞く = ask (聴く = listen); past **聞きました**, te-form **聞いて**.
+
+**Gap:** Wrote 聴いでました.
+
+## 2026-10-17 — スケジュール spelling
+
+**Q:** Katakana for “schedule”?
+
+**Correct:** **スケジュール** (ケ, not ゲ).
+
+**Gap:** Wrote スゲジュール.
+
+## 2026-10-17 — も after で
+
+**Q:** “I also eat with chopsticks.”
+
+**Correct:** **お箸でも食べます**. も replaces を/が but is added after で/に/と.
+
+**Gap:** Wrote もで.
