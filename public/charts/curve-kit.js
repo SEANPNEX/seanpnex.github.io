@@ -10,6 +10,7 @@
  */
 (function () {
   var NS = 'http://www.w3.org/2000/svg';
+  // The light ladder; chart-fx.js inverts it on the site's dark switch.
   var C = {
     INK: '#1C1C1A', PAPER: '#F0EFEB', MUTED: '#6A6963', SOFT: '#9A9992',
     FAINT: '#BEBDB6', GRID: '#D8D6CE', TICK: '#CFCEC7',

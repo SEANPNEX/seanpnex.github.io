@@ -116,6 +116,8 @@ body {
 
 /* Flashcard decks are embedded with an inline paper background; let it follow the theme. */
 .vp-doc iframe.flash-deck { background: var(--lf-paper) !important; }
+/* Charts likewise (their notes set a paper background); the charts follow the switch themselves. */
+.vp-doc iframe[src*="/charts/"] { background: var(--lf-paper) !important; }
 
 .mark-key { white-space: nowrap; }
 .mark-key .tick { width: 5px; height: 11px; margin-right: 3px; vertical-align: -1px; animation: none; }
