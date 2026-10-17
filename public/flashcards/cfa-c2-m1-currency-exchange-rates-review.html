@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Economics M1 — Currency Exchange Rates review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    id: "e1-bid-ask",
+    topic: "Quotes · bid and ask",
+    front: "For a quote \\(A/B\\) = bid–ask, which rate does a customer get when selling \\(B\\), and when buying \\(B\\)?",
+    back: "<div class=\"ans\"><p>\\(A/B\\) = units of \\(A\\) per one unit of <strong>base currency \\(B\\)</strong>.</p><ul><li>Customer <strong>sells \\(B\\)</strong> → dealer buys the base → <strong>bid</strong> (\"hit the bid\")</li><li>Customer <strong>buys \\(B\\)</strong> → dealer sells the base → <strong>ask</strong> (\"pay the ask\")</li></ul></div>",
+    gap: "Bid and ask always refer to the base currency (the one in the denominator)."
+  },
+  {
+    id: "e1-conversion",
+    topic: "Quotes · converting amounts",
+    front: "AUD/GBP = 1.5060–1.5067. Convert GBP 1 million into AUD, and AUD 1 million into GBP.",
+    back: "<div class=\"ans\"><ul><li>Sell GBP (base) at the <strong>bid</strong>: \\(1{,}000{,}000\\times1.5060=\\) <strong>AUD 1,506,000</strong></li><li>Buy GBP at the <strong>ask</strong>: \\(1{,}000{,}000/1.5067=\\) <strong>GBP 663,702.13</strong></li></ul></div>"
+  },
+  {
+    id: "e1-spread",
+    topic: "Quotes · spreads",
+    front: "What does the bid–ask spread compensate the dealer for, and does a larger trade always mean a wider spread?",
+    back: "<div class=\"ans\"><p>Operating costs, inventory risk, adverse selection and market risk. Spreads are quoted in <strong>pips</strong> (0.0001; 0.01 for many JPY pairs).</p><p><strong>No</strong>: client spreads depend on liquidity, size, relationship, time of day and volatility; market depth and the dealer's ability to hedge also matter.</p></div>"
+  },
+  {
+    id: "e1-invert",
+    topic: "Quotes · inverting",
+    front: "How do the bid and ask change when you invert a quote \\(A/B\\) into \\(B/A\\)?",
+    back: "<div class=\"ans\"><div class=\"eq-block\">$$(B/A)_{bid}=\\frac{1}{(A/B)_{ask}}$$</div><div class=\"eq-block\">$$(B/A)_{ask}=\\frac{1}{(A/B)_{bid}}$$</div><p>The sides switch so the bid stays below the ask.</p></div>"
+  },
+  {
+    id: "e1-cross",
+    topic: "Cross rates",
+    front: "CHF/USD = 1.5960–1.5970 and AUD/USD = 1.7225–1.7235. Find the AUD/CHF bid and ask.",
+    back: "<div class=\"ans\"><p>\\(AUD/CHF=\\frac{AUD}{USD}\\times\\frac{USD}{CHF}\\); the CHF/USD quote is inverted, so its sides swap.</p><div class=\"eq-block\">$$\\text{bid}=\\frac{1.7225}{1.5970}=1.0786$$</div><div class=\"eq-block\">$$\\text{ask}=\\frac{1.7235}{1.5960}=1.0799$$</div></div>",
+    gap: "Write the currency units and check they cancel; without an inversion, multiply bid × bid and ask × ask."
+  },
+  {
+    id: "e1-triangular",
+    topic: "Triangular arbitrage",
+    front: "JPY/USD = 105.39–105.41, CAD/USD = 1.3199–1.3200; a dealer quotes JPY/CAD = 79.81–79.83. Is there an arbitrage?",
+    back: "<div class=\"ans\"><p>Implied JPY/CAD: bid \\(105.39/1.3200=79.8409\\), ask \\(105.41/1.3199=79.8621\\).</p><p>The dealer's <strong>ask 79.83 &lt; market bid 79.8409</strong>: buy CAD from the dealer at 79.83, sell it in the market at 79.8409 → <strong>JPY 0.0109 per CAD</strong> before costs.</p></div>",
+    gap: "Always compare bid against ask (executable prices), never mid against mid."
+  },
+  {
+    id: "e1-forward-premium",
+    topic: "Forwards · premium and discount",
+    front: "If \\(F_{A/B}>S_{A/B}\\), which currency is at a forward premium? Give the annualized premium for \\(n\\) days.",
+    back: "<div class=\"ans\"><p>The <strong>base currency \\(B\\)</strong> trades at a <strong>forward premium</strong> (and \\(A\\) at a discount).</p><div class=\"eq-block\">$$\\text{premium}\\approx\\left(\\frac{F_{A/B}}{S_{A/B}}-1\\right)\\frac{360}{n}$$</div><p>Forward points are added to (or subtracted from) the spot bid and ask.</p></div>"
+  },
+  {
+    id: "e1-mtm",
+    topic: "Forwards · mark-to-market",
+    front: "How do you mark a currency forward to market before maturity?",
+    back: "<div class=\"ans\"><ul><li>Identify the original settlement cash flows</li><li>Enter an <strong>equal and opposite forward</strong> for the remaining term, at the correct current bid or ask</li><li><strong>Net</strong> the two settlement amounts</li><li><strong>Discount</strong> the net amount at the interest rate of <strong>its own currency</strong> for the remaining term</li></ul></div>"
+  },
+  {
+    id: "e1-mtm-example",
+    topic: "Forwards · worked example",
+    front: "Bought USD 1m forward at AUD/USD 1.05358 (90 days). After 30 days: spot 1.0612/1.0614, 60-day points +8.6/+9.0, 60-day AUD rate 1.16%. Value in AUD?",
+    back: "<div class=\"ans\"><p>Offset by <strong>selling USD</strong> 60 days forward at the bid: \\(1.0612+0.00086=1.06206\\).</p><p>Net AUD at settlement: \\(1{,}062{,}060-1{,}053{,}580=8{,}480\\).</p><div class=\"eq-block\">$$V=\\frac{8{,}480}{1+0.0116\\times60/360}=\\text{AUD }8{,}463.64$$</div></div>"
+  },
+  {
+    id: "e1-cirp",
+    topic: "Parity · CIRP",
+    front: "State covered interest rate parity with \\(S_{f/d}\\) (foreign per domestic). If \\(i_f>i_d\\), is the forward above or below spot?",
+    back: "<div class=\"ans\"><div class=\"eq-block\">$$F_{f/d}=S_{f/d}\\,\\frac{1+i_f}{1+i_d}$$</div><p>A fully hedged foreign investment must earn the domestic rate; it is enforced by <strong>arbitrage</strong>. If \\(i_f>i_d\\), \\(F_{f/d}>S_{f/d}\\): the domestic currency trades at a forward premium.</p></div>",
+    gap: "For maturities under a year, scale the rates to the horizon (e.g. × n/360)."
+  },
+  {
+    id: "e1-uirp",
+    topic: "Parity · UIRP and carry trade",
+    front: "State UIRP. Why is a carry trade not arbitrage?",
+    back: "<div class=\"ans\"><div class=\"eq-block\">$$E(\\%\\Delta S_{f/d})\\approx i_f-i_d$$</div><p>The higher-yielding currency is expected to <strong>depreciate</strong> by the yield gap. UIRP is an equilibrium expectation, not an arbitrage condition, and often fails in the short run.</p><p>A <strong>carry trade</strong> (borrow low-yield, invest high-yield, unhedged) profits only if UIRP fails; a depreciation of the funding-to-investment currency can wipe it out, so it is <strong>risky</strong>.</p></div>"
+  },
+  {
+    id: "e1-carry-example",
+    topic: "Parity · carry trade example",
+    front: "USD/GBP goes 1.50 → 1.49 over a year; UK rate 3%, US rate 1%. Profit from borrowing USD and investing in GBP?",
+    back: "<div class=\"ans\"><p>Borrow USD 1.50 → GBP 1.00 → GBP 1.03 → \\(1.03\\times1.49=\\) USD 1.5347. Repay \\(1.50\\times1.01=\\) USD 1.5150.</p><p>Profit <strong>USD 0.0197</strong>, or <strong>1.31%</strong> of the USD 1.50 borrowed.</p></div>"
+  },
+  {
+    id: "e1-frp-ppp",
+    topic: "Parity · forward-rate parity and PPP",
+    front: "When is the forward rate an unbiased predictor of the future spot? State absolute and relative PPP.",
+    back: "<div class=\"ans\"><p><strong>Forward-rate parity</strong> \\(F_{f/d}=E(S_T)\\) holds if <strong>CIRP and UIRP</strong> both hold; since CIRP always holds, it depends on UIRP.</p><ul><li><strong>Absolute PPP</strong>: \\(S_{f/d}=P_f/P_d\\) (law of one price for a basket)</li><li><strong>Relative PPP</strong>: \\(\\%\\Delta S_{f/d}\\approx\\pi_f-\\pi_d\\)</li></ul><p>Lower domestic inflation → \\(S_{f/d}\\) rises → the domestic currency <strong>appreciates</strong>.</p></div>"
+  },
+  {
+    id: "e1-fisher-rirp",
+    topic: "Parity · Fisher and real rate parity",
+    front: "What is the international Fisher effect, and what does real interest rate parity need?",
+    back: "<div class=\"ans\"><p>Fisher: \\(i\\approx r+E\\pi\\). <strong>International Fisher effect</strong>: \\(i_f-i_d=E\\pi_f-E\\pi_d\\).</p><p><strong>Real interest rate parity</strong> \\(r_f\\approx r_d\\) follows only if <strong>UIRP and ex-ante PPP both hold</strong> (with the Fisher relations): then their exchange-rate expectations coincide.</p></div>",
+    gap: "UIRP and ex-ante PPP are separate assumptions; don\\'t infer real rate parity from one alone."
+  },
+  {
+    id: "e1-bop",
+    topic: "Balance of payments",
+    front: "Does a current-account deficit mechanically cause depreciation? Name the two longer-run channels.",
+    back: "<div class=\"ans\"><p><strong>No.</strong> It must be financed by financial inflows or reserves; the effect depends on why it exists and whether financing stays sustainable.</p><ul><li><strong>Portfolio-balance channel</strong>: imbalances shift global wealth and desired holdings</li><li><strong>Debt-sustainability channel</strong>: rising external debt may eventually need higher risk premiums or depreciation</li></ul></div>"
+  },
+  {
+    id: "e1-mundell-fleming",
+    topic: "Policy · Mundell–Fleming",
+    front: "Floating rate, high capital mobility: what do expansionary monetary policy, expansionary fiscal policy, and both together do to the currency?",
+    back: "<div class=\"ans\"><ul><li><strong>Monetary expansion</strong>: lower rates → capital outflow → <strong>depreciation</strong></li><li><strong>Fiscal expansion</strong>: higher rates → capital inflow → <strong>appreciation</strong></li><li><strong>Expansionary fiscal + restrictive monetary</strong>: appreciation; the opposite mix: depreciation; same direction: <strong>indeterminate</strong></li></ul></div>",
+    gap: "With low capital mobility trade flows dominate: expansionary fiscal + monetary → depreciation; both restrictive → appreciation."
+  },
+  {
+    id: "e1-monetary-overshoot",
+    topic: "Policy · monetary approach and overshooting",
+    front: "What does the monetary approach predict for faster money growth, and what is overshooting?",
+    back: "<div class=\"ans\"><p>From \\(MV=PY\\) with stable \\(V\\) and \\(Y\\): faster money growth raises domestic prices → by relative PPP, <strong>long-run depreciation</strong>.</p><p><strong>Overshooting</strong> (Dornbusch): goods prices are sticky but financial markets move fast, so an unexpected expansion makes the currency <strong>depreciate beyond its PPP level</strong>, then appreciate back as prices rise.</p></div>"
+  },
+  {
+    id: "e1-portfolio-balance",
+    topic: "Policy · portfolio-balance approach",
+    front: "Under the portfolio-balance approach, what does a sustained fiscal expansion do to the currency over time?",
+    back: "<div class=\"ans\"><p>Domestic and foreign bonds are imperfect substitutes, so more government debt needs a higher risk premium.</p><ul><li><strong>Short run</strong>: higher rates attract capital → <strong>appreciation</strong></li><li><strong>Long run</strong>: debt-sustainability, monetization or inflation worries → <strong>depreciation</strong></li></ul></div>"
+  }
+];
+
+flashDeck({
+  key: "cfa-c2-m1-review",
+  source: "CFA L2 Economics \u00b7 M1 Currency Exchange Rates \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

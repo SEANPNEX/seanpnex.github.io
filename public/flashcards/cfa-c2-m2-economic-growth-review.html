@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Economics M2 — Economic Growth review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    id: "e2-preconditions",
+    topic: "Growth · preconditions",
+    front: "Which factors separate developed from developing economies\\' growth prospects?",
+    back: "<div class=\"ans\"><ul><li>Savings and investment</li><li>Financial markets and intermediaries</li><li>Political stability, rule of law, property rights</li><li>Education and health care (human capital)</li><li>Tax and regulatory systems</li><li>Free trade and unrestricted capital flows</li></ul></div>"
+  },
+  {
+    id: "e2-equity-return",
+    topic: "Growth · equity investors",
+    front: "Decompose the expected equity return to show where potential GDP growth enters.",
+    back: "<div class=\"ans\"><div class=\"eq-block\">$$E(R_e)=d+\\Delta(P/E)+i+g+\\Delta S$$</div><p>Dividend yield + repricing + inflation + <strong>real economic growth \\(g\\)</strong> + buybacks and relative dynamism. Higher potential growth lifts the earnings part even before multiples change.</p></div>",
+    gap: "For bond investors, higher potential growth means higher rates and generally better credit quality."
+  },
+  {
+    id: "e2-production",
+    topic: "Production function",
+    front: "Write the Cobb–Douglas production function in aggregate and per-worker form. What is \\(\\alpha\\)?",
+    back: "<div class=\"ans\"><div class=\"eq-block\">$$Y=AK^{\\alpha}L^{1-\\alpha}$$</div><div class=\"eq-block\">$$y=\\frac{Y}{L}=Ak^{\\alpha},\\ k=\\frac{K}{L}$$</div><p>\\(A\\) = total factor productivity; \\(\\alpha\\) = <strong>capital's share of GDP</strong> (also the elasticity of output with respect to capital).</p></div>"
+  },
+  {
+    id: "e2-growth-accounting",
+    topic: "Growth accounting",
+    front: "Write the growth-accounting equations for total output and output per worker.",
+    back: "<div class=\"ans\"><div class=\"eq-block\">$$\\frac{\\Delta Y}{Y}=\\frac{\\Delta A}{A}+\\alpha\\frac{\\Delta K}{K}+(1-\\alpha)\\frac{\\Delta L}{L}$$</div><div class=\"eq-block\">$$\\frac{\\Delta y}{y}=\\frac{\\Delta A}{A}+\\alpha\\frac{\\Delta k}{k}$$</div><div class=\"eq-block\">$$\\frac{\\Delta Y}{Y}=\\frac{\\Delta y}{y}+\\frac{\\Delta L}{L}$$</div></div>"
+  },
+  {
+    id: "e2-alpha",
+    topic: "Production function · estimating α",
+    front: "How is \\(\\alpha\\) derived from the marginal product of capital?",
+    back: "<div class=\"ans\"><div class=\"eq-block\">$$MPK=\\frac{\\partial Y}{\\partial K}=\\alpha\\frac{Y}{K}=r\\ \\Rightarrow\\ \\alpha=\\frac{rK}{Y}$$</div><p>Firms add capital until its marginal product equals its rental price \\(r\\), so \\(\\alpha\\) is capital's income share.</p></div>"
+  },
+  {
+    id: "e2-properties",
+    topic: "Production function · properties",
+    front: "State the two key properties of the production function.",
+    back: "<div class=\"ans\"><ul><li><strong>Constant returns to scale</strong>: doubling \\(K\\) and \\(L\\) doubles \\(Y\\)</li><li><strong>Diminishing marginal productivity</strong>: each extra unit of one input, the other fixed, adds less output; \\(MPK=\\alpha Ak^{\\alpha-1}\\) falls as \\(k\\) rises</li></ul><p>A <strong>smaller \\(\\alpha\\)</strong> means stronger diminishing returns to capital deepening.</p></div>"
+  },
+  {
+    id: "e2-deepening-tfp",
+    topic: "Capital deepening vs TFP",
+    front: "How do capital deepening and TFP growth differ on the production-function chart? Can deepening sustain growth?",
+    back: "<div class=\"ans\"><ul><li><strong>Capital deepening</strong>: higher \\(k\\), movement <strong>along</strong> the curve</li><li><strong>TFP growth</strong>: higher \\(A\\), the curve <strong>shifts up</strong> at every \\(k\\)</li></ul><p>Deepening alone runs into diminishing returns and stops adding growth once \\(MPK=r\\); only TFP growth sustains per-capita growth.</p></div>"
+  },
+  {
+    id: "e2-sources",
+    topic: "Sources of growth",
+    front: "Name the factors that extend the basic production function.",
+    back: "<div class=\"ans\"><ul><li><strong>Natural resources</strong>: not necessary for high income; beware <strong>Dutch disease</strong></li><li><strong>Labor supply</strong>: population, participation, immigration, hours worked</li><li><strong>Human capital</strong>: education and training, with spillovers and innovation</li><li><strong>ICT capital</strong> (network externalities) and non-ICT capital</li><li><strong>Technology</strong> and <strong>public infrastructure</strong></li></ul></div>",
+    gap: "Dutch disease: resource exports drive currency appreciation that makes other sectors uncompetitive."
+  },
+  {
+    id: "e2-classical",
+    topic: "Growth theory · classical",
+    front: "What does classical (Malthusian) growth theory predict for per-capita income?",
+    back: "<div class=\"ans\"><p>Technology raises labor productivity → population grows → diminishing returns to labor push per-capita income back to subsistence.</p><p>In the long run: a <strong>larger, not richer, population</strong>; no lasting per-capita growth.</p></div>"
+  },
+  {
+    id: "e2-solow-growth",
+    topic: "Growth theory · neoclassical steady state",
+    front: "In the Solow model, what are the steady-state growth rates of output per worker and total output?",
+    back: "<div class=\"ans\"><div class=\"eq-block\">$$g^*=\\frac{\\theta}{1-\\alpha}$$</div><div class=\"eq-block\">$$G^*=\\frac{\\theta}{1-\\alpha}+n$$</div><p>\\(\\theta\\) = TFP growth, \\(n\\) = labor-force growth. In the steady state \\(Y/K\\) and MPK are constant.</p></div>"
+  },
+  {
+    id: "e2-solow-equation",
+    topic: "Growth theory · steady-state condition",
+    front: "What condition pins down the steady state \\(k^*\\)? What three uses does saving cover there?",
+    back: "<div class=\"ans\"><div class=\"eq-block\">$$sy=sAk^{\\alpha}=\\left(\\frac{\\theta}{1-\\alpha}+\\delta+n\\right)k$$</div><p>Saving per worker funds: <strong>capital deepening</strong> at the steady-state rate, <strong>replacing depreciated capital</strong> (\\(\\delta\\)), and <strong>equipping new workers</strong> (\\(n\\)).</p></div>"
+  },
+  {
+    id: "e2-saving-labor",
+    topic: "Growth theory · shifts",
+    front: "In the Solow model, what do a higher saving rate \\(s\\) and faster labor-force growth \\(n\\) do to \\(k^*\\), \\(y^*\\) and long-run growth?",
+    back: "<div class=\"ans\"><ul><li><strong>\\(\\uparrow s\\)</strong>: savings curve shifts up → <strong>higher \\(k^*\\) and \\(y^*\\)</strong>; a temporary growth spurt, but long-run \\(g^*\\) unchanged (a level effect; \\(s\\le1\\) caps it)</li><li><strong>\\(\\uparrow n\\)</strong>: required-investment ray steepens → <strong>lower \\(k^*\\) and \\(y^*\\)</strong>; \\(g^*\\) unchanged, \\(G^*\\) rises with \\(n\\)</li></ul></div>"
+  },
+  {
+    id: "e2-g-example",
+    topic: "Growth theory · worked example",
+    front: "Labor share 56.1%, TFP growth 2.9%, labor-force growth 1.2%. Find \\(G^*\\). Potential GDP growth is 8.5%: what does that tell you?",
+    back: "<div class=\"ans\"><div class=\"eq-block\">$$G^*=\\frac{2.9\\%}{56.1\\%}+1.2\\%=6.37\\%$$</div><p>Potential growth 8.5% &gt; 6.37%: the economy is still <strong>converging</strong>; capital is below its steady state and <strong>capital deepening</strong> is a major growth driver.</p></div>",
+    gap: "Labor share in total factor cost = 1 − α; near the steady state, growth comes only from TFP and labor."
+  },
+  {
+    id: "e2-conclusions",
+    topic: "Growth theory · neoclassical conclusions",
+    front: "State the main conclusions of neoclassical growth theory.",
+    back: "<div class=\"ans\"><ul><li>Capital accumulation affects the <strong>level</strong> of output, not the long-run <strong>growth rate</strong></li><li>Every economy moves toward a steady growth rate, whatever its starting capital or productivity</li><li>Early capital deepening gives above-steady-state growth that then slows</li><li>Only <strong>TFP growth</strong> sustains growth in output per worker</li></ul></div>"
+  },
+  {
+    id: "e2-endogenous",
+    topic: "Growth theory · endogenous",
+    front: "How does endogenous growth theory differ from the neoclassical model?",
+    back: "<div class=\"ans\"><p>It assumes <strong>no diminishing returns to capital</strong> for the economy as a whole, because R&amp;D and human capital have <strong>positive spillovers</strong>.</p><p>So there is no steady-state growth rate: higher saving and investment can raise growth <strong>permanently</strong>.</p></div>"
+  },
+  {
+    id: "e2-convergence",
+    topic: "Convergence",
+    front: "Distinguish absolute, conditional and club convergence. Which theory predicts no convergence?",
+    back: "<div class=\"ans\"><ul><li><strong>Absolute</strong>: poorer countries eventually match rich countries' per-capita output</li><li><strong>Conditional</strong>: countries with the same saving rate, population growth and production function converge to the same \\(y\\) and growth rate</li><li><strong>Club</strong>: only club members converge; poor countries can join through institutional reform, or stay in a non-convergence trap</li></ul><p><strong>Endogenous growth</strong> gives no prediction of convergence.</p></div>",
+    gap: "Neoclassical theory implies convergence of growth rates (shared technology), not absolute convergence of income levels."
+  }
+];
+
+flashDeck({
+  key: "cfa-c2-m2-review",
+  source: "CFA L2 Economics \u00b7 M2 Economic Growth \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

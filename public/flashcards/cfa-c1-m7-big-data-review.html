@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Quant M7 — Big Data Projects review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    id: "q7-forms",
+    topic: "Data · forms",
+    front: "Distinguish structured, semi-structured and unstructured data, with an example of each. What is alternative data?",
+    back: "<div class=\"ans\"><ul><li><strong>Structured</strong>: fixed rows and columns (SQL tables, price panels, CSV)</li><li><strong>Semi-structured</strong>: tags or keys (JSON, XML, web logs)</li><li><strong>Unstructured</strong>: no schema (text, images, audio, video)</li></ul><p><strong>Alternative data</strong> come from outside conventional reporting channels, e.g. satellite images of parking lots or anonymized payments.</p></div>"
+  },
+  {
+    id: "q7-four-vs",
+    topic: "Data · the four Vs",
+    front: "What are the four Vs of big data?",
+    back: "<div class=\"ans\"><ul><li><strong>Volume</strong>: how much data</li><li><strong>Velocity</strong>: how fast it arrives and must be processed</li><li><strong>Variety</strong>: diversity of sources and formats</li><li><strong>Veracity</strong>: accuracy, credibility and reliability</li></ul><p>Some add <strong>value</strong>: benefits must exceed acquisition, processing, compliance and model-risk costs.</p></div>",
+    gap: "More data do not remove bias: a huge unrepresentative sample estimates the wrong quantity precisely."
+  },
+  {
+    id: "q7-workflow",
+    topic: "Project workflow",
+    front: "List the seven steps of a big-data project.",
+    back: "<div class=\"ans\"><ul><li>Conceptualize the problem</li><li>Collect and curate data</li><li>Prepare and wrangle</li><li>Explore</li><li>Engineer and select features</li><li>Select, train and validate a model</li><li>Deploy and monitor</li></ul><p>The process is iterative, not one-way.</p></div>"
+  },
+  {
+    id: "q7-prep-vs-wrangle",
+    topic: "Preparation vs wrangling",
+    front: "What is the difference between data preparation and data wrangling?",
+    back: "<div class=\"ans\"><ul><li><strong>Preparation (cleansing)</strong>: examine raw data, find and fix <strong>quality problems</strong></li><li><strong>Wrangling (preprocessing)</strong>: <strong>transform, combine and reshape</strong> the cleaned data for analysis (extract, filter, select, aggregate, convert, join, winsorize)</li></ul></div>"
+  },
+  {
+    id: "q7-errors",
+    topic: "Data errors",
+    front: "Name the data errors: (1) negative share count, (2) price with the wrong decimal, (3) USD code on EUR values, (4) thousands mixed with millions, (5) one filing from two feeds.",
+    back: "<div class=\"ans\"><ul><li>(1) <strong>Invalidity</strong></li><li>(2) <strong>Inaccuracy</strong></li><li>(3) <strong>Inconsistency</strong></li><li>(4) <strong>Non-uniformity</strong></li><li>(5) <strong>Duplication</strong></li></ul><p>Also: incompleteness (missing values) and staleness (out-of-date values).</p></div>",
+    gap: "Dropping incomplete rows biases the sample if missingness is systematic; imputation understates uncertainty."
+  },
+  {
+    id: "q7-scaling",
+    topic: "Scaling · normalization vs standardization",
+    front: "Give the formulas for min–max normalization and standardization. Where are their parameters estimated?",
+    back: "<div class=\"ans\"><div class=\"eq-block\">$$x^*=\\frac{x-x_{\\min}}{x_{\\max}-x_{\\min}}\\in[0,1]$$</div><div class=\"eq-block\">$$z=\\frac{x-\\mu}{\\sigma}$$</div><p>Estimate \\(x_{\\min}, x_{\\max}, \\mu, \\sigma\\) on the <strong>training set only</strong>, then apply them to validation, test and live data.</p></div>",
+    gap: "Normalization is sensitive to outliers; standardization assumes nothing about the range."
+  },
+  {
+    id: "q7-lookahead",
+    topic: "Point-in-time data",
+    front: "Why is joining today\\'s restated fundamentals to historical prices a problem?",
+    back: "<div class=\"ans\"><p>It creates <strong>look-ahead bias</strong>: the revised numbers were not available at the time. Use publication timestamps and historical constituent lists that reflect what an investor could actually have known.</p></div>"
+  },
+  {
+    id: "q7-text-cleaning",
+    topic: "Text · tokens and normalization",
+    front: "What is a token? Distinguish stemming from lemmatization.",
+    back: "<div class=\"ans\"><p>A <strong>token</strong> is an analytical unit: a word, subword, punctuation mark or symbol, not necessarily a word.</p><ul><li><strong>Stemming</strong>: mechanical rules; can create non-words</li><li><strong>Lemmatization</strong>: maps to the dictionary base form using linguistic context</li></ul></div>",
+    gap: "Removing numbers, punctuation or stop words is a choice: \"10%\", \"$5bn\" and \"not\" can carry meaning."
+  },
+  {
+    id: "q7-bow",
+    topic: "Text · bag-of-words",
+    front: "What is a bag-of-words representation and a document–term matrix?",
+    back: "<div class=\"ans\"><p><strong>BOW</strong>: a vector of term <strong>counts or weights</strong> per document; it ignores word order and most context.</p><p><strong>Document–term matrix</strong>: \\(D\\) documents × \\(V\\) terms, entry = count or weight of term \\(t\\) in document \\(d\\); high-dimensional and <strong>sparse</strong>.</p></div>",
+    gap: "n-grams such as \"going concern\" preserve useful multiword patterns that plain BOW loses."
+  },
+  {
+    id: "q7-tfidf",
+    topic: "Text · TF–IDF",
+    front: "Define TF–IDF. Which terms get high weight?",
+    back: "<div class=\"ans\"><div class=\"eq-block\">$$IDF(t)=\\log\\frac{N}{DF(t)}$$</div><div class=\"eq-block\">$$TF\\text{-}IDF(t,d)=TF(t,d)\\times IDF(t)$$</div><p>High weight: terms <strong>frequent in a document but rare across the corpus</strong>. Terms in nearly every document get little weight.</p></div>"
+  },
+  {
+    id: "q7-feature-selection",
+    topic: "Features · selection",
+    front: "How can features be selected, and what is mutual information?",
+    back: "<div class=\"ans\"><p>Correlation, <strong>chi-square</strong> tests (categorical feature vs class), <strong>mutual information</strong>, model-based importance or regularization, and economic judgment.</p><div class=\"eq-block\">$$I(X;Y)=\\sum p(x,y)\\log\\frac{p(x,y)}{p(x)p(y)}$$</div><p>Zero if independent; larger = more shared information (not bounded by 1).</p></div>",
+    gap: "Select features inside the training or cross-validation process; using the full dataset leaks information."
+  },
+  {
+    id: "q7-feature-engineering",
+    topic: "Features · engineering",
+    front: "Give examples of feature engineering for structured data and for text.",
+    back: "<div class=\"ans\"><ul><li><strong>Structured</strong>: earnings yield or P/E from price and EPS; growth, leverage, rolling volatility, surprise vs consensus; calendar indicators; lags using only prior information</li><li><strong>Text</strong>: typed number tokens, n-grams, named-entity recognition, part-of-speech tags, sentiment or topic features, embeddings</li></ul></div>"
+  },
+  {
+    id: "q7-params",
+    topic: "Model training · parameters",
+    front: "Distinguish parameters from hyperparameters, with examples.",
+    back: "<div class=\"ans\"><ul><li><strong>Parameters</strong>: learned from training data (regression coefficients, network weights)</li><li><strong>Hyperparameters</strong>: set by the analyst and <strong>tuned on validation data</strong> (LASSO penalty, \\(K\\) in KNN, tree depth, learning rate)</li></ul></div>"
+  },
+  {
+    id: "q7-confusion",
+    topic: "Evaluation · confusion matrix",
+    front: "Which cell of the confusion matrix is a Type I error, and which is Type II? Define \\(F_1\\) and FPR.",
+    back: "<div class=\"ans\"><ul><li><strong>False positive (FP) = Type I</strong>; <strong>false negative (FN) = Type II</strong></li></ul><div class=\"eq-block\">$$F_1=2\\,\\frac{P\\times R}{P+R}$$</div><div class=\"eq-block\">$$FPR=\\frac{FP}{FP+TN}$$</div><p>with precision \\(P=TP/(TP+FP)\\) and recall \\(R=TP/(TP+FN)\\).</p></div>"
+  },
+  {
+    id: "q7-roc",
+    topic: "Evaluation · ROC and RMSE",
+    front: "What does the ROC curve plot, and how do you compare two curves? Why use RMSE over MAE?",
+    back: "<div class=\"ans\"><p>ROC plots <strong>TPR vs FPR</strong> as the threshold changes; a curve closer to the upper-left and a larger <strong>AUC</strong> rank better.</p><p><strong>RMSE</strong> \\(=\\sqrt{\\tfrac1n\\sum(y-\\hat y)^2}\\) penalizes <strong>large errors</strong> more heavily than MAE and is in the target's units.</p></div>"
+  },
+  {
+    id: "q7-bias-drift",
+    topic: "Governance · bias and drift",
+    front: "Name five biases and two kinds of drift a big-data model can suffer from.",
+    back: "<div class=\"ans\"><ul><li><strong>Selection</strong>, <strong>survivorship</strong>, <strong>look-ahead</strong>, <strong>label</strong> and <strong>proxy</strong> bias</li><li><strong>Data drift</strong>: the input distribution changes</li><li><strong>Concept drift</strong>: the input–target relationship changes</li></ul><p>Monitor both performance and the data-generating process; averages can hide a failing subgroup.</p></div>"
+  }
+];
+
+flashDeck({
+  key: "cfa-c1-m7-review",
+  source: "CFA L2 Quantitative Methods \u00b7 M7 Big Data \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>
