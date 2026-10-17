@@ -74,3 +74,58 @@ Regardless of the form of compensation, most companies aggregate compensation ex
 > [!Note]
 >
 > The exception is **termination benefits**. They are often incurred as part of a corporate **restructuring** and are reported within restructuring costs. Analysts often treat restructuring costs as non-recurring, so check whether they recur before excluding them.
+
+## Share-Based Compensation
+
+Share-based compensation pays employees in the employer's shares, or in cash linked to the share price. It is common for senior management, and for early-stage companies that have little cash to spare.
+
+### Advantages and Disadvantages
+
+Advantages:
+
+1. **Aligns interests.** Employees who own shares gain and lose with shareholders, which reduces principal–agent conflicts.
+2. **Improves retention.** A multi-year vesting period gives employees a reason to stay, because unvested awards are forfeited when they leave.
+3. **Preserves liquidity.** Equity-settled awards require no cash outflow, which matters most for start-ups and high-growth companies.
+
+Disadvantages:
+
+1. **Limited link to the employee's own effort.** Most employees have little influence over the share price, which also moves with the market, so the award may not change how they act.
+2. **Distorted risk-taking.** It can push managers either way:
+   * Options pay off only on the upside, so they can encourage **excessive** risk-taking.
+   * A large holding of shares ties up the manager's own wealth in the company, so it can make them **too risk-averse**.
+3. **Concentrated risk for employees.** Employees already depend on the company for their salary. Share-based pay makes their wealth fall with the share price as well, and an underperforming share may leave them worse off than equivalent cash pay.
+4. **Dilution.** Issuing new shares on vesting or exercise reduces existing shareholders' ownership and EPS.
+
+### Vesting Conditions
+
+1. **Service condition**: The award vests on a future date, as long as the employee is **still employed** then.
+2. **Performance condition**: The award vests only if a performance target is met, usually in addition to a service condition. There are two kinds:
+   * **Market condition**: tied to the share price, e.g., a target share price or total shareholder return relative to an index.
+   * **Non-market condition**: tied to operating results, e.g., EPS growth, revenue or ROE targets.
+
+> [!Note]
+>
+> The two kinds of performance condition are accounted for differently:
+>
+> * A **market condition** is built into the grant-date fair value (a share-price target lowers it). The expense is recognized as long as the service condition is met, **even if the market target is missed**.
+> * A **non-market condition** is not part of the fair value. Instead, the expense is based on the number of awards **expected to vest**, re-estimated each period. If the target is missed, the expense recognized so far is reversed.
+>
+> The same true-up applies to a service condition: awards forfeited by employees who leave before vesting reverse their expense.
+
+### Equity-Settled Share-Based Compensation
+
+Equity-settled awards are paid in shares. Their fair value is measured on the **grant date** and spread over the vesting period (see the timeline above). It is not remeasured for later changes in the share price.
+
+| | Restricted Stock | Restricted Stock Units (RSUs) | Employee Stock Options (ESOs) |
+| --- | --- | --- | --- |
+| **What the employee gets** | Shares issued at grant, which cannot be sold or transferred until they vest | A promise of shares, delivered at settlement | The right to buy shares at a fixed exercise price |
+| **Voting and dividends before vesting** | Yes, usually | No (sometimes dividend equivalents) | No |
+| **Value to the employee** | Full share price | Full share price | Only the gain above the exercise price |
+| **Grant-date fair value** | Share price at grant | Share price at grant (less expected dividends the holder does not receive) | Option-pricing model (e.g., Black–Scholes–Merton, binomial) |
+
+* **Performance shares (PSUs)** are RSUs whose number of shares depends on a performance condition.
+* **Employee stock options** are typically granted **at the money**: the exercise price equals the share price on the grant date. The option has no intrinsic value at grant, so it is worth something to the employee only if the share price rises. Its fair value is time value alone, which is why it must be estimated with an option-pricing model rather than read from the share price.
+
+> [!Important]
+>
+> An option's grant-date fair value, and therefore the expense, depends on management's inputs: expected volatility, expected term, dividend yield and the risk-free rate. A higher volatility, longer term or higher risk-free rate raises the fair value; a higher dividend yield lowers it. Check whether the assumptions are reasonable: assuming a lower volatility or a shorter expected term reduces compensation expense.
