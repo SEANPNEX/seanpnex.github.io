@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA FSA M1 — Intercorporate Investments review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    "id": "f1-categories",
+    "topic": "Categories · influence and treatment",
+    "front": "Name the four categories of long-term equity investment, the usual ownership range of each, and its accounting treatment.",
+    "back": "<div class=\"ans\"><ul><li><strong>Financial assets</strong>: no significant influence, usually &lt; 20% → AMC, FVOCI or FVPL</li><li><strong>Associates</strong>: significant influence, usually 20–50% → <strong>equity method</strong></li><li><strong>Joint ventures</strong>: shared control, % varies → <strong>equity method</strong></li><li><strong>Business combinations</strong>: control, usually &gt; 50% → <strong>acquisition method</strong> (consolidation)</li></ul></div>",
+    "gap": "The percentage is only a presumption: the category follows the actual degree of influence or control."
+  },
+  {
+    "id": "f1-classification",
+    "topic": "Financial assets · classification",
+    "front": "Which two tests classify a financial asset, and how do they lead to AMC, FVOCI or FVPL?",
+    "back": "<div class=\"ans\"><ul><li><strong>Cash flow characteristics test</strong>: are the contractual cash flows solely payments of principal and interest (SPPI)?</li><li><strong>Business model test</strong>: is the asset held to collect, to collect and sell, or for something else?</li></ul><ul><li>SPPI + hold to collect → <strong>AMC</strong></li><li>SPPI + hold to collect <em>and</em> sell → <strong>FVOCI</strong></li><li>Everything else (most equity, derivatives) → <strong>FVPL</strong></li></ul></div>",
+    "gap": "A convertible bond fails SPPI because of the embedded derivative, so the whole asset is FVPL."
+  },
+  {
+    "id": "f1-designated",
+    "topic": "Financial assets · designations",
+    "front": "What are designated FVPL and designated FVOCI, and what is each for?",
+    "back": "<div class=\"ans\"><ul><li><strong>Designated FVPL</strong>: only for <strong>debt</strong> investments that would otherwise be AMC or FVOCI, to avoid an <strong>accounting mismatch</strong> with liabilities measured at FVPL</li><li><strong>Designated FVOCI</strong>: an irrevocable election for <strong>equity</strong> investments not held for trading. Only <strong>dividends</strong> go to profit or loss; fair-value changes stay in OCI, and on sale the cumulative amount moves to retained earnings, never through P&amp;L</li></ul></div>",
+    "gap": "Designated-FVOCI equity gains are never recycled to profit or loss, unlike debt FVOCI."
+  },
+  {
+    "id": "f1-measurement",
+    "topic": "Financial assets · measurement",
+    "front": "A 3-year 10% bond (par 1,000) is bought for 951.96, a 12% yield. How does income differ under AMC, FVOCI and FVPL, and what is total income over its life?",
+    "back": "<div class=\"ans\"><ul><li><strong>AMC</strong>: interest income = carrying amount × 12% (114.24 in year 1); fair value is ignored</li><li><strong>FVOCI</strong>: same interest income in P&amp;L; the asset is at fair value and the rest of the move goes to <strong>OCI</strong></li><li><strong>FVPL</strong>: coupon <strong>and</strong> every fair-value change go to P&amp;L</li></ul><p>Total income is the same under all three: \\(300 + 38.04 = 348.04\\), the coupons plus the discount. Only the <strong>timing</strong> differs.</p></div>",
+    "gap": "FVOCI and AMC report the same P&amp;L each year; FVOCI and FVPL report the same balance-sheet value."
+  },
+  {
+    "id": "f1-fa-impairment",
+    "topic": "Financial assets · impairment",
+    "front": "Which impairment model applies to financial assets, and which categories are tested? How is an expected credit loss (ECL) recorded on debt FVOCI?",
+    "back": "<div class=\"ans\"><p>The <strong>expected loss</strong> model (it replaced the incurred-loss model). Only <strong>AMC</strong> and <strong>debt FVOCI</strong> are tested; FVPL never is, because every value change already hits P&amp;L.</p><p>Debt FVOCI: fair value falls 980 → 960 and ECL = 15. The asset stays at fair value 960; <strong>15 goes to P&amp;L</strong> and the rest, <strong>−5, to OCI</strong>.</p></div>",
+    "gap": "AMC and debt FVOCI put the same ECL through earnings; FVOCI just parks the non-credit part in OCI."
+  },
+  {
+    "id": "f1-reclass",
+    "topic": "Financial assets · reclassification",
+    "front": "When can financial assets be reclassified, and how?",
+    "back": "<div class=\"ans\"><ul><li><strong>Equity investments</strong>: never</li><li><strong>Debt investments</strong>: only when the <strong>business model changes</strong> in a way that significantly affects operations</li><li>Applied <strong>prospectively</strong> from the reclassification date (the start of the next reporting period); past periods are not restated</li></ul></div>"
+  },
+  {
+    "id": "f1-influence",
+    "topic": "Associates · significant influence",
+    "front": "What evidence shows significant influence besides a 20–50% stake? How do IFRS and US GAAP differ in counting the stake?",
+    "back": "<div class=\"ans\"><ul><li>Representation on the <strong>board of directors</strong></li><li>Participation in <strong>policy-making</strong></li><li><strong>Material transactions</strong> between investor and investee</li><li><strong>Interchange of managerial personnel</strong></li><li><strong>Technological dependency</strong></li></ul><p><strong>IFRS</strong> also counts <strong>potential voting rights</strong> that are currently exercisable (warrants, call options, convertibles); <strong>US GAAP</strong> counts only voting shares held.</p></div>",
+    "gap": "Influence can exist below 20% or be absent above 20%: the evidence beats the percentage."
+  },
+  {
+    "id": "f1-equity-basics",
+    "topic": "Equity method · mechanics",
+    "front": "A buys 30% of B for 100. B earns NI of 80 and pays dividends of 20. What does A report on the I/S and B/S?",
+    "back": "<div class=\"ans\"><ul><li><strong>Equity income</strong> \\(=30\\%\\times80=24\\), on the I/S</li><li><strong>Dividend</strong> \\(=30\\%\\times20=6\\): cash +6, investment −6. It is a <strong>return of capital</strong>, not income</li></ul><div class=\"eq-block\">$$\\text{Investment}=100+24-6=118$$</div></div>",
+    "gap": "Under the equity method, dividends never hit income; under the cost method or FVPL they do."
+  },
+  {
+    "id": "f1-excess-pp",
+    "topic": "Equity method · excess purchase price",
+    "front": "BY pays 100,000 for 30% of SY, whose net assets are 220,000 at book value and 270,000 at fair value (P&amp;E +30,000, land +20,000). Split the purchase price and say how each piece is treated.",
+    "back": "<div class=\"ans\"><ul><li>30% × BV: <strong>66,000</strong></li><li>Excess purchase price: \\(100{,}000-66{,}000=\\) <strong>34,000</strong></li><li>P&amp;E step-up \\(30\\%\\times30{,}000=9{,}000\\): <strong>amortized</strong> over the asset's life</li><li>Land step-up \\(30\\%\\times20{,}000=6{,}000\\): <strong>not amortized</strong></li><li>Goodwill \\(100{,}000-30\\%\\times270{,}000=\\) <strong>19,000</strong>: <strong>not amortized</strong>, part of the impairment test</li></ul></div>",
+    "gap": "Goodwill stays inside the single investment line; it is never shown or tested separately."
+  },
+  {
+    "id": "f1-stepup-amort",
+    "topic": "Equity method · amortizing step-ups",
+    "front": "How do fair-value step-ups change the investor's equity income? Give the inventory and depreciable-asset cases.",
+    "back": "<div class=\"ans\"><p>The investor measures the investee's income on a <strong>fair-value basis</strong>, so the extra expense from each step-up reduces equity income:</p><div class=\"eq-block\">$$\\begin{aligned}\\text{Equity income}={}&\\%\\times(\\text{reported NI}\\\\&\\quad-\\text{step-up expense})\\end{aligned}$$</div><ul><li><strong>Inventory</strong>: the step-up flows into COGS as the goods are sold (e.g. 80% in Y1, 20% in Y2)</li><li><strong>PP&amp;E or intangibles</strong>: step-up ÷ <strong>remaining</strong> life, each year</li><li>Example: SY NI 1,000, PPE step-up 10 over 10 years → \\(30\\%\\times(1{,}000-1)=299.7\\)</li></ul></div>",
+    "gap": "Use the remaining life, not the total life: e.g. 960 over the 16 years left, not over 20."
+  },
+  {
+    "id": "f1-up-down",
+    "topic": "Equity method · upstream and downstream",
+    "front": "How is unrealized profit on sales between investor and associate treated? Work the case: 20% stake, SY sells goods costing 600 to BY for 1,000; BY sells 60% of them outside the next year; SY's NI is 3,200 then 4,000.",
+    "back": "<div class=\"ans\"><p>Eliminate the <strong>investor's share</strong> of unrealized profit until the goods are sold outside (or, for an asset in use, as it is depreciated). Upstream and downstream are treated the <strong>same</strong>.</p><ul><li>Year 1: \\(20\\%\\times(3{,}200-400)=\\) <strong>560</strong></li><li>Year 2: \\(20\\%\\times(4{,}000+60\\%\\times400)=\\) <strong>848</strong></li></ul></div>",
+    "gap": "Only the investor's % is eliminated, not 100%; the deferred profit returns as the goods leave the pair."
+  },
+  {
+    "id": "f1-eq-impairment",
+    "topic": "Equity method · impairment",
+    "front": "When is an equity-method investment tested for impairment under IFRS and US GAAP, how is the loss measured, and can it be reversed?",
+    "back": "<div class=\"ans\"><ul><li><strong>IFRS</strong>: objective evidence of a <strong>loss event</strong> affecting future cash flows. Loss = carrying amount − <strong>recoverable amount</strong> (higher of FV less costs to sell and value in use). <strong>Reversal allowed</strong>, capped at the carrying amount without the impairment</li><li><strong>US GAAP</strong>: fair value below carrying amount and the decline is <strong>other than temporary</strong>. Loss = carrying amount − fair value. <strong>No reversal</strong></li></ul><p>The <strong>whole investment</strong> is tested as one asset; its goodwill is not tested separately.</p></div>",
+    "gap": "A fall in market value alone is not enough under IFRS: there must be a loss event."
+  },
+  {
+    "id": "f1-fv-option",
+    "topic": "Equity method · fair value option",
+    "front": "Who can elect the fair value option for an associate, when, and what changes once it is elected?",
+    "back": "<div class=\"ans\"><ul><li><strong>US GAAP</strong>: any entity. <strong>IFRS</strong>: only venture capital organizations, mutual funds, unit trusts and similar entities</li><li>Elected at <strong>initial recognition</strong> and <strong>irrevocable</strong></li><li>Investment at <strong>fair value</strong>; income = fair-value change + dividends and interest (FVPL)</li><li>No share of NI, no step-up amortization, no intercompany elimination, no separate impairment test</li></ul></div>",
+    "gap": "Once elected, dividends are income again, not a reduction of the investment."
+  },
+  {
+    "id": "f1-control",
+    "topic": "Business combinations · control",
+    "front": "How do IFRS and US GAAP define control? Can a debt investor have control?",
+    "back": "<div class=\"ans\"><ul><li><strong>IFRS</strong> (one model): <strong>power</strong> over relevant activities + <strong>exposure to variable returns</strong> + the <strong>ability to use that power</strong> to affect those returns</li><li><strong>US GAAP</strong>: the <strong>voting interest model</strong> (usually &gt; 50% of votes), or the <strong>variable interest model</strong> for VIEs, where the primary beneficiary consolidates</li></ul><p>Normally a lender has no control: covenants are <strong>protective rights</strong>. But in an SPE or VIE, a lender or guarantor that directs the key activities and bears most of the variable returns does control it.</p></div>",
+    "gap": "Under IFRS, a stake under 50% can still give control through agreements or potential voting rights."
+  },
+  {
+    "id": "f1-forms",
+    "topic": "Business combinations · forms",
+    "front": "Distinguish a merger, an acquisition and a consolidation. Which one needs consolidated statements?",
+    "back": "<div class=\"ans\"><ul><li><strong>Merger</strong> \\(A+B=A\\): B ceases to exist</li><li><strong>Acquisition</strong> \\(A+B=(A+B)\\): both survive as <strong>parent and subsidiary</strong></li><li><strong>Consolidation</strong> \\(A+B=C\\): a new entity C replaces both</li></ul><p>Only the <strong>acquisition</strong> leaves two legal entities, so the parent prepares consolidated statements. IFRS does not distinguish the forms; all use the acquisition method.</p></div>",
+    "gap": "Under common control, there are no fair-value step-ups and no new goodwill: book values carry over and any difference goes to equity."
+  },
+  {
+    "id": "f1-acq-method",
+    "topic": "Business combinations · acquisition method",
+    "front": "Give the four steps of the acquisition method and the goodwill formula. What replaced pooling of interests, and why?",
+    "back": "<div class=\"ans\"><ul><li>Identify the <strong>acquirer</strong></li><li>Determine the <strong>acquisition date</strong> (when control passes)</li><li>Measure identifiable assets and liabilities at <strong>fair value</strong>, including unrecorded intangibles and contingent liabilities</li><li>Recognize <strong>goodwill</strong> or a bargain purchase gain</li></ul><div class=\"eq-block\">$$\\begin{aligned}\\text{Goodwill}={}&\\text{Consideration}+\\text{NCI}\\\\&-\\text{FV of identifiable}\\\\&\\quad\\text{net assets}\\end{aligned}$$</div><p>Pooling added <strong>book values</strong>, with no step-ups and no goodwill, which flattered later earnings. It was abolished (US GAAP 2001, IFRS 2004).</p></div>",
+    "gap": "Acquisition-related costs (advisers, lawyers) are expensed, not added to the price."
+  },
+  {
+    "id": "f1-consolidation",
+    "topic": "Consolidation · balance sheet",
+    "front": "A (equity 3,000) pays 1,000 cash for 100% of B, whose net assets are 600 at book value and 800 at fair value. What are goodwill and consolidated equity? What if A pays in shares instead?",
+    "back": "<div class=\"ans\"><ul><li>A at <strong>book value</strong> + B at <strong>fair value</strong>; eliminate <em>Investment in B</em> against B's equity</li><li>Goodwill \\(=1{,}000-800=\\) <strong>200</strong></li><li>Consolidated equity = <strong>A's equity only, 3,000</strong>; B's pre-acquisition equity never appears</li><li>Paid in <strong>shares</strong>: goodwill is still 200, but equity is <strong>4,000</strong> and cash stays 1,000 higher</li></ul></div>",
+    "gap": "The parent's own assets are never revalued; only the subsidiary's are stepped up to fair value."
+  },
+  {
+    "id": "f1-full-partial",
+    "topic": "Goodwill · full vs partial",
+    "front": "A pays 900 for 90% of B (identifiable net assets at FV = 800). Compute goodwill and NCI under full and partial goodwill. Which standard allows which?",
+    "back": "<div class=\"ans\"><ul><li><strong>Full</strong>: B is worth \\(900/90\\%=1{,}000\\). Goodwill \\(=1{,}000-800=\\) <strong>200</strong>; NCI \\(=10\\%\\times1{,}000=\\) <strong>100</strong></li><li><strong>Partial</strong>: goodwill \\(=900-90\\%\\times800=\\) <strong>180</strong>; NCI \\(=10\\%\\times800=\\) <strong>80</strong></li><li><strong>US GAAP</strong>: full goodwill required. <strong>IFRS</strong>: a choice for each acquisition</li></ul><p>Consolidation still adds <strong>100%</strong> of B's assets and liabilities; NCI is a line within <strong>equity</strong>.</p></div>",
+    "gap": "Full goodwill means higher assets and equity, so lower ROA and ROE, and a larger loss if goodwill is later impaired."
+  },
+  {
+    "id": "f1-consol-is",
+    "topic": "Consolidation · income statement",
+    "front": "How is the consolidated I/S built? A's NI is 400 and B's (90% owned) is 200; the step-up adds 20 of depreciation. Split consolidated NI.",
+    "back": "<div class=\"ans\"><ul><li>Add <strong>100%</strong> of both companies' revenues and expenses</li><li>Eliminate <strong>intercompany</strong> sales and any unrealized profit</li><li>Add the <strong>step-up depreciation</strong></li><li>Split NI between the parent and the <strong>NCI</strong>, an allocation, not an expense</li></ul><p>Consolidated NI \\(=400+200-20=580\\); NCI \\(=10\\%\\times180=18\\); parent \\(=400+90\\%\\times180=562\\).</p></div>",
+    "gap": "The NCI's share is based on B's NI after the step-up depreciation."
+  },
+  {
+    "id": "f1-contingent",
+    "topic": "Business combinations · contingent consideration",
+    "front": "How is an earn-out recorded at acquisition and afterwards?",
+    "back": "<div class=\"ans\"><ul><li>At acquisition: measured at <strong>fair value</strong> and included in the consideration, so it <strong>raises goodwill</strong></li><li><strong>Liability</strong> (cash or a variable number of shares): remeasured at fair value each period, changes to <strong>P&amp;L</strong>; goodwill does not change</li><li><strong>Equity</strong> (a fixed number of shares): not remeasured</li><li>Within the <strong>one-year measurement period</strong>, new facts about conditions at the acquisition date adjust goodwill</li></ul><p>Example: earn-out FV 40 → goodwill \\(1{,}040-800=240\\). It rises to 70 → a <strong>loss of 30</strong> in P&amp;L; goodwill stays 240.</p></div>",
+    "gap": "Events after the acquisition (the target beating its forecast) go to P&amp;L, not to goodwill."
+  },
+  {
+    "id": "f1-gw-impairment",
+    "topic": "Goodwill · impairment",
+    "front": "Compare goodwill impairment under IFRS and US GAAP. B is carried at 1,000 (goodwill 200), its fair value is now 900 and its identifiable net assets are worth 760.",
+    "back": "<div class=\"ans\"><ul><li><strong>IFRS</strong> (one step, per CGU): carrying 1,000 vs recoverable 900 → loss <strong>100</strong>, charged to goodwill first, then pro rata to other assets</li><li><strong>US GAAP</strong> (two steps, per reporting unit): 1,000 &gt; 900, so impaired. Implied goodwill \\(=900-760=140\\) → loss \\(=200-140=\\) <strong>60</strong></li></ul><p>Tested at least <strong>annually</strong>; the loss goes to the I/S; goodwill impairment is <strong>never reversed</strong> under either standard.</p></div>",
+    "gap": "Since ASU 2017-04, US GAAP uses one step, carrying amount − fair value capped at goodwill (100 here), but the exam may use the two-step version."
+  },
+  {
+    "id": "f1-bargain",
+    "topic": "Goodwill · bargain purchase",
+    "front": "What happens when the price paid is less than the fair value of the identifiable net assets?",
+    "back": "<div class=\"ans\"><p>First <strong>recheck</strong> that every asset and liability is identified and measured correctly. Any excess left is a <strong>gain on bargain purchase</strong>, recognized <strong>immediately in profit or loss</strong> under both IFRS and US GAAP.</p></div>",
+    "gap": "Negative goodwill is never recorded as an asset or deferred."
+  },
+  {
+    "id": "f1-jv-vie",
+    "topic": "Joint ventures, SPEs and VIEs",
+    "front": "How are joint ventures accounted for? What makes an entity a VIE, and who consolidates it?",
+    "back": "<div class=\"ans\"><ul><li><strong>Joint venture</strong> (unanimous consent, joint control): <strong>equity method</strong> under both standards. Proportionate consolidation only in rare cases; IFRS 11 joint operations recognize their own share of each line</li><li><strong>VIE</strong>: <strong>equity at risk is insufficient</strong>, or the equity holders lack the power, loss absorption or residual returns of a controlling interest</li><li>The <strong>primary beneficiary</strong>, which has the power to direct the key activities <strong>and</strong> absorbs significant losses or benefits, must consolidate, with or without voting shares</li></ul></div>",
+    "gap": "A securitization SPE whose debt the sponsor guarantees comes back onto the sponsor's balance sheet: it is borrowing, not a sale."
+  },
+  {
+    "id": "f1-method-ratios",
+    "topic": "Comparing methods · ratios",
+    "front": "Equity method vs proportionate consolidation vs acquisition method: what stays the same and how do margin, ROA and ROE rank?",
+    "back": "<div class=\"ans\"><ul><li><strong>Same</strong>: NI to the parent's shareholders and the parent's equity</li><li><strong>Net margin and ROA</strong>: highest under the equity method, then proportionate, then acquisition (each brings in more revenue and assets)</li><li><strong>ROE</strong>: equal under the equity method and proportionate consolidation; lowest under acquisition, because total equity includes <strong>NCI</strong></li><li><strong>Leverage</strong>: lowest under the equity method, which keeps the investee's debt off the balance sheet</li></ul></div>",
+    "gap": "Restate onto a proportionate basis before comparing an equity-method company with one that consolidates."
+  },
+  {
+    "id": "f1-eq-issues",
+    "topic": "Analysis · issues with the equity method",
+    "front": "What should an analyst watch for when a company reports large equity-method income?",
+    "back": "<div class=\"ans\"><ul><li><strong>Judgment and structuring</strong>: a stake just under 50% can keep a leveraged investee off the balance sheet</li><li><strong>Flattered ratios</strong>: the investee's revenue, assets and debt are missing</li><li><strong>Not cash</strong>: compare <strong>dividends received</strong> with equity income over several years</li><li><strong>Inherited earnings quality</strong>: the investee's accounting choices flow straight in</li><li><strong>Hidden obligations</strong>: guarantees and funding commitments sit in the notes</li></ul></div>",
+    "gap": "Losses beyond a zero carrying amount are not recognized unless the investor has obligations to the investee."
+  }
+];
+
+flashDeck({
+  key: "cfa-c3-m1-review",
+  source: "CFA L2 Financial Statement Analysis \u00b7 M1 Intercorporate Investments \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>
