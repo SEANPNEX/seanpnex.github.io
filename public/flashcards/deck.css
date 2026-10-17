@@ -3,6 +3,15 @@
 :root{
   --paper:#F0EFEB;--card:#F8F7F3;--ink:#1C1C1A;--mid:#4A4944;--muted:#6A6963;
   --soft:#9A9992;--line:#D8D6CE;--edge1:#F3F2EE;--edge2:#ECEBE6;
+  --eq:#EEEDE8;--press:#33332F;--src:#8A8983;
+  color-scheme:light;
+}
+/* Dark: the ladder inverts, as on the site (deck.js sets .dark from the site's switch). */
+:root.dark{
+  --paper:#1C1C1A;--card:#252421;--ink:#F0EFEB;--mid:#C9C7BD;--muted:#A8A7A0;
+  --soft:#6A6963;--line:#3A3935;--edge1:#22211F;--edge2:#201F1D;
+  --eq:#1F1E1C;--press:#D8D6CE;--src:#7A7973;
+  color-scheme:dark;
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
@@ -70,7 +79,7 @@ body{padding:2px}
 .a strong,.q strong{font-weight:700}
 .a em{color:var(--mid)}
 .jp{font-size:1.06em;letter-spacing:0}
-.eq-block{margin:12px 0;padding:12px;border-radius:12px;background:#EEEDE8;overflow-x:auto;text-align:center}
+.eq-block{margin:12px 0;padding:12px;border-radius:12px;background:var(--eq);overflow-x:auto;text-align:center}
 .eq-block .katex-display{margin:0}
 .katex{font-size:1.02em}
 .gap{margin-top:16px;padding:1px 0 1px 12px;border-left:2px solid var(--ink);font-size:13px;line-height:1.5;color:var(--mid)}
@@ -99,7 +108,7 @@ body{padding:2px}
 .btn:hover{border-color:var(--soft)}
 .btn:active{transform:scale(.98)}
 .btn.primary{background:var(--ink);border-color:var(--ink);color:var(--card)}
-.btn.primary:hover{background:#33332F}
+.btn.primary:hover{background:var(--press);border-color:var(--press)}
 .btn kbd{margin-left:8px;padding:1px 5px;border:1px solid currentColor;border-radius:4px;font:600 10px Inter,sans-serif;opacity:.5}
 @media(hover:none){.btn kbd{display:none}}
 .nav{flex:none;display:grid;place-items:center;width:40px;height:40px;padding:0;border:1px solid var(--line);
@@ -108,7 +117,7 @@ body{padding:2px}
 .nav:disabled{opacity:.3;cursor:default}
 .btn:focus-visible,.nav:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 [hidden]{display:none!important}
-.src{margin-top:16px;color:#8A8983;font-size:9px;font-weight:700;letter-spacing:.14em;line-height:1.6;text-transform:uppercase}
+.src{margin-top:16px;color:var(--src);font-size:9px;font-weight:700;letter-spacing:.14em;line-height:1.6;text-transform:uppercase}
 
 @media(max-width:439px){
   .face{padding:16px 16px 14px}

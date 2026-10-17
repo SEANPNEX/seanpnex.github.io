@@ -114,6 +114,9 @@ body {
 .tick.planned { background: transparent; box-shadow: inset 0 0 0 1px var(--lf-l4); }
 @keyframes lf-rise { from { transform: scaleY(0); } }
 
+/* Flashcard decks are embedded with an inline paper background; let it follow the theme. */
+.vp-doc iframe.flash-deck { background: var(--lf-paper) !important; }
+
 .mark-key { white-space: nowrap; }
 .mark-key .tick { width: 5px; height: 11px; margin-right: 3px; vertical-align: -1px; animation: none; }
 
