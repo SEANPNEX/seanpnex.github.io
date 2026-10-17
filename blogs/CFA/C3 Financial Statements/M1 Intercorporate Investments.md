@@ -1101,9 +1101,9 @@ The total shareholder's equity of the investor is the smae under equity method a
 
 The methods differ only in **how much of JV they bring onto A's statements**: nothing but one line (equity method), A's 50% of each line (proportionate), or 100% of each line (acquisition). Whatever belongs to the other owners under the acquisition method is set aside as NCI, so A's own shareholders end up with the same 400 of NI and 1,400 of equity in every case.
 
-## Two Common Analysis Frameworks
 
-### One-line Consolidation vs. line-by-line consolidation 
+
+## One-line Consolidation vs. line-by-line consolidation 
 
 <iframe
   class="fx-concept-chart fsa-ratio-chart"
@@ -1119,3 +1119,48 @@ The methods differ only in **how much of JV they bring onto A's statements**: no
 - **ROE** (NI / equity): equity is **1,400 under both** the equity method and proportionate consolidation, so ROE is the same (28.6%). Only the acquisition method adds the **NCI** (400) to total equity, which lowers ROE to 22.2%.
 
 **What it means for analysis.** The equity method keeps the investee's revenue, assets and **debt** off the investor's statements, so the investor looks more profitable per unit of sales and assets and less leveraged than it really is. When comparing a company that uses the equity method with one that consolidates, restate one of them (often onto a proportionate basis) before comparing margins, ROA or leverage.
+
+## Full and Partial Goodwill
+
+The choice between full and partial goodwill (see *Full vs Partial Goodwill* above) **does not change net income**, as long as there is no impairment: goodwill is not amortized, so neither method puts an expense through the income statement. What changes is the **balance sheet**. Full goodwill adds the NCI's share of goodwill to assets, and the same amount to equity through NCI, so every ratio that divides by assets or equity comes out slightly **lower** under full goodwill.
+
+**Example (the 90% acquisition above).** Consolidated NI is 580 under both methods.
+
+| | Full goodwill | Partial goodwill |
+|---|---:|---:|
+| Goodwill | 200 | 180 |
+| Total assets | 5,000 | 4,980 |
+| NCI | 100 | 80 |
+| Total equity | 3,100 | 3,080 |
+| Liabilities | 1,900 | 1,900 |
+| **ROA** (NI / total assets) | $580/5{,}000=11.6\%$ | $580/4{,}980=11.65\%$ |
+| **ROE** (NI / total equity) | $580/3{,}100=18.7\%$ | $580/3{,}080=18.8\%$ |
+| **Leverage** (liabilities / equity) | $1{,}900/3{,}100=0.61$ | $1{,}900/3{,}080=0.62$ |
+
+| Item | Full goodwill vs partial goodwill |
+|---|---|
+| Net income | Same (no impairment) |
+| Total assets, total equity | Higher |
+| ROA, ROE | Lower |
+| Liabilities / equity | Lower |
+| A later impairment loss | **Larger**, because there is more goodwill to write off |
+
+The gap here is small because the NCI holds only 10%. It grows with the size of the NCI and with how much of the price is goodwill. **Impairment is where the choice reaches NI**: if all of B's goodwill were later written off, the loss would be 200 under full goodwill but only 180 under partial goodwill.
+
+## Issues for Equity Method
+
+The equity method is simple to apply, but it leaves the analyst with less information than consolidation and more room for management judgment.
+
+- **The method depends on judgment about influence, not just the percentage.** The 20–50% band is only a presumption. Board seats, policy participation, material transactions, interchange of managers and technology dependence (see *Basic Principles*) can create significant influence below 20%, or rule it out above 20%. Management can also **structure a stake** to land on one side of a line: for example, holding just under 50% of a heavily indebted investee keeps its debt off the balance sheet.
+- **The equity method makes ratios look better.** Because the investee appears as one line, its revenue, assets and **liabilities** are left out (see *One-line Consolidation vs. line-by-line consolidation* above). The investor shows a higher margin and ROA and lower leverage than if the business were consolidated, even when it depends heavily on the investee.
+- **Equity income is not cash.** The investor books its share of the investee's NI, but receives cash only as **dividends**. A large gap between equity income and dividends received, persisting year after year, means the reported earnings may never be turned into cash, especially if the investor cannot force a payout.
+- **The investee's earnings quality becomes the investor's.** Equity income inherits the investee's accounting choices, one-off items and estimates, and the investor has only limited insight into them. Growth in equity income may reflect the investee's aggressive accounting rather than better operations.
+- **Hidden obligations.** Guarantees of the investee's debt, commitments to fund it, or losses beyond the carrying amount (which are not recognized once the investment reaches zero, unless the investor has obligations) are visible only in the notes.
+
+**How to assess the quality of equity-method earnings.**
+
+1. Compare **dividends received** with **equity income** over several years.
+2. Read the investee's summarized financial statements in the notes: its leverage, margins and accounting policies.
+3. Restate material investees on a **proportionate basis**, adding the investor's share of their revenue, assets and debt, before comparing ratios with peers.
+4. Check the notes for **guarantees and commitments** to the investee.
+5. Ask whether the ownership level looks **engineered** to avoid consolidation.
