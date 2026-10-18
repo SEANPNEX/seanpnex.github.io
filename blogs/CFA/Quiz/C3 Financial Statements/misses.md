@@ -82,3 +82,29 @@
 - Higher dividend yield: fair value **falls**
 
 **Gap:** Option-pricing input directions; only dividends lower the value.
+
+## 2026-10-19 — Share-based pay tax, anti-dilution, market conditions
+
+**Q1b:** Equity-settled SBC with a 24,000 tax deduction: what DTA?
+
+**Correct:** **3,000** DTA.
+
+**Gap:** Didn't link the future deduction to a DTA.
+
+**Q2b:** The deduction at settlement is 180,000: what is the excess tax benefit?
+
+**Correct:** **7,500** excess tax benefit (IFRS: equity; US GAAP: lower tax expense).
+
+**Gap:** Missed the windfall calculation.
+
+**Q3b:** Exercise price \$40 vs average price \$35, basic EPS \$2.00: what is diluted EPS?
+
+**Correct:** The options are anti-dilutive and excluded, so diluted EPS = **\$2.00**. Negative incremental shares are never added.
+
+**Gap:** Counted out-of-the-money options.
+
+**Q7b (repeat):** A market-condition award (16m of 24m expensed) misses its target.
+
+**Correct:** The 16m **stays**, with no true-up, because the condition is in the grant-date fair value.
+
+**Gap:** Second miss on market vs non-market conditions.

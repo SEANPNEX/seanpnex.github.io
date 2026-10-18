@@ -142,6 +142,57 @@ const CARDS = [
 </ul>
 </div>`,
     gap: "mixed up the direction of the option-pricing inputs; only a higher dividend yield lowers the fair value."
+  },
+  {
+    id: "fsa-sbc-tax-dta-2026-10-19",
+    topic: "Share-based pay · tax (DTA)",
+    front: "Equity-settled share-based pay: the expected tax deduction is 24,000. What does the company recognize on the balance sheet before settlement?",
+    back: `<div class="ans">
+<ul>
+<li>A <strong>deferred tax asset</strong> of <strong>3,000</strong>: the tax value of the future deduction</li>
+<li>The deduction comes later (at exercise or vesting) than the book expense, so it is a deductible temporary difference</li>
+</ul>
+</div>`,
+    gap: "didn't turn the 24,000 future tax deduction into a 3,000 DTA."
+  },
+  {
+    id: "fsa-sbc-excess-tax-benefit-2026-10-19",
+    topic: "Share-based pay · excess tax benefit",
+    front: "The tax deduction at settlement turns out to be 180,000, above the cumulative expense. What is the result, and where does it go under IFRS and US GAAP?",
+    back: `<div class="ans">
+<ul>
+<li>An <strong>excess tax benefit</strong> (tax windfall) of <strong>7,500</strong></li>
+<li><strong>IFRS:</strong> gain recognized directly in equity</li>
+<li><strong>US GAAP:</strong> lower income tax expense on the I/S</li>
+</ul>
+</div>`,
+    gap: "missed the 7,500 excess tax benefit from the 180,000 deduction."
+  },
+  {
+    id: "fsa-antidilutive-options-2026-10-19",
+    topic: "Diluted EPS · out-of-the-money options",
+    front: "Options have an exercise price of $40; the average market price is $35. Basic EPS is $2.00. What is diluted EPS?",
+    back: `<div class="ans">
+<ul>
+<li>The options are <strong>out of the money</strong>, so <strong>anti-dilutive</strong> and excluded</li>
+<li>Diluted EPS = basic = <strong>$2.00</strong></li>
+<li>A negative number of incremental shares is <strong>never</strong> added to the share count</li>
+</ul>
+</div>`,
+    gap: "counted out-of-the-money options; when the exercise price is above the average price, they are excluded."
+  },
+  {
+    id: "fsa-sbc-market-condition-repeat-2026-10-19",
+    topic: "Share-based pay · market condition (repeat)",
+    front: "Repeat miss: a market-condition award has a fair value of 24m, and 16m has been expensed when the share-price target is missed. What happens to the 16m?",
+    back: `<div class="ans">
+<ul>
+<li>The <strong>16m stays</strong> recognized, and the rest is still expensed if the service is rendered</li>
+<li><strong>No true-up</strong>: the market condition is already priced into the grant-date fair value</li>
+<li>Only service and non-market conditions are trued up</li>
+</ul>
+</div>`,
+    gap: "second miss: reversed the expense when a market condition failed."
   }
 ];
 
