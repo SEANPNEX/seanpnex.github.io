@@ -11,9 +11,17 @@
 /* Starting heights only: each chart reports its rendered height once loaded. */
 .fx-concept-chart.comp-timeline-chart { height: 545px; }
 .fx-concept-chart.comp-rsu-chart { height: 575px; }
+.fx-concept-chart.pen-pbo-chart { height: 530px; }
+.fx-concept-chart.pen-assets-chart { height: 515px; }
+.fx-concept-chart.pen-status-chart { height: 585px; }
+.fx-concept-chart.pen-tppc-chart { height: 670px; }
 @media (max-width: 587px) {
     .fx-concept-chart.comp-timeline-chart { height: 710px; }
     .fx-concept-chart.comp-rsu-chart { height: 690px; }
+    .fx-concept-chart.pen-pbo-chart { height: 640px; }
+    .fx-concept-chart.pen-assets-chart { height: 620px; }
+    .fx-concept-chart.pen-status-chart { height: 670px; }
+    .fx-concept-chart.pen-tppc-chart { height: 900px; }
 }
 </style>
 
@@ -342,3 +350,172 @@ where SBC is share-based compensation expense.
 > [!Note]
 >
 > Deducting share-based compensation from free cash flow is not technically exact, but increasing the share count for expected future grants, or reducing the equity value, should give the same result. Use only one of these for future awards; counting them in both the cash flows and the share count double-counts the dilution.
+
+## Post-Employment Compensation
+
+Post-employment benefits are paid after employment ends, in exchange for service during employment. They include **cash benefits** (pensions) and **non-monetary benefits** (retiree health care, life insurance). Plans are classified as either **defined contribution (DC)** or **defined benefit (DB)**:
+
+| | Defined Contribution (DC) | Defined Benefit (DB) |
+| --- | --- | --- |
+| **The sponsor promises** | A contribution today | A benefit at retirement |
+| **Who bears investment risk** | The employee | The sponsor |
+| **Obligation after contributing** | None | Pay the promised benefits, whatever the plan's assets earn |
+| **Expense** | The contribution for the period | Total periodic pension cost (TPPC), from actuarial estimates |
+| **Balance sheet** | Only contributions still unpaid | Funded status: net pension liability or asset |
+
+### Defined Contribution
+
+In a DC plan, the sponsor makes agreed-upon contributions to the plan and has **no further obligation**. Employees usually choose how the money is invested, and bear the investment risk.
+
+#### Financial Reporting for DC
+
+* The expense is the contribution owed for the period. Like other compensation, it is reported by the employee's function, with no discrete line item.
+* Contributions owed but not yet paid at period-end are recognized as a **current liability**.
+
+### Defined Benefit
+
+DB plans are commitments to pay a defined amount after retirement, either as a **lump sum** or as **periodic pension payments** until death. The employer bears the investment risk: if plan assets earn less, the employer must contribute more.
+
+A typical benefit formula is based on the final salary:
+
+$$\text{Annual benefit}=\text{Final salary}\times N\times x\%$$
+
+$$\text{Final salary}=\text{Current salary}\times(1+g)^{T}$$
+
+where $N$ is the years of service, $x\%$ the accrual rate, $g$ the assumed salary growth and $T$ the years to retirement. The projected benefits are discounted to the present, and the obligation builds up as the employee accumulates years of service.
+
+* A **closed plan** no longer admits new employees; existing members continue to accrue benefits.
+* A **frozen plan** stops accruing benefits for further service, so current members' future benefit payments are fixed.
+
+#### Financial Reporting for DB Plans
+
+> [!note]
+>
+> The new CFA curriculum requires less calculation for this part than before.
+
+**Example used below.** At the start of the year, the PBO is 1,000 and plan assets are 900. The discount rate is 5% and, for US GAAP, the expected return on plan assets is 7%. During the year, current service cost is 60, a plan amendment adds past service cost of 20, there is an actuarial loss of 30, the employer contributes 70, plan assets earn an actual return of 60, and benefits of 40 are paid.
+
+##### Pension Obligation
+
+The pension obligation is a liability of the employer. As part of their total compensation, employees earn pension benefits with each year of service; the value of the benefits earned in the year is the **current service cost (CSC)**.
+
+US GAAP measures the obligation as the present value of future benefits earned by employees for service to date, using the projected final salary: the **projected benefit obligation (PBO)**. (IFRS calls it the *defined benefit obligation*.)
+
+The PBO relies on **actuarial assumptions**: salary growth, retirement dates, employee turnover and mortality. The **discount rate** is the yield on high-quality (investment-grade) corporate bonds, or on government bonds where there is no deep market in corporate bonds.
+
+$$\begin{aligned}\text{PBO}_{\text{end}}=\ &\text{PBO}_{\text{beg}}+\text{Interest cost}+\text{CSC}+\text{PSC}\\&\pm\text{Actuarial losses (gains)}-\text{Benefits paid}\end{aligned}$$
+
+<iframe
+  class="fx-concept-chart pen-pbo-chart"
+  src="/charts/pension-db-accounting.html?view=pbo"
+  title="PBO roll-forward: interest cost, service costs, actuarial loss and benefits paid"
+  loading="lazy"
+></iframe>
+
+| Term | What it is | Example |
+| --- | --- | ---: |
+| **Interest cost** | $\text{PBO}_{\text{beg}}\times$ discount rate: the obligation is a year closer to payment, so the discounting unwinds | +50 |
+| **Current service cost (CSC)** | The present value of benefits earned by employees' service this year | +60 |
+| **Past service cost (PSC)** | The change in the PBO from a plan amendment that changes benefits for service **already given**; negative if benefits are cut | +20 |
+| **Actuarial losses (gains)** | Changes in actuarial assumptions, and experience differing from them. A **lower discount rate**, higher salary growth or longer life expectancy **increases** the PBO (a loss) | +30 |
+| **Benefits paid** | Payments to retirees, which settle part of the obligation (paid from plan assets) | −40 |
+
+##### Plan Assets
+
+The sponsoring company is responsible for making contributions to the plan, either to meet regulatory minimum funding levels or on a discretionary basis, to ensure that future benefits can be paid.
+
+Plan assets are the **property of the plan, not of the sponsoring company**, so once contributed they cannot be withdrawn. The plan is a separate legal entity that prepares its own financial statements; its assets do not appear on the company's balance sheet (only the net funded status does).
+
+$$\begin{aligned}\text{Plan assets}_{\text{end}}=\ &\text{Plan assets}_{\text{beg}}+\text{Employer contributions}\\&+\text{Actual return}-\text{Benefits paid}\end{aligned}$$
+
+<iframe
+  class="fx-concept-chart pen-assets-chart"
+  src="/charts/pension-db-accounting.html?view=assets"
+  title="Plan assets roll-forward: contributions, actual return and benefits paid"
+  loading="lazy"
+></iframe>
+
+| Term | What it is | Example |
+| --- | --- | ---: |
+| **Employer contributions** | Cash paid into the plan by the company | +70 |
+| **Actual return on plan assets** | Interest, dividends and realized and unrealized gains on the plan's investments; can be negative | +60 |
+| **Benefits paid** | Paid to retirees; the same amount that reduces the PBO | −40 |
+
+#### Funded Status
+
+$$\text{Funded status}=\text{Fair value of plan assets}-\text{PBO}$$
+
+* An **underfunded** plan (deficit) is reported as a net pension liability, usually in other non-current liabilities.
+* An **overfunded** plan (surplus) is reported as a net pension asset, usually in other non-current assets. Under IFRS, the asset is capped by an **asset ceiling**: the present value of the economic benefits the company can get from the surplus, through refunds or lower future contributions. Plan assets belong to the plan, so a surplus is worth only what the company can recover.
+
+> [!note]
+>
+> Different plans cannot be netted: a surplus in one plan does not offset a deficit in another.
+
+In the example, the deficit widens from −100 ($900-1{,}000$) to −130 ($990-1{,}120$):
+
+<iframe
+  class="fx-concept-chart pen-status-chart"
+  src="/charts/pension-db-accounting.html?view=status"
+  title="Funded status bridge from the beginning to the end of the year, and TPPC"
+  loading="lazy"
+></iframe>
+
+Benefits paid reduce plan assets and the PBO by the same amount, so they do not change the funded status. Everything else either comes from the company's cash (contributions) or is the cost of the pension for the year, the **total periodic pension cost (TPPC)**:
+
+$$\text{TPPC}=\text{Employer contributions}-\Delta\text{Funded status}=70-(-30)=100$$
+
+$$\begin{aligned}\text{TPPC}&=\text{CSC}+\text{PSC}+\text{Interest cost}\pm\text{Actuarial losses (gains)}-\text{Actual return}\\&=60+20+50+30-60=100\end{aligned}$$
+
+On the balance sheet, the asset side changes by $\Delta$Cash and $\Delta$Funded status, and the equity side by $\Delta$RE and $\Delta$AOCI (before tax):
+
+$$\underbrace{\Delta\text{Cash}}_{-70}+\underbrace{\Delta\text{Funded status}}_{-30}=-\text{TPPC}=\underbrace{\Delta\text{RE}}_{\text{via NI}}+\underbrace{\Delta\text{AOCI}}_{\text{via OCI}}$$
+
+TPPC is the **same under IFRS and US GAAP**. The standards differ only in how they split it between profit or loss and OCI:
+
+$$\text{TPPC}=\text{Pension cost in P\&L}+\text{Pension cost in OCI}$$
+
+#### Financial Treatments
+
+**Under IFRS**, TPPC has 3 components, 2 recognized in P&L and 1 in OCI:
+
+1. **Service cost**: current service cost and past service cost, both recognized as an operating expense in P&L, classified by employee function. Example: $60+20=80$.
+2. **Net interest expense (income)**: the discount rate times the funded status at the start of the year, recognized in P&L. A deficit gives an expense; a surplus gives income. Example: $5\%\times 100=5$, which is interest cost 50 less interest income on plan assets $5\%\times 900=45$.
+3. **Remeasurements**, recognized in OCI:
+   1. The difference between the actual return on plan assets and the interest income assumed in the net interest calculation. Example: $60-45=15$ gain.
+   2. Actuarial gains and losses. Example: 30 loss.
+
+   Net remeasurement loss: $30-15=15$.
+
+> [!note]
+>
+> Under IFRS, remeasurements in OCI are **never reclassified** to P&L. They may be transferred directly to retained earnings within equity.
+
+**Under US GAAP**, the five items are treated as follows:
+
+1. **Current service cost**: in P&L, as an operating expense. Example: 60.
+2. **Past service cost**: in OCI, then **amortized** into P&L over the employees' average remaining service period. Example: 20 in OCI, of which 2 is amortized this year.
+3. **Interest cost less the expected return on plan assets**: in P&L. The expected return uses the company's own **expected rate of return**, not the discount rate. Example: $50-7\%\times 900=50-63=-13$.
+4. **The difference between the actual and expected return**: in OCI, as part of the actuarial gains and losses. Example: $60-63=-3$, a loss.
+5. **Actuarial gains and losses**: in OCI, and amortized into P&L only under the **corridor approach**: the net cumulative gain or loss in AOCI that exceeds 10% of the greater of the PBO and plan assets (at the start of the year) is amortized over the employees' average remaining service period. Companies may also recognize them faster. Example: 30 loss, and nothing amortized this year since AOCI started at 0.
+
+US GAAP pension expense in P&L: $60+50-63+2=49$. OCI: $(20-2)+3+30=51$. Under US GAAP, only the service cost is reported in operating income; the other components are presented outside it.
+
+<iframe
+  class="fx-concept-chart pen-tppc-chart"
+  src="/charts/pension-db-accounting.html?view=tppc"
+  title="TPPC under IFRS and US GAAP: what goes to P&L and what goes to OCI"
+  loading="lazy"
+></iframe>
+
+> [!Important]
+>
+> The same pension cost of 100 shows up as 85 in IFRS P&L but only 49 in US GAAP P&L. US GAAP's **expected return** (7%, chosen by management, above the 5% discount rate) and its **deferral** of past service cost and actuarial losses both lower reported pension expense. When comparing companies, look at the TPPC and the assumptions, not only the P&L line.
+
+### Other Post-Employment Benefits
+
+Other post-employment benefits, such as **retiree health care and life insurance**, are accounted for much like DB pension plans: the employer's obligation is estimated with actuarial assumptions (including the expected trend in health care costs).
+
+Unlike pensions, companies are generally **not required by regulation to pre-fund** these plans, so many have few or no plan assets, and the funded status is close to the full obligation.
+
+### Financial Modelling Consideration
