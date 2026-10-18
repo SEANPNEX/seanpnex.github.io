@@ -38,13 +38,13 @@ Accounting standards divide compensation into 5 general types, distinguished by:
 | --- | --- | --- |
 | **Short-term benefits** | Paid within 12 months after the end of the period in which the service is rendered | Salaries, annual bonuses, paid vacation, non-monetary benefits (medical care, housing) |
 | **Long-term benefits** | Not expected to be paid within 12 months after the end of the service period | Long-term paid leave (e.g., sabbaticals), long-term disability benefits |
-| **Termination benefits** | Paid because employment ends, not in exchange for service | Severance pay, outplacement support |
-| **Share-based compensation** | Paid in the employer's shares, or in cash based on the share price | Restricted stock, stock options, stock appreciation rights |
-| **Post-employment benefits** | Paid after employment ends, in exchange for service during employment | Pensions, retiree medical benefits |
+| **[Termination benefits](#accounting-principles)** | Paid because employment ends, not in exchange for service | Severance pay, outplacement support |
+| **[Share-based compensation](#share-based-compensation)** | Paid in the employer's shares, or in cash based on the share price | Restricted stock, stock options, stock appreciation rights |
+| **[Post-employment benefits](#post-employment-compensation)** | Paid after employment ends, in exchange for service during employment | Pensions, retiree medical benefits |
 
 ## Terminology
 
-* **Grant date**: The employer and the employee agree on the terms of the award. For share-based compensation, the award's fair value is measured on this date.
+* **Grant date**: The employer and the employee agree on the terms of the award. For share-based compensation, the award's fair value is measured on this date (see [Financial Reporting for Share-Based Compensation](#financial-reporting-for-share-based-compensation)).
 * **Vesting period**: The period of service the employee must complete to earn the award.
 * **Vesting date**: The vesting conditions are met. The employee becomes **unconditionally entitled** to the compensation, so the employer now has an obligation.
 * **Settlement date**: The compensation is paid, in cash or in shares.
@@ -62,13 +62,13 @@ The cost of compensation is recognized **over the vesting period**, as the emplo
 
 * **During the vesting period**: The employer recognizes compensation expense as the compensation vests. The other side of the entry depends on how the award will be settled:
   * Cash-settled (salaries, cash bonuses, pensions, stock appreciation rights paid in cash): a **liability**.
-  * Equity-settled (restricted stock, stock options): **equity** (paid-in capital). No liability arises, because the employer owes shares, not cash.
+  * [Equity-settled](#equity-settled-share-based-compensation) (restricted stock, stock options): **equity** (paid-in capital; see the [journal entries](#financial-reporting-for-share-based-compensation)). No liability arises, because the employer owes shares, not cash.
 * **Expense or asset**: The cost follows the employee's function. Pay for staff who produce inventory or build PP&E is **capitalized** into that asset, and reaches the income statement later as COGS or depreciation. Pay for management and administrative staff is **expensed** directly in SG&A.
-* **At settlement**: Shares are issued, or the liability is paid in cash. For equity-settled awards, nothing more is expensed after vesting, even if the options are never exercised.
+* **At settlement**: Shares are issued, or the liability is paid in cash. For equity-settled awards, nothing more is expensed after vesting, even if the options are never exercised (see the [option example](#example-employee-stock-options)).
 
 ## Accounting Principles
 
-| Category | Short-Term Benefits | Equity-Settled Share-Based Compensation | Post-Employment Benefits |
+| Category | Short-Term Benefits | [Equity-Settled Share-Based Compensation](#equity-settled-share-based-compensation) | [Post-Employment Benefits](#post-employment-compensation) |
 | --- | --- | --- | --- |
 | **Typical vesting period** | Days or weeks | Years | Years or decades |
 | **Form of payment** | Cash | Shares | Cash |
@@ -76,7 +76,7 @@ The cost of compensation is recognized **over the vesting period**, as the emplo
 
 Reading the table:
 
-* **The longer the wait, the more the amount relies on estimates.** Short-term benefits are paid within days or weeks, so they are recognized at the **undiscounted** amount owed. Post-employment benefits are paid decades later, so they are measured at the **present value** of benefits that depend on assumptions about salaries, lifetimes and discount rates.
+* **The longer the wait, the more the amount relies on estimates.** Short-term benefits are paid within days or weeks, so they are recognized at the **undiscounted** amount owed. Post-employment benefits are paid decades later, so they are measured at the **present value** of benefits (see [Pension Obligation](#pension-obligation)) that depend on assumptions about salaries, lifetimes and discount rates.
 * **Equity-settled awards are fixed at the grant date.** Their fair value is measured once, on the grant date, and is not remeasured for later changes in the share price. That amount is spread over the vesting period.
 
 Regardless of the form of compensation, most companies aggregate compensation expense and report it on the income statement by the **employee's function** (e.g., in COGS or SG&A), rather than as a separate line.
@@ -94,7 +94,7 @@ Share-based compensation pays employees in the employer's shares, or in cash lin
 Advantages:
 
 1. **Aligns interests.** Employees who own shares gain and lose with shareholders, which reduces principal–agent conflicts.
-2. **Improves retention.** A multi-year vesting period gives employees a reason to stay, because unvested awards are forfeited when they leave.
+2. **Improves retention.** A multi-year vesting period gives employees a reason to stay, because unvested awards are forfeited when they leave (see [Vesting Conditions](#vesting-conditions)).
 3. **Preserves liquidity.** Equity-settled awards require no cash outflow, which matters most for start-ups and high-growth companies.
 
 Disadvantages:
@@ -104,7 +104,7 @@ Disadvantages:
    * Options pay off only on the upside, so they can encourage **excessive** risk-taking.
    * A large holding of shares ties up the manager's own wealth in the company, so it can make them **too risk-averse**.
 3. **Concentrated risk for employees.** Employees already depend on the company for their salary. Share-based pay makes their wealth fall with the share price as well, and an underperforming share may leave them worse off than equivalent cash pay.
-4. **Dilution.** Issuing new shares on vesting or exercise reduces existing shareholders' ownership and EPS.
+4. **Dilution.** Issuing new shares on vesting or exercise reduces existing shareholders' ownership and EPS (see [Diluted Shares Outstanding](#diluted-shares-outstanding)).
 
 ### Vesting Conditions
 
@@ -118,34 +118,34 @@ Disadvantages:
 > The two kinds of performance condition are accounted for differently:
 >
 > * A **market condition** is built into the grant-date fair value (a share-price target lowers it). The expense is recognized as long as the service condition is met, **even if the market target is missed**.
-> * A **non-market condition** is not part of the fair value. Instead, the expense is based on the number of awards **expected to vest**, re-estimated each period. If the target is missed, the expense recognized so far is reversed.
+> * A **non-market condition** is not part of the fair value. Instead, the expense is based on the number of awards **expected to vest**, re-estimated each period (as in the [option example](#example-employee-stock-options)). If the target is missed, the expense recognized so far is reversed.
 >
 > The same true-up applies to a service condition: awards forfeited by employees who leave before vesting reverse their expense.
 
 ### Equity-Settled Share-Based Compensation
 
-Equity-settled awards are paid in shares. Their fair value is measured on the **grant date** and spread over the vesting period (see the timeline above). It is not remeasured for later changes in the share price.
+Equity-settled awards are paid in shares. Their fair value is measured on the **grant date** and spread over the vesting period (see the [timeline](#terminology)). It is not remeasured for later changes in the share price.
 
 | | Restricted Stock | Restricted Stock Units (RSUs) | Employee Stock Options (ESOs) |
 | --- | --- | --- | --- |
 | **What the employee gets** | Shares issued at grant, which cannot be sold or transferred until they vest | A promise of shares, delivered at settlement | The right to buy shares at a fixed exercise price |
 | **Voting and dividends before vesting** | Yes, usually | No (sometimes dividend equivalents) | No |
 | **Value to the employee** | Full share price | Full share price | Only the gain above the exercise price |
-| **Grant-date fair value** | Share price at grant | Share price at grant (less expected dividends the holder does not receive) | Option-pricing model (e.g., Black–Scholes–Merton, binomial) |
+| **Grant-date fair value** | Share price at grant | Share price at grant (less expected dividends the holder does not receive) | Option-pricing model (e.g., [Black–Scholes–Merton](../C7%20Derivative/M2%20Options.md#black-scholes-model), [binomial](../C7%20Derivative/M2%20Options.md#binomial-option-valuation)) |
 
-* **Performance shares (PSUs)** are RSUs whose number of shares depends on a performance condition.
+* **Performance shares (PSUs)** are RSUs whose number of shares depends on a [performance condition](#vesting-conditions).
 * **Employee stock options** are typically granted **at the money**: the exercise price equals the share price on the grant date. The option has no intrinsic value at grant, so it is worth something to the employee only if the share price rises. Its fair value is time value alone, which is why it must be estimated with an option-pricing model rather than read from the share price.
 
 > [!Important]
 >
-> An option's grant-date fair value, and therefore the expense, depends on management's inputs: expected volatility, expected term, dividend yield and the risk-free rate. A higher volatility, longer term or higher risk-free rate raises the fair value; a higher dividend yield lowers it. Check whether the assumptions are reasonable: assuming a lower volatility or a shorter expected term reduces compensation expense.
+> An option's grant-date fair value, and therefore the expense, depends on management's inputs: expected volatility, expected term, dividend yield and the risk-free rate. A higher volatility, longer term or higher risk-free rate raises the fair value; a higher dividend yield lowers it. Check whether the assumptions, disclosed in the [notes](#disclosures-for-share-based-compensation), are reasonable: assuming a lower volatility or a shorter expected term reduces compensation expense.
 
 ### Financial Reporting for Share-Based Compensation
 
 * **Fair value is measured once, on the grant date.** Later changes in the share price have no effect on the expense.
   * **Restricted stock and RSUs**: the market price of the underlying shares on the grant date. RSUs usually receive no dividends before they vest, so their price is typically adjusted downward for the dividends expected over the vesting period.
-  * **Options**: estimated on the grant date with an option-pricing model, such as Black–Scholes–Merton (FSA does not ask for the calculation; it is covered in Derivatives).
-* **The cost is recognized over the vesting period**, as the employee provides the service. The amount is based on the number of awards **expected to vest**, re-estimated each period (see *Vesting Conditions*).
+  * **Options**: estimated on the grant date with an option-pricing model, such as Black–Scholes–Merton (FSA does not ask for the calculation; it is covered in [Derivatives](../C7%20Derivative/M2%20Options.md#black-scholes-model)).
+* **The cost is recognized over the vesting period**, as the employee provides the service. The amount is based on the number of awards **expected to vest**, re-estimated each period (see [Vesting Conditions](#vesting-conditions)).
 * **Settlement**: RSUs settle when they vest. Options settle later, when (and if) the employee exercises them, at any time until expiry.
 
 For equity-settled awards, the cost builds up in a **share-based compensation reserve** within equity:
@@ -157,7 +157,7 @@ For equity-settled awards, the cost builds up in a **share-based compensation re
 | **RSUs settle (at vesting)** | Dr reserve, Cr share capital (par) and additional paid-in capital (APIC) | A transfer within equity; no cash |
 | **Options exercised** | Dr cash (exercise price × options) and reserve, Cr share capital (par) and APIC | Cash ↑ (a CFF inflow); equity ↑ by the cash received |
 
-The expense is **non-cash**, so it is added back to net income in CFO under the indirect method.
+The expense is **non-cash**, so it is added back to net income in CFO under the indirect method (see [Modeling Cash Flow and the Share Count](#modeling-cash-flow-and-the-share-count)).
 
 #### Example: Employee Stock Options
 
@@ -169,7 +169,7 @@ $$\text{Expense}_{Y1}=\frac{1{,}000\times \$50}{2}=\$25{,}000$$
 
 The option's fair value at $T=1$ (\$35) is ignored: the award is not remeasured.
 
-**Year 2.** 12 managers leave, fewer than expected, so $(120-5-12)\times 10=1{,}030$ options vest. Year 2 expense trues the cumulative cost up to the actual number:
+**Year 2.** 12 managers leave, fewer than expected, so $(120-5-12)\times 10=1{,}030$ options vest. Year 2 expense trues the cumulative cost up to the actual number (see the note under [Vesting Conditions](#vesting-conditions)):
 
 $$\text{Expense}_{Y2}=1{,}030\times \$50-\$25{,}000=\$26{,}500$$
 
@@ -202,7 +202,7 @@ A company grants RSUs under three plans. Each plan vests over 3 years and settle
   loading="lazy"
 ></iframe>
 
-The expense follows each employee's function: **3/4 in SG&A** (executive management) and **1/4 in R&D**. When a plan settles, its reserve is moved to share capital (\$1 × RSUs) and APIC (the rest).
+The expense follows each employee's [function](#accounting-principles): **3/4 in SG&A** (executive management) and **1/4 in R&D**. When a plan settles, its reserve is moved to share capital (\$1 × RSUs) and APIC (the rest).
 
 | | Y1 | Y2 | Y3 | Y4 | Y5 | Y6 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -233,7 +233,7 @@ The tax deduction is therefore usually different from the cumulative expense:
 | **Higher** | Higher | **Excess tax benefit** (tax windfall) | Reduced |
 | **Lower** | Lower | **Tax shortfall** | Increased |
 
-In the option example above, the cumulative expense is \$51,500, but the tax deduction at exercise is only the intrinsic value, $(\$30-\$25)\times 1{,}030=\$5{,}150$: a tax shortfall.
+In the [option example](#example-employee-stock-options), the cumulative expense is \$51,500, but the tax deduction at exercise is only the intrinsic value, $(\$30-\$25)\times 1{,}030=\$5{,}150$: a tax shortfall.
 
 **IFRS** and **US GAAP** treat tax windfalls and shortfalls differently on the financial statements:
 
@@ -259,7 +259,7 @@ $$\text{Assumed proceeds}=N\times X+\overline{\text{Unrecognized compensation ex
 * $N$: shares issued on exercise or settlement
 * $X$: exercise price; **0 for RSUs**
 * $\bar{P}$: average share price during the period
-* $\overline{\text{Unrecognized compensation expense}}$: the expense still to be recognized over future vesting periods, averaged over the period (the average of the two period-end values). The service the company has yet to receive counts as part of what it is paid for the shares, as if it were cash used to buy back shares.
+* $\overline{\text{Unrecognized compensation expense}}$: the expense still to be recognized over future vesting periods, averaged over the period (the average of the two period-end values, which are disclosed in the [notes](#disclosures-for-share-based-compensation)). The service the company has yet to receive counts as part of what it is paid for the shares, as if it were cash used to buy back shares.
 
 #### Dilutive and Anti-Dilutive
 
@@ -270,7 +270,7 @@ The awards are included only if they are **dilutive**, i.e., if $N-\text{Assumed
 * **RSUs** are usually dilutive, because their exercise price is zero.
 * If the company reports a **net loss**, all potential shares are anti-dilutive.
 
-#### Example
+#### Example: Diluted Shares
 
 JinSan has 200 million basic shares outstanding in 20X1 and reports positive net income. Its only share-based awards are:
 
@@ -306,19 +306,19 @@ IFRS requires disclosures so that users understand:
 US GAAP requires similar disclosures. They are typically made in the **notes to the financial statements**, and usually include the information an analyst needs for modeling:
 
 * A **roll-forward of awards**: outstanding at the beginning of the year, granted, vested or exercised, forfeited, and outstanding at the end, with the weighted-average grant-date fair value or exercise price
-* The **inputs to the option-pricing model** (volatility, expected term, dividend yield, risk-free rate)
+* The **inputs to the option-pricing model** (volatility, expected term, dividend yield, risk-free rate), which drive the [grant-date fair value](#equity-settled-share-based-compensation)
 * **Share-based compensation expense** for the year, often split by income-statement line
-* **Unrecognized compensation expense** and the weighted-average period over which it will be recognized, which gives the future expense on awards already granted
+* **Unrecognized compensation expense** and the weighted-average period over which it will be recognized, which gives the future expense on awards already granted, and feeds the [treasury stock method](#diluted-shares-outstanding)
 
 The **proxy statement** discloses the compensation of executive management and directors: salaries, bonuses, awards granted and the performance targets attached to them. It shows how well management's incentives are aligned with shareholders'.
 
 #### Modeling the Income Statement
 
-Share-based compensation is typically **not a separate line item** on the income statement. It is included in operating expenses (COGS, SG&A, R&D) according to each employee's role. Forecasting those lines as a percentage of revenue therefore captures share-based compensation indirectly.
+Share-based compensation is typically **not a separate line item** on the income statement. It is included in operating expenses (COGS, SG&A, R&D) according to each employee's role (see [Accounting Principles](#accounting-principles)). Forecasting those lines as a percentage of revenue therefore captures share-based compensation indirectly.
 
-The common approach to modeling it explicitly is to forecast share-based compensation **as a percentage of revenue**, based on history, management guidance or industry peers. The other side of the entry goes to equity.
+The common approach to modeling it explicitly is to forecast share-based compensation **as a percentage of revenue**, based on history, management guidance or industry peers. The other side of the entry goes to equity (the [share-based compensation reserve](#financial-reporting-for-share-based-compensation)).
 
-For **early-stage companies**, share-based compensation tends to **decline as a percentage of revenue** as the company matures, so a constant percentage overstates it. Model it discretely instead, for example from the unrecognized expense on existing awards plus expected new grants.
+For **early-stage companies**, share-based compensation tends to **decline as a percentage of revenue** as the company matures, so a constant percentage overstates it. Model it discretely instead, for example from the unrecognized expense on existing awards (see [Disclosures](#disclosures-for-share-based-compensation)) plus expected new grants.
 
 #### Modeling Cash Flow and the Share Count
 
@@ -333,14 +333,14 @@ $$\text{Awards}_{\text{end}}=\text{Awards}_{\text{begin}}+\text{Grants (net of f
 
 $$\text{Shares}_{\text{end}}=\text{Shares}_{\text{begin}}+\text{Settlements}+\text{Issuances}-\text{Repurchases}$$
 
-Diluted shares then add the awards still outstanding, using the treasury stock method (see *Diluted Shares Outstanding*).
+Diluted shares then add the awards still outstanding, using the treasury stock method (see [Diluted Shares Outstanding](#diluted-shares-outstanding)).
 
 #### Valuation Considerations
 
 1. **Multiples-based valuation.** Companies often report non-GAAP measures, such as adjusted EBITDA or adjusted EPS, that exclude share-based compensation. These inflate profits and make the company look cheaper. Analysts can use them, adjusting the denominator of the multiple, but must be **consistent and transparent**: compare the company and its peers on the same basis, GAAP with GAAP or the same non-GAAP measure throughout. Simply ignoring share-based compensation is flawed, because it is a real **transfer of value** from shareholders to employees, paid in shares instead of cash.
 
 2. **DCF valuation.** Free cash flow adds back share-based compensation as a non-cash charge. Left there, the DCF values the company as if its employees worked for free, while the cost really arrives as dilution. The model must account for:
-   1. **Dilution from awards outstanding but unvested**: use **diluted shares** (treasury stock method) to compute value per share. A more conservative choice is basic shares plus all potentially dilutive securities.
+   1. **Dilution from awards outstanding but unvested**: use **diluted shares** ([treasury stock method](#diluted-shares-outstanding)) to compute value per share. A more conservative choice is basic shares plus all potentially dilutive securities.
    2. **Dilution from future awards**: the practical method is to **deduct share-based compensation from free cash flow**, i.e., treat it as a cash expense and **not** add it back to non-cash charges (NCC):
 
 $$\text{FCFF}=\text{NI}+(\text{NCC}-\text{SBC})+\text{Int}(1-t)-\text{FCInv}-\text{WCInv}$$
@@ -360,8 +360,8 @@ Post-employment benefits are paid after employment ends, in exchange for service
 | **The sponsor promises** | A contribution today | A benefit at retirement |
 | **Who bears investment risk** | The employee | The sponsor |
 | **Obligation after contributing** | None | Pay the promised benefits, whatever the plan's assets earn |
-| **Expense** | The contribution for the period | Total periodic pension cost (TPPC), from actuarial estimates |
-| **Balance sheet** | Only contributions still unpaid | Funded status: net pension liability or asset |
+| **Expense** | The contribution for the period | [Total periodic pension cost (TPPC)](#funded-status), from actuarial estimates |
+| **Balance sheet** | Only contributions still unpaid | [Funded status](#funded-status): net pension liability or asset |
 
 ### Defined Contribution
 
@@ -369,7 +369,7 @@ In a DC plan, the sponsor makes agreed-upon contributions to the plan and has **
 
 #### Financial Reporting for DC
 
-* The expense is the contribution owed for the period. Like other compensation, it is reported by the employee's function, with no discrete line item.
+* The expense is the contribution owed for the period. Like other compensation, it is reported by the [employee's function](#accounting-principles), with no discrete line item.
 * Contributions owed but not yet paid at period-end are recognized as a **current liability**.
 
 ### Defined Benefit
@@ -382,7 +382,7 @@ $$\text{Annual benefit}=\text{Final salary}\times N\times x\%$$
 
 $$\text{Final salary}=\text{Current salary}\times(1+g)^{T}$$
 
-where $N$ is the years of service, $x\%$ the accrual rate, $g$ the assumed salary growth and $T$ the years to retirement. The projected benefits are discounted to the present, and the obligation builds up as the employee accumulates years of service.
+where $N$ is the years of service, $x\%$ the accrual rate, $g$ the assumed salary growth and $T$ the years to retirement. The projected benefits are [discounted to the present](#pension-obligation), and the obligation builds up as the employee accumulates years of service.
 
 * A **closed plan** no longer admits new employees; existing members continue to accrue benefits.
 * A **frozen plan** stops accruing benefits for further service, so current members' future benefit payments are fixed.
@@ -418,13 +418,15 @@ $$\begin{aligned}\text{PBO}_{\text{end}}=\ &\text{PBO}_{\text{beg}}+\text{Intere
 | **Current service cost (CSC)** | The present value of benefits earned by employees' service this year | +60 |
 | **Past service cost (PSC)** | The change in the PBO from a plan amendment that changes benefits for service **already given**; negative if benefits are cut | +20 |
 | **Actuarial losses (gains)** | Changes in actuarial assumptions, and experience differing from them. A **lower discount rate**, higher salary growth or longer life expectancy **increases** the PBO (a loss) | +30 |
-| **Benefits paid** | Payments to retirees, which settle part of the obligation (paid from plan assets) | −40 |
+| **Benefits paid** | Payments to retirees, which settle part of the obligation (paid from [plan assets](#plan-assets)) | −40 |
+
+How each term reaches profit or loss differs between IFRS and US GAAP; see [Financial Treatments](#financial-treatments).
 
 ##### Plan Assets
 
 The sponsoring company is responsible for making contributions to the plan, either to meet regulatory minimum funding levels or on a discretionary basis, to ensure that future benefits can be paid.
 
-Plan assets are the **property of the plan, not of the sponsoring company**, so once contributed they cannot be withdrawn. The plan is a separate legal entity that prepares its own financial statements; its assets do not appear on the company's balance sheet (only the net funded status does).
+Plan assets are the **property of the plan, not of the sponsoring company**, so once contributed they cannot be withdrawn. The plan is a separate legal entity that prepares its own financial statements; its assets do not appear on the company's balance sheet (only the net [funded status](#funded-status) does).
 
 $$\begin{aligned}\text{Plan assets}_{\text{end}}=\ &\text{Plan assets}_{\text{beg}}+\text{Employer contributions}\\&+\text{Actual return}-\text{Benefits paid}\end{aligned}$$
 
@@ -452,7 +454,7 @@ $$\text{Funded status}=\text{Fair value of plan assets}-\text{PBO}$$
 >
 > Different plans cannot be netted: a surplus in one plan does not offset a deficit in another.
 
-In the example, the deficit widens from −100 ($900-1{,}000$) to −130 ($990-1{,}120$):
+In the [example](#financial-reporting-for-db-plans), the deficit widens from −100 ($900-1{,}000$) to −130 ($990-1{,}120$):
 
 <iframe
   class="fx-concept-chart pen-status-chart"
@@ -480,7 +482,7 @@ $$\text{TPPC}=\text{Pension cost in P\&L}+\text{Pension cost in OCI}$$
 **Under IFRS**, TPPC has 3 components, 2 recognized in P&L and 1 in OCI:
 
 1. **Service cost**: current service cost and past service cost, both recognized as an operating expense in P&L, classified by employee function. Example: $60+20=80$.
-2. **Net interest expense (income)**: the discount rate times the funded status at the start of the year, recognized in P&L. A deficit gives an expense; a surplus gives income. Example: $5\%\times 100=5$, which is interest cost 50 less interest income on plan assets $5\%\times 900=45$.
+2. **Net interest expense (income)**: the discount rate times the [funded status](#funded-status) at the start of the year, recognized in P&L. A deficit gives an expense; a surplus gives income. Example: $5\%\times 100=5$, which is interest cost 50 less interest income on plan assets $5\%\times 900=45$.
 3. **Remeasurements**, recognized in OCI:
    1. The difference between the actual return on plan assets and the interest income assumed in the net interest calculation. Example: $60-45=15$ gain.
    2. Actuarial gains and losses. Example: 30 loss.
@@ -514,8 +516,8 @@ US GAAP pension expense in P&L: $60+50-63+2=49$. OCI: $(20-2)+3+30=51$. Under US
 
 ### Other Post-Employment Benefits
 
-Other post-employment benefits, such as **retiree health care and life insurance**, are accounted for much like DB pension plans: the employer's obligation is estimated with actuarial assumptions (including the expected trend in health care costs).
+Other post-employment benefits, such as **retiree health care and life insurance**, are accounted for much like [DB pension plans](#financial-reporting-for-db-plans): the employer's obligation is estimated with actuarial assumptions (including the expected trend in health care costs).
 
-Unlike pensions, companies are generally **not required by regulation to pre-fund** these plans, so many have few or no plan assets, and the funded status is close to the full obligation.
+Unlike pensions, companies are generally **not required by regulation to pre-fund** these plans, so many have few or no plan assets, and the [funded status](#funded-status) is close to the full obligation.
 
 ### Financial Modelling Consideration
