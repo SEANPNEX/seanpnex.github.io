@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>JLPT N2 — quiz misses 2026-10-18</title>
+<link rel="stylesheet" href="/flashcards/deck.css" />
+</head>
+<body>
+<script src="/flashcards/deck.js"></script>
+<script>
+const CARDS = [
+  {
+    id: "jlpt-purpose-ni-iku-kuru-2026-10-18",
+    topic: "Purpose · V-stem に + 行く／来る",
+    front: "“I <strong>went</strong> to the library to study Japanese.” Which movement verb, and how does the purpose attach?",
+    back: `<div class="ans">
+      <p><span class="jp"><strong>日本語を勉強しに図書館へ行きました。</strong></span></p>
+      <ul>
+        <li>Purpose: V-stem (or activity noun) + <span class="jp">に</span>: <span class="jp">勉強しに</span>.</li>
+        <li>“went” = <span class="jp"><strong>行きました</strong></span>; “came” = <span class="jp"><strong>来ました</strong></span>.</li>
+      </ul>
+    </div>`,
+    gap: "Picked the wrong movement verb; went = 行きました, came = 来ました."
+  },
+  {
+    id: "jlpt-i-adj-noun-jisho-2026-10-18",
+    topic: "い-adjective + noun · 辞書",
+    front: "“a new dictionary”: how does <span class=\"jp\">新しい</span> attach, and which word for “dictionary”?",
+    back: `<div class="ans">
+      <p><span class="jp"><strong>新しい辞書</strong></span>: an い-adjective goes straight onto the noun, with no <span class="jp">の</span>.</p>
+      <p><span class="jp">辞書</span> is the everyday word; <span class="jp">辞典</span> is more formal.</p>
+    </div>`,
+    gap: "Wrote 新の辞典; the full い-adjective goes straight onto the noun."
+  },
+  {
+    id: "jlpt-u-verb-nai-wa-2026-10-18",
+    topic: "Plain negative · う-ending godan",
+    front: "Give the ない form and the past negative of <span class=\"jp\">買う</span>.",
+    back: `<div class="ans">
+      <p><span class="jp"><strong>買う → 買わない → 買わなかった</strong></span></p>
+      <p>A godan verb ending in <span class="jp">う</span> takes <span class="jp"><strong>わ</strong></span> before ない (not あ): <span class="jp">会う → 会わない</span>.</p>
+    </div>`,
+    gap: "Wrote 買いなかった; う-verbs take わ: 買わなかった."
+  }
+];
+
+flashDeck({
+  key: "jlpt-n2-2026-10-18",
+  source: "JLPT N2 · quiz misses 2026-10-18",
+  gapLabel: "Gap",
+  cards: CARDS
+});
+</script>
+</body>
+</html>

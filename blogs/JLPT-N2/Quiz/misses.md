@@ -117,3 +117,27 @@
 **Correct:** **お箸でも食べます**. も replaces を/が but is added after で/に/と.
 
 **Gap:** Wrote もで.
+
+## 2026-10-18 — Purpose + movement verb
+
+**Q:** “I went to the library to study Japanese.”
+
+**Correct:** **日本語を勉強しに図書館へ行きました**. Went = 行きました, came = 来ました.
+
+**Gap:** Used the wrong movement verb.
+
+## 2026-10-18 — い-adjective + noun
+
+**Q:** “a new dictionary”
+
+**Correct:** **新しい辞書**. The い-adjective goes straight onto the noun; 辞書 is everyday, 辞典 more formal.
+
+**Gap:** Wrote 新の辞典.
+
+## 2026-10-18 — う-verb negative
+
+**Q:** Past negative of 買う?
+
+**Correct:** **買わなかった** (う → わ before ない).
+
+**Gap:** Wrote 買いなかった.
