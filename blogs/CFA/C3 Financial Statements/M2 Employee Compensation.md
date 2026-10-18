@@ -122,6 +122,20 @@ Disadvantages:
 >
 > The same true-up applies to a service condition: awards forfeited by employees who leave before vesting reverse their expense.
 
+#### Example: Market vs Non-Market Condition
+
+**Why the market-condition expense stays.** The expense measures the employee **service** the company received, valued at the grant date. With a market condition, the fair-value model (e.g., Monte Carlo) already prices in the chance that the share-price target is missed, so the 24m fair value is lower than it would be without the target. Missing the target is one of the outcomes that price already allowed for. Reversing the expense would count that risk twice. The share price is also outside management's control, so the standards don't let the expense follow it.
+
+**Setup.** An award with a grant-date fair value of 24m vests after 3 years of service, with an expense of $24/3=8$m a year. At the end of year 2, $16$m has been recognized.
+
+| Outcome at the end of year 3 | Year 3 expense | Cumulative expense |
+| --- | --- | --- |
+| **Market condition** (share-price target) missed, employee still employed | 8m | **24m**: nothing reversed |
+| **Non-market condition** (e.g., EPS target) missed | −16m (reversal) | **0** |
+| Employee leaves in year 3 (service condition fails) | −16m (reversal) | **0** |
+
+A non-market condition is not in the fair value, so the expense follows the number of awards expected to vest and is trued up to the actual result. A market condition gives no true-up: once the service is rendered, the full 24m is expensed whether or not the award ever pays out.
+
 ### Equity-Settled Share-Based Compensation
 
 Equity-settled awards are paid in shares. Their fair value is measured on the **grant date** and spread over the vesting period (see the [timeline](#terminology)). It is not remeasured for later changes in the share price.
