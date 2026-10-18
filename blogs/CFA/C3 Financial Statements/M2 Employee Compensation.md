@@ -10,8 +10,10 @@
 }
 /* Starting heights only: each chart reports its rendered height once loaded. */
 .fx-concept-chart.comp-timeline-chart { height: 545px; }
+.fx-concept-chart.comp-rsu-chart { height: 575px; }
 @media (max-width: 587px) {
     .fx-concept-chart.comp-timeline-chart { height: 710px; }
+    .fx-concept-chart.comp-rsu-chart { height: 690px; }
 }
 </style>
 
@@ -129,3 +131,160 @@ Equity-settled awards are paid in shares. Their fair value is measured on the **
 > [!Important]
 >
 > An option's grant-date fair value, and therefore the expense, depends on management's inputs: expected volatility, expected term, dividend yield and the risk-free rate. A higher volatility, longer term or higher risk-free rate raises the fair value; a higher dividend yield lowers it. Check whether the assumptions are reasonable: assuming a lower volatility or a shorter expected term reduces compensation expense.
+
+### Financial Reporting for Share-Based Compensation
+
+* **Fair value is measured once, on the grant date.** Later changes in the share price have no effect on the expense.
+  * **Restricted stock and RSUs**: the market price of the underlying shares on the grant date. RSUs usually receive no dividends before they vest, so their price is typically adjusted downward for the dividends expected over the vesting period.
+  * **Options**: estimated on the grant date with an option-pricing model, such as Black–Scholes–Merton (FSA does not ask for the calculation; it is covered in Derivatives).
+* **The cost is recognized over the vesting period**, as the employee provides the service. The amount is based on the number of awards **expected to vest**, re-estimated each period (see *Vesting Conditions*).
+* **Settlement**: RSUs settle when they vest. Options settle later, when (and if) the employee exercises them, at any time until expiry.
+
+For equity-settled awards, the cost builds up in a **share-based compensation reserve** within equity:
+
+| When | Entry | Effect |
+| --- | --- | --- |
+| **Grant date** | No entry | — |
+| **Each year of the vesting period** | Dr compensation expense, Cr share-based compensation reserve | NI ↓, so RE ↓; reserve ↑. Total equity, assets and liabilities are unchanged |
+| **RSUs settle (at vesting)** | Dr reserve, Cr share capital (par) and additional paid-in capital (APIC) | A transfer within equity; no cash |
+| **Options exercised** | Dr cash (exercise price × options) and reserve, Cr share capital (par) and APIC | Cash ↑ (a CFF inflow); equity ↑ by the cash received |
+
+The expense is **non-cash**, so it is added back to net income in CFO under the indirect method.
+
+#### Example: Employee Stock Options
+
+At $T=0$, 120 managers are each granted 10 options with an exercise price of \$25, expiring in 3 years. The grant-date fair value is \$50 per option, and the options vest after 2 years of service. Shares have a par value of \$1.
+
+**Year 1.** 5 managers leave, and 15 more are expected to leave in Year 2. The options expected to vest are $(120-5-15)\times 10=1{,}000$.
+
+$$\text{Expense}_{Y1}=\frac{1{,}000\times \$50}{2}=\$25{,}000$$
+
+The option's fair value at $T=1$ (\$35) is ignored: the award is not remeasured.
+
+**Year 2.** 12 managers leave, fewer than expected, so $(120-5-12)\times 10=1{,}030$ options vest. Year 2 expense trues the cumulative cost up to the actual number:
+
+$$\text{Expense}_{Y2}=1{,}030\times \$50-\$25{,}000=\$26{,}500$$
+
+The share price is \$20 at the end of Year 2, so the options are out of the money, but the expense is **not reversed**.
+
+**Year 3.** The share price rises to \$30, and all 1,030 options are exercised.
+
+| | Year 1 | Year 2 | Year 3 (exercise) |
+| --- | ---: | ---: | ---: |
+| Compensation expense (NI, RE ↓) | 25,000 | 26,500 | — |
+| Reserve, year-end | 25,000 | 51,500 | 0 (−51,500) |
+| Cash received (CFF) | — | — | $1{,}030\times 25=25{,}750$ |
+| Share capital (par \$1) | — | — | +1,030 |
+| APIC | — | — | $25{,}750-1{,}030+51{,}500=+76{,}220$ |
+
+#### Example: RSU Plans
+
+A company grants RSUs under three plans. Each plan vests over 3 years and settles at the end of its vesting period. Three-quarters of each grant goes to executive management and the remaining quarter to employees in the R&D division. Assume no forfeitures and a par value of \$1.
+
+| Plan | Grant date | RSUs granted | Share price on the grant date | Grant-date fair value | Expense per year |
+| --- | --- | ---: | ---: | ---: | ---: |
+| Plan A | Jan. 1, Y1 | 18 | \$60 | 1,080 | 360 (Y1–Y3) |
+| Plan B | Jan. 1, Y2 | 24 | \$93 | 2,232 | 744 (Y2–Y4) |
+| Plan C | Jan. 1, Y3 | 30 | \$117 | 3,510 | 1,170 (Y3–Y5) |
+
+<iframe
+  class="fx-concept-chart comp-rsu-chart"
+  src="/charts/rsu-plans-expense.html"
+  title="RSU plans: expense by plan and year, and the reserve balance"
+  loading="lazy"
+></iframe>
+
+The expense follows each employee's function: **3/4 in SG&A** (executive management) and **1/4 in R&D**. When a plan settles, its reserve is moved to share capital (\$1 × RSUs) and APIC (the rest).
+
+| | Y1 | Y2 | Y3 | Y4 | Y5 | Y6 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Plan A | 360 | 360 | 360 | | | |
+| Plan B | | 744 | 744 | 744 | | |
+| Plan C | | | 1,170 | 1,170 | 1,170 | |
+| **Total expense (RE ↓, reserve ↑)** | **360** | **1,104** | **2,274** | **1,914** | **1,170** | **0** |
+| in SG&A (3/4) | 270 | 828 | 1,705.5 | 1,435.5 | 877.5 | 0 |
+| in R&D (1/4) | 90 | 276 | 568.5 | 478.5 | 292.5 | 0 |
+| Plan settled (reserve ↓) | | | A: 1,080 | B: 2,232 | C: 3,510 | |
+| Share capital ↑ | | | 18 | 24 | 30 | |
+| APIC ↑ | | | 1,062 | 2,208 | 3,480 | |
+| **Reserve, year-end** | 360 | 1,464 | 2,658 | 2,340 | 0 | 0 |
+
+The total expense over the six years, 6,822, equals the three plans' grant-date fair values ($1{,}080+2{,}232+3{,}510$). Every unit of it ends up in share capital and APIC, and the reserve returns to zero once the last plan settles.
+
+### Tax Treatment
+
+|            | Financial Reporting of Share-Based Compensation | Tax Treatment of Share-Based Compensation |
+| ---------- | ----------------------------------------------- | ----------------------------------------- |
+| **Timing** | Over the vesting period | At settlement |
+| **Amount** | Grant-date fair value | Share price on the settlement date (RSUs); intrinsic value at exercise (options) |
+
+The tax deduction is therefore usually different from the cumulative expense:
+
+| Share price at settlement vs the grant date | Tax deduction vs cumulative expense | Name | Taxable income and tax expense |
+| --- | --- | --- | --- |
+| **Higher** | Higher | **Excess tax benefit** (tax windfall) | Reduced |
+| **Lower** | Lower | **Tax shortfall** | Increased |
+
+In the option example above, the cumulative expense is \$51,500, but the tax deduction at exercise is only the intrinsic value, $(\$30-\$25)\times 1{,}030=\$5{,}150$: a tax shortfall.
+
+**IFRS** and **US GAAP** treat tax windfalls and shortfalls differently on the financial statements:
+
+|                                        | IFRS | US GAAP |
+| -------------------------------------- | ---- | ------- |
+| **Excess tax benefit (tax windfall)** | Gain recognized directly in shareholders' equity | Decrease in income tax expense on the income statement |
+| **Tax shortfall**                      | Loss recognized directly in shareholders' equity | Increase in income tax expense on the income statement |
+
+> [!Note]
+>
+> Under US GAAP, windfalls and shortfalls pass through income tax expense, so the **effective tax rate moves with the share price**. Strip them out when forecasting the tax rate.
+>
+> The IFRS row is the curriculum's simplification. Under IAS 12, only the part of the deduction **above** the cumulative expense goes to equity; a shortfall generally goes through profit or loss.
+
+### Diluted Shares Outstanding
+
+Share-based awards are potential shares, so diluted EPS counts them with the **treasury stock method**: the company is assumed to issue the shares and use the proceeds to buy back shares at the average market price.
+
+$$\text{Diluted shares}=\text{Basic shares}+N-\frac{\text{Assumed proceeds}}{\bar{P}}$$
+
+$$\text{Assumed proceeds}=N\times X+\overline{\text{Unrecognized compensation expense}}$$
+
+* $N$: shares issued on exercise or settlement
+* $X$: exercise price; **0 for RSUs**
+* $\bar{P}$: average share price during the period
+* $\overline{\text{Unrecognized compensation expense}}$: the expense still to be recognized over future vesting periods, averaged over the period (the average of the two period-end values). The service the company has yet to receive counts as part of what it is paid for the shares, as if it were cash used to buy back shares.
+
+#### Dilutive and Anti-Dilutive
+
+The awards are included only if they are **dilutive**, i.e., if $N-\text{Assumed proceeds}/\bar{P}>0$, so that diluted EPS falls. Anti-dilutive awards are excluded (and disclosed).
+
+* **In-the-money options** may be dilutive, if the share price exceeds the exercise price plus the unrecognized expense per option.
+* **At-the-money and out-of-the-money options** are anti-dilutive: the assumed proceeds buy back more shares than are issued.
+* **RSUs** are usually dilutive, because their exercise price is zero.
+* If the company reports a **net loss**, all potential shares are anti-dilutive.
+
+#### Example
+
+JinSan has 200 million basic shares outstanding in 20X1 and reports positive net income. Its only share-based awards are:
+
+* 1.8 million RSUs
+* 10 million at-the-money employee stock options
+
+All awards have a three-year vesting period. The share price on the grant date was \$60, and each option's fair value was \$15. The average share price during 20X1 is \$55. As of Dec. 31, 20X1, unrecognized share-based compensation expense is \$72 million for the RSUs and \$100 million for the options.
+
+Calculate diluted shares outstanding, and identify any anti-dilutive securities.
+
+**Options.** The exercise price (\$60) is above the average price (\$55), so they are out of the money and clearly anti-dilutive. By calculation:
+
+$$\text{Assumed proceeds}=10\times \$60+\frac{0+100}{2}=\$650\text{ million}$$
+
+$$10-\frac{650}{55}=10-11.82=-1.82\text{ million}<0$$
+
+**RSUs.**
+
+$$1.8-\frac{0+(0+72)/2}{\$55}=1.8-0.655=1.145\text{ million}>0$$
+
+**Diluted shares outstanding** $=200+1.145=201.145$ million. The 10 million options are anti-dilutive and excluded.
+
+> [!Important]
+>
+> The averages above take the prior period-end balance as 0. But the awards are one-third vested at the end of 20X1 ($72=108\times 2/3$ for the RSUs; $100=150\times 2/3$ for the options), so they were granted around the start of 20X1 with full balances of \$108 million and \$150 million. If a question treats those as the opening balances, the RSU average is $(108+72)/2=90$, giving $1.8-90/55=0.164$ million incremental shares (diluted shares 200.164 million). The options stay anti-dilutive. Follow the convention the question states.
