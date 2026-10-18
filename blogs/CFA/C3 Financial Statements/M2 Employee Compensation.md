@@ -284,7 +284,3 @@ $$10-\frac{650}{55}=10-11.82=-1.82\text{ million}<0$$
 $$1.8-\frac{0+(0+72)/2}{\$55}=1.8-0.655=1.145\text{ million}>0$$
 
 **Diluted shares outstanding** $=200+1.145=201.145$ million. The 10 million options are anti-dilutive and excluded.
-
-> [!Important]
->
-> The averages above take the prior period-end balance as 0. But the awards are one-third vested at the end of 20X1 ($72=108\times 2/3$ for the RSUs; $100=150\times 2/3$ for the options), so they were granted around the start of 20X1 with full balances of \$108 million and \$150 million. If a question treats those as the opening balances, the RSU average is $(108+72)/2=90$, giving $1.8-90/55=0.164$ million incremental shares (diluted shares 200.164 million). The options stay anti-dilutive. Follow the convention the question states.
