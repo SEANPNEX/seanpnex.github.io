@@ -284,3 +284,61 @@ $$10-\frac{650}{55}=10-11.82=-1.82\text{ million}<0$$
 $$1.8-\frac{0+(0+72)/2}{\$55}=1.8-0.655=1.145\text{ million}>0$$
 
 **Diluted shares outstanding** $=200+1.145=201.145$ million. The 10 million options are anti-dilutive and excluded.
+
+### Financial Statement Modeling
+
+#### Disclosures for Share-Based Compensation
+
+IFRS requires disclosures so that users understand:
+
+1. The **nature and extent** of share-based payment arrangements during the period
+2. How the **fair value** of the equity instruments granted was measured
+3. The **effect on net income** and on the financial position
+
+US GAAP requires similar disclosures. They are typically made in the **notes to the financial statements**, and usually include the information an analyst needs for modeling:
+
+* A **roll-forward of awards**: outstanding at the beginning of the year, granted, vested or exercised, forfeited, and outstanding at the end, with the weighted-average grant-date fair value or exercise price
+* The **inputs to the option-pricing model** (volatility, expected term, dividend yield, risk-free rate)
+* **Share-based compensation expense** for the year, often split by income-statement line
+* **Unrecognized compensation expense** and the weighted-average period over which it will be recognized, which gives the future expense on awards already granted
+
+The **proxy statement** discloses the compensation of executive management and directors: salaries, bonuses, awards granted and the performance targets attached to them. It shows how well management's incentives are aligned with shareholders'.
+
+#### Modeling the Income Statement
+
+Share-based compensation is typically **not a separate line item** on the income statement. It is included in operating expenses (COGS, SG&A, R&D) according to each employee's role. Forecasting those lines as a percentage of revenue therefore captures share-based compensation indirectly.
+
+The common approach to modeling it explicitly is to forecast share-based compensation **as a percentage of revenue**, based on history, management guidance or industry peers. The other side of the entry goes to equity.
+
+For **early-stage companies**, share-based compensation tends to **decline as a percentage of revenue** as the company matures, so a constant percentage overstates it. Model it discretely instead, for example from the unrecognized expense on existing awards plus expected new grants.
+
+#### Modeling Cash Flow and the Share Count
+
+* **Cash flow statement**: Share-based compensation is non-cash, so it is **added back** to net income in CFO (indirect method). Option exercises bring in cash (CFF); RSU vesting usually involves no cash.
+* **Awards outstanding**: Forecast the awards with a roll-forward, consistent with the expense forecast:
+  1. **Grants of share-based awards, net of forfeitures**: from their historical growth in the notes
+  2. **Settlements of awards** (RSUs vesting, options exercised): e.g., as a fixed portion of the awards outstanding
+
+$$\text{Awards}_{\text{end}}=\text{Awards}_{\text{begin}}+\text{Grants (net of forfeitures)}-\text{Settlements}$$
+
+* **Shares outstanding**: Settlements (RSUs vested, options exercised) become new shares.
+
+$$\text{Shares}_{\text{end}}=\text{Shares}_{\text{begin}}+\text{Settlements}+\text{Issuances}-\text{Repurchases}$$
+
+Diluted shares then add the awards still outstanding, using the treasury stock method (see *Diluted Shares Outstanding*).
+
+#### Valuation Considerations
+
+1. **Multiples-based valuation.** Companies often report non-GAAP measures, such as adjusted EBITDA or adjusted EPS, that exclude share-based compensation. These inflate profits and make the company look cheaper. Analysts can use them, adjusting the denominator of the multiple, but must be **consistent and transparent**: compare the company and its peers on the same basis, GAAP with GAAP or the same non-GAAP measure throughout. Simply ignoring share-based compensation is flawed, because it is a real **transfer of value** from shareholders to employees, paid in shares instead of cash.
+
+2. **DCF valuation.** Free cash flow adds back share-based compensation as a non-cash charge. Left there, the DCF values the company as if its employees worked for free, while the cost really arrives as dilution. The model must account for:
+   1. **Dilution from awards outstanding but unvested**: use **diluted shares** (treasury stock method) to compute value per share. A more conservative choice is basic shares plus all potentially dilutive securities.
+   2. **Dilution from future awards**: the practical method is to **deduct share-based compensation from free cash flow**, i.e., treat it as a cash expense and **not** add it back to non-cash charges (NCC):
+
+$$\text{FCFF}=\text{NI}+(\text{NCC}-\text{SBC})+\text{Int}(1-t)-\text{FCInv}-\text{WCInv}$$
+
+where SBC is share-based compensation expense.
+
+> [!Note]
+>
+> Deducting share-based compensation from free cash flow is not technically exact, but increasing the share count for expected future grants, or reducing the equity value, should give the same result. Use only one of these for future awards; counting them in both the cash flows and the share count double-counts the dilution.
