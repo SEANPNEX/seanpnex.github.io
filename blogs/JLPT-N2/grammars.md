@@ -767,3 +767,199 @@ When the direct object becomes the **topic** or is marked as **also**, **は** o
 - 経済のグローバリゼーションについてです。 — It's about economic globalization.
 - 先週の旅行について作文を書きました。 — I wrote an essay about last week's trip.
 - 今日の授業について、何か質問はありますか。 — Do you have any questions about today's class?
+
+## V ます-stem／activity noun ＋ に ＋ movement verb（purpose of movement）
+
+**Rule:** Put **に** after a verb's **ます-stem** or a noun that names an activity, then use a movement verb such as **行く**, **来る**, or **帰る**. This shows the **purpose** of the movement: "go/come (somewhere) to do …". With a **する** verb used as an activity noun, use its noun part without **する** before **に**.
+
+- 教室に忘れ物を取りに行きます。 — I will go to the classroom to pick up something I left behind.
+- サークルの仲間たちとお花見に行きます。 — I will go cherry blossom viewing with members of my club.
+- 昨日中村さんのお家に遊びに行きました。 — Yesterday I went to Nakamura's house to hang out.
+- 散歩に出かけましょうか。 — Shall we go out for a walk?
+- 資料を届けに来ました。 — I came to deliver the materials.
+
+## V ます-stem ＋ ながら（doing two things at once）
+
+**Rule:** Put **ながら** after a verb's **ます-stem** to show that two actions happen **at the same time** or continue in alternation. In English, it often means "while doing …".
+
+- 考えながら、パワーポイントを作ります。 — I make a PowerPoint presentation while thinking it through.
+- 弟はいつも音楽を聴きながら、宿題をします。 — My younger brother always does his homework while listening to music.
+- お茶をしながら、話しましょうか。 — Shall we talk over tea?
+
+## Quantity expression ＋ も（a subjectively large amount）
+
+**Rule:** Put **も** after a quantity expression to show that the speaker considers the amount **large or more than expected**. The number itself does not have to be objectively large: **３人も** can mean "as many as three people" when three feels like a lot in context.
+
+- 教室に学生が３人もいます。 — There are as many as three students in the classroom.
+- 議論は３日も続きました。 — The discussion went on for three whole days.
+- 日系企業を５社も訪問しました。 — I visited as many as five Japanese-affiliated companies.
+
+**何度も:** **何度** ("how many times") is a question expression, but **何度も** means **"many times"**. The exact number is unspecified; the speaker still presents it as a lot.
+
+- あの映画は何度も見ましたよ。 — I've seen that movie many times.
+
+## ～でしょう（seeking confirmation I）
+
+**Rule:** Add **でしょう** after a noun or adjective predicate and say it with **rising intonation** to seek confirmation or make a rhetorical point: "… right?" or "… isn't it?". In casual speech, **でしょう** is often shortened to **でしょ**.
+
+- 李さんも留学生でしょ？ — Li is also an international student, right?
+- 勉強のほうが大事でしょう？ — Studying is more important, isn't it?
+- タバコを止めましょうよ。体に悪いでしょう？ — Let's quit smoking. It's bad for your health, isn't it?
+
+## N のための N（purpose: for）
+
+**Rule:** **ため** expresses a purpose, often translated as **"for"**. When a noun names the purpose, put **の** after it: **N のため**. If another noun follows, add a second **の** to link them: **N₁ のための N₂**, meaning "N₂ for N₁".
+
+- ここは小学生のための教室です。 — This is a classroom for elementary school students.
+- 海外旅行のためのタオルを買いました。 — I bought a towel for an overseas trip.
+- 期末試験のための勉強計画を考えます。 — I'll make a study plan for the final exams.
+
+## ～の（／ん）です（explanation II: verbs）
+
+**Connection:** Verb plain form ＋ **の（／ん）です**. In speech, **んです** is more common.
+
+**Rule:** This is the verb form of the explanatory **～の（／ん）です** pattern introduced above for nouns and adjectives. In a question, it asks the listener to **explain** something, often in response to what was just said or to a situation the speaker has noticed or inferred.
+
+- A：一緒に本屋へ行きませんか。 — Shall we go to the bookstore together?
+- B：本屋へ何をしに行くんですか。 — What are we going to the bookstore to do?
+- A：もう帰るんですか。 — Are you going home already?
+- B：ええ、もう時間なので。 — Yes, it's already time to leave.
+- A：お腹が痛いんですか。 — Does your stomach hurt?
+- B：ええ、ちょっと。 — Yes, a little.
+
+## V ませんか（gentle invitation）
+
+**Rule:** Use the polite negative question **V ませんか** to invite someone to do something **together**. It sounds gentler than **V ましょうか** and can be used with **いっしょに** ("together"). In English, it often means "Would you like to …?" or "Shall we …?".
+
+- 来週のサークル活動にいっしょに参加しませんか。 — Would you like to join me for next week's club activity?
+- 明日、映画を見に行きませんか。 — Would you like to go see a movie tomorrow?
+- ここで写真を撮りませんか。 — Shall we take a photo here?
+
+## Plain verb forms（動詞の簡体形式）
+
+**Rule:** Like noun and adjective predicates, verb predicates have both **polite（敬体）** and **plain（簡体）** forms. The chart below compares their four combinations of tense and polarity. **Vる** stands for the dictionary form of a verb; not every dictionary-form verb actually ends in **る**. The plain negative and past forms are covered in more detail in later grammar sections.
+
+| Tense | Polarity | Polite form | Plain form |
+|---|---|---|---|
+| Non-past (present/future) | Affirmative | V ます | V る（dictionary form） |
+| Non-past (present/future) | Negative | V ません | V ない |
+| Past | Affirmative | V ました | V た |
+| Past | Negative | V ませんでした | V なかった |
+
+**Usage:** Polite forms are common in formal situations and courteous conversation. Plain forms sound more familiar and are common with friends and family. In writing, plain style gives statements a direct tone and is common in essays and news reports.
+
+## V る（dictionary form）
+
+**Rule:** The **dictionary form** is a verb's basic form, the one used for its entry in a dictionary. It is also the **plain non-past affirmative** form. It is sometimes called the **base form** or **original form**. The pairs below show how it compares with the polite **ます** form.
+
+| Style | Example | English |
+|---|---|---|
+| Polite | スマホでウェブサイトを閲覧します。 | I browse websites on my smartphone. |
+| Plain | スマホでウェブサイトを閲覧する。 | I browse websites on my smartphone. |
+| Polite | よく徹夜します。 | I often stay up all night. |
+| Plain | よく徹夜する。 | I often stay up all night. |
+
+## V ない（plain negative form）
+
+**Rule:** Add the negative auxiliary adjective **ない** to a verb's negative stem to make its **plain non-past negative** form. How the stem is made depends on the verb class.
+
+### Class I（五段動詞）
+
+Change the final kana from the **う-row** to the corresponding **あ-row** kana, then add **ない**. For a verb ending in **う**, change **う** to **わ** before **ない**.
+
+| Dictionary form | Change | Plain negative |
+|---|---|---|
+| 使う | う → わ | 使わない |
+| 歩く | く → か | 歩かない |
+| 帰る | る → ら | 帰らない |
+
+### Class II（一段動詞）
+
+Drop the final **る**, then add **ない**.
+
+| Dictionary form | Plain negative |
+|---|---|
+| 見る | 見ない |
+| 食べる | 食べない |
+| 集める | 集めない |
+
+### Class III（サ変・カ変）
+
+- **する:** する → しない; 利用する → 利用しない.
+- **来る（くる）:** 来る → 来ない（こない）.
+
+**Exception:** The plain negative of **ある** is **ない**, not *あらない*.
+
+- この週末は家に帰らない。 — I'm not going home this weekend.
+- 今の学生はあまり運動しない。 — Students these days do not exercise much.
+
+### Plain past negative: V なかった
+
+To make the plain past negative, change the final **い** of **V ない** to **かった**: **V ない → V なかった**. This corresponds to the polite **V ませんでした**.
+
+- 宿題が多くて、昨夜、あまり寝なかった。 — I had a lot of homework, so I did not sleep much last night.
+- A：昨日のビールは？ — What about yesterday's beer?
+- B：冷蔵庫だよ。 — It's in the fridge.
+- A：ビールは冷蔵庫になかったよ。 — There wasn't any beer in the fridge.
+
+## Verb adnominal form（動詞連体形）
+
+> [!IMPORTANT]
+>
+> **Rule:** A verb can go **directly before a noun** to describe or identify that noun. This is called the verb's **adnominal form**. Its forms are the same as the verb's plain forms; choose the appropriate tense and polarity for the meaning. For example, **行く場所** means "the place (someone) will go," while **飛ばない可能性** means "the possibility that (something) will not fly."
+
+- 授業の予習や復習、課題をやる時間。 — Time to prepare for class, review, and do assignments.
+- 明日行く場所はどこですか。 — Where are you going tomorrow?
+- 雨なので、飛行機が飛ばない可能性があります。 — Because it's raining, there's a chance the plane won't fly.
+
+## N₁（period）に N₂（quantity）V（frequency）
+
+**Rule:** Put **に** after a noun naming a **period** (often a span of time), then give a **number of times** to say how often an action occurs within that period. It corresponds to English "… times per …" or "once every …".
+
+- 週に３回運動する。 — I exercise three times a week.
+- ２か月に１回ぐらい映画を観る。 — I watch a movie about once every two months.
+- １年に１回中国へ帰る。 — I go back to China once a year.
+
+## N₁ についての N₂（N₂ about N₁）
+
+**Rule:** **N について** means "about N" and introduces a topic. Add **の** when that phrase modifies a following noun: **N₁ についての N₂**, meaning "N₂ about N₁".
+
+- こちらは大学生のライフスタイルについてのアンケートです。 — This is a survey about university students' lifestyles.
+- このウェブサイトには、来週の口頭試験についての情報はない。 — This website has no information about next week's oral exam.
+- 来週は期末試験なので、明日から経済学についての本を読む。 — Since final exams are next week, I'll start reading a book about economics tomorrow.
+
+## ほとんど／あまり ＋ negative verb（hardly / not much）
+
+**Rule:** Use the adverb **ほとんど** with a negative verb to mean **"hardly ever"** or **"almost not at all"**. **あまり** also pairs with a negative verb and means **"not very often"** or **"not much"**. **ほとんど** generally expresses a stronger degree of negation than **あまり**.
+
+- インターネットやSNSはほとんど利用しません。 — I hardly ever use the internet or social media.
+- 漫画はときどき読みますが、アニメはほとんど見ません。 — I sometimes read manga, but I hardly ever watch anime.
+- Eメールはあまり使いません。 — I don't use email much.
+- 梅雨の季節はあまり晴れません。 — It isn't sunny very often during the rainy season.
+
+## N ＋ particle ＋ の ＋ N（modifying a noun）
+
+**Rule:** Besides linking two nouns directly, as in **私の車** ("my car"), **の** can follow a meaningful particle phrase such as **N と**, **N から**, **N で**, or **N へ**. The resulting phrase modifies the noun that follows.
+
+| Action phrase | Noun phrase | English |
+|---|---|---|
+| 友達と食事する | 友達との食事 | a meal with a friend |
+| 明日からゴールデンウィークが始まる | 明日からのゴールデンウィーク | Golden Week starting tomorrow |
+| デパートで買い物する | デパートでの買い物 | shopping at a department store |
+| 大学の授業などに出席する | 大学の授業などへの出席 | attendance at university classes and similar activities |
+
+**Note:** There is no **N にの N** form. When the phrase means **toward / to** a destination or direction, use **N への N** instead.
+
+- 雨の影響で、外国からの観光客が減少しました。 — Because of the rain, there were fewer tourists from abroad.
+- 後輩との食事会はとても楽しかったです。 — The meal with my junior classmates was a lot of fun.
+- 台風の影響で、香港へのフライトはキャンセルになりました。 — Because of the typhoon, the flight to Hong Kong was canceled.
+
+## N₁ や N₂ など（listing examples）
+
+**Rule:** Use **や** to list two or more **examples** rather than every item in a group. **など** means "and so on" or "among other things". The two can appear together as **N₁ や N₂ など**, or **など** can follow a noun on its own.
+
+- インターネットやSNSなど — The internet, social media, and so on.
+- A：デパートに何がありますか。 — What is there in the department store?
+- B：映画館や本屋などがあります。 — There is a movie theater and a bookstore, among other things.
+- A：いつもどこで服を買いますか。 — Where do you usually buy clothes?
+- B：ユニクロやタオバオで買います。 — I buy them from places like Uniqlo and Taobao.
