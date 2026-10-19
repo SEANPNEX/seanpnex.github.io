@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Employee compensation · grant, vesting, settlement</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <script src="chart-fx.js"></script>
+</head>
+<body>
+  <main class="card" id="card">
+    <h2>Expense follows the service, not the payment.</h2>
+    <div class="sub">Example: options with a grant-date fair value of 400 vest after 4 years of service · each year of service adds 100 of expense · nothing more is expensed after vesting, whenever the award is settled</div>
+    <section class="panel">
+      <h3>Cumulative compensation expense, end of each year</h3>
+      <div class="hint">ink = this year's expense · gray = expense recognized in earlier years · shaded band = vesting period</div>
+      <svg id="timeline" role="img" aria-label="Cumulative compensation expense from grant date through vesting date to settlement date"></svg>
+    </section>
+    <div class="src">EVENT TIMELINE · LIEFLAT L11 · GRANT, VESTING AND SETTLEMENT</div>
+  </main>
+  <script>
+(() => {
+  const { C, el, label, frame, guide, dot, mount } = curveKit;
+  const BAND = '#E3E2DB', PRIOR = '#B0AFA9', AFTER = '#D8D6CE';
+  const TOTAL = 400, YEARS = 4, END = 6, PER = TOTAL / YEARS;
+  const EVENTS = [
+    [0, 'Grant date', 'terms agreed; fair value measured once', 'Grant date · year 0\nemployer and employee agree the terms; the award\'s fair value (400) is measured now and not remeasured'],
+    [YEARS, 'Vesting date', 'service done; entitlement unconditional', 'Vesting date · end of year 4\nthe service condition is met: the employee is unconditionally entitled, and the full 400 has been expensed'],
+    [END, 'Settlement date', 'paid in shares or cash', 'Settlement date · year 6 here\nthe award is paid: shares issued (equity-settled) or cash paid (cash-settled); no further expense'],
+  ];
+
+  mount(document.getElementById('timeline'), (s, W, H) => {
+    const nw = W < 480;
+    const F = frame(s, W, H, { l: nw ? 10 : 14, r: nw ? 10 : 14, t: 44, b: nw ? 132 : 78, xMin: -0.45, noTicks: true }, END + 0.45, TOTAL * 1.18);
+    const step = F.x(1) - F.x(0), bw = Math.min(30, step * 0.46);
+
+    // Vesting period: the years of service the expense is spread over (it holds the year-4 bar).
+    const vx1 = F.x(YEARS) + bw / 2 + 6;
+    el(s, 'rect', { x: F.x(0), y: F.TOP - 30, width: vx1 - F.x(0), height: F.BASE - F.TOP + 30, fill: BAND, rx: 6, class: 'fade', 'data-hl': 'vest',
+      'data-tip': `Vesting period · years 1–4\nthe employee renders service; the employer recognizes ${PER} of expense a year (400 ÷ 4)` });
+    label(s, (F.x(0) + vx1) / 2, F.TOP - 15, vx1 - F.x(0) < 360 ? 'Vesting period: expense recognized' : 'Vesting period: expense recognized as service is rendered', { size: nw ? 10 : 10.5, weight: 800, anchor: 'middle', halo: 0, maxWidth: vx1 - F.x(0) - 10, delay: 0.2 });
+    label(s, (vx1 + F.x(END) + bw / 2) / 2, F.TOP - 15, F.x(END) - vx1 < 170 ? 'no new expense' : 'after vesting: no new expense', { size: nw ? 9.5 : 10, weight: 700, fill: C.MUTED, anchor: 'middle', maxWidth: F.x(END) + bw / 2 - vx1 - 2, delay: 0.3 });
+
+    // The grant-date fair value is the total ever expensed.
+    guide(s, F.x(0), F.y(TOTAL), F.x(END) + bw / 2, F.y(TOTAL), 0.3);
+    label(s, F.x(0) + 4, F.y(TOTAL) - 6, 'grant-date fair value 400', { size: 9.5, weight: 700, fill: C.MUTED, delay: 0.35 });
+
+    // One bar per year end: earlier expense below, this year's expense on top.
+    for (let t = 1; t <= END; t++) {
+      const cum = Math.min(t, YEARS) * PER, prior = t <= YEARS ? cum - PER : cum, x = F.x(t) - bw / 2, d = 0.2 + t * 0.12;
+      if (prior) el(s, 'rect', { x, y: F.y(prior), width: bw, height: F.BASE - F.y(prior), fill: t <= YEARS ? PRIOR : AFTER, class: 'rise', style: `transform-origin:0 ${F.BASE}px;animation-delay:${d}s`, 'data-hl': t <= YEARS ? 'prior' : 'after',
+        'data-tip': t <= YEARS ? `Year ${t} · recognized in years 1–${t - 1}: ${prior}\nalready expensed; not remeasured` : `Year ${t} · cumulative ${cum}, unchanged\nthe award has vested; ${t === END ? 'settled now' : 'awaiting settlement'}` });
+      if (t <= YEARS) el(s, 'rect', { x, y: F.y(cum), width: bw, height: F.y(prior) - F.y(cum), fill: C.INK, class: 'rise', style: `transform-origin:0 ${F.y(prior)}px;animation-delay:${d + 0.15}s`, 'data-hl': 'exp',
+        'data-tip': `Year ${t} · expense ${PER}\nDr compensation expense ${PER} · Cr paid-in capital ${PER} (equity-settled)\ncumulative ${cum}` });
+      label(s, F.x(t), F.y(cum) - 6, String(cum), { size: 10.5, weight: t <= YEARS ? 800 : 600, fill: t <= YEARS ? C.INK : C.MUTED, anchor: 'middle', delay: d + 0.3 });
+    }
+
+    // Year ticks, then the three dates under the axis.
+    for (let t = 0; t <= END; t++) {
+      el(s, 'line', { x1: F.x(t), y1: F.BASE, x2: F.x(t), y2: F.BASE + 4, stroke: C.SOFT, 'stroke-width': 1 });
+      label(s, F.x(t), F.BASE + 16, `Y${t}`, { size: 10, weight: 700, fill: C.MUTED, anchor: 'middle' });
+    }
+    // Wide: each date's name sits under its dot. Phones: the years are too close, so the dates are listed as rows.
+    const room = Math.min(150, step * 1.8);
+    let row = F.BASE + 40;
+    EVENTS.forEach(([t, name, note, tip], i) => {
+      const x = F.x(t), d = 0.6 + i * 0.15;
+      dot(s, x, F.BASE, 4.2, C.INK, d, tip).setAttribute('data-hl', 'ev' + i);
+      if (nw) {
+        const top = label(s, F.X0, row, `${name} · Y${t}`, { size: 10.5, weight: 800, delay: d });
+        row = label(s, F.X0, top.bottom + 11, note, { size: 9.5, weight: 500, fill: C.MUTED, maxWidth: F.X1 - F.X0, delay: d }).bottom + 17;
+        return;
+      }
+      const top = label(s, x, F.BASE + 36, name, { size: 11.5, weight: 800, anchor: 'middle', maxWidth: room, delay: d });
+      label(s, x, top.bottom + 12, note, { size: 9.5, weight: 500, fill: C.MUTED, anchor: 'middle', maxWidth: room, delay: d });
+    });
+  }, (W) => (W < 480 ? 382 : 300));
+})();
+  </script>
+  <style>
+    .rise{animation:rise .6s cubic-bezier(.2,.7,.3,1) both}
+    @keyframes rise{from{transform:scaleY(0)}}
+    .still .rise{animation:none}
+  </style>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>RSU plans · expense by plan and year</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <script src="chart-fx.js"></script>
+</head>
+<body>
+  <main class="card" id="card">
+    <h2>Overlapping plans stack up the expense.</h2>
+    <div class="sub">Three RSU plans, granted a year apart, each vesting over 3 years · each plan's grant-date fair value is spread evenly over its vesting years · the reserve is cleared as each plan settles</div>
+    <section class="panel">
+      <h3>Compensation expense by year</h3>
+      <div class="hint">ink = Plan A · dark gray = Plan B · light gray = Plan C · bars = total expense · rows = each plan's vesting years · ● = settlement</div>
+      <svg id="plans" role="img" aria-label="Expense of three RSU plans by year, Y1 to Y6, with the reserve balance at each year-end"></svg>
+    </section>
+    <div class="src">STACKED COLUMNS + SPANS · LIEFLAT F7 · RSU PLAN EXPENSE (ILLUSTRATIVE)</div>
+  </main>
+  <script>
+(() => {
+  const { C, el, label, frame, guide, dot, mount } = curveKit;
+  const PLANS = [
+    { name: 'Plan A', start: 1, n: 18, price: 60, fill: C.INK, text: C.PAPER },
+    { name: 'Plan B', start: 2, n: 24, price: 93, fill: '#6A6963', text: C.PAPER },
+    { name: 'Plan C', start: 3, n: 30, price: 117, fill: '#B0AFA9', text: C.INK },
+  ].map((p) => Object.assign(p, { fv: p.n * p.price, per: (p.n * p.price) / 3, end: p.start + 2 }));
+  const YEARS = [1, 2, 3, 4, 5, 6];
+  const fmt = (v) => v.toLocaleString('en-US', { maximumFractionDigits: 1 });
+  const on = (p, y) => y >= p.start && y <= p.end;
+  const total = (y) => PLANS.reduce((a, p) => a + (on(p, y) ? p.per : 0), 0);
+  // Reserve at year-end: everything expensed so far, less the plans already settled.
+  const reserve = (y) => PLANS.reduce((a, p) => a + (y >= p.end ? 0 : Math.max(0, Math.min(y, p.end) - p.start + 1) * p.per), 0);
+
+  mount(document.getElementById('plans'), (s, W, H) => {
+    const nw = W < 480, lw = nw ? 46 : 64, rowH = nw ? 22 : 24, gap = 6;
+    const spans = PLANS.length * (rowH + gap) + 34;  // plan rows + reserve row
+    const F = frame(s, W, H, { l: lw, r: nw ? 6 : 12, t: 30, b: 24 + spans, xMin: 0.45, noTicks: true }, 6.55, 2600);
+    const step = F.x(2) - F.x(1), bw = Math.min(46, step * 0.62);
+    label(s, F.X0 - 4, F.TOP - 13, 'expense per year', { size: 10, weight: 600, fill: C.MUTED });
+    [1000, 2000].forEach((v) => {
+      guide(s, F.X0, F.y(v), F.X1, F.y(v));
+      label(s, F.X0 - 6, F.y(v) + 3.5, fmt(v), { size: 9.5, weight: 600, fill: C.MUTED, anchor: 'end' });
+    });
+
+    // Stacked columns: the earliest plan at the bottom.
+    YEARS.forEach((y, i) => {
+      let base = 0;
+      PLANS.forEach((p, j) => {
+        if (!on(p, y)) return;
+        const y0 = F.y(base), y1 = F.y(base + p.per), d = 0.1 + i * 0.1 + j * 0.05;
+        el(s, 'rect', { x: F.x(y) - bw / 2, y: y1, width: bw, height: y0 - y1, fill: p.fill, class: 'rise', style: `transform-origin:0 ${y0}px;animation-delay:${d}s`, 'data-hl': p.name,
+          'data-tip': `Y${y} · ${p.name} ${fmt(p.per)}\n${p.n} RSUs × $${p.price} = ${fmt(p.fv)}, spread over Y${p.start}–Y${p.end}` });
+        if (y1 > 0 && y0 - y1 > 13 && bw > 30) label(s, F.x(y), (y0 + y1) / 2 + 3.5, fmt(p.per), { size: 9, weight: 700, fill: p.text, anchor: 'middle', halo: 0, delay: d + 0.3 });
+        base += p.per;
+      });
+      const t = total(y);
+      label(s, F.x(y), F.y(t) - 6, t ? fmt(t) : '0', { size: 10.5, weight: 800, fill: t ? C.INK : C.MUTED, anchor: 'middle', delay: 0.4 + i * 0.1 });
+      label(s, F.x(y), F.BASE + 15, `Y${y}`, { size: 10, weight: 700, fill: C.MUTED, anchor: 'middle' });
+    });
+
+    // One row per plan across its vesting years, ending in its settlement.
+    const top = F.BASE + 26;
+    PLANS.forEach((p, j) => {
+      const yc = top + j * (rowH + gap), d = 0.7 + j * 0.12, x0 = F.x(p.start) - step / 2 + 2, x1 = F.x(p.end) + step / 2 - 2;
+      label(s, 0, yc + rowH / 2 + 3.5, p.name, { size: nw ? 9.5 : 10.5, weight: 800, delay: d });
+      el(s, 'rect', { x: x0, y: yc, width: x1 - x0, height: rowH, rx: rowH / 2, fill: p.fill, class: 'fade', style: `animation-delay:${d}s`, 'data-hl': p.name,
+        'data-tip': `${p.name} · granted Jan. 1, Y${p.start}\n${p.n} RSUs × $${p.price} = ${fmt(p.fv)}; ${fmt(p.per)} a year in Y${p.start}–Y${p.end}` });
+      label(s, (x0 + x1) / 2, yc + rowH / 2 + 3.5, nw ? `${fmt(p.per)} / yr` : `${fmt(p.per)} a year · total ${fmt(p.fv)}`, { size: nw ? 9 : 9.5, weight: 700, fill: p.text, anchor: 'middle', halo: 0, maxWidth: x1 - x0 - 8, delay: d + 0.1 });
+      dot(s, x1 + 7, yc + rowH / 2, 3.6, C.INK, d + 0.2, `${p.name} settles · end of Y${p.end}\nreserve ${fmt(p.fv)} → share capital ${p.n} ($1 par) + APIC ${fmt(p.fv - p.n)}`).setAttribute('data-hl', p.name);
+    });
+
+    // Reserve balance at each year-end.
+    const ry = top + PLANS.length * (rowH + gap) + 16;
+    label(s, 0, ry, nw ? 'Reserve' : 'Reserve, Dec.', { size: nw ? 9.5 : 10, weight: 700, fill: C.MUTED });
+    YEARS.forEach((y, i) => {
+      const r = reserve(y);
+      const g = el(s, 'g', { 'data-tip': `Reserve at the end of Y${y} · ${fmt(r)}\n${PLANS.filter((p) => p.end === y).map((p) => `${p.name} settled: −${fmt(p.fv)}`).join('; ') || 'no plan settles this year'}` });
+      el(g, 'rect', { x: F.x(y) - step / 2, y: ry - 12, width: step, height: 17, fill: 'transparent' });
+      label(g, F.x(y), ry, fmt(r), { size: nw ? 9.5 : 10.5, weight: 700, anchor: 'middle', delay: 1 + i * 0.05 });
+    });
+  }, (W) => (W < 480 ? 360 : 340));
+})();
+  </script>
+  <style>
+    .rise{animation:rise .6s cubic-bezier(.2,.7,.3,1) both}
+    @keyframes rise{from{transform:scaleY(0)}}
+    .still .rise{animation:none}
+  </style>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Defined benefit pension accounting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <script src="chart-fx.js"></script>
+  <style>
+    .split{margin-top:14px;display:grid;grid-template-columns:minmax(120px,1.3fr) 1fr 1fr;border-top:1.5px solid var(--ink);font-size:11px;line-height:1.4}
+    .split>div{padding:8px 8px 8px 0;border-bottom:1px solid var(--grid)}
+    .split .h{padding-top:7px;font-size:10px;font-weight:700;letter-spacing:.04em;color:var(--muted);border-bottom:1px solid var(--ink)}
+    .split .k{font-weight:700}
+    .split .k span{display:block;font-weight:500;color:var(--muted)}
+    .split .c{color:var(--muted)}
+    .pill{display:inline-block;margin:0 5px 3px 0;padding:2px 7px;border-radius:999px;font-size:9px;font-weight:800;letter-spacing:.06em;vertical-align:1px}
+    .pill.pl{background:var(--ink);color:var(--paper)}
+    .pill.oci{background:#C6C5BF;color:var(--ink)}
+    .pill.rec{background:none;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+    .tally{margin:4px 0 8px;padding-top:9px;border-top:1px solid var(--grid);font-size:11.5px;font-weight:700}
+    @media(max-width:539px){.split{grid-template-columns:1fr 1fr;font-size:10.5px}.split .k{grid-column:1/-1;padding-bottom:2px;border-bottom:0}.split .h.k{display:none}}
+    .rise{animation:rise .6s cubic-bezier(.2,.7,.3,1) both}
+    @keyframes rise{from{transform:scaleY(0)}}
+    .grow{animation:grow .7s cubic-bezier(.2,.7,.3,1) both}
+    @keyframes grow{from{transform:scaleX(0)}}
+    .still .rise,.still .grow{animation:none}
+  </style>
+</head>
+<body>
+  <main class="card" id="card">
+    <h2 id="title"></h2>
+    <div class="sub" id="sub"></div>
+    <section class="panel">
+      <h3 id="head"></h3>
+      <div class="hint" id="hint"></div>
+      <svg id="chart" role="img"></svg>
+      <div id="extra"></div>
+    </section>
+    <div class="src" id="src"></div>
+  </main>
+  <script>
+(() => {
+  const { C, el, label, frame, guide, mount } = curveKit;
+  const UP = '#6A6963', DOWN = '#B0AFA9';
+  const fmt = (v) => (v < 0 ? '−' : '') + Math.abs(v).toLocaleString('en-US');
+  const sgn = (v) => (v > 0 ? '+' : v < 0 ? '−' : '') + Math.abs(v).toLocaleString('en-US');
+
+  // One worked example for every view: discount rate 5%, expected return 7% (US GAAP).
+  const VIEWS = {
+    pbo: {
+      title: 'Each year of service, and of time, adds to the obligation.',
+      sub: 'PBO roll-forward for one year · discount rate 5% · ink = balances · dark gray = increases · light gray = decreases',
+      head: 'Projected benefit obligation (PBO)', hint: 'the vertical axis starts at 900 so the movements are visible',
+      src: 'WATERFALL · LIEFLAT F7 · PBO ROLL-FORWARD (ILLUSTRATIVE)',
+      floor: 900, top: 1160,
+      steps: [
+        ['PBO, beginning', 1000, 'start', 'PBO at the start of the year · 1,000\nPV of benefits earned for service to date', 'Begin'],
+        ['Interest cost', 50, 'step', 'Interest cost · +50\n1,000 × 5%: one year closer to payment, the discounting unwinds', 'Interest'],
+        ['Current service cost', 60, 'step', 'Current service cost · +60\nPV of the benefits employees earned with this year\'s service', 'Service'],
+        ['Past service cost', 20, 'step', 'Past service cost · +20\na plan amendment raised benefits for service already given (can be negative)', 'Past service'],
+        ['Actuarial loss', 30, 'step', 'Actuarial loss · +30\nchanged assumptions (e.g., a lower discount rate, longer lives) or experience differing from them', 'Actuarial'],
+        ['Benefits paid', -40, 'step', 'Benefits paid · −40\npaid to retirees out of plan assets; the obligation is settled', 'Benefits paid'],
+        ['PBO, end', 1120, 'end', 'PBO at the end of the year · 1,120\n1,000 + 50 + 60 + 20 + 30 − 40', 'End'],
+      ],
+    },
+    assets: {
+      title: 'Plan assets grow with contributions and returns.',
+      sub: 'Plan assets roll-forward for the same year · fair value · ink = balances · dark gray = increases · light gray = decreases',
+      head: 'Plan assets (fair value)', hint: 'the vertical axis starts at 800 so the movements are visible',
+      src: 'WATERFALL · LIEFLAT F7 · PLAN ASSETS ROLL-FORWARD (ILLUSTRATIVE)',
+      floor: 800, top: 1030,
+      steps: [
+        ['Plan assets, beginning', 900, 'start', 'Plan assets at the start of the year · 900\nheld by the plan, a separate legal entity, not by the company', 'Begin'],
+        ['Employer contributions', 70, 'step', 'Employer contributions · +70\ncash paid in by the company: a regulatory minimum or discretionary', 'Contrib.'],
+        ['Actual return', 60, 'step', 'Actual return on plan assets · +60\ninterest, dividends and fair-value gains (can be negative)', 'Return'],
+        ['Benefits paid', -40, 'step', 'Benefits paid · −40\nthe same payment that reduces the PBO', 'Benefits paid'],
+        ['Plan assets, end', 990, 'end', 'Plan assets at the end of the year · 990\n900 + 70 + 60 − 40', 'End'],
+      ],
+    },
+    status: {
+      title: 'The deficit widens by the pension cost, less what the company paid in.',
+      sub: 'Funded status = plan assets − PBO · −100 at the start, −130 at the end · benefits paid lower both sides equally, so they cancel',
+      head: 'Funded status bridge', hint: 'ink = funded status · dark gray = plan-asset movements · light gray = PBO movements (they lower the funded status)',
+      src: 'WATERFALL · LIEFLAT F7 · FUNDED STATUS AND TPPC (ILLUSTRATIVE)',
+      floor: -150, top: 70,
+      steps: [
+        ['Funded status, beginning', -100, 'start', 'Funded status at the start · −100\nplan assets 900 − PBO 1,000: a deficit (net pension liability)', 'Begin'],
+        ['Employer contributions', 70, 'asset', 'Employer contributions · +70\ncash moves from the company into the plan', 'Contrib.'],
+        ['Actual return', 60, 'asset', 'Actual return on plan assets · +60', 'Return'],
+        ['Interest cost', -50, 'pbo', 'Interest cost · −50\nthe PBO grows by 1,000 × 5%', 'Interest'],
+        ['Current service cost', -60, 'pbo', 'Current service cost · −60', 'Service'],
+        ['Past service cost', -20, 'pbo', 'Past service cost · −20', 'Past service'],
+        ['Actuarial loss', -30, 'pbo', 'Actuarial loss · −30', 'Actuarial'],
+        ['Funded status, end', -130, 'end', 'Funded status at the end · −130\nplan assets 990 − PBO 1,120', 'End'],
+      ],
+      note: 'TPPC = 50 + 60 + 20 + 30 − 60 = 100 = contributions 70 − Δ funded status (−30)',
+    },
+    tppc: {
+      title: 'Same total pension cost; the standards split it differently.',
+      sub: 'TPPC of 100 from the same year · IFRS puts 85 in profit or loss · US GAAP puts 49 there and defers 51 in OCI',
+      head: 'Where each part of TPPC goes', hint: 'ink = profit or loss (P&L) · gray = OCI · outlined = OCI now, amortized into P&L later',
+      src: 'SPLIT BARS + MATRIX · LIEFLAT F7 · TPPC UNDER IFRS AND US GAAP (ILLUSTRATIVE)',
+    },
+  };
+  const view = VIEWS[new URLSearchParams(location.search).get('view')] || VIEWS.pbo;
+  ['title', 'sub', 'head', 'hint', 'src'].forEach((k) => { document.getElementById(k).textContent = view[k]; });
+  document.title = view.head;
+  const svg = document.getElementById('chart');
+  svg.setAttribute('aria-label', view.title);
+
+  function waterfall(s, W, H) {
+    const nw = W < 480, steps = view.steps, n = steps.length;
+    const F = frame(s, W, H, { l: nw ? 30 : 40, r: 4, t: 22, b: nw ? 58 : 50, xMin: -0.5, yMin: view.floor, noTicks: true }, n - 0.5, view.top);
+    const step = F.x(1) - F.x(0), bw = Math.min(46, step * 0.66);
+    const ticks = view.floor < 0 ? [-100, 0] : [view.floor + 100, view.floor + 200];
+    ticks.forEach((v) => {
+      guide(s, F.X0, F.y(v), F.X1, F.y(v));
+      label(s, F.X0 - 5, F.y(v) + 3.5, fmt(v), { size: 9, weight: 600, fill: C.MUTED, anchor: 'end' });
+    });
+    if (view.floor < 0) el(s, 'line', { x1: F.X0, y1: F.y(0), x2: F.X1, y2: F.y(0), stroke: C.MUTED, 'stroke-width': 0.9 });
+    let run = 0, prevTop = null;
+    steps.forEach(([full, v, kind, tip, short], i) => {
+      const name = nw ? short : full;
+      const x = F.x(i) - bw / 2, d = 0.1 + i * 0.1, total = kind === 'start' || kind === 'end';
+      const from = total ? (view.floor < 0 ? 0 : view.floor) : run, to = total ? v : run + v;
+      const y0 = F.y(Math.max(from, to)), y1 = F.y(Math.min(from, to));
+      const fill = total ? C.INK : kind === 'asset' ? UP : kind === 'pbo' ? DOWN : v > 0 ? UP : DOWN;
+      el(s, 'rect', { x, y: y0, width: bw, height: Math.max(1.5, y1 - y0), fill, rx: 2, class: 'rise', style: `transform-origin:0 ${total ? F.y(from) : y1}px;animation-delay:${d}s`, 'data-hl': 's' + i, 'data-tip': tip });
+      // A thin link carries the running total to the next column.
+      if (prevTop != null) el(s, 'line', { x1: F.x(i - 1) + bw / 2, y1: prevTop, x2: x, y2: prevTop, stroke: C.SOFT, 'stroke-width': 0.8, 'stroke-dasharray': '2 2', class: 'fade', style: `animation-delay:${d}s` });
+      run = total ? v : to;
+      prevTop = F.y(run);
+      const above = total ? v >= 0 : v > 0;
+      label(s, F.x(i), above ? y0 - 6 : y1 + 13, total ? fmt(v) : sgn(v), { size: nw ? 9.5 : 10.5, weight: total ? 800 : 700, fill: total ? C.INK : C.MUTED, anchor: 'middle', delay: d + 0.3 });
+      label(s, F.x(i), F.BASE + 14, name, { size: nw ? 8.5 : 9.5, weight: total ? 800 : 600, fill: total ? C.INK : C.MUTED, anchor: 'middle', maxWidth: step - 3, minSize: 7.5 });
+    });
+    // A floor above zero is a cut axis; mark it.
+    if (view.floor > 0) {
+      const y = F.BASE - 4;
+      el(s, 'path', { d: `M${F.X0 - 5} ${y + 3} l5 -3 l5 3`, fill: 'none', stroke: C.MUTED, 'stroke-width': 1 });
+    }
+  }
+
+  // TPPC: the split of 100 between P&L and OCI under each standard.
+  const SPLIT = [
+    ['IFRS', [['Service cost', 80, 'pl'], ['Net interest', 5, 'pl'], ['Remeasurements', 15, 'oci']], 'IFRS · P&L 85, OCI 15\nservice cost 60 + 20 and net interest 5% × 100 = 5 in P&L; remeasurements 30 − 15 = 15 in OCI'],
+    ['US GAAP', [['P&L pension expense', 49, 'pl'], ['OCI', 51, 'oci']], 'US GAAP · P&L 49, OCI 51\nP&L: 60 + 50 − 63 + 2 (PSC amortized) · OCI: PSC 20 − 2, actuarial loss 30, return shortfall 3'],
+  ];
+  function split(s, W, H) {
+    const nw = W < 480, lw = nw ? 58 : 70, x0 = lw, x1 = W - 34, unit = (x1 - x0) / 100, bh = nw ? 22 : 24;
+    SPLIT.forEach(([std, parts, tip], r) => {
+      const y = 8 + r * (bh + 20);
+      label(s, 0, y + bh / 2 + 4, std, { size: 11, weight: 800 });
+      let x = x0;
+      parts.forEach(([name, v, k], j) => {
+        const w = v * unit, d = 0.15 + r * 0.15 + j * 0.08;
+        el(s, 'rect', { x, y, width: Math.max(1, w - 1.5), height: bh, rx: 3, fill: k === 'pl' ? C.INK : '#C6C5BF', class: 'grow', style: `transform-origin:${x0}px 0;animation-delay:${d}s`, 'data-hl': std, 'data-tip': `${std} · ${name} ${v}\n${tip.split('\n')[1]}` });
+        if (w > 26) label(s, x + w / 2, y + bh / 2 + 3.5, w > 120 ? `${name} ${v}` : String(v), { size: 9.5, weight: 700, fill: k === 'pl' ? C.PAPER : C.INK, anchor: 'middle', halo: 0, delay: d + 0.3 });
+        x += w;
+      });
+      label(s, x1 + 6, y + bh / 2 + 4, '100', { size: 10.5, weight: 800, delay: 0.5 });
+    });
+  }
+
+  const ROWS = [
+    ['Current service cost', '60', ['pl', 'P&L'], 'service cost', ['pl', 'P&L'], 'operating expense'],
+    ['Past service cost', '20', ['pl', 'P&L'], 'immediately, with service cost', ['rec', 'OCI → P&L'], 'amortized over the remaining service period (2 this year)'],
+    ['Interest and return', 'PBO 50 · assets', ['pl', 'P&L'], 'net interest = 5% × deficit 100 = 5 (50 − 45)', ['pl', 'P&L'], 'interest cost 50 − expected return 7% × 900 = 63'],
+    ['Return above the assumed', 'actual 60', ['oci', 'OCI'], 'remeasurement: 60 − 45 = +15 gain', ['rec', 'OCI → P&L'], '60 − 63 = −3 loss; corridor amortization'],
+    ['Actuarial gains and losses', '30 loss', ['oci', 'OCI'], 'remeasurement; never recycled to P&L', ['rec', 'OCI → P&L'], 'corridor: only the excess over 10% of max(PBO, assets) is amortized'],
+  ];
+  function matrix() {
+    const box = document.getElementById('extra');
+    const cell = (cls, html) => `<div class="${cls}">${html}</div>`;
+    const pill = ([k, t]) => `<span class="pill ${k}">${t}</span>`;
+    box.innerHTML = `<div class="split">${cell('h k', 'ITEM')}${cell('h', 'IFRS')}${cell('h', 'US GAAP')}${ROWS.map((r) =>
+      cell('k', `${r[0]}<span>${r[1]}</span>`) + cell('c', pill(r[2]) + r[3]) + cell('c', pill(r[4]) + r[5])).join('')}</div>`;
+  }
+
+  if (view.note) document.getElementById('extra').innerHTML = `<p class="tally">${view.note}</p>`;
+  if (view.steps) mount(svg, waterfall, (W) => (W < 480 ? 300 : 290));
+  else { mount(svg, split, () => 98); matrix(); }
+})();
+  </script>
+</body>
+</html>

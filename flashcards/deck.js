@@ -11,6 +11,15 @@
     ],
     throwOnError: false,
   };
+  // Follow the site's light/dark switch (the .dark class on the embedding page);
+  // a deck opened on its own follows the system setting.
+  const host = (() => { try { return window.parent !== window && window.parent.document.documentElement; } catch { return null; } })();
+  const system = window.matchMedia('(prefers-color-scheme: dark)');
+  const syncTheme = () => document.documentElement.classList.toggle('dark', host ? host.classList.contains('dark') : system.matches);
+  syncTheme();
+  if (host) new MutationObserver(syncTheme).observe(host, { attributes: true, attributeFilter: ['class'] });
+  else system.addEventListener('change', syncTheme);
+
   const typeset = (node) => window.renderMathInElement && renderMathInElement(node, KATEX);
   const load = (k) => { try { return JSON.parse(localStorage.getItem(k)) || {}; } catch { return {}; } };
   const save = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch { /* private mode */ } };

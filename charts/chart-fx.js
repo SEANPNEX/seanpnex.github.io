@@ -1,8 +1,12 @@
 /*
- * Shared motion and hover layer for every chart under /charts. Load it in
- * <head>, before the chart's own scripts:
+ * Shared motion, hover and theme layer for every chart under /charts. Load it
+ * in <head>, before the chart's own scripts:
  *
  *   <script src="chart-fx.js"></script>
+ *
+ * Theme: charts are written in the light ladder only (hex or rgb grays); on
+ * the site's dark switch this layer inverts them in place and keeps doing so
+ * as the chart redraws.
  *
  * Entrance: every CSS animation waits until its block of the card scrolls
  * into view, so nothing plays (and finishes) off screen.
@@ -27,8 +31,169 @@
   var root = document.documentElement;
   var T = function (s) { return window.chartI18n ? chartI18n.t(s) : s; };
 
+  /* ── Theme ────────────────────────────────────────────────────────────── */
+
+  // Charts are drawn on the light paper. On the site's dark switch (the .dark
+  // class on the embedding page; the system setting when a chart is opened on
+  // its own) every gray in the stylesheets, inline styles and SVG paint is
+  // moved to its place on the inverted ladder: the most important mark, the
+  // darkest on paper, becomes the lightest. Pairs are the site's tokens;
+  // grays between them are placed by lightness.
+  var LADDER = [
+    ['#1C1C1A', '#F0EFEB'], ['#4A4944', '#C9C7BD'], ['#6A6963', '#B3B0A4'], ['#8F8E88', '#8F8E88'],
+    ['#B0AFA9', '#6A6963'], ['#C6C5BF', '#4A4944'], ['#DEDDD6', '#2E2D29'], ['#E7E6E0', '#252421'],
+    ['#F0EFEB', '#1C1C1A'], ['#FFFFFF', '#252421'], // lighter than paper = raised, as cards are on dark
+  ].map(function (p) {
+    var rgb = function (h) { return [1, 3, 5].map(function (i) { return parseInt(h.substr(i, 2), 16); }); };
+    var a = rgb(p[0]);
+    return { l: 0.2126 * a[0] + 0.7152 * a[1] + 0.0722 * a[2], to: rgb(p[1]) };
+  });
+  function invert(r, g, b) {
+    var l = 0.2126 * r + 0.7152 * g + 0.0722 * b, i = 1;
+    while (i < LADDER.length - 1 && l > LADDER[i].l) i++;
+    var a = LADDER[i - 1], z = LADDER[i], t = Math.max(0, Math.min(1, (l - a.l) / (z.l - a.l)));
+    return a.to.map(function (v, k) { return Math.round(v + (z.to[k] - v) * t); });
+  }
+  var COLOR = /#([0-9a-f]{6}|[0-9a-f]{3})\b|rgba?\(\s*([\d.]+)[\s,]+([\d.]+)[\s,]+([\d.]+)\s*([,/][^)]*)?\)/gi;
+  function recolor(s) {
+    return s.replace(COLOR, function (m, hex, r, g, b, alpha, at, all) {
+      if (all.slice(Math.max(0, at - 4), at) === 'url(') return m; // url(#id), not a color
+      if (hex) {
+        if (hex.length === 3) hex = hex.replace(/./g, '$&$&');
+        var c = invert(parseInt(hex.substr(0, 2), 16), parseInt(hex.substr(2, 2), 16), parseInt(hex.substr(4, 2), 16));
+        return '#' + c.map(function (v) { return (v < 16 ? '0' : '') + v.toString(16).toUpperCase(); }).join('');
+      }
+      var d = invert(+r, +g, +b);
+      return (alpha ? 'rgba(' : 'rgb(') + d.join(', ') + (alpha ? alpha.replace('/', ',') : '') + ')';
+    });
+  }
+
+  var PAINT = ['fill', 'stroke', 'stop-color', 'flood-color', 'color', 'style'];
+  var dark = false, sheetsDone = new WeakSet(), ruleUndo = [];
+
+  // Stylesheets: rewrite each declaration that names a color, keeping the original.
+  function eachRule(list, fn) {
+    [].forEach.call(list, function (r) { if (r.style) fn(r.style); if (r.cssRules) eachRule(r.cssRules, fn); });
+  }
+  function recolorSheets() {
+    [].forEach.call(document.styleSheets, function (sheet) {
+      if (sheetsDone.has(sheet)) return;
+      var rules;
+      try { rules = sheet.cssRules; } catch (e) { sheetsDone.add(sheet); return; } // cross-origin (fonts)
+      sheetsDone.add(sheet);
+      eachRule(rules, function (st) {
+        for (var i = st.length - 1; i >= 0; i--) {
+          var p = st[i], v = st.getPropertyValue(p), w = recolor(v);
+          if (w === v) continue;
+          ruleUndo.push([st, p, v, st.getPropertyPriority(p)]);
+          st.setProperty(p, w, st.getPropertyPriority(p));
+        }
+      });
+    });
+  }
+
+  // Elements: paint attributes, and inline styles one property at a time
+  // (a chart may later change just its position). Each keeps its light value
+  // and the dark one written over it, in data-fx-light so that a copied node
+  // (cloneNode, innerHTML) carries them too; a value equal to the dark one is
+  // ours. `drawn` names attributes the chart has just set, so they are light.
+  var KEEP = 'data-fx-light';
+  function recolorEl(n, drawn) {
+    var saved = n.getAttribute(KEEP), keep = saved ? JSON.parse(saved) : { a: {}, c: {} };
+    PAINT.forEach(function (a) {
+      if (a === 'style') return;
+      var v = n.getAttribute(a), k = keep.a[a];
+      if (v == null || (k && v === k[1] && !(drawn && drawn[a]))) return;
+      var w = recolor(v);
+      if (w === v) { delete keep.a[a]; return; }
+      n.setAttribute(a, w);
+      keep.a[a] = [v, w];
+    });
+    var st = n.style, before = n.getAttribute('style'), clean = !Object.keys(keep.c).length, wrote = false;
+    for (var i = 0; st && i < st.length; i++) {
+      var p = st[i], v = st.getPropertyValue(p), k = keep.c[p];
+      if (k && v === k[1]) continue;
+      var w = recolor(v);
+      if (w === v) { delete keep.c[p]; continue; }
+      st.setProperty(p, w, st.getPropertyPriority(p));
+      keep.c[p] = [v, st.getPropertyValue(p)];
+      wrote = true;
+    }
+    // While the whole attribute is still the chart's, it comes back as written.
+    if (wrote) keep.t = clean ? [before, n.getAttribute('style')] : null;
+    var out = Object.keys(keep.a).length || Object.keys(keep.c).length ? JSON.stringify(keep) : null;
+    if (out !== saved) out ? n.setAttribute(KEEP, out) : n.removeAttribute(KEEP);
+  }
+  function restoreEl(n) {
+    var saved = n.getAttribute(KEEP);
+    if (!saved) return;
+    var keep = JSON.parse(saved), st = n.style;
+    for (var a in keep.a) if (n.getAttribute(a) === keep.a[a][1]) n.setAttribute(a, keep.a[a][0]);
+    if (keep.t && n.getAttribute('style') === keep.t[1]) n.setAttribute('style', keep.t[0]);
+    else for (var p in keep.c) if (st.getPropertyValue(p) === keep.c[p][1]) st.setProperty(p, keep.c[p][0], st.getPropertyPriority(p));
+    n.removeAttribute(KEEP);
+  }
+  var tree = function (n, fn) { if (n.nodeType === 1) { fn(n); [].forEach.call(n.querySelectorAll('*'), function (m) { fn(m); }); } };
+
+  var painter = new MutationObserver(function (records) {
+    if (!dark) {
+      // A copy of a node made while dark returns to its light colors.
+      records.forEach(function (r) {
+        [].forEach.call(r.addedNodes, function (n) {
+          if (n.nodeType === 1 && (n.hasAttribute(KEEP) || n.querySelector('[' + KEEP + ']'))) tree(n, restoreEl);
+        });
+      });
+      painter.takeRecords();
+      return;
+    }
+    var drawn = new Map(), added = [], sheets = false;
+    records.forEach(function (r) {
+      if (r.type === 'attributes') {
+        var set = drawn.get(r.target) || {};
+        set[r.attributeName] = true;
+        drawn.set(r.target, set);
+      } else {
+        added.push.apply(added, r.addedNodes);
+        sheets = true;
+      }
+    });
+    // Each element once per batch, so nothing is inverted twice.
+    var seen = new Set(), visit = function (n) { if (!seen.has(n)) { seen.add(n); recolorEl(n, drawn.get(n)); } };
+    added.forEach(function (n) { if (n.isConnected) tree(n, visit); });
+    drawn.forEach(function (set, n) { visit(n); });
+    if (sheets) recolorSheets();
+    painter.takeRecords(); // our own writes
+  });
+  painter.observe(root, { subtree: true, childList: true, attributes: true, attributeFilter: PAINT });
+  // A linked stylesheet (ledger.css) can be read only once it has loaded.
+  document.addEventListener('load', function (e) { if (dark && e.target.tagName === 'LINK') recolorSheets(); }, true);
+
+  function setDark(on) {
+    if (on === dark) return;
+    dark = on;
+    root.classList.toggle('dark', on);
+    if (on) {
+      recolorSheets();
+      tree(root, function (n) { recolorEl(n); });
+    } else {
+      ruleUndo.forEach(function (u) { u[0].setProperty(u[1], u[2], u[3]); });
+      ruleUndo = [];
+      sheetsDone = new WeakSet();
+      tree(root, restoreEl);
+    }
+    painter.takeRecords();
+  }
+
+  var host = (function () { try { return parent !== window && parent.document.documentElement; } catch (e) { return null; } })();
+  var system = window.matchMedia('(prefers-color-scheme: dark)');
+  var syncTheme = function () { setDark(host ? host.classList.contains('dark') : system.matches); };
+  syncTheme();
+  if (host) new MutationObserver(syncTheme).observe(host, { attributes: true, attributeFilter: ['class'] });
+  else system.addEventListener('change', syncTheme);
+
   root.classList.add('fx-boot');
   var css = [
+    ':root.dark{color-scheme:dark}',
     // Held animations: everything until the blocks are known, then each block until it is seen.
     'html.fx-boot body *,.fx-wait,.fx-wait *{animation-play-state:paused!important}',
     '.fx-tip{position:fixed;left:0;top:0;z-index:99;max-width:min(260px,calc(100vw - 16px));padding:7px 10px 8px;border-radius:9px;',
