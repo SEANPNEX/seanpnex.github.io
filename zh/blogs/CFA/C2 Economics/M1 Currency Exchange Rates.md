@@ -20,8 +20,17 @@ title: 汇率
     border-radius: 24px;
     background: #F0EFEB;
 }
+/* Starting heights only: each chart reports its rendered height once loaded. */
+.fx-concept-chart.parity-chart { height: 550px; }
+.fx-concept-chart.overshoot-chart { height: 620px; }
+.fx-concept-chart.portfolio-chart { height: 400px; }
+.fx-concept-chart.models-chart { height: 500px; }
 @media (max-width: 700px) {
-    .fx-concept-chart { height: 540px; }
+    .fx-concept-chart { height: 500px; }
+    .fx-concept-chart.parity-chart { height: 770px; }
+    .fx-concept-chart.overshoot-chart { height: 1170px; }
+    .fx-concept-chart.portfolio-chart { height: 530px; }
+    .fx-concept-chart.models-chart { height: 840px; }
 }
 </style>
 
@@ -265,8 +274,15 @@ $$
 
 <iframe
   class="fx-concept-chart"
-  src="/charts/currency-exchange-concepts.html?view=parity&lang=zh"
+  src="/charts/currency-exchange-concepts.html?view=parity"
   title="国际平价条件之间的联系"
+  loading="lazy"
+></iframe>
+
+<iframe
+  class="fx-concept-chart parity-chart"
+  src="/charts/international-parity-conditions.html"
+  title="国际平价条件的关系图"
   loading="lazy"
 ></iframe>
 
@@ -436,13 +452,21 @@ $$
 
 ## 货币政策与财政政策
 
+<iframe
+  class="fx-concept-chart models-chart"
+  src="/charts/monetary-fiscal-policy-models.html"
+  loading="lazy"
+  title="货币政策与财政政策模型对比"
+></iframe>
+
+
 ### 蒙代尔–弗莱明框架
 
 蒙代尔–弗莱明框架把短期宏观经济分析扩展到开放经济。其结论关键取决于资本流动性以及汇率是浮动还是固定。
 
 <iframe
   class="fx-concept-chart"
-  src="/charts/currency-exchange-concepts.html?view=policy&lang=zh"
+  src="/charts/currency-exchange-concepts.html?view=policy"
   title="货币政策与财政政策对汇率的短期传导"
   loading="lazy"
 ></iframe>
@@ -451,6 +475,20 @@ $$
 
 - 扩张性货币政策降低本国利率，带来资本外流压力，使货币贬值；贬值支撑净出口，因此货币政策相对有力；
 - 扩张性财政政策提高产出和利率，吸引资本流入，使货币升值；升值挤出一部分净出口，削弱了对产出的作用。
+
+两种政策同时变动时，汇率效应取决于两者带来的利率压力是相互强化还是相互抵消：
+
+|  | 扩张性货币政策 | 紧缩性货币政策 |
+| --- | --- | --- |
+| **扩张性财政政策** | 不确定 | 本币升值 |
+| **紧缩性财政政策** | 本币贬值 | 不确定 |
+
+在**浮动汇率且资本流动性低**时，贸易流动的作用超过对利率敏感的资本流动。提高产出的扩张性政策往往会增加进口，对本币形成贬值压力：
+
+|  | 扩张性货币政策 | 紧缩性货币政策 |
+| --- | --- | --- |
+| **扩张性财政政策** | 本币贬值 | 不确定 |
+| **紧缩性财政政策** | 不确定 | 本币升值 |
 
 在**可信的固定汇率且资本高度流动**时：
 
@@ -467,11 +505,37 @@ $$
 MV=PY,
 $$
 
-其中 $M$ 是货币供给，$V$ 是货币流通速度，$P$ 是价格水平，$Y$ 是实际产出。如果流通速度和实际产出在长期内稳定，本国货币供给增长加快会推高本国价格水平。在其他条件不变时，相对 PPP 随之意味着本币长期贬值。
+其中 $M$ 是货币供给，$V$ 是货币流通速度，$P$ 是价格水平，$Y$ 是实际产出。
 
-当商品价格调整缓慢而金融市场调整迅速时，意外的货币扩张可能压低利率，使货币贬值到超出其长期 PPP 水平的程度。随着本国价格逐步上升，货币之后再向该水平升值。这就是**汇率超调**。
+把中间一步改写为
+$$
+\frac{M}{P} = \frac{Y}{V}
+$$
+
+
+如果流通速度（V）和实际产出（Y）在**长期**内稳定，本国货币供给增长加快会推高本国价格水平。在其他条件不变时，相对 PPP 随之意味着本币长期贬值。
+
+> [!note]
+>
+> 等式左边的 $\frac{M}{P}$ 可以称为**实际货币供给**
+
+当商品价格调整缓慢而金融市场调整迅速时，意外的货币扩张（**实际货币供给**增加，使资金变得更便宜）会使货币贬值到超出其长期 PPP 水平的程度。随着本国价格逐步上升，货币之后再向该水平升值。这就是**汇率超调**。
+
+<iframe
+  class="fx-concept-chart overshoot-chart"
+  src="/charts/exchange-rate-overshooting.html"
+  loading="lazy"
+  title="货币扩张后的汇率超调"
+></iframe>
 
 ### 资产组合平衡法
+
+<iframe
+  class="fx-concept-chart portfolio-chart"
+  src="/charts/portfolio-balance-approach.html"
+  loading="lazy"
+  title="资产组合平衡法：财政扩张的路径"
+></iframe>
 
 本国债券和外国债券不一定是完全替代品。投资者要求的预期收益，要能补偿他们必须持有的每种资产的数量和风险。因此，增加政府债务供给的财政赤字可能提高所要求的风险溢价。
 

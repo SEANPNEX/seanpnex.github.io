@@ -17,13 +17,13 @@ title: 学習ベース
   <a class="directory-card directory-card--primary" href="/jp/blogs/CFA/plan">
     <span class="directory-card__number">01 · CFA レベル II</span>
     <strong>CFA ノートを始める</strong>
-    <span class="directory-card__description">まず学習計画を読み、各ページ下部の「次のページ」からカリキュラム順に進めます。</span>
+    <span class="directory-card__description">11 月 18 日の試験に向けた集中プラン（10 月は FSA 優先、11 月は模試）。計画を開き、「次のページ」からカリキュラム順に進めます。</span>
     <span class="directory-card__action">計画を開く <b>→</b></span>
   </a>
   <a class="directory-card" href="/jp/blogs/JLPT-N2/plan">
     <span class="directory-card__number">02 · JLPT N2</span>
     <strong>日本語の学習計画</strong>
-    <span class="directory-card__description">読解・聴解・文法・語彙を、実際の文脈の中で練習します。</span>
+    <span class="directory-card__description">11 月中旬まで 1 日 2 時間が上限（試験は 12 月 6 日）：語彙、動画、文法、ローテーション演習。</span>
     <span class="directory-card__action">計画を見る <b>↗</b></span>
   </a>
   <a class="directory-card" href="/jp/blogs/German/plan">

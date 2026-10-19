@@ -17,13 +17,13 @@ title: 学习库
   <a class="directory-card directory-card--primary" href="/zh/blogs/CFA/plan">
     <span class="directory-card__number">01 · CFA 二级</span>
     <strong>开始 CFA 笔记</strong>
-    <span class="directory-card__description">先读学习计划，再点每页底部的“下一页”，按课程顺序读下去。</span>
+    <span class="directory-card__description">冲刺 11 月 18 日考试（10 月先攻 FSA，11 月做模考）。打开学习计划，再点“下一页”按课程顺序读下去。</span>
     <span class="directory-card__action">打开计划 <b>→</b></span>
   </a>
   <a class="directory-card" href="/zh/blogs/JLPT-N2/plan">
     <span class="directory-card__number">02 · JLPT N2</span>
     <strong>日语学习计划</strong>
-    <span class="directory-card__description">在真实语境中练习阅读、听力、语法和词汇。</span>
+    <span class="directory-card__description">每天最多 2 小时，持续到 11 月中旬（12 月 6 日考试）：词汇、视频、语法和轮换练习。</span>
     <span class="directory-card__action">查看计划 <b>↗</b></span>
   </a>
   <a class="directory-card" href="/zh/blogs/German/plan">

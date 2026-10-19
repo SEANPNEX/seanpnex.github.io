@@ -2,79 +2,91 @@
 title: Plan JLPT N2
 ---
 
-# Plan d’apprentissage du JLPT N2
+# Plan d’apprentissage JLPT N2
 
-> **Hypothèse de travail :** une préparation de 24 semaines et environ **7 heures par semaine**. Le plan vise à la fois l’examen et un japonais réellement utile ; la lecture et l’écoute restent donc liées à des documents authentiques.
+> **Hypothèse de travail :** examen le **dimanche 6 décembre 2026**. Couverture intensive du **13 octobre → vendredi 14 novembre** (clôture souple le **16 novembre**) avec un plafond strict de **2,0 heures par jour** (~**14 heures par semaine**). Le **1er–5 décembre** sert uniquement de marge (≤1 heure de révision) ; **aucun nouveau premier passage** en décembre. Ne pas monter en charge en décembre.
 
 ## Critères d’achèvement
 
-- Reconnaître le vocabulaire et les kanji essentiels du N2 en contexte, pas seulement sur des cartes mémoire.
-- Lire un texte de longueur N2 avec un objectif clair, une carte de sa structure et un rythme maîtrisé.
-- Suivre l’idée principale, la position de l’auteur et les détails importants en une seule écoute.
-- Réussir trois examens blancs chronométrés avec une marge au-dessus des seuils par section et du score total.
+- Vider la file de vocabulaire restante (~**2000** mots à ~**60 par jour**) et les leçons vidéo restantes (~**180** à ~**5–6 par jour**) d’ici la mi-novembre.
+- Tenir à jour notes de grammaire, phrases d’exemple et cartes tirées des erreurs avec l’aide de Caligo — reconnaître en contexte, pas seulement réviser des cartes.
+- Faire tourner la pratique du soir entre grammaire, entraînement à l’examen, lecture et écoute, pour qu’aucune compétence ne reste de côté une semaine entière.
+- Entrer en décembre avec le premier passage terminé ; n’utiliser le 1er–5 déc. que pour une révision légère et la logistique avant l’examen du 6 décembre.
 
-## Rythme hebdomadaire
+## Priorités actuelles (au 14 oct. 2026)
 
-| Fréquence | Durée | Travail |
+**Aujourd’hui :** session de vocabulaire sur l’appli dans le créneau du matin.
+
+**Pistes en cours**
+
+| Piste | Reste (env.) | Rythme quotidien |
+| --- | ---: | ---: |
+| Vocabulaire (appli) | ~2000 | ~60 / jour |
+| Leçons vidéo | ~180 | ~5–6 / jour |
+| Grammaire / notes / cartes | En continu avec Caligo | lun. et mer. soir |
+| Pratique / lecture / écoute | En rotation le soir | Voir le rythme ci-dessous |
+
+Le travail approfondi de grammaire et de vidéo avec Caligo vient une fois le bloc de vocabulaire du jour terminé — appuyer sur Caligo pour lancer ces parties ; ne pas s’inventer une soirée plus chargée.
+
+## Rythme quotidien (plafond 2,0 h)
+
+Les créneaux ne doivent pas chevaucher le CFA (20:00–02:00), le sport (18:00–20:00) ni le rapport hebdomadaire du lundi (08:00–10:00).
+
+| Créneau | Horaire | Travail |
 | --- | ---: | --- |
-| Tous les jours | 20 min | Révision espacée : vocabulaire, kanji et une phrase d’exemple lue à voix haute. |
-| 3 fois par semaine | 35 min | Structure grammaticale → contraste avec une structure proche → 8 à 12 questions. |
-| 3 fois par semaine | 30 min | Écoute active : anticiper, écouter une fois, résumer, puis vérifier avec la transcription. |
-| 2 fois par semaine | 45 min | Lecture chronométrée suivie d’une analyse de la structure et des erreurs. |
-| Week-end | 90 min | Exercices mixtes par section et bilan de la semaine. |
+| Vocabulaire du matin | 06:45–07:15 | Vocabulaire sur l’appli (~60 mots). |
+| Vidéo du matin | 07:15–08:05 | Leçons vidéo (~5–6). |
+| Rotation du soir | 21:00–21:40 | Compétence du jour (tableau ci-dessous). |
 
-## Feuille de route sur 24 semaines
+### Rotation du soir (21:00–21:40)
 
-### Phase 1 — Point de départ et méthode (semaines 1–2)
+| Jour | Priorité |
+| --- | --- |
+| lun. | Grammaire · notes / cartes (Caligo) |
+| mar. | Pratique (séries au format de l’examen) |
+| mer. | Grammaire · notes / cartes (Caligo) |
+| jeu. | Lecture |
+| ven. | Écoute |
+| sam. | Pratique (séries au format de l’examen) |
+| dim. | Écoute |
 
-- Faire un test d’essai chronométré couvrant les connaissances linguistiques, la lecture et l’écoute.
-- Classer les erreurs : vocabulaire, nuance grammaticale, enchaînement des phrases, vitesse de lecture, indice manqué ou attention.
-- Choisir un seul cours ou manuel principal par compétence. Les autres ressources vont sur une liste d’attente.
-- Lancer un paquet de révision fondé sur des phrases ; limiter les nouvelles cartes pour que la révision reste sous 25 minutes.
+## Feuille de route intensive
 
-### Phase 2 — Couverture (semaines 3–12)
+### Phase A — Couverture (13 oct. → ven. 14 nov.)
 
-- Apprendre 12 à 15 mots et 4 à 6 kanji par jour, six jours par semaine.
-- Apprendre 8 à 10 structures grammaticales par semaine, par groupes de contraste : cause, concession, restriction, tendance.
-- Lire chaque jour un court texte authentique : NHK, un essai, une page produit ou une note interne d’entreprise.
-- Écouter 15 à 20 minutes de japonais par jour ; trois jours par semaine, faire une réécoute intensive avec transcription.
+- Tenir le plafond de **2,0 h/jour** ; le temps manqué le matin ne déborde pas sur le bloc CFA du soir.
+- Vocabulaire et vidéo tous les jours au rythme ci-dessus jusqu’à vider les files.
+- Soirs de grammaire : comparer les structures proches, phrases d’exemple courtes, cartes tirées des erreurs — pas un deuxième manuel.
+- Soirs de pratique / lecture / écoute : travail chronométré ou en un seul passage ; noter les erreurs pour la prochaine séance de grammaire ou de cartes.
 
-Chaque dimanche, rédiger un résumé de 150 à 250 caractères en utilisant deux structures de la semaine.
+**Clôture souple : 16 novembre** — terminer le premier passage restant ; ensuite, ne plus ouvrir de nouveaux chapitres de grammaire ni de nouvelles séries vidéo.
 
-### Phase 3 — Vitesse et intégration (semaines 13–18)
+### Phase B — Marge (1er–5 déc.)
 
-- Passer des questions isolées à des séries chronométrées de lecture et d’écoute.
-- En lecture, repérer la thèse de l’auteur, les mots d’opposition, les référents et le rôle de chaque paragraphe.
-- En écoute, anticiper le type de question et ne noter que les détails qui changent la réponse.
-- Faire du shadowing sur un extrait de 60 à 90 secondes trois fois par semaine, pour la reconnaissance des sons et le rythme.
-- Entretenir l’ancien vocabulaire ; réduire les nouvelles cartes si le taux de rappel passe sous 85 %.
+- Révision uniquement, **≤1 heure par jour**.
+- Paires de grammaire les plus confondues, indices d’écoute faibles et erreurs de vocabulaire récurrentes.
+- Vérifier la logistique de l’examen ; protéger le sommeil.
+- **Aucun nouveau contenu de premier passage.**
 
-### Phase 4 — Préparation à l’épreuve (semaines 19–23)
+### Jour de l’examen — dim. 6 déc.
 
-- Alterner chaque week-end tests par section et examens blancs complets.
-- Reproduire le minutage réel, les pauses, la diffusion audio et l’usage de la feuille de réponses.
-- Analyser pourquoi chaque distracteur est faux, surtout quand la bonne réponse a été devinée.
-- En semaine, travailler une seule sous-compétence faible à la fois.
+- Un léger échauffement seulement s’il est utile ; pas de bachotage.
 
-### Phase 5 — Affûtage (semaine 24)
+## Bilan hebdomadaire (note facultative du dimanche)
 
-- Revoir les paires de grammaire souvent confondues, les lectures de kanji récurrentes et les mots-indices de l’écoute.
-- Faire de courtes séries chronométrées sans s’épuiser sur des tests complets.
-- Vérifier la logistique et protéger son sommeil.
+```text
+Vocabulaire fait / restant :
+Vidéos faites / restantes :
+Créneaux du soir tenus (grammaire / pratique / lecture / écoute) :
+Une structure ou un passage encore fragile :
+Ajuster le rythme la semaine prochaine ? (rester au plafond — ne pas ajouter d’heures)
+```
 
-## Bilan mensuel en situation réelle
+## Les sept prochains jours (14–20 oct.)
 
-Toutes les quatre semaines :
-
-- lire un article et en faire un résumé oral de deux minutes ;
-- tenir une conversation ou un échange linguistique de 20 minutes ;
-- écrire un court message professionnel et le faire corriger ;
-- noter ce que la préparation à l’examen améliore — et ce qu’elle n’améliore pas.
-
-## Les sept premiers jours
-
-- [ ] Passer le test d’essai et noter les scores par section.
-- [ ] Choisir une ressource principale par compétence.
-- [ ] Créer le paquet de révision et le carnet d’erreurs.
-- [ ] Enregistrer trois sources fiables de lecture et d’écoute.
-- [ ] Planifier le premier bloc mixte de 90 minutes.
+- [ ] Garder chaque jour le vocabulaire du matin (06:45–07:15) et la vidéo (07:15–08:05).
+- [ ] Lun. 14 / mer. 16 soir : grammaire avec Caligo une fois sollicité — notes et cartes d’exemples, pas une séance plus longue.
+- [ ] Mar. 15 / sam. 18 soir : séries d’exercices ; noter les erreurs.
+- [ ] Jeu. 17 soir : lecture ; ven. 18 / dim. 20 soir : écoute.
+- [ ] Rester sous le plafond de 2,0 h/jour ; ne pas empiéter sur le bloc CFA de nuit.
+- [ ] Ne pas prévoir de rush de premier passage en décembre.

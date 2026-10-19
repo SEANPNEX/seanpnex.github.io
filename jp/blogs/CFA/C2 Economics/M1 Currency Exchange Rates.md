@@ -20,8 +20,17 @@ title: 為替レート
     border-radius: 24px;
     background: #F0EFEB;
 }
+/* Starting heights only: each chart reports its rendered height once loaded. */
+.fx-concept-chart.parity-chart { height: 550px; }
+.fx-concept-chart.overshoot-chart { height: 620px; }
+.fx-concept-chart.portfolio-chart { height: 400px; }
+.fx-concept-chart.models-chart { height: 500px; }
 @media (max-width: 700px) {
-    .fx-concept-chart { height: 540px; }
+    .fx-concept-chart { height: 500px; }
+    .fx-concept-chart.parity-chart { height: 770px; }
+    .fx-concept-chart.overshoot-chart { height: 1170px; }
+    .fx-concept-chart.portfolio-chart { height: 530px; }
+    .fx-concept-chart.models-chart { height: 840px; }
 }
 </style>
 
@@ -263,8 +272,15 @@ $$
 
 <iframe
   class="fx-concept-chart"
-  src="/charts/currency-exchange-concepts.html?view=parity&lang=ja"
+  src="/charts/currency-exchange-concepts.html?view=parity"
   title="国際パリティ条件どうしのつながり"
+  loading="lazy"
+></iframe>
+
+<iframe
+  class="fx-concept-chart parity-chart"
+  src="/charts/international-parity-conditions.html"
+  title="国際パリティ条件の関係図"
   loading="lazy"
 ></iframe>
 
@@ -436,13 +452,21 @@ $$
 
 ## 金融政策と財政政策
 
+<iframe
+  class="fx-concept-chart models-chart"
+  src="/charts/monetary-fiscal-policy-models.html"
+  loading="lazy"
+  title="金融政策と財政政策のモデル比較"
+></iframe>
+
+
 ### マンデル・フレミングの枠組み
 
 マンデル・フレミングの枠組みは、短期のマクロ経済分析を開放経済に広げたものである。結論は、資本移動の度合いと、為替レートが変動相場か固定相場かに決定的に左右される。
 
 <iframe
   class="fx-concept-chart"
-  src="/charts/currency-exchange-concepts.html?view=policy&lang=ja"
+  src="/charts/currency-exchange-concepts.html?view=policy"
   title="金融政策と財政政策の為替レートへの短期的な波及"
   loading="lazy"
 ></iframe>
@@ -451,6 +475,20 @@ $$
 
 - 拡張的な金融政策は国内金利を下げ、資本流出の圧力を生み、通貨を減価させる。減価が純輸出を支えるので、金融政策は比較的強力である；
 - 拡張的な財政政策は産出と金利を押し上げ、資本流入を呼び込み、通貨を増価させる。増価が純輸出の一部をクラウドアウトし、産出への効果を弱める。
+
+両方の政策が同時に動くとき、通貨への効果は、金利への圧力が互いに強め合うか打ち消し合うかで決まる：
+
+|  | 拡張的な金融政策 | 引き締め的な金融政策 |
+| --- | --- | --- |
+| **拡張的な財政政策** | 不確定 | 自国通貨高 |
+| **引き締め的な財政政策** | 自国通貨安 | 不確定 |
+
+**変動相場制で資本移動が低い**場合、金利に敏感な資本の流れよりも貿易の流れが支配的になる。産出を増やす拡張的な政策は輸入を増やしやすく、通貨に減価圧力をかける：
+
+|  | 拡張的な金融政策 | 引き締め的な金融政策 |
+| --- | --- | --- |
+| **拡張的な財政政策** | 自国通貨安 | 不確定 |
+| **引き締め的な財政政策** | 不確定 | 自国通貨高 |
 
 **信認のある固定相場制で資本移動が高い**場合：
 
@@ -467,11 +505,37 @@ $$
 MV=PY,
 $$
 
-ここで $M$ は貨幣供給量、$V$ は流通速度、$P$ は物価水準、$Y$ は実質産出。流通速度と実質産出が長期的に安定していれば、国内の貨幣供給の伸びが加速すると国内物価が上昇する。ほかの条件が同じなら、相対的 PPP により長期的に自国通貨は減価する。
+ここで $M$ は貨幣供給量、$V$ は流通速度、$P$ は物価水準、$Y$ は実質産出。
 
-財の価格の調整が遅く、金融市場の調整が速い場合、予想外の金融緩和は金利を引き下げ、通貨を長期的な PPP 水準を超えて減価させることがある。その後、国内物価が徐々に上がるにつれて、通貨はその水準に向かって増価する。これが**為替レートのオーバーシューティング**である。
+途中の式を次のように書き換える
+$$
+\frac{M}{P} = \frac{Y}{V}
+$$
+
+
+流通速度（V）と実質産出（Y）が**長期的に**安定していれば、国内の貨幣供給の伸びが加速すると国内物価が上昇する。ほかの条件が同じなら、相対的 PPP により長期的に自国通貨は減価する。
+
+> [!note]
+>
+> 式の左辺 $\frac{M}{P}$ は**実質貨幣供給量**と呼ばれる
+
+財の価格の調整が遅く、金融市場の調整が速い場合、予想外の金融緩和（**実質貨幣供給量**が増え、お金が安くなる）は、通貨を長期的な PPP 水準を超えて減価させる。その後、国内物価が徐々に上がるにつれて、通貨はその水準に向かって増価する。これが**為替レートのオーバーシューティング**である。
+
+<iframe
+  class="fx-concept-chart overshoot-chart"
+  src="/charts/exchange-rate-overshooting.html"
+  loading="lazy"
+  title="金融緩和後の為替レートのオーバーシューティング"
+></iframe>
 
 ### ポートフォリオ・バランス・アプローチ
+
+<iframe
+  class="fx-concept-chart portfolio-chart"
+  src="/charts/portfolio-balance-approach.html"
+  loading="lazy"
+  title="ポートフォリオ・バランス・アプローチ：財政拡張の経路"
+></iframe>
 
 自国債と外国債は完全な代替資産とは限らない。投資家は、保有しなければならない各資産の量とリスクを補う期待リターンを求める。そのため、国債の供給を増やす財政赤字は、要求されるリスク・プレミアムを引き上げうる。
 

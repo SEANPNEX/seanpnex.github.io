@@ -17,13 +17,13 @@ Choisissez un parcours selon ce dont vous avez besoin aujourd’hui.
   <a class="directory-card directory-card--primary" href="/fr/blogs/CFA/plan">
     <span class="directory-card__number">01 · CFA NIVEAU II</span>
     <strong>Commencer les notes CFA</strong>
-    <span class="directory-card__description">Lisez d’abord le plan d’étude, puis suivez « Page suivante » en bas de chaque page, dans l’ordre du programme.</span>
+    <span class="directory-card__description">Sprint intensif jusqu’à l’examen du 18 nov. (FSA d’abord en octobre, examens blancs en novembre). Ouvrez le plan, puis suivez « Page suivante » dans l’ordre du programme.</span>
     <span class="directory-card__action">Ouvrir le plan <b>→</b></span>
   </a>
   <a class="directory-card" href="/fr/blogs/JLPT-N2/plan">
     <span class="directory-card__number">02 · JLPT N2</span>
     <strong>Plan d’apprentissage du japonais</strong>
-    <span class="directory-card__description">Lecture, écoute, grammaire et vocabulaire pratiqués en contexte.</span>
+    <span class="directory-card__description">2 h par jour maximum jusqu’à mi-novembre (examen le 6 déc.) : vocabulaire, vidéo, grammaire et exercices en rotation.</span>
     <span class="directory-card__action">Voir le plan <b>↗</b></span>
   </a>
   <a class="directory-card" href="/fr/blogs/German/plan">

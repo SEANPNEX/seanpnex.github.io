@@ -34,7 +34,7 @@ $F_0(T)=S_0(1+r_f)^T, F_0(T)=S_0e^{r_fT}$, où $S_0$ est le prix au comptant
 * Si $F_0(T)>S_0(1+r_f)^T$, on peut arbitrer en **empruntant $S_0$ au taux $r_f$ et en achetant l’actif en $t_0$**, puis en $t_1$ **en vendant l’actif à $F_0(T)$**.
 * Si $F_0(T)<S_0(1+r_f)^T$, acheter l’actif sans risque et vendre l’actif au comptant à découvert.
 
-Achat et vente à découvert $\to$ financement sur titres (emprunter des fonds ou des titres)
+Emprunter des fonds ou emprunter l’actif
 
 ### Valorisation
 
@@ -98,7 +98,7 @@ Soit un forward sur une action, d’échéance 100 jours. Le cours est de $\$45$
 
 ##### Exemple
 
-Il y a un mois, BM a pris une position vendeuse sur **cinq** forwards sur obligations en euros, d’échéance 2 mois et de nominal $\texteuro 100,000$ chacun, au prix de $145$. Le forward vaut maintenant 148. Le taux sans risque est de $0.1\%$. Calculer la valeur de la position de BM.
+Il y a un mois, BM a pris une position vendeuse sur **cinq** forwards sur obligations en euros, d’échéance 2 mois et de nominal $\euro 100,000$ chacun, au prix de $145$. Le forward vaut maintenant 148. Le taux sans risque est de $0.1\%$. Calculer la valeur de la position de BM.
 
 * Raisonner d’abord : position vendeuse et prix en hausse $\to$ valeur négative
 
@@ -249,7 +249,7 @@ $$
 >
 > Cette partie est à privilégier pour l’examen
 
-Un future obligataire permet au vendeur de livrer plus d’une obligation (option de livraison : choisir dans un panier, ce qui évite les problèmes de liquidité comme les corners).
+Un future obligataire permet au vendeur de livrer plus d’une obligation (option de livraison : choisir dans un panier, ce qui évite les problèmes de liquidité).
 
 Le sous-jacent est une obligation fictive servant à la cotation (puisqu’en réalité il s’agit d’un panier). Sur le marché, c’est en général un T-bond à 30 ans avec un coupon semestriel de 6 %.
 

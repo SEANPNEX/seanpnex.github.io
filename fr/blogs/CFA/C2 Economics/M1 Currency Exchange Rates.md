@@ -20,8 +20,17 @@ title: Taux de change
     border-radius: 24px;
     background: #F0EFEB;
 }
+/* Starting heights only: each chart reports its rendered height once loaded. */
+.fx-concept-chart.parity-chart { height: 550px; }
+.fx-concept-chart.overshoot-chart { height: 620px; }
+.fx-concept-chart.portfolio-chart { height: 400px; }
+.fx-concept-chart.models-chart { height: 500px; }
 @media (max-width: 700px) {
-    .fx-concept-chart { height: 540px; }
+    .fx-concept-chart { height: 500px; }
+    .fx-concept-chart.parity-chart { height: 770px; }
+    .fx-concept-chart.overshoot-chart { height: 1170px; }
+    .fx-concept-chart.portfolio-chart { height: 530px; }
+    .fx-concept-chart.models-chart { height: 840px; }
 }
 </style>
 
@@ -265,8 +274,15 @@ Les taux de change réagissent aux conditions économiques relatives, et non à 
 
 <iframe
   class="fx-concept-chart"
-  src="/charts/currency-exchange-concepts.html?view=parity&lang=fr"
+  src="/charts/currency-exchange-concepts.html?view=parity"
   title="Liens entre les conditions de parité internationale"
+  loading="lazy"
+></iframe>
+
+<iframe
+  class="fx-concept-chart parity-chart"
+  src="/charts/international-parity-conditions.html"
+  title="Carte des relations entre les conditions de parité internationale"
   loading="lazy"
 ></iframe>
 
@@ -436,13 +452,21 @@ Deux canaux de plus long terme :
 
 ## Politique monétaire et budgétaire
 
+<iframe
+  class="fx-concept-chart models-chart"
+  src="/charts/monetary-fiscal-policy-models.html"
+  loading="lazy"
+  title="Comparaison des modèles de politique monétaire et budgétaire"
+></iframe>
+
+
 ### Cadre de Mundell–Fleming
 
 Le cadre de Mundell–Fleming étend l’analyse macroéconomique de court terme à une économie ouverte. Ses conclusions dépendent de manière cruciale de la mobilité des capitaux et du caractère flottant ou fixe du taux de change.
 
 <iframe
   class="fx-concept-chart"
-  src="/charts/currency-exchange-concepts.html?view=policy&lang=fr"
+  src="/charts/currency-exchange-concepts.html?view=policy"
   title="Transmission de court terme des politiques monétaire et budgétaire au taux de change"
   loading="lazy"
 ></iframe>
@@ -451,6 +475,20 @@ Avec un **change flottant et une forte mobilité des capitaux** :
 
 - une politique monétaire expansionniste abaisse les taux nationaux, crée des pressions à la sortie de capitaux et déprécie la monnaie ; la dépréciation soutient les exportations nettes, ce qui rend la politique monétaire relativement puissante ;
 - une politique budgétaire expansionniste augmente la production et les taux, attire des capitaux et apprécie la monnaie ; l’appréciation évince une partie des exportations nettes, ce qui affaiblit l’effet sur la production.
+
+Lorsque les deux politiques bougent ensemble, l’effet sur la monnaie dépend de ce que les pressions sur les taux se renforcent ou se compensent :
+
+|  | Politique monétaire expansionniste | Politique monétaire restrictive |
+| --- | --- | --- |
+| **Politique budgétaire expansionniste** | Indéterminé | La monnaie nationale s’apprécie |
+| **Politique budgétaire restrictive** | La monnaie nationale se déprécie | Indéterminé |
+
+Avec un **change flottant et une faible mobilité des capitaux**, les flux commerciaux l’emportent sur les flux de capitaux sensibles aux taux. Une politique expansionniste qui augmente la production tend à accroître les importations et à faire pression à la baisse sur la monnaie :
+
+|  | Politique monétaire expansionniste | Politique monétaire restrictive |
+| --- | --- | --- |
+| **Politique budgétaire expansionniste** | La monnaie nationale se déprécie | Indéterminé |
+| **Politique budgétaire restrictive** | Indéterminé | La monnaie nationale s’apprécie |
 
 Avec un **change fixe crédible et une forte mobilité des capitaux** :
 
@@ -467,11 +505,37 @@ $$
 MV=PY,
 $$
 
-où $M$ est la masse monétaire, $V$ la vitesse de circulation, $P$ le niveau des prix et $Y$ la production réelle. Si la vitesse et la production réelle sont stables à long terme, une croissance monétaire nationale plus rapide élève le niveau des prix national. La PPA relative implique alors, toutes choses égales par ailleurs, une dépréciation de long terme de la monnaie nationale.
+où $M$ est la masse monétaire, $V$ la vitesse de circulation, $P$ le niveau des prix et $Y$ la production réelle.
 
-Lorsque les prix des biens s’ajustent lentement mais que les marchés financiers s’ajustent vite, une expansion monétaire inattendue peut abaisser les taux et faire déprécier la monnaie au-delà de son niveau de PPA de long terme. La monnaie s’apprécie ensuite vers ce niveau à mesure que les prix nationaux montent progressivement. C’est la **surréaction du taux de change (overshooting)**.
+L’étape intermédiaire se réécrit
+$$
+\frac{M}{P} = \frac{Y}{V}
+$$
+
+
+Si la vitesse (V) et la production réelle (Y) sont stables à **long terme**, une croissance monétaire nationale plus rapide élève le niveau des prix national. La PPA relative implique alors, toutes choses égales par ailleurs, une dépréciation de long terme de la monnaie nationale.
+
+> [!note]
+>
+> Le membre de gauche $\frac{M}{P}$ peut être appelé **masse monétaire réelle**
+
+Lorsque les prix des biens s’ajustent lentement mais que les marchés financiers s’ajustent vite, une expansion monétaire inattendue (la **masse monétaire réelle** augmente, l’argent devient moins cher) fait déprécier la monnaie au-delà de son niveau de PPA de long terme. La monnaie s’apprécie ensuite vers ce niveau à mesure que les prix nationaux montent progressivement. C’est la **surréaction du taux de change (overshooting)**.
+
+<iframe
+  class="fx-concept-chart overshoot-chart"
+  src="/charts/exchange-rate-overshooting.html"
+  loading="lazy"
+  title="Surréaction du taux de change après une expansion monétaire"
+></iframe>
 
 ### Approche par l’équilibre de portefeuille
+
+<iframe
+  class="fx-concept-chart portfolio-chart"
+  src="/charts/portfolio-balance-approach.html"
+  loading="lazy"
+  title="Approche par l’équilibre de portefeuille : trajectoires d’une expansion budgétaire"
+></iframe>
 
 Les obligations nationales et étrangères ne sont pas forcément des substituts parfaits. Les investisseurs exigent des rendements attendus qui compensent la quantité et le risque de chaque actif qu’ils doivent détenir. Un déficit budgétaire qui accroît l’offre de dette publique peut donc relever la prime de risque exigée.
 
