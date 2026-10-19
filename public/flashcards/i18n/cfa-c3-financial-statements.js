@@ -384,37 +384,46 @@ deckI18n({
     },
     'fsa-sbc-tax-dta-2026-10-19': {
       zh: {
-        topic: '以股份为基础的薪酬 · 税务（DTA）',
-        front: '权益结算的以股份为基础的薪酬：预计税前扣除额为 24,000。结算前公司在资产负债表上确认什么？',
+        topic: '以股份为基础的薪酬 · 税务（归属期内的 DTA）',
+        front: '4,000 份 ESO，授予日公允价值 $6，分 4 年归属；税率 25%。归属期结束时 DTA 是多少？之后有 3,000 份期权以市价 $10 行权（行权价 $2）。税前扣除额是多少？',
         back: `<div class="ans">
 <ul>
-<li><strong>3,000</strong> 的<strong>递延所得税资产</strong>：未来扣除额的税务价值</li>
-<li>税前扣除（在行权或归属时）晚于会计费用，所以是可抵扣暂时性差异</li>
+<li>会计费用 = 4,000 × $6 = <strong>24,000</strong>，在 4 年内全部确认</li>
+<li>归属期结束时 DTA = 24,000 × 25% = <strong>6,000</strong></li>
+<li>行权时的税前扣除 = 内在价值 = 3,000 × ($10 − $2) = <strong>24,000</strong></li>
+<li>扣除额是<strong>内在价值</strong>（市价 − 行权价），<strong>不是</strong>市价 × 股数（3,000 × $10 = 30,000 是错的）</li>
+<li><strong>DTA 一直存在到行权</strong>：归属期内随会计费用累积，归属结束后不再增加</li>
 </ul>
 </div>`,
-        gap: '没有把 24,000 的未来税前扣除转换成 3,000 的 DTA。',
+        gap: '答成了 30,000 的扣除且没有 DTA；扣除额是内在价值（24,000），并且 6,000 的 DTA 在行权前一直留在资产负债表上。',
       },
       ja: {
-        topic: '株式報酬 · 税務（DTA）',
-        front: '持分決済型の株式報酬：予想される損金算入額は 24,000。決済前に会社は貸借対照表に何を認識するか。',
+        topic: '株式報酬 · 税務（権利確定期間中の DTA）',
+        front: 'ESO 4,000 個、付与日の公正価値 $6、4 年で権利確定；税率 25%。権利確定期間の終了時の DTA はいくらか。その後 3,000 個が市場価格 $10（行使価格 $2）で行使された。損金算入額はいくらか。',
         back: `<div class="ans">
 <ul>
-<li><strong>3,000</strong> の<strong>繰延税金資産</strong>：将来の損金算入の税効果</li>
-<li>損金算入（行使時または権利確定時）は会計上の費用より後なので、将来減算一時差異になる</li>
+<li>会計上の費用 = 4,000 × $6 = <strong>24,000</strong>、4 年間ですべて認識</li>
+<li>権利確定期間の終了時の DTA = 24,000 × 25% = <strong>6,000</strong></li>
+<li>行使時の損金算入額 = 本源的価値 = 3,000 × ($10 − $2) = <strong>24,000</strong></li>
+<li>損金算入額は<strong>本源的価値</strong>（市場価格 − 行使価格）で、市場価格 × 株数では<strong>ない</strong>（3,000 × $10 = 30,000 は誤り）</li>
+<li><strong>DTA は行使まで存在する</strong>：権利確定期間中は会計上の費用とともに積み上がり、確定後は増えない</li>
 </ul>
 </div>`,
-        gap: '将来の損金算入額 24,000 を 3,000 の DTA に換算しなかった。',
+        gap: '損金算入 30,000、DTA なしと答えた；損金算入額は本源的価値（24,000）で、6,000 の DTA が行使まで貸借対照表に残る。',
       },
       fr: {
-        topic: 'Rémunération en actions · impôt (IDA)',
-        front: 'Rémunération en actions réglée en instruments de capitaux propres : la déduction fiscale attendue est de 24 000. Que comptabilise l’entreprise au bilan avant le règlement ?',
+        topic: 'Rémunération en actions · impôt (IDA pendant l’acquisition)',
+        front: '4 000 options (ESO) d’une juste valeur de 6 $ à l’attribution, acquises sur 4 ans ; taux d’impôt 25 %. Quel est l’IDA à la fin de la période d’acquisition ? Ensuite, 3 000 options sont exercées à un cours de 10 $ (prix d’exercice 2 $). Quelle est la déduction fiscale ?',
         back: `<div class="ans">
 <ul>
-<li>Un <strong>impôt différé actif</strong> de <strong>3 000</strong> : la valeur fiscale de la déduction future</li>
-<li>La déduction intervient plus tard (à l’exercice ou à l’acquisition) que la charge comptable : c’est une différence temporelle déductible</li>
+<li>Charge comptable = 4 000 × 6 $ = <strong>24 000</strong>, entièrement comptabilisée sur les 4 ans</li>
+<li>IDA = 24 000 × 25 % = <strong>6 000</strong> à la fin de la période d’acquisition</li>
+<li>Déduction fiscale à l’exercice = valeur intrinsèque = 3 000 × (10 $ − 2 $) = <strong>24 000</strong></li>
+<li>La déduction est la <strong>valeur intrinsèque</strong> (cours − prix d’exercice), <strong>pas</strong> le cours × nombre d’actions (3 000 × 10 $ = 30 000 est faux)</li>
+<li><strong>Un IDA existe jusqu’à l’exercice</strong> : il se constitue avec la charge comptable pendant l’acquisition et cesse de croître ensuite</li>
 </ul>
 </div>`,
-        gap: 'la déduction fiscale future de 24 000 n’a pas été convertie en un IDA de 3 000.',
+        gap: 'réponse : déduction de 30 000 et pas d’IDA ; la déduction est la valeur intrinsèque (24 000), et un IDA de 6 000 reste au bilan jusqu’à l’exercice.',
       },
     },
     'fsa-sbc-excess-tax-benefit-2026-10-19': {

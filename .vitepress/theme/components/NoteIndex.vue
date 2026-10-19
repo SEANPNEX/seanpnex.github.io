@@ -49,7 +49,7 @@ const title = computed(() => t.value.progress(opened, total)
           <p v-else class="note-index__empty">{{ t.empty }}</p>
           <p v-if="topic.flashcards.length" class="note-index__cards">
             <span class="note-index__cards-label">{{ t.flashcards }}</span>
-            <a v-for="card in topic.flashcards" :key="card.link" :href="withBase(card.link)">{{ card.text }}</a>
+            <a v-for="card in topic.flashcards" :key="card.link" :href="withBase(localized(card).link)">{{ localized(card).text }}</a>
           </p>
         </div>
       </li>
