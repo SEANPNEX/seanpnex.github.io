@@ -85,11 +85,9 @@
 
 ## 2026-10-19 — Share-based pay tax, anti-dilution, market conditions
 
-**Q1b:** Equity-settled SBC with a 24,000 tax deduction: what DTA?
+**Q1b (corrected item, not a miss):** The original question was flawed (options exercised "after two years" of a 4-year vesting period), and Guo Shun's answer B was right. Corrected version: 4,000 ESOs at FV \$6 vest over 4 years, so 24,000 of expense and a DTA of 24,000 × 25% = **6,000** at the end of vesting. Later, 3,000 options are exercised at \$10 (exercise price \$2), giving a tax deduction of **24,000**.
 
-**Correct:** **3,000** DTA.
-
-**Gap:** Didn't link the future deduction to a DTA.
+**Rule:** The DTA builds with the book expense during vesting and stops growing after vesting.
 
 **Q2b:** The deduction at settlement is 180,000: what is the excess tax benefit?
 

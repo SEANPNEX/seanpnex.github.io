@@ -145,15 +145,17 @@ const CARDS = [
   },
   {
     id: "fsa-sbc-tax-dta-2026-10-19",
-    topic: "Share-based pay · tax (DTA)",
-    front: "Equity-settled share-based pay: the expected tax deduction is 24,000. What does the company recognize on the balance sheet before settlement?",
+    topic: "Share-based pay · tax (DTA during vesting)",
+    front: "4,000 ESOs with a grant-date FV of $6 vest over 4 years; the tax rate is 25%. What is the DTA at the end of vesting? Later, 3,000 options are exercised at a market price of $10 (exercise price $2). What is the tax deduction?",
     back: `<div class="ans">
 <ul>
-<li>A <strong>deferred tax asset</strong> of <strong>3,000</strong>: the tax value of the future deduction</li>
-<li>The deduction comes later (at exercise or vesting) than the book expense, so it is a deductible temporary difference</li>
+<li>Book expense = 4,000 × $6 = <strong>24,000</strong>, fully recognized over the 4 years</li>
+<li>DTA = 24,000 × 25% = <strong>6,000</strong> at the end of vesting</li>
+<li>Tax deduction at exercise = intrinsic value = 3,000 × ($10 − $2) = <strong>24,000</strong></li>
+<li>Rule: the DTA <strong>builds with the book expense during vesting</strong> and stops growing once vesting ends</li>
 </ul>
 </div>`,
-    gap: "didn't turn the 24,000 future tax deduction into a 3,000 DTA."
+    gap: "review card (the original quiz item was flawed): the DTA follows the book expense during vesting."
   },
   {
     id: "fsa-sbc-excess-tax-benefit-2026-10-19",
