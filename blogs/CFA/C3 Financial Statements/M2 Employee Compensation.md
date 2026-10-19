@@ -535,3 +535,7 @@ Other post-employment benefits, such as **retiree health care and life insurance
 Unlike pensions, companies are generally **not required by regulation to pre-fund** these plans, so many have few or no plan assets, and the [funded status](#funded-status) is close to the full obligation.
 
 ### Financial Modelling Consideration
+
+#### Disclosure for Past-Employment Benefits Plans
+
+DC plan disclosure requirements are minimal. 
