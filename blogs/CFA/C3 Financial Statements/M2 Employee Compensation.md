@@ -534,8 +534,78 @@ Other post-employment benefits, such as **retiree health care and life insurance
 
 Unlike pensions, companies are generally **not required by regulation to pre-fund** these plans, so many have few or no plan assets, and the [funded status](#funded-status) is close to the full obligation.
 
-### Financial Modelling Consideration
+### Financial Modeling Considerations
 
-#### Disclosure for Past-Employment Benefits Plans
+#### Disclosures for Post-Employment Benefit Plans
 
-DC plan disclosure requirements are minimal. 
+**DC plans** need little disclosure: the expense for the period is the contribution, and nothing is left to estimate.
+
+**DB plans** need much more. IFRS requires disclosures that:
+
+1. Explain the **characteristics of the plans** and the **risks** associated with them
+2. Identify and explain the **amounts in the financial statements** arising from the plans
+3. Describe how the plans may affect the **amount, timing and uncertainty of future cash flows**
+
+US GAAP requires similar disclosures. In the notes, they usually include what an analyst needs for modeling:
+
+* **Roll-forwards** of the [PBO](#pension-obligation) and [plan assets](#plan-assets), which give the funded status at both ends of the year
+* The **components of pension cost**, and where each is reported (operating expense, finance cost, OCI)
+* The **actuarial assumptions**: discount rate, salary growth, life expectancy, inflation, the health care cost trend for OPEB and, under US GAAP, the expected return on plan assets
+* A **sensitivity analysis** of the obligation to each key assumption (required under IFRS)
+* **Expected contributions** for the next year and **expected benefit payments** for the next several years
+* The **allocation of plan assets** (equities, bonds, real estate and so on), which shows the investment risk the sponsor bears
+
+**Assumptions are where management has discretion.** Each assumption below lowers the reported obligation or the pension expense, so a company that is at the favorable end of its peers on several of them is reporting aggressively:
+
+| Assumption | Aggressive choice | Effect |
+| --- | --- | --- |
+| **Discount rate** | Higher | Lower PBO; usually lower service cost |
+| **Salary growth** | Lower | Lower PBO, service cost and interest cost |
+| **Life expectancy** | Shorter | Lower PBO: benefits are paid for fewer years |
+| **Inflation** | Lower | Lower PBO where benefits or salaries are indexed to inflation |
+| **Health care cost trend** (OPEB) | Lower | Lower OPEB obligation and cost |
+| **Expected return on plan assets** (US GAAP only) | Higher | Lower pension expense in P&L; **no effect on the PBO** or the funded status |
+
+> [!Note]
+>
+> Compare the assumptions with peers, and with the company's own history. A change in an assumption shows up as an actuarial gain or loss in OCI, so it can move the funded status without touching P&L. Use the IFRS sensitivity analysis to restate the obligation under a peer's discount rate.
+
+#### Modeling Post-Employment Benefits
+
+**DC plans** are straightforward. The contributions are part of the cost of each employee, so they are forecast **implicitly** within operating expenses (COGS, SG&A, R&D), in the same way as [share-based compensation](#modeling-the-income-statement).
+
+**DB plans** are modeled through the components of pension cost and the cash contributions:
+
+| Item | How to forecast it | Where it goes |
+| --- | --- | --- |
+| **Service cost** | From history and the notes, e.g., growing with headcount and salaries; zero for a frozen plan | Operating expense, by function |
+| **Net interest expense (income)** | Discount rate × funded status at the start of the year | Finance cost (IFRS); outside operating income (US GAAP, which uses the expected return) |
+| **Remeasurements** | Usually **assumed to be zero**: actuarial gains and losses and the excess return on plan assets cannot be predicted | OCI |
+| **Contributions** | The expected contribution disclosed for the next year, then a funding plan or regulatory minimum | Cash outflow (CFO) |
+
+The funded status then rolls forward. Benefits paid drop out, because they reduce plan assets and the PBO equally (see [Funded Status](#funded-status)):
+
+$$\text{Funded status}_{\text{end}}=\text{Funded status}_{\text{beg}}-\text{Service cost}-\text{Net interest}\pm\text{Remeasurements}+\text{Contributions}$$
+
+**Example (IFRS, continuing the [example](#financial-reporting-for-db-plans) above).** The plan starts next year with a deficit of 130 (plan assets 990, PBO 1,120). The discount rate stays at 5%. Service cost is forecast at 64, the notes disclose an expected contribution of 75, and remeasurements are assumed to be zero.
+
+* Net interest expense $=5\%\times130=6.5$, a finance cost
+* Pension cost in P&L $=64+6.5=70.5$, of which 64 is in operating expenses
+* Funded status at the end of next year $=-130-64-6.5+75=-125.5$
+
+The contribution of 75 exceeds the pension cost of 70.5, so the deficit shrinks by 4.5.
+
+#### Valuation Adjustments for DB Plans
+
+The same logic applies to DB pensions and OPEB:
+
+1. **Start from the funded status.** An **underfunded** plan is a **debt-like claim**: the company must pay it off with future contributions. Deduct it from enterprise value, together with debt, to get equity value. It is often deducted **after tax**, because contributions are usually tax-deductible. An **overfunded** plan is usually **ignored**: the surplus belongs to the plan, and the company can recover it only through refunds or lower future contributions (see the [asset ceiling](#funded-status)).
+2. **Treat future service cost as a cash operating cost**, as with [share-based compensation](#valuation-considerations): deduct it in free cash flow, and **do not add it back** as a non-cash charge. It is the cost of the pension benefits employees earn each year, in the same way as their salaries.
+3. **Leave net interest out of FCFF.** Once the deficit is counted as debt, its interest is a financing cost, like interest on debt. Including it in the cash flows as well would count the deficit twice. For the same reason, contributions above service cost are like **repaying debt**, not an operating outflow.
+4. **Ignore remeasurements** in the forecast: they are not predictable, and their effect is already in the latest funded status.
+
+In the example, the deficit of 130 is deducted from enterprise value: 130, or $130\times(1-25\%)=97.5$ after tax at a 25% tax rate. FCFF includes service cost of 64 as an operating cost, and leaves out the 11 of contributions above service cost ($75-64$): they pay the deficit's interest (6.5) and reduce the deficit itself (4.5), as debt service would.
+
+> [!Note]
+>
+> Do not deduct the deficit from enterprise value **and** model the contributions that repay it in free cash flow. That counts the same obligation twice, like the dilution warning for [share-based compensation](#valuation-considerations).
