@@ -196,6 +196,49 @@ const CARDS = [
 </ul>
 </div>`,
     gap: "second miss: reversed the expense when a market condition failed."
+  },
+  {
+    id: "fsa-full-vs-partial-goodwill-2026-10-20",
+    topic: "Business combinations · goodwill",
+    front: "Parent pays 800 for 80% of a sub. FV of identifiable net assets is 750; FV of the NCI is 190. What is full goodwill and partial goodwill?",
+    back: `<div class="ans">
+<ul>
+<li><strong>Full goodwill</strong> = price + FV of NCI − 100% × FV of identifiable net assets</li>
+<li>= 800 + 190 − 750 = <strong>240</strong></li>
+<li><strong>Partial goodwill</strong> = price − parent % × FV of identifiable net assets</li>
+<li>= 800 − 0.8 × 750 = 800 − 600 = <strong>200</strong></li>
+<li>The 40 difference is the goodwill attributed to the NCI (190 − 0.2 × 750 = 40)</li>
+<li>IFRS allows either; US GAAP requires full goodwill</li>
+</ul>
+</div>`,
+    gap: "answered 50; full goodwill adds the NCI fair value and subtracts 100% of the net assets."
+  },
+  {
+    id: "fsa-m3-import-payable-eur-up-2026-10-20",
+    topic: "Multinational ops · FX transactions",
+    front: "A US company buys inventory on credit for EUR 100,000. Before settlement the EUR appreciates. Gain or loss, where, and what happens to inventory?",
+    back: `<div class="ans">
+<ul>
+<li>The EUR <strong>payable</strong> now needs more USD to settle → <strong>FX loss</strong> in <strong>net income</strong></li>
+<li>Unrealized at the balance sheet date if outstanding; realized at settlement</li>
+<li><strong>Inventory stays</strong> at the <strong>transaction-date rate</strong>; only the monetary payable is remeasured</li>
+</ul>
+</div>`,
+    gap: "picked a gain; owing an appreciating currency is a loss, and inventory is not remeasured."
+  },
+  {
+    id: "fsa-m3-temporal-net-monetary-assets-2026-10-20",
+    topic: "Multinational ops · temporal method",
+    front: "Temporal method: the subsidiary has net monetary assets and its local (foreign) currency appreciates. Remeasurement gain or loss, and where is it reported?",
+    back: `<div class="ans">
+<ul>
+<li>Exposure under the temporal method is the <strong>net monetary position</strong> (only monetary items are at the current rate)</li>
+<li>Net monetary <strong>assets</strong> + appreciating foreign currency → <strong>remeasurement gain</strong></li>
+<li>Reported in <strong>net income</strong> (not OCI)</li>
+<li>Net monetary liabilities flip it: gain when the foreign currency depreciates</li>
+</ul>
+</div>`,
+    gap: "picked a loss; net monetary assets gain when the foreign currency appreciates."
   }
 ];
 

@@ -60,3 +60,21 @@
 **Correct:** Mosaic is allowed. Protect yourself by **documenting** the public + nonmaterial nonpublic sources (also ties to V(C) Record Retention).
 
 **Gap:** Knew mosaic OK; forgot documentation / evidence trail.
+
+## 2026-10-20 — III(B) Fair Dealing: rating-change preview, partial block fills
+
+**Q1:** An analyst previews the firm’s own rating change to its largest clients before release. Which standard is breached?
+
+**My answer:** II(A) Material Nonpublic Information.
+
+**Correct:** **III(B) Fair Dealing.** The firm’s own recommendation change is not issuer information; the violation is **selective dissemination** (Example 1, Bradley Ames).
+
+**Gap:** Confused selective dissemination of the firm’s own research with MNPI.
+
+**Q2:** How should a partially filled block order be allocated?
+
+**My answer:** Case by case.
+
+**Correct:** **Pro rata**, every account at the **same average price**, under a **written trade-allocation policy**; adjustments for minimum lot sizes are allowed (Example 7, Hampton).
+
+**Gap:** Did not know the pro rata / same-price rule for partial fills.

@@ -110,3 +110,29 @@
 **Correct:** The 16m **stays**, with no true-up, because the condition is in the grant-date fair value.
 
 **Gap:** Second miss on market vs non-market conditions.
+
+## 2026-10-20 — Goodwill, FX transactions, temporal method
+
+**Q3:** Price 800 for 80%; FV of identifiable net assets 750; FV of NCI 190. Full vs partial goodwill?
+
+**My answer:** 50.
+
+**Correct:** Full = 800 + 190 − 750 = **240**; partial = 800 − 0.8 × 750 = **200**.
+
+**Gap:** Wrong goodwill formula; full goodwill adds NCI fair value and subtracts 100% of net assets.
+
+**Q4:** EUR import payable, and the EUR appreciates before settlement.
+
+**My answer:** FX gain.
+
+**Correct:** **FX loss** in NI; inventory stays at the transaction-date rate.
+
+**Gap:** Reversed the direction for a foreign currency payable.
+
+**Q5:** Temporal method, net monetary assets, foreign currency appreciates.
+
+**My answer:** Remeasurement loss.
+
+**Correct:** **Remeasurement gain** in NI; exposure is the net monetary position.
+
+**Gap:** Reversed the sign of temporal-method exposure.
