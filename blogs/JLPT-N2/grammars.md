@@ -1092,3 +1092,26 @@ For a non-past affirmative noun or な-adjective, use **な** before **ので**,
 - 海外にいるので、参加ができません。 — Since I'm overseas, I can't participate.
 - 発音があまりきれいじゃないので、たくさん練習したいです。 — My pronunciation isn't very good, so I want to practice a lot.
 - ここは、今人気のお店なので、予約が難しいです。 — This place is popular now, so it's difficult to get a reservation.
+
+## V て形（te-form）
+
+**Rule:** The **te-form** links a verb to what follows (and, then, please …, is …ing). It is built the same way as the plain past **V た**: replace **て** with **た** and **で** with **だ**. How you form it depends on the verb class and, for Class I, on the final kana.
+
+| Class | Ending | Te-form | Examples |
+|---|---|---|---|
+| Class II（一段動詞） | る | drop る ＋ **て** | 食べる → 食べて、見る → 見て、起きる → 起きて |
+| Class III（サ変・カ変） | — | irregular | する → **して**、来る → **来て**（きて） |
+| Class I（五段動詞） | う・つ・る | **って** | 買う → 買って、待つ → 待って、帰る → 帰って |
+| | む・ぶ・ぬ | **んで** | 読む → 読んで、遊ぶ → 遊んで、死ぬ → 死んで |
+| | く | **いて** | 書く → 書いて、聞く → 聞いて、歩く → 歩いて |
+| | ぐ | **いで** | 泳ぐ → 泳いで、急ぐ → 急いで、脱ぐ → 脱いで |
+| | す | **して** | 話す → 話して、出す → 出して |
+
+**Exception:** **行く → 行って**（行った）, not 行いて.
+
+**Tip:** **で** appears only when the original ending is voiced: **ぐ, む, ぶ, ぬ**. Verbs ending in **く** or **す**, and the irregular **来る／する**, always take **て**: 聞く → 聞いて（聞いた）, never 聞いで. 帰る looks like Class II, but it is Class I, so it becomes 帰って.
+
+- 手紙を書いて、ポストに入れました。 — I wrote a letter and put it in the postbox.
+- 友達に道を聞いて、駅まで歩きました。 — I asked a friend the way and walked to the station.
+- 昨日、友達が家に来て、一緒に勉強しました。 — Yesterday a friend came over and we studied together.
+- 海で泳いで、本を読んで、早く寝ました。 — I swam in the sea, read a book and went to bed early.
