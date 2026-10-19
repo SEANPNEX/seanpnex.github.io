@@ -85,9 +85,13 @@
 
 ## 2026-10-19 — Share-based pay tax, anti-dilution, market conditions
 
-**Q1b (corrected item, not a miss):** The original question was flawed (options exercised "after two years" of a 4-year vesting period), and Guo Shun's answer B was right. Corrected version: 4,000 ESOs at FV \$6 vest over 4 years, so 24,000 of expense and a DTA of 24,000 × 25% = **6,000** at the end of vesting. Later, 3,000 options are exercised at \$10 (exercise price \$2), giving a tax deduction of **24,000**.
+**Q1b:** 4,000 ESOs at FV \$6 vest over 4 years (25% tax rate). After vesting, 3,000 are exercised at a market price of \$10, with an exercise price of \$2. What is the DTA at the end of vesting, and what is the tax deduction? (The scenario was corrected from a flawed original item.)
 
-**Rule:** The DTA builds with the book expense during vesting and stops growing after vesting.
+**My answer:** D: a 30,000 deduction and no DTA.
+
+**Correct:** The DTA is 24,000 × 25% = **6,000** at the end of vesting. The deduction is the intrinsic value, 3,000 × (\$10 − \$2) = **24,000**.
+
+**Gap:** Used market price × shares for the deduction, and missed that a DTA exists until exercise. It builds with the book expense during vesting.
 
 **Q2b:** The deduction at settlement is 180,000: what is the excess tax benefit?
 
