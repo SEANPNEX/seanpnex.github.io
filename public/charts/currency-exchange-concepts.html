@@ -94,6 +94,80 @@ chartI18n.use({
     'UNDER A FIXED RATE THE CENTRAL BANK MUST DEFEND THE PEG': 'EN CHANGE FIXE, LA BANQUE CENTRALE DOIT DÉFENDRE L’ANCRAGE',
   },
 });
+chartI18n.use({
+  zh: {
+    "Covered interest rate parity": "抛补利率平价",
+    "forward premium = interest-rate differential": "远期升水 = 利差",
+    "Uncovered interest rate parity": "非抛补利率平价",
+    "expected spot change = interest-rate differential": "即期汇率预期变动 = 利差",
+    "Fisher effect": "费雪效应",
+    "nominal rate = real rate + expected inflation": "名义利率 = 实际利率 + 预期通胀",
+    "Purchasing power parity": "购买力平价",
+    "spot change = inflation differential": "即期汇率变动 = 通胀差",
+    "Domestic interest rates fall": "本国利率下降",
+    "Capital leaves for higher yields abroad": "资本流出，追逐国外更高的收益",
+    "Selling the currency weakens it": "抛售本币使其走弱",
+    "Government borrowing pushes rates up": "政府借款推高利率",
+    "Higher yields draw capital in": "更高的收益吸引资本流入",
+    "Buying the currency strengthens it": "买入本币使其走强",
+  },
+  ja: {
+    "Covered interest rate parity": "カバー付き金利平価",
+    "forward premium = interest-rate differential": "先渡プレミアム = 金利差",
+    "Uncovered interest rate parity": "カバーなし金利平価",
+    "expected spot change = interest-rate differential": "直物の期待変化 = 金利差",
+    "Fisher effect": "フィッシャー効果",
+    "nominal rate = real rate + expected inflation": "名目金利 = 実質金利 + 期待インフレ率",
+    "Purchasing power parity": "購買力平価",
+    "spot change = inflation differential": "直物の変化 = インフレ格差",
+    "Domestic interest rates fall": "国内金利が下がる",
+    "Capital leaves for higher yields abroad": "資本がより高い海外の利回りを求めて流出",
+    "Selling the currency weakens it": "通貨が売られて弱くなる",
+    "Government borrowing pushes rates up": "政府の借入れが金利を押し上げる",
+    "Higher yields draw capital in": "高い利回りが資本を呼び込む",
+    "Buying the currency strengthens it": "通貨が買われて強くなる",
+  },
+  fr: {
+    "Covered interest rate parity": "Parité des taux d’intérêt couverte",
+    "forward premium = interest-rate differential": "prime à terme = différentiel de taux",
+    "Uncovered interest rate parity": "Parité des taux d’intérêt non couverte",
+    "expected spot change = interest-rate differential": "variation attendue du comptant = différentiel de taux",
+    "Fisher effect": "Effet Fisher",
+    "nominal rate = real rate + expected inflation": "taux nominal = taux réel + inflation attendue",
+    "Purchasing power parity": "Parité de pouvoir d’achat",
+    "spot change = inflation differential": "variation du comptant = différentiel d’inflation",
+    "Domestic interest rates fall": "les taux nationaux baissent",
+    "Capital leaves for higher yields abroad": "les capitaux partent vers des rendements plus élevés à l’étranger",
+    "Selling the currency weakens it": "la vente de la devise l’affaiblit",
+    "Government borrowing pushes rates up": "l’emprunt public fait monter les taux",
+    "Higher yields draw capital in": "des rendements plus élevés attirent les capitaux",
+    "Buying the currency strengthens it": "l’achat de la devise la renforce",
+  },
+}, {
+  patterns: {
+  zh: [
+    [/^linked\ by\ (.+)$/, "通过 $1 相连"],
+  ],
+  ja: [
+    [/^linked\ by\ (.+)$/, "$1 で結ばれる"],
+  ],
+  fr: [
+    [/^linked\ by\ (.+)$/, "relié par $1"],
+  ],
+  },
+  html: {
+  zh: {
+
+  },
+  ja: {
+
+  },
+  fr: {
+
+  },
+  },
+});
+
   </script>
   <script>
     const NS='http://www.w3.org/2000/svg',INK='#1C1C1A',PAPER='#F0EFEB',MUTED='#6A6963',SOFT='#A8A7A0',GRID='#D8D6CE',FAINT='#E3E2DB';

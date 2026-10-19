@@ -127,6 +127,53 @@ chartI18n.use({
     ],
   },
 });
+chartI18n.use({
+  zh: {
+    "Fit without high leverage point": "不含高杠杆点的拟合",
+    "Fit without outlier point": "不含离群点的拟合",
+    "Fit without influential point": "不含强影响点的拟合",
+    "Fit with it": "包含该点的拟合",
+  },
+  ja: {
+    "Fit without high leverage point": "高レバレッジ点を除いた当てはめ",
+    "Fit without outlier point": "外れ値を除いた当てはめ",
+    "Fit without influential point": "影響点を除いた当てはめ",
+    "Fit with it": "その点を含めた当てはめ",
+  },
+  fr: {
+    "Fit without high leverage point": "Ajustement sans le point à fort effet de levier",
+    "Fit without outlier point": "Ajustement sans la valeur aberrante",
+    "Fit without influential point": "Ajustement sans le point influent",
+    "Fit with it": "Ajustement avec ce point",
+  },
+}, {
+  patterns: {
+  zh: [
+    [/^slope\ ([−\-+]?[\d][\d,.]*%?)$/, "斜率 $1"],
+    [/^slope\ ([−\-+]?[\d][\d,.]*%?)\ \(([−\-+]?[\d][\d,.]*%?)\)$/, "斜率 $1（$2）"],
+  ],
+  ja: [
+    [/^slope\ ([−\-+]?[\d][\d,.]*%?)$/, "傾き $1"],
+    [/^slope\ ([−\-+]?[\d][\d,.]*%?)\ \(([−\-+]?[\d][\d,.]*%?)\)$/, "傾き $1（$2）"],
+  ],
+  fr: [
+    [/^slope\ ([−\-+]?[\d][\d,.]*%?)$/, "pente $1"],
+    [/^slope\ ([−\-+]?[\d][\d,.]*%?)\ \(([−\-+]?[\d][\d,.]*%?)\)$/, "pente $1 ($2)"],
+  ],
+  },
+  html: {
+  zh: {
+
+  },
+  ja: {
+
+  },
+  fr: {
+
+  },
+  },
+});
+
 </script>
 <script>
 const INK='#1C1C1A',PAPER='#F0EFEB',MUTED='#8F8E88',GRID='#DEDDD6';

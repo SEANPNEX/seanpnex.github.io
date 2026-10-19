@@ -11,24 +11,39 @@
  * Text nodes, aria-labels and later re-renders are translated in place, so
  * render code stays unchanged; code that builds labels for a canvas library
  * can call chartI18n.t(text) directly. Without ?lang (English) nothing runs.
+ *
+ * The language can also come from the embedding page: a chart framed by a
+ * /zh/, /jp/ or /fr/ note picks that language up without ?lang. Multi-line
+ * text (tooltips are "Title\nmore") is translated line by line when the
+ * whole string has no entry.
  */
 (function () {
   var lang = new URLSearchParams(location.search).get('lang');
-  var text = {}, patterns = [], html = {};
+  if (!lang) {
+    try {
+      var m = window.parent !== window && window.parent.location.pathname.match(/^\/(zh|jp|fr)\//);
+      if (m) lang = m[1] === 'jp' ? 'ja' : m[1];
+    } catch (e) { /* cross-origin frame: stay in English */ }
+  }
+  var text = {}, patterns = [], html = {}, started = false;
   var has = function (map, key) { return Object.prototype.hasOwnProperty.call(map, key); };
 
   function t(value) {
     if (typeof value !== 'string') return value;
     var key = value.trim();
     if (!key) return value;
-    if (has(text, key)) return value.replace(key, text[key]);
+    if (has(text, key)) return value.replace(key, function () { return text[key]; });
+    if (key.indexOf('\n') >= 0) {
+      var lines = key.split('\n').map(t).join('\n');
+      return value.replace(key, function () { return lines; });
+    }
     for (var i = 0; i < patterns.length; i++) {
       var re = patterns[i][0], out = patterns[i][1];
       if (re.test(key)) {
         var next = typeof out === 'function'
           ? key.replace(re, function () { return out.apply(null, [t].concat([].slice.call(arguments, 1))); })
           : key.replace(re, out);
-        return value.replace(key, next);
+        return value.replace(key, function () { return next; });
       }
     }
     return value;
@@ -59,12 +74,16 @@
   window.chartI18n = {
     lang: lang,
     t: t,
+    // May be called more than once: later calls add entries to the same maps.
     use: function (strings, options) {
       options = options || {};
-      text = (strings && strings[lang]) || {};
-      patterns = (options.patterns && options.patterns[lang]) || [];
-      html = (options.html && options.html[lang]) || {};
+      var add = function (into, from) { for (var k in from) if (has(from, k)) into[k] = from[k]; };
+      add(text, (strings && strings[lang]) || {});
+      patterns = patterns.concat((options.patterns && options.patterns[lang]) || []);
+      add(html, (options.html && options.html[lang]) || {});
       if (!strings || !strings[lang]) return;
+      if (started) { visit(document.body); return; }
+      started = true;
 
       document.documentElement.lang = lang;
       document.title = t(document.title);

@@ -16,6 +16,133 @@
     <svg id="tree" role="img" aria-label="Intercorporate investment categories tree"></svg>
     <div class="src">TREE LR · LIEFLAT G7 · INTERCORPORATE INVESTMENTS</div>
   </main>
+  <script src="i18n.js"></script>
+  <script>
+chartI18n.use({
+  zh: {
+    "Intercorporate investment categories": "公司间投资的类别",
+    "Ownership and instrument decide the accounting path.": "持股和工具类型决定会计路径。",
+    "Equity vs bond, then purpose and influence · shade = FVPL darkest · FVOCI mid · AMC lightest · equity and acquisition methods in gray": "先分权益与债券，再看目的和影响 · 颜色：FVPL 最深 · FVOCI 居中 · AMC 最浅 · 权益法和购买法为灰色",
+    "Intercorporate investment categories tree": "公司间投资类别树",
+    "Equity → Fin. assets → Trading": "权益 → 金融资产 → 交易性",
+    "Equity → Fin. assets → Other": "权益 → 金融资产 → 其他",
+    "Equity → Long-term eq. → No influence": "权益 → 长期股权 → 无影响",
+    "Equity → Long-term eq. → Associates": "权益 → 长期股权 → 联营企业",
+    "Equity → Long-term eq. → Joint ventures": "权益 → 长期股权 → 合营企业",
+    "Equity → Long-term eq. → Combinations": "权益 → 长期股权 → 企业合并",
+    "Bond → Trading": "债券 → 交易性",
+    "Bond → Other": "债券 → 其他",
+    "Bond → Bond": "债券 → 债券",
+    "Trading": "交易性",
+    "Other": "其他",
+    "Fin. assets": "金融资产",
+    "No influence": "无影响",
+    "Associates": "联营企业",
+    "Joint ventures": "合营企业",
+    "Combinations": "企业合并",
+    "Long-term eq.": "长期股权",
+    "Long-term": "长期",
+    "eq.": "股权",
+    "Equity": "权益",
+    "Bond": "债券",
+    "Investment": "投资",
+    "equity method": "权益法",
+    "acquisition method": "购买法",
+    "· equity method": "· 权益法",
+    "· acquisition method": "· 购买法",
+    "TREE LR · LIEFLAT G7 · INTERCORPORATE INVESTMENTS": "左右树 · LIEFLAT G7 · 公司间投资",
+  },
+  ja: {
+    "Intercorporate investment categories": "企業間投資の区分",
+    "Ownership and instrument decide the accounting path.": "保有の形と金融商品の種類が会計処理の道筋を決める。",
+    "Equity vs bond, then purpose and influence · shade = FVPL darkest · FVOCI mid · AMC lightest · equity and acquisition methods in gray": "まず持分か債券か、次に目的と影響力 · 濃さ：FVPL が最も濃い · FVOCI は中間 · AMC が最も薄い · 持分法と取得法は灰色",
+    "Intercorporate investment categories tree": "企業間投資の区分ツリー",
+    "Equity → Fin. assets → Trading": "持分 → 金融資産 → 売買目的",
+    "Equity → Fin. assets → Other": "持分 → 金融資産 → その他",
+    "Equity → Long-term eq. → No influence": "持分 → 長期持分 → 影響力なし",
+    "Equity → Long-term eq. → Associates": "持分 → 長期持分 → 関連会社",
+    "Equity → Long-term eq. → Joint ventures": "持分 → 長期持分 → 共同支配企業",
+    "Equity → Long-term eq. → Combinations": "持分 → 長期持分 → 企業結合",
+    "Bond → Trading": "債券 → 売買目的",
+    "Bond → Other": "債券 → その他",
+    "Bond → Bond": "債券 → 債券",
+    "Trading": "売買目的",
+    "Other": "その他",
+    "Fin. assets": "金融資産",
+    "No influence": "影響力なし",
+    "Associates": "関連会社",
+    "Joint ventures": "共同支配企業",
+    "Combinations": "企業結合",
+    "Long-term eq.": "長期持分",
+    "Long-term": "長期",
+    "eq.": "持分",
+    "Equity": "持分",
+    "Bond": "債券",
+    "Investment": "投資",
+    "equity method": "持分法",
+    "acquisition method": "取得法",
+    "· equity method": "· 持分法",
+    "· acquisition method": "· 取得法",
+    "TREE LR · LIEFLAT G7 · INTERCORPORATE INVESTMENTS": "横向きツリー · LIEFLAT G7 · 企業間投資",
+  },
+  fr: {
+    "Intercorporate investment categories": "Catégories d’investissements intersociétés",
+    "Ownership and instrument decide the accounting path.": "La détention et l’instrument décident de la voie comptable.",
+    "Equity vs bond, then purpose and influence · shade = FVPL darkest · FVOCI mid · AMC lightest · equity and acquisition methods in gray": "Actions ou obligations, puis but et influence · teinte : FVPL la plus foncée · FVOCI intermédiaire · AMC la plus claire · mise en équivalence et acquisition en gris",
+    "Intercorporate investment categories tree": "Arbre des catégories d’investissements intersociétés",
+    "Equity → Fin. assets → Trading": "Actions → Actifs fin. → Transaction",
+    "Equity → Fin. assets → Other": "Actions → Actifs fin. → Autres",
+    "Equity → Long-term eq. → No influence": "Actions → Particip. LT → Sans influence",
+    "Equity → Long-term eq. → Associates": "Actions → Particip. LT → Associées",
+    "Equity → Long-term eq. → Joint ventures": "Actions → Particip. LT → Coentreprises",
+    "Equity → Long-term eq. → Combinations": "Actions → Particip. LT → Regroupements",
+    "Bond → Trading": "Obligations → Transaction",
+    "Bond → Other": "Obligations → Autres",
+    "Bond → Bond": "Obligations → Obligations",
+    "Trading": "Transaction",
+    "Other": "Autres",
+    "Fin. assets": "Actifs fin.",
+    "No influence": "Sans influence",
+    "Associates": "Associées",
+    "Joint ventures": "Coentreprises",
+    "Combinations": "Regroupements",
+    "Long-term eq.": "Particip. LT",
+    "Long-term": "Particip.",
+    "eq.": "LT",
+    "Equity": "Actions",
+    "Bond": "Obligations",
+    "Investment": "Investissement",
+    "equity method": "mise en équivalence",
+    "acquisition method": "méthode de l’acquisition",
+    "· equity method": "· mise en équivalence",
+    "· acquisition method": "· acquisition",
+    "TREE LR · LIEFLAT G7 · INTERCORPORATE INVESTMENTS": "ARBRE G→D · LIEFLAT G7 · INVESTISSEMENTS INTERSOCIÉTÉS",
+  },
+}, {
+  patterns: {
+  zh: [
+
+  ],
+  ja: [
+
+  ],
+  fr: [
+
+  ],
+  },
+  html: {
+  zh: {
+
+  },
+  ja: {
+
+  },
+  fr: {
+
+  },
+  },
+});
+  </script>
   <script>
 (() => {
   const { C, el, label, mount } = curveKit;

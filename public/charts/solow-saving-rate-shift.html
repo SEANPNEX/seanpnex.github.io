@@ -84,6 +84,44 @@ chartI18n.use({
     'y_B': 'y_B',
   },
 });
+chartI18n.use({
+  zh: {
+    "A · steady state at s₁": "A · s₁ 下的稳态",
+    "B · steady state at s₂": "B · s₂ 下的稳态",
+  },
+  ja: {
+    "A · steady state at s₁": "A · s₁ での定常状態",
+    "B · steady state at s₂": "B · s₂ での定常状態",
+  },
+  fr: {
+    "A · steady state at s₁": "A · état stationnaire avec s₁",
+    "B · steady state at s₂": "B · état stationnaire avec s₂",
+  },
+}, {
+  patterns: {
+  zh: [
+    [/^k\*\ =\ ([−\-+]?[\d][\d,.]*%?)\ ·\ investment\ =\ ([−\-+]?[\d][\d,.]*%?)$/, "k* = $1 · 投资 = $2"],
+  ],
+  ja: [
+    [/^k\*\ =\ ([−\-+]?[\d][\d,.]*%?)\ ·\ investment\ =\ ([−\-+]?[\d][\d,.]*%?)$/, "k* = $1 · 投資 = $2"],
+  ],
+  fr: [
+    [/^k\*\ =\ ([−\-+]?[\d][\d,.]*%?)\ ·\ investment\ =\ ([−\-+]?[\d][\d,.]*%?)$/, "k* = $1 · investissement = $2"],
+  ],
+  },
+  html: {
+  zh: {
+
+  },
+  ja: {
+
+  },
+  fr: {
+
+  },
+  },
+});
+
   </script>
   <script>
 (() => {

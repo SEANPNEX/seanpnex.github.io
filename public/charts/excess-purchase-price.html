@@ -16,6 +16,136 @@
     <svg id="ch" role="img" aria-label="Purchase price 100,000 stacked: 30% of book value 66,000, P&amp;E step-up 9,000 (amortized), land step-up 6,000 (not depreciated), goodwill 19,000 (not amortized, impairment test). Share of fair value is 81,000; excess purchase price is 34,000."></svg>
     <div class="src">STACKED RUNGS · LIEFLAT F7 · EXCESS PURCHASE PRICE (€)</div>
   </main>
+  <script src="i18n.js"></script>
+  <script>
+chartI18n.use({
+  zh: {
+    "Excess purchase price · goodwill split": "超额购买价款 · 商誉拆分",
+    "Of the 34,000 excess, only the P&E step-up is amortized.": "34,000 的超额部分中，只有厂房设备的增值需要摊销。",
+    "BY pays €100,000 for 30% of SY (example below) · one column = the purchase price, stacked bottom-up and drawn to scale · the P&E and land step-ups together are the fair value appreciation, 15,000": "BY 支付 €100,000 购买 SY 的 30%（见下例）· 一根柱 = 购买价款，自下而上按比例堆叠 · 厂房设备与土地的增值合计为公允价值增值 15,000",
+    "Purchase price 100,000 stacked: 30% of book value 66,000, P&E step-up 9,000 (amortized), land step-up 6,000 (not depreciated), goodwill 19,000 (not amortized, impairment test). Share of fair value is 81,000; excess purchase price is 34,000.": "购买价款 100,000 的构成：账面价值的 30% 66,000，厂房设备增值 9,000（摊销），土地增值 6,000（不折旧），商誉 19,000（不摊销，减值测试）。公允价值份额 81,000；超额购买价款 34,000。",
+    "Amortized, over the plant's remaining life; each year's slice lowers BY's equity income": "在厂房剩余使用寿命内摊销；每年摊销的部分减少 BY 的权益收益",
+    "Not amortized, land is not depreciated": "不摊销，土地不计提折旧",
+    "Not amortized, tested for impairment instead": "不摊销，改为做减值测试",
+    "30% × book value": "30% × 账面价值",
+    "Goodwill": "商誉",
+    "Share of fair value": "公允价值份额",
+    "Excess purchase price": "超额购买价款",
+    "Not amortized": "不摊销",
+    "tested for impairment instead": "改为做减值测试",
+    "land is not depreciated": "土地不计提折旧",
+    "Amortized": "摊销",
+    "over the plant's remaining life; each year's slice lowers BY's equity income": "在厂房剩余使用寿命内；每年摊销的部分减少 BY 的权益收益",
+    "Goodwill: not amortized": "商誉：不摊销",
+    "Land: not amortized": "土地：不摊销",
+    "P&E: amortized": "厂房设备：摊销",
+    "STACKED RUNGS · LIEFLAT F7 · EXCESS PURCHASE PRICE (€)": "堆叠梯柱 · LIEFLAT F7 · 超额购买价款（€）",
+  },
+  ja: {
+    "Excess purchase price · goodwill split": "超過購入価格 · のれんの内訳",
+    "Of the 34,000 excess, only the P&E step-up is amortized.": "34,000 の超過額のうち、償却されるのは有形固定資産の評価増だけ。",
+    "BY pays €100,000 for 30% of SY (example below) · one column = the purchase price, stacked bottom-up and drawn to scale · the P&E and land step-ups together are the fair value appreciation, 15,000": "BY は SY の 30% を €100,000 で取得（下の例）· 1 本の柱 = 購入価格を下から積み上げ、縮尺どおりに描画 · 有形固定資産と土地の評価増の合計が公正価値の評価増 15,000",
+    "Purchase price 100,000 stacked: 30% of book value 66,000, P&E step-up 9,000 (amortized), land step-up 6,000 (not depreciated), goodwill 19,000 (not amortized, impairment test). Share of fair value is 81,000; excess purchase price is 34,000.": "購入価格 100,000 の内訳：帳簿価額の 30% 66,000、有形固定資産の評価増 9,000（償却）、土地の評価増 6,000（減価償却なし）、のれん 19,000（償却なし、減損テスト）。公正価値の持分は 81,000、超過購入価格は 34,000。",
+    "Amortized, over the plant's remaining life; each year's slice lowers BY's equity income": "工場の残存耐用年数にわたって償却；毎年の償却分が BY の持分法による投資利益を減らす",
+    "Not amortized, land is not depreciated": "償却しない；土地は減価償却しない",
+    "Not amortized, tested for impairment instead": "償却せず、代わりに減損テスト",
+    "30% × book value": "30% × 帳簿価額",
+    "Goodwill": "のれん",
+    "Share of fair value": "公正価値の持分",
+    "Excess purchase price": "超過購入価格",
+    "Not amortized": "償却しない",
+    "tested for impairment instead": "代わりに減損テスト",
+    "land is not depreciated": "土地は減価償却しない",
+    "Amortized": "償却する",
+    "over the plant's remaining life; each year's slice lowers BY's equity income": "工場の残存耐用年数にわたって；毎年の償却分が BY の持分法による投資利益を減らす",
+    "Goodwill: not amortized": "のれん：償却しない",
+    "Land: not amortized": "土地：償却しない",
+    "P&E: amortized": "有形固定資産：償却する",
+    "STACKED RUNGS · LIEFLAT F7 · EXCESS PURCHASE PRICE (€)": "積み上げラング · LIEFLAT F7 · 超過購入価格（€）",
+  },
+  fr: {
+    "Excess purchase price · goodwill split": "Excédent du prix d’acquisition · part du goodwill",
+    "Of the 34,000 excess, only the P&E step-up is amortized.": "Sur les 34 000 d’excédent, seule la réévaluation des installations est amortie.",
+    "BY pays €100,000 for 30% of SY (example below) · one column = the purchase price, stacked bottom-up and drawn to scale · the P&E and land step-ups together are the fair value appreciation, 15,000": "BY paie 100 000 € pour 30 % de SY (exemple ci-dessous) · une colonne = le prix d’acquisition, empilé de bas en haut et à l’échelle · les réévaluations des installations et du terrain forment ensemble la réévaluation à la juste valeur, 15 000",
+    "Purchase price 100,000 stacked: 30% of book value 66,000, P&E step-up 9,000 (amortized), land step-up 6,000 (not depreciated), goodwill 19,000 (not amortized, impairment test). Share of fair value is 81,000; excess purchase price is 34,000.": "Prix d’acquisition de 100 000 empilé : 30 % de la valeur comptable 66 000, réévaluation des installations 9 000 (amortie), réévaluation du terrain 6 000 (non amortie), goodwill 19 000 (non amorti, test de dépréciation). Quote-part de juste valeur 81 000 ; excédent du prix d’acquisition 34 000.",
+    "Amortized, over the plant's remaining life; each year's slice lowers BY's equity income": "Amortie sur la durée de vie restante de l’usine ; chaque tranche annuelle réduit la quote-part de résultat de BY",
+    "Not amortized, land is not depreciated": "Non amortie, le terrain ne s’amortit pas",
+    "Not amortized, tested for impairment instead": "Non amorti, testé pour dépréciation à la place",
+    "30% × book value": "30 % × valeur comptable",
+    "Goodwill": "Goodwill",
+    "Share of fair value": "Quote-part de juste valeur",
+    "Excess purchase price": "Excédent du prix d’acquisition",
+    "Not amortized": "Non amorti",
+    "tested for impairment instead": "testé pour dépréciation à la place",
+    "land is not depreciated": "le terrain ne s’amortit pas",
+    "Amortized": "Amortie",
+    "over the plant's remaining life; each year's slice lowers BY's equity income": "sur la durée de vie restante de l’usine ; chaque tranche annuelle réduit la quote-part de résultat de BY",
+    "Goodwill: not amortized": "Goodwill : non amorti",
+    "Land: not amortized": "Terrain : non amorti",
+    "P&E: amortized": "Installations : amorties",
+    "STACKED RUNGS · LIEFLAT F7 · EXCESS PURCHASE PRICE (€)": "BARRES EMPILÉES · LIEFLAT F7 · EXCÉDENT DU PRIX D’ACQUISITION (€)",
+  },
+}, {
+  patterns: {
+  zh: [
+    [/^30%\ ×\ book\ value\ ·\ ([−\-+]?[\d][\d,.]*%?)$/, "30% × 账面价值 · $1"],
+    [/^BY's\ 30%\ of\ SY's\ book\ value\ ([−\-+]?[\d][\d,.]*%?)$/, "BY 享有 SY 账面价值 $1 的 30%"],
+    [/^P\&E\ step\-up\ ·\ ([−\-+]?[\d][\d,.]*%?)$/, "厂房设备增值 · $1"],
+    [/^Land\ step\-up\ ·\ ([−\-+]?[\d][\d,.]*%?)$/, "土地增值 · $1"],
+    [/^Goodwill\ ·\ ([−\-+]?[\d][\d,.]*%?)$/, "商誉 · $1"],
+    [/^Land\ \+([−\-+]?[\d][\d,.]*%?)$/, "土地 +$1"],
+    [/^P\&E\ \+([−\-+]?[\d][\d,.]*%?)$/, "厂房设备 +$1"],
+    [/^Purchase\ price\ ·\ ([−\-+]?[\d][\d,.]*%?)$/, "购买价款 · $1"],
+    [/^Purchase\ price\ ([−\-+]?[\d][\d,.]*%?)$/, "购买价款 $1"],
+    [/^Share\ of\ fair\ value\ ·\ ([−\-+]?[\d][\d,.]*%?)$/, "公允价值份额 · $1"],
+    [/^30%\ ×\ fair\ value\ of\ net\ assets\ ([−\-+]?[\d][\d,.]*%?)$/, "30% × 净资产公允价值 $1"],
+    [/^Excess\ purchase\ price\ ·\ ([−\-+]?[\d][\d,.]*%?)$/, "超额购买价款 · $1"],
+    [/^([−\-+]?[\d][\d,.]*%?)\ −\ ([−\-+]?[\d][\d,.]*%?)\ =\ step\-ups\ ([−\-+]?[\d][\d,.]*%?)\ \+\ goodwill\ ([−\-+]?[\d][\d,.]*%?)$/, "$1 − $2 = 增值 $3 + 商誉 $4"],
+  ],
+  ja: [
+    [/^30%\ ×\ book\ value\ ·\ ([−\-+]?[\d][\d,.]*%?)$/, "30% × 帳簿価額 · $1"],
+    [/^BY's\ 30%\ of\ SY's\ book\ value\ ([−\-+]?[\d][\d,.]*%?)$/, "SY の帳簿価額 $1 に対する BY の 30%"],
+    [/^P\&E\ step\-up\ ·\ ([−\-+]?[\d][\d,.]*%?)$/, "有形固定資産の評価増 · $1"],
+    [/^Land\ step\-up\ ·\ ([−\-+]?[\d][\d,.]*%?)$/, "土地の評価増 · $1"],
+    [/^Goodwill\ ·\ ([−\-+]?[\d][\d,.]*%?)$/, "のれん · $1"],
+    [/^Land\ \+([−\-+]?[\d][\d,.]*%?)$/, "土地 +$1"],
+    [/^P\&E\ \+([−\-+]?[\d][\d,.]*%?)$/, "有形固定資産 +$1"],
+    [/^Purchase\ price\ ·\ ([−\-+]?[\d][\d,.]*%?)$/, "購入価格 · $1"],
+    [/^Purchase\ price\ ([−\-+]?[\d][\d,.]*%?)$/, "購入価格 $1"],
+    [/^Share\ of\ fair\ value\ ·\ ([−\-+]?[\d][\d,.]*%?)$/, "公正価値の持分 · $1"],
+    [/^30%\ ×\ fair\ value\ of\ net\ assets\ ([−\-+]?[\d][\d,.]*%?)$/, "30% × 純資産の公正価値 $1"],
+    [/^Excess\ purchase\ price\ ·\ ([−\-+]?[\d][\d,.]*%?)$/, "超過購入価格 · $1"],
+    [/^([−\-+]?[\d][\d,.]*%?)\ −\ ([−\-+]?[\d][\d,.]*%?)\ =\ step\-ups\ ([−\-+]?[\d][\d,.]*%?)\ \+\ goodwill\ ([−\-+]?[\d][\d,.]*%?)$/, "$1 − $2 = 評価増 $3 + のれん $4"],
+  ],
+  fr: [
+    [/^30%\ ×\ book\ value\ ·\ ([−\-+]?[\d][\d,.]*%?)$/, "30 % × valeur comptable · $1"],
+    [/^BY's\ 30%\ of\ SY's\ book\ value\ ([−\-+]?[\d][\d,.]*%?)$/, "30 % de BY sur la valeur comptable de SY, $1"],
+    [/^P\&E\ step\-up\ ·\ ([−\-+]?[\d][\d,.]*%?)$/, "Réévaluation des installations · $1"],
+    [/^Land\ step\-up\ ·\ ([−\-+]?[\d][\d,.]*%?)$/, "Réévaluation du terrain · $1"],
+    [/^Goodwill\ ·\ ([−\-+]?[\d][\d,.]*%?)$/, "Goodwill · $1"],
+    [/^Land\ \+([−\-+]?[\d][\d,.]*%?)$/, "Terrain +$1"],
+    [/^P\&E\ \+([−\-+]?[\d][\d,.]*%?)$/, "Installations +$1"],
+    [/^Purchase\ price\ ·\ ([−\-+]?[\d][\d,.]*%?)$/, "Prix d’acquisition · $1"],
+    [/^Purchase\ price\ ([−\-+]?[\d][\d,.]*%?)$/, "Prix d’acquisition $1"],
+    [/^Share\ of\ fair\ value\ ·\ ([−\-+]?[\d][\d,.]*%?)$/, "Quote-part de juste valeur · $1"],
+    [/^30%\ ×\ fair\ value\ of\ net\ assets\ ([−\-+]?[\d][\d,.]*%?)$/, "30 % × juste valeur de l’actif net $1"],
+    [/^Excess\ purchase\ price\ ·\ ([−\-+]?[\d][\d,.]*%?)$/, "Excédent du prix d’acquisition · $1"],
+    [/^([−\-+]?[\d][\d,.]*%?)\ −\ ([−\-+]?[\d][\d,.]*%?)\ =\ step\-ups\ ([−\-+]?[\d][\d,.]*%?)\ \+\ goodwill\ ([−\-+]?[\d][\d,.]*%?)$/, "$1 − $2 = réévaluations $3 + goodwill $4"],
+  ],
+  },
+  html: {
+  zh: {
+
+  },
+  ja: {
+
+  },
+  fr: {
+
+  },
+  },
+});
+  </script>
   <script>
   // ── Layers, bottom to top (€; BY's 30% share) ──
   var LAYERS = [

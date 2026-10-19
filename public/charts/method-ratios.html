@@ -33,6 +33,118 @@
     <div class="tbl" id="tbl" data-fx-scope></div>
     <div class="src">LEDGER GRID · LIEFLAT L9 · RATIOS BY ACCOUNTING METHOD (ILLUSTRATIVE)</div>
   </main>
+  <script src="i18n.js"></script>
+  <script>
+chartI18n.use({
+  zh: {
+    "Profitability ratios across methods": "各方法下的盈利能力比率",
+    "The equity method flatters every profitability ratio.": "权益法让每个盈利能力比率都更好看。",
+    "Same investee, same NI to A's shareholders (400) · darker = the method that shows the ratio highest · figures from the 50% JV example: revenue 3,000 / 3,500 / 4,000 · assets 2,400 / 2,800 / 3,600 · equity 1,400 / 1,400 / 1,800": "同一被投资方，归属于 A 的股东的净利润相同（400）· 颜色越深 = 该方法下比率越高 · 数据来自 50% JV 的例子：收入 3,000 / 3,500 / 4,000 · 资产 2,400 / 2,800 / 3,600 · 权益 1,400 / 1,400 / 1,800",
+    "Equity method": "权益法",
+    "Proportionate consolidation": "比例合并",
+    "Acquisition method": "购买法",
+    "Net profit margin": "净利润率",
+    "NI / revenue": "净利润 / 收入",
+    "same NI over more revenue: none, 50% or 100% of JV’s sales is added": "相同的净利润除以更多的收入：JV 的销售额加入 0、50% 或 100%",
+    "Highest": "最高",
+    "Middle": "居中",
+    "Lowest": "最低",
+    "NI / total assets": "净利润 / 资产合计",
+    "same NI over more assets: one investment line, 50% or 100% of JV’s assets": "相同的净利润除以更多的资产：一行投资、JV 资产的 50% 或 100%",
+    "NI / total equity": "净利润 / 权益合计",
+    "equity is 1,400 under both one-line and proportionate; the acquisition method adds NCI of 400": "单行合并和比例合并下权益都是 1,400；购买法加入 400 的 NCI",
+    "Higher": "较高",
+    "Lower": "较低",
+    "LEDGER GRID · LIEFLAT L9 · RATIOS BY ACCOUNTING METHOD (ILLUSTRATIVE)": "账本网格 · LIEFLAT L9 · 各会计方法下的比率（示意）",
+  },
+  ja: {
+    "Profitability ratios across methods": "方法ごとの収益性比率",
+    "The equity method flatters every profitability ratio.": "持分法はどの収益性比率もよく見せる。",
+    "Same investee, same NI to A's shareholders (400) · darker = the method that shows the ratio highest · figures from the 50% JV example: revenue 3,000 / 3,500 / 4,000 · assets 2,400 / 2,800 / 3,600 · equity 1,400 / 1,400 / 1,800": "同じ被投資企業、A の株主に帰属する純利益も同じ（400）· 濃いほどその方法で比率が高い · 50% の JV の例の数値：収益 3,000 / 3,500 / 4,000 · 資産 2,400 / 2,800 / 3,600 · 資本 1,400 / 1,400 / 1,800",
+    "Equity method": "持分法",
+    "Proportionate consolidation": "比例連結",
+    "Acquisition method": "取得法",
+    "Net profit margin": "純利益率",
+    "NI / revenue": "純利益 / 収益",
+    "same NI over more revenue: none, 50% or 100% of JV’s sales is added": "同じ純利益をより大きな収益で割る：JV の売上を 0、50%、100% 加える",
+    "Highest": "最も高い",
+    "Middle": "中間",
+    "Lowest": "最も低い",
+    "NI / total assets": "純利益 / 資産合計",
+    "same NI over more assets: one investment line, 50% or 100% of JV’s assets": "同じ純利益をより大きな資産で割る：投資の一行、JV の資産の 50% または 100%",
+    "NI / total equity": "純利益 / 資本合計",
+    "equity is 1,400 under both one-line and proportionate; the acquisition method adds NCI of 400": "一行連結でも比例連結でも資本は 1,400；取得法は NCI 400 を加える",
+    "Higher": "高い",
+    "Lower": "低い",
+    "LEDGER GRID · LIEFLAT L9 · RATIOS BY ACCOUNTING METHOD (ILLUSTRATIVE)": "台帳グリッド · LIEFLAT L9 · 会計処理別の比率（例示）",
+  },
+  fr: {
+    "Profitability ratios across methods": "Ratios de rentabilité selon la méthode",
+    "The equity method flatters every profitability ratio.": "La mise en équivalence embellit tous les ratios de rentabilité.",
+    "Same investee, same NI to A's shareholders (400) · darker = the method that shows the ratio highest · figures from the 50% JV example: revenue 3,000 / 3,500 / 4,000 · assets 2,400 / 2,800 / 3,600 · equity 1,400 / 1,400 / 1,800": "Même entité détenue, même RN attribuable aux actionnaires de A (400) · plus foncé = méthode où le ratio est le plus élevé · chiffres de l’exemple de la coentreprise à 50 % : produits 3,000 / 3,500 / 4,000 · actifs 2,400 / 2,800 / 3,600 · capitaux propres 1,400 / 1,400 / 1,800",
+    "Equity method": "Mise en équivalence",
+    "Proportionate consolidation": "Intégration proportionnelle",
+    "Acquisition method": "Méthode de l’acquisition",
+    "Net profit margin": "Marge nette",
+    "NI / revenue": "RN / produits",
+    "same NI over more revenue: none, 50% or 100% of JV’s sales is added": "même RN sur plus de produits : 0, 50 % ou 100 % des ventes de JV sont ajoutés",
+    "Highest": "Le plus élevé",
+    "Middle": "Intermédiaire",
+    "Lowest": "Le plus bas",
+    "NI / total assets": "RN / total actif",
+    "same NI over more assets: one investment line, 50% or 100% of JV’s assets": "même RN sur plus d’actifs : une ligne de participation, 50 % ou 100 % des actifs de JV",
+    "NI / total equity": "RN / total capitaux propres",
+    "equity is 1,400 under both one-line and proportionate; the acquisition method adds NCI of 400": "les capitaux propres sont de 1,400 en consolidation sur une ligne comme en proportionnelle ; l’acquisition ajoute 400 de NCI",
+    "Higher": "Plus élevé",
+    "Lower": "Plus bas",
+    "LEDGER GRID · LIEFLAT L9 · RATIOS BY ACCOUNTING METHOD (ILLUSTRATIVE)": "GRILLE DE REGISTRE · LIEFLAT L9 · RATIOS PAR MÉTHODE COMPTABLE (ILLUSTRATIF)",
+  },
+}, {
+  patterns: {
+  zh: [
+    [/^Net\ profit\ margin\ ·\ Equity\ method:\ ([−\-+]?[\d][\d,.]*%?)$/, "净利润率 · 权益法：$1"],
+    [/^Net\ profit\ margin\ ·\ Proportionate\ consolidation:\ ([−\-+]?[\d][\d,.]*%?)$/, "净利润率 · 比例合并：$1"],
+    [/^Net\ profit\ margin\ ·\ Acquisition\ method:\ ([−\-+]?[\d][\d,.]*%?)$/, "净利润率 · 购买法：$1"],
+    [/^ROA\ ·\ Equity\ method:\ ([−\-+]?[\d][\d,.]*%?)$/, "ROA · 权益法：$1"],
+    [/^ROA\ ·\ Proportionate\ consolidation:\ ([−\-+]?[\d][\d,.]*%?)$/, "ROA · 比例合并：$1"],
+    [/^ROA\ ·\ Acquisition\ method:\ ([−\-+]?[\d][\d,.]*%?)$/, "ROA · 购买法：$1"],
+    [/^ROE\ ·\ Equity\ method\ and\ proportionate\ consolidation:\ ([−\-+]?[\d][\d,.]*%?)$/, "ROE · 权益法和比例合并：$1"],
+    [/^ROE\ ·\ Acquisition\ method:\ ([−\-+]?[\d][\d,.]*%?)$/, "ROE · 购买法：$1"],
+  ],
+  ja: [
+    [/^Net\ profit\ margin\ ·\ Equity\ method:\ ([−\-+]?[\d][\d,.]*%?)$/, "純利益率 · 持分法：$1"],
+    [/^Net\ profit\ margin\ ·\ Proportionate\ consolidation:\ ([−\-+]?[\d][\d,.]*%?)$/, "純利益率 · 比例連結：$1"],
+    [/^Net\ profit\ margin\ ·\ Acquisition\ method:\ ([−\-+]?[\d][\d,.]*%?)$/, "純利益率 · 取得法：$1"],
+    [/^ROA\ ·\ Equity\ method:\ ([−\-+]?[\d][\d,.]*%?)$/, "ROA · 持分法：$1"],
+    [/^ROA\ ·\ Proportionate\ consolidation:\ ([−\-+]?[\d][\d,.]*%?)$/, "ROA · 比例連結：$1"],
+    [/^ROA\ ·\ Acquisition\ method:\ ([−\-+]?[\d][\d,.]*%?)$/, "ROA · 取得法：$1"],
+    [/^ROE\ ·\ Equity\ method\ and\ proportionate\ consolidation:\ ([−\-+]?[\d][\d,.]*%?)$/, "ROE · 持分法と比例連結：$1"],
+    [/^ROE\ ·\ Acquisition\ method:\ ([−\-+]?[\d][\d,.]*%?)$/, "ROE · 取得法：$1"],
+  ],
+  fr: [
+    [/^Net\ profit\ margin\ ·\ Equity\ method:\ ([−\-+]?[\d][\d,.]*%?)$/, "Marge nette · Mise en équivalence : $1"],
+    [/^Net\ profit\ margin\ ·\ Proportionate\ consolidation:\ ([−\-+]?[\d][\d,.]*%?)$/, "Marge nette · Intégration proportionnelle : $1"],
+    [/^Net\ profit\ margin\ ·\ Acquisition\ method:\ ([−\-+]?[\d][\d,.]*%?)$/, "Marge nette · Méthode de l’acquisition : $1"],
+    [/^ROA\ ·\ Equity\ method:\ ([−\-+]?[\d][\d,.]*%?)$/, "ROA · Mise en équivalence : $1"],
+    [/^ROA\ ·\ Proportionate\ consolidation:\ ([−\-+]?[\d][\d,.]*%?)$/, "ROA · Intégration proportionnelle : $1"],
+    [/^ROA\ ·\ Acquisition\ method:\ ([−\-+]?[\d][\d,.]*%?)$/, "ROA · Méthode de l’acquisition : $1"],
+    [/^ROE\ ·\ Equity\ method\ and\ proportionate\ consolidation:\ ([−\-+]?[\d][\d,.]*%?)$/, "ROE · Mise en équivalence et intégration proportionnelle : $1"],
+    [/^ROE\ ·\ Acquisition\ method:\ ([−\-+]?[\d][\d,.]*%?)$/, "ROE · Méthode de l’acquisition : $1"],
+  ],
+  },
+  html: {
+  zh: {
+
+  },
+  ja: {
+
+  },
+  fr: {
+
+  },
+  },
+});
+  </script>
   <script>
   // ── Rows: name, formula, cells [rank, label, value, span] ──
   var M = ['Equity method', 'Proportionate consolidation', 'Acquisition method'];

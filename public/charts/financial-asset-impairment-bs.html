@@ -52,6 +52,97 @@
     <div class="note">FVPL has no separate impairment line: its whole fair-value move already runs through profit or loss.</div>
     <div class="src">LEDGER GRID · LIEFLAT L9 · FINANCIAL ASSET IMPAIRMENT</div>
   </main>
+  <script src="i18n.js"></script>
+  <script>
+chartI18n.use({
+  zh: {
+    "Financial asset impairment · B/S two stories": "金融资产减值 · 资产负债表的两种情形",
+    "Same −15 credit loss; two balance-sheet stories.": "同样 −15 的信用损失；资产负债表上两种呈现。",
+    "Expected credit loss 15 hits earnings under both · AMC writes the asset down · FVOCI keeps fair value and splits the move": "两者都把 15 的预期信用损失计入盈利 · AMC 减记资产 · FVOCI 保持公允价值并拆分变动",
+    "one story": "一种情形",
+    "AMC impairment entries": "AMC 减值分录",
+    "Account": "科目",
+    "Entry": "分录",
+    "Debt asset": "债务资产",
+    "allowance / write-down": "备抵 / 减记",
+    "impairment loss": "减值损失",
+    "two stories": "两种情形",
+    "FVOCI impairment entries": "FVOCI 减值分录",
+    "FVOCI asset": "FVOCI 资产",
+    "stays at fair value": "保持公允价值",
+    "credit loss": "信用损失",
+    "rest of the fair-value move": "公允价值变动的其余部分",
+    "FVPL has no separate impairment line: its whole fair-value move already runs through profit or loss.": "FVPL 没有单独的减值项目：其全部公允价值变动已经计入损益。",
+    "LEDGER GRID · LIEFLAT L9 · FINANCIAL ASSET IMPAIRMENT": "账本网格 · LIEFLAT L9 · 金融资产减值",
+  },
+  ja: {
+    "Financial asset impairment · B/S two stories": "金融資産の減損 · 貸借対照表の 2 つの見方",
+    "Same −15 credit loss; two balance-sheet stories.": "同じ −15 の信用損失、貸借対照表では 2 通りの姿。",
+    "Expected credit loss 15 hits earnings under both · AMC writes the asset down · FVOCI keeps fair value and splits the move": "どちらも予想信用損失 15 が利益を減らす · AMC は資産を減額 · FVOCI は公正価値を維持し、変動を分ける",
+    "one story": "1 つの見方",
+    "AMC impairment entries": "AMC の減損の仕訳",
+    "Account": "勘定",
+    "Entry": "仕訳",
+    "Debt asset": "負債性資産",
+    "allowance / write-down": "引当金 / 減額",
+    "impairment loss": "減損損失",
+    "two stories": "2 つの見方",
+    "FVOCI impairment entries": "FVOCI の減損の仕訳",
+    "FVOCI asset": "FVOCI 資産",
+    "stays at fair value": "公正価値のまま",
+    "credit loss": "信用損失",
+    "rest of the fair-value move": "公正価値の変動の残り",
+    "FVPL has no separate impairment line: its whole fair-value move already runs through profit or loss.": "FVPL には独立した減損の行がない：公正価値の変動はすべてすでに純損益を通っている。",
+    "LEDGER GRID · LIEFLAT L9 · FINANCIAL ASSET IMPAIRMENT": "台帳グリッド · LIEFLAT L9 · 金融資産の減損",
+  },
+  fr: {
+    "Financial asset impairment · B/S two stories": "Dépréciation des actifs financiers · deux lectures du bilan",
+    "Same −15 credit loss; two balance-sheet stories.": "Même perte de crédit de −15 ; deux lectures du bilan.",
+    "Expected credit loss 15 hits earnings under both · AMC writes the asset down · FVOCI keeps fair value and splits the move": "La perte de crédit attendue de 15 touche le résultat dans les deux cas · l’AMC déprécie l’actif · la FVOCI garde la juste valeur et répartit la variation",
+    "one story": "une lecture",
+    "AMC impairment entries": "Écritures de dépréciation en AMC",
+    "Account": "Compte",
+    "Entry": "Écriture",
+    "Debt asset": "Actif de dette",
+    "allowance / write-down": "provision / réduction",
+    "impairment loss": "perte de valeur",
+    "two stories": "deux lectures",
+    "FVOCI impairment entries": "Écritures de dépréciation en FVOCI",
+    "FVOCI asset": "Actif FVOCI",
+    "stays at fair value": "reste à la juste valeur",
+    "credit loss": "perte de crédit",
+    "rest of the fair-value move": "reste de la variation de juste valeur",
+    "FVPL has no separate impairment line: its whole fair-value move already runs through profit or loss.": "La FVPL n’a pas de ligne de dépréciation distincte : toute sa variation de juste valeur passe déjà par le résultat.",
+    "LEDGER GRID · LIEFLAT L9 · FINANCIAL ASSET IMPAIRMENT": "GRILLE DE REGISTRE · LIEFLAT L9 · DÉPRÉCIATION DES ACTIFS FINANCIERS",
+  },
+}, {
+  patterns: {
+  zh: [
+    [/^carrying\ amount\ ([−\-+]?[\d][\d,.]*%?)\ ·\ ECL\ ([−\-+]?[\d][\d,.]*%?)$/, "账面价值 $1 · ECL $2"],
+    [/^fair\ value\ ([−\-+]?[\d][\d,.]*%?)\ →\ ([−\-+]?[\d][\d,.]*%?)\ \(([−\-+]?[\d][\d,.]*%?)\)\ ·\ ECL\ ([−\-+]?[\d][\d,.]*%?)$/, "公允价值 $1 → $2（$3）· ECL $4"],
+  ],
+  ja: [
+    [/^carrying\ amount\ ([−\-+]?[\d][\d,.]*%?)\ ·\ ECL\ ([−\-+]?[\d][\d,.]*%?)$/, "帳簿価額 $1 · ECL $2"],
+    [/^fair\ value\ ([−\-+]?[\d][\d,.]*%?)\ →\ ([−\-+]?[\d][\d,.]*%?)\ \(([−\-+]?[\d][\d,.]*%?)\)\ ·\ ECL\ ([−\-+]?[\d][\d,.]*%?)$/, "公正価値 $1 → $2（$3）· ECL $4"],
+  ],
+  fr: [
+    [/^carrying\ amount\ ([−\-+]?[\d][\d,.]*%?)\ ·\ ECL\ ([−\-+]?[\d][\d,.]*%?)$/, "valeur comptable $1 · ECL $2"],
+    [/^fair\ value\ ([−\-+]?[\d][\d,.]*%?)\ →\ ([−\-+]?[\d][\d,.]*%?)\ \(([−\-+]?[\d][\d,.]*%?)\)\ ·\ ECL\ ([−\-+]?[\d][\d,.]*%?)$/, "juste valeur $1 → $2 ($3) · ECL $4"],
+  ],
+  },
+  html: {
+  zh: {
+
+  },
+  ja: {
+
+  },
+  fr: {
+
+  },
+  },
+});
+  </script>
   <script>curveKit.fit();</script>
 </body>
 </html>
