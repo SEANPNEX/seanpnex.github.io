@@ -141,3 +141,43 @@
 **Correct:** **買わなかった** (う → わ before ない).
 
 **Gap:** Wrote 買いなかった.
+
+## 2026-10-19 — Te-form (repeat miss)
+
+**Q:** Te-forms of 書く, 聞く, 来る.
+
+**Correct:** **書いて, 聞いて, 来て**. Only ぐ verbs take いで; ぬ/ぶ/む verbs take んで.
+
+**Gap:** Wrote 書いで, 聞いで, 来で (the same いで slip as 聴いで on 10-17).
+
+## 2026-10-19 — たい past negative
+
+**Q:** “I didn't want to watch it.”
+
+**Correct:** **見たくなかったです**.
+
+**Gap:** Wrote 見たくないでした.
+
+## 2026-10-19 — Question word + が in か分かりません
+
+**Q:** “I don't know which one is correct.”
+
+**Correct:** **どれが正しいか分かりません** (が after the question word; 正しい + か, with no の).
+
+**Gap:** Used は and the wrong form of 正しい.
+
+## 2026-10-19 — N にする
+
+**Q:** “For my drink, I'll have tea.”
+
+**Correct:** **飲み物はお茶にします**.
+
+**Gap:** Wrote お茶を飲み物を選ぶ.
+
+## 2026-10-19 — な before ので
+
+**Q:** “This document is important, so …”
+
+**Correct:** **この資料は大事なので**.
+
+**Gap:** Left out the な.
