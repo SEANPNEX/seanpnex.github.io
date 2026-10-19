@@ -372,3 +372,259 @@ Both can run together (rumors **plus** wash trades). Profiting personally is **n
 
 **Example 4 — Artificial volume between funds (Rajesh Sekar).** Sekar’s equity and balanced funds are both overweight illiquid Digital Design. He trades DD back and forth between the two funds to lift volume and price so outside buyers appear, letting him cut the overweight without marking the books down — “for participants,” even with extra commissions.  
 **Takeaway:** Artificial distortion of **volume and price** is **transaction-based** II(B), regardless of a claimed client benefit.
+
+---
+
+## Standard III Duties to Clients
+### Standard III(A) Loyalty, Prudence, and Care
+
+> Members and Candidates have a duty of loyalty to their clients and must act with reasonable care and exercise prudent judgment. Members and Candidates must act for the benefit of their clients and place their clients’ interests before their employer’s or their own interests.
+
+Client interests are **paramount**. Investment actions must be for the **sole benefit** of the client, with the same prudence, judgment, and care you would apply to your own interests in similar circumstances. **Prudence** = the care, skill, and diligence of a reasonable person acting in a like capacity — in portfolio management, following the client’s investment parameters and balancing risk and return. III(A) is a **minimum** benchmark for every member regardless of job title, local law, or culture; it does **not** make everyone a legal fiduciary, and it does **not** replace a stricter legally imposed fiduciary duty [see I(A)].
+
+#### Identifying the client (step one)
+
+A **client** = a person or entity for which you perform a professional service of the type usually provided for compensation. A **prospective client** has expressed interest in your services or is (or will be) actively solicited.
+
+| Role | Duty of loyalty is owed to |
+| --- | --- |
+| Adviser to retail / HNW investors | The individual investor |
+| Company executive | The firm’s **public shareholders** |
+| Manager of a **pension plan or trust** | The **beneficiaries** (plan participants) — **not** the sponsor / trustee that hired you |
+| Manager of a fund run to an **index or mandate** | Investing consistently with the **stated mandate**; no duty to any single fund investor’s needs or risk profile |
+| Adviser whose client owns a fund | The adviser alone (fund manager does not share that client duty) |
+| Execution-only broker | Best execution within the client’s trading instructions (quantity, price, timing) — **no** fiduciary duty |
+| Expert witness hired by a law firm | Independence and objectivity, like an independent analyst; the law firm must not shape the testimony |
+
+> [!IMPORTANT]
+> Pension / trust money: the hiring company is **not** the client — the **plan participants and beneficiaries** are. Using plan assets to help sponsor management (e.g. fend off a takeover) or to win more business for your firm violates III(A).
+
+**Blended roles** (execution plus advice on a limited product shelf, e.g. proprietary products only): disclose the limits at the outset; then recommend allowed products that fit the client and disregard firm/personal interest in the transaction.
+
+#### Custody, governing documents, and the portfolio
+
+- **Custody** (any direct or indirect access to client funds) → heightened responsibility.
+- Manage assets per the **governing documents** (trust documents, investment management agreements) — the primary determinant of your powers and duties. Acting contrary to them or to law risks III(A).
+- Follow client **guidelines** (e.g. charities or ESG-focused clients restricting asset types or securities). Objectives and expectations must be **realistic and suitable**; strategies should relate to the client’s **long-term** objectives.
+- Judge each investment in the context of the **total portfolio**: risk of loss and opportunity for gain, tax implications, diversification, liquidity, cash flow, and overall return requirements of the assets you manage.
+- Unavoidable firm-vs-client conflicts → clear, factual disclosure [see VI(A)].
+
+> [!Note]
+> The **IPS** is the working tool for III(A): the client’s objectives, constraints, and guidelines are set there, and III(A) loyalty means acting within it (the full IPS content is under III(C)). Fund managers owe loyalty through the **fund’s** IPS / mandate, not any single investor’s profile.
+
+#### Soft commissions and client brokerage
+
+**Brokerage commissions are an asset of the client** — they must be used to benefit the client, not the manager.
+
+| Practice | Rule of thumb |
+| --- | --- |
+| **Soft dollars / soft commissions** (client brokerage buys research) | OK only if the goods/services benefit the client. Paying higher commissions **without corresponding client benefit** → violation. |
+| **Best price and best execution** | Required **unless directed by the client**. Best execution = a trading process that seeks to maximize portfolio value within the client’s objectives and constraints. |
+| **Directed brokerage** (client tells you which broker to use) | Not a loyalty violation — it is the client’s asset. Confirm the services bought benefit the beneficiaries, and disclose the client may **not** get best execution. |
+| Directing **other** clients’ trades to a broker as a reward for referrals | Only with best price/execution **and** disclosure to those accounts. |
+
+#### Proxy voting
+
+- Proxies have **economic value**; voting them in an informed, responsible way is part of loyalty.
+- Violation risks: not voting, voting without considering the issue, or voting **blindly with management** on **nonroutine** governance issues (e.g. change in capitalization).
+- A **cost–benefit** analysis may justify not voting every proxy.
+- **Disclose** proxy voting policies to clients.
+
+#### Recommended procedures
+
+- **Regular account information** (if you control client assets): itemized statement **at least quarterly** (funds, securities, debits, credits, transactions); disclose where assets are held and when moved; **segregate** client assets from everyone else’s, including your own.
+- **Client approval:** if unsure, ask what you would expect if you were the client; if still in doubt, disclose **in writing** and get client approval.
+- Follow all applicable rules and laws, and the Code and Standards.
+- Establish investment objectives (experience, risk/return objectives, financial constraints) **before** recommending or acting.
+- Consider (1) client needs and circumstances, (2) the investment’s characteristics, (3) the total portfolio’s characteristics.
+- **Diversify**, unless inconsistent with plan guidelines or account objectives.
+- Regular reviews against the governing documents.
+- Deal fairly — trade allocation and dissemination policies [see III(B)].
+- Avoid or disclose conflicts; disclose **all forms of manager compensation**.
+- Determine who is authorized to vote proxies; vote in the interest of clients and ultimate beneficiaries.
+- Maintain confidentiality [see III(E)]; seek best execution unless client-directed.
+
+#### Exam traps
+
+- Plan sponsor’s management asks you to buy its stock for the pension plan to defeat a takeover → beneficiaries are the client; buying an overvalued stock for that purpose violates III(A).
+- Commission business steered to a high-cost broker that pays your firm’s **rent / overhead** → no client benefit, no best execution.
+- Client commissions paying for **vacation days** tacked onto a research trip → not research; must not be paid with client commissions.
+- Trading to hit a firm commission minimum (**churning**), even with appropriate securities → III(A).
+- Excluding a **regular fee-paying family account** from a suitable IPO “to avoid the appearance of conflict” → disadvantages that client; III(A) violation (contrast: family accounts managed **outside** normal fee terms may be excluded).
+- Withholding a discovered reporting error to keep an unhappy client → violation; correcting it is the compliant path.
+
+#### Application cases
+
+**Example 1 — Identifying the Client—Plan Participants (Wiley).** First Country Bank is trustee for Miller Company’s pension plan. Miller’s managers, fighting a hostile bid from Newton, persuade Wiley to buy a large amount of Miller stock for the plan, hinting at more accounts for the bank. Wiley thinks the stock is overvalued but buys anyway; the price rise makes Newton withdraw.  
+**Takeaway:** The duty is to the **plan participants and beneficiaries**. Using plan assets to entrench management, keep the sponsor’s favor, and win business violates III(A); the takeover offer had to be judged on its own merits.
+
+**Example 2 — Client Commission Practices (Jackson).** JNI’s CEO sends most pension-client trading to Thompson, Inc. — high commissions, average research and execution — because of a friendship, and Thompson absorbs JNI overhead such as rent.  
+**Takeaway:** Client brokerage buying services that do not benefit clients, without best price and execution, breaches the duty of loyalty.
+
+**Example 3 — Brokerage Arrangements (Everett).** One client directs all trades to Scott Company. To get more referrals from Scott, Everett also routes **other** clients’ trades there without telling them.  
+**Takeaway:** Directed brokerage for the directing client is fine; rewarding a broker with other clients’ trades is allowed only with best price/execution **and** disclosure. Undisclosed routing violates III(A).
+
+---
+
+### Standard III(B) Fair Dealing
+
+> Members and Candidates must deal fairly and objectively with all clients when providing investment analysis, making investment recommendations, taking investment action, or engaging in other professional activities.
+
+With multiple clients, favoritism can show up in the **quality and timing** of service or the **allocation of opportunities**. III(B) says **fairly**, not **equally**: you cannot reach every client at exactly the same moment, and not every opportunity suits every client.
+
+#### Fair vs equal
+
+| Fair (required) | Not required |
+| --- | --- |
+| No client is discriminated against in dissemination or investment action | Reaching all clients at the identical instant |
+| Every client gets a **fair opportunity** to act on each recommendation | Sending every recommendation to every client (selection by **suitability and known interest** is OK) |
+| Premium service levels are **disclosed** and **available to everyone** | Identical service for every fee level |
+
+> [!IMPORTANT]
+> **Different service levels** are allowed if they (1) do not disadvantage other clients, (2) are **disclosed** to clients and prospects, and (3) are **not offered selectively**. Extra service comes **after** fair dissemination, never before it.
+
+#### Investment recommendations vs investment action
+
+| | Investment recommendations | Investment action |
+| --- | --- | --- |
+| **Who** | Members whose main job is preparing recommendations for others to act on (in or outside the firm) | Portfolio managers acting on internal/external recommendations |
+| **Covers** | Any opinion to buy/sell/hold — detailed report, brief update, adding/removing from a list, verbal | Trades, block allocations, new offerings, secondary financings |
+| **Duty** | Equitable dissemination system; tell clients what types of communication they will receive | Treat all clients fairly **in light of their objectives and circumstances**; allocate per firm block-trade policy |
+
+A recommendation distributed to anyone **outside** the organization is a communication for general distribution.
+
+**Disseminating changes:** material changes to prior recommendations must reach **all current clients**, with particular care for clients known to have **acted on** the earlier advice. A client who places an order **contrary to the current recommendation** (not knowing it changed) should be told before the order is accepted.
+
+#### IPOs and hot issues
+
+- Distribute new issues to **all clients for whom they are appropriate**, per firm allocation policy.
+- **Oversubscribed** → prorate to all suitable accounts, on a **round-lot** basis (avoid odd lots).
+- Oversubscribed → **forgo** sales to yourself and your immediate family to free up shares for clients.
+- But family accounts managed like other clients’ accounts (regular fee-paying) **must not be excluded**.
+- Disclose documented allocation procedures to clients and prospects. **Client consent never cures a patently unfair allocation method.**
+
+Pro rata check for a partial fill (Example 7 below): requested $3 \times 10{,}000 + 2 \times 50{,}000 = 130{,}000$, received $55{,}000$:
+
+$$
+\text{Pro rata fill} = \frac{55{,}000}{130{,}000} \approx 42.3\% \;\Rightarrow\; 10{,}000 \times 42.3\% \approx 4{,}231 < 5{,}000 \text{ minimum lot}
+$$
+
+So strict pro rata would leave the small accounts below the minimum lot; a near-pro-rata allocation that respects the minimum lot is fair.
+
+#### Recommended procedures
+
+- Follow firm fair-dealing procedures; recommend them to management if missing; report possible violations. Those with authority should adopt **formal written** procedures.
+- **Disseminate by interest and suitability**, not favored status; ideally communicate **simultaneously** within the firm and to customers.
+- **Limit** who knows about a pending recommendation; **shorten** the decision-to-dissemination gap (publish a short summary first if the full report takes weeks).
+- **Predissemination guidelines:** no discussing or acting on a pending recommendation.
+- **Simultaneous dissemination:** time announcements so no client group is advantaged; follow-up calls only **after** distribution.
+- Keep a **list of clients and holdings** to notify holders of changes and treat all holders fairly in a sale.
+- **Trade allocation procedures:** fairness in priority and price, timeliness, accurate records — time-stamped orders and changes; FIFO (bundling allowed for efficiency); a policy for partial fills; **same price and commission** for all accounts in a block; partial fills **pro rata by order size**, respecting minimum lots; for new issues, advance indications of interest, allocation **by client** (not by portfolio manager), and a stated allocation method.
+- **Disclose** trade allocation procedures — disclosure does not cure inequitable methods.
+- **Systematic account review** by supervisors (document reasons when buying in one account and selling in another).
+- **Disclose levels of service**; never offer them selectively.
+
+#### Exam traps
+
+- Previewing a pending recommendation at lunch with best clients before the firm-wide release → III(B).
+- Commingled fund always filled first; hot issues only to the commingled fund; nondiscretionary accounts last → unfair priority.
+- Allocating trades **after** seeing which went up, to favor a client threatening to leave → III(B); allocate before execution or systematically (e.g. pro rata) right after.
+- Repeating the official EPS number in the report but telling only big clients you expect an upside surprise → III(B).
+- Posting a “buy” summary on a firm social-media page before the report goes to all clients → selective dissemination.
+- Extra trading in other accounts so a favored client avoids its share of soft-dollar commission costs → III(B).
+
+#### Application cases
+
+**Example 1 — Selective Disclosure (Ames).** While his buy report on a small OTC company is out for factual review, Ames tells several of his best clients at lunch about the recommendation scheduled for release to all clients next week.  
+**Takeaway:** Giving favored clients a week’s head start on a recommendation violates III(B).
+
+**Example 3 — Fair Dealing and IPO Distribution (Morris).** PickleDilly’s IPO is a hot issue; Morris negotiated options for himself. Institutional demand oversubscribes it, and he fills all orders — including his own — while cutting the institutional blocks.  
+**Takeaway:** In an oversubscribed issue, take no shares yourself and **prorate** to clients (or use another fair method). The options are also a conflict to avoid or disclose [VI(A)].
+
+**Example 6 — Additional Services for Select Clients (Weng).** Weng emails a new recommendation to all clients, then calls his three largest institutional clients, who pay for the outreach, to discuss it in detail.  
+**Takeaway:** **No violation** — dissemination to everyone came first; the premium service followed. Calling them first would have violated III(B).
+
+**Example 7 — Minimum Lot Allocations (Hampton).** Five clients want a new oversubscribed bond (three × US$10,000, two × US$50,000; minimum lot US$5,000). She receives US$55,000 and allocates US$5,000 to each small account and US$20,000 to each large one.  
+**Takeaway:** **No violation** — not strictly pro rata, but every account gets at least the minimum lot and fill percentages stay close.
+
+---
+
+### Standard III(C) Suitability
+
+> 1. When Members and Candidates are in an advisory relationship with a client, they must:
+>    a. Make a reasonable inquiry into a client’s or prospective client’s investment experience, risk and return objectives, and financial constraints prior to making any investment recommendation or taking investment action and must reassess and update this information regularly.
+>    b. Determine that an investment is suitable to the client’s financial situation and consistent with the client’s written objectives, mandates, and constraints before making an investment recommendation or taking investment action.
+>    c. Judge the suitability of investments in the context of the client’s total portfolio.
+> 2. When Members and Candidates are responsible for managing a portfolio to a specific mandate, strategy, or style, they must make only investment recommendations or take only investment actions that are consistent with the stated objectives and constraints of the portfolio.
+
+Applies to members in an **advisory relationship**: consider the client’s needs, circumstances, and objectives before recommending or acting. A proper suitability determination does **not** guarantee the investment won’t lose value. Execution-only staff and sell-side analysts may have no opportunity to judge suitability for the ultimate client.
+
+#### Developing the IPS
+
+Gather at inception: financial circumstances, relevant personal data (age, occupation), attitude toward risk, investment objectives. Best practice: put it in a **written IPS**.
+
+| IPS component | Content |
+| --- | --- |
+| **Client identification** | Type and nature of client; separate beneficiaries; approximate share of total client assets you manage |
+| **Objectives — return** | Income, growth in principal, maintenance of purchasing power |
+| **Objectives — risk** | Risk tolerance (suitability, stability of values) |
+| **Constraints** | Liquidity needs; expected cash flows (additions/withdrawals); investable funds (assets, liabilities, commitments); **time horizon**; **tax**; **regulatory and legal**; investor preferences, prohibitions, and **unique** needs (e.g. an ESG framework); proxy voting responsibilities |
+| **Benchmarks** | Performance measurement benchmarks |
+
+The IPS should also set out the parties’ roles and responsibilities and the **review schedule**. Strategic asset allocation follows from client constraints compared with capital market expectations.
+
+> [!Note]
+> Memory hook — objectives **R**eturn and **R**isk; constraints **TTLLU**: **T**ime horizon, **T**ax, **L**iquidity, **L**egal/regulatory, **U**nique circumstances.
+
+#### Risk profile and updating the IPS
+
+- **Risk tolerance** is among the most important suitability factors; analyze and quantify strategy risk **in advance**, including fast-changing markets.
+- **Derivatives / synthetics:** watch embedded **leverage** and limited **liquidity** — both directly affect suitability.
+- Review the IPS **at least annually**, and **before** material changes to specific recommendations or decisions; more often after a major change in client or market conditions.
+- Changes that matter: individuals — dependents, tax status, health, liquidity needs, risk tolerance, outside wealth, how income covers current needs; institutions — unfunded pension liabilities, savings-plan withdrawal privileges, foundation distribution requirements; new client priorities such as ESG.
+- Encourage clients to disclose the **full portfolio**; if they withhold, your suitability analysis rests on what was provided.
+
+#### Diversification and the total portfolio
+
+- Some reasonable diversification is the norm, especially for fiduciaries.
+- A high-risk investment on its own may be suitable **in the context of the whole portfolio** or if the client’s objectives contemplate speculation.
+- You judge suitability only on information and criteria **actually provided** by the client.
+
+#### Unsolicited trade requests
+
+| Situation | Action |
+| --- | --- |
+| Client requests a trade you know is **unsuitable** | Refrain until you **discuss** it; educate the client on how it deviates from the IPS; get the client’s **acknowledgment** that the trade is against your advice |
+| Request would have a **material impact** on the portfolio | Use it to **update the IPS** |
+| Client refuses to update the IPS but insists on the trade | Evaluate whether to **continue** the advisory relationship |
+
+#### Managing to an index or mandate
+
+- Fund managers must invest **consistently with the stated mandate** (e.g. a large-cap income fund should not load up on speculative small caps or start-ups).
+- They are **not** responsible for whether the fund suits each investor — that duty belongs only to members with an **advisory** relationship.
+
+#### Recommended procedures
+
+- Put each client’s needs, circumstances, and objectives into a **written IPS** (components above); review **annually** unless events require more often; update for changes.
+- Regularly compare client constraints with capital market expectations; changes may require a new asset allocation.
+- **Suitability test policies** — look beyond return potential: (1) impact on portfolio **diversification**, (2) investment risk vs the client’s **assessed risk tolerance**, (3) fit with the required **investment strategy**.
+
+#### Exam traps
+
+- Same aggressive allocation for two clients with similar salaries but different wealth, needs, and risk tolerance → III(C) for the unsuitable one.
+- Large inheritance → review and potentially update the IPS; ability (and maybe willingness) to take risk has changed.
+- Zero-dividend stock in a **high-income** fund → mandate violation unless the fund’s disclosures allow it.
+- Even a small private-equity allocation with a **lockup** in an IPS that requires liquid assets → violation, however attractive the return.
+- High-beta trading in long-horizon pension accounts to chase a quarterly bonus → III(C) (strategy changed for the manager, not the client).
+- ESG analysis used to pick the better fit for IPS objectives → **permitted**, not a suitability conflict.
+
+#### Application cases
+
+**Example 1 — Investment Suitability—Risk Profile (Smith).** Robertson (60, large asset base, low income needs, high risk tolerance) and Lanai (40, wants steady low-volatility returns for his children’s education) earn similar salaries. Smith puts 20% of **both** portfolios into zero-yield, small-cap tech stocks.  
+**Takeaway:** Possibly suitable for Robertson, **not** for Lanai — applying one client’s strategy to another with different circumstances violates III(C).
+
+**Example 4 — Following an Investment Mandate (Perkowski).** He buys an undervalued, zero-dividend financial-services stock for the **high-income** mutual fund he manages.  
+**Takeaway:** Unless allowed by the mandate or the fund’s disclosures, buying off-mandate violates III(C)(2), however attractive the stock.
+
+**Example 5 — IPS Requirements and Limitations (Gubler).** The insurance subsidiary’s IPS allows liquid assets only (large-cap equities; AA-or-better bonds of five years or less). Gubler puts 4% into a seed-capital private equity fund with a three-year lockup, though total equity stays well below its cap.  
+**Takeaway:** Lockup / illiquid assets fall outside the IPS’s liquidity requirement and accepted asset classes — violation regardless of size.
