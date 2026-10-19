@@ -218,6 +218,8 @@ Dialogue:
 - 日本語はそんなに難しくありません。 — Japanese is not that difficult.
 - このパソコンはそんなに遅くありません。 — This computer is not that slow.
 
+<a id="reason-kara"></a>
+
 ## 〜から（reason）
 
 **Rule:** **から** at the end of a clause or sentence marks a **reason / cause** (“because …”). It can stand alone as an answer or follow a statement that gives the conclusion first.
@@ -450,6 +452,8 @@ Japanese has several fixed frames for comparing two nouns. The four below are th
 - B: 中国のほうが広いです。 — China is larger.
 - A: パソコンとスマホとどちらが高いですか。 — Between a PC and a smartphone, which is more expensive?
 - B: スマホのほうが高いです。 — The smartphone is.
+
+<a id="reason-node-noun"></a>
 
 ## N なので、～（cause and reason II）
 
@@ -963,3 +967,128 @@ To make the plain past negative, change the final **い** of **V ない** to **�
 - B：映画館や本屋などがあります。 — There is a movie theater and a bookstore, among other things.
 - A：いつもどこで服を買いますか。 — Where do you usually buy clothes?
 - B：ユニクロやタオバオで買います。 — I buy them from places like Uniqlo and Taobao.
+
+## あげる／くれる／もらう（giving and receiving）
+
+**Rule:** Japanese uses different verbs for giving and receiving depending on **who gives, who receives, and whose viewpoint the speaker takes**. These verbs describe the transfer of an item. Once the context makes the participants clear, Japanese often leaves the subject unstated.
+
+### あげる（give to someone else）
+
+**Pattern:** **N₁（giver／わたし）は N₂（recipient）に N（item）をあげる**.
+
+**あげる** means "give" when the speaker gives something to another person. If both people are third parties, it also works when the speaker presents them neutrally or takes the giver's viewpoint.
+
+- （わたしは）彼女に花をあげました。 — I gave her flowers.
+- 日本では、バレンタインデーには女性が男性にチョコレートをあげます。 — In Japan, women give men chocolate on Valentine's Day.
+- 妹が友達にお土産をあげました。 — My younger sister gave her friend a souvenir.
+
+**やる** can also mean "give". It is traditionally used for someone of lower status or for plants and animals, though it is less common in modern usage.
+
+- 花に水をやります。 — I water the flowers.
+
+### くれる（someone gives to me or my in-group）
+
+**Pattern:** **N₁（giver）は N₂（recipient／わたし）に N（item）をくれる**.
+
+**くれる** means "give" when someone else gives something to the speaker or to someone the speaker identifies with. The giver is someone other than the speaker. If both people are third parties, the speaker takes the recipient's viewpoint.
+
+- お正月に祖父がお年玉を（わたしに）くれました。 — My grandfather gave me New Year's gift money.
+- 社長が妹に花をくれました。 — The company president gave my younger sister flowers.
+
+### もらう（receive from someone）
+
+**Pattern:** **N₁（recipient／わたし）は N₂（giver）に／から N（item）をもらう**.
+
+**もらう** means "receive". The giver is marked by **に** or **から**. The recipient is the speaker or someone the speaker identifies with; when both are third parties, the speaker takes the recipient's viewpoint.
+
+- （わたしは）妹にプレゼントのアドバイスをもらいました。 — I got advice about a present from my younger sister.
+- 佐藤：中村さんは李さんにどんなプレゼントをもらいましたか。 — Sato: What kind of present did you receive from Li, Nakamura?
+- 中村：（わたしは）由加ちゃんからかわいいハンカチをもらいました。 — Nakamura: I received a cute handkerchief from Yuka.
+
+**いただく** is the humble form of **もらう**. Use it when receiving something from someone you wish to show respect toward; it makes the expression more polite.
+
+- みなさんから素敵なプレゼントをたくさんいただきました。 — I received many lovely gifts from everyone.
+
+## V ます-stem ＋ たい（want to do）
+
+**Rule:** Add **たい** to a verb's **ます-stem** to express a desire to do that action: "want to …". **たい** conjugates like an **い-adjective**, so it can become **たくない** (do not want to) or **たかった** (wanted to).
+
+- あの会社で働きたいです。 — I want to work at that company.
+- 今日はあまり出かけたくないです。 — I don't really want to go out today.
+- 遊びに行きたかったのですが、台風で止めました。 — I wanted to go out for fun, but called it off because of the typhoon.
+
+With a transitive verb, the thing desired can be marked by **が** instead of **を**.
+
+- おいしいものが食べたいです。 — I want to eat something delicious.
+
+**Person and politeness:** **V たいです** normally states the **speaker's own** desire, often without an explicit subject. A direct **V たいですか** question about someone else's wishes can sound too personal or blunt, especially when speaking to a senior person or someone you do not know well. Ask about a preferred option more indirectly in that situation.
+
+- ○ 今日はあの人に会いたくありません。 — I don't want to see that person today.
+- △ 何が食べたいですか。 — What do you want to eat? *(Can sound too direct in a polite setting.)*
+- ○ お昼ご飯は何がいいんですか。 — What would you like for lunch?
+
+## ～か分かりません（I don't know …）
+
+**Rule:** Put **か分かりません** after a **plain-form question clause**, often one containing a question word, to say what you **do not know**. In English, this is usually "I don't know where / when / which …".
+
+| Before か分かりません | Pattern |
+|---|---|
+| Verb | Plain form ＋ か分かりません |
+| い-adjective | Plain form ＋ か分かりません |
+| な-adjective | Adjective stem ＋ か分かりません |
+| Noun | Noun ＋ か分かりません |
+
+**Note:** Do not put **だ** between a noun or な-adjective and **か**: use **N か** and **な-adjective stem ＋ か**, not *N だか* or *な-adjective だか*.
+
+- 新幹線の切符をどこで買うか分かりません。 — I don't know where to buy a Shinkansen ticket.
+- いつ雨が降るか分かりません。 — I don't know when it will rain.
+- 中村さんの傘はどれか分かりません。 — I don't know which one is Nakamura's umbrella.
+
+## ずつ（each / little by little）
+
+**Rule:** Put **ずつ** after a **quantity** or a **degree word** to show that an action happens repeatedly in the stated amount, or that the same amount is allotted to each person or item. Depending on context, it means "… at a time," "… each," or "little by little."
+
+- １人ずつ発言する。 — Each person speaks in turn.
+- 日本語が少しずつ上手になりました。 — My Japanese improved little by little.
+- みかんを一人３個ずつあげます。 — I'll give each person three mandarins.
+
+## N にする（choose / decide on）
+
+**Rule:** Put **にする** after a noun to say that you **choose or decide on** that option from several possibilities. It is especially common when ordering food or drinks and when shopping.
+
+- A：お飲み物はどうなさいますか。 — What would you like to drink?
+- B：ビールにします。 — I'll have a beer.
+- どの色がいいかわからなかったから、一色ずつにしました。 — I couldn't decide which color was best, so I chose one of each color.
+- A：今日のお昼は何にしましょうか。 — What shall we have for lunch today?
+- B：私はラーメンが食べたいです。ラーメンにしましょうよ。 — I'd like ramen. Let's have ramen.
+
+## Adverbial forms of adjectives（形容詞連用形）
+
+**Rule:** An adjective can modify a verb to describe **how an action is performed** or the state in which it is done. Change an **い-adjective** from **～い** to **～く** before the verb. Add **に** to the stem of a **な-adjective** before the verb.
+
+| Adjective type | Pattern | Example |
+|---|---|---|
+| い-adjective | Drop い ＋ く ＋ verb | 早い → 早く走る |
+| な-adjective | Stem ＋ に ＋ verb | 親切 → 親切に答える |
+
+- 皆さんからの質問に親切に答えます。 — I answer everyone's questions kindly.
+- お皿をきれいに洗いました。 — I washed the dishes thoroughly.
+- 早く走りましょう。 — Let's run quickly.
+
+## ～ので（cause and reason II: verbs and adjectives）
+
+**Rule:** This extends the earlier [N なので（cause and reason II）](#reason-node-noun) rule to **verbs and adjectives**. **ので** follows a clause giving the reason for what comes next, often presenting it as a matter of circumstance. It can also end a sentence when the result is clear from context. Compare the earlier [～から（reason）](#reason-kara) rule.
+
+| Predicate type | Form before ので |
+|---|---|
+| Verb | Plain form ＋ ので |
+| い-adjective | Plain form ＋ ので |
+| な-adjective | Stem ＋ な ＋ ので |
+| Noun | Noun ＋ な ＋ ので |
+
+For a non-past affirmative noun or な-adjective, use **な** before **ので**, rather than **だ**: **N なので**, **な-adjective stem ＋ なので**.
+
+- 頭が痛いので、早く帰りたいです。 — I have a headache, so I'd like to go home early.
+- 海外にいるので、参加ができません。 — Since I'm overseas, I can't participate.
+- 発音があまりきれいじゃないので、たくさん練習したいです。 — My pronunciation isn't very good, so I want to practice a lot.
+- ここは、今人気のお店なので、予約が難しいです。 — This place is popular now, so it's difficult to get a reservation.
