@@ -16,9 +16,9 @@ title: Options
 
 La logique fondamentale est l’**absence d’arbitrage**.
 
-## Valorisation binomiale des options
+## Valorisation binomiale des options {#binomial-option-valuation}
 
-### Formule de base
+### Formule de base {#basic-formula}
 
 En univers risque-neutre, la formule binomiale à chaque étape est :
 $$
@@ -122,14 +122,14 @@ def compute_binomial_price(row, df_spy, r, N):
     return option.price()
 ```
 
-### Composantes
+### Composantes {#components}
 
 Hypothèses de base de l’arbre binomial :
 
 * On part de $S_0$
 * Hausse $U$, baisse $D$, avec par défaut $D=\frac{1}{U}$.
 
-#### Modèle 1
+#### Modèle 1 {#model-one}
 
 Proposé par Bruce Tuckman pour décrire la valorisation obligataire :
 $$
@@ -139,7 +139,7 @@ $$
 
 où $r$ est le taux d’intérêt et $w$ un processus de marche aléatoire. Pour un temps égal à $1$, $r_u =r+\sigma$, $r_d = r-\sigma$. Ainsi $S_u = Se^{\sigma}=SU$, $S_d=Se{-\sigma}=SD$, donc $D=\frac{1}{U}$ par défaut.
 
-### Probabilité risque-neutre
+### Probabilité risque-neutre {#risk-neutrual-probability}
 
 Par absence d’arbitrage, le cours attendu de l’action est :
 $$
@@ -153,7 +153,7 @@ $$
 \end{align}
 $$
 
-### Modèle binomial à une période
+### Modèle binomial à une période {#one-period-binomial-model}
 
 On suppose une option européenne :
 $$
@@ -166,7 +166,7 @@ P_{d,t}&=\max(0,X-S_d)
 $$
 Alors $C_0=PV(E(C))=\frac{(\pi_u C_{u,t}+\pi_d C_{d,t})}{(1+r_f)^t}$ et $P_o = \frac{(\pi_u P_{u,t}+\pi_d P_{d,t})}{(1+r_f)^t}$.
 
-### Parité call-put
+### Parité call-put {#put-call-parity}
 
 |              | **Call fiduciaire**      | **Put de protection** |
 | ------------ | ----------------------- | ------------------ |
@@ -179,7 +179,7 @@ $$
 c+\frac{X}{(1+r_f)^t}=S_0+p
 $$
 
-### Méthode du portefeuille sans risque
+### Méthode du portefeuille sans risque {#risk-free-portfolio-method}
 
 1. On construit un portefeuille sans risque en achetant $\delta$ actions et en vendant un call ; sa valeur en $0$ est :
    $$
@@ -213,11 +213,11 @@ $$
 
 
 
-### Modèle binomial à deux périodes
+### Modèle binomial à deux périodes {#two-period-binomial-model}
 
 Comme dans le modèle à une période, $\pi_u$ et $\pi_d$ se calculent de la même façon (ce sont d’ailleurs les mêmes valeurs !). Il suffit ensuite de calculer la valeur actuelle de l’espérance.
 
-#### Exemple
+#### Exemple {#example}
 
 Soit une action ne versant pas de dividende, cotée €50. Un call européen sur cette action a une échéance de deux ans et un prix d’exercice de €50. Le taux sans risque est de 5 % par an. Le facteur de hausse (U) vaut 1,356 et le facteur de baisse (D) 0,744. Calculer la valeur actuelle du call et celle du put correspondant.
 
@@ -241,12 +241,12 @@ $P_0 = C_0 + PV(X) - S_0 = 9.71 + \frac{50}{(1.05)^2} - 50 = 5.06$.
 
 </span>
 
-### Exercice anticipé des options américaines
+### Exercice anticipé des options américaines {#advance-exercise-of-american-option}
 
 * Un call américain sur une action sans dividende n’est pas exercé de manière anticipée, car la valeur de l’option dépasse la valeur d’exercice : *elle vaut plus vivante que morte*.
 * Un call américain sur une action à dividende, ou très dans la monnaie, peut être exercé plus tôt.
 
-### Modèle binomial à deux périodes pour une option américaine
+### Modèle binomial à deux périodes pour une option américaine {#two-period-binomial-model-of-american-option}
 
 Une option américaine peut être exercée de manière anticipée lorsque :
 
@@ -257,15 +257,15 @@ Une option américaine peut être exercée de manière anticipée lorsque :
 >
 > Calculer la valeur de l’option en cas d’exercice
 
-### Options de taux
+### Options de taux {#interest-rate-option}
 
 La valorisation suit le modèle binomial standard, mais on multiplie par le nominal.
 
 
 
-## Modèle de Black-Scholes
+## Modèle de Black-Scholes {#black-scholes-model}
 
-### Hypothèses
+### Hypothèses {#assumption}
 
 Le modèle de Black-Scholes est la version continue du modèle binomial (lorsque $t\to\infty$).
 
@@ -279,7 +279,7 @@ Le modèle de Black-Scholes est la version continue du modèle binomial (lorsque
   * Le sous-jacent est très liquide et se négocie en continu
   * La vente à découvert du sous-jacent est autorisée
 
-### Formule de base
+### Formule de base {#basic-formula-1}
 
 La formule de Black-Scholes est :
 $$
@@ -304,11 +304,11 @@ def black_scholes(S, X, T, r, sigma):
     return S * norm.cdf(d1) - X * np.exp(-r * T) * norm.cdf(d2)
 ```
 
-### Lecture du modèle
+### Lecture du modèle {#initial-model}
 
 Comme pour la parité call-put, un **call** peut se voir comme un investissement en actions avec effet de levier (achat d’actions $N(d_1)$ et vente à découvert d’une obligation zéro-coupon sans risque $N_(d_2)$). Un **put** peut se voir comme l’achat de l’actif sans risque $N(-d_2)$ et la vente à découvert de l’action $N(-d_1)$.
 
-#### Ce qu’il faut retenir sur $N(d_1)$ et $N(d_2)$
+#### Ce qu’il faut retenir sur $N(d_1)$ et $N(d_2)$ {#conclusion-of-n-d-1-and-n-d-2}
 
 * $N(d_1)$ est le $\delta$ du call
 * $-N(-d_1)$ est le $\delta$ du put
@@ -316,7 +316,7 @@ Comme pour la parité call-put, un **call** peut se voir comme un investissement
 * $N(-d_2)$ est la probabilité risque-neutre que le put soit exercé à l’échéance (dans la monnaie).
 * $N_(-d_2)=1-N(d_2)$.
 
-### Modèle BSM avec revenus ou coûts de portage
+### Modèle BSM avec revenus ou coûts de portage {#bsm-model-with-carrying-benefits-or-costs}
 
 $$
 \begin{align}
@@ -327,7 +327,7 @@ d_2 &= d_1-\sigma\sqrt{T}
 \end{align}
 $$
 
-### Options sur futures
+### Options sur futures {#options-on-future}
 
 ```mermaid
 timeline 
@@ -337,7 +337,7 @@ timeline
       n : Fin du future
 ```
 
-#### Position
+#### Position {#position}
 
 La position sur le future dépend de la position sur l’option :
 
@@ -346,7 +346,7 @@ La position sur le future dépend de la position sur l’option :
 
 Le prix d’exercice est fixé dans l’option. Pour un achat de call, on exerce si $F<F_m(n)$ ; pour un achat de put, si $F> F_m(n)$.
 
-#### Modèle de Black
+#### Modèle de Black {#black-model}
 
 $$
 \begin{align}
@@ -361,7 +361,7 @@ $$
 >
 > En pratique, l’option et le future ont souvent la même échéance (option américaine).
 
-### Options de taux d’intérêt
+### Options de taux d’intérêt {#interest-rate-option-1}
 
 Le contrat ressemble aux options sur futures et aux FRA. Le choix de position et les cas d’exercice sont exactement les mêmes que pour les options sur futures.
 $$
@@ -370,7 +370,7 @@ C_0 &= NPe^{-r_f^c n \frac{30}{360}}(FR_{m\times n} N(d_1)-XN(d_2))\frac{(n-m)30
 P_0 &= NP e^{-r_f^cn\frac{30}{360}}(XN(-d_2)-FR_{m\times n}N(-d_1))\frac{(n-m)30}{360}
 \end{align}
 $$
-### Swaption
+### Swaption {#swapation}
 
 Une swaption est une option d’entrer dans un swap :
 
@@ -397,7 +397,7 @@ timeline
    
 ```
 
-## Les grecques
+## Les grecques {#greeks}
 
 D’après le modèle de Black-Scholes,
 $$
@@ -428,7 +428,7 @@ $$
 \rho = \frac{\partial C_0}{\partial r_f^ c}
 $$
 
-### Delta
+### Delta {#delta}
 
 Pour une action sans dividende : $\delta_{call}=N(d_1)$, $\delta_{put} = -N(-d_1)$.
 
@@ -444,7 +444,7 @@ Pour une action à dividende : $\Delta_{call}=e^{-\delta T}N(d_1), \Delta_{put}=
 >
 > Le $\delta$ est compris entre $(0,1)$ pour un call et $(-1, 0)$ pour un put. Il varie plus fortement à l’approche de l’échéance.
 
-### Gamma
+### Gamma {#gamma}
 
 > [!Note]
 >
@@ -456,7 +456,7 @@ Le $\gamma$ est maximal à la monnaie. Pour une option à la monnaie, il augment
 >
 > On peut construire une **stratégie $\gamma$-neutre** en combinant des positions d’options, puis une stratégie $\delta$-neutre en ajoutant une position sur l’action sous-jacente (puisque l’action n’a pas de $\gamma$).
 
-### Thêta
+### Thêta {#theta}
 
 Le thêta est en général négatif pour les calls comme pour les puts, car leur valeur diminue avec le temps. Avec :
 

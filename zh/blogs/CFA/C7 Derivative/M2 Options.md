@@ -16,9 +16,9 @@ title: 期权
 
 基本逻辑是**无套利**。
 
-## 二叉树期权估值
+## 二叉树期权估值 {#binomial-option-valuation}
 
-### 基本公式
+### 基本公式 {#basic-formula}
 
 在风险中性下，二叉树每一步的公式为：
 $$
@@ -122,14 +122,14 @@ def compute_binomial_price(row, df_spy, r, N):
     return option.price()
 ```
 
-### 组成部分
+### 组成部分 {#components}
 
 二叉树的基本假设：
 
 * 从 $S_0$ 开始
 * 上涨因子 $U$、下跌因子 $D$，默认 $D=\frac{1}{U}$。
 
-#### 模型一
+#### 模型一 {#model-one}
 
 由 Bruce Tuckman 提出，用于描述固定收益定价：
 $$
@@ -139,7 +139,7 @@ $$
 
 其中 $r$ 是利率，$w$ 是随机游走过程。当时间为 $1$ 时，$r_u =r+\sigma$，$r_d = r-\sigma$。因此 $S_u = Se^{\sigma}=SU$，$S_d=Se{-\sigma}=SD$，所以默认 $D=\frac{1}{U}$。
 
-### 风险中性概率
+### 风险中性概率 {#risk-neutrual-probability}
 
 由无套利推出，预期股价为：
 $$
@@ -153,7 +153,7 @@ $$
 \end{align}
 $$
 
-### 单期二叉树模型
+### 单期二叉树模型 {#one-period-binomial-model}
 
 现在假设是欧式期权：
 $$
@@ -166,7 +166,7 @@ P_{d,t}&=\max(0,X-S_d)
 $$
 于是 $C_0=PV(E(C))=\frac{(\pi_u C_{u,t}+\pi_d C_{d,t})}{(1+r_f)^t}$，$P_o = \frac{(\pi_u P_{u,t}+\pi_d P_{d,t})}{(1+r_f)^t}$。
 
-### 看跌–看涨平价
+### 看跌–看涨平价 {#put-call-parity}
 
 |              | **信托看涨**      | **保护性看跌** |
 | ------------ | ----------------------- | ------------------ |
@@ -179,7 +179,7 @@ $$
 c+\frac{X}{(1+r_f)^t}=S_0+p
 $$
 
-### 无风险组合法
+### 无风险组合法 {#risk-free-portfolio-method}
 
 1. 买入 $\delta$ 份股票并卖出一份看涨期权，构建无风险组合，组合在时刻 $0$ 的价值为：
    $$
@@ -213,11 +213,11 @@ $$
 
 
 
-### 两期二叉树模型
+### 两期二叉树模型 {#two-period-binomial-model}
 
 与单期模型相同，$\pi_u$ 和 $\pi_d$ 可以用同样的方法计算（其实数值都一样！），然后计算股票期望的现值即可。
 
-#### 示例
+#### 示例 {#example}
 
 考虑一只不支付股利的股票，现价 €50。以该股票为标的的欧式看涨期权还有两年到期，行权价为 €50。假设无风险利率为每年 5%。此外，上涨因子（U）为 1.356，下跌因子（D）为 0.744。根据这些信息，计算该看涨期权以及相应看跌期权的当前价值。
 
@@ -241,12 +241,12 @@ $P_0 = C_0 + PV(X) - S_0 = 9.71 + \frac{50}{(1.05)^2} - 50 = 5.06$。
 
 </span>
 
-### 美式期权的提前行权
+### 美式期权的提前行权 {#advance-exercise-of-american-option}
 
 * 以不支付股利的股票为标的的美式看涨期权不会提前行权，因为期权价值大于行权价值：*活着比死了更值钱*。
 * 以支付股利的股票为标的、或深度实值的美式看涨期权可能提前行权。
 
-### 美式期权的两期二叉树模型
+### 美式期权的两期二叉树模型 {#two-period-binomial-model-of-american-option}
 
 美式期权在以下情况下可能提前行权：
 
@@ -257,15 +257,15 @@ $P_0 = C_0 + PV(X) - S_0 = 9.71 + \frac{50}{(1.05)^2} - 50 = 5.06$。
 >
 > 计算行权时的期权价值
 
-### 利率期权
+### 利率期权 {#interest-rate-option}
 
 估值过程与标准二叉树模型相同，只是要乘以名义本金。
 
 
 
-## Black-Scholes 模型
+## Black-Scholes 模型 {#black-scholes-model}
 
-### 假设
+### 假设 {#assumption}
 
 Black-Scholes 模型是二叉树模型的连续形式（当 $t\to\infty$ 时）。
 
@@ -279,7 +279,7 @@ Black-Scholes 模型是二叉树模型的连续形式（当 $t\to\infty$ 时）�
   * 标的资产流动性很高，可以连续交易
   * 允许卖空标的资产
 
-### 基本公式
+### 基本公式 {#basic-formula-1}
 
 Black-Scholes 公式为：
 $$
@@ -304,11 +304,11 @@ def black_scholes(S, X, T, r, sigma):
     return S * norm.cdf(d1) - X * np.exp(-r * T) * norm.cdf(d2)
 ```
 
-### 模型的直观理解
+### 模型的直观理解 {#initial-model}
 
 与看跌–看涨平价类似，**看涨期权**可以看作加杠杆的股票投资（买入股票 $N(d_1)$ 并卖空无风险零息债券 $N_(d_2)$）。**看跌期权**可以看作买入无风险资产 $N(-d_2)$ 并卖空股票 $N(-d_1)$。
 
-#### 关于 $N(d_1)$ 和 $N(d_2)$ 的结论
+#### 关于 $N(d_1)$ 和 $N(d_2)$ 的结论 {#conclusion-of-n-d-1-and-n-d-2}
 
 * $N(d_1)$ 是看涨期权的 $\delta$
 * $-N(-d_1)$ 是看跌期权的 $\delta$
@@ -316,7 +316,7 @@ def black_scholes(S, X, T, r, sigma):
 * $N(-d_2)$ 是看跌期权到期时被行权（实值）的风险中性概率。
 * $N_(-d_2)=1-N(d_2)$。
 
-### 含持有收益或成本的 BSM 模型
+### 含持有收益或成本的 BSM 模型 {#bsm-model-with-carrying-benefits-or-costs}
 
 $$
 \begin{align}
@@ -327,7 +327,7 @@ d_2 &= d_1-\sigma\sqrt{T}
 \end{align}
 $$
 
-### 期货期权
+### 期货期权 {#options-on-future}
 
 ```mermaid
 timeline 
@@ -337,7 +337,7 @@ timeline
       n : 期货到期
 ```
 
-#### 头寸
+#### 头寸 {#position}
 
 期货的头寸取决于期权的头寸：
 
@@ -346,7 +346,7 @@ timeline
 
 行权价在期权中约定。对于买入看涨，若 $F<F_m(n)$ 则行权；对于买入看跌，若 $F> F_m(n)$ 则行权。
 
-#### Black 模型
+#### Black 模型 {#black-model}
 
 $$
 \begin{align}
@@ -361,7 +361,7 @@ $$
 >
 > 实践中，期权和期货通常设定在同一时间到期（美式期权）。
 
-### 利率期权
+### 利率期权 {#interest-rate-option-1}
 
 该合约类似于期货期权和 FRA。头寸判断和行权情形与期货期权完全相同。
 $$
@@ -370,7 +370,7 @@ C_0 &= NPe^{-r_f^c n \frac{30}{360}}(FR_{m\times n} N(d_1)-XN(d_2))\frac{(n-m)30
 P_0 &= NP e^{-r_f^cn\frac{30}{360}}(XN(-d_2)-FR_{m\times n}N(-d_1))\frac{(n-m)30}{360}
 \end{align}
 $$
-### 互换期权
+### 互换期权 {#swapation}
 
 互换期权是进入互换的期权：
 
@@ -397,7 +397,7 @@ timeline
    
 ```
 
-## 希腊字母
+## 希腊字母 {#greeks}
 
 由 Black-Scholes 模型，
 $$
@@ -428,7 +428,7 @@ $$
 \rho = \frac{\partial C_0}{\partial r_f^ c}
 $$
 
-### Delta
+### Delta {#delta}
 
 对于不支付股利的股票：$\delta_{call}=N(d_1)$，$\delta_{put} = -N(-d_1)$。
 
@@ -444,7 +444,7 @@ $$
 >
 > 看涨期权的 $\delta$ 介于 $(0,1)$，看跌期权介于 $(-1, 0)$。越接近到期日，它的变化越剧烈。
 
-### Gamma
+### Gamma {#gamma}
 
 > [!Note]
 >
@@ -456,7 +456,7 @@ $\gamma$ 在平值时达到最大。对于平值期权，越接近到期日 $\ga
 >
 > 可以通过组合期权头寸构建 **$\gamma$ 中性策略**，再加入标的股票头寸进一步构建 $\delta$ 中性策略（因为股票没有 $\gamma$）。
 
-### Theta
+### Theta {#theta}
 
 看涨和看跌期权的 Theta 通常都为负，因为它们的价值会随时间流逝而下降。其中：
 
