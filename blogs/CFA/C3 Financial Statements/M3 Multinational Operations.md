@@ -228,6 +228,10 @@ Net income must be $163+56=219$ (ending RE plus dividends, since beginning RE is
 
 The same subsidiary and the same exchange rates give a **loss in equity** under the current rate method and a **gain in net income** under the temporal method. The functional currency, a management judgment, decides which one the parent reports.
 
+#### Balance Sheet Exposure
+
+
+
 ### Hyper-Inflationary Environment
 
 
