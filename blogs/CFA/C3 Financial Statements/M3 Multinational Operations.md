@@ -230,11 +230,122 @@ The same subsidiary and the same exchange rates give a **loss in equity** under 
 
 #### Balance Sheet Exposure
 
+Items translated at the **current** exchange rate are revalued every reporting period as the rate moves, so they are **exposed** to translation adjustments. Items translated at **historical** rates are not: their translated amount never changes. Balance sheet (translation) exposure is the difference between the exposed assets and the exposed liabilities:
 
+* **Net asset exposure**: exposed assets exceed exposed liabilities.
+* **Net liability exposure**: exposed liabilities exceed exposed assets.
 
-### Hyper-Inflationary Environment
+This is the translation counterpart of the [transaction exposure](#foreign-currency-transactions) on a single receivable or payable:
 
+| Balance sheet exposure | Foreign currency (FC) strengthens | Foreign currency (FC) weakens |
+| --- | --- | --- |
+| **Net asset** | Positive translation adjustment | Negative translation adjustment |
+| **Net liability** | Negative translation adjustment | Positive translation adjustment |
 
+**Which items are exposed depends on the method:**
+
+| | Current rate method | Temporal method |
+| --- | --- | --- |
+| **Exposed items** | **All** assets and liabilities | Only **monetary** assets and liabilities (and non-monetary items at current value) |
+| **Usual exposure** | **Net asset**: assets − liabilities = equity, which is positive for any solvent subsidiary | Usually **net liability**: monetary liabilities (payables, debt) tend to exceed monetary assets (cash, receivables), because inventory and PP&E are at historical rates |
+| **FC strengthens** | Positive adjustment: the **CTA increases** (OCI) | Usually a **remeasurement loss** (NI) |
+| **FC weakens** | Negative adjustment: the CTA decreases | Usually a **remeasurement gain** (NI) |
+
+In the euro example above, the euro **weakened**: under the current rate method the net asset exposure of EUR 1,150 gave a CTA of $-109$, while under the temporal method the net monetary liability exposure of EUR 150 gave a remeasurement **gain** of $+9$.
+
+> [!Note]
+>
+> The method can **reverse the sign** of the effect. A parent can reduce its exposure by matching the subsidiary's exposed assets with exposed liabilities, e.g., by financing it with debt in the foreign currency: a **balance sheet hedge**.
+
+### Highly Inflationary Environment
+
+**Definition.** US GAAP defines a **highly inflationary** economy as one with **cumulative inflation of about 100% or more over three years** (roughly 26% a year). IFRS has no bright line: it lists indicators, such as people preferring to hold their wealth in a stable foreign currency, with a three-year cumulative rate approaching or exceeding 100% as one of them.
+
+**The problem.** In a highly inflationary economy the local currency loses value quickly against stable currencies. If the subsidiary's historical-cost assets were simply translated at the **current rate**, they would shrink in the parent's currency every year, even though the assets themselves are unchanged: the **"disappearing plant" problem**. For this reason, the functional currency **no longer decides** the method, and translating directly with the current rate method is **not allowed**.
+
+| | IFRS (IAS 29) | US GAAP |
+| --- | --- | --- |
+| **Step 1** | **Restate** the local-currency statements for local inflation, using a general price index | No restatement for inflation |
+| **Step 2** | **Translate** all items at the **current** exchange rate | **Temporal method**, as if the parent's currency were the functional currency |
+| **Gain or loss** | **Net purchasing power gain or loss**, in net income | Remeasurement gain or loss, in net income |
+
+**How the IFRS restatement works.**
+
+* **Non-monetary items** (inventory, PP&E, equity) are restated by the change in the price index from the **date they were acquired** (or contributed) to the **balance sheet date**.
+* **Monetary items** (cash, receivables, payables, debt) are **not restated**: they are already in current purchasing power.
+* **Income statement items** are restated from the date of each transaction to the balance sheet date.
+* Holding monetary **assets** during inflation loses purchasing power; owing monetary **liabilities** gains it. The net amount is the **purchasing power gain or loss**, in net income.
+
+This is why the restatement is **similar to the temporal method**: in both, non-monetary items keep their value and only the net monetary position produces a gain or loss.
+
+**Example (restatement, illustrative).** On January 1, a US parent sets up a subsidiary in a highly inflationary economy with share capital of LC 1,500, invested in land (LC 1,000) and cash (LC 500). There are no transactions during the year. The general price index doubles from 100 to 200, and the local currency halves in value, from USD 1.00 to USD 0.50 per LC.
+
+IFRS restates the non-monetary items by $200/100=2$ and translates everything at the current rate of 0.50. US GAAP uses the temporal method: cash at the current rate (0.50), land and share capital at the historical rate (1.00).
+
+| December 31 | LC | IFRS: restated LC | IFRS: USD | US GAAP: USD |
+| --- | ---: | ---: | ---: | ---: |
+| Cash (monetary) | 500 | 500 | 250 | 250 |
+| Land (non-monetary) | 1,000 | 2,000 | 1,000 | 1,000 |
+| **Total assets** | **1,500** | **2,500** | **1,250** | **1,250** |
+| Share capital | 1,500 | 3,000 | 1,500 | 1,500 |
+| **Loss in NI** | — | **(500)** | **(250)** | **(250)** |
+
+* **Land keeps its value**: USD 1,000 under both standards. Translating the unrestated LC 1,000 at the current rate would have shown only USD 500, the disappearing plant.
+* **Cash loses value**: holding LC 500 while prices double loses LC 500 of purchasing power, which is USD 250 at the current rate. The temporal method gives the same loss, because the exchange rate fell in line with inflation.
 
 ### Analytical Issues
 
+Translation changes the **ratios** an analyst computes from the consolidated statements. The effect depends on whether a ratio's numerator and denominator are translated at the **same** rate.
+
+**Under the current rate method**, every B/S item is at the current rate and every I/S item at the average rate:
+
+| Ratio type | Ratio | Formula | Effect when the LC depreciates | Why |
+| --- | --- | --- | --- | --- |
+| Pure B/S | **Current ratio** | Current assets / current liabilities | Same | Both at the current rate |
+| Pure B/S | **Financial leverage** | Total assets / equity, or debt / equity | Same | Equity is the plug, so it equals net assets at the current rate |
+| Pure I/S | **Net profit margin** | NI / revenue | Same | Both at the average rate |
+| Mixed | **Asset turnover** | Revenue / total assets | **Higher** | I/S item at the average rate over a B/S item at the lower current rate |
+| Mixed | **ROA** | NI / total assets | **Higher** | Same reason |
+| Mixed | **ROE** | NI / equity | **Higher** | Same reason |
+
+A mixed ratio is the LC ratio scaled by $\frac{\text{Average rate}}{\text{Current rate}}$. When the LC **depreciates** over the year, the current rate is below the average rate, so mixed ratios rise; when it **appreciates**, they fall. In the [euro example](#current-rate-method) (average 1.15, current 1.10), asset turnover rises from $1{,}000/1{,}600=0.625$ in EUR to $1{,}150/1{,}760=0.653$ in USD, while the net profit margin stays at $200/1{,}000=230/1{,}150=20\%$.
+
+**Under the temporal method** each item uses its own rate, so the effect on each ratio must be **worked out case by case**. Comparing the two methods when the **LC depreciates** (historical rates above the average rate, above the current rate):
+
+| Ratio | Formula | Which method gives the higher ratio | Why |
+| --- | --- | --- | --- |
+| **Current ratio** | Current assets / current liabilities | **Temporal** | Inventory is at the higher historical rate under the temporal method; everything else is at the current rate under both |
+| **Quick ratio** | (Cash + receivables + marketable securities) / current liabilities | Same | All monetary, so at the current rate under both |
+| **Receivables turnover** | Revenue / receivables | Same | Revenue at the average rate and receivables at the current rate under both |
+| **Fixed asset turnover** | Revenue / fixed assets | **Current rate** | Fixed assets are at the higher historical rate under the temporal method, so the denominator is larger |
+| **Gross profit margin** | (Revenue − COGS) / revenue | Uncertain | COGS is at historical rates under the temporal method; which rates depends on FIFO, LIFO or average cost |
+| **Inventory turnover** | COGS / inventory | Uncertain | Both are at historical rates under the temporal method, but from different periods |
+| **Interest coverage** | EBIT / interest expense | Uncertain | EBIT includes COGS and depreciation at historical rates under the temporal method |
+| **Net margin, ROA, ROE** | NI / revenue, assets or equity | Uncertain | Temporal NI includes the remeasurement gain or loss, which can go either way |
+
+In the euro example, with all liabilities taken as current: the current ratio is $770/495=1.56$ under the current rate method and $778/495=1.57$ under the temporal method; fixed asset turnover is $1{,}150/990=1.16$ versus $1{,}150/1{,}080=1.06$; and the gross margin is $50.0\%$ versus $48.7\%$ (COGS 575 at the average rate vs 590 at historical rates).
+
+> [!Note]
+>
+> When the LC **appreciates**, every "higher" in the comparison above becomes "lower". Before comparing a multinational with a domestic peer, check which method each subsidiary uses and which way its currency moved.
+
+#### Effective Tax Rates
+
+A multinational pays tax in several jurisdictions, so its **effective tax rate** (income tax expense / pre-tax income) is a weighted average of the rates it faces. The **tax rate reconciliation** in the notes explains the gap between the parent's statutory rate and the effective rate, including the effect of foreign tax rates.
+
+Changes in the effective tax rate due to foreign taxes can come from:
+
+* **Changes in the applicable tax rates** in the jurisdictions where the company operates
+* **Changes in the mix of profits** earned in different jurisdictions: more profit in low-tax countries lowers the effective rate even if no tax rate changes
+
+When forecasting the tax rate, forecast **where** the profits will be earned, not only how much. A falling effective rate driven by a shift of profits to low-tax jurisdictions may not be sustainable, for example if tax rules change.
+
+#### Disclosure Related to Sales Growth
+
+Reported sales growth of a multinational mixes two things: the change in sales in local currencies, and the change in the exchange rates used to translate them. Companies therefore often disclose growth **excluding** the currency effect, as **organic** or **constant-currency** growth:
+
+$$(1+\text{Reported growth})=(1+\text{Growth in local currency})\times(1+\text{Currency effect})$$
+
+**Example.** Sales grow 5% in local currency, and the foreign currencies strengthen 3% against the presentation currency: reported growth is $1.05\times1.03-1=8.15\%$. Of that, only the 5% reflects **real performance** (volume and price); the rest is outside management's control and can reverse next year.
+
+Analysts should base forecasts and comparisons on growth **net of exchange rate effects**, and treat the currency effect separately. Some companies also disclose sales growth split into **volume, price and currency**; companies with a strong currency tailwind may stress reported growth instead.
