@@ -1175,3 +1175,12 @@ For a non-past affirmative noun or な-adjective, use **な** before **ので**,
 - 私は東京に行って、東京タワーとスカイツリーを見たいです。 — I want to go to Tokyo and see Tokyo Tower and the Skytree.
 - インターネットで資料を調べて、パワーポイントを作ります。 — I'll look up material online and make a PowerPoint.
 - 朝起きて、シャワーを浴びて、会社へ行きます。 — In the morning I get up, take a shower and go to work.
+
+## V てください（request）
+
+**Rule:** Te-form ＋ **ください** asks the listener to do something ("please …", Chinese 请……). Japanese has many polite ways to make a request, and **V てください** is mostly a polite **instruction or request**. Because it still sounds like telling someone what to do, it is **generally not used toward superiors**.
+
+- 今日はお疲れさまでした。ゆっくり休んでください。 — Thanks for your hard work today. Please get some good rest.
+- 電話番号を教えてください。 — Please tell me your phone number.
+- 明日の10時半に来てください。 — Please come at 10:30 tomorrow.
+- これは中国のお土産です。どうぞ、食べてください。 — This is a souvenir from China. Please have some.
