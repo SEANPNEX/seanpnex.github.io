@@ -47,6 +47,112 @@
     </div>
     <div class="src">TICK ROWS · LIEFLAT F5 · NET INCOME AND EQUITY BY METHOD (ILLUSTRATIVE)</div>
   </main>
+  <script src="i18n.js"></script>
+  <script>
+chartI18n.use({
+  zh: {
+    "Net income and equity across methods": "各方法下的净利润和权益",
+    "Same profit for A's owners; only consolidation adds NCI.": "A 的股东得到的利润相同；只有合并会加入 NCI。",
+    "A owns 50% of JV, shown three ways · bars to scale · ink = attributable to A's shareholders · gray = noncontrolling interest (NCI), the other 50% owners": "A 持有 JV 的 50%，用三种方式呈现 · 柱按比例 · 墨色 = 归属于 A 的股东 · 灰色 = 非控制性权益（NCI），即另外 50% 的股东",
+    "Net income": "净利润",
+    "NI to A's shareholders is 400 under every method": "每种方法下归属于 A 的股东的净利润都是 400",
+    "Equity method": "权益法",
+    "one line: 50% × 200": "单行：50% × 200",
+    "Proportionate": "比例合并",
+    "50% of each line": "每一项的 50%",
+    "Acquisition": "购买法",
+    "100% of JV, NCI split off": "JV 的 100%，分出 NCI",
+    "total": "合计",
+    "Shareholders' equity": "股东权益",
+    "acquisition method = the other two + NCI": "购买法 = 其他两种 + NCI",
+    "A’s equity": "A 的权益",
+    "A’s equity + NCI": "A 的权益 + NCI",
+    "TICK ROWS · LIEFLAT F5 · NET INCOME AND EQUITY BY METHOD (ILLUSTRATIVE)": "刻度行 · LIEFLAT F5 · 各方法下的净利润和权益（示意）",
+  },
+  ja: {
+    "Net income and equity across methods": "方法ごとの純利益と資本",
+    "Same profit for A's owners; only consolidation adds NCI.": "A の株主の利益は同じ；NCI が加わるのは連結だけ。",
+    "A owns 50% of JV, shown three ways · bars to scale · ink = attributable to A's shareholders · gray = noncontrolling interest (NCI), the other 50% owners": "A は JV の 50% を保有、3 通りで表示 · 棒は縮尺どおり · 墨色 = A の株主に帰属 · 灰色 = 非支配持分（NCI）、残り 50% の所有者",
+    "Net income": "純利益",
+    "NI to A's shareholders is 400 under every method": "A の株主に帰属する純利益はどの方法でも 400",
+    "Equity method": "持分法",
+    "one line: 50% × 200": "一行：50% × 200",
+    "Proportionate": "比例連結",
+    "50% of each line": "各項目の 50%",
+    "Acquisition": "取得法",
+    "100% of JV, NCI split off": "JV の 100%、NCI を分離",
+    "total": "合計",
+    "Shareholders' equity": "株主資本",
+    "acquisition method = the other two + NCI": "取得法 = ほかの 2 つ + NCI",
+    "A’s equity": "A の資本",
+    "A’s equity + NCI": "A の資本 + NCI",
+    "TICK ROWS · LIEFLAT F5 · NET INCOME AND EQUITY BY METHOD (ILLUSTRATIVE)": "ティック行 · LIEFLAT F5 · 方法別の純利益と資本（例示）",
+  },
+  fr: {
+    "Net income and equity across methods": "Résultat net et capitaux propres selon la méthode",
+    "Same profit for A's owners; only consolidation adds NCI.": "Même bénéfice pour les actionnaires de A ; seule la consolidation ajoute des NCI.",
+    "A owns 50% of JV, shown three ways · bars to scale · ink = attributable to A's shareholders · gray = noncontrolling interest (NCI), the other 50% owners": "A détient 50 % de JV, présenté de trois façons · barres à l’échelle · encre = attribuable aux actionnaires de A · gris = participations ne donnant pas le contrôle (NCI), les autres 50 %",
+    "Net income": "Résultat net",
+    "NI to A's shareholders is 400 under every method": "Le RN attribuable aux actionnaires de A est de 400 dans toutes les méthodes",
+    "Equity method": "Mise en équivalence",
+    "one line: 50% × 200": "une ligne : 50 % × 200",
+    "Proportionate": "Proportionnelle",
+    "50% of each line": "50 % de chaque ligne",
+    "Acquisition": "Acquisition",
+    "100% of JV, NCI split off": "100 % de JV, NCI séparées",
+    "total": "total",
+    "Shareholders' equity": "Capitaux propres",
+    "acquisition method = the other two + NCI": "méthode de l’acquisition = les deux autres + NCI",
+    "A’s equity": "Capitaux propres de A",
+    "A’s equity + NCI": "Capitaux propres de A + NCI",
+    "TICK ROWS · LIEFLAT F5 · NET INCOME AND EQUITY BY METHOD (ILLUSTRATIVE)": "LIGNES À TRAITS · LIEFLAT F5 · RÉSULTAT NET ET CAPITAUX PROPRES PAR MÉTHODE (ILLUSTRATIF)",
+  },
+}, {
+  patterns: {
+  zh: [
+    [/^Equity\ method\ ·\ NI\ ([−\-+]?[\d][\d,.]*%?)$/, "权益法 · 净利润 $1"],
+    [/^A’s\ shareholders\ ([−\-+]?[\d][\d,.]*%?)$/, "A 的股东 $1"],
+    [/^A’s\ shareholders\ ([−\-+]?[\d][\d,.]*%?)\ \+\ NCI\ ([−\-+]?[\d][\d,.]*%?)$/, "A 的股东 $1 + NCI $2"],
+    [/^Proportionate\ ·\ NI\ ([−\-+]?[\d][\d,.]*%?)$/, "比例合并 · 净利润 $1"],
+    [/^Acquisition\ ·\ NI\ ([−\-+]?[\d][\d,.]*%?)$/, "购买法 · 净利润 $1"],
+    [/^Equity\ method\ ·\ equity\ ([−\-+]?[\d][\d,.]*%?)$/, "权益法 · 权益 $1"],
+    [/^Proportionate\ ·\ equity\ ([−\-+]?[\d][\d,.]*%?)$/, "比例合并 · 权益 $1"],
+    [/^Acquisition\ ·\ equity\ ([−\-+]?[\d][\d,.]*%?)$/, "购买法 · 权益 $1"],
+  ],
+  ja: [
+    [/^Equity\ method\ ·\ NI\ ([−\-+]?[\d][\d,.]*%?)$/, "持分法 · 純利益 $1"],
+    [/^A’s\ shareholders\ ([−\-+]?[\d][\d,.]*%?)$/, "A の株主 $1"],
+    [/^A’s\ shareholders\ ([−\-+]?[\d][\d,.]*%?)\ \+\ NCI\ ([−\-+]?[\d][\d,.]*%?)$/, "A の株主 $1 + NCI $2"],
+    [/^Proportionate\ ·\ NI\ ([−\-+]?[\d][\d,.]*%?)$/, "比例連結 · 純利益 $1"],
+    [/^Acquisition\ ·\ NI\ ([−\-+]?[\d][\d,.]*%?)$/, "取得法 · 純利益 $1"],
+    [/^Equity\ method\ ·\ equity\ ([−\-+]?[\d][\d,.]*%?)$/, "持分法 · 資本 $1"],
+    [/^Proportionate\ ·\ equity\ ([−\-+]?[\d][\d,.]*%?)$/, "比例連結 · 資本 $1"],
+    [/^Acquisition\ ·\ equity\ ([−\-+]?[\d][\d,.]*%?)$/, "取得法 · 資本 $1"],
+  ],
+  fr: [
+    [/^Equity\ method\ ·\ NI\ ([−\-+]?[\d][\d,.]*%?)$/, "Mise en équivalence · RN $1"],
+    [/^A’s\ shareholders\ ([−\-+]?[\d][\d,.]*%?)$/, "Actionnaires de A $1"],
+    [/^A’s\ shareholders\ ([−\-+]?[\d][\d,.]*%?)\ \+\ NCI\ ([−\-+]?[\d][\d,.]*%?)$/, "Actionnaires de A $1 + NCI $2"],
+    [/^Proportionate\ ·\ NI\ ([−\-+]?[\d][\d,.]*%?)$/, "Proportionnelle · RN $1"],
+    [/^Acquisition\ ·\ NI\ ([−\-+]?[\d][\d,.]*%?)$/, "Acquisition · RN $1"],
+    [/^Equity\ method\ ·\ equity\ ([−\-+]?[\d][\d,.]*%?)$/, "Mise en équivalence · capitaux propres $1"],
+    [/^Proportionate\ ·\ equity\ ([−\-+]?[\d][\d,.]*%?)$/, "Proportionnelle · capitaux propres $1"],
+    [/^Acquisition\ ·\ equity\ ([−\-+]?[\d][\d,.]*%?)$/, "Acquisition · capitaux propres $1"],
+  ],
+  },
+  html: {
+  zh: {
+
+  },
+  ja: {
+
+  },
+  fr: {
+
+  },
+  },
+});
+  </script>
   <script>
   // ── Data: [method, note, A's share, NCI] ──
   var NI = [['Equity method', 'one line: 50% × 200', 400, 0], ['Proportionate', '50% of each line', 400, 0], ['Acquisition', '100% of JV, NCI split off', 400, 100]];

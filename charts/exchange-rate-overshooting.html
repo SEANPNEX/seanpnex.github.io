@@ -128,6 +128,74 @@ chartI18n.use({
     'time →': 'temps →',
   },
 });
+chartI18n.use({
+  zh: {
+    "Money supply = M₁": "货币供给 = M₁",
+    "Money supply = M₂": "货币供给 = M₂",
+    "Price level sticky": "价格水平粘性",
+    "Price level rising slowly": "价格水平缓慢上升",
+    "Interest rate = i₁": "利率 = i₁",
+    "Interest rate recovering from i₂": "利率从 i₂ 回升",
+    "Domestic currency value": "本币价值",
+    "Overshoot then recovery toward PPP": "超调后向 PPP 回升",
+    "1 period before t₁": "t₁ 之前 1 期",
+    "at t₁, the expansion": "在 t₁，货币扩张",
+    "1 period after t₁": "t₁ 之后 1 期",
+  },
+  ja: {
+    "Money supply = M₁": "貨幣供給量 = M₁",
+    "Money supply = M₂": "貨幣供給量 = M₂",
+    "Price level sticky": "物価水準は硬直的",
+    "Price level rising slowly": "物価水準がゆっくり上昇",
+    "Interest rate = i₁": "金利 = i₁",
+    "Interest rate recovering from i₂": "金利が i₂ から回復",
+    "Domestic currency value": "自国通貨の価値",
+    "Overshoot then recovery toward PPP": "オーバーシュートの後、PPP に向けて回復",
+    "1 period before t₁": "t₁ の 1 期前",
+    "at t₁, the expansion": "t₁、金融緩和の時点",
+    "1 period after t₁": "t₁ の 1 期後",
+  },
+  fr: {
+    "Money supply = M₁": "Masse monétaire = M₁",
+    "Money supply = M₂": "Masse monétaire = M₂",
+    "Price level sticky": "Niveau des prix rigide",
+    "Price level rising slowly": "Niveau des prix en hausse lente",
+    "Interest rate = i₁": "Taux d’intérêt = i₁",
+    "Interest rate recovering from i₂": "Taux d’intérêt remontant depuis i₂",
+    "Domestic currency value": "Valeur de la monnaie nationale",
+    "Overshoot then recovery toward PPP": "Surréaction puis retour vers la PPA",
+    "1 period before t₁": "1 période avant t₁",
+    "at t₁, the expansion": "en t₁, l’expansion",
+    "1 period after t₁": "1 période après t₁",
+  },
+}, {
+  patterns: {
+  zh: [
+    [/^([−\-+]?[\d][\d,.]*%?)\ periods\ before\ t₁$/, "t₁ 之前 $1 期"],
+    [/^([−\-+]?[\d][\d,.]*%?)\ periods\ after\ t₁$/, "t₁ 之后 $1 期"],
+  ],
+  ja: [
+    [/^([−\-+]?[\d][\d,.]*%?)\ periods\ before\ t₁$/, "t₁ の $1 期前"],
+    [/^([−\-+]?[\d][\d,.]*%?)\ periods\ after\ t₁$/, "t₁ の $1 期後"],
+  ],
+  fr: [
+    [/^([−\-+]?[\d][\d,.]*%?)\ periods\ before\ t₁$/, "$1 périodes avant t₁"],
+    [/^([−\-+]?[\d][\d,.]*%?)\ periods\ after\ t₁$/, "$1 périodes après t₁"],
+  ],
+  },
+  html: {
+  zh: {
+
+  },
+  ja: {
+
+  },
+  fr: {
+
+  },
+  },
+});
+
   </script>
   <script>
 (() => {

@@ -20,6 +20,136 @@
     </section>
     <div class="src">STACKED COLUMNS + SPANS · LIEFLAT F7 · RSU PLAN EXPENSE (ILLUSTRATIVE)</div>
   </main>
+  <script src="i18n.js"></script>
+  <script>
+chartI18n.use({
+  zh: {
+    "RSU plans · expense by plan and year": "RSU 计划 · 各计划各年的费用",
+    "Overlapping plans stack up the expense.": "重叠的计划让费用层层叠加。",
+    "Three RSU plans, granted a year apart, each vesting over 3 years · each plan's grant-date fair value is spread evenly over its vesting years · the reserve is cleared as each plan settles": "三个 RSU 计划，每隔一年授予一次，各自等待期 3 年 · 每个计划的授予日公允价值在其等待期内平均分摊 · 每个计划结算时储备随之清零",
+    "Compensation expense by year": "各年薪酬费用",
+    "ink = Plan A · dark gray = Plan B · light gray = Plan C · bars = total expense · rows = each plan's vesting years · ● = settlement": "墨色 = 计划 A · 深灰 = 计划 B · 浅灰 = 计划 C · 柱 = 费用合计 · 行 = 各计划的等待年份 · ● = 结算",
+    "Expense of three RSU plans by year, Y1 to Y6, with the reserve balance at each year-end": "三个 RSU 计划第 1 至第 6 年的费用，以及各年末的储备余额",
+    "expense per year": "每年费用",
+    "Plan A": "计划 A",
+    "Plan B": "计划 B",
+    "Plan C": "计划 C",
+    "no plan settles this year": "本年没有计划结算",
+    "Reserve, Dec.": "储备（12 月）",
+    "Reserve": "储备",
+    "STACKED COLUMNS + SPANS · LIEFLAT F7 · RSU PLAN EXPENSE (ILLUSTRATIVE)": "堆叠柱 + 跨度 · LIEFLAT F7 · RSU 计划费用（示意）",
+  },
+  ja: {
+    "RSU plans · expense by plan and year": "RSU プラン · プラン別・年別の費用",
+    "Overlapping plans stack up the expense.": "重なり合うプランで費用が積み上がる。",
+    "Three RSU plans, granted a year apart, each vesting over 3 years · each plan's grant-date fair value is spread evenly over its vesting years · the reserve is cleared as each plan settles": "1 年おきに付与された 3 つの RSU プラン、いずれも 3 年で権利確定 · 各プランの付与日の公正価値を権利確定期間に均等に配分 · 各プランの決済時に準備金を取り崩す",
+    "Compensation expense by year": "年別の報酬費用",
+    "ink = Plan A · dark gray = Plan B · light gray = Plan C · bars = total expense · rows = each plan's vesting years · ● = settlement": "墨色 = プラン A · 濃い灰色 = プラン B · 薄い灰色 = プラン C · 棒 = 費用合計 · 行 = 各プランの権利確定期間 · ● = 決済",
+    "Expense of three RSU plans by year, Y1 to Y6, with the reserve balance at each year-end": "3 つの RSU プランの 1〜6 年目の費用と各年度末の準備金残高",
+    "expense per year": "年間費用",
+    "Plan A": "プラン A",
+    "Plan B": "プラン B",
+    "Plan C": "プラン C",
+    "no plan settles this year": "今年決済されるプランはない",
+    "Reserve, Dec.": "準備金（12 月）",
+    "Reserve": "準備金",
+    "STACKED COLUMNS + SPANS · LIEFLAT F7 · RSU PLAN EXPENSE (ILLUSTRATIVE)": "積み上げ棒 + 期間 · LIEFLAT F7 · RSU プランの費用（例示）",
+  },
+  fr: {
+    "RSU plans · expense by plan and year": "Plans de RSU · charge par plan et par année",
+    "Overlapping plans stack up the expense.": "Les plans qui se chevauchent cumulent la charge.",
+    "Three RSU plans, granted a year apart, each vesting over 3 years · each plan's grant-date fair value is spread evenly over its vesting years · the reserve is cleared as each plan settles": "Trois plans de RSU, attribués à un an d’intervalle, acquis chacun sur 3 ans · la juste valeur de chaque plan à l’attribution est répartie également sur ses années d’acquisition · la réserve est soldée à chaque règlement",
+    "Compensation expense by year": "Charge de rémunération par année",
+    "ink = Plan A · dark gray = Plan B · light gray = Plan C · bars = total expense · rows = each plan's vesting years · ● = settlement": "encre = plan A · gris foncé = plan B · gris clair = plan C · barres = charge totale · lignes = années d’acquisition de chaque plan · ● = règlement",
+    "Expense of three RSU plans by year, Y1 to Y6, with the reserve balance at each year-end": "Charge des trois plans de RSU par année, de A1 à A6, avec le solde de la réserve en fin d’année",
+    "expense per year": "charge par an",
+    "Plan A": "Plan A",
+    "Plan B": "Plan B",
+    "Plan C": "Plan C",
+    "no plan settles this year": "aucun plan réglé cette année",
+    "Reserve, Dec.": "Réserve, déc.",
+    "Reserve": "Réserve",
+    "STACKED COLUMNS + SPANS · LIEFLAT F7 · RSU PLAN EXPENSE (ILLUSTRATIVE)": "COLONNES EMPILÉES + DURÉES · LIEFLAT F7 · CHARGE DES PLANS DE RSU (ILLUSTRATIF)",
+  },
+}, {
+  patterns: {
+  zh: [
+    [/^Y([−\-+]?[\d][\d,.]*%?)\ ·\ Plan\ A\ ([−\-+]?[\d][\d,.]*%?)$/, "$1年 · 计划 A $2"],
+    [/^Y([−\-+]?[\d][\d,.]*%?)\ ·\ Plan\ B\ ([−\-+]?[\d][\d,.]*%?)$/, "$1年 · 计划 B $2"],
+    [/^Y([−\-+]?[\d][\d,.]*%?)\ ·\ Plan\ C\ ([−\-+]?[\d][\d,.]*%?)$/, "$1年 · 计划 C $2"],
+    [/^([−\-+]?[\d][\d,.]*%?)\ RSUs\ ×\ \$([−\-+]?[\d][\d,.]*%?)\ =\ ([−\-+]?[\d][\d,.]*%?),\ spread\ over\ Y([−\-+]?[\d][\d,.]*%?)–Y([−\-+]?[\d][\d,.]*%?)$/, "$1 份 RSU × $$$2 = $3，分摊于第 $4–$5 年"],
+    [/^([−\-+]?[\d][\d,.]*%?)\ RSUs\ ×\ \$([−\-+]?[\d][\d,.]*%?)\ =\ ([−\-+]?[\d][\d,.]*%?);\ ([−\-+]?[\d][\d,.]*%?)\ a\ year\ in\ Y([−\-+]?[\d][\d,.]*%?)–Y([−\-+]?[\d][\d,.]*%?)$/, "$1 份 RSU × $$$2 = $3；第 $5–$6 年每年 $4"],
+    [/^([−\-+]?[\d][\d,.]*%?)\ a\ year\ ·\ total\ ([−\-+]?[\d][\d,.]*%?)$/, "每年 $1 · 合计 $2"],
+    [/^([−\-+]?[\d][\d,.]*%?)\ \/\ yr$/, "每年 $1"],
+    [/^reserve\ ([−\-+]?[\d][\d,.]*%?)\ →\ share\ capital\ ([−\-+]?[\d][\d,.]*%?)\ \(\$1\ par\)\ \+\ APIC\ ([−\-+]?[\d][\d,.]*%?)$/, "储备 $1 → 股本 $2（面值 $$1）+ APIC $3"],
+    [/^Reserve\ at\ the\ end\ of\ Y([−\-+]?[\d][\d,.]*%?)\ ·\ ([−\-+]?[\d][\d,.]*%?)$/, "第 $1 年末储备 · $2"],
+    [/^Plan\ A\ settled:\ ([−\-+]?[\d][\d,.]*%?)$/, "计划 A 已结算：$1"],
+    [/^Plan\ B\ settled:\ ([−\-+]?[\d][\d,.]*%?)$/, "计划 B 已结算：$1"],
+    [/^Plan\ C\ settled:\ ([−\-+]?[\d][\d,.]*%?)$/, "计划 C 已结算：$1"],
+    [/^Y([−\-+]?[\d][\d,.]*%?)$/, "$1年"],
+    [/^Plan\ A\ ·\ granted\ Jan\.\ 1,\ Y([−\-+]?[\d][\d,.]*%?)$/, "计划 A · 第 $1 年 1 月 1 日授予"],
+    [/^Plan\ A\ settles\ ·\ end\ of\ Y([−\-+]?[\d][\d,.]*%?)$/, "计划 A 结算 · 第 $1 年末"],
+    [/^Plan\ B\ ·\ granted\ Jan\.\ 1,\ Y([−\-+]?[\d][\d,.]*%?)$/, "计划 B · 第 $1 年 1 月 1 日授予"],
+    [/^Plan\ B\ settles\ ·\ end\ of\ Y([−\-+]?[\d][\d,.]*%?)$/, "计划 B 结算 · 第 $1 年末"],
+    [/^Plan\ C\ ·\ granted\ Jan\.\ 1,\ Y([−\-+]?[\d][\d,.]*%?)$/, "计划 C · 第 $1 年 1 月 1 日授予"],
+    [/^Plan\ C\ settles\ ·\ end\ of\ Y([−\-+]?[\d][\d,.]*%?)$/, "计划 C 结算 · 第 $1 年末"],
+  ],
+  ja: [
+    [/^Y([−\-+]?[\d][\d,.]*%?)\ ·\ Plan\ A\ ([−\-+]?[\d][\d,.]*%?)$/, "$1年 · プラン A $2"],
+    [/^Y([−\-+]?[\d][\d,.]*%?)\ ·\ Plan\ B\ ([−\-+]?[\d][\d,.]*%?)$/, "$1年 · プラン B $2"],
+    [/^Y([−\-+]?[\d][\d,.]*%?)\ ·\ Plan\ C\ ([−\-+]?[\d][\d,.]*%?)$/, "$1年 · プラン C $2"],
+    [/^([−\-+]?[\d][\d,.]*%?)\ RSUs\ ×\ \$([−\-+]?[\d][\d,.]*%?)\ =\ ([−\-+]?[\d][\d,.]*%?),\ spread\ over\ Y([−\-+]?[\d][\d,.]*%?)–Y([−\-+]?[\d][\d,.]*%?)$/, "RSU $1 個 × $$$2 = $3、$4〜$5 年目に配分"],
+    [/^([−\-+]?[\d][\d,.]*%?)\ RSUs\ ×\ \$([−\-+]?[\d][\d,.]*%?)\ =\ ([−\-+]?[\d][\d,.]*%?);\ ([−\-+]?[\d][\d,.]*%?)\ a\ year\ in\ Y([−\-+]?[\d][\d,.]*%?)–Y([−\-+]?[\d][\d,.]*%?)$/, "RSU $1 個 × $$$2 = $3；$5〜$6 年目に年 $4"],
+    [/^([−\-+]?[\d][\d,.]*%?)\ a\ year\ ·\ total\ ([−\-+]?[\d][\d,.]*%?)$/, "年 $1 · 合計 $2"],
+    [/^([−\-+]?[\d][\d,.]*%?)\ \/\ yr$/, "年 $1"],
+    [/^reserve\ ([−\-+]?[\d][\d,.]*%?)\ →\ share\ capital\ ([−\-+]?[\d][\d,.]*%?)\ \(\$1\ par\)\ \+\ APIC\ ([−\-+]?[\d][\d,.]*%?)$/, "準備金 $1 → 資本金 $2（額面 $$1）+ APIC $3"],
+    [/^Reserve\ at\ the\ end\ of\ Y([−\-+]?[\d][\d,.]*%?)\ ·\ ([−\-+]?[\d][\d,.]*%?)$/, "$1 年目末の準備金 · $2"],
+    [/^Plan\ A\ settled:\ ([−\-+]?[\d][\d,.]*%?)$/, "プラン A 決済：$1"],
+    [/^Plan\ B\ settled:\ ([−\-+]?[\d][\d,.]*%?)$/, "プラン B 決済：$1"],
+    [/^Plan\ C\ settled:\ ([−\-+]?[\d][\d,.]*%?)$/, "プラン C 決済：$1"],
+    [/^Y([−\-+]?[\d][\d,.]*%?)$/, "$1年"],
+    [/^Plan\ A\ ·\ granted\ Jan\.\ 1,\ Y([−\-+]?[\d][\d,.]*%?)$/, "プラン A · $1 年目 1 月 1 日に付与"],
+    [/^Plan\ A\ settles\ ·\ end\ of\ Y([−\-+]?[\d][\d,.]*%?)$/, "プラン A の決済 · $1 年目末"],
+    [/^Plan\ B\ ·\ granted\ Jan\.\ 1,\ Y([−\-+]?[\d][\d,.]*%?)$/, "プラン B · $1 年目 1 月 1 日に付与"],
+    [/^Plan\ B\ settles\ ·\ end\ of\ Y([−\-+]?[\d][\d,.]*%?)$/, "プラン B の決済 · $1 年目末"],
+    [/^Plan\ C\ ·\ granted\ Jan\.\ 1,\ Y([−\-+]?[\d][\d,.]*%?)$/, "プラン C · $1 年目 1 月 1 日に付与"],
+    [/^Plan\ C\ settles\ ·\ end\ of\ Y([−\-+]?[\d][\d,.]*%?)$/, "プラン C の決済 · $1 年目末"],
+  ],
+  fr: [
+    [/^Y([−\-+]?[\d][\d,.]*%?)\ ·\ Plan\ A\ ([−\-+]?[\d][\d,.]*%?)$/, "A$1 · plan A $2"],
+    [/^Y([−\-+]?[\d][\d,.]*%?)\ ·\ Plan\ B\ ([−\-+]?[\d][\d,.]*%?)$/, "A$1 · plan B $2"],
+    [/^Y([−\-+]?[\d][\d,.]*%?)\ ·\ Plan\ C\ ([−\-+]?[\d][\d,.]*%?)$/, "A$1 · plan C $2"],
+    [/^([−\-+]?[\d][\d,.]*%?)\ RSUs\ ×\ \$([−\-+]?[\d][\d,.]*%?)\ =\ ([−\-+]?[\d][\d,.]*%?),\ spread\ over\ Y([−\-+]?[\d][\d,.]*%?)–Y([−\-+]?[\d][\d,.]*%?)$/, "$1 RSU × $2 $$ = $3, réparti sur A$4–A$5"],
+    [/^([−\-+]?[\d][\d,.]*%?)\ RSUs\ ×\ \$([−\-+]?[\d][\d,.]*%?)\ =\ ([−\-+]?[\d][\d,.]*%?);\ ([−\-+]?[\d][\d,.]*%?)\ a\ year\ in\ Y([−\-+]?[\d][\d,.]*%?)–Y([−\-+]?[\d][\d,.]*%?)$/, "$1 RSU × $2 $$ = $3 ; $4 par an de A$5 à A$6"],
+    [/^([−\-+]?[\d][\d,.]*%?)\ a\ year\ ·\ total\ ([−\-+]?[\d][\d,.]*%?)$/, "$1 par an · total $2"],
+    [/^([−\-+]?[\d][\d,.]*%?)\ \/\ yr$/, "$1 / an"],
+    [/^reserve\ ([−\-+]?[\d][\d,.]*%?)\ →\ share\ capital\ ([−\-+]?[\d][\d,.]*%?)\ \(\$1\ par\)\ \+\ APIC\ ([−\-+]?[\d][\d,.]*%?)$/, "réserve $1 → capital social $2 (nominal 1 $$) + APIC $3"],
+    [/^Reserve\ at\ the\ end\ of\ Y([−\-+]?[\d][\d,.]*%?)\ ·\ ([−\-+]?[\d][\d,.]*%?)$/, "Réserve fin A$1 · $2"],
+    [/^Plan\ A\ settled:\ ([−\-+]?[\d][\d,.]*%?)$/, "Plan A réglé : $1"],
+    [/^Plan\ B\ settled:\ ([−\-+]?[\d][\d,.]*%?)$/, "Plan B réglé : $1"],
+    [/^Plan\ C\ settled:\ ([−\-+]?[\d][\d,.]*%?)$/, "Plan C réglé : $1"],
+    [/^Y([−\-+]?[\d][\d,.]*%?)$/, "A$1"],
+    [/^Plan\ A\ ·\ granted\ Jan\.\ 1,\ Y([−\-+]?[\d][\d,.]*%?)$/, "Plan A · attribué le 1er janv. A$1"],
+    [/^Plan\ A\ settles\ ·\ end\ of\ Y([−\-+]?[\d][\d,.]*%?)$/, "Plan A réglé · fin A$1"],
+    [/^Plan\ B\ ·\ granted\ Jan\.\ 1,\ Y([−\-+]?[\d][\d,.]*%?)$/, "Plan B · attribué le 1er janv. A$1"],
+    [/^Plan\ B\ settles\ ·\ end\ of\ Y([−\-+]?[\d][\d,.]*%?)$/, "Plan B réglé · fin A$1"],
+    [/^Plan\ C\ ·\ granted\ Jan\.\ 1,\ Y([−\-+]?[\d][\d,.]*%?)$/, "Plan C · attribué le 1er janv. A$1"],
+    [/^Plan\ C\ settles\ ·\ end\ of\ Y([−\-+]?[\d][\d,.]*%?)$/, "Plan C réglé · fin A$1"],
+  ],
+  },
+  html: {
+  zh: {
+
+  },
+  ja: {
+
+  },
+  fr: {
+
+  },
+  },
+});
+  </script>
   <script>
 (() => {
   const { C, el, label, frame, guide, dot, mount } = curveKit;

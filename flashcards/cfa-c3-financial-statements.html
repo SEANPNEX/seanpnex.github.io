@@ -145,15 +145,18 @@ const CARDS = [
   },
   {
     id: "fsa-sbc-tax-dta-2026-10-19",
-    topic: "Share-based pay · tax (DTA)",
-    front: "Equity-settled share-based pay: the expected tax deduction is 24,000. What does the company recognize on the balance sheet before settlement?",
+    topic: "Share-based pay · tax (DTA during vesting)",
+    front: "4,000 ESOs with a grant-date FV of $6 vest over 4 years; the tax rate is 25%. What is the DTA at the end of vesting? Later, 3,000 options are exercised at a market price of $10 (exercise price $2). What is the tax deduction?",
     back: `<div class="ans">
 <ul>
-<li>A <strong>deferred tax asset</strong> of <strong>3,000</strong>: the tax value of the future deduction</li>
-<li>The deduction comes later (at exercise or vesting) than the book expense, so it is a deductible temporary difference</li>
+<li>Book expense = 4,000 × $6 = <strong>24,000</strong>, fully recognized over the 4 years</li>
+<li>DTA = 24,000 × 25% = <strong>6,000</strong> at the end of vesting</li>
+<li>Tax deduction at exercise = intrinsic value = 3,000 × ($10 − $2) = <strong>24,000</strong></li>
+<li>The deduction is the <strong>intrinsic value</strong> (market − exercise price), <strong>not</strong> market price × shares (3,000 × $10 = 30,000 is wrong)</li>
+<li>A <strong>DTA exists until exercise</strong>: it builds with the book expense during vesting and stops growing once vesting ends</li>
 </ul>
 </div>`,
-    gap: "didn't turn the 24,000 future tax deduction into a 3,000 DTA."
+    gap: "said 30,000 deduction and no DTA; the deduction is intrinsic value (24,000), and a 6,000 DTA sits on the B/S until exercise."
   },
   {
     id: "fsa-sbc-excess-tax-benefit-2026-10-19",
@@ -193,6 +196,49 @@ const CARDS = [
 </ul>
 </div>`,
     gap: "second miss: reversed the expense when a market condition failed."
+  },
+  {
+    id: "fsa-full-vs-partial-goodwill-2026-10-20",
+    topic: "Business combinations · goodwill",
+    front: "Parent pays 800 for 80% of a sub. FV of identifiable net assets is 750; FV of the NCI is 190. What is full goodwill and partial goodwill?",
+    back: `<div class="ans">
+<ul>
+<li><strong>Full goodwill</strong> = price + FV of NCI − 100% × FV of identifiable net assets</li>
+<li>= 800 + 190 − 750 = <strong>240</strong></li>
+<li><strong>Partial goodwill</strong> = price − parent % × FV of identifiable net assets</li>
+<li>= 800 − 0.8 × 750 = 800 − 600 = <strong>200</strong></li>
+<li>The 40 difference is the goodwill attributed to the NCI (190 − 0.2 × 750 = 40)</li>
+<li>IFRS allows either; US GAAP requires full goodwill</li>
+</ul>
+</div>`,
+    gap: "answered 50; full goodwill adds the NCI fair value and subtracts 100% of the net assets."
+  },
+  {
+    id: "fsa-m3-import-payable-eur-up-2026-10-20",
+    topic: "Multinational ops · FX transactions",
+    front: "A US company buys inventory on credit for EUR 100,000. Before settlement the EUR appreciates. Gain or loss, where, and what happens to inventory?",
+    back: `<div class="ans">
+<ul>
+<li>The EUR <strong>payable</strong> now needs more USD to settle → <strong>FX loss</strong> in <strong>net income</strong></li>
+<li>Unrealized at the balance sheet date if outstanding; realized at settlement</li>
+<li><strong>Inventory stays</strong> at the <strong>transaction-date rate</strong>; only the monetary payable is remeasured</li>
+</ul>
+</div>`,
+    gap: "picked a gain; owing an appreciating currency is a loss, and inventory is not remeasured."
+  },
+  {
+    id: "fsa-m3-temporal-net-monetary-assets-2026-10-20",
+    topic: "Multinational ops · temporal method",
+    front: "Temporal method: the subsidiary has net monetary assets and its local (foreign) currency appreciates. Remeasurement gain or loss, and where is it reported?",
+    back: `<div class="ans">
+<ul>
+<li>Exposure under the temporal method is the <strong>net monetary position</strong> (only monetary items are at the current rate)</li>
+<li>Net monetary <strong>assets</strong> + appreciating foreign currency → <strong>remeasurement gain</strong></li>
+<li>Reported in <strong>net income</strong> (not OCI)</li>
+<li>Net monetary liabilities flip it: gain when the foreign currency depreciates</li>
+</ul>
+</div>`,
+    gap: "picked a loss; net monetary assets gain when the foreign currency appreciates."
   }
 ];
 

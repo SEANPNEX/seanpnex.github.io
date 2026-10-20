@@ -66,6 +66,41 @@ chartI18n.use({
     fr: [[/^([A-Z]+): occurrence (\d+) of (\d+)$/, function (t, name, k, n) { return t(name) + ' : occurrence ' + k + ' sur ' + n; }]],
   },
 });
+chartI18n.use({
+  zh: {
+
+  },
+  ja: {
+
+  },
+  fr: {
+
+  },
+}, {
+  patterns: {
+  zh: [
+    [/^([−\-+]?[\d][\d,.]*%?)\ occurrences\ ·\ ([−\-+]?[\d][\d,.]*%?)\ of\ the\ ([−\-+]?[\d][\d,.]*%?)\ counted$/, "出现 $1 次 · 占统计的 $3 次中的 $2"],
+  ],
+  ja: [
+    [/^([−\-+]?[\d][\d,.]*%?)\ occurrences\ ·\ ([−\-+]?[\d][\d,.]*%?)\ of\ the\ ([−\-+]?[\d][\d,.]*%?)\ counted$/, "$1 回出現 · 集計した $3 回のうち $2"],
+  ],
+  fr: [
+    [/^([−\-+]?[\d][\d,.]*%?)\ occurrences\ ·\ ([−\-+]?[\d][\d,.]*%?)\ of\ the\ ([−\-+]?[\d][\d,.]*%?)\ counted$/, "$1 occurrences · $2 des $3 comptées"],
+  ],
+  },
+  html: {
+  zh: {
+
+  },
+  ja: {
+
+  },
+  fr: {
+
+  },
+  },
+});
+
   </script>
   <script>
     const NS='http://www.w3.org/2000/svg',INK='#1C1C1A',MUTED='#6A6963',GRID='#D8D6CE',PAPER='#F0EFEB';

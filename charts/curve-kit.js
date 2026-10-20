@@ -107,6 +107,7 @@
   function label(p, x, y, s, o) {
     o = o || {};
     var size = o.size || 11, weight = o.weight || 800;
+    s = T(s); // translate before wrapping, so lines break on the translated text
     var w = wrap(p, s, o.maxWidth, size, weight);
     var rows = w.rows || w;
     // A single unbreakable word wider than the room shrinks rather than spills.

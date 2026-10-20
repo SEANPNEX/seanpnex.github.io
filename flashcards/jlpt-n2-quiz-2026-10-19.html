@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>JLPT N2 — quiz misses 2026-10-19</title>
+<link rel="stylesheet" href="/flashcards/deck.css" />
+</head>
+<body>
+<script src="/flashcards/deck.js"></script>
+<script>
+const CARDS = [
+  {
+    id: "jlpt-te-form-rule-2026-10-19",
+    topic: "Te-form · godan endings (repeat)",
+    front: "Te-form rule for godan verbs: which endings give いて, いで, って, んで and して?",
+    back: `<div class="ans">
+      <ul>
+<li><span class="jp">く → <strong>いて</strong></span>: <span class="jp">書く → 書いて</span>, <span class="jp">聞く → 聞いて</span> (exception: <span class="jp">行く → 行って</span>)</li>
+<li><span class="jp">ぐ → <strong>いで</strong></span>: <span class="jp">泳ぐ → 泳いで</span>. Only ぐ takes いで.</li>
+<li><span class="jp">う・つ・る → <strong>って</strong></span>: <span class="jp">買って・待って・帰って</span></li>
+<li><span class="jp">ぬ・ぶ・む → <strong>んで</strong></span>: <span class="jp">死んで・遊んで・読んで</span></li>
+<li><span class="jp">す → <strong>して</strong></span>: <span class="jp">話して</span></li>
+<li>Irregular: <span class="jp">来る → <strong>来て</strong>、する → して</span></li>
+</ul>
+    </div>`,
+    gap: "Repeat miss: wrote いで for く-verbs; only ぐ-verbs take いで."
+  },
+  {
+    id: "jlpt-te-form-drill-kaku-kiku-2026-10-19",
+    topic: "Te-form drill · 書く／聞く",
+    front: "Te-form of <span class=\"jp\">書く</span> and <span class=\"jp\">聞く</span>?",
+    back: `<div class="ans">
+      <p><span class="jp"><strong>書いて</strong>、<strong>聞いて</strong></span>. く → いて, not いで.</p><p>Compare: <span class="jp">急ぐ → 急いで</span> (ぐ → いで).</p>
+    </div>`,
+    gap: "Wrote 書いで and 聞いで."
+  },
+  {
+    id: "jlpt-te-form-drill-kuru-2026-10-19",
+    topic: "Te-form drill · 来る",
+    front: "Te-form of <span class=\"jp\">来る</span>?",
+    back: `<div class="ans">
+      <p><span class="jp"><strong>来て</strong>（きて）</span>. It is irregular: no で.</p><p><span class="jp">友達が家に来て、一緒に勉強しました。</span> My friend came over and we studied together.</p>
+    </div>`,
+    gap: "Wrote 来で."
+  },
+  {
+    id: "jlpt-tai-past-negative-2026-10-19",
+    topic: "たい · past negative",
+    front: "“I didn’t want to watch it.” Past negative polite of <span class=\"jp\">見たい</span>?",
+    back: `<div class="ans">
+      <p><span class="jp"><strong>見たくなかったです</strong></span> (or <span class="jp">見たくありませんでした</span>).</p><p>たい conjugates like an い-adjective: <span class="jp">たい → たくない → たくなかった</span>, then add です. <span class="jp">見たくないでした</span> is wrong.</p>
+    </div>`,
+    gap: "Wrote 見たくないでした; the past goes inside the adjective: たくなかったです."
+  },
+  {
+    id: "jlpt-ka-wakarimasen-ga-2026-10-19",
+    topic: "か分かりません · question word + が",
+    front: "“I don’t know which one is correct.”",
+    back: `<div class="ans">
+      <p><span class="jp"><strong>どれが正しいか分かりません。</strong></span></p><ul><li>A question word as subject takes <span class="jp"><strong>が</strong></span>, not は.</li><li><span class="jp">正しい</span> is an い-adjective: plain form + か, with no の before か.</li></ul>
+    </div>`,
+    gap: "Used は after どれ and the wrong form of 正しい."
+  },
+  {
+    id: "jlpt-ni-suru-choose-2026-10-19",
+    topic: "N にする · choosing",
+    front: "Ordering: “For my drink, I’ll have tea.”",
+    back: `<div class="ans">
+      <p><span class="jp"><strong>飲み物はお茶にします。</strong></span></p><p>The chosen option + <span class="jp">にする</span>, with the category as topic (は). Do not translate “choose” with <span class="jp">を選ぶ</span>.</p>
+    </div>`,
+    gap: "Wrote お茶を飲み物を選ぶ instead of お茶にします."
+  },
+  {
+    id: "jlpt-na-node-2026-10-19",
+    topic: "ので · な before ので",
+    front: "“This document is important, so …”: how does <span class=\"jp\">大事</span> connect to ので?",
+    back: `<div class="ans">
+      <p><span class="jp"><strong>この資料は大事なので</strong>、…</span></p><p>A な-adjective (like <span class="jp">大事</span>) or a noun takes <span class="jp"><strong>な</strong></span> before ので, never だ: <span class="jp">学生なので、静かなので</span>.</p>
+    </div>`,
+    gap: "Left out the な before ので."
+  }
+];
+
+flashDeck({
+  key: "jlpt-n2-2026-10-19",
+  source: "JLPT N2 · quiz misses 2026-10-19",
+  gapLabel: "Gap",
+  cards: CARDS
+});
+</script>
+</body>
+</html>

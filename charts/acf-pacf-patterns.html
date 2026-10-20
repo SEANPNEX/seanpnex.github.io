@@ -109,6 +109,53 @@ chartI18n.use({
     fr: [[/^Lag (\d+): (.+)$/, 'Retard $1 : $2']],
   },
 });
+chartI18n.use({
+  zh: {
+    "AR(1) ACF tails off": "AR(1) 的 ACF 拖尾",
+    "AR(1) PACF cuts off after lag 1": "AR(1) 的 PACF 在滞后 1 阶后截尾",
+    "MA(1) ACF cuts off after lag 1": "MA(1) 的 ACF 在滞后 1 阶后截尾",
+    "MA(1) PACF tails off": "MA(1) 的 PACF 拖尾",
+  },
+  ja: {
+    "AR(1) ACF tails off": "AR(1) の ACF は減衰",
+    "AR(1) PACF cuts off after lag 1": "AR(1) の PACF はラグ 1 の後で切断",
+    "MA(1) ACF cuts off after lag 1": "MA(1) の ACF はラグ 1 の後で切断",
+    "MA(1) PACF tails off": "MA(1) の PACF は減衰",
+  },
+  fr: {
+    "AR(1) ACF tails off": "ACF d’un AR(1) : décroissance progressive",
+    "AR(1) PACF cuts off after lag 1": "PACF d’un AR(1) : coupure après le retard 1",
+    "MA(1) ACF cuts off after lag 1": "ACF d’un MA(1) : coupure après le retard 1",
+    "MA(1) PACF tails off": "PACF d’un MA(1) : décroissance progressive",
+  },
+}, {
+  patterns: {
+  zh: [
+    [/^outside\ the\ ±([−\-+]?[\d][\d,.]*%?)\ bound$/, "在 ±$1 界限之外"],
+    [/^inside\ the\ ±([−\-+]?[\d][\d,.]*%?)\ bound$/, "在 ±$1 界限之内"],
+  ],
+  ja: [
+    [/^outside\ the\ ±([−\-+]?[\d][\d,.]*%?)\ bound$/, "±$1 の範囲の外"],
+    [/^inside\ the\ ±([−\-+]?[\d][\d,.]*%?)\ bound$/, "±$1 の範囲の内"],
+  ],
+  fr: [
+    [/^outside\ the\ ±([−\-+]?[\d][\d,.]*%?)\ bound$/, "hors de la bande ±$1"],
+    [/^inside\ the\ ±([−\-+]?[\d][\d,.]*%?)\ bound$/, "dans la bande ±$1"],
+  ],
+  },
+  html: {
+  zh: {
+
+  },
+  ja: {
+
+  },
+  fr: {
+
+  },
+  },
+});
+
 </script>
 <script>
   const NS='http://www.w3.org/2000/svg', INK='#1C1C1A', MUTED='#6A6963', SOFT='#B0AFA9', GRID='#D8D6CE', PAPER='#F7F6F2';
