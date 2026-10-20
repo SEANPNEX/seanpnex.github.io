@@ -1197,3 +1197,16 @@ For a non-past affirmative noun or な-adjective, use **な** before **ので**,
 - 明日からお酒をやめるつもりです。 — I plan to quit drinking starting tomorrow.
 - ジョージさん、レポートは何について書くつもりですか。 — George, what are you planning to write your report about?（OK only between close friends）
 - この冬休みは帰国しないつもりです。 — I don't plan to go back to my home country this winter vacation.
+
+## ～予定だ（plan / schedule）
+
+**Form:** **V る ＋ 予定だ** / **N の ＋ 予定だ**（polite: 予定です）
+
+**Rule:** **予定だ** states a plan that is **already more or less settled** ("is scheduled to…", "plans to…", Chinese 计划……、准备……). Compared with **～つもりだ**, it is **objective**: it reports the schedule without the speaker's personal will. So it is **not limited to the first person**, and the tone is softer.
+
+**Tip:** つもりだ is what I intend to do; 予定だ is what's on the schedule.
+
+- 李さんはジョージさんと一緒に村上春樹先生の講演会に参加する予定です。 — Li is planning to attend Haruki Murakami's lecture with George.
+- 今週の土曜日、歌舞伎を見に行く予定です。 — I'm planning to go see kabuki this Saturday.
+- 今回のプロジェクトは2週間の予定です。 — This project is scheduled to take two weeks.
+- 明日は朝6時の飛行機に乗る予定です。 — Tomorrow I'm scheduled to take the 6 a.m. flight.
