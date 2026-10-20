@@ -1184,3 +1184,16 @@ For a non-past affirmative noun or な-adjective, use **な** before **ので**,
 - 電話番号を教えてください。 — Please tell me your phone number.
 - 明日の10時半に来てください。 — Please come at 10:30 tomorrow.
 - これは中国のお土産です。どうぞ、食べてください。 — This is a souvenir from China. Please have some.
+
+## ～つもりだ（intention）
+
+**Form:** **V る ＋ つもりだ** / **V ない ＋ つもりだ**（polite: つもりです）
+
+**Rule:** The dictionary form or ない-form plus **つもりだ** states the speaker's **intention or plan** ("I plan to…", "I intend to…", Chinese （我）打算……). **V るつもりだ** is fairly strict about person and is generally used **only in the first person**. Asking someone about their plans with a **つもりだ** question can sound **rude** to the listener, so avoid it except between people who are close (see the third example).
+
+**Not planning to:** for "I don't plan to…" or "I have no intention of…", use the **ない-form ＋ つもりだ**.
+
+- この夏休みはノーベル賞の受賞作品を読むつもりです。 — This summer vacation I plan to read Nobel Prize–winning works.
+- 明日からお酒をやめるつもりです。 — I plan to quit drinking starting tomorrow.
+- ジョージさん、レポートは何について書くつもりですか。 — George, what are you planning to write your report about?（OK only between close friends）
+- この冬休みは帰国しないつもりです。 — I don't plan to go back to my home country this winter vacation.
