@@ -1122,3 +1122,28 @@ For a non-past affirmative noun or な-adjective, use **な** before **ので**,
 - 友達に道を聞いて、駅まで歩きました。 — I asked a friend the way and walked to the station.
 - 昨日、友達が家に来て、一緒に勉強しました。 — Yesterday a friend came over and we studied together.
 - 海で泳いで、本を読んで、早く寝ました。 — I swam in the sea, read a book and went to bed early.
+
+## V ている（action in progress, ている I）
+
+> [!IMPORTANT]
+>
+> A core pattern with many uses. In this lesson, **V て ＋ いる** means an action is **in progress right now** ("is …ing", Chinese 正在……). It often comes with **今** (now) or **ちょうど** (just, right now). **ている** is the plain form; the polite form is **ています**.
+
+**Rule:** Take the te-form of the verb (see V て形 above) and add **いる**. **いる** is a Class II verb, so it conjugates like 見る. In casual speech the い is often dropped: 弾いてる, 考えてる.
+
+| | Plain（简体） | Polite（敬体） |
+|---|---|---|
+| Present | 弾いて**いる** — is playing | 弾いて**います** — is playing |
+| Past | 弾いて**いた** — was playing | 弾いて**いました** — was playing |
+| Negative | 弾いて**いない** — is not playing | 弾いて**いません** — is not playing |
+| Past negative | 弾いて**いなかった** — was not playing | 弾いて**いませんでした** — was not playing |
+| Question | 弾いて**いる？** | 弾いて**いますか** |
+
+**Tip:** Only **いる** changes. The te-form part stays as it is: 読んでいる → 読んでいた／読んでいない. Questions with **何をしていますか** ask "What are you doing (now)?".
+
+- A：今、何をしていますか。B：ピアノを弾いています。 — A: What are you doing now? B: I'm playing the piano.
+- A：すみません。この問題がわからないのですが。B：実は、わたしもこの問題について、ちょうど考えているんですよ。一緒に考えましょう。 — A: Excuse me, I don't understand this problem. B: Actually, I'm just thinking about it too. Let's work it out together.
+- 今、運転しながら、音楽を聴いています。 — Right now I'm listening to music while driving.
+- 昨日の夜八時ごろ、テレビを見ていました。 — Around eight last night, I was watching TV.
+- 今は雨が降っていません。 — It isn't raining now.
+- 電話したとき、兄は寝ていませんでした。 — When I called, my older brother wasn't sleeping.
