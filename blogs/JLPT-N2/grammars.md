@@ -1095,19 +1095,26 @@ For a non-past affirmative noun or な-adjective, use **な** before **ので**,
 
 ## V て形（te-form）
 
-**Rule:** The **te-form** links a verb to what follows (and, then, please …, is …ing). It is built the same way as the plain past **V た**: replace **て** with **た** and **で** with **だ**. How you form it depends on the verb class and, for Class I, on the final kana.
+**Rule:** The **te-form** links a verb to what follows (and, then, please …, is …ing). It is built the same way as the plain past **V た**: replace **て** with **た** and **で** with **だ**. How you form it depends on the verb class and, for Class I, on the final kana. In Japanese school grammar the te-form is called the **second continuative form**（动词第二连用形）.
 
 | Class | Ending | Te-form | Examples |
 |---|---|---|---|
-| Class II（一段動詞） | る | drop る ＋ **て** | 食べる → 食べて、見る → 見て、起きる → 起きて |
-| Class III（サ変・カ変） | — | irregular | する → **して**、来る → **来て**（きて） |
-| Class I（五段動詞） | う・つ・る | **って** | 買う → 買って、待つ → 待って、帰る → 帰って |
-| | む・ぶ・ぬ | **んで** | 読む → 読んで、遊ぶ → 遊んで、死ぬ → 死んで |
-| | く | **いて** | 書く → 書いて、聞く → 聞いて、歩く → 歩いて |
-| | ぐ | **いで** | 泳ぐ → 泳いで、急ぐ → 急いで、脱ぐ → 脱いで |
-| | す | **して** | 話す → 話して、出す → 出して |
+| Class II（一段動詞） | る | drop る ＋ **て** | 起きる → 起きて、食べる → 食べて、見る → 見て |
+| Class III（サ変・カ変） | — | する → し ＋ て；来る（くる） → 来（き） ＋ て | する → **して**、勉強する → **勉強して**、来る → **来て**（きて） |
+| Class I（五段動詞） | う・つ・る | → っ ＋ **て** | 使う → 使って、待つ → 待って、送る → 送って、買う → 買って、帰る → 帰って |
+| | む・ぶ・ぬ | → ん ＋ **で** | 飲む → 飲んで、呼ぶ → 呼んで、死ぬ → 死んで、読む → 読んで、遊ぶ → 遊んで |
+| | く | → い ＋ **て** | 書く → 書いて、聞く → 聞いて、歩く → 歩いて |
+| | ぐ | → い ＋ **で** | 泳ぐ → 泳いで、急ぐ → 急いで、脱ぐ → 脱いで |
+| | す | → し ＋ **て** | 話す → 話して、出す → 出して |
 
 **Exception:** **行く → 行って**（行った）, not 行いて.
+
+**Class I in four steps (textbook order):** change only the last kana, then add て／で.
+
+1. **う・つ・る → っ ＋ て**: つかう → つかって、まつ → まって、おくる → おくって
+2. **く → い ＋ て**: かく → かいて. **ぐ → い ＋ で**: およぐ → およいで
+3. **す → し ＋ て**: はなす → はなして
+4. **む・ぶ・ぬ → ん ＋ で**: のむ → のんで、よぶ → よんで、しぬ → しんで
 
 **Tip:** **で** appears only when the original ending is voiced: **ぐ, む, ぶ, ぬ**. Verbs ending in **く** or **す**, and the irregular **来る／する**, always take **て**: 聞く → 聞いて（聞いた）, never 聞いで. 帰る looks like Class II, but it is Class I, so it becomes 帰って.
 
