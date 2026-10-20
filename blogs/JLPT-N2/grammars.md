@@ -1147,3 +1147,20 @@ For a non-past affirmative noun or な-adjective, use **な** before **ので**,
 - 昨日の夜八時ごろ、テレビを見ていました。 — Around eight last night, I was watching TV.
 - 今は雨が降っていません。 — It isn't raining now.
 - 電話したとき、兄は寝ていませんでした。 — When I called, my older brother wasn't sleeping.
+
+## V た（plain past）
+
+**Rule:** **V た** marks a completed action or the past. It is the plain form of **V ました**. It is built exactly like the te-form (see V て形 above): just change **て → た** and **で → だ**.
+
+| Dictionary form | Te-form | た-form |
+|---|---|---|
+| 読む | 読んで | 読ん**だ** |
+| 聞く | 聞いて | 聞い**た** |
+| 食べる | 食べて | 食べ**た** |
+| 勉強する | 勉強して | 勉強し**た** |
+
+**Tip:** The 行く exception carries over: 行って → **行った**. The plain past negative is ～なかった, for example 見つからない → 見つから**なかった**.
+
+- 漢字の読み方を間違えた。 — I got the reading of the kanji wrong.
+- 鈴木さんはスマホをどこかに落とした。 — Suzuki dropped his phone somewhere.
+- あっちこっち探したが、見つからなかった。 — I searched all over, but couldn't find it.
