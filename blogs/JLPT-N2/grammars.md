@@ -1210,3 +1210,11 @@ For a non-past affirmative noun or な-adjective, use **な** before **ので**,
 - 今週の土曜日、歌舞伎を見に行く予定です。 — I'm planning to go see kabuki this Saturday.
 - 今回のプロジェクトは2週間の予定です。 — This project is scheduled to take two weeks.
 - 明日は朝6時の飛行機に乗る予定です。 — Tomorrow I'm scheduled to take the 6 a.m. flight.
+
+## ～中（ちゅう: in the middle of）
+
+**Rule:** **中**, read **ちゅう**, attaches mostly to Sino-Japanese nouns that carry an action meaning (漢語). It shows that the action is **in progress / under way** ("in the middle of…", "currently…"). Common examples are **営業中**, open for business; **準備中**, in preparation; and **会議中**, in a meeting.
+
+- A：近くのレストランは、今、やっていますか。B：はい、今営業中ですよ。 — A: Is the restaurant nearby open now? B: Yes, it's open right now.
+- 会議中に、お邪魔してすみません。 — Sorry to interrupt you during the meeting.
+- 隣が工事中で、とてもうるさいです。 — There's construction going on next door, so it's very noisy.
