@@ -1164,3 +1164,14 @@ For a non-past affirmative noun or な-adjective, use **な** before **ので**,
 - 漢字の読み方を間違えた。 — I got the reading of the kanji wrong.
 - 鈴木さんはスマホをどこかに落とした。 — Suzuki dropped his phone somewhere.
 - あっちこっち探したが、見つからなかった。 — I searched all over, but couldn't find it.
+
+## V て、V て、V ます（linking actions in sequence）
+
+**Rule:** When one sentence has two or more verbs in a row, link them with the te-form **V て**. The actions happen **in the order given**. Only the **last** verb shows the tense and politeness (ます／ました／たいです). English uses "and (then)", and Chinese usually leaves the sequence untranslated.
+
+**Tip:** Whether the whole chain is past or present depends only on the final verb: 起きて、勉強しました is past, 起きて、行きます is present or future.
+
+- 3時に起きて、勉強しました。 — I got up at three and studied.
+- 私は東京に行って、東京タワーとスカイツリーを見たいです。 — I want to go to Tokyo and see Tokyo Tower and the Skytree.
+- インターネットで資料を調べて、パワーポイントを作ります。 — I'll look up material online and make a PowerPoint.
+- 朝起きて、シャワーを浴びて、会社へ行きます。 — In the morning I get up, take a shower and go to work.
