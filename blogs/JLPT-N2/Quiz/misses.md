@@ -181,3 +181,19 @@
 **Correct:** **この資料は大事なので**.
 
 **Gap:** Left out the な.
+
+## 2026-10-20 — 今 means now
+
+**Q:** Translate 今、雨が降っています。
+
+**Correct:** **It's raining now.** 今（いま）= now; today is 今日（きょう）.
+
+**Gap:** Translated it as “Today is raining”.
+
+## 2026-10-20 — 会議中 reading
+
+**Q:** Read 会議中.
+
+**Correct:** **かいぎちゅう**. ～中（ちゅう）= in the middle of an activity (営業中, 準備中); ～中（じゅう）= throughout a span (一日中 いちにちじゅう, 世界中).
+
+**Gap:** Read it as かいぎじゅう.
