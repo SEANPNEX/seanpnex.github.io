@@ -643,3 +643,257 @@ Requests may reflect the client’s own biases or professional experience. If yo
 
 **Example 5 — IPS Requirements and Limitations (Max Gubler).** The insurance subsidiary’s IPS allows highly liquid assets only (large-cap equities; AA-or-better government, supranational, and corporate bonds of five years or less). Gubler puts 4% into a seed-capital private equity fund with a three-year lockup and laddered exit, though total equity stays well below its limit.  
 **Takeaway:** Lockup / illiquid assets fall outside the IPS’s liquidity requirement and accepted asset classes — a violation of **III(A) and III(C)** regardless of size. The manager should also understand the client’s business beyond the IPS text.
+
+---
+
+### Standard III(D) Performance Presentation
+
+> When communicating investment performance information, Members and Candidates must make reasonable efforts to ensure that it is fair, accurate, and complete.
+
+Covers **any** practice that would misrepresent a performance record — performance **presentation** or performance **measurement**, **past** or **reasonably expected** performance — for individual accounts, composites, or an analyst’s or firm’s results. It is not limited to separate-account managers: pooled funds, and research analysts promoting the accuracy of their recommendations, are covered too. Never state or imply that clients will obtain a return generated in the past.
+
+#### Brief presentations
+
+| Allowed | Required |
+| --- | --- |
+| A short performance summary | Detailed supporting information **available on request** |
+| Leaving out detail for space | Best practice: say the information is **limited** |
+
+#### Recommended procedures
+
+- **Apply the GIPS standards** — the best way to meet III(D); encourage the firm to comply.
+- **Without GIPS:**
+  - consider the knowledge and sophistication of the audience;
+  - present a **weighted composite** of similar portfolios, not a single representative account;
+  - include **terminated accounts**, showing when they were terminated;
+  - disclose fully: **simulated** (model) results, a **prior entity’s** record, **gross / net of fees** or **after tax**;
+  - keep the data and records used to calculate performance.
+
+#### Exam traps
+
+- Claiming GIPS compliance when composites are not asset weighted → III(D) for the **false claim**, even with no misuse of the data.
+- A track record from a **prior firm** is allowed only with disclosure of where it was earned and your specific role.
+- Showing whichever of time-weighted or money-weighted return is higher, unlabelled → III(D).
+- Changing the attribution method or the month-end date to flatter results without telling clients → III(D).
+- “You can expect steady 25% a year” → III(D) **and** I(C) (a guarantee).
+
+#### Application cases
+
+**Example 1 — Performance Calculation and Length of Time (Kyle Taylor).** Taylor’s brochure promises “steady 25% annual compound growth” because the common trust fund rose 25% last year, in line with the market. It never averaged that for more than one year, and all trust accounts averaged 5% over five years.  
+**Takeaway:** Violates III(D) — he should have said the 25% was a single year and included all account categories. The promise also violates **I(C)**.
+
+**Example 2 — Performance Calculation and Asset Weighting (Anna Judd).** Judd circulates a performance report claiming GIPS compliance, but the composites are not asset weighted.  
+**Takeaway:** The violation is the **false claim of GIPS compliance** — claiming GIPS means meeting all its requirements and disclosures.
+
+**Example 3 — Performance Presentation and Prior Fund/Employer (Aaron McCoy).** Mastermind’s ad shows the six-year equity record McCoy earned at G&P Financial without saying it was earned at G&P.  
+**Takeaway:** Violates III(D). A prior-firm record may be shown only with full disclosure of where it was earned and his role.
+
+**Example 4 — Performance Presentation and Simulated Results (Jed Davis).** Davis back-tests his fund-selection model on 1996–2003 data and advertises those results without saying they are simulated.  
+**Takeaway:** Simulated results must be clearly identified, with their source disclosed — otherwise III(D).
+
+---
+
+### Standard III(E) Preservation of Confidentiality
+
+> Members and Candidates must keep information about current, former, and prospective clients confidential unless:
+> 1. The information concerns illegal activities on the part of the client;
+> 2. Disclosure is required by law; or
+> 3. The client or prospective client permits disclosure of the information.
+
+Applies when you receive information (1) because of your **special ability** to conduct a portion of the client’s business or personal affairs and (2) that arises from or is relevant to that portion of the business. If the law requires disclosure or the information concerns illegal client activity, you may have an obligation to report it to the authorities.
+
+#### Guidance highlights
+
+| Highlight | Key point |
+| --- | --- |
+| **Status of client** | Covers **former** clients too — confidentiality continues after the relationship ends; follow an express authorization to disclose |
+| **Compliance with laws** | Law requires disclosure → disclose. Law requires confidentiality, **even about illegal activity** → do not disclose. Inter-departmental restrictions can limit flows inside the firm. In doubt → compliance or legal counsel |
+| **Electronic information and security** | Watch for accidental disclosure; no need to be an IT expert, but know the employer’s policies; encourage regular training for **all** staff, incl. receptionists and non-investment staff |
+| **CFA Institute PCP** | Giving client information to the Professional Conduct Program is **not** a violation; treat the PCP as an extension of yourself |
+
+#### Recommended procedures
+
+- Simplest and safest: disclose client information only to **authorized fellow employees also working for that client**.
+- Before disclosing information outside the confidential scope (and not illegal), ask: in what **context** was it disclosed, and is it relevant to the work? Is it background that would **improve service** to the client?
+- Follow the firm’s electronic communication and storage procedures; encourage them if none exist.
+- **Communicating with clients:** make sure firm-supported channels prevent accidental distribution, review privacy protections regularly, and tell clients which methods are appropriate for confidential information.
+
+#### Exam traps
+
+- Good intentions (helping a charity raise money) do not excuse disclosure → III(E).
+- Suspected illegal activity ≠ go public at once: supervisor → remedy with the client → legal counsel; disclosure (and resignation) may follow.
+- A client who discloses his own details on a properly warned social media group → **not** your violation; remove it promptly.
+
+#### Application cases
+
+**Example 1 — Possessing Confidential Information (Sarah Connor).** The City Medical Center trustees give Connor internal reports on renovation and expansion needs. Local businessman Thomas Kasey asks her about the building plans before deciding where to donate.  
+**Takeaway:** The information is confidential and within the scope of the relationship — she must refuse.
+
+**Example 2 — Disclosing Confidential Information (Lynn Moody).** A client tells Moody she plans to give about US$50,000 to charity for tax reasons; Moody, treasurer of the Home for Indigent Widows, tells HIW to ask the client for that amount.  
+**Takeaway:** Violates III(E), however well intended.
+
+**Example 3 — Disclosing Possible Illegal Activity (Casey Samuel).** Government officials ask to see Garcia’s pension records; Samuel already knows of possibly excessive, improper charges to the plan, and counsel says Garcia probably broke tax and fiduciary laws.  
+**Takeaway:** Tell her supervisor and try to remedy it with Garcia; if that fails, get legal advice. She may have a duty to disclose and to resign.
+
+**Example 5 — Accidental Disclosure of Confidential Information (Lynn Moody).** Moody runs a compliance-approved client group page, warning that posts are public. A client posts highly personal details; she has it removed.  
+**Takeaway:** **No violation** — she took reasonable steps and acted promptly; the case points to more training and warnings.
+
+---
+
+## Standard IV Duties to Employers
+### Standard IV(A) Loyalty
+
+> In matters related to their employment, Members and Candidates must act for the benefit of their employer and not deprive their employer of the advantage of their skills and abilities, divulge confidential information, or otherwise cause harm to their employer.
+
+Protect the firm: no conduct that would injure it, deprive it of profit, or deprive it of your skills and ability, and follow its policies as long as they do not conflict with the law or the Code and Standards. Clients always come **before** the employer. IV(A) is **not** a blanket rule to put the employer ahead of important personal and family obligations — discuss the balance with the employer when personal matters regularly interfere.
+
+#### Employer responsibilities and independent practice
+
+- Employers are **not** bound by the Code and Standards but should not adopt conflicting policies; senior management should avoid incentives that encourage unethical behavior. Giving your employer a copy of the Code and Standards is encouraged.
+- **Independent practice** for compensation is allowed only if you notify the employer of the **type of services**, **expected duration**, and **compensation**, and receive **consent to all terms** before rendering services.
+- “Practice” = any service the employer currently offers for pay. **Preparing** to compete ≠ **undertaking** independent practice.
+
+#### Leaving an employer
+
+| Permissible | Violation (especially in combination) |
+| --- | --- |
+| Preparations for a competing business, on your own time | Misappropriating **trade secrets** |
+| After leaving: using skills, experience, and simple knowledge of client names | Misusing **confidential information** |
+| After leaving: contacting former clients using **public information**, absent a noncompete | **Soliciting** the employer’s clients before employment ends |
+| Taking what an industry agreement allows (e.g. the US Protocol for Broker Recruiting), following its procedures | **Self-dealing**; misappropriating **clients or client lists** |
+
+> [!IMPORTANT]
+> Until the resignation is effective, act in the employer’s best interest. Do not take records or files — **even ones you created** — without the employer’s **written** permission; erase or return firm records kept at home or on devices.
+
+#### Social media, whistleblowing, nature of employment
+
+- **Social media:** follow firm policy, especially when leaving. Firm-approved business accounts are **firm property**. Best practice: separate personal and professional accounts.
+- **Whistleblowing:** acting against the employer (contradicting instructions, copying records) can be justified **only** to protect clients or market integrity — never for personal gain.
+- **Nature of employment:** employee vs independent contractor depends on the employer’s **degree of control** (hours, location, facilities, expenses, other employers or clients). A contractor’s duties follow the agreement.
+
+#### Recommended procedures
+
+- **Competition policy:** know any limits on outside services; make sure a noncompete is clear before signing.
+- **Termination policy:** resignation process, how clients and staff are told, social media updates, transfer of research and accounts, what client information may be taken.
+- **Incident-reporting procedures:** know the whistleblowing policy; encourage confidential, anonymous reporting.
+- **Employee classification:** part time, full time, contractor, and which policies apply to each.
+
+#### Exam traps
+
+- Taking records you **built yourself** (models, spreadsheets) → still IV(A).
+- An **unpaid intern** is an employee (compensated in experience and knowledge).
+- Registering a competing firm on your own time, without soliciting → preparation, **not** a violation.
+- Answering an RFP your current employer is also bidding on, before you leave → IV(A) unless both the employer and the RFP issuer agree.
+- Posting your firm’s password-protected research on a public personal blog → IV(A).
+
+> [!Note]
+> Memory hook (mine, not the textbook’s) — **prepare, don’t compete; leave with your head, not your files.**
+
+#### Application cases
+
+**Example 1 — Soliciting Former Clients (Samuel Magee).** Before resigning from Trust Assets, Magee asks four big accounts and several prospects to move to Fiduciary Management.  
+**Takeaway:** Soliciting current clients and prospects while still employed violates IV(A).
+
+**Example 2 — Former Employer’s Documents and Files (James Hightower).** Leaving Jason Investment to start his own firm, Hightower plans to copy the client list, account statements, marketing presentations, the recommended list, allocation and stock-selection models, and his own analyst spreadsheets.  
+**Takeaway:** All are employer property — taking any of them without consent, even what he prepared, violates IV(A).
+
+**Example 5 — Ownership of Completed Prior Work (Emma Madeline).** An unpaid intern at Murdoch and Lowell copies the GIPS software she helped build before joining McMillan.  
+**Takeaway:** She is an employee (paid in experience) who used firm resources — copying the software violates IV(A).
+
+**Example 10 — Soliciting Former Clients (Shawna McQuillen).** With no noncompete, she takes no records, clears her computer, and finds former clients’ phone numbers in public records after leaving.  
+**Takeaway:** **No violation** — public information, no agreement, no former employer’s records.
+
+---
+
+### Standard IV(B) Additional Compensation Arrangements
+
+> Members and Candidates must not accept gifts, benefits, compensation, or consideration that competes with or might reasonably be expected to create a conflict of interest with their employer’s interest unless they obtain written consent from all parties involved.
+
+Get the employer’s permission **before** accepting compensation or other benefits from third parties for services rendered to the employer, or for any services that might conflict with its interest. This covers **direct** compensation from a client and **indirect** compensation or benefits from third parties. Such arrangements can affect loyalty and objectivity; disclosure lets the employer judge your motivations and the **true cost** of your services.
+
+#### Key rules
+
+| Rule | Detail |
+| --- | --- |
+| **Written consent** | Any documentable form counts (e.g. a retrievable e-mail) |
+| **Nonmonetary benefits** | Count too — e.g. free memberships for board service |
+| **Part-time employees** | Discuss limits on competing services during hiring; IV(B) applies to the limits identified then |
+
+#### Recommended procedures
+
+- Make an **immediate written report** to your supervisor and compliance officer of any compensation proposed beyond what the employer pays.
+- Have the **offering party confirm** the details, including client performance incentives.
+- State the **terms**: nature of the compensation, approximate amount, and duration.
+
+#### Exam traps
+
+- A client bonus contingent on performance (a free holiday if returns ≥ 15%) → must be disclosed in writing and consented to.
+- “It’s not money” is no excuse — nonmonetary board perks still need disclosure.
+- Approval first, then attending a company meeting and disclosing an unplanned dinner afterward → **no** violation.
+
+#### Application cases
+
+**Example 1 — Notification of Client Bonus Compensation (Geoff Whitman).** Client Carol Cochran offers Whitman and his wife a week at her Monaco condo in any year her portfolio returns at least 15% before taxes; he goes without telling his employer.  
+**Takeaway:** Violates IV(B) — a supplemental, contingent arrangement could favor her account over his others; he needs his employer’s written consent.
+
+**Example 2 — Notification of Outside Compensation (Terry Jones).** Jones gets unlimited family memberships for serving on Exercise Unlimited’s board, buys its stock for suitable clients, and doesn’t disclose because he isn’t paid in money.  
+**Takeaway:** Violates IV(B) — nonmonetary compensation creates the same conflict as a director’s fee.
+
+**Example 3 — Prior Approval for Outside Compensation (Jonathan Hollis).** After his buy report, ABC Oil invites Hollis to meet the CEO and offers its company plane. He gets approval, declines the travel, attends, joins an upscale dinner, and reports everything including the dinner.  
+**Takeaway:** **No violation** — prior approval, declining the travel, and full disclosure let the firm assess any effect on his objectivity.
+
+---
+
+### Standard IV(C) Responsibilities of Supervisors
+
+> Members and Candidates must make reasonable efforts to ensure that anyone subject to their supervision or authority complies with applicable laws, rules, regulations, and the Code and Standards.
+
+Anyone with employees under their control or influence — whether or not those employees are members or candidates — has supervisory responsibility and needs in-depth knowledge of the Code and Standards. What is reasonable depends on the number of people and the work they do; supervision may be **delegated**, but you must instruct the delegates on how to prevent and detect violations. At a minimum, make reasonable efforts to **prevent and detect** violations through an **effective compliance system** — and go beyond rules: regular training and incentives that reward ethical behavior.
+
+#### System for supervision
+
+- Procedures must be **established, documented, communicated, and followed**, then monitored and enforced. “Adequate” = meets industry standards, regulation, the Code and Standards, and the firm’s circumstances.
+- They must be in place **before** a violation, aimed at the activities most likely to cause misconduct, and fit the firm’s size and nature.
+- No authority over firm-wide policy? Still work with superiors on a code of ethics, compliance procedures, training, ethical incentives, and best-practice standards (GIPS, Asset Manager Code).
+- Inadequate system → tell senior management and recommend fixes; if you clearly cannot supervise, **decline supervisory responsibility in writing** until reasonable procedures exist.
+
+> [!IMPORTANT]
+> On learning of a possible violation: **promptly** investigate its extent. The employee’s assurances, reporting it up the chain, or just warning the employee are **not enough**. Pending the outcome, limit or increase monitoring of the employee’s activities.
+
+#### Supervision includes detection
+
+| Situation | IV(C)? |
+| --- | --- |
+| Reasonable procedures adopted and enforced, violation still slips through | Possibly **no** violation |
+| Violations keep occurring | May signal procedures are **inadequate** |
+| You know or should know procedures are **not being followed** | Violation |
+
+#### Recommended procedures
+
+- **Code of ethics:** encourage one, kept **separate** from detailed compliance procedures, in plain language, and shared with clients.
+- **Adequate compliance procedures:** a clear written manual tailored to the firm; easy to understand; a compliance officer with defined authority and resources; a supervision hierarchy; checks and balances; scope; documented monitoring and testing; permissible conduct; reporting of violations and sanctions.
+- **Once in place:** disseminate, update periodically, educate continually, send reminders, include professional conduct in performance reviews, review employee actions, enforce.
+- **After a violation:** respond promptly, investigate thoroughly, increase supervision or limit the wrongdoer pending the outcome, review procedures.
+- **Education and training:** regular, alongside the code of ethics.
+- **Incentive structure:** tie rewards to client interests and **how** outcomes are achieved, not how much is generated for the firm.
+
+#### Exam traps
+
+- Telling colleagues about a pending recommendation change with no procedures to stop them trading on it → the **supervisor** violates IV(C).
+- Passing on a subordinate’s unreviewed recommendation (based on merger rumors) → IV(C).
+- A compliance supervisor paid partly on trading commissions who ignores suspicious volume → IV(C); watch your own conflicts.
+- Supervisors brushing off an employee’s concerns → IV(C); they must review them.
+
+#### Application cases
+
+**Example 1 — Supervising Research Activities (Jane Mattock).** Mattock orally tells H&V executives she’s changing Timber Products from buy to sell; Frampton, who reports to her, sells for himself and discretionary clients, and others tip institutional customers before publication.  
+**Takeaway:** Violates IV(C) — she needed procedures to prevent and detect trading on, and spreading of, the unpublished change.
+
+**Example 2 — Supervising Research Activities (Deion Miller).** Miller passes Georgia Ginn’s unreviewed buy memo on Excelsior, based on merger rumors, to the portfolio managers before going on vacation.  
+**Takeaway:** Violates IV(C) — he didn’t check for a reasonable basis or for material nonpublic information.
+
+**Example 3 — Supervising Trading Activities (Roberta Ann Mason).** Trainee David Edwards lets a customer pay for Highland shares from profits on their immediate resale; Mason, the compliance supervisor paid partly on trading commissions, sees the volume and does nothing.  
+**Takeaway:** Violates IV(C) — supervisors must be especially alert to conflicts between their self-interest and their duties.
+
+**Example 5 — Accepting Responsibility (Meredith Rasmussen).** The hedge fund’s reported performance ignores a sharp market break; the head of trading and the compliance officer tell Rasmussen not to ask.  
+**Takeaway:** The **supervisors** violate IV(C) by dismissing her concern — they must review it and build an ethical culture. (Her whistleblowing is covered under IV(A).)
