@@ -1253,3 +1253,24 @@ For a non-past affirmative noun or な-adjective, use **な** before **ので**,
 - A：近くのレストランは、今、やっていますか。B：はい、今営業中ですよ。 — A: Is the restaurant nearby open now? B: Yes, it's open right now.
 - 会議中に、お邪魔してすみません。 — Sorry to interrupt you during the meeting.
 - 隣が工事中で、とてもうるさいです。 — There's construction going on next door, so it's very noisy.
+
+## V る前に／V てから（order of actions）
+
+**Rule:** Both patterns put two actions in order.
+
+| Pattern | Form | Meaning |
+|---|---|---|
+| **V る前（に）** | dictionary form ＋ 前に; action noun ＋ **の前に** | do B **before** A happens |
+| **V てから** | te-form ＋ から | do A **first, then** B |
+
+**Tip:** The verb before **前に** is always in the dictionary form, even when the event is finished or in the past. Don't say 食べた前に. The **に** marks the point in time when the second action happens, and it is sometimes dropped. **てから** stresses that one action strictly comes first.
+
+**V る前に／N の前に**
+- 食事をする前に、手を洗いましょう。 — Let's wash our hands before eating.
+- 食事の前に、食器をテーブルに並べる。 — Before the meal, set the dishes out on the table.
+- この質問に答える前に、ちゃんと考えてください。 — Think carefully before you answer this question.
+
+**V てから**
+- 口コミ情報をチェックしてから、商品を買います。 — I check online reviews first, then buy the product.
+- 日本でお風呂に入るときは、体を洗ってから、入ります。 — In Japan, when you take a bath, you wash your body first and then get in.
+- 上司に報告してから、レポートを書きます。 — I'll report to my boss first, then write the report.
