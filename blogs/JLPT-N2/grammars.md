@@ -1141,12 +1141,18 @@ For a non-past affirmative noun or な-adjective, use **な** before **ので**,
 
 **Tip:** Only **いる** changes. The te-form part stays as it is: 読んでいる → 読んでいた／読んでいない. Questions with **何をしていますか** ask "What are you doing (now)?".
 
+**Tip:** Grammatically, ている is an **aspect** (体, アスペクト): it marks the *state* of an action, such as an action continuing over time or a completed result, not just "now". So it combines with the past (ていた, was …ing) and with ずっと for "all along / the whole time".
+
 - A：今、何をしていますか。B：ピアノを弾いています。 — A: What are you doing now? B: I'm playing the piano.
 - A：すみません。この問題がわからないのですが。B：実は、わたしもこの問題について、ちょうど考えているんですよ。一緒に考えましょう。 — A: Excuse me, I don't understand this problem. B: Actually, I'm just thinking about it too. Let's work it out together.
 - 今、運転しながら、音楽を聴いています。 — Right now I'm listening to music while driving.
 - 昨日の夜八時ごろ、テレビを見ていました。 — Around eight last night, I was watching TV.
 - 今は雨が降っていません。 — It isn't raining now.
 - 電話したとき、兄は寝ていませんでした。 — When I called, my older brother wasn't sleeping.
+- 朝からずっと曇っている。 — It has been cloudy ever since the morning.
+- 地震の時、私は庭の掃除をしていた。 — When the earthquake hit, I was sweeping the yard.
+- この夏休みは、ずっとマラソンの練習をしていた。 — This summer vacation I was training for the marathon the whole time.
+- 小さい時は、まだ日本語を習っていなかった。 — When I was little, I hadn't started learning Japanese yet.
 
 ## V た（plain past）
 
