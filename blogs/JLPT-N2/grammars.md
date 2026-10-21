@@ -1289,4 +1289,4 @@ For a non-past affirmative noun or な-adjective, use **な** before **ので**,
 - 兄はあのレストランのシェフになりたがっています。 — My older brother wants to become the chef at that restaurant.
 - 弟は新しいカメラを買いたがっています。 — My younger brother wants to buy a new camera.
 - 弟は新しいカメラをほしがっています。 — My younger brother wants a new camera.
-- ジョージさんは村上春樹先生のサインをほしがっている。 — George wants Haruki Murakami's autograph.
+- ジョージさんは村上夏樹先生のサインをほしがっている。 — George wants Natsuki Murakami's autograph.
