@@ -1154,6 +1154,35 @@ For a non-past affirmative noun or な-adjective, use **な** before **ので**,
 - この夏休みは、ずっとマラソンの練習をしていた。 — This summer vacation I was training for the marathon the whole time.
 - 小さい時は、まだ日本語を習っていなかった。 — When I was little, I hadn't started learning Japanese yet.
 
+### ている II: a result that continues
+
+**Rule:** With **instantaneous verbs** (verbs for a change that happens in a moment, such as なる, 割れる, 結婚する), ている does not mean "is …ing". It means the change has happened and its **result is still in place**. English often uses "is/has …" or an adjective here.
+
+**Tip:** 結婚しています means "is married", not "is getting married". In the same way, 割れています means the window is broken now, not that it is breaking.
+
+- 外は暗くなっています。 — It has gotten dark outside.
+- ガラスの窓が割れています。 — The glass window is broken.
+- 兄は結婚しています。 — My older brother is married.
+
+### ている III: habits and ongoing activities
+
+**Rule:** ている also describes an action **repeated over a recent period**, a **habit**, or something done **long-term**, such as a job, where you live, or lessons you're taking. The action does not have to be happening at this moment.
+
+- 弟は、大学のサークルでジャーナリストをやっています。 — My younger brother works as a reporter in a university club.
+- 兄は今、アメリカに住んでいます。 — My older brother lives in America now.
+- 今、パリでフランス料理を習っています。 — I'm currently learning French cooking in Paris.
+- 彼と毎週会っています。 — I meet him every week.
+
+### （まだ）V ていない: not yet
+
+**Rule:** The negative **ていない**, polite **ていません**, often goes with **まだ** to mean "**not … yet**". It is the usual negative answer to **もう V ましたか** ("Have you … already?").
+
+**Tip:** Don't answer with **まだVませんでした**. That is past negative and sounds like the chance is over. Use **まだVていません**, because the action still hasn't happened.
+
+- A：講演会はもう始まりましたか。B：まだ始まっていませんよ。急いでください。 — A: Has the lecture already started? B: Not yet. Hurry up.
+- A：部長に電話しましたか。B：いいえ、まだしていません。 — A: Did you call the department manager? B: No, not yet.
+- 論文のテーマをまだ決めていません。 — I haven't decided on my thesis topic yet.
+
 ## V た（plain past）
 
 **Rule:** **V た** marks a completed action or the past. It is the plain form of **V ました**. It is built exactly like the te-form (see V て形 above): just change **て → た** and **で → だ**.
