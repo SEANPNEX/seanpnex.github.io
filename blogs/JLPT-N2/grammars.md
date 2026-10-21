@@ -1274,3 +1274,19 @@ For a non-past affirmative noun or な-adjective, use **な** before **ので**,
 - 口コミ情報をチェックしてから、商品を買います。 — I check online reviews first, then buy the product.
 - 日本でお風呂に入るときは、体を洗ってから、入ります。 — In Japan, when you take a bath, you wash your body first and then get in.
 - 上司に報告してから、レポートを書きます。 — I'll report to my boss first, then write the report.
+
+## V たがる／N をほしがる（third person wants）
+
+**Rule:** **V たい**（want to do, see V ます-stem ＋ たい）and **N がほしい**（want N, see N がほしいです）are used for **your own** wishes. For a **third person's** wish, Japanese switches to verbs built from them:
+
+| Speaker's own wish | Third person's wish |
+|---|---|
+| V ます-stem ＋ **たい** | V ます-stem ＋ **たがる** → usually **たがっている／たがっています** |
+| N **が**ほしい | N **を**ほしがる → usually **ほしがっている／ほしがっています** |
+
+**Tip:** たがる and ほしがる are Class I verbs, and the object takes **を**, never が. The ている form is the normal one, because it describes how the person appears right now.
+
+- 兄はあのレストランのシェフになりたがっています。 — My older brother wants to become the chef at that restaurant.
+- 弟は新しいカメラを買いたがっています。 — My younger brother wants to buy a new camera.
+- 弟は新しいカメラをほしがっています。 — My younger brother wants a new camera.
+- ジョージさんは村上春樹先生のサインをほしがっている。 — George wants Haruki Murakami's autograph.
