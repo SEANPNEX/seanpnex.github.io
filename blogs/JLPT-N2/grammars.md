@@ -1290,3 +1290,14 @@ For a non-past affirmative noun or な-adjective, use **な** before **ので**,
 - 弟は新しいカメラを買いたがっています。 — My younger brother wants to buy a new camera.
 - 弟は新しいカメラをほしがっています。 — My younger brother wants a new camera.
 - ジョージさんは村上夏樹先生のサインをほしがっている。 — George wants Natsuki Murakami's autograph.
+
+## N が見える／N が聞こえる（can see / can hear）
+
+**Rule:** **見える** means "can be seen / is visible", and **聞こえる** means "can be heard / is audible". Both are intransitive verbs that already carry the meaning of ability, so the thing seen or heard is marked with **が**, not を.
+
+**Tip:** Compare 見る, to look at something on purpose (Nを見る), with 見える, something comes into view by itself (Nが見える). The same contrast holds for 聞く and 聞こえる.
+
+- あそこの赤い看板が見えますか。 — Can you see the red sign over there?
+- 今夜は星がよく見える。 — The stars are clearly visible tonight.
+- 外はうるさくて、先生の話がよく聞こえません。 — It's noisy outside, so I can't hear what the teacher is saying very well.
+- 後ろの方は聞こえますか。 — Can the people at the back hear me?
