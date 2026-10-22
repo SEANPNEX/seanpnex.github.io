@@ -1370,3 +1370,11 @@ For a non-past affirmative noun or な-adjective, use **な** before **ので**,
 - ドイツ語を話すことができますか。 — Can you speak German? (ability)
 - レポートを書いたので、明日みんなに報告することができます。 — I've written the report, so I can present it to everyone tomorrow. (circumstance)
 - おかげさまで、無事に退院することができました。 — Thanks to you, I was able to leave the hospital safely. (circumstance)
+
+## N だけ ＋ particle（only / just）
+
+**Rule:** **だけ** after a noun limits it: "only …" or "just …". A particle can follow だけ when the sentence needs one, such as **で, に, は, を, が**. Before **を** or **が**, the particle can be dropped (だけを → だけ, だけが → だけ).
+
+- 日本人の子供たちは平仮名だけで作文を書きます。 — Japanese children write compositions using only hiragana.
+- これだけはやめてください。 — Please don't do this, of all things.
+- お金がないので、今日のお昼ご飯はサンドイッチだけで済ませます。 — I don't have money, so today I'll make do with just a sandwich for lunch.
