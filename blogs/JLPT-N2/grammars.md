@@ -1393,3 +1393,19 @@ For a non-past affirmative noun or な-adjective, use **な** before **ので**,
 - 友達の家に遊びに行く時に、お土産を買いました。 — On my way to visit my friend, I bought a gift. (bought before arriving)
 - 友達の家に遊びに行った時、みんなで餃子を作りました。 — When I visited my friend's place, we all made dumplings together. (after arriving)
 - 駅を出た時、人気のケーキを買いました。 — After I came out of the station, I bought a popular cake.
+
+## V たことがある（experience）
+
+**Rule:** Ta-form ＋ **ことがある** means you have had an experience: "have (ever) done …". The negative is **V たことがない**, "have never done …". To answer **～たことがありますか**, reply with **ある** (はい、あります) or **ない** (いいえ、ありません).
+
+**Tip:** Use it for experiences from **long ago** or from your life history in general, **not for something recent**. For a recent first-time experience, use the plain past with **初めて**:
+
+- ✕ 私は、昨日、お寿司を食べたことがあります。
+- 〇 私は、昨日、初めてお寿司を食べました。 — Yesterday I ate sushi for the first time.
+
+Examples:
+
+- あの人は、確か前に会ったことがあります。 — I'm pretty sure I've met that person before.
+- 日本で歌舞伎を見たことがありません。 — I've never seen kabuki in Japan.
+- A：体育の授業で怪我をしたことがありますか。 B：はい、あります。 — A: Have you ever been injured in PE class? B: Yes, I have.
+- A：着物を着たことがありますか。 B：いいえ、ありません。 — A: Have you ever worn a kimono? B: No, I haven't.
