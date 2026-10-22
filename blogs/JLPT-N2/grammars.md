@@ -1378,3 +1378,18 @@ For a non-past affirmative noun or な-adjective, use **な** before **ので**,
 - 日本人の子供たちは平仮名だけで作文を書きます。 — Japanese children write compositions using only hiragana.
 - これだけはやめてください。 — Please don't do this, of all things.
 - お金がないので、今日のお昼ご飯はサンドイッチだけで済ませます。 — I don't have money, so today I'll make do with just a sandwich for lunch.
+
+## V る時（に）／V た時（に）（when …）
+
+**Rule:** Both the dictionary form and the ta-form can take **時（に）** to mean "when …", but they point to **different moments**:
+
+| Form | Timing of the 時 clause | Meaning |
+|---|---|---|
+| **V る時（に）** | Action **not yet done** | "when (about to / on the way to) …" |
+| **V た時（に）** | Action **already done** | "when (having done) …" |
+
+**Tip:** The tense of the main sentence doesn't decide the form. In example 1, the main verb is past (買いました), but 行く stays in the dictionary form because the gift was bought **before** arriving.
+
+- 友達の家に遊びに行く時に、お土産を買いました。 — On my way to visit my friend, I bought a gift. (bought before arriving)
+- 友達の家に遊びに行った時、みんなで餃子を作りました。 — When I visited my friend's place, we all made dumplings together. (after arriving)
+- 駅を出た時、人気のケーキを買いました。 — After I came out of the station, I bought a popular cake.
