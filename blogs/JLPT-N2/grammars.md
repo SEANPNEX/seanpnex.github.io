@@ -1487,3 +1487,11 @@ Examples:
 - 夏休みの間、ずっとアメリカを旅行していました。 — I traveled around America for the whole summer vacation.
 - 母がご飯を作っている間、私はずっと横で手伝っていました。 — While my mother was cooking, I was helping beside her the whole time.
 - バスを待っている間、ずっとスマホを見ていました。 — I was looking at my phone the whole time I was waiting for the bus.
+
+## かな（I wonder …）
+
+**Rule:** **かな** is the question particle **か** plus the exclamatory particle **な**. Put after a plain-form sentence or a noun, it adds a light, wondering tone to a question, or it shows uncertainty when you're talking to yourself: "I wonder …" or "… maybe?"
+
+- かなりきつい仕事なので、あの人は一人でできるかな。 — It's pretty tough work, so I wonder if that person can do it alone.
+- もうそろそろ向こうに着くころかな。 — I guess they're about to get there by now.
+- 締め切りは確か来月の4日かな。 — The deadline is the 4th of next month, I think.
