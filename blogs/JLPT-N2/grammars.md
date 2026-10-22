@@ -1339,3 +1339,24 @@ For a non-past affirmative noun or な-adjective, use **な** before **ので**,
 - 子供は夜遅くまで、外で遊んではいけないよ。 — Kids mustn't play outside until late at night.
 - 図書館では飲み物を机の上に置いてはいけません。 — In the library, you must not put drinks on the desks.
 - 食べ物を図書館に持ち込んではいけません。 — Bringing food into the library is not allowed.
+
+## V なければならない（must / have to）
+
+**Rule:** Nai-form with ない → **なければ** ＋ **ならない** means "must …" or "have to …". It says an action is necessary or an obligation.
+
+**Conversion between similar patterns:** four forms share the same meaning. Each one is built from **condition part** ＋ **"not OK" part**, and you can mix and match the two halves:
+
+| Condition part ("if not …") | ＋ "not OK" part | Full form | Spoken short form |
+|---|---|---|---|
+| なければ | ならない | V なければならない | V なきゃ |
+| なければ | いけない | V なければいけない | V なきゃ |
+| なくては | ならない | V なくてはならない | V なくちゃ |
+| なくては | いけない | V なくてはいけない | V なくちゃ |
+
+**Tip:** In casual speech, **なければ → なきゃ** and **なくては → なくちゃ**, and the ending is often dropped: 行かなきゃ。／行かなくちゃ。 — "I've got to go."
+
+**Tip:** Polite forms: ならない → **なりません**, いけない → **いけません**.
+
+- 日本人の家に入る時、靴を脱がなければなりません。 — When you enter a Japanese home, you must take off your shoes.
+- 日本では後ろの座席もシートベルトを締めなければいけません。 — In Japan, you have to fasten your seatbelt in the back seat too.
+- せっかくの休みですが、仕事が終わらないので、残業しなければならないんです。 — It's a rare day off, but my work isn't done, so I have to work overtime.
