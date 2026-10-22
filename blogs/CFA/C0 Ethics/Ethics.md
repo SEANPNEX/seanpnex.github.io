@@ -897,3 +897,448 @@ Anyone with employees under their control or influence — whether or not those 
 
 **Example 5 — Accepting Responsibility (Meredith Rasmussen).** The hedge fund’s reported performance ignores a sharp market break; the head of trading and the compliance officer tell Rasmussen not to ask.  
 **Takeaway:** The **supervisors** violate IV(C) by dismissing her concern — they must review it and build an ethical culture. (Her whistleblowing is covered under IV(A).)
+
+---
+
+## Standard V Investment Analysis, Recommendations, and Actions
+### Standard V(A) Diligence and Reasonable Basis
+
+> Members and Candidates must:
+> 1. Exercise diligence, independence, and thoroughness in analyzing investments, making investment recommendations, and taking investment actions.
+> 2. Have a reasonable and adequate basis, supported by appropriate research and investigation, for any investment analysis, recommendation, or action.
+
+How much diligence is needed depends on the **investment philosophy**, your **role** in the decision-making process, and the **support and resources** your employer provides. A reasonable basis is a **balance** of resources (company reports, third-party research, quantitative models) suited to the security or decision. A reasonable basis does **not** remove downside risk: you can decide only on what is known at the time.
+
+#### Secondary and third-party research
+
+| Type | Meaning |
+| --- | --- |
+| **Secondary research** | Done by someone else **in your firm** |
+| **Third-party research** | Done **outside** your firm (brokerage, bank, research firm) |
+
+- You may rely on it only after **reasonable and diligent efforts** to judge whether it is sound. If you suspect the source lacks a sound basis → do **not** rely on it.
+- Tests of soundness: **assumptions**, **rigor** of the analysis, **date/timeliness**, and **objectivity and independence**.
+- Internet sources (personal blogs, aggregation sites, social media) need **more** review than established research organizations.
+- You may rely in good faith on the firm’s own vendor due diligence, unless you have reason to question it. Check the firm has a policy for timely, consistent review of approved research providers; encourage one if not.
+
+#### Quantitative research and models
+
+- **Users** need not be experts in every technical detail, but must understand the model’s **assumptions and limitations** and how its results are used in decisions; test the output **before** building it into your process.
+- Analyses should cover a **broad range of assumptions**, including extremely positive and negative scenarios — leaving out negative outcomes may misrepresent true value.
+- **Developers** of new models must show a **higher level of diligence** than users: understand the technical side, test thoroughly before distribution, and check the **source and time horizon** of the data — databases may not capture both positive and negative cycles, so test scenarios **outside** the observable data.
+
+#### External advisers and subadvisers
+
+Review managers as diligently as individual funds and securities. Your firm should have **standardized criteria**, including:
+- the adviser’s **code of ethics**;
+- its **compliance and internal control** procedures;
+- the **quality of published return** information;
+- its **investment process** and adherence to the stated strategy.
+
+#### Group research and decision making
+
+A group report reflects the **consensus**, not necessarily your view. If you believe the consensus has a **reasonable and adequate basis** and is independent and objective, you **need not** dissociate from the report, even if you disagree. You may ask to have your name removed.
+
+#### Recommended procedures
+
+- A policy that research reports, credit ratings and recommendations have a substantiated basis, reviewed **before** external circulation by a **supervisory analyst** or **review committee**.
+- Detailed written due-diligence guidance for analysts, supervisory analysts and review committees.
+- **Measurable criteria** for research quality, the basis of recommendations, and accuracy over time (possibly tied to compensation, applied consistently).
+- Written minimum levels of **scenario testing** for all computer-based models (breadth of scenarios, accuracy over time, cash-flow sensitivity to inputs).
+- Measurable criteria for assessing **outside providers**, with a set review frequency.
+- A standardized set of criteria for evaluating **external advisers**, with how often allocations are reviewed.
+
+#### Exam traps
+
+- Pricing deals by company size “to justify later” because time is short → V(A); take on only the work you can handle.
+- Presenting the **optimal** scenario as the **base case** → V(A); give a range with probabilities.
+- Choosing a subadviser on **lowest fee** alone, or on **performance + GIPS claim** alone → V(A).
+- Testing each model component separately but never the **integrated whole** → V(A).
+- A diligent recommendation that later loses 60% → **no** violation; due diligence ≠ guaranteed result.
+- A model developer who never trades is still accountable for the model’s recommendations.
+
+#### Application cases
+
+**Example 2 — Sufficient Scenario Testing (Babu Dhaliwal).** To justify the price of Feggans Resources’ secondary offering, Dhaliwal has managers project maximum production in an optimal scenario, then pitches those numbers to brokers as the base case.  
+**Takeaway:** Violates V(A) — he should have given a range of production scenarios and their probabilities.
+
+**Example 5 — Group Research Opinions (Evelyn Mastakis).** The fixed-income committee majority changes her mortgage-rate report to predict larger rate increases.  
+**Takeaway:** **No need** to remove her name if she is confident the process gave a reasonable and adequate basis, even though it no longer reflects her opinion.
+
+**Example 7 — Due Diligence in Submanager Selection (Paul Ostrowski).** Using the CFA Institute model RFP, he receives seven questionnaires and picks the firm with the lowest fees.  
+**Takeaway:** May violate V(A) — selection needs a full review of services, performance history and cost structure.
+
+**Example 11 — Use of Quantitatively Oriented Models (Espacia Liakos).** Hellenica’s modeling group outsources parts of a commodity-volatility strategy; each component is validated but never tested as a whole, and the strategy fails when volatility rises.  
+**Takeaway:** Violates V(A) — she must understand the model and test how components interact, not just individually.
+
+**Example 12 — Successful Due Diligence/Failed Investment (Alton Newbury).** After analyzing Top Shelf’s record, principals, fees and risk profile, he recommends it to an aggressive client; a week later it loses 60%.  
+**Takeaway:** **No violation** — a reasonable basis does not guarantee no downside risk.
+
+---
+
+### Standard V(B) Communication with Clients and Prospective Clients
+
+> Members and Candidates must:
+> 1. Disclose to clients and prospective clients the nature of the services provided, along with information about the cost to the client associated with those services.
+> 2. Disclose to clients and prospective clients the basic format and general principles of the investment processes they use to analyze investments, select securities, and construct portfolios and must promptly disclose any changes that might materially affect those processes.
+> 3. Disclose to clients and prospective clients significant limitations and risks associated with the investment process.
+> 4. Use reasonable judgment in identifying which factors are important to their investment analyses, recommendations, or actions and include those factors in communications with clients and prospective clients.
+> 5. Distinguish between fact and opinion in the presentation of investment analyses and recommendations.
+
+Clear, frequent and thorough communication lets clients understand how you act for them and make well-informed decisions. Communication means **any** form — written report, in-person, phone, media broadcast, internet, social media — from a one-word “buy” to a 100-page report.
+
+#### Nature of services and costs
+
+| Point | Key detail |
+| --- | --- |
+| **What to disclose** | Services that **will and will not** be provided, and costs the client is expected to pay — a reasonable amount of detail, **not** exact dollar amounts |
+| **Ongoing duty** | Services or costs change → update all affected clients on a timely basis |
+| **Scope** | **All** costs tied to the services, including affiliates, related entities and third parties |
+| **Sophistication** | Cannot skip disclosure because the client is sophisticated; may **tailor** it |
+| **Who** | Generally **client-facing** members only |
+| **Form** | Your discretion, if appropriate, accurate, timely and complete; best practice = **written** |
+
+#### Investment process and form of communication
+
+- Describe the decision-making process, including factors with **positive and negative** influence, and keep clients informed of **changes**, especially new significant risks and limitations.
+- Tell clients about the specialization of any **external advisers** used.
+- Capsule recommendations (e.g. a recommended stock list) → tell clients that more information and analysis are available.
+- New technology/social media → deliver so all clients are treated fairly.
+
+#### Risks and limitations
+
+- Disclose **significant** risks and limitations of the analysis. **Leverage** is generally a significant risk; also market-related risks and risks of **complex instruments**; others may include counterparty, country, sector, security-specific and credit risk.
+- Report significant limiting factors such as **liquidity** (selling on time at a reasonable cost) and **capacity** (the amount beyond which new money hurts returns).
+- Judged **ex ante** — on what you knew when you acted. A later one-time loss does not by itself mean a V(B) failure; not knowing a risk may instead point to a **V(A)** problem.
+
+#### Report presentation
+
+- Include the elements important to the analysis so the reader can **follow and challenge** the reasoning; you may omit areas deemed unimportant if you state the limits of the report’s scope.
+- Quantitative advice needs readily available reference material and consistent methodology; **highlight** changes in methodology.
+
+> [!IMPORTANT]
+> **Facts vs opinions.** Earnings estimates, dividend outlooks and future prices are **opinions** subject to future circumstances — label them. In quantitative analysis, separate fact from **statistical conjecture** and state the known limits of projections. Discuss model assumptions with clients and be cautious about promoting a model’s accuracy: its output is an estimate, not a certainty.
+
+#### Recommended procedures
+
+- Judging which factors to include is case by case, not a checklist.
+- Encourage the firm to have a rigorous methodology for reviewing research before publication.
+- Keep records of the nature of the research, so you can supply factors not in the report if asked.
+
+#### Exam traps
+
+- Changing the fee calculation method without telling clients → V(B), **even if fees fall**.
+- Telling prospects about a mandate change (cap ceiling raised, non-US stocks added) but not **existing** clients → V(B).
+- Switching to a new valuation model, or moving stock selection to a committee, is a material process change → disclose.
+- “Based on the **fact** that the company has 500,000 ounces of gold” — a calculated reserve is an **opinion** → V(B).
+- Leaving capacity limits out of marketing because they “muddy the message” → V(B), even when far from the limit.
+
+#### Application cases
+
+**Example 3 — Disclosure of Changed Fee Calculation Methodology (Marc Maalouf).** His firm quietly moves from average daily balance to end-of-cycle market value and starts including cash in the fee base.  
+**Takeaway:** The firm may change the method, but must tell clients — changing it without disclosure is improper even if fees fall.
+
+**Example 5 — Providing Opinions as Facts (Richard Dox).** From core samples, Dox estimates over 500,000 ounces of gold at Boisy Bay Minerals and writes, “Based on the fact that the company has 500,000 ounces of gold to be mined, I recommend a strong buy.”  
+**Takeaway:** Violates V(B) — the reserve estimate is a quantitative **opinion**, not a fact.
+
+**Example 7 — Notification of Fund Mandate Change (May & Associates).** The small-cap manager’s CIO raises the market-cap ceiling from US$250 million to US$500 million and updates only marketing literature for prospects.  
+**Takeaway:** Must also notify **existing** clients — some use May as their small-cap specialist in a multi-manager mix.
+
+**Example 15 — Notification of Risks and Limitations (Yuri Yakovlev).** His illiquid small-cap strategy may struggle above about US$100 million; marketing head Alan Wellard leaves the capacity limit out of the offering materials, and Yakovlev doesn’t object because the fund holds only US$12 million.  
+**Takeaway:** Both failed to disclose a significant limitation; they must educate clients or check suitability.
+
+---
+
+### Standard V(C) Record Retention
+
+> Members and Candidates must develop and maintain appropriate records to support their investment analyses, recommendations, actions, and other investment-related communications with clients and prospective clients.
+
+Keep records that support the **scope** of your research and the **reasons** for your actions — for buy/sell decisions **and** for reviews that lead to no change. Which records depend on your role. Hard copy or electronic form are both fine.
+
+#### Guidance highlights
+
+| Highlight | Key point |
+| --- | --- |
+| **Examples of records** | Notes from company meetings, company press releases/presentations, model inputs and outputs, portfolio risk analyses, external-adviser selection criteria, client IPS meeting notes, outside research |
+| **New media records** | Format doesn’t matter — retain e-mails, text messages, blog posts and social media posts; firm/regulator policies may lag, so the individual bears more responsibility |
+| **Property of the firm** | Records are the firm’s; take originals or copies to a new employer only with **express consent**. Re-create support at the new firm from **public sources or the company**, not from memory or old-firm sources |
+| **Local requirements** | Follow regulator and firm rules; with none, keep records for at least **7 years** |
+
+#### Recommended procedures
+
+- Record keeping is generally the **firm’s** responsibility, but you must archive research notes and documents (electronic or hard copy) that support your current investment communications.
+
+#### Exam traps
+
+- Taking copies of a model’s supporting records you built yourself → V(C).
+- Relying on a past report from your old firm when the support is unavailable → re-create the records first.
+- Secondary/third-party research used in a report must be kept too.
+
+#### Application cases
+
+**Example 1 — Record Retention and IPS Objectives and Recommendations (Nikolas Lindstrom).** A client complains about the portfolio’s 35% technology allocation after three years of tech losses; the benchmark set in the IPS held 35% tech.  
+**Takeaway:** Records of the benchmark weights, the IPS, explanations to the client and regular IPS updates show he complied with V(C).
+
+**Example 2 — Record Retention and Research Process (Malcolm Young).** His luxury-retail reports draw on management interviews, site visits, customer surveys and other analysts’ research.  
+**Takeaway:** He must document and keep all of it, including secondary or third-party research — otherwise V(C).
+
+**Example 3 — Records as Firm, Not Employee, Property (Martin Blank).** Hired away by a competitor, Blank takes copies of the records supporting the model he built at GPIM.  
+**Takeaway:** Violates V(C) — they are GPIM’s records; he must re-create them at the new firm.
+
+---
+
+## Standard VI Conflicts of Interest
+### Standard VI(A) Avoid or Disclose Conflicts
+
+> Members and Candidates must avoid or make full and fair disclosure of all matters that could reasonably be expected to impair their independence and objectivity or interfere with respective duties to their clients, prospective clients, and employer. Members and Candidates must ensure that such disclosures are prominent, are delivered in plain language, and communicate the relevant information effectively.
+
+A conflict of interest is anything that could reasonably be expected to impair independence and objectivity or raise a question of bias — between clients, employers and your own interests. A common source: incentive and bonus structures that reward the short term. **Best practice is to avoid** actual or apparent conflicts; when that is not reasonable, **clear and complete disclosure** is necessary. You decide how often and how to disclose; update disclosures when a conflict changes materially (e.g. bonuses move from annual to quarterly profits) and err on the side of caution.
+
+#### Disclosure to employers
+
+- Give the employer enough information to **assess the impact**. Report promptly: ownership of stocks analyzed or recommended, outside board seats, and financial or other pressures.
+- Comply with employer restrictions (personal trading, outside boards) aimed at even the **appearance** of conflicts.
+- Avoid conflicts that could prevent clear judgment or full commitment to your duties to the employer; if not avoided, report them.
+
+#### Disclosure to clients
+
+- Must **always** be avoided or disclosed: issuer relationships — directorships or consultancies, investment banking, underwriting and financial relationships, broker/dealer **market making**, and material **beneficial ownership**.
+- **Beneficial ownership** = a direct or indirect pecuniary interest, or the power to vote or to dispose of the securities.
+- Also disclose conflicts in fee arrangements, subadvisory agreements, nonstandard fee structures, and arrangements where the firm benefits from recommendations (e.g. rebates of mutual fund service fees).
+
+#### Cross-departmental, stock ownership and board conflicts
+
+| Source | Key point |
+| --- | --- |
+| **Cross-departmental** | Pressure from issuers, investment banking or marketing to cover or recommend a stock; broker-sponsored venture capital partnerships → resolve or disclose |
+| **Stock ownership** | The **most prevalent** conflict; banning ownership is possible but may be too restrictive — must disclose any beneficial ownership in what you recommend |
+| **Board member / director** | Three conflicts: (1) duties to clients vs company shareholders; (2) securities or options received as compensation; (3) access to **material nonpublic information** → use **firewalls** to isolate directors from investment decisions |
+
+#### Recommended procedures
+
+- The textbook gives no separate Recommended Procedures section for VI(A) — see VI(B).
+
+#### Exam traps
+
+- Owning the stock and recommending it anyway with no disclosure → VI(A); best practice is to pass the coverage to another analyst.
+- A new **quarterly** bonus that pushes high-beta buys against long-term IPSs → disclose the change in compensation to clients.
+- Extra pay from a stock promoter for selling its stock → disclose to clients and employer; best practice = decline.
+- Hiring a friend’s firm without telling the employer of the relationship → VI(A).
+
+#### Application cases
+
+**Example 1 — Conflict of Interest and Business Relationships (Henry Weiss).** Williamsburg has handled all of Jimco’s acquisitions for 20 years and its officers sit on Jimco subsidiaries’ boards; Weiss is writing a report on Jimco.  
+**Takeaway:** He must disclose Williamsburg’s special relationship in the report.
+
+**Example 3 — Conflict of Interest and Personal Stock Ownership (Karl Fargmon).** After his buy report on Kincaid Printing, his wife inherits US$3 million of Kincaid stock; he is asked for a follow-up.  
+**Takeaway:** At minimum disclose to his employer and in the report; best practice is to have another analyst write it.
+
+**Example 5 — Conflict of Interest and Compensation Arrangements (Sarah Snead).** Her firm introduces quarterly peer-relative bonuses; she buys high-beta stocks for long-term pension accounts, seemingly contrary to their IPSs.  
+**Takeaway:** Violates VI(A) — she failed to tell clients about the new compensation arrangement that conflicts with their objectives.
+
+**Example 6 — Conflict of Interest and Compensation Arrangements (Kevin Carter).** A Badger Company stock promoter pays him extra for selling Badger stock to clients; he tells neither clients nor employer.  
+**Takeaway:** Violates VI(A); at minimum disclose — best practice is to decline the offer.
+
+---
+
+### Standard VI(B) Priority of Transactions
+
+> Investment transactions for clients and employers must have priority over investment transactions in which a Member or Candidate is the beneficial owner.
+
+Order of priority: **clients → employer → personal**. Personal investing is not unethical as long as (1) the client is **not disadvantaged**, (2) you do **not benefit personally** from client trades, and (3) you **comply** with regulations. The same three tests apply when you must trade against your own advice (tuition, home down payment, margin call). Co-investing with clients does not always create a conflict, but personal positions must never hurt client investments.
+
+#### Nonpublic information and beneficial ownership
+
+- Don’t convey nonpublic information about pending trades or research to anyone whose securities you **beneficially own**, or to anyone else if it is **material**.
+- Trade in beneficially owned accounts only **after** clients and employer have had an adequate opportunity to act.
+- Personal accounts include your own, **family** accounts (spouse, children, immediate family) and accounts with a pecuniary interest (trusts, retirement accounts).
+- A family member who is a **fee-paying client** is treated like any other client — no favor, **no disadvantage**; preclearance and reporting may still apply if you have beneficial ownership.
+
+#### Recommended procedures
+
+| Procedure | Key point |
+| --- | --- |
+| **Limited participation in equity IPOs** | Two conflicts: appears to take a hot opportunity away from clients; appears to be a reward for future decisions. Avoid participation; **preclear** IPO participation even without a conflict |
+| **Restrictions on private placements** | **Strict limits** plus supervisory review; may be offered as rewards for business, and later create an incentive to recommend the stock once public |
+| **Blackout / restricted periods** | Before client trades, to stop **front-running**; at minimum, everyone in the investment decision process faces the same period. Large firm → effectively a trading ban; small firm → mainly stops front-running |
+| **Reporting requirements** | (1) Disclose beneficial holdings at **hiring and at least annually**, handled confidentially; (2) **duplicate confirmations** of all personal trades and statements; (3) **preclearance** of planned trades |
+| **Disclosure of policies** | Fully disclose personal-investing policies to investors — helpful detail, **not boilerplate** |
+
+#### Exam traps
+
+- Holding back a recommendation so you can buy first → VI(B).
+- Hot issues bought for a **spouse’s** account while the fund gets none → VI(B); fund first.
+- Giving parents’ client account IPO shares **last** to avoid looking biased → also VI(B).
+- Trading the firm’s own account minutes after a broadcast, before the printed report reaches clients → VI(B).
+- An employee who never files the personal transaction form → he violates VI(B); his **supervisor** violates IV(C).
+
+#### Application cases
+
+**Example 1 — Personal Trading (Marlon Long).** Long doesn’t recommend a stock for his employer because he wants to buy it himself first.  
+**Takeaway:** Violates VI(B) — he used his knowledge before letting his employer benefit.
+
+**Example 2 — Trading for Family Member Account (Carol Baker).** She has brokers buy scarce hot issues for her husband’s account; her fund and clients usually get none.  
+**Takeaway:** Violates VI(B) — buy for the fund first, and disclose the husband’s account to her employer.
+
+**Example 3 — Family Accounts as Equals (Erin Toffler).** She gives her parents’ retirement account IPO shares only after every other suitable client.  
+**Takeaway:** Violates VI(B) — fee-paying parents deserve the same treatment as any other client.
+
+**Example 5 — Trading Prior to Report Dissemination (Denise Wilson / Ellen Riley).** Seven minutes after Wilson’s negative closed-circuit broadcast, trading head Riley closes a long call and builds a put position, before the report reaches customers.  
+**Takeaway:** Riley violates VI(B) — the firm traded before clients could act on the recommendation.
+
+---
+
+### Standard VI(C) Referral Fees
+
+> Members and Candidates must disclose to their employer, clients, and prospective clients, as appropriate, any compensation, consideration, or benefit received from or paid to others for the recommendation of products or services.
+
+Disclosure lets clients and employers judge (1) any **partiality** in the recommendation and (2) the **full cost** of the services. Applies to fees you **receive** and fees you **pay** to those who refer clients to you.
+
+#### What to disclose
+
+| Item | Detail |
+| --- | --- |
+| **When** | **Before** the client enters any formal agreement for services |
+| **Nature** | Flat fee or percentage, one-time or continuing, performance based, research, or other noncash benefit |
+| **Value** | The **estimated dollar value** |
+| **Form of consideration** | All fees — cash, **soft dollars**, or in kind |
+
+#### Recommended procedures
+
+- Encourage the employer to set referral-fee procedures; it may ban them entirely, otherwise set approval steps.
+- Notify clients of approved referral programs; give the employer **at least quarterly** updates on the amount and nature of compensation.
+
+#### Exam traps
+
+- Referral paid in **research and commissions**, not cash → still must be disclosed.
+- **Internal** referral payments between departments of the same bank count too — disclose in writing at the time of referral.
+- Directing commissions to a friend’s broker in return for referrals, without telling the employer → VI(C).
+- Employer approval + disclosure to the client when setting up the IPS → **no** violation.
+
+#### Application cases
+
+**Example 1 — Disclosure of Referral Arrangements and Outside Parties (Willard White).** Brady Securities refers tax-exempt accounts to Lewis Brothers in return for research, market reviews and all stock commissions; White takes on Maxwell Inc.’s profit-sharing plan, referred by Harold Hill at Brady, without disclosing the arrangement.  
+**Takeaway:** Violates VI(C) — the referral fee, payable in services and commissions, had to be disclosed.
+
+**Example 2 — Disclosure of Interdepartmental Referral Arrangements (James Handley).** He is paid for referrals to Central Trust Bank’s other departments and doesn’t tell clients.  
+**Takeaway:** Violates VI(C) — internal referral payments count; disclose their nature and value in writing.
+
+**Example 3 — Disclosure of Referral Arrangements and Informing Firm (Katherine Roberts).** She steers Katama commissions to Naushon, a classmate’s uncompetitive broker, which in return refers wealthy clients to her.  
+**Takeaway:** Violates VI(C) by not informing her employer.
+
+**Example 4 — Disclosure of Referral Arrangements and Outside Organizations (Alex Burl).** With his supervisor’s approval, he donates part of his fee from school-parent referrals to his child’s school, and explains this to the client while setting up the IPS.  
+**Takeaway:** **No violation** — prior employer approval and disclosure to the client.
+
+---
+
+## Standard VII Responsibilities as a CFA Institute Member or CFA Candidate
+### Standard VII(A) Conduct as Participants in CFA Institute Programs
+
+> Members and Candidates must not engage in any conduct that compromises the reputation or integrity of CFA Institute or the CFA designation or the integrity, validity, or security of CFA Institute programs.
+
+Protects public confidence that the charter reflects **merit and ethical conduct**, and covers **all** CFA Institute programs (e.g. CIPM, Investment Foundations). Covered conduct includes:
+- giving or receiving assistance (**cheating**) on any exam;
+- violating program rules, regulations and testing policies;
+- giving **confidential** program or exam information to candidates or the public;
+- disregarding or trying to circumvent exam security;
+- improperly using an association with CFA Institute for personal or professional goals;
+- misrepresenting information on the **Professional Conduct Statement** or in the Continuing Education Program.
+
+#### Confidential exam content
+
+| May discuss | May **not** disclose |
+| --- | --- |
+| Nonconfidential information and curriculum material, in study groups or with others | **Specific details** of exam questions |
+| How difficult the exam felt, how you think you did | **Broad topical areas and formulas** tested or **not tested** |
+| Opinions and disagreement about CFA Institute, its policies or advocacy | Content-specific information inside an opinion |
+
+All exam content stays confidential until CFA Institute releases it. CFA Institute polices blogs, forums and social networks.
+
+#### Additional program restrictions and volunteers
+
+- Breaking any testing policy (**calculator** policy, **personal belongings** policy, the **Candidate Pledge**) violates VII(A).
+- Member volunteers in exam development, administration or grading must not disclose or solicit: questions on or under consideration, **deliberations**, or **scoring** information. The same integrity applies in other CFA Institute programs.
+
+> [!IMPORTANT]
+> **Candidate Pledge:** before the exam I have not given or received exam content; during it I will not; after it I will not disclose **ANY portion** of the exam or remove exam materials. Exam materials, including answers, belong to CFA Institute. Breaking the rules → results voided, possible suspension or termination of candidacy.
+
+#### Exam traps
+
+- “Lots of derivatives — I counted 18! No IPO allocation questions at all” → VII(A); saying it was hard is fine.
+- Forum threads working out answers to the hardest questions → VII(A).
+- Sending a prep provider the hardest questions → VII(A); the provider’s staff who are members or candidates also violate it.
+- Using a society volunteer role to showcase your own clients → VII(A).
+- Selling GIPS Executive Committee membership as a client advantage → VII(A); stating the role factually is fine.
+
+#### Application cases
+
+**Example 2 — Bringing Written Material into Exam Room (Loren Sullivan).** He writes a formula on his palm before the Level II exam; a proctor finds it.  
+**Takeaway:** Violates VII(A), the program rules and the Candidate Pledge.
+
+**Example 3 — Writing after Exam Period End (John Davis).** He keeps filling in ovals after “Stop writing now” and after two more warnings.  
+**Takeaway:** Violates VII(A) — unfair advantage and ignored the proctor’s instructions.
+
+**Example 4 — Sharing Exam Content (Annabelle Rossi).** Her blog says Level II was hard, she counted 18 derivatives questions, and there were no IPO allocation questions.  
+**Takeaway:** Difficulty and self-assessment are fine; revealing topics **covered and not covered** violates VII(A).
+
+**Example 7 — Discussion of Exam Grading Guidelines and Results (Wesley Whitcomb).** After grading, he tells candidate colleagues which question he graded, its guideline answer, and that few scored well.  
+**Takeaway:** Violates VII(A) and the Grader Agreement.
+
+---
+
+### Standard VII(B) Reference to CFA Institute, the CFA Designation, and the CFA Program
+
+> When referring to CFA Institute, CFA Institute membership, the CFA designation, or candidacy in the CFA Program, Members and Candidates must not misrepresent or exaggerate the meaning or implications of membership in CFA Institute, holding the CFA designation, or candidacy in the CFA Program.
+
+No promises or guarantees tied to the designation, and nothing implying **superior performance**. Factual statements about the benefits of the charter, the commitment to ethics, or the rigor of the program are fine; claims about relative merit are fine if stated as **opinion** — otherwise they need facts. Applies to every form: letterhead, business cards, bios, directories, ads, brochures, resumes and oral statements.
+
+#### Membership, the designation and candidacy
+
+| Status | Rule |
+| --- | --- |
+| **Member** | Stay active by filing the **Professional Conduct Statement** and paying **dues** every year. Lapsed → don’t present yourself as active; may say you were a member in the past |
+| **Charterholder** | Completed the program plus required work experience, and must keep meeting membership requirements. Lapsed → **forfeits** use of the designation; may say “was a charterholder” |
+| **Online** | Don’t tag a pseudonym or anonymous profile with the CFA designation |
+| **Candidate** | Application accepted **and** enrolled for an exam, or sat it and awaiting results. Registered but skipping the exam → not an active candidate until enrolled again |
+
+> [!IMPORTANT]
+> Candidates must **never** state or imply a **partial designation** (“CFA, Level II”) or an **expected completion date** (“CFA, Expected 2011”). Passing all levels in consecutive years may be stated as **fact**; implying superior ability from it violates VII(B).
+
+#### Proper vs improper references (textbook Exhibit 3)
+
+| Proper | Improper |
+| --- | --- |
+| “Completion of the CFA Program has enhanced my portfolio management skills.” | “CFA charterholders achieve better performance results.” |
+| “John Smith passed all three CFA Program exams in three consecutive years.” | “John Smith is among the elite, having passed all three CFA exams in three consecutive attempts.” |
+| “The CFA designation is globally recognized and attests to a charterholder’s success in a rigorous and comprehensive study program …” | “As a CFA charterholder, I am the most qualified to manage client investments.” |
+| “The credibility that the CFA designation affords and the skills the CFA Program cultivates are key assets for my future career development.” | “As a CFA charterholder, Jane White provides the best value in trade execution.” |
+| “I enrolled in the CFA Program to obtain the highest set of credentials in the global investment management industry.” | “Enrolling as a candidate in the CFA Program ensures one of becoming better at valuing debt securities.” |
+| “I passed Level I of the CFA Program.” | “CFA, Level II” |
+| “I am a 2010 Level III candidate in the CFA Program.” | “CFA, Expected 2011” |
+| “I passed all three levels of the CFA Program and may be eligible for the CFA charter upon completion of the required work experience.” | “John Smith, Charter Pending” |
+
+#### Recommended procedures
+
+- Give written information on VII(B) to the firm’s **legal, compliance, public relations and marketing** departments.
+- Encourage **templates** for CFA references, approved by a central authority such as compliance.
+
+#### Exam traps
+
+- “All principals passed on the first try” is fine — linking it to fund **performance** → VII(B).
+- Stopped filing the PCS and paying dues but still prints “CFA” on cards → VII(B); retiring members must apply for **retired** status first.
+- Order of CFA and PhD on a card is personal preference — separate designations with a **comma**.
+- Blog author signing as “Expert CFA” → VII(B); online authorship needs the charterholder’s full name.
+
+#### Application cases
+
+**Example 1 — Passing Exams in Consecutive Years (AZ Investment Advisors).** An ad says all principals are charterholders who passed on the first attempt and links this to the funds’ superior performance.  
+**Takeaway:** The fact may be stated, but linking it to performance or superior ability violates VII(B).
+
+**Example 2 — Right to Use CFA Designation (Louis Vasseur).** After two years traveling without filing his PCS or paying dues, he prints business cards with “CFA” after his name.  
+**Takeaway:** Violates VII(B) — his right was suspended until he reactivates membership.
+
+**Example 3 — “Retired” CFA Institute Membership Status (James Simpson).** Retired, not filing or paying, he keeps “CFA” on personal cards.  
+**Takeaway:** Violates VII(B) — he must apply for retired status (reduced dues) to keep using it.
+
+**Example 6 — Use of Fictitious Name (Barry Glass / “Expert CFA”).** Glass builds factors from a blog run by “Expert CFA” into his fund’s model.  
+**Takeaway:** “Expert CFA” violates VII(B) — CFA references online need the full name; Glass violates V(A).
