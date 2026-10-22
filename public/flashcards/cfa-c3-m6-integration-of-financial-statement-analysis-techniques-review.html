@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA FSA M6 — Integration of Financial Statement Analysis Techniques review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    "id": "f6-dupont",
+    "topic": "Extended DuPont",
+    "front": "Write the five-factor DuPont decomposition of ROE.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}\\text{ROE}={}&\\frac{\\text{NI}}{\\text{EBT}}\\times\\frac{\\text{EBT}}{\\text{EBIT}}\\times\\frac{\\text{EBIT}}{\\text{Rev}}\\\\&\\times\\frac{\\text{Rev}}{\\text{TA}}\\times\\frac{\\text{TA}}{\\text{Equity}}\\end{aligned}$$</div><p>Tax burden × interest burden × EBIT margin × asset turnover × financial leverage. The first three give the net margin, the first four ROA.</p></div>",
+    "gap": "Use average total assets and average equity for the balance sheet terms."
+  },
+  {
+    "id": "f6-associates",
+    "topic": "DuPont · removing associates",
+    "front": "How do you isolate the ROE of the core business from equity-method associates?",
+    "back": "<div class=\"ans\"><ul><li>Subtract <strong>income from associates</strong> from net income</li><li>Subtract the <strong>investment in associates</strong> from total assets</li><li>Keep <strong>financial leverage unchanged</strong></li></ul></div>",
+    "gap": "The adjusted balance sheet no longer balances: it is an analytical tool, not accounting."
+  },
+  {
+    "id": "f6-associates-example",
+    "topic": "DuPont · example",
+    "front": "NI 100 includes associates' income of 9 (after tax); EBT 130; total assets 1,250 include an investment of 125; leverage 2.5; revenue 1,000. What is ROE with and without associates?",
+    "back": "<div class=\"ans\"><ul><li>Reported: \\(100/500=\\) <strong>20.0%</strong></li><li>Excluding: tax burden \\(91/130=0.70\\), turnover \\(1{,}000/1{,}125=0.889\\) → <strong>20.2%</strong></li></ul><p>The associates earn \\(9/125=7.2\\%\\), less than the core business, so they <strong>dilute</strong> ROE.</p></div>",
+    "gap": "Associates' income sits below EBT, so it inflates the reported tax burden."
+  },
+  {
+    "id": "f6-capex",
+    "topic": "Capital allocation",
+    "front": "How do you test whether capital allocation supports strategy, using segment data?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\text{Capex ratio}=\\frac{\\text{Segment capex share}}{\\text{Segment asset share}}$$</div><ul><li><strong>Above 1</strong>: growing the segment; <strong>below 1</strong>: harvesting it</li><li>Compare with each segment's <strong>return</strong> (EBIT / assets): capital should go to the highest returns or best prospects</li></ul></div>",
+    "gap": "A low-return segment that still gets its share of capex is a candidate for restructuring."
+  },
+  {
+    "id": "f6-noa",
+    "topic": "Accruals · net operating assets",
+    "front": "Define net operating assets.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}\\text{NOA}={}&(\\text{TA}-\\text{Cash and ST inv.})\\\\&-(\\text{TL}-\\text{Total debt})\\end{aligned}$$</div><p>Operating assets minus operating liabilities: the financing items, cash and debt, are excluded.</p></div>"
+  },
+  {
+    "id": "f6-accruals",
+    "topic": "Accruals · two approaches",
+    "front": "Give aggregate accruals under the balance sheet and cash flow approaches.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\text{AA}_{\\text{B/S}}=\\text{NOA}_t-\\text{NOA}_{t-1}$$</div><div class=\"eq-block\">$$\\text{AA}_{\\text{CF}}=\\text{NI}-(\\text{CFO}+\\text{CFI})$$</div><p>Divide by average NOA for the <strong>accruals ratio</strong>; lower means higher earnings quality.</p></div>",
+    "gap": "Acquisitions, FX translation and non-cash deals make the two approaches differ: compare trends using one approach."
+  },
+  {
+    "id": "f6-accruals-example",
+    "topic": "Accruals · example",
+    "front": "NOA rises from 1,000 to 1,200; NI is 150, CFO 120 and CFI −100. Compute both accruals ratios.",
+    "back": "<div class=\"ans\"><ul><li>B/S: \\(200/1{,}100=\\) <strong>18.2%</strong></li><li>CF: \\(150-(120-100)=130\\) → \\(130/1{,}100=\\) <strong>11.8%</strong></li></ul></div>"
+  },
+  {
+    "id": "f6-cfo-ebit",
+    "topic": "Cash flow · CFO vs EBIT",
+    "front": "Why must CFO be adjusted before comparing it with EBIT? EBIT 150, CFO 100, interest paid 20, taxes paid 30.",
+    "back": "<div class=\"ans\"><p>CFO is <strong>after</strong> interest and taxes paid; EBIT is before. Add them back:</p><div class=\"eq-block\">$$100+20+30=150,\\quad 150/150=1.0$$</div></div>",
+    "gap": "Under IFRS, if interest paid is classified in CFF, it is not added back."
+  },
+  {
+    "id": "f6-cf-ratios",
+    "topic": "Cash flow · ratios",
+    "front": "What do CFO / EBIT, CFO / total assets, CFO / interest, CFO / debt and CFO / capex show?",
+    "back": "<div class=\"ans\"><ul><li><strong>CFO / EBIT</strong>: cash conversion of operating income</li><li><strong>CFO / total assets</strong>: cash return on assets</li><li><strong>CFO / cash interest</strong>: interest coverage</li><li><strong>CFO / debt</strong>: ability to repay debt</li><li><strong>CFO / capex</strong>: above 1 = investment funded internally</li></ul></div>"
+  },
+  {
+    "id": "f6-mv",
+    "topic": "Market value decomposition",
+    "front": "Market value 2,000, NI 100; a 30% stake in a listed associate worth 1,000 (share of its earnings 9). What is the implied P/E excluding the associate?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\frac{2{,}000-300}{100-9}=\\frac{1{,}700}{91}=18.7$$</div><p>The stake is valued at \\(300/9=33.3\\times\\) earnings; the core business at only 18.7×, below the headline P/E of 20.</p></div>",
+    "gap": "The headline P/E can overstate how the market values the company's own operations."
+  },
+  {
+    "id": "f6-obs",
+    "topic": "Off-balance-sheet financing",
+    "front": "What off-balance-sheet obligations remain after IFRS 16 / ASC 842, and how are they adjusted?",
+    "back": "<div class=\"ans\"><ul><li>Purchase commitments (take-or-pay contracts)</li><li>Guarantees of other entities' debt</li><li>Unconsolidated JVs and associates with large debts</li><li>Receivables sold with recourse</li></ul><p>Add their present value to debt, then recompute leverage and coverage.</p></div>"
+  },
+  {
+    "id": "f6-standards",
+    "topic": "Changes in accounting standards",
+    "front": "How can a change in accounting standards distort a trend, and what should the analyst do?",
+    "back": "<div class=\"ans\"><p>Example: IFRS 16 put leases on the balance sheet, so assets and debt rose, and <strong>EBITDA rose</strong> because lease expense became depreciation and interest.</p><ul><li>Read the <strong>transition disclosures</strong></li><li>Check whether <strong>prior periods were restated</strong></li><li><strong>Restate</strong> or adjust earlier periods so the trend reflects the business</li></ul></div>",
+    "gap": "A jump in EBITDA in the adoption year may be purely an accounting effect."
+  }
+];
+
+flashDeck({
+  key: "cfa-c3-m6-review",
+  source: "CFA L2 Financial Statement Analysis \u00b7 M6 Integration of Financial Statement Analysis Techniques \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

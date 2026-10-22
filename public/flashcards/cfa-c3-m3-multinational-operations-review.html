@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA FSA M3 — Multinational Operations review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    "id": "f3-two-activities",
+    "topic": "Two kinds of FX activity",
+    "front": "What is the difference between foreign currency transactions and foreign currency translation?",
+    "back": "<div class=\"ans\"><ul><li><strong>Transactions</strong>: the company itself buys, sells, borrows or lends in a <strong>foreign currency</strong> (e.g., an export receivable in EUR)</li><li><strong>Translation</strong>: the parent converts a <strong>foreign subsidiary's</strong> statements into its presentation currency to consolidate them</li></ul></div>"
+  },
+  {
+    "id": "f3-transaction-exposure",
+    "topic": "Transactions · exposure",
+    "front": "An importer owes foreign currency; an exporter is owed foreign currency. Which currency move hurts each?",
+    "back": "<div class=\"ans\"><ul><li><strong>Import</strong> (payable): loses if the foreign currency <strong>appreciates</strong></li><li><strong>Export</strong> (receivable): loses if the foreign currency <strong>depreciates</strong></li></ul><p>The transaction is recorded at the <strong>spot rate on the transaction date</strong>.</p></div>",
+    "gap": "Only the monetary item (receivable or payable) is remeasured; the revenue or inventory stays at the transaction-date amount."
+  },
+  {
+    "id": "f3-bs-date",
+    "topic": "Transactions · balance sheet date",
+    "front": "An import of EUR 100,000 is booked at USD 1.10 per EUR on Nov 15, Y1; the rate is 1.13 at Dec 31 and 1.12 at payment on Feb 15, Y2. What gain or loss is reported each year?",
+    "back": "<div class=\"ans\"><ul><li>Y1: payable remeasured to 113,000 → <strong>unrealized loss 3,000</strong> in NI</li><li>Y2: paid 112,000 → <strong>realized gain 1,000</strong> in NI</li><li>Total: a loss of 2,000 = settlement rate vs transaction rate</li></ul></div>",
+    "gap": "The balance sheet date only splits the total gain or loss between two periods."
+  },
+  {
+    "id": "f3-placement",
+    "topic": "Transactions · where they are reported",
+    "front": "Where on the income statement do IFRS and US GAAP require transaction gains and losses to be reported?",
+    "back": "<div class=\"ans\"><p><strong>Neither standard specifies</strong>: operating or non-operating income. Companies with the same exposure can report different <strong>operating margins</strong>, so check the notes, which disclose the net FX gain or loss in NI.</p></div>",
+    "gap": "Compare operating margins only after putting FX gains and losses on the same basis."
+  },
+  {
+    "id": "f3-currencies",
+    "topic": "Translation · three currencies",
+    "front": "Define the presentation, functional and local currencies. Which factors determine the functional currency?",
+    "back": "<div class=\"ans\"><ul><li><strong>Presentation</strong>: the currency of the parent's statements</li><li><strong>Functional</strong>: the currency of the <strong>primary economic environment</strong> in which the entity operates</li><li><strong>Local</strong>: the currency of the country where the entity is located</li></ul><p>The functional currency is the one that mainly influences <strong>sales prices</strong> and <strong>labor, material and other costs</strong>, and in which <strong>funds are raised</strong> and <strong>receipts retained</strong>.</p></div>"
+  },
+  {
+    "id": "f3-method-choice",
+    "topic": "Translation · which method",
+    "front": "Which translation method applies in each case, and where does the adjustment go?",
+    "back": "<div class=\"ans\"><ul><li>Functional = local ≠ presentation (self-contained subsidiary): <strong>current rate method</strong>, adjustment in <strong>OCI</strong> (CTA)</li><li>Functional = presentation ≠ local (integrated subsidiary): <strong>temporal method</strong>, remeasurement gain or loss in <strong>NI</strong></li><li>Local ≠ functional ≠ presentation: temporal (local → functional), <strong>then</strong> current rate (functional → presentation)</li></ul></div>",
+    "gap": "The functional currency is a management judgment, and it decides whether FX effects hit NI or OCI."
+  },
+  {
+    "id": "f3-current-rate",
+    "topic": "Current rate method · rates",
+    "front": "Which rate translates each item under the current rate method? How is retained earnings obtained, and what is the CTA?",
+    "back": "<div class=\"ans\"><ul><li><strong>All assets and liabilities</strong>: current rate</li><li><strong>Common stock</strong>: historical rate when issued</li><li><strong>Revenues and expenses</strong>: average rate; <strong>dividends</strong>: rate when declared</li><li><strong>RE</strong> = beginning RE + translated NI − translated dividends</li><li><strong>CTA</strong>: the plug that balances the B/S, in equity through OCI</li></ul></div>",
+    "gap": "The CTA is reclassified to NI only when the subsidiary is sold or liquidated."
+  },
+  {
+    "id": "f3-cr-example",
+    "topic": "Current rate method · example",
+    "front": "A euro subsidiary formed with EUR 1,000 of stock (rate 1.20) earns EUR 200 (average 1.15) and pays EUR 50 of dividends (1.12); the year-end rate is 1.10. What are translated NI, RE and the CTA?",
+    "back": "<div class=\"ans\"><ul><li>NI \\(=200\\times1.15=230\\)</li><li>RE \\(=230-50\\times1.12=174\\)</li><li>CTA: \\(1{,}000(1.10-1.20)+200(1.10-1.15)-50(1.10-1.12)\\)</li></ul><p>\\(=-100-10+1=\\) <strong>−109</strong>: net assets and a weakening euro give a negative adjustment.</p></div>",
+    "gap": "Net income is unaffected under the current rate method; the CTA goes through OCI."
+  },
+  {
+    "id": "f3-monetary",
+    "topic": "Temporal method · monetary items",
+    "front": "Which items are monetary and which are non-monetary under the temporal method?",
+    "back": "<div class=\"ans\"><ul><li><strong>Monetary assets</strong>: cash, receivables</li><li><strong>Monetary liabilities</strong>: payables, accrued expenses, long-term debt, deferred tax liabilities</li><li><strong>Non-monetary</strong>: inventory, PP&amp;E, intangibles (historical cost); securities at fair value (current value); deferred revenue</li></ul></div>",
+    "gap": "Deferred revenue is the main non-monetary liability: it is settled with goods or services, not cash."
+  },
+  {
+    "id": "f3-temporal",
+    "topic": "Temporal method · rates",
+    "front": "Which rate translates each item under the temporal method, and where does the remeasurement gain or loss go?",
+    "back": "<div class=\"ans\"><ul><li><strong>Monetary</strong> items: current rate</li><li><strong>Non-monetary at historical cost</strong>: historical rate; at current value: rate when that value was set</li><li><strong>Stock</strong>: historical rate; RE: built from NI and dividends</li><li>Most revenues and expenses: average rate; <strong>COGS, depreciation, amortization</strong>: the related asset's historical rate</li></ul><p>The remeasurement gain or loss goes to <strong>net income</strong>.</p></div>",
+    "gap": "FIFO: ending inventory at recent rates, COGS at older rates. LIFO: the reverse."
+  },
+  {
+    "id": "f3-tm-example",
+    "topic": "Temporal method · example",
+    "front": "Same euro subsidiary, now with USD as functional currency: remeasured B/S gives RE of 163, dividends are 56 and income before remeasurement is 210. Find NI and the remeasurement result.",
+    "back": "<div class=\"ans\"><ul><li>NI \\(=163+56=219\\) (beginning RE is zero)</li><li>Remeasurement gain \\(=219-210=\\) <strong>+9</strong></li></ul><p>The subsidiary has <strong>net monetary liabilities</strong> (EUR 150) and the euro weakened, so it is a <strong>gain</strong>, in NI.</p></div>",
+    "gap": "Under the temporal method the B/S is remeasured first and NI is backed out; under the current rate method the I/S comes first."
+  },
+  {
+    "id": "f3-exposure",
+    "topic": "Balance sheet exposure",
+    "front": "What is each method's exposure, and what happens when the foreign currency strengthens?",
+    "back": "<div class=\"ans\"><ul><li><strong>Current rate</strong>: all assets and liabilities are exposed → <strong>net assets</strong> (= equity). FC strengthens → <strong>positive</strong> adjustment, CTA rises</li><li><strong>Temporal</strong>: only monetary items are exposed → usually <strong>net monetary liabilities</strong>. FC strengthens → usually a remeasurement <strong>loss</strong></li></ul></div>",
+    "gap": "The two methods can give opposite signs for the same subsidiary and the same rates."
+  },
+  {
+    "id": "f3-hyperinflation",
+    "topic": "Highly inflationary economies",
+    "front": "When is an economy highly inflationary, and how do IFRS and US GAAP translate a subsidiary there?",
+    "back": "<div class=\"ans\"><ul><li><strong>US GAAP</strong>: cumulative inflation of about <strong>100% over three years</strong>. IFRS: no bright line, only indicators</li><li><strong>IFRS</strong>: <strong>restate</strong> for local inflation (non-monetary items by the price index), then translate everything at the <strong>current rate</strong>; net purchasing power gain or loss in NI</li><li><strong>US GAAP</strong>: the <strong>temporal method</strong>, as if the parent's currency were functional</li></ul></div>",
+    "gap": "The current rate method on its own is not allowed: historical-cost assets would shrink every year (the disappearing plant)."
+  },
+  {
+    "id": "f3-restate",
+    "topic": "Highly inflationary · example",
+    "front": "Land of LC 1,000 and cash of LC 500 are held all year; the price index doubles and the rate falls from USD 1.00 to 0.50 per LC. What do IFRS and US GAAP report?",
+    "back": "<div class=\"ans\"><ul><li>IFRS: land restated to LC 2,000 → <strong>USD 1,000</strong>; cash LC 500 → USD 250; purchasing power loss LC 500 = <strong>USD 250</strong></li><li>US GAAP temporal: land at 1.00 → <strong>USD 1,000</strong>; cash at 0.50 → 250; remeasurement loss <strong>USD 250</strong></li></ul></div>",
+    "gap": "Holding monetary assets during inflation loses purchasing power; owing monetary liabilities gains it."
+  },
+  {
+    "id": "f3-cr-ratios",
+    "topic": "Ratios · current rate method",
+    "front": "Under the current rate method, which ratios are unchanged by translation, and which rise when the local currency depreciates?",
+    "back": "<div class=\"ans\"><ul><li><strong>Unchanged</strong>: pure B/S ratios (current ratio, leverage) and pure I/S ratios (net margin)</li><li><strong>Mixed</strong> ratios (asset turnover, ROA, ROE): I/S at the average rate over B/S at the current rate</li></ul><div class=\"eq-block\">$$\\text{Mixed}=\\text{LC ratio}\\times\\frac{\\text{Avg rate}}{\\text{Current rate}}$$</div><p>LC depreciates → current rate below average → mixed ratios <strong>rise</strong>.</p></div>",
+    "gap": "Leverage is unchanged because translated equity, with the CTA, equals net assets at the current rate."
+  },
+  {
+    "id": "f3-method-ratios",
+    "topic": "Ratios · current rate vs temporal",
+    "front": "When the local currency depreciates, which method gives a higher current ratio and fixed asset turnover? Which ratios are the same?",
+    "back": "<div class=\"ans\"><ul><li><strong>Current ratio</strong>: higher under <strong>temporal</strong> (inventory at the higher historical rate)</li><li><strong>Fixed asset turnover</strong>: higher under <strong>current rate</strong> (fixed assets at the lower current rate)</li><li><strong>Same</strong>: quick ratio and receivables turnover (all monetary items and average-rate revenue)</li><li><strong>Uncertain</strong>: gross margin, inventory turnover, interest coverage, net margin, ROA, ROE</li></ul></div>",
+    "gap": "When the local currency appreciates, every 'higher' flips."
+  },
+  {
+    "id": "f3-tax",
+    "topic": "Effective tax rates",
+    "front": "What can change a multinational's effective tax rate, and how should an analyst forecast it?",
+    "back": "<div class=\"ans\"><ul><li>Changes in the <strong>applicable tax rates</strong> in each jurisdiction</li><li>Changes in the <strong>mix of profits</strong> earned in different jurisdictions</li></ul><p>Forecast <strong>where</strong> profits will be earned; use the <strong>tax rate reconciliation</strong> in the notes.</p></div>",
+    "gap": "A falling rate from shifting profits to low-tax countries may not be sustainable."
+  },
+  {
+    "id": "f3-sales-growth",
+    "topic": "Sales growth",
+    "front": "Local-currency sales grow 5% and foreign currencies strengthen 3% against the presentation currency. What is reported growth, and which part matters?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$1.05\\times1.03-1=8.15\\%$$</div><p>Only the <strong>5% organic (constant-currency) growth</strong> reflects real performance; the currency effect is outside management's control and can reverse.</p></div>",
+    "gap": "Forecast and compare on growth net of exchange rate effects."
+  }
+];
+
+flashDeck({
+  key: "cfa-c3-m3-review",
+  source: "CFA L2 Financial Statement Analysis \u00b7 M3 Multinational Operations \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>
