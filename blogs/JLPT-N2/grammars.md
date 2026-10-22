@@ -1409,3 +1409,20 @@ Examples:
 - 日本で歌舞伎を見たことがありません。 — I've never seen kabuki in Japan.
 - A：体育の授業で怪我をしたことがありますか。 B：はい、あります。 — A: Have you ever been injured in PE class? B: Yes, I have.
 - A：着物を着たことがありますか。 B：いいえ、ありません。 — A: Have you ever worn a kimono? B: No, I haven't.
+
+## V る／V ないことがある（sometimes）
+
+**Rule:** Dictionary form or nai-form ＋ **ことがある** means something **sometimes happens** or sometimes doesn't: "there are times when …", "… occasionally". It is the counterpart of **V たことがある** (experience).
+
+| Form | Meaning |
+|---|---|
+| **V たことがある** | have done … before (experience) |
+| **V る ことがある** | sometimes does … |
+| **V ない ことがある** | sometimes doesn't … |
+
+**Tip:** **もある** (ことも ある) adds "also" or "even": it is the exception to what usually happens.
+
+- いつも寝る前にシャワーを浴びますが、朝起きてからシャワーを浴びることもあります。 — I usually shower before bed, but sometimes I shower after getting up in the morning.
+- 梅雨の季節では、一週間も晴れないことがある。 — In the rainy season, it sometimes isn't sunny for a whole week.
+- 兄とは仲がいいのですが、喧嘩することもありますよ。 — My older brother and I get along well, but we do fight sometimes.
+- ここの地域は、半年以上も雨が降らないことがある。 — In this area, it sometimes doesn't rain for more than half a year.
