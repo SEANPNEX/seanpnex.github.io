@@ -1472,3 +1472,18 @@ Examples:
 - 明日は雨でしょう。 — It'll probably rain tomorrow.
 - ご両親もあなたの結婚を反対するでしょう。 — Your parents will probably oppose your marriage too.
 - 今頃はもうホテルに着いているだろう。 — They've probably arrived at the hotel by now.
+
+## ～間（あいだ）、～（throughout the time that …）
+
+**Rule:** **間（あいだ）** links two states or actions that run **side by side**: the second continues for the **whole period** the first describes. Read it as "during …" or "the whole time …".
+
+| Before 間 | Connection |
+|---|---|
+| Noun | N **の** 間 (夏休みの間) |
+| Verb | V **ている** 間 (待っている間) |
+
+**Tip:** The main clause usually ends in **V ていた** (often with **ずっと**), because the action fills the whole period.
+
+- 夏休みの間、ずっとアメリカを旅行していました。 — I traveled around America for the whole summer vacation.
+- 母がご飯を作っている間、私はずっと横で手伝っていました。 — While my mother was cooking, I was helping beside her the whole time.
+- バスを待っている間、ずっとスマホを見ていました。 — I was looking at my phone the whole time I was waiting for the bus.
