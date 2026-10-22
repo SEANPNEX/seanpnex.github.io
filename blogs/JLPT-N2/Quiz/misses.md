@@ -197,3 +197,11 @@
 **Correct:** **かいぎちゅう**. ～中（ちゅう）= in the middle of an activity (営業中, 準備中); ～中（じゅう）= throughout a span (一日中 いちにちじゅう, 世界中).
 
 **Gap:** Read it as かいぎじゅう.
+
+## 2026-10-22 — なきゃ／なくちゃ short forms
+
+**Q:** Casual short forms of なければならない／なくてはならない.
+
+**Correct:** **なければ → なきゃ**, **なくては → なくちゃ** (行かなきゃ。／行かなくちゃ。). ちゃ comes from ては; じゃ comes from では.
+
+**Gap:** Answered なくじゃ.
