@@ -1321,3 +1321,11 @@ For a non-past affirmative noun or な-adjective, use **な** before **ので**,
 - A：この本を借りてもいいですか。 B：ええ、どうぞ。 — A: May I borrow this book? B: Sure, go ahead.
 - 来週のパーティーに彼女を連れてきてもいいですよ。 — You can bring your girlfriend to next week's party.
 - A：こちらの資料を印刷しても大丈夫ですか。 B：はい、大丈夫ですよ。 — A: Is it OK if I print these materials? B: Yes, no problem.
+
+## V なくてもいい（no need to）
+
+**Rule:** Nai-form with ない → **なくて** ＋ **もいい** says it's OK *not* to do something ("you don't have to …", "there's no need to …"). It is the negative counterpart of **V てもいい**.
+
+- 返さなくてもいいです。 — You don't have to return it.
+- 重い本は明日、持ってこなくてもいいですよ。 — You don't need to bring the heavy books tomorrow.
+- 急ぎませんので、今日は決めなくてもいいですよ。 — There's no rush, so you don't have to decide today.
