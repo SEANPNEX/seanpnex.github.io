@@ -1436,3 +1436,11 @@ Examples:
 - 学び方についての本を探しています。 — I'm looking for a book about how to study.
 - このアプリの使い方がよくわかりません。 — I don't really understand how to use this app.
 - 丁寧な話し方がとても大事です。 — A polite way of speaking is very important.
+
+## N がする（sensory perception）
+
+**Rule:** Noun ＋ **がする** describes something you perceive with your senses, such as a smell, sound or taste. Common set phrases are **音がする** (to make a sound, a sound is heard), **匂いがする** (to give off a smell) and **味がする** (to have a taste).
+
+- 横のケーキ屋さんからとてもいい匂いがした。 — A really nice smell came from the cake shop next door.
+- レモンは酸っぱい味がします。 — Lemons taste sour.
+- スタバからいつもコーヒーのいい香りがします。 — There's always a nice smell of coffee coming from Starbucks.
