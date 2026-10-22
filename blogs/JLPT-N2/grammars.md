@@ -1426,3 +1426,13 @@ Examples:
 - 梅雨の季節では、一週間も晴れないことがある。 — In the rainy season, it sometimes isn't sunny for a whole week.
 - 兄とは仲がいいのですが、喧嘩することもありますよ。 — My older brother and I get along well, but we do fight sometimes.
 - ここの地域は、半年以上も雨が降らないことがある。 — In this area, it sometimes doesn't rain for more than half a year.
+
+## V ます形 ＋ 方（way of doing）
+
+**Rule:** Masu-stem (drop ます) ＋ **方（かた）** makes a noun meaning "the way of doing …" or "how to …". For example, 使います → **使い方** (how to use) and 読みます → **読み方** (how to read, reading).
+
+**Tip:** The result is a noun, so it takes **の** before it and particles after it: このアプリ**の**使い方**が**….
+
+- 学び方についての本を探しています。 — I'm looking for a book about how to study.
+- このアプリの使い方がよくわかりません。 — I don't really understand how to use this app.
+- 丁寧な話し方がとても大事です。 — A polite way of speaking is very important.
