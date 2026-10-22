@@ -1301,3 +1301,13 @@ For a non-past affirmative noun or な-adjective, use **な** before **ので**,
 - 今夜は星がよく見える。 — The stars are clearly visible tonight.
 - 外はうるさくて、先生の話がよく聞こえません。 — It's noisy outside, so I can't hear what the teacher is saying very well.
 - 後ろの方は聞こえますか。 — Can the people at the back hear me?
+
+## V ないでください（negative request / prohibition）
+
+**Rule:** Nai-form ＋ **でください** is the negative form of **V てください**. It asks someone *not* to do something and is mostly used for **prohibitions** ("please don't …", "… is not allowed").
+
+**Tip:** Build it from the ない form: 吸う → 吸わない → 吸わないでください.
+
+- ここではタバコを吸わないでください。 — Please don't smoke here.
+- 危ないですから、椅子に登らないでください。 — It's dangerous, so please don't climb on the chair.
+- 写真を撮らないでください。 — Please don't take photos.
