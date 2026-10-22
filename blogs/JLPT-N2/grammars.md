@@ -1360,3 +1360,13 @@ For a non-past affirmative noun or な-adjective, use **な** before **ので**,
 - 日本人の家に入る時、靴を脱がなければなりません。 — When you enter a Japanese home, you must take off your shoes.
 - 日本では後ろの座席もシートベルトを締めなければいけません。 — In Japan, you have to fasten your seatbelt in the back seat too.
 - せっかくの休みですが、仕事が終わらないので、残業しなければならないんです。 — It's a rare day off, but my work isn't done, so I have to work overtime.
+
+## V ることができる（can / be able to）
+
+> [!IMPORTANT]
+>
+> A core pattern. Dictionary form ＋ **ことができる** means "can …" or "be able to …". It covers both **ability** (having the skill to do something) and **circumstance** (the conditions make it possible). The polite form is **ことができます**, and the past is **ことができました**.
+
+- ドイツ語を話すことができますか。 — Can you speak German? (ability)
+- レポートを書いたので、明日みんなに報告することができます。 — I've written the report, so I can present it to everyone tomorrow. (circumstance)
+- おかげさまで、無事に退院することができました。 — Thanks to you, I was able to leave the hospital safely. (circumstance)
