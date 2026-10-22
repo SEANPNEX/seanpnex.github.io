@@ -1444,3 +1444,13 @@ Examples:
 - 横のケーキ屋さんからとてもいい匂いがした。 — A really nice smell came from the cake shop next door.
 - レモンは酸っぱい味がします。 — Lemons taste sour.
 - スタバからいつもコーヒーのいい香りがします。 — There's always a nice smell of coffee coming from Starbucks.
+
+## N（place）を（starting point / route）
+
+**Rule:** **を** after a place noun, used with **intransitive verbs of movement, passing or departure**, marks either the **point you leave from** or the **route you pass through**. For example, 電車を降りる (get off the train) and 橋を渡る (cross the bridge).
+
+**Tip:** This is not the direct-object を from "Transitive verbs and を". Here the verbs (出る, 曲がる, 渡る, 経由する) are about movement, and を marks the place.
+
+- あの人気のケーキ屋さんは駅を出てすぐです。 — That popular cake shop is right outside the station. (starting point)
+- 交差点を右に曲がってください。コンビニは左手にあります。 — Turn right at the intersection. The convenience store is on your left. (route)
+- 香港を経由してオーストラリアに行く。 — I'm going to Australia via Hong Kong. (route)
