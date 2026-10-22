@@ -1329,3 +1329,13 @@ For a non-past affirmative noun or な-adjective, use **な** before **ので**,
 - 返さなくてもいいです。 — You don't have to return it.
 - 重い本は明日、持ってこなくてもいいですよ。 — You don't need to bring the heavy books tomorrow.
 - 急ぎませんので、今日は決めなくてもいいですよ。 — There's no rush, so you don't have to decide today.
+
+## V てはいけない（prohibition）
+
+**Rule:** Te-form ＋ **はいけない** forbids an action ("must not …", "… is not allowed"). It is mostly used by a superior toward someone below them, or to state rules and regulations.
+
+**Tip:** Compare **V ないでください**, which is a polite request not to do something. **てはいけない** is a firmer statement that the action is not allowed.
+
+- 子供は夜遅くまで、外で遊んではいけないよ。 — Kids mustn't play outside until late at night.
+- 図書館では飲み物を机の上に置いてはいけません。 — In the library, you must not put drinks on the desks.
+- 食べ物を図書館に持ち込んではいけません。 — Bringing food into the library is not allowed.
