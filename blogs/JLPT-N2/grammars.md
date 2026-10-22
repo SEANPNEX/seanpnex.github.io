@@ -1454,3 +1454,21 @@ Examples:
 - あの人気のケーキ屋さんは駅を出てすぐです。 — That popular cake shop is right outside the station. (starting point)
 - 交差点を右に曲がってください。コンビニは左手にあります。 — Turn right at the intersection. The convenience store is on your left. (route)
 - 香港を経由してオーストラリアに行く。 — I'm going to Australia via Hong Kong. (route)
+
+## ～でしょう（conjecture）
+
+**Rule:** Plain form ＋ **でしょう** gives the speaker's guess: "probably …" or "I suppose …". The plain (casual) version is **だろう**.
+
+| Before でしょう | Connection |
+|---|---|
+| Verb | plain form ＋ でしょう (行く／行ったでしょう) |
+| い-adjective | plain form ＋ でしょう (難しいでしょう) |
+| な-adjective | plain form **minus だ** ＋ でしょう (静か~~だ~~でしょう) |
+| Noun | plain form **minus だ** ＋ でしょう (雨~~だ~~でしょう) |
+
+**Tip:** For a guess, the intonation **falls**. It often comes with **たぶん** (probably) or **きっと** (surely). Compare **～でしょう（seeking confirmation I）**, which **rises** to mean "… right?".
+
+- 初めは難しいでしょうね。 — It'll probably be hard at first.
+- 明日は雨でしょう。 — It'll probably rain tomorrow.
+- ご両親もあなたの結婚を反対するでしょう。 — Your parents will probably oppose your marriage too.
+- 今頃はもうホテルに着いているだろう。 — They've probably arrived at the hotel by now.
