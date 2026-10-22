@@ -136,3 +136,13 @@
 **Correct:** **Remeasurement gain** in NI; exposure is the net monetary position.
 
 **Gap:** Reversed the sign of temporal-method exposure.
+
+## 2026-10-22 — Altman Z-score
+
+**Q:** Altman Z-score distress-zone cutoff.
+
+**My answer:** 1.87.
+
+**Correct:** **1.81**: $Z < 1.81$ distress zone; $1.81 \le Z \le 3.0$ grey zone; $Z > 3.0$ safe zone. Higher Z = safer.
+
+**Gap:** Misremembered the distress cutoff (1.87 instead of 1.81).
