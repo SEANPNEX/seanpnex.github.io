@@ -1311,3 +1311,13 @@ For a non-past affirmative noun or な-adjective, use **な** before **ので**,
 - ここではタバコを吸わないでください。 — Please don't smoke here.
 - 危ないですから、椅子に登らないでください。 — It's dangerous, so please don't climb on the chair.
 - 写真を撮らないでください。 — Please don't take photos.
+
+## V てもいい（permission）
+
+**Rule:** Te-form ＋ **もいい** gives permission to do something ("it's OK to …", "you may …"). As a question (**V てもいいですか**), the subject is usually the speaker (わたし), and it is normally left out: "May I …?"
+
+**Tip:** **いい** can be replaced with **大丈夫**: V ても大丈夫ですか — "Is it all right if I …?"
+
+- A：この本を借りてもいいですか。 B：ええ、どうぞ。 — A: May I borrow this book? B: Sure, go ahead.
+- 来週のパーティーに彼女を連れてきてもいいですよ。 — You can bring your girlfriend to next week's party.
+- A：こちらの資料を印刷しても大丈夫ですか。 B：はい、大丈夫ですよ。 — A: Is it OK if I print these materials? B: Yes, no problem.
