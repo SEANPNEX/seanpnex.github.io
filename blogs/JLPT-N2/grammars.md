@@ -1009,6 +1009,35 @@ To make the plain past negative, change the final **い** of **V ない** to **�
 
 - みなさんから素敵なプレゼントをたくさんいただきました。 — I received many lovely gifts from everyone.
 
+### V てあげる／てくれる／てもらう（doing an action for someone）
+
+**Rule:** After a verb's **て-form**, **あげる／くれる／もらう** become auxiliary verbs. They describe giving and receiving an **action** (a favor) rather than an item, with the same viewpoint rules as above.
+
+| Pattern | Who does what for whom |
+|---|---|
+| **N₁（わたし／giver）は N₂（recipient）に V てあげる** | I (or N₁) do something for someone else |
+| **N₁（giver）は N₂（わたし／recipient）に V てくれる** | Someone does something for me or my in-group |
+| **N₁（わたし／recipient）は N₂（giver）に／から V てもらう** | I get someone to do something for me |
+
+**V てあげる.** I do something for someone else. When neither N₁ nor N₂ is "I", the speaker is either equally close to both or sides with N₁.
+
+> [!WARNING]
+> **V てあげる** stresses that you are doing the other person a favor, so it can sound condescending. Avoid it with people you aren't close to, especially superiors (③). Offer with **V ましょうか** instead (④).
+
+- 観光客に道を教えてあげます。 — I'll show the tourists the way.
+- 由加さんはクラスメートに美味しい中華料理を作ってあげました。 — Yuka made delicious Chinese food for her classmates.
+- （×）先生、重いので、持ってあげます！ — (Wrong) Professor, it's heavy, so I'll carry it for you!
+- （○）先生、重いので、持ちましょうか。 — (Right) Professor, it's heavy. Shall I carry it?
+
+**V てくれる.** Someone else does something for me or someone on my side. The giver is the subject; the recipient (usually わたし) is marked by **に**, but **わたしに** is usually left out.
+
+- 日本人の友達が作文を直してくれました。 — A Japanese friend corrected my composition for me.
+- 母は1人で私を育ててくれました。 — My mother raised me on her own.
+
+**V てもらう.** I receive someone's action. The subject is the recipient (わたしは is usually left out), and the giver is marked by **に** or **から**. Both **てくれる** and **てもらう** say I benefited, but **てもらう** adds the sense that I was lucky to receive the favor, so it shows more gratitude toward the giver.
+
+- もう電車もバスもないので、友達に車で送ってもらいました。 — There were no more trains or buses, so a friend gave me a ride.
+
 ## V ます-stem ＋ たい（want to do）
 
 **Rule:** Add **たい** to a verb's **ます-stem** to express a desire to do that action: "want to …". **たい** conjugates like an **い-adjective**, so it can become **たくない** (do not want to) or **たかった** (wanted to).
