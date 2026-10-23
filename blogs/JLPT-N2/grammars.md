@@ -1495,3 +1495,20 @@ Examples:
 - かなりきつい仕事なので、あの人は一人でできるかな。 — It's pretty tough work, so I wonder if that person can do it alone.
 - もうそろそろ向こうに着くころかな。 — I guess they're about to get there by now.
 - 締め切りは確か来月の4日かな。 — The deadline is the 4th of next month, I think.
+
+## ～ても／～でも（even if …）
+
+**Rule:** **ても／でも** joins two clauses in contrast: the second happens **even if** (or even though) the first is true. Read it as "even if …, (still) …".
+
+| Before ても | Connection |
+|---|---|
+| Verb | V て形 ＋ **も** (降って**も**, 並ん**でも**) |
+| い-adjective | い → **く** ＋ **ても** (眠い → 眠**くても**) |
+| な-adjective | ＋ **でも** (嫌い**でも**) |
+| Noun | ＋ **でも** (週末**でも**) |
+
+- ジョージさんと中村さんは、並んでも食べたいケーキを持ってきてくれました。 — George and Nakamura brought me a cake that's worth lining up for.
+- 明日雨が降っても、遠足に行きます。 — Even if it rains tomorrow, we'll go on the outing.
+- もうすぐ大事な試験ですから、眠くても勉強しなければなりません。 — The big exam is coming up soon, so I have to study even if I'm sleepy.
+- 嫌いでも、野菜はちゃんと食べましょう。 — Even if you don't like them, eat your vegetables properly.
+- お金がないので、週末でも働きます。 — I don't have money, so I work even on weekends.
