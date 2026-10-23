@@ -205,3 +205,29 @@
 **Correct:** **なければ → なきゃ**, **なくては → なくちゃ** (行かなきゃ。／行かなくちゃ。). ちゃ comes from ては; じゃ comes from では.
 
 **Gap:** Answered なくじゃ.
+
+## 2026-10-23 — Lesson grammar quiz (6.5/10)
+
+**Q1:** Indirect quotation of 「それはいいですね」と答えました.
+
+**Correct:** **それはいいねと答えました**. Plain form; ね stays. ですか → か is only for questions.
+
+**Gap:** Wrote それはいいか.
+
+**Q2:** "I think George has his part-time job on Thursday too." (half credit)
+
+**Correct:** **ジョージさんは木曜日にもアルバイトがあると思います。** Plain form before と.
+
+**Gap:** Used the polite form (バイトします) before と思います.
+
+**Q3:** "I'll take a bath after watching anime."
+
+**Correct:** **アニメを見た後で、お風呂に入ります。** The first action goes before 後で, in the た-form.
+
+**Gap:** Reversed the order (お風呂の後でアニメを見ます).
+
+**Q4:** "This company has only two employees." (しか)
+
+**Correct:** **この会社は社員が2人しかいません。** しか + negative verb; だけ takes an affirmative verb (2人だけいます).
+
+**Gap:** Wrote 職員二人だけがいます.
