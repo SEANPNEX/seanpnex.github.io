@@ -78,3 +78,7 @@
 **Correct:** **Pro rata**, every account at the **same average price**, under a **written trade-allocation policy**; adjustments for minimum lot sizes are allowed (Example 7, Hampton).
 
 **Gap:** Did not know the pro rata / same-price rule for partial fills.
+
+## 2026-10-23 — Toffler parents' IPO (note, not a miss)
+
+**Point:** In Example 3 (Erin Toffler gives her parents' fee-paying account IPO shares last), **III(B) Fair Dealing** applies alongside **VI(B) Priority of Transactions**.

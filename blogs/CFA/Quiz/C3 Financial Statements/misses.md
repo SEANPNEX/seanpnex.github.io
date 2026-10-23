@@ -146,3 +146,13 @@
 **Correct:** **1.81**: $Z < 1.81$ distress zone; $1.81 \le Z \le 3.0$ grey zone; $Z > 3.0$ safe zone. Higher Z = safer.
 
 **Gap:** Misremembered the distress cutoff (1.87 instead of 1.81).
+
+## 2026-10-23 — Extended DuPont excluding associates (M6)
+
+**Q:** NI 100 includes associates' income of 9; avg assets 1,250 include 125 in associates; avg equity 500. ROE excluding associates?
+
+**My answer:** 91/500 = 18.2%.
+
+**Correct:** NI 91, assets 1,125, keep leverage at 2.5 (1,250/500): $\frac{91}{1{,}125}\times 2.5 = \frac{91}{450} \approx 20.2\%$. Associates earn 9/125 = 7.2%, so they dilute reported ROE (20.0%).
+
+**Gap:** Adjusted equity directly; removing the investment unbalances the B/S, so go through the DuPont factors with leverage held constant.
