@@ -1033,10 +1033,13 @@ To make the plain past negative, change the final **い** of **V ない** to **�
 
 - 日本人の友達が作文を直してくれました。 — A Japanese friend corrected my composition for me.
 - 母は1人で私を育ててくれました。 — My mother raised me on her own.
+- 佐藤さんは経済に興味があるから、きっと喜んで手伝ってくれますよ。 — Sato is interested in economics, so I'm sure they'll be happy to help us. *(lesson dialogue)*
 
 **V てもらう.** I receive someone's action. The subject is the recipient (わたしは is usually left out), and the giver is marked by **に** or **から**. Both **てくれる** and **てもらう** say I benefited, but **てもらう** adds the sense that I was lucky to receive the favor, so it shows more gratitude toward the giver.
 
 - もう電車もバスもないので、友達に車で送ってもらいました。 — There were no more trains or buses, so a friend gave me a ride.
+- それは佐藤さんに調べてもらいましょうか。 — Shall we have Sato look into that? *(lesson dialogue)*
+- じゃ、李さんから話してもらってもいいですか。 — Then could we have Li tell Sato about it? *(lesson dialogue; てもらう ＋ てもいい)*
 
 ## V ます-stem ＋ たい（want to do）
 
@@ -1298,6 +1301,7 @@ For a non-past affirmative noun or な-adjective, use **な** before **ので**,
 - 食事をする前に、手を洗いましょう。 — Let's wash our hands before eating.
 - 食事の前に、食器をテーブルに並べる。 — Before the meal, set the dishes out on the table.
 - この質問に答える前に、ちゃんと考えてください。 — Think carefully before you answer this question.
+- 佐藤さんが試合に出る前に、「みんなで先に始めてください」と言ってくれましたよ。 — Before Sato went off to play the game, they told us, "Go ahead and start without me." *(lesson dialogue)*
 
 **V てから**
 - 口コミ情報をチェックしてから、商品を買います。 — I check online reviews first, then buy the product.
@@ -1551,6 +1555,7 @@ Examples:
 - 会議は遅くても4時までに終わるだろう。 — The meeting will probably be over by 4 at the latest.
 - 大学を卒業するまでに、就職先を決めたい。 — I want to decide where I'll work before I graduate from university.
 - 35歳までに結婚したいと思う。 — I want to get married by 35.
+- それでは、グループ分けをして、20日までに調査報告を出してください。 — Now, split into groups and hand in your survey report by the 20th. *(lesson dialogue)*
 
 ## ～と言う（quotation）
 
@@ -1577,6 +1582,8 @@ Indirect quotation:
 - 鈴木さんはそれはいいねと答えました。 — Suzuki answered that it sounded good.
 - 李さんは新しい会社の人はみんな親切だと言いました。 — Li said that everyone at the new company is kind.
 - 佐藤さんは明日野球の試合があると言いました。 — Sato said there's a baseball game tomorrow.
+- でも、試合が延長になったと聞きましたが。 — But I heard the game went into extra innings. *(lesson dialogue; indirect, plain form before と聞く)*
+- 佐藤さんが試合に出る前に、「みんなで先に始めてください」と言ってくれましたよ。 — Before the game, Sato told us, "Go ahead and start without me." *(lesson dialogue; direct quotation)*
 
 ## ～と思う（I think …）
 
@@ -1586,6 +1593,7 @@ Indirect quotation:
 - ジョージさんは木曜日にもアルバイトがあると思います。 — I think George has his part-time job on Thursday too.
 - わたしはまだ結婚したくないと思います。 — I don't want to get married yet.
 - そのやり方は効率的ではないと思います。 — I don't think that way of doing it is efficient.
+- では、今回、ゼミの調査報告は環境問題について書きたいと思いますが、いかがですか。 — This time I'd like to write our seminar report on environmental problems. What do you think? *(lesson dialogue)*
 
 ## ～かもしれない（maybe / might）
 
@@ -1596,6 +1604,7 @@ Indirect quotation:
 - 寒い日がずっと続いていて、ちょっと風邪かもしれないです。 — The cold days just keep going, so I might be coming down with a cold.
 - 9時半の新幹線に間に合うかもしれないから、急ぎましょう。 — We might still make the 9:30 Shinkansen, so let's hurry.
 - 有名な会社に勤めているけど、給料はほかの会社より少ないかもしれない。 — I work at a well-known company, but my pay might be lower than at other companies.
+- 様子を見て、授業時間をすこし延長するかもしれませんので、よろしくお願いします。 — Depending on how things go, I may extend class a little, so please bear with me. *(lesson dialogue)*
 
 ## V た／N の 後（あと）（で）（after …）
 
@@ -1607,6 +1616,7 @@ Indirect quotation:
 - 授業の後で、電話します。 — I'll call after class.
 - 食事の後で、カラオケに行きましょうか。 — Shall we go to karaoke after we eat?
 - アニメを見た後で、お風呂に入ります。 — I'll take a bath after watching anime.
+- 話し合いが終わった後で、僕が今日の話し合いの結果を伝えに行きますから。 — After we finish talking, I'll go and tell Sato what we decided today. *(lesson dialogue)*
 
 ## N しか V ない（only / nothing but）
 
@@ -1617,6 +1627,7 @@ Indirect quotation:
 - お金持ちのお嬢さんは高級品しか使いません。 — The rich man's daughter uses nothing but luxury goods.
 - 晩ご飯は野菜サラダしか食べません。 — For dinner I eat only a vegetable salad.
 - この会社は社員が2人しかいません。 — This company has only two employees.
+- 環境問題しか書かないのですか？ — You're only going to write about environmental problems? *(lesson dialogue)*
 
 ## N₁ だけでなく N₂ も（not only … but also …）
 
@@ -1627,3 +1638,5 @@ Indirect quotation:
 - 漢字は中国人だけでなく、日本人も使います。 — Kanji are used not only by Chinese people but by Japanese people too.
 - ジブリのアニメーション映画はストーリーだけでなく、音楽も最高です。 — Ghibli's animated films are great not just for the stories but for the music too.
 - ワンピースは日本だけでなく、海外でも人気が高いです。 — One Piece is hugely popular not only in Japan but abroad as well.
+- 環境問題だけでなく、経済との関連性についても書きましょうか。 — Shall we write not only about environmental problems but also about their link to the economy? *(lesson dialogue)*
+- ゴミ処理場の調査結果だけでなく、経済面のデータも必要です。 — We need not only the survey results from the waste plant but also economic data. *(lesson dialogue)*
