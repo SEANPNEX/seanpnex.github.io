@@ -1578,3 +1578,13 @@ Indirect quotation:
 - 授業の後で、電話します。 — I'll call after class.
 - 食事の後で、カラオケに行きましょうか。 — Shall we go to karaoke after we eat?
 - アニメを見た後で、お風呂に入ります。 — I'll take a bath after watching anime.
+
+## N しか V ない（only / nothing but）
+
+**Rule:** The particle **しか** goes after a noun and pairs with a **negative** verb to mean "only" or "nothing but". The verb is negative, but the meaning is affirmative: it limits things to what comes before **しか**.
+
+**Tip:** Compare with **だけ** (see "N だけ ＋ particle"). **だけ** takes an affirmative verb and states the limit neutrally. **しか～ない** stresses that it's *only* that, often with a sense of "not enough": 2人だけいます — there are just two; 2人しかいません — there are only two.
+
+- お金持ちのお嬢さんは高級品しか使いません。 — The rich man's daughter uses nothing but luxury goods.
+- 晩ご飯は野菜サラダしか食べません。 — For dinner I eat only a vegetable salad.
+- この会社は社員が2人しかいません。 — This company has only two employees.
