@@ -1567,3 +1567,14 @@ Indirect quotation:
 - 寒い日がずっと続いていて、ちょっと風邪かもしれないです。 — The cold days just keep going, so I might be coming down with a cold.
 - 9時半の新幹線に間に合うかもしれないから、急ぎましょう。 — We might still make the 9:30 Shinkansen, so let's hurry.
 - 有名な会社に勤めているけど、給料はほかの会社より少ないかもしれない。 — I work at a well-known company, but my pay might be lower than at other companies.
+
+## V た／N の 後（あと）（で）（after …）
+
+**Rule:** A verb in **た-form**, or an action noun ＋ **の**, followed by **後（で）** says that one action is done **after** another: "after …, …". The で is optional.
+
+**Tip:** It mirrors **V る前に** (see "V る前に／V てから"), but the verb takes the **た-form**: 見た後で, never 見る後で.
+
+- 少し練習した後で、みんなの前で発表します。 — After practicing a little, I'll present in front of everyone.
+- 授業の後で、電話します。 — I'll call after class.
+- 食事の後で、カラオケに行きましょうか。 — Shall we go to karaoke after we eat?
+- アニメを見た後で、お風呂に入ります。 — I'll take a bath after watching anime.
