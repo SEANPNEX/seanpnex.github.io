@@ -1588,3 +1588,13 @@ Indirect quotation:
 - お金持ちのお嬢さんは高級品しか使いません。 — The rich man's daughter uses nothing but luxury goods.
 - 晩ご飯は野菜サラダしか食べません。 — For dinner I eat only a vegetable salad.
 - この会社は社員が2人しかいません。 — This company has only two employees.
+
+## N₁ だけでなく N₂ も（not only … but also …）
+
+**Rule:** **だけ** after a noun limits it ("only"). **N₁ だけでなく N₂ も** means "not only N₁, but also N₂".
+
+**Tip:** **も** goes where the particle for N₂ would go: it replaces **が／を**, and it follows other particles. That's why ③ has 海外**でも**.
+
+- 漢字は中国人だけでなく、日本人も使います。 — Kanji are used not only by Chinese people but by Japanese people too.
+- ジブリのアニメーション映画はストーリーだけでなく、音楽も最高です。 — Ghibli's animated films are great not just for the stories but for the music too.
+- ワンピースは日本だけでなく、海外でも人気が高いです。 — One Piece is hugely popular not only in Japan but abroad as well.
