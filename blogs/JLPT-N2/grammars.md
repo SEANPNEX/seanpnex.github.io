@@ -1512,3 +1512,13 @@ Examples:
 - もうすぐ大事な試験ですから、眠くても勉強しなければなりません。 — The big exam is coming up soon, so I have to study even if I'm sleepy.
 - 嫌いでも、野菜はちゃんと食べましょう。 — Even if you don't like them, eat your vegetables properly.
 - お金がないので、週末でも働きます。 — I don't have money, so I work even on weekends.
+
+## N（time）／V る までに（deadline）
+
+**Rule:** **までに** goes after a time noun or a verb's dictionary form and sets a **deadline**: the action is finished **before or by** that point. Read it as "by …" or "before …".
+
+**Tip:** Compare with **まで** (see "N まで（endpoint）"). **まで** means an action continues **until** a point; **までに** means a one-time action is done **by** a point. 5時まで働く — work until 5; 5時までに帰る — be back by 5.
+
+- 会議は遅くても4時までに終わるだろう。 — The meeting will probably be over by 4 at the latest.
+- 大学を卒業するまでに、就職先を決めたい。 — I want to decide where I'll work before I graduate from university.
+- 35歳までに結婚したいと思う。 — I want to get married by 35.
