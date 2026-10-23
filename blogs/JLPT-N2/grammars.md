@@ -1557,3 +1557,13 @@ Indirect quotation:
 - ジョージさんは木曜日にもアルバイトがあると思います。 — I think George has his part-time job on Thursday too.
 - わたしはまだ結婚したくないと思います。 — I don't want to get married yet.
 - そのやり方は効率的ではないと思います。 — I don't think that way of doing it is efficient.
+
+## ～かもしれない（maybe / might）
+
+**Rule:** **かもしれない** goes after a **plain-form** clause and means "maybe …" or "… might …". With **nouns** and **な-adjectives**, drop **だ** first: 風邪~~だ~~かもしれない, 元気~~だ~~かもしれない.
+
+**Tip:** Compared with **でしょう／だろう** (see "～でしょう（conjecture）"), **かもしれない** is less certain and can even imply that it might not be so.
+
+- 寒い日がずっと続いていて、ちょっと風邪かもしれないです。 — The cold days just keep going, so I might be coming down with a cold.
+- 9時半の新幹線に間に合うかもしれないから、急ぎましょう。 — We might still make the 9:30 Shinkansen, so let's hurry.
+- 有名な会社に勤めているけど、給料はほかの会社より少ないかもしれない。 — I work at a well-known company, but my pay might be lower than at other companies.
