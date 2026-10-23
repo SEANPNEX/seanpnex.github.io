@@ -70,3 +70,13 @@ Flip cards from JLPT grammar quiz misses. Source log: [misses](./misses.md).
   loading="lazy"
   style="display:block;width:100%;height:440px;margin:20px 0 28px;border:0;background:#F0EFEB"
 ></iframe>
+
+## 2026-10-23 lesson review (all rules)
+
+<iframe
+  class="flash-deck"
+  src="/flashcards/jlpt-n2-review-2026-10-23.html"
+  title="JLPT N2 lesson review 2026-10-23"
+  loading="lazy"
+  style="display:block;width:100%;height:440px;margin:20px 0 28px;border:0;background:#F0EFEB"
+></iframe>
