@@ -1522,3 +1522,29 @@ Examples:
 - 会議は遅くても4時までに終わるだろう。 — The meeting will probably be over by 4 at the latest.
 - 大学を卒業するまでに、就職先を決めたい。 — I want to decide where I'll work before I graduate from university.
 - 35歳までに結婚したいと思う。 — I want to get married by 35.
+
+## ～と言う（quotation）
+
+**Rule:** The particle **と** marks quoted content. It is followed by a verb of speaking or hearing, such as **言う** (say), **聞く** (hear / ask) or **答える** (answer). Japanese has **direct** and **indirect** quotation.
+
+| | Direct quotation | Indirect quotation |
+|---|---|---|
+| Marking | Original words in 「 」 | No quotation marks |
+| Style of the quoted part | Kept as said (です／ます stays) | Changed to **plain form** (ですか → か, です → だ, ね stays) |
+| Example | 「それはいいですね」と答えました | それはいいねと答えました |
+
+Sample dialogue used below — 由加：環境と経済の関連性についてはいかがですか。 鈴木：それはいいですね。 (Yuka: How about writing on the link between the environment and the economy? Suzuki: That sounds good.)
+
+Direct quotation:
+
+- 李さんは鈴木さんに「環境と経済の関連性についてはいかがですか」と聞きました。 — Li asked Suzuki, "How about the link between the environment and the economy?"
+- 鈴木さんは「それはいいですね」と答えました。 — Suzuki answered, "That sounds good."
+- 李さんは「新しい会社の人はみんな親切です」と言いました。 — Li said, "Everyone at my new company is kind."
+- 日本では、食事をする前に「いただきます」と言います。 — In Japan, people say "itadakimasu" before eating.
+
+Indirect quotation:
+
+- 李さんは鈴木さんに環境と経済の関連性についてはいかがかと聞きました。 — Li asked Suzuki how the link between the environment and the economy would be (as a topic).
+- 鈴木さんはそれはいいねと答えました。 — Suzuki answered that it sounded good.
+- 李さんは新しい会社の人はみんな親切だと言いました。 — Li said that everyone at the new company is kind.
+- 佐藤さんは明日野球の試合があると言いました。 — Sato said there's a baseball game tomorrow.
