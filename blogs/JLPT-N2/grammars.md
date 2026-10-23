@@ -1548,3 +1548,12 @@ Indirect quotation:
 - 鈴木さんはそれはいいねと答えました。 — Suzuki answered that it sounded good.
 - 李さんは新しい会社の人はみんな親切だと言いました。 — Li said that everyone at the new company is kind.
 - 佐藤さんは明日野球の試合があると言いました。 — Sato said there's a baseball game tomorrow.
+
+## ～と思う（I think …）
+
+**Rule:** **と** marks what is being thought. **～と思う** is mostly used in the **first person** to give the speaker's own thoughts or opinions: "I think …" or "I feel …". It is not used as a direct quotation, so the part before **と** goes in **plain form**.
+
+- それはいいと思います。 — I think that's pretty good.
+- ジョージさんは木曜日にもアルバイトがあると思います。 — I think George has his part-time job on Thursday too.
+- わたしはまだ結婚したくないと思います。 — I don't want to get married yet.
+- そのやり方は効率的ではないと思います。 — I don't think that way of doing it is efficient.
