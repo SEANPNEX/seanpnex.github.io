@@ -231,3 +231,17 @@
 **Correct:** **この会社は社員が2人しかいません。** しか + negative verb; だけ takes an affirmative verb (2人だけいます).
 
 **Gap:** Wrote 職員二人だけがいます.
+
+## 2026-10-24 — Lesson grammar quiz (7.5/8)
+
+**Q7:** "You can't buy this car for 2 million yen." (で for a quantity limit)
+
+**Correct:** **この車は200万円では買えませんよ。** Yen is 円; では is usual with a negative.
+
+**Gap:** Wrote 二百万園で買えません (園 for 円). Grammar point right.
+
+**Q8:** Pass on the manager's message: "He said he'll be a little late, so we should start without him." (half credit)
+
+**Correct:** **すこし遅れるから、先に始めてくださいと言っていました。** The quote is a request (始めてください), not 始めましょう. "A little" is ちょっと／すこし.
+
+**Gap:** Wrote ちょと遅れるので、先に始めましょうと言っていました.

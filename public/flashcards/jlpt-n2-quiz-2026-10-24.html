@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>JLPT N2 — quiz misses 2026-10-24</title>
+<link rel="stylesheet" href="/flashcards/deck.css" />
+</head>
+<body>
+<script src="/flashcards/deck.js"></script>
+<script>
+const CARDS = [
+  {
+    id: "jlpt-itteita-request-2026-10-24",
+    topic: "言っていた · passing on a request",
+    front: `A: <span class="jp">部長は何と言っていましたか。</span><br>Reply: “He said he'll be a little late, so we should start without him.”`,
+    back: `<div class="ans">
+      <p><span class="jp"><strong>すこし</strong>遅れるから、先に<strong>始めてください</strong>と言っていました。</span></p><ul><li>The manager is <strong>asking you</strong> to start, so the quoted part is a request: <span class="jp">始めてください</span>. <span class="jp">始めましょう</span> means “let's start (together)”.</li><li>“A little” is <span class="jp">すこし</span> or <span class="jp">ちょっと</span>, with the small っ. Not <span class="jp">ちょと</span>.</li><li><span class="jp">言っていました</span> is right for relaying what someone said.</li></ul>
+    </div>`,
+    gap: "Wrote ちょと遅れるので、先に始めましょうと言っていました: 始めましょう instead of a request, and ちょと misspelled."
+  },
+  {
+    id: "jlpt-de-quantity-dewa-2026-10-24",
+    topic: "で · limit on a quantity",
+    front: `Say, using で: “You can't buy this car for 2 million yen.”`,
+    back: `<div class="ans">
+      <p><span class="jp">この車は200万<strong>円では</strong>買えませんよ。</span></p><ul><li>Yen is <span class="jp"><strong>円</strong></span>. <span class="jp">園</span> means a garden or park (公園, 動物園).</li><li>With a <strong>negative</strong>, the amount isn't enough, so <span class="jp">では</span> is usual: <span class="jp">200万円では買えません</span>.</li><li>With an affirmative, plain で: <span class="jp">千円で食べられる</span>.</li></ul>
+    </div>`,
+    gap: "Wrote 二百万園で買えません: 園 for 円, and で where では is usual with a negative."
+  }
+];
+
+flashDeck({
+  key: "jlpt-n2-2026-10-24",
+  source: "JLPT N2 · quiz misses 2026-10-24",
+  gapLabel: "Gap",
+  cards: CARDS
+});
+</script>
+</body>
+</html>
