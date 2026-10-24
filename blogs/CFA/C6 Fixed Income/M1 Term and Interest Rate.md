@@ -297,7 +297,7 @@ A yield spread is the difference between a bond's yield and a benchmark yield: $
 | **G-spread** (nominal) | Bond yield − government bond yield of the same maturity |
 | **I-spread** (nominal) | Bond yield − swap rate of the same maturity |
 | **Z-spread** | Constant spread over the government **spot** curve that prices the bond |
-| **OAS** (option-adjusted spread) | Z-spread adjusted for embedded options, covered in [M3](M3%20Valuation%20of%20Bond%20with%20embeded%20Options.md) |
+| **OAS** (option-adjusted spread) | Z-spread adjusted for embedded options (covered later) |
 
 **Swap spread** (calculation required):
 
