@@ -746,6 +746,16 @@ When the direct object becomes the **topic** or is marked as **also**, **は** o
 - インターネットで資料を調べます。 — I look up information on the internet.
 - 日本人はお箸で料理を食べます。 — Japanese people eat food with chopsticks.
 
+### Limit on a quantity
+
+**Rule:** **で** after a quantity (time, money, number), or after a question word for a quantity (いくら, 何分), sets the amount it takes: "in", "for", "with just".
+
+**Tip:** With a negative it means the amount isn't enough, and **では** is common: 200万円では買えません.
+
+- 会社から5分で行けます。 — You can get there in five minutes from the office.
+- この車は200万円では買えませんよ。 — You can't buy this car for 2 million yen.
+- ここの近くに国産牛のローストビーフが千円で食べられるお店があるんです。 — There's a place near here where you can have Japanese-beef roast beef for just 1,000 yen.
+
 ## N に（recipient or target of an action）
 
 **Rule:** Put **に** after a noun to mark the **person an action is directed toward**. Depending on the verb, this person may be the recipient of something, someone you meet, or someone you ask.
