@@ -1666,3 +1666,22 @@ Indirect quotation:
 - 市場で新鮮な魚が買えます。 — You can buy fresh fish at the market.
 - まだ完全に回復していないので、退院できません。 — I haven't fully recovered yet, so I can't leave the hospital.
 - この辺りに、どこかおいしいランチが食べられるところはありますか。 — Is there anywhere around here where I can get a good lunch?
+
+## V る／V ている／V た ところだ（stage of an action）
+
+**Rule:** As a full noun, **ところ**（所）means "place". As a formal noun after a verb, followed by **だ／です**, it marks the **stage** an action is at when the speaker is talking.
+
+| Form | Stage | Meaning | Common time words |
+| --- | --- | --- | --- |
+| **V る** ところだ | about to start | "(I'm) just about to …" | 今, ちょうど, これから |
+| **V ている** ところだ | in progress | "(I'm) in the middle of …" | 今, ちょうど |
+| **V た** ところだ | just finished | "(I've) just …" | 今, たった今 |
+
+**Tip:** The verb form decides the stage, so read it first: 行く**ところ** is about to go, 調べて**いる**ところ is checking right now, 着い**た**ところ has just arrived.
+
+- 昼ごはんを買いに行くところです。 — I'm just about to go buy lunch.
+- A：もうみなさんに資料を配りましたか。 B：いえ、これから配るところです。 — A: Have you handed out the materials to everyone yet? B: No, I'm about to hand them out now.
+- A：出席者の人数、もうわかりましたか。 B：今、調べているところです。 — A: Do you know how many people are attending yet? B: I'm checking right now.
+- ちょうど今、テーマを考えているところです。何かいいアイディアはありますか。 — I'm thinking about the theme right now. Do you have any good ideas?
+- 今、会場に着いたところです。 — I've just arrived at the venue.
+- たった今連絡が入ったところです。 — We've just heard from them.
