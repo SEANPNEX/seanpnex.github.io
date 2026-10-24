@@ -1685,3 +1685,14 @@ Indirect quotation:
 - ちょうど今、テーマを考えているところです。何かいいアイディアはありますか。 — I'm thinking about the theme right now. Do you have any good ideas?
 - 今、会場に着いたところです。 — I've just arrived at the venue.
 - たった今連絡が入ったところです。 — We've just heard from them.
+
+## V たばかりだ（just did / not long ago）
+
+**Rule:** **V た** ＋ **ばかり** ＋ **だ** means the action happened **not long ago**: "just …", "only recently …". Like a noun, it connects with **で／なので** ("since I just …") and with **の** before a noun (生まれたばかり**の**子猫).
+
+**Tip:** Compare with **V たところだ** (see "V る／V ている／V た ところだ"). **たところ** is the moment right after the action: 今着いたところです is "I arrived a moment ago". **たばかり** is how recent it *feels* to the speaker, so the gap can be days or months: 日本に来たばかり can mean you came a few weeks ago.
+
+- もう忘れたのですか。習ったばかりですよ。 — You've forgotten already? We only just learned it.
+- 日本に来たばかりで、まだ敬語を上手に使うことができません。 — I've only just come to Japan, so I can't use keigo well yet.
+- まだインターンに来たばかりなので、いつもコンビニのお弁当で済ませています。 — I've only just started my internship, so I always make do with a convenience-store bento.
+- うちには生まれたばかりの子猫が3匹います。 — We have three newborn kittens at home.
