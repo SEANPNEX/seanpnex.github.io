@@ -1616,6 +1616,16 @@ Indirect quotation:
 - でも、試合が延長になったと聞きましたが。 — But I heard the game went into extra innings. *(lesson dialogue; indirect, plain form before と聞く)*
 - 佐藤さんが試合に出る前に、「みんなで先に始めてください」と言ってくれましたよ。 — Before the game, Sato told us, "Go ahead and start without me." *(lesson dialogue; direct quotation)*
 
+### 言っていた（passing on what someone said）
+
+**Rule:** To pass on what a third person said, Japanese usually uses **言っていた／言っていました** rather than 言った. The content can be marked with **と** before it.
+
+**Tip:** 言っていた reports the words as a message you're relaying ("he was saying …"). 言った just states the past fact that someone said it.
+
+- この前、店長が言っていました。 — The manager said so the other day.
+- 私たちで行きましょうか。王さんは行かないと言っていましたから。 — Shall we go by ourselves? Wang said he isn't going.
+- A：部長は何と言っていましたか。 B：すこし遅れるから、先に始めてくださいと言っていました。 — A: What did the department head say? B: He said he'll be a little late, so we should start without him.
+
 ## ～と思う（I think …）
 
 **Rule:** **と** marks what is being thought. **～と思う** is mostly used in the **first person** to give the speaker's own thoughts or opinions: "I think …" or "I feel …". It is not used as a direct quotation, so the part before **と** goes in **plain form**.
