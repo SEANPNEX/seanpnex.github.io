@@ -492,7 +492,46 @@ $$
 \end{aligned}
 $$
 
-**Example.** A 5-year zero-coupon bond yields 4%. Its Macaulay duration is 5, so $\text{ModDur}=5/1.04=4.808$; its convexity is $\frac{n(n+1)}{(1+y)^2}=\frac{30}{1.04^2}=27.74$. If the yield rises by 1%:
+**Exact modified duration and convexity.** Both are rates of change of the price, relative to the price:
+
+$$\text{ModDur}=-\frac{1}{P}\cdot\frac{dP}{dy}$$
+
+$$\text{Convexity}=\frac{1}{P}\cdot\frac{d^2P}{dy^2}$$
+
+The approximate formulas above are numerical (central-difference) estimates of these derivatives: $\frac{PV_{-}-PV_{+}}{2\Delta y}$ estimates $-\frac{dP}{dy}$, and $\frac{PV_{-}+PV_{+}-2PV_0}{(\Delta y)^2}$ estimates $\frac{d^2P}{dy^2}$.
+
+For a **zero-coupon bond** they have a closed form, because there is only one cash flow. With face value $F$, maturity $n$ and yield $y$ per period:
+
+$$P=F(1+y)^{-n}$$
+
+Each derivative brings down the exponent and adds one power of $(1+y)$ to the denominator:
+
+$$\frac{dP}{dy}=-nF(1+y)^{-(n+1)}$$
+
+$$\frac{d^2P}{dy^2}=n(n+1)F(1+y)^{-(n+2)}$$
+
+Dividing by the price cancels the $(1+y)^{-n}$ in it, leaving only the powers added by differentiating, one for duration and two for convexity:
+
+$$\text{ModDur}=\frac{nF(1+y)^{-(n+1)}}{F(1+y)^{-n}}=\frac{n}{1+y}$$
+
+$$\text{Convexity}=\frac{n(n+1)F(1+y)^{-(n+2)}}{F(1+y)^{-n}}=\frac{n(n+1)}{(1+y)^2}$$
+
+So the denominator is $(1+y)^2$ whatever the maturity: the maturity appears only in $n(n+1)$. The Macaulay duration of a zero is its maturity $n$, consistent with $\text{ModDur}=\text{MacDur}/(1+y)$.
+
+For a 5-year zero at 4% (price 82.193 per 100), the approximate formulas converge to the exact values, $5/1.04=4.808$ and $30/1.04^2=27.737$, as $\Delta y$ shrinks:
+
+| $\Delta y$ | $PV_{-}$ | $PV_{+}$ | ModDur | Convexity |
+| --- | ---: | ---: | ---: | ---: |
+| 1% | 86.261 | 78.353 | 4.811 | 27.749 |
+| 0.1% | 82.589 | 81.799 | 4.808 | 27.737 |
+| 0.01% | 82.232 | 82.153 | 4.808 | 27.737 |
+| **Exact** | | | **4.808** | **27.737** |
+
+> [!Note]
+>
+> In the exam, use the approximate formulas with $PV_{-}$ and $PV_{+}$. The closed form is a shortcut for zero-coupon bonds only; a coupon bond has several cash flows, so its exact convexity is a sum over them, $\frac{1}{P}\sum_t \frac{t(t+1)\,CF_t}{(1+y)^{t+2}}$.
+
+**Example.** A 5-year zero-coupon bond yields 4%. From the closed forms above, its Macaulay duration is 5, $\text{ModDur}=5/1.04=4.808$ and its convexity is $30/1.04^2=27.74$. If the yield rises by 1%:
 
 $$
 \begin{aligned}
