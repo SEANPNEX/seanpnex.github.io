@@ -1640,3 +1640,29 @@ Indirect quotation:
 - ワンピースは日本だけでなく、海外でも人気が高いです。 — One Piece is hugely popular not only in Japan but abroad as well.
 - 環境問題だけでなく、経済との関連性についても書きましょうか。 — Shall we write not only about environmental problems but also about their link to the economy? *(lesson dialogue)*
 - ゴミ処理場の調査結果だけでなく、経済面のデータも必要です。 — We need not only the survey results from the waste plant but also economic data. *(lesson dialogue)*
+
+## 動詞可能形（potential form: can / be able to）
+
+**Rule:** The potential form means "can (do)". Like Chinese 能, it covers two senses: (1) someone has the **ability**, or (2) the **conditions** allow it.
+
+| Verb group | How to form it | Examples |
+| --- | --- | --- |
+| Group I | Change the final **う-row** kana to the **え-row**, then add **る** | 返す → 返せる, 書く → 書ける, 泳ぐ → 泳げる, 待つ → 待てる, 読む → 読める, 遊ぶ → 遊べる, 送る → 送れる |
+| Group II | Drop **る**, add **られる** | 辞める → 辞められる, 寝る → 寝られる |
+| Group III（サ変） | **する → できる** | 勉強する → 勉強できる |
+| Group III（カ変） | **来る（くる） → 来られる（こられる）** | 来る → 来られる |
+
+> [!IMPORTANT]
+> With a transitive verb in the potential form, the object particle **を** usually changes to **が**: 私は辛いものを食べません → 私は辛いものが食べられません。
+
+**Tip:** The potential form is itself a Group II verb, so it conjugates like one: 書ける → 書けます／書けない／書けた. It means the same as **V ることができる** (see "V ることができる") but is shorter and more common in speech.
+
+**Tip:** In casual speech, younger speakers often drop the **ら** from Group II verbs and 来る. This is called **ら抜き言葉**: 食べ（ら）れる → 食べれる, 来（ら）れる → 来れる. Avoid it in formal speech and writing.
+
+- 私は辛いものが食べられません。 — I can't eat spicy food.
+- 私は辛いものが食べ（ら）れません。 — I can't eat spicy food. *(ら抜き, casual)*
+- 私は明日授業があるので、来（ら）れません。 — I have class tomorrow, so I can't come. *(ら抜き, casual)*
+- A：明日のパーティーに来られますか。 B：はい、行けると思います。 — A: Can you come to the party tomorrow? B: Yes, I think I can go.
+- 市場で新鮮な魚が買えます。 — You can buy fresh fish at the market.
+- まだ完全に回復していないので、退院できません。 — I haven't fully recovered yet, so I can't leave the hospital.
+- この辺りに、どこかおいしいランチが食べられるところはありますか。 — Is there anywhere around here where I can get a good lunch?
