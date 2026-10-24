@@ -399,6 +399,27 @@ Together, tense (non-past / past) × polarity (affirmative / negative) make the 
 - A: ほしいものはありますか。 — Is there anything you want?
 - B: ありますよ。お金がほしいです。 — Yes. I want money.
 
+### （N に）V てほしい／V ないでほしい（want someone to do / not to do）
+
+**Rule:** **V て** ＋ **ほしい** means the speaker wants someone else to do something; **V ない** ＋ **でほしい** means they want someone **not** to do it. To name who should (or shouldn't) act, mark that person with **に**.
+
+**Rule:** When the wish is for a state or event to happen, rather than for a person to act, mark the subject with **が**. The verb is then usually an intransitive verb that nobody controls (終わる, 来る).
+
+| What you want | Pattern | Example |
+| --- | --- | --- |
+| A person to act | **person に** V てほしい | 子供たちに約束を守ってほしい |
+| A person not to act | （person に）V ないでほしい | 遅刻しないでほしい |
+| Something to happen | **thing が** V てほしい／ないでほしい | 夏休みが終わらないでほしい |
+
+**Tip:** Compare with **N がほしい** above: there the thing you want is marked with が, but in V てほしい the person who acts is marked with に. Watch out for 誰か**に**手伝ってほしい, not 誰か**が**.
+
+- やることがいっぱいあるので、誰かに手伝ってほしいんです。 — I have so much to do; I'd like someone to help me.
+- 子供たちに約束を守ってほしい。 — I want the children to keep their promise.
+- 大事なイベントなので、遅刻しないでほしい。 — It's an important event, so please don't be late.
+- 勝手にスマホを見ないでほしい。 — I don't want you looking at my phone without asking.
+- 夏休みが終わらないでほしい。 — I wish summer vacation would never end.
+- お金がない！早く給料日が来てほしい。 — I'm out of money! I wish payday would hurry up and come.
+
 
 ## Clause₁ が、Clause₂（adversative / softener）
 
