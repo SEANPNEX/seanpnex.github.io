@@ -1738,3 +1738,24 @@ Indirect quotation:
 - わたしのでも使いますか。 — Do you want to use mine?
 - 明日の夜、いっしょに映画でも見ますか。 — Shall we watch a movie or something together tomorrow night?
 - いっしょにステーキでも食べに行きますか。 — Shall we go out for a steak together?
+
+## ～みたいだ（conjecture: seems / looks like）
+
+**Rule:** Put **みたいだ** after a plain-form clause to give the speaker's guess, usually based on what they've **seen or felt themselves**. It is mainly spoken. It translates as "it seems …", "looks like …", "apparently …".
+
+| Before みたいだ | Connection | Example |
+| --- | --- | --- |
+| Verb | plain form | 別れた**みたいだ** |
+| Type I adjective | plain form | 忙しい**みたいだ** |
+| Type II adjective | plain form, **drop だ** | 暇~~だ~~**みたいだ** → 暇みたいだ |
+| Noun | plain form, **drop だ** | 来月~~だ~~**みたいだ** → 来月みたいだ |
+
+> [!IMPORTANT]
+> With a noun or a Type II adjective, the present affirmative drops **だ**: 来月みたいです, not 来月だみたいです. Past and negative forms stay as they are: 来月だったみたい, 来月じゃないみたい.
+
+**Tip:** It also compares with **～と思う** (see "～と思う") and **～かもしれない** (see "～かもしれない"). **みたいだ** rests on evidence the speaker has noticed: two people not talking, a fever. **かもしれない** is just a possibility.
+
+- あの2人は最近あまり話さない。別れたみたいだ。 — Those two hardly talk lately. Looks like they broke up.
+- 昨日から熱があります。風邪を引いたみたいです。 — I've had a fever since yesterday. I seem to have caught a cold.
+- A：試験はいつですか。 B：来月みたいですよ。 — A: When is the exam? B: Apparently it's next month.
+- 中村さんは彼氏ができたみたいですよ。 — It looks like Nakamura has a boyfriend.
