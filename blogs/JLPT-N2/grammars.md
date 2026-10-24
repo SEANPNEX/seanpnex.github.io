@@ -1696,3 +1696,14 @@ Indirect quotation:
 - 日本に来たばかりで、まだ敬語を上手に使うことができません。 — I've only just come to Japan, so I can't use keigo well yet.
 - まだインターンに来たばかりなので、いつもコンビニのお弁当で済ませています。 — I've only just started my internship, so I always make do with a convenience-store bento.
 - うちには生まれたばかりの子猫が3匹います。 — We have three newborn kittens at home.
+
+## N でも（giving an example in a suggestion）
+
+**Rule:** **でも** after a noun, or after a particle such as **に** or **と**, offers one example of what you're suggesting and leaves room for other choices. It softens the suggestion and sounds polite. Usually it isn't translated, or it comes out as "or something".
+
+**Tip:** It mostly comes with invitations and offers: ～ませんか, ～ますか, ～ましょうか. Don't confuse it with the "even if" でも (see "～ても／～でも").
+
+- ちょっとコーヒーでも飲みませんか。 — Would you like a coffee or something?
+- わたしのでも使いますか。 — Do you want to use mine?
+- 明日の夜、いっしょに映画でも見ますか。 — Shall we watch a movie or something together tomorrow night?
+- いっしょにステーキでも食べに行きますか。 — Shall we go out for a steak together?
