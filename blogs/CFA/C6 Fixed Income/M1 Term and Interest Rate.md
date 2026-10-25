@@ -17,6 +17,7 @@
 .fx-concept-chart.ts-z-chart { height: 600px; }
 .fx-concept-chart.ts-factor-chart { height: 744px; }
 .fx-concept-chart.ts-shape-chart { height: 509px; }
+.fx-concept-chart.ts-macro-chart { height: 791px; }
 @media (max-width: 587px) {
     .fx-concept-chart { height: 889px; }
     .fx-concept-chart.ts-forward-chart { height: 606px; }
@@ -27,6 +28,7 @@
     .fx-concept-chart.ts-z-chart { height: 619px; }
     .fx-concept-chart.ts-factor-chart { height: 1377px; }
     .fx-concept-chart.ts-shape-chart { height: 898px; }
+    .fx-concept-chart.ts-macro-chart { height: 1400px; }
 }
 </style>
 
@@ -677,11 +679,119 @@ $$
 
 ### Interest Rate Volatilities
 
+The **term structure of interest rate volatility** plots the volatility of yields against maturity. It is usually **downward sloping**: short-term yields are more volatile than long-term yields.
 
+The difference in volatility can be explained by:
+
+* **Short-term** rates react to **monetary policy**, which changes frequently.
+* **Long-term** rates are linked to the **real economy and long-run inflation expectations**, which change more slowly.
+
+Interest rate uncertainty is measured by the **annualized standard deviation of the proportional change in a bond yield** over a specified time interval. It matters most for bonds with **embedded options**, whose values depend directly on volatility.
+
+> [!Note]
+>
+> If changes in successive periods are uncorrelated (the usual model assumption), variance grows in proportion to time, so volatility scales with the square root of time:
+>
+> $$\sigma_{T}=\sigma_{\text{annual}}\sqrt{T},\qquad\sigma_{\text{month}}=\sigma_{\text{annual}}\sqrt{\tfrac{1}{12}}$$
+>
+> For example, an annual volatility of 20% is a monthly volatility of $20\%\times\sqrt{1/12}=5.77\%$.
 
 ## Active Bond Portfolio Management
 
+### Forward Contract Strategy
 
+> [!Note]
+>
+> For the basic concepts of forwards, see [Forward](../C7%20Derivative/M1%20Futures.md#forward) and [Fixed-Income Forwards](../C7%20Derivative/M1%20Futures.md#fixed-income-forwards-and-equity-forwards) in Derivatives.
+
+Recall the [pure expectations theory](#pure-expectations-theory): the forward rate is the market's estimate of the future spot rate, $f(1,1)=E[s_1(1)]$. An investor whose own view **differs** from the forward rate can trade on it with a forward contract.
+
+Take a forward contract, agreed at $T=0$, to buy at $T=1$ a one-year zero-coupon bond. Its forward price is set by the forward rate:
+
+$$F_0=\frac{100}{1+f(1,1)}$$
+
+At $T=1$ the bond is worth $100/(1+s_1')$, where $s_1'$ is the one-year spot rate that actually prevails then:
+
+* $s_1'=f(1,1)$: the bond is worth exactly the forward price; the contract has **no value**.
+* $s_1'>f(1,1)$: the bond price is **below** the forward price, so the **short** gains and the **long** loses: $V_{\text{short}}>0$, $V_{\text{long}}<0$.
+* $s_1'<f(1,1)$: the bond price is **above** the forward price, so the **long** gains and the **short** loses: $V_{\text{long}}>0$, $V_{\text{short}}<0$.
+
+So an investor who expects future rates to be **lower** than the forward rates imply goes **long** the forward (or buys longer bonds), and one who expects them to be **higher** goes **short**.
+
+**Example.** With $f(1,1)=2.80\%$ (from the [forward rate example](#forward-rate-models)), the forward price is $F_0=100/1.028=97.275$.
+
+* If $s_1'=2.00\%$: the bond is worth $100/1.02=98.039$, and the long gains $98.039-97.275=0.764$.
+* If $s_1'=3.50\%$: the bond is worth $100/1.035=96.618$, and the long loses $97.275-96.618=0.657$.
+
+### Riding the Yield Curve
+
+**Riding the yield curve** (rolling down the yield curve) means buying a bond with a maturity **longer than the investment horizon** and selling it at the horizon. It works when:
+
+* The yield curve is **upward sloping**, and
+* The yield curve is expected **not to change** over the horizon.
+
+Then, as time passes, the bond "rolls down" to a shorter maturity with a **lower yield**, so its price rises. Buying a bond with a maturity longer than the investment horizon then gives a total return **greater** than a maturity-matching strategy.
+
+**Example.** An upward-sloping curve, with prices of 3% annual-coupon bonds (par 100) of different maturities:
+
+| Maturity (years) | Yield | Price |
+| ---: | ---: | ---: |
+| 5 | 3.0% | 100.00 |
+| 15 | 4.0% | 88.88 |
+| 25 | 5.0% | 71.81 |
+| 30 | 5.5% | 63.67 |
+
+The investment horizon is 5 years. Ignoring the reinvestment of coupons:
+
+1. **Maturity matching**: buy the 5-year bond at 100 and hold it to maturity.
+   * No capital gain or loss: the bond is redeemed at par.
+   * Only credit and reinvestment risk.
+   * Return: coupons of $5\times3=15$ on 100, so $15\%$ over 5 years, about **2.8%** a year.
+2. **Riding the curve**: buy the 30-year bond at 63.67 and sell it after 5 years. It is then a 25-year bond; if the curve is unchanged, its yield has rolled down from 5.5% to 5.0%.
+   * Capital gain $=71.81-63.67=8.14$
+   * Return: $\dfrac{71.81+15-63.67}{63.67}=36.3\%$ over 5 years, about **6.4%** a year, more than the 30-year bond's own yield of 5.5%, because of the roll-down gain.
+
+> [!Note]
+>
+> The extra return is not free. The 30-year bond has far more **interest rate risk**: if the curve shifts up or flattens over the horizon, the roll-down gain shrinks or turns into a loss. The strategy is a bet that the curve will stay upward sloping and stable.
 
 ## Developing Interest Rate Views Using Macroeconomics
 
+> [!Note]
+>
+> The details of this part are covered in Level III. For Level II, knowing the concepts is enough.
+
+**What moves yields.**
+
+* **Inflation** (and inflation expectations) explains most of the variation in **short- and intermediate-term** government bond yields; the rest is attributable mainly to **economic growth** and **monetary policy**.
+* **Monetary policy** also moves **long-term** yields: through the expected path of future short rates, and through central bank purchases of bonds (quantitative easing), which lower long-term yields.
+
+**Bear and bull moves.** A **bear** move means yields **rise** (bond prices fall); a **bull** move means yields **fall**. **Flattening** means the gap between long and short yields narrows; **steepening** means it widens.
+
+* **Bearish flattening**: short-term yields rise **more** than long-term yields. Typical when the central bank **tightens** monetary policy to cool down the economy.
+* **Bullish steepening**: short-term yields fall **more** than long-term yields. Typical **during recessions**, when the central bank cuts short-term rates to stimulate the economy.
+
+<iframe
+  class="fx-concept-chart ts-macro-chart"
+  src="/charts/term-structure-curves.html?view=macro"
+  title="Bear flattening, bull steepening, bull flattening and bear steepening"
+  loading="lazy"
+></iframe>
+
+| | Short-term yields | Long-term yields | Typical cause |
+| --- | --- | --- | --- |
+| **Bear flattening** | Rise more | Rise less | Monetary tightening |
+| **Bull steepening** | Fall more | Fall less | Monetary easing in a recession |
+| **Bull flattening** | Fall less | Fall more | Flight to quality |
+| **Bear steepening** | Rise less | Rise more | Fiscal deficits, inflation fears |
+
+**Fiscal policy: supply-side effects.** Yields tend to **increase when budget deficits rise**, because the government must issue more bonds. This is effectively a [segmented market](#segmented-market-theory) factor: the greater supply of long-term bonds increases the yield in that maturity segment.
+
+**Investor demand.**
+
+* **Domestic investor demand** is a key driver: higher demand (e.g., from pension funds and insurers) raises bond prices and **reduces the bond risk premium**.
+* **Non-domestic investor demand** (e.g., foreign central banks and reserve managers) works the same way: external demand raises prices and **reduces the bond risk premium**.
+
+**Flight to quality.** During highly uncertain market periods, investors flock to government bonds, in what is termed a **flight to quality**. It is often associated with **bullish flattening**: the curve flattens as long-term yields fall by more than short-term yields.
+
+An investor who expects a bullish flattening may seek to profit from it by shifting from a **bullet** portfolio (concentrated in intermediate maturities) to a **barbell** portfolio (short and long maturities, with the same duration). The long end of the barbell gains the most when long-term yields fall, and the barbell's higher convexity adds to the gain.

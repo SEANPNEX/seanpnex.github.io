@@ -258,6 +258,19 @@
         { h3: 'Result', hint: 'Initial curve to final curve: the three steps added together', draw: (s, W, H) => stepPanel(s, W, H, 0, 3) },
       ],
     },
+    macro: {
+      title: 'Bull or bear sets the direction; which end moves more sets flat or steep.',
+      sub: 'Illustrative moves from the same starting curve · bear = yields rise (prices fall), bull = yields fall · flattening = the gap between long and short yields narrows, steepening = it widens · light = before, ink = after',
+      src: 'YIELD CURVE MOVES · F6 PAIRED LINES · BEAR / BULL, FLATTENING / STEEPENING',
+      legend: [{ hl: 'b', stroke: '#BEBDB6', name: 'before' }, { hl: 'a', stroke: C.INK, name: 'after' }],
+      small: true,
+      panels: [
+        { h3: 'Bear flattening', hint: 'Short end +100 bps, long end +25 bps: monetary tightening to cool the economy', draw: (s, W, H) => movePanel(s, W, H, (n) => 1 - 0.75 * (n - 1) / 9) },
+        { h3: 'Bull steepening', hint: 'Short end −100 bps, long end −25 bps: easing in a recession', draw: (s, W, H) => movePanel(s, W, H, (n) => -(1 - 0.75 * (n - 1) / 9)) },
+        { h3: 'Bull flattening', hint: 'Short end −25 bps, long end −100 bps: flight to quality', draw: (s, W, H) => movePanel(s, W, H, (n) => -(0.25 + 0.75 * (n - 1) / 9)) },
+        { h3: 'Bear steepening', hint: 'Short end +25 bps, long end +100 bps: e.g., rising deficits or inflation fears', draw: (s, W, H) => movePanel(s, W, H, (n) => 0.25 + 0.75 * (n - 1) / 9) },
+      ],
+    },
     shapes: {
       title: 'Weight the KRDs by each factor’s shape to get its duration.',
       sub: 'Left: one unit of each factor at the 1-, 5- and 10-year key rates · right: the example’s move, level +0.50%, steepness +0.20% and curvature −0.10%, changes the three key rates by +0.20%, +0.50% and +0.60%',
@@ -308,6 +321,20 @@
     el(s, 'path', { d: pathD(F, bp) + ' L' + ap.slice().reverse().map((q) => F.x(q[0]).toFixed(1) + ' ' + F.y(q[1]).toFixed(1)).join(' L') + ' Z', fill: '#E3E2DB', class: 'fade', style: 'animation-delay:.45s' });
     series(s, F, bp, { stroke: '#BEBDB6', width: 1.3, r: 2.3, hl: 'b', name: 'Curve before this step' });
     series(s, F, ap, { stroke: C.INK, r: 2.6, hl: 'a', delay: 0.15, name: 'Curve after this step' });
+  }
+
+  // A whole-curve move from the base curve: before (light) and after (ink), gap shaded.
+  function movePanel(s, W, H, d) {
+    const F = frame(s, W, H, { ...M(W < 420), yMin: 0.5 }, 10.5, 5.5);
+    yGrid(s, F, [1, 2, 3, 4, 5]);
+    xTicks(s, F, [1, 2, 4, 6, 8, 10]);
+    axes(s, F, 'maturity (years) →', 'yield');
+    const base = UP.slice(0, 10);
+    const bp = base.map((v, k) => [k + 1, v, `${k + 1}y before: ${pct(v)}`]);
+    const ap = base.map((v, k) => { const c = d(k + 1) * 100; return [k + 1, v + d(k + 1), `${k + 1}y after: ${pct(v + d(k + 1))} (${c >= 0 ? '+' : '−'}${Math.abs(c).toFixed(0)} bps)`]; });
+    el(s, 'path', { d: pathD(F, bp) + ' L' + ap.slice().reverse().map((q) => F.x(q[0]).toFixed(1) + ' ' + F.y(q[1]).toFixed(1)).join(' L') + ' Z', fill: '#E3E2DB', class: 'fade', style: 'animation-delay:.45s' });
+    series(s, F, bp, { stroke: '#BEBDB6', width: 1.3, r: 2.3, hl: 'b', name: 'Curve before the move' });
+    series(s, F, ap, { stroke: C.INK, r: 2.6, hl: 'a', delay: 0.15, name: 'Curve after the move' });
   }
 
   // Spot vs f(2, k), with the gap between them shaded.
