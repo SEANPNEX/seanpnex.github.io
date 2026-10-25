@@ -229,6 +229,15 @@ Dialogue:
 - A: 寒いですね。 — It’s cold, isn’t it?
 - B: そうですね。今日は雪ですから。 — Yes. Because it’s snowing today.
 
+### ～からだ／～からではない（stating the reason）
+
+**Rule:** Plain form + **からだ** (polite **からです**) gives the reason for something already stated: "it's because …", or "the reason … is that …". The negative **～からではない**（spoken **～からじゃない**）means "it's not because …".
+
+- けがをして休学しました。事故に遭ったからです。 — I took a leave from school because I was injured. It was because I had an accident.
+- 彼は試験に落ちました。まじめに勉強しなかったからじゃなくて、病気で休学したからです。 — He failed the exam. It wasn't because he didn't study seriously, but because he was ill and took a leave from school.
+- A: この新商品、ぜんぜん売れませんね。 — This new product isn't selling at all, is it?
+- B: まだ誰も知らないからだと思いますよ。 — I think it's because nobody knows about it yet.
+
 ## N はどうですか（asking about nature / opinion）
 
 **Rule:** **どう** means “how / what is it like.” **N はどうですか** asks about the **nature** of something or the listener’s **opinion** of it. Answer with an adjectival predicate (or a short evaluative phrase).
