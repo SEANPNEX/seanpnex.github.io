@@ -1769,3 +1769,16 @@ Indirect quotation:
 - 昨日から熱があります。風邪を引いたみたいです。 — I've had a fever since yesterday. I seem to have caught a cold.
 - A：試験はいつですか。 B：来月みたいですよ。 — A: When is the exam? B: Apparently it's next month.
 - 中村さんは彼氏ができたみたいですよ。 — It looks like Nakamura has a boyfriend.
+
+## N ではなく（て）（not N₁ but N₂）
+
+**Rule:** **N₁ ではなく（て）、N₂** denies N₁ and gives the right answer, N₂: "not N₁, but N₂". **ではなく** is mostly written; **ではなくて** and **じゃなくて** are spoken.
+
+| Register | Form |
+| --- | --- |
+| Written | N ではなく |
+| Spoken | N ではなくて／N じゃなくて |
+
+- この前いっしょに食べた料理は和食じゃなくて、韓国料理だったんだよ。 — The food we had together last time wasn't Japanese, it was Korean.
+- この前、山田さんといっしょに来た人は、山田さんの恋人ではなくて、妹さんでした。 — The person who came with Yamada last time wasn't Yamada's partner but Yamada's younger sister.
+- 弁当は日本特有の文化ではなく、世界中どこにでもある。 — Bento isn't unique to Japanese culture; it's found everywhere in the world.
