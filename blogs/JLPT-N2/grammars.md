@@ -1802,6 +1802,14 @@ Indirect quotation:
 - 田中さんは最近忙しいようですよ。食事会に誘っても来てくれません。 — Tanaka seems to be busy lately. Even when I invite them to dinner, they don't come.
 - 先生は怒っているようでした。 — The teacher seemed to be angry.
 
+### N のようだ（comparison: just like N）
+
+**Rule:** **N の + ようだ** can also make a comparison: "like N", "as if it were N". It often goes with adverbs such as **まるで** or **いかにも**: "(just) like N".
+
+- 日本のお弁当は美しくて、まるで芸術品のようです。 — Japanese bento are beautiful, just like works of art.
+- 中村さんはやさしくて、李さんにとってお姉さんのようです。 — Nakamura is kind; to Li, Nakamura is like an older sister.
+- この一週間は毎日残業だったので、洗濯物がもう山のようです。 — I worked overtime every day this week, so the laundry is piled up like a mountain.
+
 ## N ではなく（て）（not N₁ but N₂）
 
 **Rule:** **N₁ ではなく（て）、N₂** denies N₁ and gives the right answer, N₂: "not N₁, but N₂". **ではなく** is mostly written; **ではなくて** and **じゃなくて** are spoken.
