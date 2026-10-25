@@ -1788,6 +1788,20 @@ Indirect quotation:
 - A：試験はいつですか。 B：来月みたいですよ。 — A: When is the exam? B: Apparently it's next month.
 - 中村さんは彼氏ができたみたいですよ。 — It looks like Nakamura has a boyfriend.
 
+## ～ようだ（conjecture）
+
+**Rule:** **V／A (連体形) + ようだ** or **N の + ようだ** gives a conjecture based on what the speaker has seen or sensed: "it seems …", "it looks like …". The meaning is the same as **～みたいだ**, but ようだ also fits written or formal contexts, while みたいだ is mostly spoken.
+
+| Before ようだ | Form |
+| --- | --- |
+| Verb／adjective | 連体形 + ようだ |
+| Noun | N の + ようだ |
+
+- 中国人は日本の冷たい弁当があまり好きではないようだ。 — It seems Chinese people don't much like Japanese cold bento.
+- もうそろそろ時間のようなので、今日はこれで終わります。 — It looks like we're about out of time, so let's finish here for today.
+- 田中さんは最近忙しいようですよ。食事会に誘っても来てくれません。 — Tanaka seems to be busy lately. Even when I invite them to dinner, they don't come.
+- 先生は怒っているようでした。 — The teacher seemed to be angry.
+
 ## N ではなく（て）（not N₁ but N₂）
 
 **Rule:** **N₁ ではなく（て）、N₂** denies N₁ and gives the right answer, N₂: "not N₁, but N₂". **ではなく** is mostly written; **ではなくて** and **じゃなくて** are spoken.
