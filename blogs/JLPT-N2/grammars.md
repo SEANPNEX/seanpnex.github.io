@@ -1782,3 +1782,15 @@ Indirect quotation:
 - この前いっしょに食べた料理は和食じゃなくて、韓国料理だったんだよ。 — The food we had together last time wasn't Japanese, it was Korean.
 - この前、山田さんといっしょに来た人は、山田さんの恋人ではなくて、妹さんでした。 — The person who came with Yamada last time wasn't Yamada's partner but Yamada's younger sister.
 - 弁当は日本特有の文化ではなく、世界中どこにでもある。 — Bento isn't unique to Japanese culture; it's found everywhere in the world.
+
+## N である（written copula）
+
+**Rule:** **N である** turns a noun into a predicate, like **です** and **だ**. です and だ are mostly spoken; である belongs to plain written style. It has the same four forms.
+
+| | Affirmative | Negative |
+| --- | --- | --- |
+| Present／future | N である。 | N ではない。 |
+| Past | N であった。 | N ではなかった。 |
+
+- 東京は日本の首都である。 — Tokyo is the capital of Japan.
+- 信頼は大切である。 — Trust is important.
