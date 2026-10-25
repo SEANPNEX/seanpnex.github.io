@@ -1851,3 +1851,10 @@ Indirect quotation:
 - 葛飾北斎という人を聞いたことがありますか。 — Have you heard of a person called Katsushika Hokusai?
 - これはなんという花ですか。 — What is this flower called?
 - 冷たいお弁当は好きじゃないという声もあります。 — Some people also say they don't like cold bento.
+
+## こと（形式体言: nominalizer）
+
+**Rule:** Besides its ordinary meaning "thing" or "matter", **こと** can be a **形式体言** (formal noun). After the 連体形 of a verb or adjective, it turns that clause into a noun so it can work as a subject, object, or predicate. As a formal noun, こと cannot stand alone in a sentence; it mainly does grammatical work and appears in many fixed patterns, such as ～ことができる and ～たことがある. Other common formal nouns are **の** and **もの**.
+
+- 私の夢は、医者になることです。 — My dream is to become a doctor.
+- 弁当全体のバランスを見ながら、盛り付けや味付けを考えて作ることは、まさに日本特有の文化の一つである。 — Making a bento while watching the balance of the whole box and thinking about how to arrange and season it is truly one of Japan's unique cultural practices.
