@@ -597,6 +597,15 @@ What was said before becomes the reason for the のです sentence. The speaker 
 - B：はい。 — B: Yes.
 - 以前、何回か来ました。 — I've been here a few times before.
 
+## 疑問詞 ＋ でも（any; no matter what／when／where）
+
+**Rule:** A **question word + でも** applies to every possible case of that question word, so the statement holds whatever the case: "any …", "no matter what／when／where …". It takes an **affirmative** predicate. Compare 疑問詞 + も + negative ("no one／nothing").
+
+- どんな時でも暖かいお弁当が食べたいです。 — No matter when, I want to eat a warm bento.
+- どんな仕事でもまじめにやらなければなりません。 — Whatever the job, you have to do it seriously.
+- 地震はいつでも、どこでも起こる可能性があります。 — An earthquake can happen anytime, anywhere.
+- 中華料理なら何でも好きです。 — When it comes to Chinese food, I like anything.
+
 ## N から（starting point）
 
 **Rule:** After a noun of **time**, **place**, or **order**, the particle **から** marks the **starting point**, like English "from". **から** can be followed directly by **です** to make a noun-predicate sentence ("…starts from N"). The starting-point **から** also pairs with **まで**, which marks the end point: **N₁ から N₂ まで**, "from N₁ to N₂".
