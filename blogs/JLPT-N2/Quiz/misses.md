@@ -245,3 +245,23 @@
 **Correct:** **すこし遅れるから、先に始めてくださいと言っていました。** The quote is a request (始めてください), not 始めましょう. "A little" is ちょっと／すこし.
 
 **Gap:** Wrote ちょと遅れるので、先に始めましょうと言っていました.
+
+## 2026-10-25 — Lesson grammar quiz (8.5/10)
+
+**N ではなく（て）:** spoken form (half credit)
+
+**Correct:** **文化じゃなくて** (or ではなくて). The spoken forms keep the て; ではなく is the written form.
+
+**Gap:** Wrote 文化じゃなく.
+
+**N である:** past negative (half credit)
+
+**Correct:** **首都ではなかった**. In である style, the past negative is ではなかった.
+
+**Gap:** Wrote 首都ではありませんでした (polite です style).
+
+**～すぎる:** linking to a reason (half credit)
+
+**Correct:** **この辺りはにぎやかすぎて、勉強にはよくない。**
+
+**Gap:** Wrote にぎやかすぎる; linking to the result needs すぎて.
