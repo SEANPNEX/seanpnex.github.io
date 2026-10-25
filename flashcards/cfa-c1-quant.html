@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Quantitative Methods — quiz misses flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    id: "quant-m1-regression-assumptions-2026-10-23",
+    topic: "M1 Multiple Regression · Assumptions",
+    front: "List the assumptions of the multiple linear regression model.",
+    back: `<div class="ans">
+<ol>
+<li><strong>Linearity</strong>: Y is linear in the coefficients</li>
+<li><strong>Homoskedasticity</strong>: constant error variance across observations</li>
+<li><strong>Independence of errors</strong>: no serial correlation between residuals</li>
+<li><strong>Normality</strong>: errors are normally distributed</li>
+<li><strong>Independence of the Xs</strong>: no <strong>perfect</strong> linear relation among the independent variables, and they are not random</li>
+</ol>
+<p>Note: the assumption rules out only <strong>perfect</strong> multicollinearity. High but imperfect multicollinearity breaks no assumption; it inflates standard errors.</p>
+</div>`,
+    gap: "left out independence of errors (no serial correlation); the X assumption is no <em>perfect</em> multicollinearity."
+  },
+  {
+    id: "quant-m1-slope-interpretation-2026-10-23",
+    topic: "M1 Multiple Regression · Interpreting coefficients",
+    front: "How do you interpret a slope coefficient \\(b_j\\), and the intercept \\(b_0\\), in a multiple regression?",
+    back: `<div class="ans">
+<ul>
+<li>\\(b_j\\): the expected change in Y for a one-unit change in \\(X_j\\), <strong>holding all other Xs constant</strong></li>
+<li>That is why it is called a <strong>partial</strong> regression (slope) coefficient</li>
+<li>\\(b_0\\): the expected value of Y when <strong>all</strong> Xs equal 0</li>
+</ul>
+</div>`,
+    gap: "left out “holding all other Xs constant”, the part that makes it a partial coefficient."
+  }
+];
+
+flashDeck({
+  key: "cfa-c1-quant",
+  source: "CFA L2 Quantitative Methods · Multiple regression · Quiz misses",
+  gapLabel: "Gap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

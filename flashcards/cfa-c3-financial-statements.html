@@ -239,6 +239,35 @@ const CARDS = [
 </ul>
 </div>`,
     gap: "picked a loss; net monetary assets gain when the foreign currency appreciates."
+  },
+  {
+    id: "fsa-m5-altman-z-cutoffs-2026-10-22",
+    topic: "Financial reporting quality · Altman Z-score",
+    front: "Altman Z-score: what are the cutoffs for the distress zone, the grey zone and the safe zone?",
+    back: `<div class="ans">
+<ul>
+<li>\\(Z &lt; 1.81\\) → <strong>distress zone</strong> (high probability of bankruptcy)</li>
+<li>\\(1.81 \\le Z \\le 3.0\\) → <strong>grey zone</strong></li>
+<li>\\(Z &gt; 3.0\\) → <strong>safe zone</strong> (low probability of bankruptcy)</li>
+<li><strong>Higher Z = safer</strong></li>
+</ul>
+</div>`,
+    gap: "quoted the distress cutoff as 1.87; it is <strong>1.81</strong>."
+  },
+  {
+    id: "fsa-m6-dupont-ex-associates-2026-10-23",
+    topic: "Integration of FSA · DuPont excluding associates",
+    front: "NI 100 includes associates' income of 9. Avg assets 1,250 include an investment in associates of 125. Avg equity 500. What is ROE excluding associates?",
+    back: `<div class="ans">
+<ul>
+<li>Remove associates from <strong>both</strong> sides: NI \\(100-9=91\\); assets \\(1{,}250-125=1{,}125\\)</li>
+<li>Keep <strong>reported leverage</strong>: \\(1{,}250/500=2.5\\)</li>
+<li>ROE \\(= \\dfrac{91}{1{,}125}\\times 2.5 = \\dfrac{91}{450} \\approx 20.2\\%\\)</li>
+<li><strong>Not</strong> \\(91/500\\): removing the investment unbalances the B/S, so adjust equity through the DuPont factors (leverage held constant), not directly</li>
+<li>Associates earn \\(9/125=7.2\\%\\), so they <strong>dilute</strong> reported ROE (20.0%)</li>
+</ul>
+</div>`,
+    gap: "used 91/500; keep leverage at 2.5, so equity becomes 1,125/2.5 = 450."
   }
 ];
 

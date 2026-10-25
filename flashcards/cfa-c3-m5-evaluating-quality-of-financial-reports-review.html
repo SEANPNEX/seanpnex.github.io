@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA FSA M5 — Evaluating Quality of Financial Reports review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    "id": "f5-dimensions",
+    "topic": "Two dimensions of quality",
+    "front": "What are reporting quality and earnings quality, and how are they related?",
+    "back": "<div class=\"ans\"><ul><li><strong>Reporting quality</strong>: is the information <strong>decision-useful</strong> (relevant and faithfully represented)?</li><li><strong>Earnings quality</strong>: are the earnings <strong>sustainable</strong> and an <strong>adequate return</strong>?</li></ul><p>Earnings quality can only be judged if reporting quality is high. Honest reports can still show low earnings quality.</p></div>",
+    "gap": "Low earnings quality is not misreporting: a company can faithfully report a return below its cost of capital."
+  },
+  {
+    "id": "f5-spectrum",
+    "topic": "Quality spectrum",
+    "front": "List the quality spectrum from best to worst.",
+    "back": "<div class=\"ans\"><ul><li>GAAP, decision-useful, sustainable and adequate returns</li><li>GAAP, decision-useful, but low earnings quality</li><li>GAAP, but <strong>biased</strong> choices (aggressive or conservative)</li><li>GAAP, but <strong>earnings management</strong> through real actions</li><li><strong>Departures from GAAP</strong></li><li><strong>Fictitious</strong> transactions (fraud)</li></ul></div>"
+  },
+  {
+    "id": "f5-aggressive",
+    "topic": "Aggressive vs conservative",
+    "front": "How do aggressive and conservative choices differ, and why is conservatism not neutral?",
+    "back": "<div class=\"ans\"><ul><li><strong>Aggressive</strong>: raise current earnings or financial position (early revenue, capitalizing costs, long useful lives)</li><li><strong>Conservative</strong>: lower them now, and often inflate later periods when reserves are released (<strong>cookie jar</strong> reserves)</li></ul></div>",
+    "gap": "Both are biased: conservatism shifts and smooths earnings between periods."
+  },
+  {
+    "id": "f5-classification",
+    "topic": "Classification choices",
+    "front": "Give an example of a classification choice on each financial statement.",
+    "back": "<div class=\"ans\"><ul><li><strong>I/S</strong>: recurring expenses labelled non-recurring or non-operating, raising operating income</li><li><strong>B/S</strong>: receivables classified as non-current, or debt as long-term, changing liquidity ratios</li><li><strong>CF</strong>: interest paid in CFF (IFRS), or capitalized costs in CFI, raising CFO</li></ul></div>",
+    "gap": "The amounts can be correct and the picture still misleading."
+  },
+  {
+    "id": "f5-mna",
+    "topic": "M&A issues",
+    "front": "How can acquisitions be used to manage reported results?",
+    "back": "<div class=\"ans\"><ul><li>To <strong>mask slowing organic growth</strong> and break comparability</li><li>Allocating too much of the price to <strong>goodwill</strong> (not amortized) and too little to depreciable or amortizable assets lowers future expenses</li><li>Acquisition cash goes to <strong>CFI</strong>, while the acquired working capital converts to <strong>CFO</strong></li><li>Targets may inflate earnings before the deal</li></ul></div>",
+    "gap": "Overstated goodwill shows up later as an impairment."
+  },
+  {
+    "id": "f5-beneish",
+    "topic": "Beneish model",
+    "front": "What does the Beneish M-score measure, how is it read, and name four of its variables.",
+    "back": "<div class=\"ans\"><p>A <strong>probit</strong> model of the probability of <strong>earnings manipulation</strong>. Higher M = higher probability; the probability is \\(N(M)\\).</p><ul><li><strong>M &gt; −1.78</strong> flags likely manipulation (about 3.8%)</li><li>Variables: days sales receivable, gross margin, asset quality, sales growth, depreciation, SG&amp;A, leverage, total accruals to total assets</li></ul><p>Example: \\(M=-1.50\\) → flagged; \\(N(-1.50)=6.7\\%\\).</p></div>",
+    "gap": "Receivables growing faster than sales and earnings not backed by cash both raise the score."
+  },
+  {
+    "id": "f5-altman",
+    "topic": "Altman Z-score",
+    "front": "Give the Altman Z-score and its cut-offs.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}Z={}&1.2A+1.4B+3.3C\\\\&+0.6D+1.0E\\end{aligned}$$</div><ul><li>A: WC / TA; B: RE / TA; C: EBIT / TA; D: market value of equity / book liabilities; E: sales / TA</li><li>Above <strong>3.0</strong>: low bankruptcy risk; <strong>1.81–3.0</strong>: grey zone; below <strong>1.81</strong>: high</li></ul></div>",
+    "gap": "Higher Z means a lower probability of bankruptcy, the opposite direction to the M-score."
+  },
+  {
+    "id": "f5-model-limits",
+    "topic": "Limits of the models",
+    "front": "What are the limitations of the Beneish and Altman models?",
+    "back": "<div class=\"ans\"><ul><li>Estimated on <strong>past data</strong> from specific samples: may not fit other industries (Altman: manufacturers, not financials) or periods</li><li>Use a <strong>single period's</strong> data</li><li>Managers who know they are screened can <strong>manage the ratios</strong></li></ul></div>"
+  },
+  {
+    "id": "f5-persistence",
+    "topic": "Earnings persistence",
+    "front": "How is earnings persistence measured, and why are accruals a sign of lower quality? Earnings of 100 = cash 90 + accruals 10 vs cash 40 + accruals 60, with \\(\\beta_1=0.8\\), \\(\\beta_2=0.5\\).",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}\\text{E}_{t+1}={}&\\alpha+\\beta_1\\,\\text{CF}_t\\\\&+\\beta_2\\,\\text{Accruals}_t\\end{aligned}$$</div><p>Studies find \\(\\beta_2&lt;\\beta_1\\): accruals persist less. Expected next year: \\(0.8(90)+0.5(10)=77\\) vs \\(0.8(40)+0.5(60)=62\\).</p></div>",
+    "gap": "Same earnings today; the accrual-heavy company's are less likely to last."
+  },
+  {
+    "id": "f5-accruals",
+    "topic": "Accruals ratio",
+    "front": "Give the balance sheet accruals ratio. NOA rises from 1,000 to 1,200: what is it?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\frac{\\text{NOA}_{\\text{end}}-\\text{NOA}_{\\text{beg}}}{\\overline{\\text{NOA}}}=\\frac{200}{1{,}100}=18.2\\%$$</div><p>A <strong>higher</strong> accruals ratio means <strong>lower</strong> earnings quality.</p></div>",
+    "gap": "Other warning signs: small, regular beats of forecasts; receivables or inventory growing faster than sales; NI consistently above CFO."
+  },
+  {
+    "id": "f5-mean-reversion",
+    "topic": "Mean reversion",
+    "front": "What is mean reversion in earnings, and what does it imply for forecasting?",
+    "back": "<div class=\"ans\"><p>Extreme earnings, high or low, tend to <strong>revert toward the industry mean</strong>: competition erodes high returns, and poor performers restructure or exit.</p><p>Don't extrapolate unusual earnings. Earnings driven by <strong>accruals</strong> revert <strong>faster</strong>.</p></div>"
+  },
+  {
+    "id": "f5-cash-flow",
+    "topic": "Cash flow quality",
+    "front": "What makes operating cash flow high quality, and how can CFO still be managed?",
+    "back": "<div class=\"ans\"><ul><li><strong>Positive</strong>, from <strong>sustainable sources</strong>, <strong>adequate</strong> to cover capex, dividends and debt, <strong>low volatility</strong></li><li>Managed by <strong>timing</strong>: stretching payables, factoring receivables, cutting inventory</li><li>Managed by <strong>classification</strong>: capitalizing costs (CFI), interest paid in CFF (IFRS)</li></ul></div>",
+    "gap": "CFO above NI is usually good, but not if it comes from one-off working capital reductions."
+  },
+  {
+    "id": "f5-bs-quality",
+    "topic": "Balance sheet quality",
+    "front": "What are the three features of a high-quality balance sheet?",
+    "back": "<div class=\"ans\"><ul><li><strong>Completeness</strong>: no hidden obligations (purchase commitments, guarantees, unconsolidated entities)</li><li><strong>Unbiased measurement</strong>: especially goodwill, Level 3 fair values, pensions, inventory</li><li><strong>Clear presentation</strong>: proper classification and enough disaggregation</li></ul></div>",
+    "gap": "A large goodwill impairment suggests the company overpaid for past acquisitions."
+  },
+  {
+    "id": "f5-risk-sources",
+    "topic": "Sources of risk information",
+    "front": "Name the main sources of information about a company's risk, and two SEC filings that are warning signs.",
+    "back": "<div class=\"ans\"><ul><li>Financial statements, the <strong>auditor's report</strong> (going-concern paragraph, key audit matters), notes, MD&amp;A, the financial press</li><li><strong>Form NT 10-K</strong>: notice of a late filing</li><li><strong>Form 8-K</strong>: material events, e.g., a change of auditor or executive departures</li><li>Form 144: insider share sales; the proxy statement: pay and related parties</li></ul></div>",
+    "gap": "An audit opinion is a late signal, and a clean opinion does not rule out fraud."
+  }
+];
+
+flashDeck({
+  key: "cfa-c3-m5-review",
+  source: "CFA L2 Financial Statement Analysis \u00b7 M5 Evaluating Quality of Financial Reports \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

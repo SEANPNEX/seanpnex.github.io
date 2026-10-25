@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Corporate Issuers — quiz misses flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    id: "ci-m1-buyback-debt-eps-2026-10-25",
+    topic: "CI M1 · Buyback with debt, EPS",
+    front: `NI 10m, 5m shares, price \\$40. The company borrows \\$40m at 6% after tax to buy back 1m shares. New EPS?`,
+    back: `<div class="ans">
+      <p>NI \\(=10-40\\times6\\%=7.6\\)m; shares \\(=4\\)m; <strong>EPS \\(=1.90\\)</strong>, down from 2.00.</p><ul><li>Subtract the <strong>after-tax interest</strong> on the new debt from NI.</li><li>Shortcut: earnings yield \\(E/P=2/40=5\\%\\) is below the after-tax cost of debt (6%), so EPS falls. If E/P were above it, EPS would rise.</li></ul>
+    </div>`,
+    gap: "Ignored the after-tax interest on the new debt."
+  },
+  {
+    id: "ci-m1-cash-dividend-leverage-2026-10-25",
+    topic: "CI M1 · Cash vs stock dividend effects",
+    front: `How does a cash dividend affect shareholder wealth and company leverage? How is a stock dividend different?`,
+    back: `<div class="ans">
+      <ul><li><strong>Cash dividend:</strong> wealth unchanged (ignoring taxes), since the price drops by the dividend. But <strong>cash and equity fall</strong>, so D/A and D/E <strong>rise</strong>, and liquidity ratios fall.</li><li><strong>Stock dividend:</strong> wealth unchanged; total assets and total equity unchanged, so <strong>no change in leverage</strong>. Only the share count rises and EPS and the price fall.</li></ul>
+    </div>`,
+    gap: "Got the wealth effect but missed that a cash dividend raises leverage."
+  },
+  {
+    id: "ci-m1-repurchase-methods-2026-10-25",
+    topic: "CI M1 · Repurchase methods",
+    front: `Name the four repurchase methods. Which is the most flexible?`,
+    back: `<div class="ans">
+      <ul><li><strong>Open market:</strong> <strong>most flexible</strong> in timing and amount; no commitment to buy.</li><li><strong>Fixed-price tender offer:</strong> a set number of shares at a set price, usually at a premium; fast.</li><li><strong>Dutch auction:</strong> the lowest clearing price that buys the target number of shares.</li><li><strong>Direct negotiation:</strong> with one large holder, often at a premium.</li></ul>
+    </div>`,
+    gap: "Said direct negotiation is the most flexible."
+  }
+];
+
+flashDeck({
+  key: "cfa-c4-corporate-issuers",
+  source: "CFA L2 Corporate Issuers · Quiz misses",
+  gapLabel: "Gap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>JLPT N2 — lesson review 2026-10-23</title>
+<link rel="stylesheet" href="/flashcards/deck.css" />
+</head>
+<body>
+<script src="/flashcards/deck.js"></script>
+<script>
+const CARDS = [
+  {
+    id: "jlpt-review-temo-2026-10-23",
+    topic: "ても／でも · even if",
+    front: `How do you attach ても／でも to a verb, an い-adjective, a な-adjective and a noun? Give an example.`,
+    back: `<div class="ans">
+      <ul><li>Verb: て-form ＋ も (<span class="jp">降っても</span>, <span class="jp">並んでも</span>)</li><li>い-adj: い → くても (<span class="jp">眠くても</span>)</li><li>な-adj / noun: ＋ でも (<span class="jp">嫌いでも</span>, <span class="jp">週末でも</span>)</li></ul><p><span class="jp">明日雨が降っても、遠足に行きます。</span> — Even if it rains tomorrow, we'll go.</p>
+    </div>`,
+    gap: ""
+  },
+  {
+    id: "jlpt-review-madeni-2026-10-23",
+    topic: "までに vs まで",
+    front: `Fill in まで or までに: 5時___働く／5時___帰る. Then say “Hand in the report by the 20th.”`,
+    back: `<div class="ans">
+      <ul><li><span class="jp">5時<strong>まで</strong>働く</span>: continues <strong>until</strong> 5</li><li><span class="jp">5時<strong>までに</strong>帰る</span>: done <strong>by</strong> 5 (deadline)</li></ul><p><span class="jp">20日までに調査報告を出してください。</span></p>
+    </div>`,
+    gap: ""
+  },
+  {
+    id: "jlpt-review-to-iu-2026-10-23",
+    topic: "と言う · direct vs indirect",
+    front: `Change to indirect quotation: ① 「それはいいですね」と答えました ② 「新しい会社の人はみんな親切です」と言いました ③ 「…いかがですか」と聞きました`,
+    back: `<div class="ans">
+      <p>Indirect quotation uses plain form and no 「」.</p><ul><li>① <span class="jp">それはいい<strong>ね</strong>と答えました</span> (ね stays)</li><li>② <span class="jp">みんな親切<strong>だ</strong>と言いました</span> (です → だ)</li><li>③ <span class="jp">いかが<strong>か</strong>と聞きました</span> (ですか → か, questions only)</li></ul>
+    </div>`,
+    gap: ""
+  },
+  {
+    id: "jlpt-review-to-omou-2026-10-23",
+    topic: "と思う · I think",
+    front: `Say: “I think George has his part-time job on Thursday too.” and “I don't think that method is efficient.”`,
+    back: `<div class="ans">
+      <ul><li><span class="jp">ジョージさんは木曜日にもアルバイトが<strong>ある</strong>と思います。</span></li><li><span class="jp">そのやり方は効率的<strong>ではない</strong>と思います。</span></li></ul><p>Plain form before と; politeness only on 思います.</p>
+    </div>`,
+    gap: ""
+  },
+  {
+    id: "jlpt-review-kamoshirenai-2026-10-23",
+    topic: "かもしれない · maybe",
+    front: `Say “I might have a cold.” Why is it not 風邪だかもしれない? How sure is it compared with でしょう?`,
+    back: `<div class="ans">
+      <p><span class="jp">ちょっと風邪かもしれないです。</span></p><ul><li>Nouns and な-adjectives <strong>drop だ</strong> before かもしれない.</li><li>Less certain than <span class="jp">でしょう／だろう</span>; it may also not be so.</li><li>Polite form: <span class="jp">かもしれ<strong>ません</strong></span> (<span class="jp">延長するかもしれませんので</span>, when the teacher speaks to the class).</li></ul>
+    </div>`,
+    gap: ""
+  },
+  {
+    id: "jlpt-review-ato-de-2026-10-23",
+    topic: "後で · after",
+    front: `Say: “I'll take a bath after watching anime.” and “I'll call after class.”`,
+    back: `<div class="ans">
+      <ul><li><span class="jp">アニメを<strong>見た</strong>後で、お風呂に入ります。</span></li><li><span class="jp">授業<strong>の</strong>後で、電話します。</span></li></ul><p>The first action goes before 後で: V <strong>た-form</strong> or N の. (Compare: V <strong>る</strong>前に.)</p>
+    </div>`,
+    gap: ""
+  },
+  {
+    id: "jlpt-review-shika-nai-2026-10-23",
+    topic: "しか～ない · only",
+    front: `Say, with しか: “This company has only two employees.” Then say it with だけ.`,
+    back: `<div class="ans">
+      <ul><li><span class="jp">社員が2人<strong>しかいません</strong>。</span>: negative verb, affirmative meaning, stresses “not enough”.</li><li><span class="jp">社員が2人<strong>だけいます</strong>。</span>: affirmative verb, neutral.</li></ul>
+    </div>`,
+    gap: ""
+  },
+  {
+    id: "jlpt-review-dakedenaku-2026-10-23",
+    topic: "だけでなく～も",
+    front: `Say: “One Piece is popular not only in Japan but also abroad.”`,
+    back: `<div class="ans">
+      <p><span class="jp">ワンピースは日本だけでなく、海外<strong>でも</strong>人気が高いです。</span></p><p>も replaces が／を but follows other particles (で → でも).</p>
+    </div>`,
+    gap: ""
+  },
+  {
+    id: "jlpt-review-te-ageru-kureru-morau-2026-10-23",
+    topic: "てあげる／てくれる／てもらう",
+    front: `Who does the favor for whom in each? Also: why is 先生、持ってあげます wrong?`,
+    back: `<div class="ans">
+      <ul><li><span class="jp">V<strong>てあげる</strong></span>: I do it for someone else</li><li><span class="jp">V<strong>てくれる</strong></span>: someone does it for me (<span class="jp">友達が作文を直してくれました</span>)</li><li><span class="jp">V<strong>てもらう</strong></span>: I receive it, giver marked に／から (<span class="jp">友達に車で送ってもらいました</span>), with more gratitude</li><li>To suggest it: <span class="jp">佐藤さんに調べて<strong>もらいましょうか</strong></span>, “Shall we have Sato look into it?”</li></ul><p>てあげる sounds like doing a favor, so it's rude to a superior. Use <span class="jp">持ちましょうか</span>.</p>
+    </div>`,
+    gap: ""
+  }
+];
+
+flashDeck({
+  key: "jlpt-n2-review-2026-10-23",
+  source: "JLPT N2 · lesson review 2026-10-23",
+  gapLabel: "Gap",
+  cards: CARDS
+});
+</script>
+</body>
+</html>

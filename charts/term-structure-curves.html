@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Term structure · spot and forward curves</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <script src="chart-fx.js"></script>
+  <style>
+    .legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin:0 0 12px;font-size:11px;font-weight:600;color:var(--muted)}
+    .legend span{display:inline-flex;align-items:center;gap:7px;cursor:default}
+    .legend i{display:inline-block;width:18px;height:3px;border-radius:2px}
+    .one .panel{padding-bottom:8px}
+    .rise{transform-box:fill-box;transform-origin:bottom;animation:rise .6s cubic-bezier(.165,.84,.44,1) both}
+    @keyframes rise{from{transform:scaleY(0)}}
+    .still .rise{animation:none}
+    @media(prefers-reduced-motion:reduce){.rise{animation:none}}
+  </style>
+</head>
+<body>
+  <main class="card" id="card" data-fx-scope>
+    <h2 id="title"></h2>
+    <div class="sub" id="sub"></div>
+    <div class="legend" id="legend"></div>
+    <div id="panels"></div>
+    <div class="src" id="src"></div>
+  </main>
+  <script>
+(() => {
+  const { C, el, label, frame, axes, guide, dot, probe, mount } = curveKit;
+
+  // ── Data (illustrative annual spot rates, %) ──
+  // Upward-sloping and concave: s_1 … s_13. The first ten drive most views.
+  const UP = [2.00, 2.40, 2.75, 3.05, 3.30, 3.50, 3.65, 3.78, 3.88, 3.95, 4.00, 4.04, 4.07];
+  // Downward-sloping: s_1 … s_10.
+  const DOWN = [4.00, 3.70, 3.45, 3.25, 3.10, 3.00, 2.92, 2.86, 2.82, 2.80];
+  const TODAY = 2013;
+
+  // Discount factor P(n) = 1/(1+s_n)^n; forward f(j,k) from P(j)/P(j+k) = (1+f)^k.
+  const P = (S, n) => (n === 0 ? 1 : Math.pow(1 + S[n - 1] / 100, -n));
+  const fwd = (S, j, k) => (Math.pow(P(S, j) / P(S, j + k), 1 / k) - 1) * 100;
+  const pct = (v) => v.toFixed(2) + '%';
+  // Par rate: the coupon that prices an n-year bond at par, discounting at the spot rates.
+  const parRate = (S, n) => { let a = 0; for (let i = 1; i <= n; i++) a += P(S, i); return ((1 - P(S, n)) / a) * 100; };
+  // One curve move in three steps (illustrative): level, steepness, curvature.
+  const z = (n) => (n - 5.5) / 4.5;
+  const STEPS = [
+    { name: '1 · initial curve', d: () => 0 },
+    { name: '2 · + level (parallel)', d: () => 0.5 },
+    { name: '3 · + steepness', d: (n) => 0.4 * z(n) },
+    { name: '4 · + curvature = final', d: (n) => 0.3 * (2 * z(n) * z(n) - 1) },
+  ];
+  const LADDER = [C.INK, '#4A4944', '#6A6963', '#9A9992'];
+
+  // ── Shared drawing helpers ──
+  const M = (nw) => ({ l: nw ? 30 : 34, r: 10, t: 22, b: 40, noTicks: true });
+  function yGrid(s, F, ticks, fmt) {
+    ticks.forEach((v, i) => {
+      el(s, 'line', { x1: F.X0, y1: F.y(v), x2: F.X1, y2: F.y(v), stroke: C.GRID, 'stroke-width': 0.6, 'stroke-dasharray': '2 4', class: 'fade', style: `animation-delay:${i * 0.03}s` });
+      label(s, F.X0 - 6, F.y(v) + 3.5, fmt ? fmt(v) : v + '%', { size: 9.5, weight: 600, fill: C.MUTED, anchor: 'end', halo: 0 });
+    });
+  }
+  function xTicks(s, F, vals, fmt) {
+    vals.forEach((v) => label(s, F.x(v), F.BASE + 14, fmt ? fmt(v) : String(v), { size: 9.5, weight: 600, fill: C.MUTED, anchor: 'middle', halo: 0 }));
+  }
+  const pathD = (F, pts) => 'M' + pts.map((q) => F.x(q[0]).toFixed(1) + ' ' + F.y(q[1]).toFixed(1)).join(' L');
+  // A hairline series: the line, a 10px transparent twin as its hover target, then a dot per point.
+  function series(s, F, pts, o) {
+    const d = pathD(F, pts);
+    el(s, 'path', { d, fill: 'none', stroke: o.stroke, 'stroke-width': o.width || 1.5, 'stroke-linejoin': 'round', 'stroke-linecap': 'round', pathLength: 1, class: 'draw', style: `animation-delay:${o.delay || 0}s`, 'data-hl': o.hl });
+    el(s, 'path', { d, fill: 'none', stroke: 'transparent', 'stroke-width': 10, 'data-hl': o.hl, 'data-tip': o.name });
+    pts.forEach((q, i) => {
+      const c = dot(s, F.x(q[0]), F.y(q[1]), o.r || 3, o.stroke, (o.delay || 0) + 0.25 + i * 0.04, q[2]);
+      c.setAttribute('data-hl', o.hl);
+    });
+  }
+  function legend(items) {
+    document.getElementById('legend').innerHTML = items.map((it) => `<span data-hl="${it.hl}"><i style="background:${it.stroke}"></i>${it.name}</span>`).join('');
+  }
+  const height = (W) => Math.max(230, Math.min(300, W * 0.62));
+
+  // ── Views ──
+  const spotPts = (S, n) => S.slice(0, n).map((v, i) => [i + 1, v, `s${sub(i + 1)} = ${pct(v)}\nP(${i + 1}) = ${P(S, i + 1).toFixed(4)}`]);
+  const sub = (n) => String(n).split('').map((c) => '₀₁₂₃₄₅₆₇₈₉'[+c]).join('');
+  const fwdPts = (S, j, kMax) => Array.from({ length: kMax }, (_, i) => {
+    const k = i + 1, v = j === 0 ? S[k - 1] : fwd(S, j, k);
+    return [k, v, j === 0 ? `s${sub(k)} = ${pct(v)}` : `f(${j}, ${k}) = ${pct(v)}\nstarts in year ${j}, ends in year ${j + k}`];
+  });
+
+  const VIEWS = {
+    spot: {
+      title: 'The spot curve: one zero-coupon rate for each maturity.',
+      sub: 'Illustrative annual spot rates s₁–s₁₀, upward sloping and concave · each point is the yield on a zero-coupon bond maturing in year n, seen today · the discount factor P(n) = 1/(1 + sₙ)ⁿ turns a payment in year n into its value today',
+      src: 'SPOT CURVE · F2 HAIRLINE LINE + F1 RUNG BARS · ILLUSTRATIVE RATES',
+      panels: [
+        {
+          h3: 'Spot curve', hint: 'Maturity n in years · hover a point for sₙ and P(n)',
+          draw(s, W, H) {
+            const F = frame(s, W, H, { ...M(W < 420), yMin: 1.5 }, 10.5, 4.5);
+            yGrid(s, F, [2, 3, 4]);
+            xTicks(s, F, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+            axes(s, F, 'maturity n (years) →', 'spot rate sₙ');
+            series(s, F, spotPts(UP, 10), { stroke: C.INK, hl: 's', name: 'Spot curve: sₙ against maturity n' });
+          },
+        },
+        {
+          h3: 'Discount factors', hint: 'P(n) = the value today of 1 paid in year n · it falls as maturity lengthens',
+          draw(s, W, H) {
+            const F = frame(s, W, H, { ...M(W < 420), l: W < 420 ? 34 : 38, xMin: 0.3 }, 10.7, 1);
+            yGrid(s, F, [0.25, 0.5, 0.75, 1], (v) => v.toFixed(2));
+            xTicks(s, F, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+            axes(s, F, 'maturity n (years) →', 'P(n)');
+            const bw = Math.max(6, Math.min(16, ((F.X1 - F.X0) / 10) * 0.46)), r = bw / 2;
+            for (let n = 1; n <= 10; n++) {
+              const x = F.x(n) - bw / 2, y = F.y(P(UP, n));
+              el(s, 'path', {
+                d: `M${x} ${F.BASE} V${y + r} Q${x} ${y} ${x + r} ${y} Q${x + bw} ${y} ${x + bw} ${y + r} V${F.BASE} Z`,
+                fill: n === 10 ? C.INK : '#6A6963', class: 'rise', style: `animation-delay:${0.1 + n * 0.09}s`, 'data-hl': 'n' + n,
+                'data-tip': `P(${n}) = 1/(1 + ${pct(UP[n - 1])})^${n} = ${P(UP, n).toFixed(4)}\n1 paid in year ${n} is worth ${P(UP, n).toFixed(4)} today`,
+              });
+            }
+            label(s, F.x(10), F.y(P(UP, 10)) - 7, P(UP, 10).toFixed(3), { size: 10, anchor: 'middle', delay: 1.1 });
+            label(s, F.x(1), F.y(P(UP, 1)) - 7, P(UP, 1).toFixed(3), { size: 10, fill: C.MUTED, anchor: 'middle', delay: 0.3 });
+          },
+        },
+      ],
+    },
+    forward: {
+      title: 'Each forward curve starts on its own date.',
+      sub: 'L2 definition: a forward curve is the term structure of forward rates f(j, k) agreed today for loans starting in year j, plotted against the tenor k · j = 0 is the spot curve · all curves come from the same illustrative spot rates',
+      src: 'FORWARD CURVES · F2 HAIRLINE LINE · f(j, k) BY INITIATION DATE j',
+      legend: [0, 1, 2, 3].map((j) => ({ hl: 'j' + j, stroke: LADDER[j], name: j === 0 ? 'j = 0 · spot curve' : `j = ${j} · starts in year ${j}` })),
+      panels: [
+        {
+          h3: 'Forward curves by initiation date', hint: 'x = tenor k, the years the loan runs · hover a point for f(j, k)',
+          draw(s, W, H) {
+            const F = frame(s, W, H, { ...M(W < 420), yMin: 1.5 }, 10.5, 5);
+            yGrid(s, F, [2, 3, 4, 5]);
+            xTicks(s, F, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+            axes(s, F, 'tenor k (years) →', 'rate');
+            [3, 2, 1, 0].forEach((j, i) => series(s, F, fwdPts(UP, j, 10 - j), {
+              stroke: LADDER[j], width: j === 0 ? 1.8 : 1.4, r: j === 0 ? 3.2 : 2.8, hl: 'j' + j, delay: i * 0.12,
+              name: j === 0 ? 'Spot curve sₖ (j = 0)' : `Forward curve f(${j}, k): loans starting in year ${j}`,
+            }));
+          },
+        },
+      ],
+    },
+    calendar: {
+      title: 'In the market, forward curves are drawn on calendar years.',
+      sub: `The same rates, all quoted in ${TODAY} · each curve starts at its initiation year (hollow ring) and its points sit at the years the loans end · the spot curve starts today`,
+      src: 'FORWARD CURVES ON CALENDAR TIME · F2 HAIRLINE LINE · VALUED IN ' + TODAY,
+      legend: [0, 1, 3, 6].map((j, i) => ({ hl: 'j' + j, stroke: LADDER[i], name: j === 0 ? `spot curve · from ${TODAY}` : `forward curve · from ${TODAY + j}` })),
+      panels: [
+        {
+          h3: `Forward curves seen from ${TODAY}`, hint: 'x = calendar year the loan ends · hover a point for the rate',
+          draw(s, W, H) {
+            const nw = W < 420;
+            const F = frame(s, W, H, { ...M(nw), xMin: TODAY - 0.4, yMin: 1.5 }, TODAY + 13.4, 5);
+            yGrid(s, F, [2, 3, 4, 5]);
+            const years = Array.from({ length: 14 }, (_, i) => TODAY + i).filter((y, i) => !nw || i % 2 === 0);
+            xTicks(s, F, years, (y) => (nw ? "'" + String(y).slice(2) : String(y)));
+            axes(s, F, 'calendar year →', 'rate');
+            [6, 3, 1, 0].forEach((j, i) => {
+              const stroke = LADDER[[0, 1, 3, 6].indexOf(j)];
+              const pts = fwdPts(UP, j, 13 - j).map((q) => [TODAY + j + q[0], q[1], (j === 0 ? `Spot rate for ${TODAY + j + q[0]}` : `Forward from ${TODAY + j} to ${TODAY + j + q[0]}`) + ` = ${pct(q[1])}`]);
+              series(s, F, pts, { stroke, width: j === 0 ? 1.8 : 1.4, r: j === 0 ? 3 : 2.6, hl: 'j' + j, delay: i * 0.12, name: j === 0 ? `Spot curve, starting ${TODAY}` : `Forward curve starting ${TODAY + j}` });
+              const ring = el(s, 'circle', { cx: F.x(TODAY + j), cy: F.BASE, r: 3.6, fill: C.PAPER, stroke, 'stroke-width': 1.6, class: 'pop', style: `animation-delay:${0.2 + i * 0.12}s`, 'data-hl': 'j' + j, 'data-tip': `Initiation ${TODAY + j}: the loan starts here` });
+              guide(s, F.x(TODAY + j), F.BASE - 4, F.x(pts[0][0]), F.y(pts[0][1]) + 4, 0.3 + i * 0.12);
+              ring.parentNode.appendChild(ring);
+            });
+          },
+        },
+      ],
+    },
+    relation: {
+      title: 'Spot curve rising: forwards above it. Falling: below.',
+      sub: 'Spot curve sₖ (ink) and the forward curve starting in year 2, f(2, k) (gray), both against the tenor k · the long spot rate s₂₊ₖ is roughly an average of s₂ and f(2, k), so the forward must sit on the far side of it',
+      src: 'SPOT VS FORWARD · F6 PAIRED LINES · f(2, k) AGAINST sₖ',
+      legend: [{ hl: 's', stroke: C.INK, name: 'spot curve sₖ' }, { hl: 'f', stroke: '#8A8983', name: 'forward curve f(2, k)' }],
+      panels: [
+        { h3: 'Upward-sloping spot curve', hint: 'Forward curve above the spot curve', draw: (s, W, H) => pair(s, W, H, UP, 1.5, 5) },
+        { h3: 'Downward-sloping spot curve', hint: 'Forward curve below the spot curve', draw: (s, W, H) => pair(s, W, H, DOWN, 1.5, 4.5) },
+      ],
+    },
+    convexity: {
+      title: 'A concave spot curve can bend the forward curve down.',
+      sub: 'Continuous rates: the forward rate is f(t) = s(t) + t·s′(t), so its slope is f′(t) = 2s′(t) + t·s″(t) · a linear spot curve gives a rising forward curve · a concave one gives a forward curve that peaks where t·s″(t) = −2s′(t)',
+      src: 'SPOT CURVE SHAPE → FORWARD CURVE · F2 HAIRLINE LINE · CONTINUOUS RATES',
+      legend: [{ hl: 's', stroke: C.INK, name: 'spot curve s(t)' }, { hl: 'f', stroke: '#8A8983', name: 'forward curve f(t)' }],
+      panels: [
+        {
+          h3: 'Linear spot curve', hint: 's(t) = 2% + 0.2%·t · s″ = 0, so f′ = 2s′ > 0: the forward keeps rising',
+          draw: (s, W, H) => smooth(s, W, H, (t) => 2 + 0.2 * t, (t) => 2 + 0.4 * t, null),
+        },
+        {
+          h3: 'Concave spot curve', hint: 's(t) = 2% + 3%·(1 − e^(−t/3)) · the forward peaks at t = 6, then falls toward the spot curve',
+          draw: (s, W, H) => smooth(s, W, H, (t) => 2 + 3 * (1 - Math.exp(-t / 3)), (t) => 2 + 3 * (1 - Math.exp(-t / 3)) + t * Math.exp(-t / 3), 6),
+        },
+      ],
+    },
+    par: {
+      title: 'A rising spot curve puts the par curve just below it.',
+      sub: 'Par rate = the coupon rate that prices a bond at par, discounting at the spot rates: parₙ = (1 − P(n)) / (P(1) + … + P(n)) · par₁ = s₁ · a par bond’s yield is an average of the spot rates up to its maturity, so on a rising curve it sits below sₙ',
+      src: 'PAR VS SPOT · F6 PAIRED LINES · SAME ILLUSTRATIVE SPOT RATES',
+      legend: [{ hl: 's', stroke: C.INK, name: 'spot curve sₙ' }, { hl: 'par', stroke: '#8A8983', name: 'par curve' }],
+      panels: [
+        {
+          h3: 'Par curve and spot curve', hint: 'Maturity n in years · hover a point for both rates',
+          draw(s, W, H) {
+            const F = frame(s, W, H, { ...M(W < 420), yMin: 1.5 }, 10.5, 4.5);
+            yGrid(s, F, [2, 3, 4]);
+            xTicks(s, F, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+            axes(s, F, 'maturity n (years) →', 'rate');
+            const pts = Array.from({ length: 10 }, (_, i) => { const n = i + 1, v = parRate(UP, n); return [n, v, `par${sub(n)} = ${pct(v)}\ns${sub(n)} = ${pct(UP[i])} · gap ${((UP[i] - v) * 100).toFixed(1)} bps`]; });
+            series(s, F, spotPts(UP, 10), { stroke: C.INK, hl: 's', name: 'Spot curve sₙ' });
+            series(s, F, pts, { stroke: '#8A8983', hl: 'par', delay: 0.15, name: 'Par curve: coupon rates that price at par' });
+          },
+        },
+      ],
+    },
+    zspread: {
+      title: 'The Z-spread shifts every spot rate up by the same amount.',
+      sub: 'Government spot curve sₙ (gray) and the corporate bond’s discount curve sₙ + Z (ink), Z = 150 bps · the Z-spread is the one constant spread that makes the discounted cash flows equal the bond’s price · a parallel shift is an assumption: real credit spreads vary with maturity',
+      src: 'Z-SPREAD · F2 HAIRLINE LINE · sₙ + Z, ILLUSTRATIVE',
+      legend: [{ hl: 'g', stroke: '#8A8983', name: 'government spot curve sₙ' }, { hl: 'z', stroke: C.INK, name: 'discount curve sₙ + Z' }],
+      panels: [
+        {
+          h3: 'Spot curve shifted by the Z-spread', hint: 'Maturity n in years · each arrow is the same +150 bps',
+          draw(s, W, H) {
+            const F = frame(s, W, H, { ...M(W < 420), yMin: 1.5 }, 10.5, 6);
+            yGrid(s, F, [2, 3, 4, 5, 6]);
+            xTicks(s, F, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+            axes(s, F, 'maturity n (years) →', 'rate');
+            const Z = 1.5, gov = spotPts(UP, 10).map((q) => [q[0], q[1], `Government spot s${sub(q[0])} = ${pct(q[1])}`]);
+            const corp = gov.map((q) => [q[0], q[1] + Z, `s${sub(q[0])} + Z = ${pct(q[1])} + 1.50% = ${pct(q[1] + Z)}`]);
+            el(s, 'path', { d: pathD(F, gov) + ' L' + corp.slice().reverse().map((q) => F.x(q[0]).toFixed(1) + ' ' + F.y(q[1]).toFixed(1)).join(' L') + ' Z', fill: '#E3E2DB', class: 'fade', style: 'animation-delay:.5s', 'data-hl': 'band', 'data-tip': 'Z-spread = 150 bps at every maturity' });
+            [2, 5, 8].forEach((n, i) => curveKit.arrow(s, [[F.x(n), F.y(UP[n - 1]) - 5], [F.x(n), F.y(UP[n - 1] + Z) + 6]], { stroke: C.MUTED, width: 1.1, head: 4.5, delay: 0.9 + i * 0.08 }));
+            label(s, F.x(5) + 6, (F.y(UP[4]) + F.y(UP[4] + Z)) / 2 + 4, '+Z', { size: 11, fill: C.MUTED, delay: 1.1 });
+            series(s, F, gov, { stroke: '#8A8983', hl: 'g', name: 'Government spot curve' });
+            series(s, F, corp, { stroke: C.INK, hl: 'z', delay: 0.2, name: 'Discount curve for the corporate bond: sₙ + Z' });
+          },
+        },
+      ],
+    },
+    factors: {
+      title: 'Any curve move is a shift, a twist and a bend.',
+      sub: 'Illustrative decomposition of one yield curve move into three steps, each starting where the previous one ended: level (+50 bps everywhere), steepness (short end −40 bps, long end +40 bps) and curvature (ends +30 bps, middle −30 bps) · light = before the step, ink = after',
+      src: 'YIELD CURVE FACTORS · F6 PAIRED LINES · LEVEL, STEEPNESS, CURVATURE',
+      legend: [{ hl: 'b', stroke: '#BEBDB6', name: 'before the step' }, { hl: 'a', stroke: C.INK, name: 'after the step' }],
+      small: true,
+      panels: [
+        { h3: '1 · Level', hint: 'Parallel shift: +50 bps at every maturity', draw: (s, W, H) => stepPanel(s, W, H, 0, 1) },
+        { h3: '2 · Steepness', hint: 'Twist: short end −40 bps, long end +40 bps', draw: (s, W, H) => stepPanel(s, W, H, 1, 2) },
+        { h3: '3 · Curvature', hint: 'Bend: ends +30 bps, middle −30 bps', draw: (s, W, H) => stepPanel(s, W, H, 2, 3) },
+        { h3: 'Result', hint: 'Initial curve to final curve: the three steps added together', draw: (s, W, H) => stepPanel(s, W, H, 0, 3) },
+      ],
+    },
+    macro: {
+      title: 'Bull or bear sets the direction; which end moves more sets flat or steep.',
+      sub: 'Illustrative moves from the same starting curve · bear = yields rise (prices fall), bull = yields fall · flattening = the gap between long and short yields narrows, steepening = it widens · light = before, ink = after',
+      src: 'YIELD CURVE MOVES · F6 PAIRED LINES · BEAR / BULL, FLATTENING / STEEPENING',
+      legend: [{ hl: 'b', stroke: '#BEBDB6', name: 'before' }, { hl: 'a', stroke: C.INK, name: 'after' }],
+      small: true,
+      panels: [
+        { h3: 'Bear flattening', hint: 'Short end +100 bps, long end +25 bps: monetary tightening to cool the economy', draw: (s, W, H) => movePanel(s, W, H, (n) => 1 - 0.75 * (n - 1) / 9) },
+        { h3: 'Bull steepening', hint: 'Short end −100 bps, long end −25 bps: easing in a recession', draw: (s, W, H) => movePanel(s, W, H, (n) => -(1 - 0.75 * (n - 1) / 9)) },
+        { h3: 'Bull flattening', hint: 'Short end −25 bps, long end −100 bps: flight to quality', draw: (s, W, H) => movePanel(s, W, H, (n) => -(0.25 + 0.75 * (n - 1) / 9)) },
+        { h3: 'Bear steepening', hint: 'Short end +25 bps, long end +100 bps: e.g., rising deficits or inflation fears', draw: (s, W, H) => movePanel(s, W, H, (n) => 0.25 + 0.75 * (n - 1) / 9) },
+      ],
+    },
+    shapes: {
+      title: 'Weight the KRDs by each factor’s shape to get its duration.',
+      sub: 'Left: one unit of each factor at the 1-, 5- and 10-year key rates · right: the example’s move, level +0.50%, steepness +0.20% and curvature −0.10%, changes the three key rates by +0.20%, +0.50% and +0.60%',
+      src: 'FACTOR SHAPES AND A CURVE MOVE · F2 HAIRLINE LINE · KEY RATES 1, 5, 10 YEARS',
+      legend: [{ hl: 'L', stroke: C.INK, name: 'level (+1, +1, +1)' }, { hl: 'S', stroke: '#6A6963', name: 'steepness (−1, 0, +1)' }, { hl: 'C', stroke: '#9A9992', name: 'curvature (+1, 0, +1)' }],
+      panels: [
+        {
+          h3: 'Factor shapes, one unit each', hint: 'Change in each key rate per unit of the factor',
+          draw(s, W, H) {
+            const F = frame(s, W, H, { ...M(W < 420), yMin: -1.6, xMin: 0 }, 11, 1.6);
+            yGrid(s, F, [-1, 0, 1], (v) => (v > 0 ? '+' : v < 0 ? '−' : '') + Math.abs(v));
+            el(s, 'line', { x1: F.X0, y1: F.y(0), x2: F.X1, y2: F.y(0), stroke: C.MUTED, 'stroke-width': 0.8, class: 'fade' });
+            xTicks(s, F, [1, 5, 10], (v) => v + 'y');
+            axes(s, F, 'key rate →', 'Δy per unit');
+            const sh = { L: [1, 1, 1], S: [-1, 0, 1], C: [1, 0, 1] }, names = { L: 'Level', S: 'Steepness', C: 'Curvature' };
+            ['C', 'S', 'L'].forEach((k, i) => series(s, F, [1, 5, 10].map((m, j) => [m, sh[k][j], `${names[k]}: ${m}-year rate ${sh[k][j] > 0 ? '+' : sh[k][j] < 0 ? '−' : '±'}${Math.abs(sh[k][j])} unit`]), {
+              stroke: { L: C.INK, S: '#6A6963', C: '#9A9992' }[k], hl: k, delay: i * 0.15, name: names[k] + ' factor shape',
+            }));
+          },
+        },
+        {
+          h3: 'The example’s curve move', hint: 'Key rates before (gray) and after (ink) the move',
+          draw(s, W, H) {
+            const F = frame(s, W, H, { ...M(W < 420), yMin: 1.5, xMin: 0 }, 11, 5);
+            yGrid(s, F, [2, 3, 4, 5]);
+            xTicks(s, F, [1, 5, 10], (v) => v + 'y');
+            axes(s, F, 'key rate →', 'yield');
+            const base = [[1, 2.0], [5, 3.3], [10, 3.95]], dy = [0.2, 0.5, 0.6], krd = [1 / 3, 5 / 3, 10 / 3];
+            series(s, F, base.map((q) => [q[0], q[1], `${q[0]}-year rate before: ${pct(q[1])}`]), { stroke: '#9A9992', hl: 'b', name: 'Key rates before the move' });
+            series(s, F, base.map((q, j) => [q[0], q[1] + dy[j], `${q[0]}-year: ${pct(q[1])} → ${pct(q[1] + dy[j])} (Δy = +${dy[j].toFixed(2)}%)\nKRD ${krd[j].toFixed(2)} × ${dy[j].toFixed(2)}% = −${(krd[j] * dy[j]).toFixed(2)}% in value`]), { stroke: C.INK, hl: 'a', delay: 0.2, name: 'Key rates after the move' });
+          },
+        },
+      ],
+    },
+  };
+
+  // Curve after the first `upto` steps of STEPS (0 = the initial curve).
+  const stepCurve = (upto) => UP.slice(0, 10).map((v, k) => v + STEPS.slice(1, upto + 1).reduce((a, st) => a + st.d(k + 1), 0));
+  // One step of the factor decomposition: the curve before (light) and after (ink), gap shaded.
+  function stepPanel(s, W, H, from, to) {
+    const F = frame(s, W, H, { ...M(W < 420), yMin: 1.5 }, 10.5, 5.2);
+    yGrid(s, F, [2, 3, 4, 5]);
+    xTicks(s, F, [1, 2, 4, 6, 8, 10]);
+    axes(s, F, 'maturity (years) →', 'yield');
+    const b = stepCurve(from), a = stepCurve(to);
+    const bp = b.map((v, k) => [k + 1, v, `${k + 1}y before: ${pct(v)}`]);
+    const ap = a.map((v, k) => { const d = (a[k] - b[k]) * 100; return [k + 1, v, `${k + 1}y after: ${pct(v)} (${d >= 0 ? '+' : '−'}${Math.abs(d).toFixed(0)} bps)`]; });
+    el(s, 'path', { d: pathD(F, bp) + ' L' + ap.slice().reverse().map((q) => F.x(q[0]).toFixed(1) + ' ' + F.y(q[1]).toFixed(1)).join(' L') + ' Z', fill: '#E3E2DB', class: 'fade', style: 'animation-delay:.45s' });
+    series(s, F, bp, { stroke: '#BEBDB6', width: 1.3, r: 2.3, hl: 'b', name: 'Curve before this step' });
+    series(s, F, ap, { stroke: C.INK, r: 2.6, hl: 'a', delay: 0.15, name: 'Curve after this step' });
+  }
+
+  // A whole-curve move from the base curve: before (light) and after (ink), gap shaded.
+  function movePanel(s, W, H, d) {
+    const F = frame(s, W, H, { ...M(W < 420), yMin: 0.5 }, 10.5, 5.5);
+    yGrid(s, F, [1, 2, 3, 4, 5]);
+    xTicks(s, F, [1, 2, 4, 6, 8, 10]);
+    axes(s, F, 'maturity (years) →', 'yield');
+    const base = UP.slice(0, 10);
+    const bp = base.map((v, k) => [k + 1, v, `${k + 1}y before: ${pct(v)}`]);
+    const ap = base.map((v, k) => { const c = d(k + 1) * 100; return [k + 1, v + d(k + 1), `${k + 1}y after: ${pct(v + d(k + 1))} (${c >= 0 ? '+' : '−'}${Math.abs(c).toFixed(0)} bps)`]; });
+    el(s, 'path', { d: pathD(F, bp) + ' L' + ap.slice().reverse().map((q) => F.x(q[0]).toFixed(1) + ' ' + F.y(q[1]).toFixed(1)).join(' L') + ' Z', fill: '#E3E2DB', class: 'fade', style: 'animation-delay:.45s' });
+    series(s, F, bp, { stroke: '#BEBDB6', width: 1.3, r: 2.3, hl: 'b', name: 'Curve before the move' });
+    series(s, F, ap, { stroke: C.INK, r: 2.6, hl: 'a', delay: 0.15, name: 'Curve after the move' });
+  }
+
+  // Spot vs f(2, k), with the gap between them shaded.
+  function pair(s, W, H, S, lo, hi) {
+    const F = frame(s, W, H, { ...M(W < 420), yMin: lo }, 8.5, hi);
+    yGrid(s, F, [2, 3, 4, 5].filter((v) => v > lo && v <= hi));
+    xTicks(s, F, [1, 2, 3, 4, 5, 6, 7, 8]);
+    axes(s, F, 'tenor k (years) →', 'rate');
+    const sp = fwdPts(S, 0, 8), fw = fwdPts(S, 2, 8);
+    el(s, 'path', { d: pathD(F, sp) + ' L' + fw.slice().reverse().map((q) => F.x(q[0]).toFixed(1) + ' ' + F.y(q[1]).toFixed(1)).join(' L') + ' Z', fill: '#E3E2DB', class: 'fade', style: 'animation-delay:.5s', 'data-hl': 'gap', 'data-tip': S === UP ? 'Rising spot curve: f(2, k) > s₂₊ₖ ≥ sₖ' : 'Falling spot curve: f(2, k) < s₂₊ₖ ≤ sₖ' });
+    series(s, F, sp, { stroke: C.INK, hl: 's', name: 'Spot curve sₖ' });
+    series(s, F, fw, { stroke: '#8A8983', hl: 'f', delay: 0.15, name: 'Forward curve f(2, k): loans starting in year 2' });
+  }
+
+  // Continuous spot and forward curves, with a hover probe.
+  function smooth(s, W, H, sf, ff, peak) {
+    const F = frame(s, W, H, { ...M(W < 420), yMin: 1.5 }, 10, 6.5);
+    yGrid(s, F, [2, 3, 4, 5, 6]);
+    xTicks(s, F, [0, 2, 4, 6, 8, 10]);
+    axes(s, F, 'maturity t (years) →', 'rate');
+    const line = (f, stroke, hl, name, delay) => {
+      const pts = Array.from({ length: 121 }, (_, i) => [i / 12, f(i / 12)]);
+      el(s, 'path', { d: pathD(F, pts), fill: 'none', stroke, 'stroke-width': 1.6, 'stroke-linejoin': 'round', pathLength: 1, class: 'draw', style: `animation-delay:${delay}s`, 'data-hl': hl });
+      el(s, 'path', { d: pathD(F, pts), fill: 'none', stroke: 'transparent', 'stroke-width': 10, 'data-hl': hl, 'data-tip': name });
+    };
+    line(sf, C.INK, 's', 'Spot curve s(t)', 0);
+    line(ff, '#8A8983', 'f', 'Forward curve f(t) = s(t) + t·s′(t)', 0.15);
+    if (peak != null) {
+      guide(s, F.x(peak), F.y(ff(peak)) + 6, F.x(peak), F.BASE, 0.9);
+      const c = dot(s, F.x(peak), F.y(ff(peak)), 4.2, '#8A8983', 1.0, `Forward peak at t = ${peak}\nf = ${pct(ff(peak))} · s = ${pct(sf(peak))}\nhere t·s″ = −2s′, so f′ = 0`);
+      c.setAttribute('data-hl', 'f');
+      label(s, F.x(peak), F.y(ff(peak)) - 9, 'peak', { size: 10, fill: C.MUTED, anchor: 'middle', delay: 1.05 });
+    }
+    probe(s, F, [{ name: 'forward f(t)', f: ff, stroke: '#8A8983' }, { name: 'spot s(t)', f: sf }], { xName: 't', fmt: (v) => v.toFixed(2) });
+  }
+
+  // ── Render the chosen view ──
+  const key = new URLSearchParams(location.search).get('view');
+  const view = VIEWS[key] || VIEWS.spot;
+  document.getElementById('title').textContent = view.title;
+  document.getElementById('sub').textContent = view.sub;
+  document.getElementById('src').textContent = view.src;
+  document.title = view.title;
+  if (view.legend) legend(view.legend); else document.getElementById('legend').remove();
+  const host = document.getElementById('panels');
+  host.className = view.panels.length > 1 ? 'grid' : 'one';
+  view.panels.forEach((pnl) => {
+    const sec = document.createElement('section');
+    sec.className = 'panel';
+    sec.innerHTML = `<h3></h3><div class="hint"></div>`;
+    sec.querySelector('h3').textContent = pnl.h3;
+    sec.querySelector('.hint').textContent = pnl.hint;
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('role', 'img');
+    svg.setAttribute('aria-label', pnl.h3 + ': ' + pnl.hint);
+    sec.appendChild(svg);
+    host.appendChild(sec);
+    mount(svg, (s, W, H) => pnl.draw(s, W, H), view.small ? (W) => Math.max(200, Math.min(240, W * 0.6)) : height);
+  });
+})();
+  </script>
+</body>
+</html>
