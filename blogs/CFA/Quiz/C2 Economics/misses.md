@@ -43,3 +43,7 @@ Capital deepening stops at $k^*$.
 **Covered:** Higher $A$ (TFP) and $\alpha$ shape or shift the curve. Capital deepening moves **along** a given curve.
 
 **Gap:** Do not call a move along $y=Ak^{\alpha}$ a TFP shift.
+
+## 2026-10-25 — Quiz misses
+
+- **Econ · CIRP forward premium direction** — Gap: Flipped the direction: said the lower-rate currency trades at a discount.

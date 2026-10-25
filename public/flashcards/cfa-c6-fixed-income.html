@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Fixed Income — quiz misses flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    id: "fi-m1-local-vs-pure-expectations-2026-10-25",
+    topic: "FI M1 · Local vs pure expectations",
+    front: `How does the local expectations theory differ from the pure expectations theory?`,
+    back: `<div class="ans">
+      <ul><li><strong>Pure expectations:</strong> forward rates are unbiased predictors of future spot rates, and every bond earns the same return over <strong>any horizon</strong>: full risk neutrality.</li><li><strong>Local expectations:</strong> risk neutrality holds only over <strong>short holding periods</strong>: every bond earns the risk-free rate in the short run. Over longer horizons, risk premiums can exist.</li></ul>
+    </div>`,
+    gap: "Didn't pin down the short-horizon versus every-horizon difference."
+  },
+  {
+    id: "fi-m1-krd-single-shift-2026-10-25",
+    topic: "FI M1 · Key rate duration",
+    front: `KRDs are 0.8 (2y), 1.5 (5y) and 3.0 (10y). What is the effective duration? What's the price change if only the 5-year rate rises 20bp?`,
+    back: `<div class="ans">
+      <p>Effective duration \\(=0.8+1.5+3.0=5.3\\). Price change \\(\\approx-1.5\\times0.20\\%=\\mathbf{-0.30\\%}\\).</p><ul><li>For a shift at <strong>one key rate</strong>, use only that rate's KRD.</li><li>The total (5.3) applies only to a <strong>parallel</strong> shift: \\(-5.3\\times0.20\\%=-1.06\\%\\).</li></ul>
+    </div>`,
+    gap: "Used the total duration for a single-rate shift and got −1.06%."
+  },
+  {
+    id: "fi-m1-flattening-barbell-2026-10-25",
+    topic: "FI M1 · Flattening: barbell vs bullet",
+    front: `You expect the curve to flatten. At the same duration, a barbell or a bullet?`,
+    back: `<div class="ans">
+      <p><strong>Barbell.</strong></p><ul><li>When the curve flattens, long rates fall relative to short rates, so the barbell's long-end bonds gain.</li><li>The barbell also has <strong>more convexity</strong> than a bullet at the same duration.</li><li>A bullet suits an expected <strong>steepening</strong>, or a view centred on the middle of the curve.</li></ul>
+    </div>`,
+    gap: "Chose the bullet."
+  },
+  {
+    id: "fi-m1-rate-volatility-term-2026-10-25",
+    topic: "FI M1 · Volatility across maturities",
+    front: `Why are short-term rates usually more volatile than long-term rates?`,
+    back: `<div class="ans">
+      <ul><li><strong>Short rates</strong> move with <strong>monetary policy</strong>, so uncertainty about central-bank action makes them volatile.</li><li><strong>Long rates</strong> are anchored by expectations of long-run <strong>inflation and real growth</strong>, which change slowly.</li></ul>
+    </div>`,
+    gap: "Gave the pattern without both reasons."
+  },
+  {
+    id: "fi-m1-riding-curve-2026-10-25",
+    topic: "FI M1 · Riding the yield curve",
+    front: `When does riding the yield curve work, and what's the risk?`,
+    back: `<div class="ans">
+      <ul><li><strong>Condition:</strong> an <strong>upward-sloping</strong> curve that <strong>stays stable</strong>. Buy bonds longer than your horizon; as they roll down to lower yields, the price rises, giving return above a matched-maturity bond.</li><li><strong>Risk:</strong> the curve shifts, rates rise or the curve flattens, which wipes out the roll-down gain.</li></ul>
+    </div>`,
+    gap: "Missed that the curve must stay stable, or the risk."
+  }
+];
+
+flashDeck({
+  key: "cfa-c6-fixed-income",
+  source: "CFA L2 Fixed Income · Quiz misses",
+  gapLabel: "Gap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

@@ -74,6 +74,15 @@ const CARDS = [
 </ul>
 </div>`,
     gap: "a TFP shift changes the curve; capital deepening is a movement along the curve you already have."
+  },
+  {
+    id: "econ-cirp-forward-premium-2026-10-25",
+    topic: "Econ · CIRP forward premium direction",
+    front: `\\(S(\\text{USD/EUR})=1.10\\), \\(i_{USD}=4\\%\\), \\(i_{EUR}=2.5\\%\\). Find the 1-year forward. Does EUR trade at a forward premium or discount?`,
+    back: `<div class="ans">
+      <p>\\(F=1.10\\times\\dfrac{1.04}{1.025}=1.1161\\): <strong>EUR at a forward premium</strong>.</p><ul><li>In \\(S(f/d)\\), USD is the price currency and EUR is the base. CIRP: \\(F=S\\times\\dfrac{1+i_{price}}{1+i_{base}}\\).</li><li>Rule: the <strong>lower-rate currency trades at a forward premium</strong>; the higher-rate one at a discount. The forward premium offsets the interest gap, so there is no arbitrage.</li><li>UIRP: \\(\\%\\Delta S^e(f/d)\\approx i_f-i_d\\). Here EUR is expected to appreciate by about 1.5%.</li></ul>
+    </div>`,
+    gap: "Flipped the direction: said the lower-rate currency trades at a discount."
   }
 ];
 
