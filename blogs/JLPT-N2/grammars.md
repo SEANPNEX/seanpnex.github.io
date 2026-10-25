@@ -1858,3 +1858,17 @@ Indirect quotation:
 
 - 私の夢は、医者になることです。 — My dream is to become a doctor.
 - 弁当全体のバランスを見ながら、盛り付けや味付けを考えて作ることは、まさに日本特有の文化の一つである。 — Making a bento while watching the balance of the whole box and thinking about how to arrange and season it is truly one of Japan's unique cultural practices.
+
+## ～すぎる（too much; excess）
+
+**Rule:** **～すぎる** says that an action, behavior, or state goes beyond the normal degree or range: "too …" or "overly …".
+
+| Type | Form |
+| --- | --- |
+| Verb | V ます形 + すぎる（飲みすぎる） |
+| い-adjective | A い → drop い + すぎる（多すぎる） |
+| な-adjective | stem + すぎる（にぎやかすぎる） |
+
+- 仕事が多すぎて、来週までには終わらないかもしれない。 — I have too much work, so I might not finish it by next week.
+- この辺りはにぎやかすぎて、勉強にはよくない。 — This area is too lively, so it isn't good for studying.
+- 頭が痛いのは、昨夜お酒を飲みすぎたからだと思う。 — I think the reason my head hurts is that I drank too much last night.
