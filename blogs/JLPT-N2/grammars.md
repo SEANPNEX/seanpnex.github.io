@@ -1803,3 +1803,11 @@ Indirect quotation:
 
 - 東京は日本の首都である。 — Tokyo is the capital of Japan.
 - 信頼は大切である。 — Trust is important.
+
+## N にとって（from the standpoint of）
+
+**Rule:** **N にとって** usually follows a noun for a person or organization. It gives a judgment or evaluation from that person's or group's standpoint: "for N" or "to N".
+
+- 現代人にとって、スマホは生活の一部です。 — For people today, smartphones are part of life.
+- 私にとって、日本語学習はとても楽しい。 — For me, studying Japanese is a lot of fun.
+- シンプルなランチボックス文化で育った外国人にとって、日本の弁当は、いろいろと興味深いポイントがある。 — For foreigners who grew up with a simple lunch-box culture, Japanese bento have many interesting points.
