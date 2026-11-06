@@ -265,6 +265,23 @@ Dialogue:
 - この洋服、かわいいですね。↘ — These clothes are cute.
 - 由加ちゃんのこのスマホケース、かわいいですね。↘ — Yuka-chan, this phone case of yours is cute.
 
+## 〜わ（sentence-ending: mild emotion / surprise）
+
+**Rule:** Sentence-final **わ** adds **mild emotion** (being moved) or **surprise** at the end of a sentence. How it is said matters: the textbook's first example is usually **rising**, and is mostly used by older women; the second can also be used by men, with **falling** intonation.
+
+| Pattern in the textbook | Intonation | Who uses it (per textbook) |
+| --- | --- | --- |
+| Ex. 1 style（きれいな人だ**わ**） | Rising | Mostly older women |
+| Ex. 2 style（助かる**わ**） | Falling | Men can use it too |
+
+> [!IMPORTANT]
+> Follow the textbook's split: rising わ in the ex. 1 style is mostly older women's speech; falling わ in the ex. 2 style is available to men as well. This note is the **sentence-ending particle わ**, not the topic particle **は**.
+
+- あら、きれいな人だわ。 — Oh my, what a beautiful person.
+- ほんと、助かるわ。 — That really helps.
+
+**Tip (Caligo):** In example 1, **あら** is itself a feminine surprise interjection, which fits the rising-わ style the textbook describes.
+
 ## Adjective predicates (polite past)
 
 **Rule:** Past forms of adjectival predicates differ by type.
