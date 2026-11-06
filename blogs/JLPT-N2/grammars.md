@@ -2025,7 +2025,7 @@ Compare:
 
 ## ～そうだ（appearance / inference from looks）
 
-**Rule:** **～そうだ** after a verb **ます-stem** or an adjective **stem** gives an inference from how something **looks**, or from experience: "looks …", "seems …", "appears about to …". With a potential verb such as **書けそう**, it can also predict ability ("looks like I/you could write …").
+**Rule:** **～そうだ** after a verb **ます-stem** or an adjective **stem** gives an inference from how something **looks**, or from experience: "looks …", "seems …", "appears about to …". With a potential verb such as **書けそう**, it can also predict ability ("looks like I/you could write …"). For the strong verb negative "doesn't look like it will …", see **～そうにもない** below.
 
 | Type | Form | Example |
 | --- | --- | --- |
@@ -2047,6 +2047,25 @@ Compare:
 - この子は体が丈夫そうではない。／この子は体が丈夫ではなさそうだ。 — This child does not look sturdy. / This child seems not to be sturdy.
 
 **Tip (Caligo):** Appearance **そうだ** attaches to the **ます-stem** or adjective **stem**. Hearsay **そうだ** ("I hear that …") attaches to the **plain form** instead (Vる／い-adj／な-adjだ／Nだ ＋ そうだ). Same surface word, different attachment — don't mix the two.
+
+### ～そうにもない（doesn't look like it will …）
+
+**Rule:** The negative of **V ます形 ＋ そうだ** (appearance) is **V ます形 ＋ そうにもない**: it doesn't look / seem as if the action will happen — a strong sense of unlikelihood from appearance or circumstances. **に** and **も** can each be dropped, so **そうにない** and **そうもない** are also used.
+
+| Form | Notes |
+| --- | --- |
+| V ます形 ＋ **そうにもない** | full form |
+| V ます形 ＋ **そうにない** | **も** omitted |
+| V ます形 ＋ **そうもない** | **に** omitted |
+
+> [!IMPORTANT]
+> Connection here is **V ます形** only (as in the textbook). **に** and **も** are each optional, so all three variants appear. This is not the same as adjective/inference negatives like **そうではない** ("does not look that way") or **ではなさそう**／**なさそう** (see the parent note above).
+
+- このプロジェクトは1人の力では完成できそうにない。 — This project doesn't look like it can be completed by one person alone.
+- 全く勉強していないので、合格しそうもない。 — I haven't studied at all, so it doesn't look like I'll pass.
+- この問題は難しすぎて、僕にはわかりそうもない。 — This problem is too hard; it doesn't look like I can understand it.
+
+**Tip (Caligo):** Read it as "it doesn't look like … will happen," not as a plain polite negative of the verb (できない／わからない). **そうではない** denies the look/inference itself; **V そうにもない** denies that the event seems likely to occur.
 
 ## ～切る（きる: finish entirely / to an extreme）
 
