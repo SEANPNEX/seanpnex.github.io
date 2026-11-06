@@ -1872,3 +1872,42 @@ Indirect quotation:
 - 仕事が多すぎて、来週までには終わらないかもしれない。 — I have too much work, so I might not finish it by next week.
 - この辺りはにぎやかすぎて、勉強にはよくない。 — This area is too lively, so it isn't good for studying.
 - 頭が痛いのは、昨夜お酒を飲みすぎたからだと思う。 — I think the reason my head hurts is that I drank too much last night.
+
+## ～ば形（conditional: if …）
+
+**Rule:** Adding **～ば** to a verb or adjective makes a **conditional** ("if …"). The form is called the **ば形** (仮定形). Below are the conjugation patterns for verbs, adjectives, and the negative.
+
+### Verbs
+
+| Class | Change | Example |
+| --- | --- | --- |
+| Class I（五段） | Final **う-row** kana → matching **え-row** + **ば** | 休む → 休めば；行く → 行けば |
+| Class II（一段） | Final **る** → **れ** + **ば** | 調べる → 調べれば |
+| Class III する | **する** → **すれば** | 勉強する → 勉強すれば |
+| Class III 来る | **来る** → **来れば**（くれば） | 来る → 来れば |
+
+- ネットで調べれば、必要な情報は何でも手に入ります。 — If you look it up online, you can get whatever information you need.
+- 軽い風邪は、ゆっくり休めば治りますよ。 — A mild cold will clear up if you rest properly.
+- 今すぐ電車で行けば、まだ間に合いますよ。 — If you take the train right now, you'll still make it.
+
+### Adjectives
+
+| Type | Change | Example |
+| --- | --- | --- |
+| い-adjective | Drop **い** → **ければ** | 高い → 高ければ；ない → なければ |
+| いい（よい） | Use the base **よい** → **よければ** | いい → よければ |
+| な-adjective | Stem + **なら（ば）** | 元気 → 元気なら（ば）；簡単 → 簡単なら |
+
+> [!IMPORTANT]
+> For **いい**, conjugate from **よい**: **よければ**, not ＊いいければ. With な-adjectives, **ならば** is the full form, but everyday Japanese usually drops **ば** and just uses **なら**.
+
+- 安ければ買いたいけど、安くなければ買わない。 — If it's cheap I want to buy it, but if it isn't cheap I won't.
+- 作り方が簡単なら、私も作る。 — If the way to make it is simple, I'll make it too.
+
+### Negative verbs（V ない → V なければ）
+
+**Rule:** The negative plain form **V ない** follows the same change as an い-adjective: **ない → なければ**, so **V ない → V なければ**.
+
+- 今すぐ行かなければ、間に合わない。 — If I don't go right now, I won't make it.
+
+**Tip (Caligo):** This **なければ** is just the conditional "if … not …". The obligation pattern **V なければならない** (must / have to; see that section) builds on the same form plus **ならない／いけない**.
