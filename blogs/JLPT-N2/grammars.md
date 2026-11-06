@@ -2117,3 +2117,13 @@ Compare:
 - この学校の先生たちは、学生に対して本当にやさしいです。 — The teachers at this school are really kind toward the students.
 
 **Tip (Caligo):** **N について** is "about N" as a topic of discussion (see that section). **N にとって** is "for N / from N's standpoint" in a judgment (see that section). **N に対して／に対する** is the target the action or attitude is directed **at**.
+
+## V てみる（try doing / do and see）
+
+**Rule:** **V て形 ＋ みる** means try doing something, or do it and see how it goes: "try …ing", "… and see."
+
+- 一度日本に行ってみたいです。 — I'd like to try going to Japan once.
+- 留学のことはもう一度親と相談してみます。 — I'll try talking with my parents about studying abroad one more time.
+- わからないことは、あの人に聞いてみればいいです。 — For things you don't understand, you should try asking that person. *(てみる ＋ ばいい; see "V ばいい")*
+
+**Tip (Caligo):** This **みる** is an **auxiliary** (usually written in hiragana), not the full verb **見る** "to look." **てみたい** is "want to try …" (たい on the auxiliary).
