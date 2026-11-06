@@ -1982,7 +1982,7 @@ Compare:
 | Type | Form | Example |
 | --- | --- | --- |
 | Verb | **V ます形** ＋ **そうだ** | 書けそうだ；雨が降りそうだ |
-| い-adjective | Drop **い** ＋ **そうだ** | 寂しい → 寂しそうだ；丈夫→（な-adj below） |
+| い-adjective | Drop **い** ＋ **そうだ** | 寂しい → 寂しそうだ |
 | な-adjective | Stem ＋ **そうだ** | 丈夫 → 丈夫そうだ |
 | Modifying a noun | **～そうな** ＋ N | 役に立ちそうな情報 |
 | Modifying an action | **～そうに** ＋ V | 大事そうにしまう |
