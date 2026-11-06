@@ -2037,3 +2037,21 @@ Compare:
 - アフリカで暮らしたことがあるといっても、実は3ヶ月だけなんです。 — I've lived in Africa, though actually it was only three months.
 
 **Tip (Caligo):** Broader **～ても／～でも** ("even if …, still …"; see that section) keeps the main clause going despite the first condition. **～といっても** specifically dials back how far the wording should be taken. Related in surface form to **～と言う／～という**, but this pattern is about qualifying extent, not quoting.
+
+## ～か～（embedded question）
+
+**Rule:** A **plain-form question** ending in **か** can sit **inside** another sentence as a content clause ("when …", "where …", "what …"). Verbs and い-adjectives take their **plain** forms before **か** (including past or negative when needed). For a **noun** or **な-adjective** in the present affirmative, attach **か** to the **stem** and **omit だ**.
+
+| Before か | Form |
+| --- | --- |
+| Verb／い-adjective | Plain form ＋ **か**（もらったか；するか；高いか） |
+| Noun／な-adjective（present affirmative） | Stem／N ＋ **か**（omit **だ**: 得意か；先生か） |
+
+> [!IMPORTANT]
+> This is an **embedded** question: the outer sentence carries the speech-act (覚える, 教える, 書く, 分かる, …). Do not confuse it with a standalone polite question (**～ですか**), or with indefinite **疑問詞 ＋ か** ("someone / something"; see that section).
+
+- いつ奨学金をもらったか覚えていますか。 — Do you remember when you received the scholarship?
+- 地震の時、どこへ避難するか教えてください。 — Please tell me where to evacuate when there's an earthquake.
+- どんなスポーツが得意か書いてください。 — Please write what sports you're good at.
+
+**Tip (Caligo):** **～か分かりません** (see that section) is the same embedding pattern with "I don't know …" as the outer predicate. Here the outer verbs are remember / tell / write — same **か** clause shape.
