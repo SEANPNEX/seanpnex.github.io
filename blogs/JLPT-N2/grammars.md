@@ -2091,3 +2091,18 @@ Compare:
 - 今日はボーナスをもらったし、高級レストランでおいしいものを食べましょう。 — I got my bonus today, so let's eat something good at a nice restaurant. *(single し: one stated reason, with more left implied)*
 
 **Tip (Caligo):** Linking with **て** mainly sequences or soft-connects actions; **から** gives a single clear reason. **し** is for lining up reasons or qualities (or hinting that the list is open-ended).
+
+## ～に対する・～に対して（toward / vis-à-vis）
+
+**Rule:** After a noun for a **person** or an **abstract matter**, **～に対する／～に対して** (たいする／たいして) marks the **target** of an action, feeling, or attitude: "toward …", "vis-à-vis …", "against …". Use **～に対する** before a **noun**, and **～に対して** before a **predicate**.
+
+| Form | Followed by | Example shape |
+| --- | --- | --- |
+| N に対する | Noun | N₁ に対する N₂ |
+| N に対して | Predicate (verb／adjective) | N に対して ～ |
+
+- 林さんに対する尊敬心はいつごろからのものですか。 — About when did your respect toward Hayashi begin?
+- マスコミに対して「ノーコメント」を繰り返した。 — He kept repeating "no comment" to the media.
+- この学校の先生たちは、学生に対して本当にやさしいです。 — The teachers at this school are really kind toward the students.
+
+**Tip (Caligo):** **N について** is "about N" as a topic of discussion (see that section). **N にとって** is "for N / from N's standpoint" in a judgment (see that section). **N に対して／に対する** is the target the action or attitude is directed **at**.
