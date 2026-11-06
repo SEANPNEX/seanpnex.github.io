@@ -2073,3 +2073,21 @@ Compare:
 - どんなスポーツが得意か書いてください。 — Please write what sports you're good at.
 
 **Tip (Caligo):** **～か分かりません** (see that section) is the same embedding pattern with "I don't know …" as the outer predicate. Here the outer verbs are remember / tell / write — same **か** clause shape.
+
+## ～し、～（parallel listing / giving reasons）
+
+**Rule:** **Plain clause ＋ し** lists reasons or qualities in parallel — "both … and …", "what with X (and Y) …". Stack two or more **し** clauses, or use a **single し** to name one reason among others (implying there is more). Nouns and な-adjectives take **だし**.
+
+| Before し | Form |
+| --- | --- |
+| Verb／い-adjective | Plain form ＋ **し** |
+| Noun／な-adjective | Stem／N ＋ **だ** ＋ **し**（静か**だし**；雨**だし**） |
+
+> [!IMPORTANT]
+> With two or more **し** clauses, the speaker stacks reasons or traits that support the conclusion. With **one** **し**, that clause is still framed as one reason among others — not necessarily the only one.
+
+- 今日は雨だし、風も強いし、約束をキャンセルしましょうか。 — It's raining today, and the wind is strong too — shall we cancel the plans?
+- このアパートは静かだし、日当たりもいいし、とても快適だ。 — This apartment is quiet and gets good sun; it's really comfortable.
+- 今日はボーナスをもらったし、高級レストランでおいしいものを食べましょう。 — I got my bonus today, so let's eat something good at a nice restaurant. *(single し: one stated reason, with more left implied)*
+
+**Tip (Caligo):** Linking with **て** mainly sequences or soft-connects actions; **から** gives a single clear reason. **し** is for lining up reasons or qualities (or hinting that the list is open-ended).
