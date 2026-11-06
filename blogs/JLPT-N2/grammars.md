@@ -2002,7 +2002,7 @@ Compare:
 - 明日寝坊しないように、今夜早く寝ましょう。 — Let's go to bed early tonight so we don't oversleep tomorrow.
 - ネットがなかった時代には、道に迷わないように、『地球の歩き方』を手に持って旅行していました。 — In the days before the internet, people traveled with *Chikyū no Arukikata* in hand so they wouldn't get lost.
 
-**Tip (Caligo):** **ために** and **ように** can both mark purpose. **ために** often pairs with a volitional verb naming what the actor aims to do; **ように** often pairs with a potential, change-of-state, or negative naming the desired situation. Prefer one over the other by what the textbook sentence needs — don't treat the split as absolute.
+**Tip (Caligo):** **ために** and **ように** can both mark purpose. **ために** often pairs with a volitional verb naming what the actor aims to do (see "～ために"); **ように** often pairs with a potential, change-of-state, or negative naming the desired situation. Prefer one over the other by what the textbook sentence needs — don't treat the split as absolute.
 
 ## ～そうだ（appearance / inference from looks）
 
@@ -2127,3 +2127,21 @@ Compare:
 - わからないことは、あの人に聞いてみればいいです。 — For things you don't understand, you should try asking that person. *(てみる ＋ ばいい; see "V ばいい")*
 
 **Tip (Caligo):** This **みる** is an **auxiliary** (usually written in hiragana), not the full verb **見る** "to look." **てみたい** is "want to try …" (たい on the auxiliary).
+
+## ～ために（purpose: in order to）
+
+**Rule:** **N の ＋ ために** or **V 辞書形 ＋ ために** states a **purpose**: "in order to …", "for …". The purpose clause and the main clause share the **same subject**, and the main-clause verb is a **volitional** action (意志動詞) taken to achieve that purpose.
+
+| Form | Pattern |
+| --- | --- |
+| Noun | **N の ＋ ために** |
+| Verb | **V 辞書形 ＋ ために** |
+
+> [!IMPORTANT]
+> Same subject in both clauses. The verb after **ために** must be something the subject **chooses to do** toward the goal — not an uncontrolled outcome. This is purpose only (＜目的＞), not a "because" reading.
+
+- 日本の伝統文化を理解するために、茶道を習いました。 — In order to understand Japan's traditional culture, I learned tea ceremony.
+- 転職のために、いろいろ面接を受けた。 — In order to change jobs, I went to various interviews.
+- 家を買うために、朝から晩まで働く。 — In order to buy a house, I work from morning till night.
+
+**Tip (Caligo):** Compare purpose **～ように** (see that section). **ために** fits when the subject controls a volitional action toward a goal; **ように** often names a less fully controllable desired situation (potential, change-of-state, negative). That contrast is a tendency, not absolute — same caveat as in the ～ように tip. For "N₂ for N₁" as a noun phrase, see **N のための N**.
