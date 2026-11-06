@@ -1930,6 +1930,17 @@ Indirect quotation:
 
 **Tip (Caligo):** This **なければ** is just the conditional "if … not …". The obligation pattern **V なければならない** (must / have to; see that section) builds on the same form plus **ならない／いけない**.
 
+### V ばいい（suggestion: you should / it'd be fine to）
+
+**Rule:** **V ば形 ＋ いい** suggests what to do, or the suitable method, when a purpose or reason is in view: "you should …", "it'd be fine to …", "just …". Use the same **ば** conjugation as above; this subsection is only the **suggestion** use.
+
+- その仕事が嫌なら、やめればいい。 — If you hate that job, you can just quit.
+- この町の歴史なら、山田さんに聞けばいいですよ。 — For this town's history, just ask Yamada.
+- A：頭が痛い… — My head hurts…
+- B：この薬を飲めばいいよ。すぐ治るよ。 — Just take this medicine. You'll feel better right away.
+
+**Tip (Caligo):** **～ほうがいい** (see that section) frames advice as "X would be better" (often comparing options). **V ばいい** is a lighter "here's what to do / that'll do" suggestion built on the conditional.
+
 ## ～たり～たりする（alternation / parallel listing）
 
 **Rule:** **～たり～たりする** lists selected actions or states that happen in the same period, or that keep alternating. Replace the **た** of a verb's or い-adjective's past form with **たり**. For a な-adjective or a noun, use **だったり**. Two opposite verbs with たり often mean a repeated back-and-forth.
