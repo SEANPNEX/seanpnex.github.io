@@ -2018,3 +2018,22 @@ Compare:
 > **わかりきった** means "obvious" or "already perfectly clear," not that someone literally finished the process of understanding. **疲れ切っている** means utterly exhausted — the extreme-degree use, not "finished getting tired."
 
 **Tip (Caligo):** Potential **～切れない** denies being able to finish the whole thing (食べ切れない), not the plain inability to eat. Keep that distinct from ordinary **食べられない**.
+
+## ～といっても（although I say / call it …）
+
+**Rule:** **Plain clause／noun（だ optional）＋ といっても** is concessive, but it mainly **qualifies or corrects the implied extent** of what was just said or named. Read it as "although I say / call it …", "even so, it's not as much / as grand as that sounds." The follow-up clause limits the claim; it is not a blanket disagreement with the first point.
+
+| Before といっても | Form |
+| --- | --- |
+| Verb／い-adjective | Plain form ＋ **といっても** |
+| Noun | N（**だ** optional）＋ **といっても** |
+| な-adjective | Stem（**だ** optional）＋ **といっても** |
+
+> [!IMPORTANT]
+> Use **といっても** when the label or claim is technically fine, but the **scale or degree** needs pulling back (a "park" that is really a small garden; "lived in Africa" that was only three months). It does not simply mean "even if," and it does not erase the first clause.
+
+- ホテルの近くに公園があります。公園といっても、小さなお庭です。 — There's a park near the hotel. Though I say "park," it's really just a small garden.
+- 学費は高いといっても、払えないほど高くありません。 — The tuition is high, but not so high that I can't pay it.
+- アフリカで暮らしたことがあるといっても、実は3ヶ月だけなんです。 — I've lived in Africa, though actually it was only three months.
+
+**Tip (Caligo):** Broader **～ても／～でも** ("even if …, still …"; see that section) keeps the main clause going despite the first condition. **～といっても** specifically dials back how far the wording should be taken. Related in surface form to **～と言う／～という**, but this pattern is about qualifying extent, not quoting.
