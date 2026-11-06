@@ -1999,3 +1999,22 @@ Compare:
 - この子は体が丈夫そうではない。／この子は体が丈夫ではなさそうだ。 — This child does not look sturdy. / This child seems not to be sturdy.
 
 **Tip (Caligo):** Appearance **そうだ** attaches to the **ます-stem** or adjective **stem**. Hearsay **そうだ** ("I hear that …") attaches to the **plain form** instead (Vる／い-adj／な-adjだ／Nだ ＋ そうだ). Same surface word, different attachment — don't mix the two.
+
+## ～切る（きる: finish entirely / to an extreme）
+
+**Rule:** **V ます形 ＋ 切る** (reading **きる**) makes a compound verb. It has two main uses: (1) finish the action **completely / entirely**, and (2) take a state or feeling to an **extreme**. **切る** is Class I（五段）, so its potential is **切れる** and the potential negative is **切れない** — e.g. **食べ切れない** "cannot finish (eating) it all."
+
+| Use | Sense | Example stem |
+| --- | --- | --- |
+| Finish entirely | do all of it; leave nothing undone | 読み切る；食べ切る |
+| Extreme degree | utterly / completely in that state | 疲れ切る；わかりきる |
+
+- あの長編小説はとてもおもしろくて、一週間かけて読み切った。 — That long novel was so interesting that I spent a week and read it through.
+- 彼女が作ってくれた料理は美味しいけど、1人じゃ全部食べ切れません。 — The food she made is delicious, but I can't finish it all by myself.
+- 最近毎日残業しているので、疲れ切っています。 — I've been working overtime every day lately, so I'm utterly exhausted.
+- どうしてそんなわかりきったことを言わなきゃいけないんですか。 — Why do I have to say something so obvious? *(no Chinese gloss on the source page; English supplied here)*
+
+> [!IMPORTANT]
+> **わかりきった** means "obvious" or "already perfectly clear," not that someone literally finished the process of understanding. **疲れ切っている** means utterly exhausted — the extreme-degree use, not "finished getting tired."
+
+**Tip (Caligo):** Potential **～切れない** denies being able to finish the whole thing (食べ切れない), not the plain inability to eat. Keep that distinct from ordinary **食べられない**.
