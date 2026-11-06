@@ -715,7 +715,7 @@ What is left after removing **ます** from the polite form is the **ます-stem
 
 ## なる（change of state）
 
-**Rule:** **なる** ("to become") describes a thing or its state **changing naturally**. It combines with nouns, adjectives, and verbs; this lesson covers nouns and adjectives.
+**Rule:** **なる** ("to become") describes a thing or its state **changing naturally**. It combines with nouns, adjectives, and verbs. Noun and adjective patterns are below; for verbs, see **V るようになる**.
 
 | Word type | Pattern | Example |
 |---|---|---|
@@ -730,6 +730,24 @@ What is left after removing **ます** from the polite form is the **ます-stem
 - でも、午後から眠くなるから、何もできなくなります。 — But from the afternoon on I get sleepy, so I can't do anything anymore.
 
 **Note:** 何もできなくなります means "(it comes to the point that) I can't do anything." できない is the negative of **できる** (can, be able to). When a negative ない form is followed by なる, **ない becomes なく**: できない → **できなくなる**, a change into not being able to.
+
+### V るようになる（change in ability or habit）
+
+**Rule:** **V 辞書形 ＋ ようになる** marks a **change over time**: either becoming **able** to do something (often with a **potential** verb), or starting to do something as a **habit** (ordinary dictionary-form verb). Translate as "have become able to …" or "have started to … (habitually)."
+
+| Use | Form before ようになる | Sense |
+| --- | --- | --- |
+| Ability | Potential dictionary form | unable → able |
+| Habit | Ordinary V 辞書形 | not doing → doing regularly |
+
+> [!IMPORTANT]
+> This is **change of state**, not purpose **～ように** ("so that …"; see that section) and not conjecture/comparison **～ようだ**. The **ようになった** ending is just past of **なる** — it is not itself a potential conjugation.
+
+- 積極的に自分から意見が言えるようになった。 — I've become able to speak up with my own opinions.
+- 隣の子供は最近きちんとあいさつするようになった。 — The neighbor's kid has started greeting people properly lately.
+- 日本語が話せるようになりました。 — I've become able to speak Japanese.
+
+**Tip (Caligo):** In 言える／話せる **ようになった**, the potential is in **言える／話せる**; **ようになった** only marks the change. In あいさつする**ようになった**, あいさつする is an ordinary verb, so the change is habitual behavior, not "became able to greet."
 
 ## Vましょう／Vましょうか（invitation: let's / shall we）
 
