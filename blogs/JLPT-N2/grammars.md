@@ -1931,3 +1931,27 @@ Indirect quotation:
 - 部活は月曜日だったり、水曜日だったりして、決まっていません。 — Club activities are on Monday one time, Wednesday another — nothing fixed.
 
 **Tip (Caligo):** **たり** itself does not carry tense. The final **する** (or **している／した／して**, etc.) sets the tense and aspect for the whole pattern: していた, しています, して, …
+
+## V てある（resulting state of an intentional action）
+
+**Rule:** **V て ＋ ある** (polite **てあります**) follows a **transitive** verb for a deliberate action. It focuses on the **result that remains** after someone intentionally did that action: something has been done, and that state is still in place. The former object often appears with **が** as the subject of the resulting state, but **が** is not always required — when the pattern marks completed preparation, the object may keep **を** or be left out (as in 報告してあります).
+
+| Form | Pattern |
+| --- | --- |
+| Plain | V て ＋ ある |
+| Polite | V て ＋ あります |
+
+Compare:
+
+- 壁にポスターが貼ってあります。 — There's a poster stuck on the wall. *(resulting state)*
+- ポスターを壁に貼りました。 — I stuck the poster on the wall. *(the action of sticking)*
+
+> [!IMPORTANT]
+> **てある** highlights the **continuing result** of a deliberate act, not the doing of the act itself. With physical placement or writing, **N が V てある** is common. With preparation or "already taken care of" uses such as **報告してあります**, the same pattern can mean the matter has been handled and that fact still holds — no physical object with **が** is required.
+
+- A：この辞書、だれのですか。 — Whose dictionary is this?
+- B：林さんのだと思いますよ。表紙に名前が書いてありますから。 — I think it's Hayashi's. There's a name written on the cover.
+- この件について課長にはすでに報告してあります。 — I've already reported this matter to the section chief.
+- そういえば、うちの本棚にもそのガイドブックが置いてありますよ。 — Come to think of it, that guidebook is on my bookshelf at home too.
+
+**Tip (Caligo):** Contrast with resultative **ている** (see "ている II"). An **intransitive** verb + **ている** often just describes the state itself (窓が開いている — the window is open). A **transitive** verb + **てある** implies someone arranged it that way on purpose (窓が開けてある — the window has been left open).
