@@ -1763,6 +1763,25 @@ Indirect quotation:
 - 今、会場に着いたところです。 — I've just arrived at the venue.
 - たった今連絡が入ったところです。 — We've just heard from them.
 
+### ～ところ、～（time point when something else happens）
+
+**Rule:** The same **V る／V ている／V た ＋ ところ** stages can mark a **moment in the course of an action** when the **main clause** happens — often interrupting or breaking that moment. Unlike predicate **ところだ** above ("I am about to / in the middle of / just did"), this pattern is **adverbial**: "just when …, …". After **ところ**, the main-clause verb may take a particle such as **に、を、へ、で**.
+
+| Form | Time point (same stages as ところだ) |
+| --- | --- |
+| **V る** ところ | just before the action (about to) |
+| **V ている** ところ | while the action is in progress |
+| **V た** ところ | just after the action has happened |
+
+> [!IMPORTANT]
+> Typical feel: just when X was at that stage, something else happened (a call, rain, a typhoon). The particle after **ところ** (に／で／を／へ, etc.) depends on the **main-clause** verb — the textbook lists those options; the examples here use **(に)** and **(で)**.
+
+- ずっと楽しみにしていたドラマが始まったところ(に)、電話がかかってきた。 — Just as the drama I had been looking forward to started, a phone call came.
+- その試合はもう少しで終わるところ(で)、雨で中止になった。 — The match was just about to end when it was called off because of rain.
+- ようやく工事が始まったところ(に)、台風が来た。 — Just as construction had finally started, a typhoon came.
+
+**Tip (Caligo):** Keep **ところだ** for stating your own stage as the predicate. Use **～ところ、～** when that stage is the **backdrop** for another event. Don't invent extra particle meanings beyond に／を／へ／で as the verb requires.
+
 ## V たばかりだ（just did / not long ago）
 
 **Rule:** **V た** ＋ **ばかり** ＋ **だ** means the action happened **not long ago**: "just …", "only recently …". Like a noun, it connects with **で／なので** ("since I just …") and with **の** before a noun (生まれたばかり**の**子猫).
