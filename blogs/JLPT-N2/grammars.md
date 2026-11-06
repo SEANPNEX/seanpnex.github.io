@@ -1955,3 +1955,22 @@ Compare:
 - そういえば、うちの本棚にもそのガイドブックが置いてありますよ。 — Come to think of it, that guidebook is on my bookshelf at home too.
 
 **Tip (Caligo):** Contrast with resultative **ている** (see "ている II"). An **intransitive** verb + **ている** often just describes the state itself (窓が開いている — the window is open). A **transitive** verb + **てある** implies someone arranged it that way on purpose (窓が開けてある — the window has been left open).
+
+## ～ように（purpose: so that / in order to）
+
+**Rule:** **V 辞書形 ＋ ように** or **V ない ＋ ように** states a **desired condition**, then the main clause gives the means or action taken to bring that condition about — or to avoid an unwanted outcome. Translate as "so that …", "in order to …", or "so as not to …". The verb before **ように** is often **non-volitional** (なる, できる), a **potential**, or a **negative**; that is common in this pattern, not an absolute rule.
+
+| Form | Meaning |
+| --- | --- |
+| V 辞書形 ＋ ように、～ | so that … / in order that … |
+| V ない ＋ ように、～ | so as not to … / so that … doesn't happen |
+
+> [!IMPORTANT]
+> The clause before **ように** names the **desired result** (or the outcome to avoid). The main clause is usually a **controllable action** the speaker takes toward that result. This is not the same as conjecture **～ようだ** or comparison **N のようだ** (see those sections).
+
+- 家族といっしょに晩ご飯が食べられるように、いつも夕方6時に退社します。 — So that I can have dinner with my family, I always leave the office at 6 p.m.
+- 後ろの席の人にも見えるように、字を大きくしました。 — I made the letters bigger so that people in the back seats could see them too.
+- 明日寝坊しないように、今夜早く寝ましょう。 — Let's go to bed early tonight so we don't oversleep tomorrow.
+- ネットがなかった時代には、道に迷わないように、『地球の歩き方』を手に持って旅行していました。 — In the days before the internet, people traveled with *Chikyū no Arukikata* in hand so they wouldn't get lost.
+
+**Tip (Caligo):** **ために** and **ように** can both mark purpose. **ために** often pairs with a volitional verb naming what the actor aims to do; **ように** often pairs with a potential, change-of-state, or negative naming the desired situation. Prefer one over the other by what the textbook sentence needs — don't treat the split as absolute.
