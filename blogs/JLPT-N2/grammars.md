@@ -1974,3 +1974,28 @@ Compare:
 - ネットがなかった時代には、道に迷わないように、『地球の歩き方』を手に持って旅行していました。 — In the days before the internet, people traveled with *Chikyū no Arukikata* in hand so they wouldn't get lost.
 
 **Tip (Caligo):** **ために** and **ように** can both mark purpose. **ために** often pairs with a volitional verb naming what the actor aims to do; **ように** often pairs with a potential, change-of-state, or negative naming the desired situation. Prefer one over the other by what the textbook sentence needs — don't treat the split as absolute.
+
+## ～そうだ（appearance / inference from looks）
+
+**Rule:** **～そうだ** after a verb **ます-stem** or an adjective **stem** gives an inference from how something **looks**, or from experience: "looks …", "seems …", "appears about to …". With a potential verb such as **書けそう**, it can also predict ability ("looks like I/you could write …").
+
+| Type | Form | Example |
+| --- | --- | --- |
+| Verb | **V ます形** ＋ **そうだ** | 書けそうだ；雨が降りそうだ |
+| い-adjective | Drop **い** ＋ **そうだ** | 寂しい → 寂しそうだ；丈夫→（な-adj below） |
+| な-adjective | Stem ＋ **そうだ** | 丈夫 → 丈夫そうだ |
+| Modifying a noun | **～そうな** ＋ N | 役に立ちそうな情報 |
+| Modifying an action | **～そうに** ＋ V | 大事そうにしまう |
+
+> [!IMPORTANT]
+> Irregulars: **いい → よさそうだ**; **ない → なさそうだ** (not ＊いいそう／＊ないそう). Negatives are not one form only: **丈夫そうではない** leans toward "does not look sturdy," while **丈夫ではなさそうだ** leans toward "seems not to be sturdy." Close, but not perfect twins — pick by the nuance you need.
+
+- あの人はいつも寂しそうです。 — That person always looks lonely.
+- このテーマなら、すぐに論文が書けそうですね。 — With this topic, it looks like you could write the paper right away.
+- このテーブルは足が太くて、丈夫そうです。 — This table has thick legs and looks sturdy.
+- あの子は大事そうに人形を引き出しにしまった。 — That child carefully put the doll away in the drawer, as if it were precious.
+- 旅先の歴史や現地のグルメ情報を紹介したり、宿泊施設の電話番号も載せたりしていて、役に立ちそうな情報がたくさん書いてありました。 — It covered the place's history and local food, listed lodging phone numbers too, and had a lot of information that looked useful.
+- どうかしましたか。あまり元気がなさそうですね。 — Is something wrong? You don't look very energetic.
+- この子は体が丈夫そうではない。／この子は体が丈夫ではなさそうだ。 — This child does not look sturdy. / This child seems not to be sturdy.
+
+**Tip (Caligo):** Appearance **そうだ** attaches to the **ます-stem** or adjective **stem**. Hearsay **そうだ** ("I hear that …") attaches to the **plain form** instead (Vる／い-adj／な-adjだ／Nだ ＋ そうだ). Same surface word, different attachment — don't mix the two.
