@@ -1911,3 +1911,23 @@ Indirect quotation:
 - 今すぐ行かなければ、間に合わない。 — If I don't go right now, I won't make it.
 
 **Tip (Caligo):** This **なければ** is just the conditional "if … not …". The obligation pattern **V なければならない** (must / have to; see that section) builds on the same form plus **ならない／いけない**.
+
+## ～たり～たりする（alternation / parallel listing）
+
+**Rule:** **～たり～たりする** lists selected actions or states that happen in the same period, or that keep alternating. Replace the **た** of a verb's or い-adjective's past form with **たり**. For a な-adjective or a noun, use **だったり**. Two opposite verbs with たり often mean a repeated back-and-forth.
+
+| Type | Form | Example |
+| --- | --- | --- |
+| Verb | **V た** → **V たり** | 行った → 行ったり；開けた → 開けたり |
+| い-adjective | Past **～かった** → **～かったり** | 高い → 高かったり |
+| な-adjective／noun | Stem／N + **だったり** | 元気だったり；月曜日だったり |
+
+> [!IMPORTANT]
+> The listed items are **examples** of what happens in that period, not a fixed order and not necessarily all at once. With opposite pairs such as 開けたり閉めたり, the sense is repeated switching back and forth.
+
+- 中村さんはイギリスに行った時、ずっとみんなでいっしょに移動したり、見学したりしていたんですか。 — When Nakamura went to England, was he moving around and sightseeing with everyone the whole time?
+- 子どもたちがドアを開けたり閉めたりして遊んでいます。 — The kids are playing by opening and closing the door over and over.
+- この頃、雨が降ったり、強い風が吹いたりして、寒い日が続いています。 — Lately it rains and strong winds blow, and the cold days keep coming.
+- 部活は月曜日だったり、水曜日だったりして、決まっていません。 — Club activities are on Monday one time, Wednesday another — nothing fixed.
+
+**Tip (Caligo):** **たり** itself does not carry tense. The final **する** (or **している／した／して**, etc.) sets the tense and aspect for the whole pattern: していた, しています, して, …
