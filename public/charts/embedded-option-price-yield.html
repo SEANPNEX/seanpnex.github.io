@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Price and yield · straight, callable, putable</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <script src="chart-fx.js"></script>
+</head>
+<body>
+  <main class="card" id="card" data-fx-scope>
+    <h2>The call caps the price when yields fall; the put floors it when yields rise.</h2>
+    <div class="sub">Illustrative 10-year 5% annual-coupon bond, callable or putable at 100 · ink = straight bond, mid gray = callable, light gray = putable · callable = straight − call, putable = straight + put · hover for the three prices at any yield</div>
+    <section class="panel">
+      <h3>Price against yield</h3>
+      <div class="hint">Callable: price compression and negative convexity at low yields · putable: a price floor and extra positive convexity at high yields</div>
+      <svg id="chart" role="img" aria-label="Price against yield for a straight, a callable and a putable bond"></svg>
+    </section>
+    <div class="src">PRICE–YIELD · F2 HAIRLINE LINE · ILLUSTRATIVE: CALLABLE = SOFT MIN(STRAIGHT, 100), PUTABLE = SOFT MAX(STRAIGHT, 100)</div>
+  </main>
+  <script>
+(() => {
+  const { C, el, label, frame, axes, curve, probe, mount } = curveKit;
+
+  // ── Data: an illustrative 10-year 5% annual-coupon bond, par 100, option strike 100 ──
+  const N = 10, CPN = 5, K = 100, TAU = 4;
+  const straight = (y) => { let v = 0; for (let t = 1; t <= N; t++) v += CPN / Math.pow(1 + y / 100, t); return v + 100 / Math.pow(1 + y / 100, N); };
+  // Smooth stand-ins for the option effect: the callable price bends under the strike, the putable price over it.
+  const callable = (y) => -TAU * Math.log(Math.exp(-straight(y) / TAU) + Math.exp(-K / TAU));
+  const putable = (y) => TAU * Math.log(Math.exp(straight(y) / TAU) + Math.exp(K / TAU));
+  const Y0 = 1, Y1 = 10, MID = '#6A6963', LIGHT = '#9A9992';
+
+  mount(document.getElementById('chart'), (s, W, H) => {
+    const nw = W < 420;
+    const F = frame(s, W, H, { l: nw ? 30 : 34, r: 10, t: 22, b: 40, xMin: Y0, yMin: 60, noTicks: true }, Y1, 145);
+    [70, 100, 130].forEach((v) => {
+      el(s, 'line', { x1: F.X0, y1: F.y(v), x2: F.X1, y2: F.y(v), stroke: C.GRID, 'stroke-width': 0.6, 'stroke-dasharray': '2 4', class: 'fade' });
+      label(s, F.X0 - 6, F.y(v) + 3.5, String(v), { size: 9.5, weight: 600, fill: C.MUTED, anchor: 'end', halo: 0 });
+    });
+    [2, 4, 6, 8, 10].forEach((v) => label(s, F.x(v), F.BASE + 14, v + '%', { size: 9.5, weight: 600, fill: C.MUTED, anchor: 'middle', halo: 0 }));
+    axes(s, F, 'yield →', 'price');
+
+    const hit = (f, hl, name) => {
+      const pts = Array.from({ length: 121 }, (_, i) => { const y = Y0 + ((Y1 - Y0) * i) / 120; return F.x(y).toFixed(1) + ' ' + F.y(f(y)).toFixed(1); });
+      el(s, 'path', { d: 'M' + pts.join(' L'), fill: 'none', stroke: 'transparent', 'stroke-width': 10, 'data-hl': hl, 'data-tip': name });
+    };
+    [[putable, LIGHT, 'p', 0.2], [callable, MID, 'c', 0.1], [straight, C.INK, 's', 0]].forEach(([f, stroke, hl, delay]) => {
+      curve(s, F, f, Y0, Y1, { stroke, width: hl === 's' ? 1.6 : 1.5, delay }).setAttribute('data-hl', hl);
+    });
+    hit(straight, 's', 'Straight bond: positive convexity');
+    hit(callable, 'c', 'Callable = straight − call\nprice compressed near 100 at low yields: negative convexity');
+    hit(putable, 'p', 'Putable = straight + put\nprice floored near 100 at high yields');
+
+    // Direct labels at the ends where the curves separate.
+    label(s, F.x(1.25), F.y(straight(1.25)) - 8, 'straight', { size: 10.5, delay: 0.8 });
+    label(s, F.x(1.25), F.y(callable(1.25)) + 16, 'callable ≈ call price', { size: 10.5, fill: MID, delay: 0.85 });
+    label(s, F.X1 - 2, F.y(putable(9.6)) - 8, 'putable ≈ put price', { size: 10.5, fill: LIGHT, anchor: 'end', delay: 0.9 });
+    label(s, F.X1 - 2, F.y(straight(9.6)) + 16, 'straight', { size: 10.5, anchor: 'end', delay: 0.9 });
+
+    probe(s, F, [
+      { name: 'straight', f: straight },
+      { name: 'callable', f: callable, stroke: MID },
+      { name: 'putable', f: putable, stroke: LIGHT },
+    ], { xName: 'yield', fmt: (v) => v.toFixed(2) });
+  }, (W) => Math.max(250, Math.min(320, W * 0.6)));
+})();
+  </script>
+</body>
+</html>
