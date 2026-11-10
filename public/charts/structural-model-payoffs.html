@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Structural model · equity and debt payoffs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <script src="chart-fx.js"></script>
+</head>
+<body>
+  <main class="card" id="card" data-fx-scope>
+    <h2>Shareholders hold a call on the assets; debtholders are short a put.</h2>
+    <div class="sub">Payoffs at maturity T against the company's asset value · face value of debt K = 100 · ink = equity, mid gray = debt · equity + debt = assets · hover for the payoffs at any asset value</div>
+    <section class="panel">
+      <h3>Payoff at maturity</h3>
+      <div class="hint">Below K the company defaults: equity is worth 0 and debtholders take the assets · above K debt is paid in full and equity keeps the rest</div>
+      <svg id="chart" role="img" aria-label="Equity payoff max(A minus K, 0) and debt payoff min(A, K) against the asset value at maturity, with K = 100"></svg>
+    </section>
+    <div class="src">MERTON STRUCTURAL MODEL · F2 HAIRLINE LINE · EQUITY = MAX(A − K, 0) · DEBT = MIN(A, K) = K − MAX(K − A, 0)</div>
+  </main>
+  <script>
+(() => {
+  const { C, el, label, frame, axes, curve, guide, probe, mount } = curveKit;
+
+  // ── Data: face value of debt K; asset value at maturity A from 0 to A1 ──
+  const K = 100, A1 = 200, MID = '#6A6963';
+  const equity = (a) => Math.max(a - K, 0);
+  const debt = (a) => Math.min(a, K);
+
+  mount(document.getElementById('chart'), (s, W, H) => {
+    const F = frame(s, W, H, { l: W < 420 ? 30 : 34, r: 10, t: 22, b: 40, noTicks: true }, A1, 112);
+    [50, 100].forEach((v) => {
+      el(s, 'line', { x1: F.X0, y1: F.y(v), x2: F.X1, y2: F.y(v), stroke: C.GRID, 'stroke-width': 0.6, 'stroke-dasharray': '2 4', class: 'fade' });
+      label(s, F.X0 - 6, F.y(v) + 3.5, String(v), { size: 9.5, weight: 600, fill: C.MUTED, anchor: 'end', halo: 0 });
+    });
+    [0, 50, 100, 150, 200].forEach((v) => label(s, F.x(v), F.BASE + 14, v === K ? 'K = 100' : String(v), { size: 9.5, weight: v === K ? 800 : 600, fill: v === K ? C.INK : C.MUTED, anchor: 'middle', halo: 0 }));
+    axes(s, F, 'asset value at T →', 'payoff');
+    guide(s, F.x(K), F.BASE, F.x(K), F.y(108), 0.3);
+
+    const hit = (f, hl, name) => {
+      const pts = Array.from({ length: 81 }, (_, i) => { const a = (A1 * i) / 80; return F.x(a).toFixed(1) + ' ' + F.y(f(a)).toFixed(1); });
+      el(s, 'path', { d: 'M' + pts.join(' L'), fill: 'none', stroke: 'transparent', 'stroke-width': 10, 'data-hl': hl, 'data-tip': name });
+    };
+    curve(s, F, debt, 0, A1, { stroke: MID, width: 1.5, delay: 0.1 }).setAttribute('data-hl', 'd');
+    curve(s, F, equity, 0, A1, { stroke: C.INK, width: 1.6, delay: 0 }).setAttribute('data-hl', 'e');
+    hit(debt, 'd', 'Debt = min(A, K)\n= risk-free bond K − put on the assets (strike K)');
+    hit(equity, 'e', 'Equity = max(A − K, 0)\n= call on the assets (strike K)');
+
+    // Direct labels on each curve.
+    label(s, F.x(150), F.y(debt(150)) - 8, 'debt = K', { size: 10.5, fill: MID, anchor: 'middle', delay: 0.85 });
+    label(s, F.x(128) + 8, F.y(equity(128)) + 4, 'equity', { size: 10.5, delay: 0.8 });
+    label(s, F.x(K) - 6, F.y(72), 'default', { size: 10, weight: 700, fill: C.MUTED, anchor: 'end', delay: 0.9 });
+    label(s, F.x(K) + 6, F.y(72), 'no default', { size: 10, weight: 700, fill: C.MUTED, delay: 0.9 });
+
+    probe(s, F, [
+      { name: 'equity', f: equity },
+      { name: 'debt', f: debt, stroke: MID },
+    ], { xName: 'assets', fmt: (v) => v.toFixed(1) });
+  }, (W) => Math.max(250, Math.min(320, W * 0.6)));
+})();
+  </script>
+</body>
+</html>
