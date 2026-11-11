@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ETF cost · trading vs holding</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <script src="chart-fx.js"></script>
+</head>
+<body>
+  <main class="card" id="card" data-fx-scope>
+    <h2>Trading costs matter for short holds; the expense ratio wins over long ones.</h2>
+    <div class="sub">Total cost = round-trip trading cost + expense ratio × holding period · ink = ETF A (tight spread, 0.20% fee), mid gray = ETF B (wide spread, 0.09% fee) · hover for both costs at any holding period</div>
+    <section class="panel">
+      <h3>Total cost against holding period</h3>
+      <div class="hint">A: round trip 0.20% + 0.20% a year · B: round trip 0.40% + 0.09% a year · they cross at about 1.8 years</div>
+      <svg id="chart" role="img" aria-label="Total cost of two ETFs against holding period; ETF A is cheaper below about 1.8 years and ETF B above"></svg>
+    </section>
+    <div class="src">ETF TOTAL COST OF OWNERSHIP · F2 HAIRLINE LINE · ROUND TRIP = 2 × (COMMISSION + ½ SPREAD) · ILLUSTRATIVE</div>
+  </main>
+  <script>
+(() => {
+  const { C, el, label, frame, axes, curve, guide, dot, probe, mount } = curveKit;
+
+  // ── Data: round-trip trading cost and annual expense ratio, both in % ──
+  const A = { rt: 0.20, fee: 0.20 }, B = { rt: 0.40, fee: 0.09 }, T1 = 4, MID = '#6A6963';
+  const costA = (t) => A.rt + A.fee * t;
+  const costB = (t) => B.rt + B.fee * t;
+  const X = (B.rt - A.rt) / (A.fee - B.fee); // crossover holding period
+
+  mount(document.getElementById('chart'), (s, W, H) => {
+    const F = frame(s, W, H, { l: W < 420 ? 34 : 38, r: 10, t: 22, b: 40, noTicks: true }, T1, 1.1);
+    [0.25, 0.5, 0.75, 1].forEach((v) => {
+      el(s, 'line', { x1: F.X0, y1: F.y(v), x2: F.X1, y2: F.y(v), stroke: C.GRID, 'stroke-width': 0.6, 'stroke-dasharray': '2 4', class: 'fade' });
+      label(s, F.X0 - 6, F.y(v) + 3.5, v.toFixed(2) + '%', { size: 9.5, weight: 600, fill: C.MUTED, anchor: 'end', halo: 0 });
+    });
+    [0, 1, 2, 3, 4].forEach((v) => label(s, F.x(v), F.BASE + 14, v + (v === 1 ? ' yr' : v ? ' yrs' : ''), { size: 9.5, weight: 600, fill: C.MUTED, anchor: 'middle', halo: 0 }));
+    axes(s, F, 'holding period →', 'total cost');
+    guide(s, F.x(X), F.BASE, F.x(X), F.y(costA(X)), 0.3);
+
+    const hit = (f, hl, name) => {
+      const pts = Array.from({ length: 41 }, (_, i) => { const t = (T1 * i) / 40; return F.x(t).toFixed(1) + ' ' + F.y(f(t)).toFixed(1); });
+      el(s, 'path', { d: 'M' + pts.join(' L'), fill: 'none', stroke: 'transparent', 'stroke-width': 10, 'data-hl': hl, 'data-tip': name });
+    };
+    curve(s, F, costB, 0, T1, { stroke: MID, width: 1.5, delay: 0.1 }).setAttribute('data-hl', 'b');
+    curve(s, F, costA, 0, T1, { stroke: C.INK, width: 1.6, delay: 0 }).setAttribute('data-hl', 'a');
+    hit(costA, 'a', 'ETF A: 0.20% round trip + 0.20% a year\ncheaper for short holding periods');
+    hit(costB, 'b', 'ETF B: 0.40% round trip + 0.09% a year\ncheaper for long holding periods');
+    dot(s, F.x(X), F.y(costA(X)), 3.2, C.INK, 0.9, 'Break-even: ' + X.toFixed(2) + ' years, total cost ' + costA(X).toFixed(2) + '% for both');
+
+    label(s, F.x(3.9), F.y(costA(3.9)) - 8, 'ETF A', { size: 10.5, anchor: 'end', delay: 0.8 });
+    label(s, F.x(3.9), F.y(costB(3.9)) + 24, 'ETF B', { size: 10.5, fill: MID, anchor: 'end', delay: 0.85 });
+    label(s, F.x(X) + 6, F.BASE - 8, '≈ ' + X.toFixed(1) + ' yrs', { size: 10, weight: 700, fill: C.MUTED, delay: 0.9 });
+
+    probe(s, F, [
+      { name: 'ETF A cost (%)', f: costA },
+      { name: 'ETF B cost (%)', f: costB, stroke: MID },
+    ], { xName: 'years held', fmt: (v) => v.toFixed(2) });
+  }, (W) => Math.max(250, Math.min(320, W * 0.6)));
+})();
+  </script>
+</body>
+</html>
