@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CDS curve trade · steepener</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <script src="chart-fx.js"></script>
+</head>
+<body>
+  <main class="card" id="card" data-fx-scope>
+    <h2>A steepener buys long-dated protection and sells short-dated protection.</h2>
+    <div class="sub">One reference entity’s credit curve (CDS spread by maturity) · ink = today, mid gray = after the curve steepens · arrows = the spread change at each leg · hover for both spreads at any maturity</div>
+    <section class="panel">
+      <h3>CDS spread against maturity</h3>
+      <div class="hint">The 10-year spread widens 30 bp and the 2-year narrows 18 bp: the bought 10-year protection gains, and so does the sold 2-year protection</div>
+      <svg id="chart" role="img" aria-label="Credit curve today and after steepening; the 10-year CDS spread rises from 1.50% to 1.80% and the 2-year falls from 1.01% to 0.83%"></svg>
+    </section>
+    <div class="src">CDS CURVE TRADE · F2 HAIRLINE LINE · ILLUSTRATIVE CURVE, STEEPENING PIVOTS AT 5 YEARS (+6 BP PER YEAR OF MATURITY)</div>
+  </main>
+  <script>
+(() => {
+  const { C, el, label, frame, axes, curve, arrow, dot, probe, mount } = curveKit;
+
+  // ── Data: today's credit curve (% spread) and a steepening that pivots at 5 years ──
+  const today = (t) => 0.60 + 0.90 * Math.log(1 + t) / Math.log(11);
+  const after = (t) => today(t) + 0.06 * (t - 5);
+  const T0 = 1, T1 = 10, SHORT = 2, LONG = 10, MID = '#6A6963';
+
+  mount(document.getElementById('chart'), (s, W, H) => {
+    const nw = W < 420;
+    const F = frame(s, W, H, { l: nw ? 36 : 40, r: 12, t: 22, b: 40, xMin: T0, yMin: 0.6, noTicks: true }, T1, 2.0);
+    [1.0, 1.5, 2.0].forEach((v) => {
+      el(s, 'line', { x1: F.X0, y1: F.y(v), x2: F.X1, y2: F.y(v), stroke: C.GRID, 'stroke-width': 0.6, 'stroke-dasharray': '2 4', class: 'fade' });
+      label(s, F.X0 - 6, F.y(v) + 3.5, v.toFixed(2) + '%', { size: 9.5, weight: 600, fill: C.MUTED, anchor: 'end', halo: 0 });
+    });
+    [1, 2, 5, 10].forEach((v) => label(s, F.x(v), F.BASE + 14, v + 'y', { size: 9.5, weight: v === SHORT || v === LONG ? 800 : 600, fill: v === SHORT || v === LONG ? C.INK : C.MUTED, anchor: 'middle', halo: 0 }));
+    axes(s, F, 'maturity →', 'CDS spread');
+
+    const hit = (f, hl, name) => {
+      const pts = Array.from({ length: 46 }, (_, i) => { const t = T0 + ((T1 - T0) * i) / 45; return F.x(t).toFixed(1) + ' ' + F.y(f(t)).toFixed(1); });
+      el(s, 'path', { d: 'M' + pts.join(' L'), fill: 'none', stroke: 'transparent', 'stroke-width': 10, 'data-hl': hl, 'data-tip': name });
+    };
+    curve(s, F, after, T0, T1, { stroke: MID, width: 1.5, delay: 0.35 }).setAttribute('data-hl', 'a');
+    curve(s, F, today, T0, T1, { stroke: C.INK, width: 1.6, delay: 0 }).setAttribute('data-hl', 't');
+    hit(today, 't', 'Today: upward-sloping credit curve');
+    hit(after, 'a', 'After steepening: long spreads up, short spreads down');
+
+    // The two legs: arrows from today's spread to the new one.
+    [[SHORT, 'Sell 2y protection\n1.01% → 0.83%: spread narrows, the seller gains'], [LONG, 'Buy 10y protection\n1.50% → 1.80%: spread widens, the buyer gains']].forEach(([t, tip], i) => {
+      const x = F.x(t), y0 = F.y(today(t)), y1 = F.y(after(t)), dir = y1 > y0 ? 1 : -1;
+      arrow(s, [[x, y0 + dir * 5], [x, y1 - dir * 2]], { stroke: C.INK, width: 1.2, head: 5, delay: 1 + i * 0.1 });
+      dot(s, x, y0, 3.2, C.INK, 0.9 + i * 0.1, tip);
+      dot(s, x, y1, 3.2, MID, 1.1 + i * 0.1, tip);
+    });
+    label(s, F.x(SHORT) + 8, F.y(after(SHORT)) + 16, 'sell 2y protection', { size: 10, weight: 700, delay: 1.2 });
+    label(s, F.x(LONG) - 8, F.y(after(LONG)) - 8, 'buy 10y protection', { size: 10, weight: 700, anchor: 'end', delay: 1.3 });
+    label(s, F.x(6.2), F.y(today(6.2)) + 18, 'today', { size: 10.5, delay: 0.8 });
+    label(s, F.x(7.4), F.y(after(7.4)) - 10, 'steeper', { size: 10.5, fill: MID, anchor: 'end', delay: 0.9 });
+
+    probe(s, F, [
+      { name: 'today (%)', f: today },
+      { name: 'steeper (%)', f: after, stroke: MID },
+    ], { xName: 'years', fmt: (v) => v.toFixed(2) });
+  }, (W) => Math.max(250, Math.min(320, W * 0.6)));
+})();
+  </script>
+</body>
+</html>
