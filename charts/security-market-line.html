@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Security market line · alpha</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <script src="chart-fx.js"></script>
+</head>
+<body>
+  <main class="card" id="card" data-fx-scope>
+    <h2>Above the line is cheap, below it is rich.</h2>
+    <div class="sub">Security market line: required return = 3% + β × (8% − 3%) · dots = forecast returns of three stocks · the vertical gap to the line is Jensen’s alpha · hover a dot for its numbers</div>
+    <section class="panel">
+      <h3>Expected return against beta</h3>
+      <div class="hint">A forecasts 10% for a required 9%: α = +1%, undervalued, buy · B forecasts 6% for a required 7%: α = −1%, overvalued, sell · M sits on the line</div>
+      <svg id="chart" role="img" aria-label="Security market line from 3% at beta 0 through 8% at beta 1; stock A at beta 1.2 and 10% lies above it, stock B at beta 0.8 and 6% below it"></svg>
+    </section>
+    <div class="src">CAPM SECURITY MARKET LINE · F2 HAIRLINE LINE · RF = 3%, E(RM) = 8% · ILLUSTRATIVE STOCKS</div>
+  </main>
+  <script>
+(() => {
+  const { C, el, label, frame, axes, curve, guide, dot, probe, mount } = curveKit;
+
+  // ── Data: risk-free rate, market return, and three stocks (beta, forecast return, %) ──
+  const RF = 3, RM = 8, B1 = 2, MID = '#6A6963';
+  const sml = (b) => RF + b * (RM - RF);
+  const STOCKS = [
+    { name: 'A', b: 1.2, r: 10, fill: C.INK, side: 'up' },
+    { name: 'M', b: 1.0, r: 8, fill: MID, side: 'up' },
+    { name: 'B', b: 0.8, r: 6, fill: C.INK, side: 'down' },
+  ];
+
+  mount(document.getElementById('chart'), (s, W, H) => {
+    const F = frame(s, W, H, { l: W < 420 ? 32 : 36, r: 12, t: 22, b: 40, noTicks: true }, B1, 14);
+    [3, 8, 13].forEach((v) => {
+      el(s, 'line', { x1: F.X0, y1: F.y(v), x2: F.X1, y2: F.y(v), stroke: C.GRID, 'stroke-width': 0.6, 'stroke-dasharray': '2 4', class: 'fade' });
+      label(s, F.X0 - 6, F.y(v) + 3.5, v + '%', { size: 9.5, weight: 600, fill: C.MUTED, anchor: 'end', halo: 0 });
+    });
+    [0, 0.5, 1, 1.5, 2].forEach((v) => label(s, F.x(v), F.BASE + 14, String(v), { size: 9.5, weight: v === 1 ? 800 : 600, fill: v === 1 ? C.INK : C.MUTED, anchor: 'middle', halo: 0 }));
+    axes(s, F, 'beta →', 'expected return');
+
+    curve(s, F, sml, 0, B1, { stroke: C.INK, width: 1.6 }).setAttribute('data-hl', 'sml');
+    label(s, F.x(1.75), F.y(sml(1.75)) + 18, 'SML', { size: 10.5, anchor: 'middle', delay: 0.8 });
+
+    STOCKS.forEach((st, i) => {
+      const req = +sml(st.b).toFixed(2), a = +(st.r - req).toFixed(2);
+      if (a) guide(s, F.x(st.b), F.y(req), F.x(st.b), F.y(st.r), 0.9 + i * 0.05);
+      const tip = st.name === 'M'
+        ? 'Market portfolio: β = 1, return 8%\non the SML, α = 0'
+        : `Stock ${st.name}: β = ${st.b}, forecast ${st.r}%\nrequired ${req}% → α = ${a > 0 ? '+' : ''}${a}%\n${a > 0 ? 'undervalued: buy' : 'overvalued: sell'}`;
+      dot(s, F.x(st.b), F.y(st.r), 3.8, st.fill, 1 + i * 0.08, tip);
+      const txt = st.name === 'M' ? 'M' : `${st.name}: α ${a > 0 ? '+' : '−'}1%`;
+      label(s, F.x(st.b) + (st.side === 'up' ? -8 : 8), F.y(st.r) + (st.side === 'up' ? -9 : 16), txt, { size: 10.5, anchor: st.side === 'up' ? 'end' : 'start', delay: 1.1 + i * 0.08 });
+    });
+    label(s, F.x(0.06), F.y(RF) + 17, 'rf = 3%', { size: 10, weight: 700, fill: C.MUTED, delay: 0.9 });
+
+    probe(s, F, [{ name: 'required return (%)', f: sml }], { xName: 'beta', fmt: (v) => v.toFixed(2) });
+  }, (W) => Math.max(250, Math.min(320, W * 0.6)));
+})();
+  </script>
+</body>
+</html>

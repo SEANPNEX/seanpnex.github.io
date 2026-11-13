@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Portfolio Management M1 — Exchange-Traded Funds review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    "id": "pm1-etf-def",
+    "topic": "ETF · definition",
+    "front": "What is an ETF, and how does it differ from an open-end and a closed-end fund in whom the investor trades with?",
+    "back": "<div class=\"ans\"><p>A fund holding a collection of securities, often <strong>tracking an index</strong>, whose shares trade on an exchange throughout the day.</p><ul><li><strong>Open-end</strong>: investors trade <strong>directly with the fund</strong>, at the end-of-day NAV</li><li><strong>Closed-end</strong>: fixed shares, traded <strong>between investors</strong> on an exchange; the price can stray far from NAV</li><li><strong>ETF</strong>: investors trade on the exchange; only APs deal with the fund</li></ul></div>"
+  },
+  {
+    "id": "pm1-two-markets",
+    "topic": "Primary and secondary markets",
+    "front": "Describe the ETF’s primary and secondary markets. Which side is “open-end” and which “closed-end”?",
+    "back": "<div class=\"ans\"><ul><li><strong>Primary (open-end side)</strong>: <strong>authorized participants</strong> create ETF shares in <strong>creation units</strong> (e.g. 50,000 shares) by delivering the creation basket, and redeem them for the basket, usually <strong>in kind</strong></li><li><strong>Secondary (closed-end side)</strong>: everyone, including APs, trades ETF shares on the exchange at market prices; most trading happens here</li></ul></div>",
+    "gap": "Secondary-market trades never touch the fund: the number of shares only changes through APs."
+  },
+  {
+    "id": "pm1-arbitrage",
+    "topic": "AP arbitrage",
+    "front": "What does an AP do when the ETF trades at a premium to NAV, and at a discount? Why can a small gap persist?",
+    "back": "<div class=\"ans\"><ul><li><strong>Premium</strong>: buy the basket, <strong>create</strong> ETF shares, sell them: ETF price ↓</li><li><strong>Discount</strong>: buy ETF shares, <strong>redeem</strong> them for the basket, sell the securities: ETF price ↑</li></ul><p>Arbitrage only pays when the gap exceeds the AP’s costs (creation/redemption fees, trading costs in the underlying), so the price moves within that band.</p></div>"
+  },
+  {
+    "id": "pm1-spread",
+    "topic": "ETF bid–ask spread",
+    "front": "What makes up an ETF’s bid–ask spread, and what narrows it?",
+    "back": "<div class=\"ans\"><ul><li>Creation/redemption fees and other trading costs (commissions)</li><li>Bid–ask spreads and <strong>liquidity of the underlying</strong></li><li>Risk of carrying and hedging the position</li><li>Market maker’s profit (falls with competition)</li><li><strong>Less</strong>: on-exchange liquidity; when ETF buyers and sellers match, no creation is needed</li></ul></div>",
+    "gap": "A heavily traded ETF can have a narrower spread than its underlying securities."
+  },
+  {
+    "id": "pm1-time-zone",
+    "topic": "International ETFs · time zones",
+    "front": "Why do spreads widen on an ETF of foreign stocks while their home market is closed?",
+    "back": "<div class=\"ans\"><p>The dealer cannot trade or hedge the basket while that market is closed, and the basket’s prices are <strong>stale</strong>, so it charges more for the risk.</p></div>"
+  },
+  {
+    "id": "pm1-premium",
+    "topic": "Premium/discount to NAV",
+    "front": "How is the premium or discount measured? Distinguish the NAV, the end-of-day premium/discount and the iNAV.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\text{Premium}=\\frac{\\text{ETF price}-\\text{NAV}}{\\text{NAV}}$$</div><ul><li><strong>NAV</strong>: once a day, from the holdings’ closing prices</li><li><strong>End-of-day</strong>: ETF closing price vs that day’s NAV</li><li><strong>iNAV</strong> (indicated NAV): published every 15 seconds from the holdings’ last trades, for intraday trading</li></ul></div>"
+  },
+  {
+    "id": "pm1-stale",
+    "topic": "Premium ≠ mispricing",
+    "front": "An ETF on Japanese stocks closes in New York at 25.30; its NAV, from Tokyo’s close, is 25.00. What is the premium, and is it mispricing?",
+    "back": "<div class=\"ans\"><p>\\((25.30-25.00)/25.00=+1.2\\%\\).</p><p>Not necessarily: the NAV is <strong>stale</strong>. The ETF price reflects news since Tokyo closed; the NAV catches up next day.</p></div>",
+    "gap": "Stale NAVs also come from illiquid holdings, e.g. bonds priced by matrix pricing, especially under stress."
+  },
+  {
+    "id": "pm1-tracking",
+    "topic": "Tracking difference vs tracking error",
+    "front": "Define tracking difference and tracking error. What can the tracking error not tell you?",
+    "back": "<div class=\"ans\"><ul><li><strong>Tracking difference</strong>: ETF return − index return over a period</li><li><strong>Tracking error</strong>: the <strong>standard deviation</strong> of the tracking differences</li></ul><p>It measures how variable the gap is, not its <strong>direction or size</strong>: an ETF lagging by exactly 0.5% every year has a tracking error of 0.</p></div>",
+    "gap": "Judge an ETF on both its mean tracking difference and its tracking error."
+  },
+  {
+    "id": "pm1-te-example",
+    "topic": "Tracking error example",
+    "front": "ETF A lags its index by 0.50% every year for 5 years. ETF B’s yearly differences are +0.40%, −0.30%, +0.20%, −0.50%, +0.20%. Find each mean tracking difference and tracking error.",
+    "back": "<div class=\"ans\"><ul><li><strong>A</strong>: mean −0.50%; tracking error <strong>0</strong></li><li><strong>B</strong>: mean 0; squared deviations sum to 0.58</li></ul><div class=\"eq-block\">$$\\text{TE}_B=\\sqrt{0.58/4}=0.38\\%$$</div><p>A has the lower tracking error but loses 0.50% a year, most likely to fees.</p></div>"
+  },
+  {
+    "id": "pm1-te-sources",
+    "topic": "Sources of tracking difference",
+    "front": "List the main sources of tracking difference. Which ones can make an ETF beat its index?",
+    "back": "<div class=\"ans\"><ul><li><strong>Fees and expenses</strong> (the largest, steady drag)</li><li>Representative sampling / optimization instead of full replication</li><li>Index changes and rebalancing costs</li><li>Regulatory and tax requirements (e.g. diversification limits)</li><li>Cash drag; depositary receipts instead of local shares</li><li><strong>Securities lending</strong> income and <strong>foreign dividend recapture</strong>: these <strong>add</strong> return</li></ul></div>",
+    "gap": "Dividend recapture adds return because the index usually assumes the full foreign withholding tax."
+  },
+  {
+    "id": "pm1-tax-fair",
+    "topic": "Tax fairness",
+    "front": "Why is ETF taxation fairer than mutual fund taxation?",
+    "back": "<div class=\"ans\"><ul><li><strong>Mutual fund</strong>: redemptions force the fund to sell, realizing gains taxed to <strong>all remaining holders</strong>, who also bear the trading costs</li><li><strong>ETF</strong>: most trades are between investors on the exchange, so each is taxed only on their own sale; AP redemptions are <strong>in kind</strong>, so nothing is taxed inside the fund</li></ul></div>"
+  },
+  {
+    "id": "pm1-tax-eff",
+    "topic": "Tax efficiency",
+    "front": "How do in-kind redemptions make ETFs tax efficient?",
+    "back": "<div class=\"ans\"><p>On a redemption the fund hands the AP the lots with the <strong>lowest cost basis</strong>. The embedded gains leave the portfolio <strong>without being realized</strong>, so fewer capital gains are distributed and holders’ tax is deferred until they sell.</p></div>",
+    "gap": "The gain is not passed to the AP to pay. The benefit shrinks for ETFs that create and redeem in cash."
+  },
+  {
+    "id": "pm1-fees",
+    "topic": "ETF fees",
+    "front": "Why are ETF fees generally lower than mutual funds’, and what makes them vary across ETFs?",
+    "back": "<div class=\"ans\"><p>Most ETFs are index based and don’t bear shareholder accounting and distribution costs.</p><ul><li><strong>Portfolio complexity</strong>: niche, international and active cost more</li><li><strong>Issuer size</strong>: economies of scale</li><li><strong>Competitive landscape</strong>: fee wars on broad index ETFs</li></ul></div>"
+  },
+  {
+    "id": "pm1-total-cost",
+    "topic": "Total cost of ownership",
+    "front": "Write the round-trip trading cost and the total cost of holding an ETF. Which cost matters more for a short-term trader?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\text{RT}=2\\left(\\text{Commission}+\\tfrac12\\,\\text{Spread}\\right)$$</div><div class=\"eq-block\">$$\\begin{aligned}\\text{Total}={}&\\text{RT}\\\\&+\\text{Expense ratio}\\times T\\end{aligned}$$</div><p>Trading costs are paid once and the expense ratio every year: short holds favor low <strong>trading costs</strong>, long holds low <strong>expense ratios</strong>.</p></div>",
+    "gap": "Use half the bid–ask spread per one-way trade."
+  },
+  {
+    "id": "pm1-cost-example",
+    "topic": "Total cost example",
+    "front": "Commission 0.05% one way. ETF A: spread 0.10%, expense ratio 0.20%. ETF B: spread 0.30%, expense ratio 0.09%. Which is cheaper over 9 months and over 5 years? Where do they break even?",
+    "back": "<div class=\"ans\"><p>Round trips: A \\(=0.20\\%\\), B \\(=0.40\\%\\).</p><ul><li>9 months: A \\(=0.35\\%\\), B \\(=0.4675\\%\\): <strong>A</strong></li><li>5 years: A \\(=1.20\\%\\), B \\(=0.85\\%\\): <strong>B</strong></li></ul><div class=\"eq-block\">$$t=\\frac{0.40\\%-0.20\\%}{0.20\\%-0.09\\%}=1.82\\text{ yrs}$$</div></div>"
+  },
+  {
+    "id": "pm1-liquidity",
+    "topic": "Efficient portfolio management",
+    "front": "Give the uses of ETFs for liquidity management, completion and transition management.",
+    "back": "<div class=\"ans\"><ul><li><strong>Cash equitization</strong>: keep the fund fully invested, avoiding cash drag</li><li><strong>Rebalancing</strong> quickly and cheaply; a liquid sleeve to meet <strong>redemptions</strong></li><li><strong>Completion</strong>: fill gaps (sector, region, factor) the active managers leave</li><li><strong>Transition management</strong>: hold the asset class exposure while a manager is replaced</li></ul></div>"
+  },
+  {
+    "id": "pm1-exposure",
+    "topic": "Asset class, active and factor uses",
+    "front": "How else are ETFs used in portfolio management?",
+    "back": "<div class=\"ans\"><ul><li><strong>Asset class exposure</strong>: fast, low-cost core holdings and tactical or strategic allocation shifts, including hard-to-access classes (international equity, bonds, commodities)</li><li><strong>Active and factor investing</strong>: smart beta (value, momentum, low volatility), thematic, ESG and active ETFs; hedging and risk management</li></ul></div>"
+  },
+  {
+    "id": "pm1-sma",
+    "topic": "ETFs vs SMAs",
+    "front": "Why might a large asset owner prefer a separately managed account (SMA) to an ETF?",
+    "back": "<div class=\"ans\"><ul><li><strong>Fees</strong>: SMA fees are negotiable; ETF fees are fixed</li><li><strong>Customization</strong>: an SMA can be tailored (ESG exclusions, tax-loss harvesting)</li><li><strong>Transparency</strong>: ETFs must <strong>disclose holdings</strong> (often daily), exposing active strategies to front-running</li></ul></div>",
+    "gap": "It is the holdings that must be disclosed, not just the strategy."
+  }
+];
+
+flashDeck({
+  key: "cfa-c9-m1-review",
+  source: "CFA L2 Portfolio Management \u00b7 M1 Exchange-Traded Funds \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

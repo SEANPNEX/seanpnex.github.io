@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Value at risk · the tail cut</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <script src="chart-fx.js"></script>
+</head>
+<body>
+  <main class="card" id="card" data-fx-scope>
+    <h2>VaR cuts off the worst 5% of outcomes; CVaR averages them.</h2>
+    <div class="sub">Distribution of portfolio returns, normal with mean 0, in standard deviations (σ) · shaded = the 5% left tail · 5% VaR = 1.65σ, CVaR = 2.06σ · hover the shaded tail or the CVaR dot</div>
+    <section class="panel">
+      <h3>Probability density of returns</h3>
+      <div class="hint">At 95% confidence the loss is at most the VaR · with 5% probability it is at least the VaR · tighter levels move the cut left: 2.5% at 1.96σ, 1% at 2.33σ</div>
+      <svg id="chart" role="img" aria-label="Normal return distribution with the left 5% tail shaded below minus 1.65 sigma, the 5% VaR, and the conditional VaR at minus 2.06 sigma"></svg>
+    </section>
+    <div class="src">PARAMETRIC VAR · F3 HAIRLINE AREA · NORMAL RETURNS, μ = 0 · CVAR = σ × φ(1.65) / 5%</div>
+  </main>
+  <script>
+(() => {
+  const { C, el, label, frame, axes, curve, guide, dot, mount } = curveKit;
+
+  // ── Data: standard normal returns, the 5% cut and the tail mean ──
+  const Z = 1.65, CVAR = 2.06, X0 = -4, X1 = 4;
+  const pdf = (x) => Math.exp(-x * x / 2) / Math.sqrt(2 * Math.PI);
+
+  mount(document.getElementById('chart'), (s, W, H) => {
+    const F = frame(s, W, H, { l: 14, r: 12, t: 22, b: 40, xMin: X0, noTicks: true }, X1, 0.44);
+    // The tail: a solid area under the curve to the left of the cut.
+    const pts = [];
+    for (let i = 0; i <= 60; i++) { const x = X0 + ((-Z - X0) * i) / 60; pts.push(F.x(x).toFixed(1) + ' ' + F.y(pdf(x)).toFixed(1)); }
+    el(s, 'path', { d: `M${F.x(X0)} ${F.BASE} L${pts.join(' L')} L${F.x(-Z)} ${F.BASE} Z`, fill: C.FAINT, class: 'fade', style: 'animation-delay:0.6s', 'data-hl': 'tail', 'data-tip': '5% of outcomes: loss of at least 1.65σ' });
+    curve(s, F, pdf, X0, X1, { stroke: C.INK, width: 1.6 });
+
+    [-3, -2, -1, 0, 1, 2, 3].forEach((v) => label(s, F.x(v), F.BASE + 14, v ? (v > 0 ? '+' : '−') + Math.abs(v) + 'σ' : '0', { size: 9.5, weight: 600, fill: C.MUTED, anchor: 'middle', halo: 0 }));
+    axes(s, F, 'return →', 'probability');
+
+    guide(s, F.x(-Z), F.BASE, F.x(-Z), F.y(0.3), 0.7);
+    label(s, F.x(-Z) + 3, F.y(0.3) - 6, 'VaR = 1.65σ', { size: 10.5, anchor: 'end', delay: 0.9 });
+    dot(s, F.x(-CVAR), F.BASE - 0.5, 3.4, C.INK, 1, 'CVaR (expected shortfall): the average loss when the loss exceeds VaR = 2.06σ');
+    label(s, F.x(-CVAR) - 4, F.y(0.075), 'CVaR', { size: 10, weight: 700, anchor: 'end', delay: 1.05 });
+    label(s, F.x(-3.1), F.y(0.13), '5%', { size: 11, anchor: 'middle', delay: 1 });
+    label(s, F.x(0.9), F.y(0.24), '95%', { size: 11, fill: C.MUTED, anchor: 'start', delay: 1 });
+
+  }, (W) => Math.max(250, Math.min(320, W * 0.6)));
+})();
+  </script>
+</body>
+</html>

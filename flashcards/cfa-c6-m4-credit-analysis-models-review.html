@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Fixed Income M4 — Credit Analysis Models review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    "id": "fi4-building-blocks",
+    "topic": "Credit risk building blocks",
+    "front": "Define expected exposure, recovery rate and loss given default for a default at date \\(t\\).",
+    "back": "<div class=\"ans\"><ul><li><strong>Expected exposure</strong> \\(\\text{EE}_t\\): the bond’s value at \\(t\\) (remaining cash flows at the risk-free rate) <strong>plus the coupon due at \\(t\\)</strong></li><li><strong>Recovery rate</strong> RR: share of the exposure recovered; recovery \\(=\\text{EE}_t\\times\\text{RR}\\)</li><li><strong>LGD</strong>: the part not recovered</li></ul><div class=\"eq-block\">$$\\text{LGD}_t=\\text{EE}_t\\times(1-\\text{RR})$$</div></div>",
+    "gap": "Don’t forget the coupon due on the default date in the exposure."
+  },
+  {
+    "id": "fi4-cva",
+    "topic": "Expected loss and CVA",
+    "front": "Define the expected loss, the CVA and the fair value of a risky bond.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\text{EL}_t=\\text{POD}_t\\times\\text{LGD}_t$$</div><div class=\"eq-block\">$$\\text{CVA}=\\sum_{t=1}^{N}\\text{EL}_t\\times\\text{DF}_t$$</div><div class=\"eq-block\">$$\\text{Fair value}=V_{\\text{ND}}-\\text{CVA}$$</div><p>The CVA is the present value of the credit risk; \\(V_{\\text{ND}}\\) is the value with no default, at risk-free rates.</p></div>"
+  },
+  {
+    "id": "fi4-num-denom",
+    "topic": "Pricing credit risk · two ways",
+    "front": "What are the two ways of building credit risk into a bond’s price?",
+    "back": "<div class=\"ans\"><ul><li><strong>Numerator</strong>: expected cash flows after default losses, discounted at the <strong>risk-free</strong> rate (the CVA approach)</li><li><strong>Denominator</strong>: promised cash flows, discounted at the risk-free rate <strong>plus a credit spread</strong></li></ul></div>"
+  },
+  {
+    "id": "fi4-risk-neutral",
+    "topic": "Risk-neutral POD",
+    "front": "Are the PODs used for pricing higher or lower than actual default rates? Why?",
+    "back": "<div class=\"ans\"><p><strong>Higher</strong>. Pricing PODs are <strong>risk-neutral</strong>, implied from market prices. The price also compensates for risk aversion, liquidity and uncertainty about the loss, and the risk-neutral POD absorbs all of it.</p></div>",
+    "gap": "Historical default rates understate the PODs implied by market prices."
+  },
+  {
+    "id": "fi4-hazard",
+    "topic": "Hazard rate, POD and POS",
+    "front": "What is the hazard rate? With a constant hazard rate, write \\(\\text{POD}_t\\), \\(\\text{POS}_t\\) and the cumulative POD.",
+    "back": "<div class=\"ans\"><p>The probability of default at a date <strong>given no earlier default</strong>: a conditional POD.</p><div class=\"eq-block\">$$\\text{POD}_t=(1-\\text{HR})^{t-1}\\,\\text{HR}$$</div><div class=\"eq-block\">$$\\text{POS}_t=(1-\\text{HR})^{t}$$</div><div class=\"eq-block\">$$\\textstyle\\sum_{i\\le t}\\text{POD}_i=1-\\text{POS}_t$$</div></div>",
+    "gap": "The hazard rate is conditional; POD<sub>t</sub> and POS<sub>t</sub> are unconditional."
+  },
+  {
+    "id": "fi4-hazard-example",
+    "topic": "Hazard rate example",
+    "front": "A bond’s hazard rate is 2%. Find the POD for each of years 1–3, the 3-year POS, and the cumulative POD.",
+    "back": "<div class=\"ans\"><ul><li>POD: 2%, \\(0.98\\times2\\%=1.96\\%\\), \\(0.98^2\\times2\\%=1.9208\\%\\)</li><li>\\(\\text{POS}_3=0.98^3=94.1192\\%\\)</li><li>Cumulative POD \\(=5.8808\\%=1-94.1192\\%\\)</li></ul></div>",
+    "gap": "Below \\(3\\times2\\%=6\\%\\): a bond can only default once, so each year applies only to bonds still alive."
+  },
+  {
+    "id": "fi4-exposure",
+    "topic": "Computing the exposure",
+    "front": "Find the exposure at date 1 for (a) a 5-year zero (par 100) on a flat 3% curve, and (b) a 3-year 5% annual-coupon bond on a flat 2.5% curve.",
+    "back": "<div class=\"ans\"><ul><li>(a) \\(100/1.03^{4}=88.85\\)</li><li>(b) the coupon due plus the value of the rest:</li></ul><div class=\"eq-block\">$$\\begin{aligned}\\text{EE}_1&=5+\\frac{5}{1.025}+\\frac{105}{1.025^2}\\\\&=109.819\\end{aligned}$$</div></div>"
+  },
+  {
+    "id": "fi4-zero-example",
+    "topic": "Valuing a risky zero",
+    "front": "A 5-year zero (par 100), flat 3% government curve, hazard rate 1.25%, recovery 40%. The CVA is 3.155. Find the fair value, YTM and credit spread.",
+    "back": "<div class=\"ans\"><p>\\(V_{\\text{ND}}=100/1.03^5=86.261\\), so fair value \\(=86.261-3.155=83.106\\).</p><div class=\"eq-block\">$$\\begin{aligned}\\text{YTM}&=\\left(\\tfrac{100}{83.106}\\right)^{1/5}-1\\\\&=3.77\\%\\end{aligned}$$</div><p>Spread \\(=3.77\\%-3.00\\%=\\) <strong>77 bp</strong>.</p></div>"
+  },
+  {
+    "id": "fi4-spread-approx",
+    "topic": "Spread approximation",
+    "front": "What is the quick approximation for a credit spread? Check it on the zero with HR = 1.25% and RR = 40%.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\text{Credit spread}\\approx\\text{POD}\\times\\text{LGD}$$</div><p>\\(1.25\\%\\times60\\%=0.75\\%\\), close to the exact 77 bp.</p></div>"
+  },
+  {
+    "id": "fi4-coupon-example",
+    "topic": "Rich or cheap",
+    "front": "A 3-year 5% bond trades at 104. Flat government curve 2.5%, hazard rate 1.5%, recovery 40%; the CVA is 2.722. Is the bond over- or undervalued, and by how much?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}V_{\\text{ND}}&=\\tfrac{5}{1.025}+\\tfrac{5}{1.025^2}+\\tfrac{105}{1.025^3}\\\\&=107.140\\end{aligned}$$</div><p>Fair value \\(=107.140-2.722=104.418\\) &gt; 104: <strong>undervalued by 0.418</strong> per 100 of par.</p></div>"
+  },
+  {
+    "id": "fi4-scenario-returns",
+    "topic": "Scenario rates of return",
+    "front": "The bond above is bought at 104. Recoveries are 43.927, 42.976 and 42 at dates 1–3. What are the rates of return with no default and with default at each date?",
+    "back": "<div class=\"ans\"><ul><li>No default (95.57%): YTM <strong>3.57%</strong></li><li>Default at 1 (1.50%): \\(43.927/104-1=-57.76\\%\\)</li><li>Default at 2 (1.48%): IRR of 5, 42.976: \\(-33.27\\%\\)</li><li>Default at 3 (1.46%): IRR of 5, 5, 42: \\(-22.23\\%\\)</li></ul></div>",
+    "gap": "The 3.57% promised yield is earned only with no default: it overstates the expected return."
+  },
+  {
+    "id": "fi4-yield-parts",
+    "topic": "Components of a yield",
+    "front": "Break a risky bond’s yield into its two parts. What does each compensate for?",
+    "back": "<div class=\"ans\"><ul><li><strong>Benchmark yield</strong>: expected real rate, expected inflation, and risk aversion (uncertainty about both)</li><li><strong>Spread</strong>: expected loss (POD, LGD), liquidity, taxation, and risk aversion (uncertainty about the default loss)</li></ul></div>",
+    "gap": "Risk aversion appears in both parts, for different uncertainties."
+  },
+  {
+    "id": "fi4-spread-drivers",
+    "topic": "Drivers of credit spreads",
+    "front": "Name four key drivers of credit spreads.",
+    "back": "<div class=\"ans\"><ul><li><strong>Credit quality, credit cycle</strong>: downturns raise PODs and cut recoveries, widening spreads (most for low ratings)</li><li><strong>Financial conditions</strong>: tighter conditions (falling equities, higher volatility) widen spreads</li><li><strong>Market supply and demand</strong>: heavy issuance or weak demand widens spreads, especially high yield</li><li><strong>Company value model</strong>: assets closer to debt (lower value, higher leverage, more volatile assets) → higher POD → wider spread</li></ul></div>"
+  },
+  {
+    "id": "fi4-abs",
+    "topic": "Securitized debt",
+    "front": "Do ABS default? Which four features drive the credit analysis of securitized debt?",
+    "back": "<div class=\"ans\"><p>ABS do not default as such, but lose value as the SPE’s asset pool incurs defaults.</p><ul><li><strong>Granularity</strong>: many small loans can be modeled statistically; a few large ones need loan-by-loan analysis</li><li><strong>Homogeneity</strong>: similar assets allow a common model</li><li><strong>Servicer</strong>: collection quality and track record</li><li><strong>Structure</strong>: tranching and credit enhancement decide who absorbs losses first</li></ul></div>"
+  },
+  {
+    "id": "fi4-covered",
+    "topic": "Covered bonds",
+    "front": "What is a covered bond, and why is its credit risk lower than an ABS’s?",
+    "back": "<div class=\"ans\"><p>A senior bank bond backed by a segregated <strong>cover pool</strong> (e.g. mortgages) that stays on the bank’s balance sheet.</p><ul><li><strong>Dual recourse</strong>: claims on the cover pool and the bank’s other assets</li><li><strong>Dynamic pool</strong>: the bank must replace non-performing assets</li></ul></div>"
+  },
+  {
+    "id": "fi4-scores-ratings",
+    "topic": "Credit scores and ratings",
+    "front": "Compare credit scores and credit ratings.",
+    "back": "<div class=\"ans\"><ul><li><strong>Credit scores</strong> (e.g. FICO): individuals and small businesses; <strong>ordinal</strong>, higher is better, but not a POD</li><li><strong>Credit ratings</strong> (Moody’s, S&amp;P, Fitch): corporates, sovereigns, tranches; ordinal; BBB−/Baa3 and above is investment grade</li></ul></div>",
+    "gap": "Ratings aim to be stable through the cycle, so they change slowly and can lag market prices."
+  },
+  {
+    "id": "fi4-structural",
+    "topic": "Structural model · option analogy",
+    "front": "In the structural model, what option do shareholders hold, and what position are debtholders in? Write the payoffs at \\(T\\).",
+    "back": "<div class=\"ans\"><p>Equity is a <strong>call</strong> on the assets with strike \\(K\\), the face value of debt:</p><div class=\"eq-block\">$$E_T=\\max(A_T-K,\\ 0)$$</div><p>Debt is a <strong>risk-free bond less a put</strong> on the assets:</p><div class=\"eq-block\">$$\\begin{aligned}D_T&=\\min(A_T,\\ K)\\\\&=K-\\max(K-A_T,\\ 0)\\end{aligned}$$</div></div>",
+    "gap": "The put is the credit risk: risky debt = PV(K) − put. Default happens when the assets are worth less than K."
+  },
+  {
+    "id": "fi4-structural-sw",
+    "topic": "Structural models · pros and cons",
+    "front": "Give the strengths and weaknesses of structural credit models.",
+    "back": "<div class=\"ans\"><ul><li><strong>Strengths</strong>: insight into the nature of credit risk (default when assets fall below the barrier); an option analogy for POD and recovery; estimable from current market prices</li><li><strong>Weaknesses</strong>: a simple balance sheet and traded assets are unrealistic; estimation ignores the business cycle</li></ul></div>"
+  },
+  {
+    "id": "fi4-reduced",
+    "topic": "Reduced-form models",
+    "front": "How do reduced-form models treat default? Give their main assumptions, strengths and weaknesses.",
+    "back": "<div class=\"ans\"><p>Default is <strong>exogenous</strong>: a random event with a <strong>hazard rate</strong> that varies with observable variables (the economy, company financials).</p><ul><li><strong>Assumptions</strong>: the zero trades in frictionless, arbitrage-free markets; \\(r\\), the economy and recovery are stochastic</li><li><strong>Strengths</strong>: observable inputs; credit risk varies with the cycle; no balance sheet needed</li><li><strong>Weaknesses</strong>: no economic reason for default; hazard rates are only valid if properly backtested</li></ul></div>",
+    "gap": "Structural models explain <em>why</em> a company defaults; reduced-form models only model <em>when</em>."
+  }
+];
+
+flashDeck({
+  key: "cfa-c6-m4-review",
+  source: "CFA L2 Fixed Income \u00b7 M4 Credit Analysis Models \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

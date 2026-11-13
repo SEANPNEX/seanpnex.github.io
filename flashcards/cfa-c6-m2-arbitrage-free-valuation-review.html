@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Fixed Income M2 — Arbitrage-Free Valuation review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    "id": "fi2-arb-free",
+    "topic": "Arbitrage-free valuation",
+    "front": "How does arbitrage-free valuation differ from traditional (YTM) valuation, and what principle does it rest on?",
+    "back": "<div class=\"ans\"><p>Traditional valuation discounts every cash flow at <strong>one rate</strong>, the YTM. Arbitrage-free valuation discounts each cash flow at the <strong>spot rate for its own date</strong>, so the price is consistent with every other bond in the market.</p><p>It rests on the <strong>law of one price</strong>: two assets with the same future cash flows must have the same price today.</p></div>",
+    "gap": "If the law of one price fails, buy the cheap asset, sell the expensive one, and lock in a riskless profit."
+  },
+  {
+    "id": "fi2-arb-example",
+    "topic": "Arbitrage example",
+    "front": "Asset A costs 0.952381 and pays 1 in one year. Asset B costs 95 and pays 105 in one year (both risk-free). Is there an arbitrage, and how do you exploit it?",
+    "back": "<div class=\"ans\"><p>At A’s 5% rate, B is worth \\(105\\times0.952381=100\\): it is <strong>underpriced by 5</strong>.</p><ul><li><strong>T = 0</strong>: short 105 units of A (receive 100), buy B for 95: profit <strong>5</strong></li><li><strong>T = 1</strong>: B pays 105, exactly covering the 105 owed on A: net <strong>0</strong></li></ul></div>",
+    "gap": "An arbitrage profit is taken today with no future cash flow, or no cost today with a positive future payoff."
+  },
+  {
+    "id": "fi2-arb-types",
+    "topic": "Types of arbitrage",
+    "front": "Name the two types of arbitrage opportunity, and the two dealer trades linked to the first.",
+    "back": "<div class=\"ans\"><ul><li><strong>Value additivity</strong>: the whole must equal the sum of its parts.<ul><li><strong>Stripping</strong>: split a bond into zero-coupon pieces when the parts are worth more than the whole</li><li><strong>Reconstitution</strong>: recombine the zeros into the bond when the whole is worth more</li></ul></li><li><strong>Dominance</strong>: an asset with a risk-free future payoff must have a positive price; one that pays at least as much in every state cannot cost less</li></ul></div>"
+  },
+  {
+    "id": "fi2-why-tree",
+    "topic": "Why a binomial tree",
+    "front": "Why can a bond with an embedded option not be valued with spot rates alone?",
+    "back": "<div class=\"ans\"><p>Its cash flows <strong>depend on how interest rates change</strong>: a callable bond is likely to be called if rates fall. One set of spot rates gives no information about future rate paths.</p><p>A <strong>binomial interest rate tree</strong> models the possible paths. On an option-free bond, it gives the same value as discounting at spot rates.</p></div>"
+  },
+  {
+    "id": "fi2-model-form",
+    "topic": "Term structure models",
+    "front": "What is the general form of a term structure model, and what is \\(dZ\\)?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$dr_t=\\text{drift}\\,dt+\\text{volatility}\\,dZ$$</div><p>\\(dZ\\) is the increment of a <strong>Wiener process</strong>: a random shock with mean 0 and variance \\(dt\\). The drift is the expected change in the short rate; the volatility term sets the size of the shocks.</p></div>"
+  },
+  {
+    "id": "fi2-eq-vs-af",
+    "topic": "Equilibrium vs arbitrage-free models",
+    "front": "How do equilibrium and arbitrage-free term structure models differ?",
+    "back": "<div class=\"ans\"><ul><li><strong>Equilibrium</strong> (CIR, Vasicek): built from <strong>fundamental economic variables</strong>; specify the drift and the form of volatility; parameters come from economics or history, so prices <strong>need not match</strong> today’s market</li><li><strong>Arbitrage-free</strong> (Ho-Lee, KWF): <strong>calibrated</strong> to reproduce today’s benchmark bond prices (\\(V=P\\)), then used to value other securities, e.g. bonds with options</li></ul></div>",
+    "gap": "Equilibrium models can be one-factor (the short rate only) or multi-factor."
+  },
+  {
+    "id": "fi2-cir",
+    "topic": "CIR model",
+    "front": "Write the Cox-Ingersoll-Ross model. Why can its rates never become negative?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$dr_t=k(\\theta-r_t)\\,dt+\\sigma\\sqrt{r_t}\\,dZ$$</div><ul><li>\\(\\theta\\): long-run equilibrium short rate; \\(k\\): speed of <strong>mean reversion</strong></li><li>The shock \\(\\sigma\\sqrt{r_t}\\) <strong>shrinks as rates fall</strong>: near zero, the drift pulls the rate back up before a shock can push it below zero</li></ul></div>"
+  },
+  {
+    "id": "fi2-vasicek",
+    "topic": "Vasicek model",
+    "front": "Write the Vasicek model and compare it with CIR.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$dr_t=k(\\theta-r_t)\\,dt+\\sigma\\,dZ$$</div><p>Same <strong>mean-reverting</strong> drift as CIR, but <strong>constant</strong> volatility \\(\\sigma\\), independent of the level of rates. The shocks do not shrink near zero, so <strong>rates can become negative</strong>.</p></div>"
+  },
+  {
+    "id": "fi2-holee",
+    "topic": "Ho-Lee model",
+    "front": "Write the Ho-Lee model. What is different about its drift, and can its rates go negative?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$dr_t=\\theta_t\\,dt+\\sigma\\,dZ$$</div><p>\\(\\theta_t\\) is a <strong>time-dependent drift</strong>, calibrated so the model prices every benchmark bond exactly: an <strong>arbitrage-free</strong> model. Volatility is constant and rates are <strong>normal</strong>, so they <strong>can be negative</strong>.</p></div>",
+    "gap": "\\(\\theta_t\\) here is not the long-run level \\(\\theta\\) of CIR and Vasicek: there is no mean reversion."
+  },
+  {
+    "id": "fi2-kwf",
+    "topic": "Kalotay-Williams-Fabozzi model",
+    "front": "Write the KWF model. How does it relate to Ho-Lee and to the binomial tree?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$d(\\ln r_t)=\\theta_t\\,dt+\\sigma\\,dZ$$</div><p>Ho-Lee applied to the <strong>log</strong> of the short rate. \\(\\ln r\\) is normal, so \\(r\\) is <strong>lognormal</strong> and <strong>cannot be negative</strong>. The binomial interest rate tree uses the same lognormal assumption.</p></div>"
+  },
+  {
+    "id": "fi2-model-table",
+    "topic": "Models · negative rates",
+    "front": "Classify CIR, Vasicek, Ho-Lee and KWF as equilibrium or arbitrage-free, and say which allow negative rates.",
+    "back": "<div class=\"ans\"><ul><li><strong>CIR</strong>: equilibrium; <strong>no</strong> negative rates (\\(\\sigma\\sqrt{r}\\))</li><li><strong>Vasicek</strong>: equilibrium; negative rates <strong>possible</strong></li><li><strong>Ho-Lee</strong>: arbitrage-free; negative rates <strong>possible</strong></li><li><strong>KWF</strong>: arbitrage-free; <strong>no</strong> negative rates (lognormal)</li></ul></div>",
+    "gap": "Mean reversion (constant \\(\\theta\\)) marks the equilibrium models; a time-dependent \\(\\theta_t\\) marks the arbitrage-free ones."
+  },
+  {
+    "id": "fi2-tree-structure",
+    "topic": "Binomial tree · structure",
+    "front": "Describe the structure of the binomial interest rate tree used in CFA Fixed Income.",
+    "back": "<div class=\"ans\"><ul><li>Step \\(n\\) has \\(n+1\\) nodes; the tree <strong>recombines</strong> (up-down = down-up) because volatility is held constant</li><li>In the exam the step is usually <strong>one year</strong>; shorter steps are more precise</li><li>Up and down are <strong>equally likely (50% each)</strong></li></ul></div>",
+    "gap": "The 50/50 rule is for Fixed Income only. In Derivatives, the probabilities are risk-neutral and must be calculated."
+  },
+  {
+    "id": "fi2-node-spacing",
+    "topic": "Binomial tree · node spacing",
+    "front": "How far apart are adjacent nodes? With nodes of 8% and 5% at year 1, what volatility does the tree assume?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$i_{1,U}=i_{1,L}\\,e^{2\\sigma}$$</div><p>At step 2: \\(i_{2,LU}=i_{2,LL}e^{2\\sigma}\\) and \\(i_{2,UU}=i_{2,LL}e^{4\\sigma}\\). Rates follow a <strong>lognormal random walk</strong>.</p><p>\\(8/5=1.6=e^{2\\sigma}\\), so \\(\\sigma=\\tfrac12\\ln1.6\\approx23.5\\%\\).</p></div>",
+    "gap": "The factor is \\(e^{2\\sigma}\\), not \\(e^{\\sigma}\\): each node sits \\(\\sigma\\) either side of the centre."
+  },
+  {
+    "id": "fi2-node-meaning",
+    "topic": "Binomial tree · what nodes mean",
+    "front": "What does each node of the interest rate tree represent, and how does that differ from the traditional term structure theories?",
+    "back": "<div class=\"ans\"><ul><li>Each node is a <strong>possible one-period rate</strong> at that date: a one-period forward rate in one scenario, spread around the forward rate</li><li>So the nodes follow the <strong>Level I</strong> view of forwards: same tenor, different start dates</li><li>Traditional theories discuss the <strong>expected</strong> future rate; the tree shows the <strong>possible</strong> rates and how likely each is</li></ul></div>"
+  },
+  {
+    "id": "fi2-backward",
+    "topic": "Valuing an option-free bond",
+    "front": "Give the node valuation rule. The tree has 3% today and 8% / 5% at year 1. Value a 2-year 7% annual-coupon bond (par 100).",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$V=\\frac{(V_U+C)+(V_D+C)}{2(1+i)}$$</div><p>Year 1: \\(107/1.08=99.074\\) and \\(107/1.05=101.905\\).</p><p>Add the coupon: \\(106.074\\) and \\(108.905\\).</p><div class=\"eq-block\">$$\\begin{aligned}V_0&=\\frac{106.074+108.905}{2\\times1.03}\\\\&=104.359\\end{aligned}$$</div></div>",
+    "gap": "Add the coupon at each node before averaging. Every path ends at par plus the final coupon: the bond tree converges at maturity."
+  },
+  {
+    "id": "fi2-calibration",
+    "topic": "Calibrating the tree",
+    "front": "How is the tree calibrated? The 1-year par rate is 2%, the 2-year par rate is 3%, \\(\\sigma=15\\%\\). What are the year-1 nodes?",
+    "back": "<div class=\"ans\"><p>Bootstrapping from the <strong>par curve</strong>, one step at a time: choose the lowest node by trial and error, set the others at \\(e^{2\\sigma}\\) multiples, until the tree prices the next par bond at exactly <strong>par</strong>.</p><p>Here \\(i_{1,L}=3.442\\%\\) and \\(i_{1,U}=3.442\\%\\times e^{0.30}=4.646\\%\\) price the 2-year 3% bond at 100.</p></div>",
+    "gap": "The tree must be arbitrage-free: it has to price the benchmark (on-the-run, option-free) bonds at their market prices."
+  },
+  {
+    "id": "fi2-forward-approx",
+    "topic": "Tree from forward rates",
+    "front": "How can the year-1 nodes be approximated from the forward rate? With \\(f(1,1)=4.040\\%\\) and \\(\\sigma=15\\%\\), what do you get?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$i_{1,L}\\approx f\\,e^{-\\sigma},\\quad i_{1,U}\\approx f\\,e^{\\sigma}$$</div><p>\\(4.040\\%\\times e^{-0.15}=3.478\\%\\) and \\(4.040\\%\\times e^{0.15}=4.694\\%\\), close to the calibrated 3.442% and 4.646%.</p></div>"
+  },
+  {
+    "id": "fi2-pathwise",
+    "topic": "Pathwise valuation",
+    "front": "What is pathwise valuation, how many paths does an \\(N\\)-year bond have, and what does it give for the 2-year 7% bond on the 3% / 8% / 5% tree?",
+    "back": "<div class=\"ans\"><p>Discount the cash flows along <strong>each path</strong> of rates, then <strong>average</strong> the path values. With annual steps there are \\(2^{N-1}\\) paths (today’s rate is known).</p><ul><li>Up: \\(\\frac{7}{1.03}+\\frac{107}{1.03\\times1.08}=102.985\\)</li><li>Down: \\(\\frac{7}{1.03}+\\frac{107}{1.03\\times1.05}=105.733\\)</li></ul><p>Average: <strong>104.359</strong>, the same as backward induction.</p></div>"
+  },
+  {
+    "id": "fi2-monte-carlo",
+    "topic": "Monte Carlo",
+    "front": "When is Monte Carlo used instead of a binomial tree, and how does it work?",
+    "back": "<div class=\"ans\"><p>For <strong>path-dependent</strong> cash flows, e.g. an <strong>MBS</strong>: prepayments depend on whether rates fell enough at any earlier time (refinancing, burnout), so a node’s value is not determined by its rate alone.</p><ul><li>Simulate many random paths of one-period rates (e.g. from CIR)</li><li>Compute the cash flows on each path, including prepayments</li><li>Discount along the path; the value is the <strong>average</strong> of the path PVs</li></ul></div>",
+    "gap": "A drift adjustment calibrates the simulation to price benchmark bonds correctly, keeping it arbitrage-free."
+  }
+];
+
+flashDeck({
+  key: "cfa-c6-m2-review",
+  source: "CFA L2 Fixed Income \u00b7 M2 Arbitrage-Free Valuation \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>
