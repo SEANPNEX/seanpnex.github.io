@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Portfolio Management M4 — Backtesting and Simulation review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    "id": "pm4-def",
+    "topic": "Backtesting · definition and steps",
+    "front": "What is backtesting? List its three steps.",
+    "back": "<div class=\"ans\"><p>Using historical data to test a model or strategy, as if it had been followed in the past.</p><ul><li><strong>Strategy design</strong>: hypothesis, goals, rules, parameters</li><li><strong>Historical investment simulation</strong>: form and rebalance portfolios each period</li><li><strong>Analysis of output</strong>: performance statistics</li></ul></div>"
+  },
+  {
+    "id": "pm4-rolling",
+    "topic": "Rolling window",
+    "front": "How does a rolling-window backtest work?",
+    "back": "<div class=\"ans\"><p>At each rebalancing date, use only data available up to that date to form the portfolio, hold it over the next (out-of-sample) period, then roll forward and repeat.</p></div>"
+  },
+  {
+    "id": "pm4-metrics",
+    "topic": "Backtest metrics",
+    "front": "What should a backtest report beyond average return and volatility, and why? Define maximum drawdown.",
+    "back": "<div class=\"ans\"><p><strong>Downside risk</strong>: returns are often skewed and fat-tailed, so report VaR, CVaR and maximum drawdown.</p><p><strong>Maximum drawdown</strong>: the largest peak-to-trough fall, e.g. 120 → 90 is \\(-25\\%\\).</p></div>"
+  },
+  {
+    "id": "pm4-survivorship",
+    "topic": "Survivorship bias",
+    "front": "What is survivorship bias in a backtest, and how do you fix it?",
+    "back": "<div class=\"ans\"><p>The data include only companies that still exist; the failed and delisted are missing, so returns are <strong>overstated</strong> and risk understated.</p><p>Fix: a database that keeps all companies, including dead ones.</p></div>"
+  },
+  {
+    "id": "pm4-lookahead",
+    "topic": "Look-ahead bias",
+    "front": "What is look-ahead bias, and how do you fix it?",
+    "back": "<div class=\"ans\"><p>Using information not available at the decision date, e.g. annual earnings reported months after year end, or later restated data.</p><p>Fix: <strong>point-in-time</strong> data, lagged by the reporting delay.</p></div>"
+  },
+  {
+    "id": "pm4-snooping",
+    "topic": "Data snooping",
+    "front": "What is data snooping, and how do you guard against it?",
+    "back": "<div class=\"ans\"><p>Testing many strategies or parameters on the same data until one works by chance, and reporting only that one.</p><p>Fix: <strong>out-of-sample</strong> testing, cross-validation, and a higher significance hurdle (e.g. \\(t&gt;3\\)).</p></div>"
+  },
+  {
+    "id": "pm4-why-sim",
+    "topic": "Why simulate",
+    "front": "What does simulation add to a backtest?",
+    "back": "<div class=\"ans\"><p>A backtest shows only <strong>one path</strong>, the one history took. Simulation generates many scenarios, including ones worse than history, to see the range of outcomes.</p></div>"
+  },
+  {
+    "id": "pm4-hist-vs-mc",
+    "topic": "Historical vs Monte Carlo simulation",
+    "front": "Compare historical simulation (bootstrapping) with Monte Carlo simulation.",
+    "back": "<div class=\"ans\"><ul><li><strong>Historical</strong>: draw past returns at random, with replacement; keeps real fat tails and correlations, but can’t produce outcomes that never happened</li><li><strong>Monte Carlo</strong>: draw from an assumed <strong>multivariate distribution</strong>; can go beyond history, but carries model risk</li></ul></div>",
+    "gap": "Sensitivity analysis reruns the simulation under other assumptions, e.g. fat tails instead of normal."
+  }
+];
+
+flashDeck({
+  key: "cfa-c9-m4-review",
+  source: "CFA L2 Portfolio Management \u00b7 M4 Backtesting and Simulation \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

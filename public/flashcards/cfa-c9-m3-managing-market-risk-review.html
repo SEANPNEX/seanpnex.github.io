@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Portfolio Management M3 — Managing Market Risk review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    "id": "pm3-var-def",
+    "topic": "VaR · definition",
+    "front": "Define value at risk. What three things must a VaR statement include?",
+    "back": "<div class=\"ans\"><p>The <strong>minimum loss</strong> expected at a given probability over a given period; equivalently the <strong>maximum loss</strong> at a given confidence level.</p><p>An <strong>amount</strong>, a <strong>probability</strong> (or confidence level) and a <strong>time period</strong>.</p></div>"
+  },
+  {
+    "id": "pm3-var-read",
+    "topic": "Reading a VaR",
+    "front": "A portfolio’s 1% one-day VaR is 2 million. State it both ways.",
+    "back": "<div class=\"ans\"><ul><li>99% confident the portfolio loses <strong>no more than</strong> 2m in a day</li><li>1% chance it loses <strong>2m or more</strong> in a day</li></ul></div>",
+    "gap": "VaR says nothing about how far beyond 2m the loss can go."
+  },
+  {
+    "id": "pm3-parametric",
+    "topic": "Parametric VaR",
+    "front": "Write the parametric VaR and the \\(z\\) values for 5%, 2.5% and 1%.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\text{VaR}=z_\\alpha\\sigma-E(R)$$</div><ul><li>5%: 1.65</li><li>2.5%: 1.96</li><li>1%: 2.33</li></ul><p>Multiply by the portfolio value for the money VaR; with zero mean, VaR \\(=z_\\alpha\\sigma\\).</p></div>"
+  },
+  {
+    "id": "pm3-portfolio-var",
+    "topic": "Portfolio VaR",
+    "front": "10m: 60% A (μ 10%, σ 20%), 40% B (μ 6%, σ 10%), ρ = 0.3. Find the annual 5% VaR.",
+    "back": "<div class=\"ans\"><p>\\(\\mu_p=8.4\\%\\); \\(\\sigma_p^2=0.0144+0.0016+0.00288=0.01888\\), so \\(\\sigma_p=13.74\\%\\).</p><div class=\"eq-block\">$$\\begin{aligned}&1.65\\times13.74\\%-8.4\\%\\\\&=14.27\\%\\end{aligned}$$</div><p>About <strong>1.43 million</strong>.</p></div>"
+  },
+  {
+    "id": "pm3-sqrt",
+    "topic": "Square root rule",
+    "front": "How is VaR scaled to a different horizon, and what does that require?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\text{VaR}_T=\\text{VaR}_1\\sqrt{T}$$</div><p>Requires i.i.d. returns (no serial correlation) and a mean of zero.</p></div>",
+    "gap": "In reality returns are not i.i.d., so the scaled VaR is only an approximation."
+  },
+  {
+    "id": "pm3-historical",
+    "topic": "Historical simulation VaR",
+    "front": "Using 300 days of returns, which ranked return is the one-day 5% VaR? Pros and cons of the method?",
+    "back": "<div class=\"ans\"><p>5% of 300 = 15 days, so the <strong>15th worst</strong> (286th best) return, applied to today’s weights.</p><ul><li>No distribution assumption; real fat tails and correlations</li><li>Assumes the past is representative</li></ul></div>"
+  },
+  {
+    "id": "pm3-monte-carlo",
+    "topic": "Monte Carlo VaR",
+    "front": "How does Monte Carlo estimate VaR? What are its strengths and weaknesses?",
+    "back": "<div class=\"ans\"><p>Specify distributions and correlations of the risk factors, simulate many outcomes, read the \\(\\alpha\\) percentile.</p><ul><li>Flexible: non-normal distributions, options and non-linear positions</li><li>Computationally heavy; only as good as the assumed model</li></ul></div>"
+  },
+  {
+    "id": "pm3-var-pros-cons",
+    "topic": "VaR · pros and cons",
+    "front": "Give the main advantages and disadvantages of VaR.",
+    "back": "<div class=\"ans\"><ul><li><strong>Pros</strong>: simple single number; comparable across units; risk budgeting; backtestable; accepted by regulators</li><li><strong>Cons</strong>: subjective choices; underestimates extreme events (fat tails); ignores the size of tail losses; ignores liquidity; correlations rise in crises; left tail only</li></ul></div>"
+  },
+  {
+    "id": "pm3-cvar",
+    "topic": "Conditional VaR",
+    "front": "What is CVaR (expected shortfall)? For a normal distribution, compare the 5% CVaR with the 5% VaR.",
+    "back": "<div class=\"ans\"><p>The <strong>average loss given that the loss exceeds the VaR</strong>: it measures the size of the tail.</p><p>Normal: VaR \\(=1.65\\sigma\\), CVaR \\(=2.06\\sigma\\).</p></div>"
+  },
+  {
+    "id": "pm3-incremental",
+    "topic": "Incremental vs marginal VaR",
+    "front": "Distinguish incremental VaR and marginal VaR.",
+    "back": "<div class=\"ans\"><ul><li><strong>Incremental</strong>: change in portfolio VaR from adding, removing or changing a position (VaR with − VaR without)</li><li><strong>Marginal</strong>: change in VaR for a <strong>small</strong> change in a position, per unit; shows each position’s contribution</li></ul></div>"
+  },
+  {
+    "id": "pm3-other-var",
+    "topic": "LVaR, CFaR, EaR, credit VaR",
+    "front": "Define liquidity-adjusted VaR, cash flow at risk, earnings at risk and credit VaR.",
+    "back": "<div class=\"ans\"><ul><li><strong>LVaR</strong>: VaR plus the cost of liquidating positions</li><li><strong>CFaR</strong>: minimum cash flow shortfall at a probability; for companies</li><li><strong>EaR</strong>: the same for earnings</li><li><strong>Credit VaR</strong>: minimum credit loss (defaults, downgrades) at a probability</li></ul></div>"
+  },
+  {
+    "id": "pm3-sensitivity",
+    "topic": "Sensitivity measures",
+    "front": "What are sensitivity risk measures? Give the measure for equities, bonds and options, and the limitation.",
+    "back": "<div class=\"ans\"><p>Partial derivatives: the change in value for a <strong>small</strong> change in one factor.</p><ul><li>Equities: <strong>beta</strong></li><li>Bonds: <strong>duration and convexity</strong></li><li>Options: the <strong>Greeks</strong></li></ul><p>No probability, and accurate only for small changes.</p></div>"
+  },
+  {
+    "id": "pm3-scenario",
+    "topic": "Scenario and stress tests",
+    "front": "Describe historical, hypothetical and stress scenarios, and reverse stress testing.",
+    "back": "<div class=\"ans\"><ul><li><strong>Historical</strong>: replay a past crisis on today’s portfolio</li><li><strong>Hypothetical</strong>: changes that could happen</li><li><strong>Stress test</strong>: extreme, low-probability scenarios, often with correlations rising</li><li><strong>Reverse stress test</strong>: start from an unacceptable loss and find what causes it</li></ul></div>",
+    "gap": "Scenarios show the size of extreme losses but give no probability."
+  },
+  {
+    "id": "pm3-users",
+    "topic": "Choice of risk measures",
+    "front": "Which risk measures suit banks, asset managers, DB pension funds and insurers?",
+    "back": "<div class=\"ans\"><ul><li><strong>Banks</strong>: liquidity, economic capital, VaR, sensitivity, scenario, leverage</li><li><strong>Asset managers</strong>: redemption risk, tracking error VaR, position limits</li><li><strong>DB pensions</strong>: surplus at risk; interest rate and curve risk</li><li><strong>Insurers</strong>: asset–liability matching, sensitivities, scenarios</li></ul></div>"
+  },
+  {
+    "id": "pm3-constraints",
+    "topic": "Market risk constraints",
+    "front": "Name the ways risk measures are used to constrain market risk.",
+    "back": "<div class=\"ans\"><ul><li><strong>Risk budgeting</strong>: allocate total risk; VaRs add by the variance rule, so the total is less than the sum when \\(\\rho<1\\)</li><li><strong>Capital allocation</strong> by risk; return per unit of capital</li><li><strong>Position limits</strong>; <strong>scenario limits</strong>; <strong>stop-loss limits</strong></li></ul></div>",
+    "gap": "In the A/B example, individual VaRs of 1.98m and 0.66m sum to 2.64m, but the portfolio’s is 2.27m."
+  }
+];
+
+flashDeck({
+  key: "cfa-c9-m3-review",
+  source: "CFA L2 Portfolio Management \u00b7 M3 Managing Market Risk \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

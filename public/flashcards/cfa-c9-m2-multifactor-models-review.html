@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Portfolio Management M2 — Multifactor Models review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    "id": "pm2-beta",
+    "topic": "CAPM · beta",
+    "front": "Write the CAPM and two ways to calculate beta. What is the beta of the market and of a portfolio?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$E(R_i)=R_f+\\beta_i[E(R_M)-R_f]$$</div><div class=\"eq-block\">$$\\beta_i=\\frac{\\text{Cov}(R_i,R_M)}{\\sigma_M^2}=\\rho_{i,M}\\frac{\\sigma_i}{\\sigma_M}$$</div><p>Or the slope of the regression \\(R_i=\\alpha_i+\\beta_iR_M+\\varepsilon_i\\). \\(\\beta_M=1\\); \\(\\beta_p=\\sum w_i\\beta_i\\).</p></div>"
+  },
+  {
+    "id": "pm2-risk",
+    "topic": "Systematic vs unsystematic risk",
+    "front": "Split an asset’s total risk. Which part is rewarded, and why?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\sigma_i^2=\\beta_i^2\\sigma_M^2+\\sigma_\\varepsilon^2$$</div><p>Unsystematic (asset-specific) risk can be <strong>diversified away</strong>, so it earns no reward. Only <strong>systematic</strong> risk is priced.</p></div>"
+  },
+  {
+    "id": "pm2-capm-assumptions",
+    "topic": "CAPM assumptions",
+    "front": "List the main assumptions of the CAPM.",
+    "back": "<div class=\"ans\"><ul><li>Risk-averse, mean–variance investors; single period</li><li>Homogeneous expectations</li><li>Unlimited borrowing and lending at \\(R_f\\)</li><li>No taxes or transaction costs; assets infinitely divisible</li><li>All assets marketable; perfectly competitive markets (price takers)</li></ul></div>",
+    "gap": "They are largely violated in practice; the APT needs far fewer."
+  },
+  {
+    "id": "pm2-sml",
+    "topic": "SML and Jensen’s alpha",
+    "front": "\\(R_f=3\\%\\), \\(E(R_M)=8\\%\\). Stock A has \\(\\beta=1.2\\) and a forecast return of 10%. Find its alpha. Is it under- or overvalued?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\alpha=R_i-[R_f+\\beta(R_M-R_f)]$$</div><p>Required \\(=3\\%+1.2\\times5\\%=9\\%\\), so \\(\\alpha=+1\\%\\): above the SML, <strong>undervalued</strong>: buy.</p></div>",
+    "gap": "Above the SML = positive alpha = underpriced; below = overpriced."
+  },
+  {
+    "id": "pm2-apt-assumptions",
+    "topic": "APT · assumptions",
+    "front": "State the three assumptions of the APT.",
+    "back": "<div class=\"ans\"><ul><li>A <strong>factor model</strong> describes asset returns</li><li>Enough assets to form <strong>well-diversified</strong> portfolios that eliminate asset-specific risk</li><li><strong>No arbitrage</strong> among well-diversified portfolios</li></ul></div>"
+  },
+  {
+    "id": "pm2-apt-formula",
+    "topic": "APT · formula",
+    "front": "Write the APT equation and define \\(\\lambda_j\\). How does it relate to the CAPM?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$E(R_p)=R_F+\\textstyle\\sum_j\\lambda_j\\beta_{p,j}$$</div><p>\\(\\lambda_j\\): the expected <strong>risk premium</strong> of factor \\(j\\): the excess return of a portfolio with sensitivity 1 to factor \\(j\\) and 0 to the rest.</p><p>CAPM is the one-factor case: factor = market, \\(\\lambda=E(R_M)-R_F\\).</p></div>",
+    "gap": "The APT does not name the factors: the analyst chooses them."
+  },
+  {
+    "id": "pm2-lambda",
+    "topic": "Solving for λ",
+    "front": "One-factor APT: portfolio A has \\(E(R)=11\\%\\), \\(\\beta=1.5\\); B has 8%, \\(\\beta=0.75\\). Find \\(R_F\\) and \\(\\lambda\\).",
+    "back": "<div class=\"ans\"><p>\\(11\\%=R_F+1.5\\lambda\\) and \\(8\\%=R_F+0.75\\lambda\\).</p><p>Subtracting: \\(3\\%=0.75\\lambda\\), so \\(\\lambda=4\\%\\) and \\(R_F=5\\%\\).</p></div>"
+  },
+  {
+    "id": "pm2-pure",
+    "topic": "Pure factor portfolio",
+    "front": "What is a pure factor portfolio? Two-factor sensitivities: A \\((1.0, 0.5)\\), B \\((0.5, 1.0)\\). Build a pure factor 1 portfolio.",
+    "back": "<div class=\"ans\"><p>Sensitivity 1 to one factor and 0 to all others; it earns \\(R_F+\\lambda_j\\).</p><p>\\(w_A+0.5w_B=1\\) and \\(0.5w_A+w_B=0\\): \\(w_A=4/3\\), \\(w_B=-2/3\\), risk-free \\(1/3\\).</p></div>"
+  },
+  {
+    "id": "pm2-arbitrage",
+    "topic": "APT arbitrage",
+    "front": "\\(R_F=4\\%\\). A: \\(\\beta=1.0\\), 9%. B: \\(\\beta=2.0\\), 14%. C: \\(\\beta=1.5\\), 12.5%. Find and exploit the arbitrage with 1 million.",
+    "back": "<div class=\"ans\"><p>50% A + 50% B has \\(\\beta=1.5\\) and \\(E(R)=11.5\\%\\). C earns 1% more for the same risk.</p><p>Buy 1m of C; short 0.5m of A and 0.5m of B. Zero investment, zero beta, profit <strong>10,000</strong>.</p></div>",
+    "gap": "The mispriced portfolio’s twin is often a combination of two given portfolios."
+  },
+  {
+    "id": "pm2-types",
+    "topic": "Types of multifactor models",
+    "front": "Name the four types of multifactor models and their factors.",
+    "back": "<div class=\"ans\"><ul><li><strong>Macroeconomic</strong>: surprises in macro variables</li><li><strong>Fundamental</strong>: returns to company attributes (P/E, size)</li><li><strong>Statistical</strong>: factors extracted from returns (factor analysis, principal components)</li><li><strong>Mixed</strong>: combinations of these</li></ul></div>"
+  },
+  {
+    "id": "pm2-macro",
+    "topic": "Macroeconomic factor model",
+    "front": "Write the macroeconomic factor model. What are the intercept and the factors?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}R_i={}&E(R_i)+\\textstyle\\sum_k\\beta_{i,k}F_k\\\\&+\\varepsilon_i\\end{aligned}$$</div><p>It models the <strong>actual</strong> return. The intercept is the <strong>expected return</strong>; each \\(F_k\\) is a <strong>surprise</strong>: realized minus expected value of a macro variable (GDP, inflation, rates, credit spreads).</p></div>",
+    "gap": "With no surprises, the asset earns its expected return."
+  },
+  {
+    "id": "pm2-macro-example",
+    "topic": "Macro model example",
+    "front": "\\(E(R)=9\\%\\); sensitivity 1.5 to GDP surprises and −0.8 to inflation surprises. GDP: expected 3%, actual 2%. Inflation: expected 2%, actual 3%. Return?",
+    "back": "<div class=\"ans\"><p>Surprises: GDP −1%, inflation +1%.</p><div class=\"eq-block\">$$\\begin{aligned}R&=9\\%-1.5\\%-0.8\\%\\\\&=6.7\\%\\end{aligned}$$</div></div>"
+  },
+  {
+    "id": "pm2-fundamental",
+    "topic": "Fundamental factor model",
+    "front": "In a fundamental factor model, what are the sensitivities and the factors? How is a sensitivity standardized?",
+    "back": "<div class=\"ans\"><p><strong>Sensitivities</strong> are company attributes (P/E, size, ...), standardized; <strong>factors</strong> are the returns to those attributes, from cross-sectional regression.</p><div class=\"eq-block\">$$\\beta_{i,k}=\\frac{x_{i,k}-\\mu_k}{\\sigma_k}$$</div></div>",
+    "gap": "The intercept is a regression intercept, not the expected return. Industry dummies are 0/1, not standardized."
+  },
+  {
+    "id": "pm2-fund-example",
+    "topic": "Fundamental model example",
+    "front": "P/E 20 (mean 16, σ 8); log size 10 (mean 9, σ 1.25). Intercept 2.0%, P/E factor −1.0%, size factor 1.5%. Return?",
+    "back": "<div class=\"ans\"><p>\\(\\beta_{\\text{P/E}}=0.5\\), \\(\\beta_{\\text{size}}=0.8\\).</p><div class=\"eq-block\">$$\\begin{aligned}R&=2.0\\%-0.5\\%+1.2\\%\\\\&=2.7\\%\\end{aligned}$$</div></div>"
+  },
+  {
+    "id": "pm2-statistical",
+    "topic": "Statistical factor models",
+    "front": "Distinguish factor analysis and principal components models. What is the main drawback of statistical models?",
+    "back": "<div class=\"ans\"><ul><li><strong>Factor analysis</strong>: factors best explain the <strong>covariances</strong> of returns</li><li><strong>Principal components</strong>: factors best explain the <strong>variances</strong></li></ul><p>Few assumptions needed, but the factors are hard to interpret economically.</p></div>"
+  },
+  {
+    "id": "pm2-macro-vs-fund",
+    "topic": "Macro vs fundamental models",
+    "front": "Contrast macroeconomic and fundamental factor models on intercept, factors, sensitivities, data and what is estimated.",
+    "back": "<div class=\"ans\"><ul><li>Intercept: \\(E(R_i)\\) vs regression \\(a_i\\)</li><li>Factors: <strong>surprises</strong> vs <strong>returns to attributes</strong></li><li>Sensitivities: regression slopes vs standardized attributes</li><li>Data: time series vs cross-section</li><li>Estimated: the \\(\\beta\\)s (macro) vs the \\(F\\)s (fundamental)</li></ul></div>"
+  },
+  {
+    "id": "pm2-return-attr",
+    "topic": "Return attribution",
+    "front": "Split active return into its two sources. What skill does each reflect?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}R_p-R_B={}&\\textstyle\\sum_k(\\beta_{p,k}-\\beta_{B,k})\\lambda_k\\\\&+\\text{Selection}\\end{aligned}$$</div><ul><li><strong>Factor tilts</strong>: skill in class (factor) selection</li><li><strong>Security selection</strong>: skill in picking individual securities</li></ul></div>"
+  },
+  {
+    "id": "pm2-risk-attr",
+    "topic": "Active risk and information ratio",
+    "front": "Define active risk and the information ratio. How does active risk split?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\text{IR}=\\frac{R_p-R_B}{\\sigma(R_p-R_B)}$$</div><p>Active risk \\(=\\sigma(R_p-R_B)\\), the tracking error. Active risk² = active <strong>factor</strong> risk (tilts, systematic) + active <strong>specific</strong> risk (selection, unsystematic).</p></div>",
+    "gap": "The Sharpe ratio uses \\(R_f\\) as benchmark; since \\(R_f\\) is constant, \\(\\sigma(R_p-R_f)=\\sigma(R_p)\\)."
+  }
+];
+
+flashDeck({
+  key: "cfa-c9-m2-review",
+  source: "CFA L2 Portfolio Management \u00b7 M2 Multifactor Models \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>
