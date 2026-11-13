@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Efficient frontier · capital allocation lines</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <script src="chart-fx.js"></script>
+</head>
+<body>
+  <main class="card" id="card" data-fx-scope>
+    <h2>The steepest line from the risk-free rate touches the frontier once.</h2>
+    <div class="sub">Efficient frontier of risky portfolios · rf = 3% · ink = the CML through the tangency portfolio M, mid gray = a CAL through a frontier portfolio P · the slope of each line is its Sharpe ratio · hover for the return on either line</div>
+    <section class="panel">
+      <h3>Expected return against risk</h3>
+      <div class="hint">Lending or borrowing at rf moves along a line without changing its slope · M’s line is the steepest possible: Sharpe ratio 0.39 against 0.36 for P</div>
+      <svg id="chart" role="img" aria-label="Efficient frontier with a capital market line from 3% tangent at portfolio M and a flatter capital allocation line through portfolio P"></svg>
+    </section>
+    <div class="src">MEAN–VARIANCE · F2 HAIRLINE LINE · ILLUSTRATIVE FRONTIER σ² = 100 + 16(μ − 6)², MINIMUM-VARIANCE POINT (10%, 6%)</div>
+  </main>
+  <script>
+(() => {
+  const { C, el, label, frame, axes, curve, guide, dot, probe, mount } = curveKit;
+
+  // ── Data: frontier σ(μ) = sqrt(100 + 16(μ − 6)²), risk-free rate, tangency and one other point (all %) ──
+  const RF = 3, S0 = 10, M0 = 6, K = 16, X1 = 28, MID = '#6A6963';
+  const upper = (s) => (s < S0 ? NaN : M0 + Math.sqrt((s * s - S0 * S0) / K));
+  const lower = (s) => (s < S0 ? NaN : M0 - Math.sqrt((s * s - S0 * S0) / K));
+  const muM = M0 + (S0 * S0) / (K * (M0 - RF)); // tangency: 100 = 48(μ − 6)
+  const sM = Math.sqrt(S0 * S0 + K * (muM - M0) ** 2), SRM = (muM - RF) / sM;
+  const sP = 22, muP = upper(sP), SRP = (muP - RF) / sP;
+  const cml = (s) => RF + SRM * s, cal = (s) => RF + SRP * s;
+
+  mount(document.getElementById('chart'), (s, W, H) => {
+    const F = frame(s, W, H, { l: W < 420 ? 32 : 36, r: 12, t: 22, b: 40, noTicks: true }, X1, 14);
+    [3, 6, 9, 12].forEach((v) => {
+      el(s, 'line', { x1: F.X0, y1: F.y(v), x2: F.X1, y2: F.y(v), stroke: C.GRID, 'stroke-width': 0.6, 'stroke-dasharray': '2 4', class: 'fade' });
+      label(s, F.X0 - 6, F.y(v) + 3.5, v + '%', { size: 9.5, weight: 600, fill: C.MUTED, anchor: 'end', halo: 0 });
+    });
+    [0, 10, 20].forEach((v) => label(s, F.x(v), F.BASE + 14, v + '%', { size: 9.5, weight: 600, fill: C.MUTED, anchor: 'middle', halo: 0 }));
+    axes(s, F, 'risk (σ) →', 'expected return');
+
+    // The frontier: efficient upper branch in ink, inefficient lower branch faint.
+    curve(s, F, lower, S0, X1, { stroke: C.FAINT, width: 1.2, delay: 0.1 });
+    curve(s, F, upper, S0, X1, { stroke: C.INK, width: 1.4, delay: 0 }).setAttribute('data-hl', 'f');
+    curve(s, F, cal, 0, X1, { stroke: MID, width: 1.3, delay: 0.4 }).setAttribute('data-hl', 'p');
+    curve(s, F, cml, 0, X1, { stroke: C.INK, width: 1.6, delay: 0.3 }).setAttribute('data-hl', 'm');
+
+    dot(s, F.x(0), F.y(RF), 3.4, C.INK, 0.8, 'Risk-free asset: σ = 0, return 3%');
+    dot(s, F.x(sM), F.y(muM), 3.8, C.INK, 0.9, `Tangency (market) portfolio M\nσ = ${sM.toFixed(1)}%, E(R) = ${muM.toFixed(1)}%\nSharpe ratio ${SRM.toFixed(2)}: the highest`);
+    dot(s, F.x(sP), F.y(muP), 3.6, MID, 1, `Frontier portfolio P\nσ = ${sP}%, E(R) = ${muP.toFixed(1)}%\nSharpe ratio ${SRP.toFixed(2)}`);
+    guide(s, F.x(sM), F.BASE, F.x(sM), F.y(muM), 1);
+
+    label(s, F.x(sM) - 6, F.y(muM) - 9, 'M', { size: 11, anchor: 'end', delay: 1.05 });
+    label(s, F.x(sP) + 6, F.y(muP) + 16, 'P', { size: 11, fill: MID, delay: 1.1 });
+    label(s, F.x(4), F.y(cal(4)) + 16, 'lend', { size: 10, weight: 700, fill: C.MUTED, delay: 1.1 });
+    label(s, F.x(24), F.y(cml(24)) - 9, 'borrow · CML', { size: 10.5, anchor: 'end', delay: 1.15 });
+    label(s, F.x(18), F.y(lower(18)) - 7, 'inefficient', { size: 10, weight: 700, fill: C.SOFT, delay: 1.2 });
+    label(s, F.x(S0) + 6, F.y(M0) + 4, 'frontier', { size: 10, weight: 700, fill: C.MUTED, delay: 1.2 });
+
+    probe(s, F, [
+      { name: 'CML (%)', f: cml },
+      { name: 'CAL via P (%)', f: cal, stroke: MID },
+    ], { xName: 'σ (%)', fmt: (v) => v.toFixed(2) });
+  }, (W) => Math.max(250, Math.min(320, W * 0.6)));
+})();
+  </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Correlation triangle · IC, TC, value added</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <script src="chart-fx.js"></script>
+</head>
+<body>
+  <main class="card" id="card" data-fx-scope>
+    <h2>Skill flows from forecasts to weights to returns.</h2>
+    <div class="sub">The correlation triangle of active management · each corner is a set of numbers across the assets; each side is the correlation between two corners · hover a side or a corner</div>
+    <section class="panel">
+      <h3>Forecasts, weights and realized returns</h3>
+      <div class="hint">IC = how good the forecasts are · TC = how fully the forecasts reach the weights · value added = the weights times the realized active returns</div>
+      <svg id="chart" role="img" aria-label="Triangle with forecasted active returns at the top, active weights at the bottom left and realized active returns at the bottom right; the sides are the transfer coefficient, the information coefficient and value added"></svg>
+    </section>
+    <div class="src">GRINOLD–KAHN CORRELATION TRIANGLE · RELATIONSHIP DIAGRAM · IC = ρ(μ/σ, Rₐ/σ) · TC = ρ(μ/σ, Δw·σ)</div>
+  </main>
+  <script>
+(() => {
+  const { C, el, label, mount } = curveKit;
+
+  // ── Data: the three corners and the three sides ──
+  const CORNERS = [
+    { id: 'mu', name: 'Forecasted active returns', sym: 'μᵢ', tip: 'Forecasted active returns μᵢ\nthe manager’s expectations, before any trade' },
+    { id: 'w', name: 'Active weights', sym: 'Δwᵢ', tip: 'Active weights Δwᵢ = wᵢ(P) − wᵢ(B)\nthe bets actually taken; they sum to 0' },
+    { id: 'ra', name: 'Realized active returns', sym: 'Rₐ,ᵢ', tip: 'Realized active returns\nwhat each asset actually returned relative to the benchmark' },
+  ];
+  const SIDES = [
+    { a: 0, b: 1, name: 'TC', sub: 'portfolio construction', tip: 'Transfer coefficient (TC)\ncorrelation of forecasts and active weights\n= 1 without constraints, < 1 with them' },
+    { a: 0, b: 2, name: 'IC', sub: 'signal quality', tip: 'Information coefficient (IC)\ncorrelation of forecasts and realized active returns\nex ante > 0; ex post can be negative' },
+    { a: 1, b: 2, name: 'Value added', sub: 'Rₐ = Σ Δwᵢ Rₐ,ᵢ', tip: 'Value added\nthe active return the weights actually earned\nRₐ = Σ Δwᵢ × Rₐ,ᵢ' },
+  ];
+
+  mount(document.getElementById('chart'), (s, W, H) => {
+    const nw = W < 420, padX = nw ? 62 : 110;
+    const P = [[W / 2, 48], [padX, H - 52], [W - padX, H - 52]];
+    SIDES.forEach((sd, i) => {
+      const [x1, y1] = P[sd.a], [x2, y2] = P[sd.b];
+      el(s, 'line', { x1, y1, x2, y2, stroke: i === 1 ? C.INK : '#6A6963', 'stroke-width': i === 1 ? 1.6 : 1.3, pathLength: 1, class: 'draw', style: `animation-delay:${0.15 + i * 0.15}s`, 'data-hl': 's' + i });
+      el(s, 'line', { x1, y1, x2, y2, stroke: 'transparent', 'stroke-width': 14, 'data-hl': 's' + i, 'data-tip': sd.tip });
+      const mx = (x1 + x2) / 2, my = (y1 + y2) / 2;
+      const off = i === 2 ? [0, 22] : [i === 0 ? -20 : 14, -2];
+      const anchor = i === 2 ? 'middle' : i === 0 ? 'end' : 'start';
+      label(s, mx + off[0], my + off[1], sd.name, { size: 11.5, anchor, delay: 0.8 + i * 0.08 });
+      label(s, mx + off[0], my + off[1] + 13, sd.sub, { size: 9.5, weight: 600, fill: C.MUTED, anchor, delay: 0.85 + i * 0.08 });
+    });
+    CORNERS.forEach((c, i) => {
+      const [x, y] = P[i], w = c.sym.length * 8 + 22, h = 22;
+      const g = el(s, 'g', { class: 'pop', style: `animation-delay:${0.4 + i * 0.1}s`, 'data-tip': c.tip, 'data-hl': 'c' + i });
+      el(g, 'rect', { x: x - w / 2, y: y - h / 2, width: w, height: h, rx: h / 2, fill: i === 0 ? C.INK : C.PAPER, stroke: C.INK, 'stroke-width': 1.1 });
+      el(g, 'text', { x, y: y + 4, 'text-anchor': 'middle', 'font-size': 11, 'font-weight': 800, fill: i === 0 ? C.PAPER : C.INK }, c.sym);
+      const below = i > 0;
+      label(s, x, below ? y + 28 : y - 18, c.name, { size: 10, weight: 700, fill: C.MUTED, anchor: 'middle', delay: 0.7, maxWidth: nw ? 110 : 160, up: !below });
+    });
+  }, (W) => Math.max(250, Math.min(300, W * 0.6)));
+})();
+  </script>
+</body>
+</html>
