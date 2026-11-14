@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Equity M1 — Equity Valuation review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    "id": "eq1-iv",
+    "topic": "Intrinsic value and mispricing",
+    "front": "Define intrinsic value. Split a perceived mispricing into its two sources.",
+    "back": "<div class=\"ans\"><p><strong>Intrinsic value</strong>: the value with a complete understanding of the asset’s investment characteristics.</p><div class=\"eq-block\">$$\\begin{aligned}E(IV)-P={}&(IV-P)\\\\&+(E(IV)-IV)\\end{aligned}$$</div><p>True mispricing (earns the abnormal return) + valuation error.</p></div>",
+    "gap": "To win consistently, your expectations must differ from consensus and be right."
+  },
+  {
+    "id": "eq1-gs",
+    "topic": "Efficient markets and catalysts",
+    "front": "What is the Grossman–Stiglitz paradox, and what is a catalyst?",
+    "back": "<div class=\"ans\"><p>If prices were perfectly efficient, nobody would pay for analysis, so prices couldn’t be efficient. Investors analyze only if they expect returns that cover the cost.</p><p>A <strong>catalyst</strong> is an event that makes price converge to value within the investor’s horizon.</p></div>"
+  },
+  {
+    "id": "eq1-definitions",
+    "topic": "Definitions of value",
+    "front": "Distinguish going-concern, liquidation, fair market, fair (reporting) and investment value. Which matters for public equity?",
+    "back": "<div class=\"ans\"><ul><li><strong>Going concern</strong>: keeps operating, uses assets optimally</li><li><strong>Liquidation</strong>: assets sold individually; orderly &gt; forced</li><li><strong>Fair market</strong>: willing, informed buyer and seller, no compulsion (tax, buy–sell agreements)</li><li><strong>Fair value</strong>: arm’s-length amount for financial reporting</li><li><strong>Investment value</strong>: to a specific buyer, with its synergies</li></ul><p>Public equity: <strong>intrinsic value under a going-concern assumption</strong>.</p></div>",
+    "gap": "A persistently loss-making company can be worth more liquidated than as a going concern."
+  },
+  {
+    "id": "eq1-uses",
+    "topic": "Uses of valuation",
+    "front": "List the main uses of equity valuation. What does inferring market expectations involve?",
+    "back": "<div class=\"ans\"><ul><li>Stock selection (primary)</li><li>Inferring market expectations</li><li>Corporate events (M&amp;A, spin offs, going private)</li><li>Fairness opinions</li><li>Strategy evaluation; communication</li><li>Private business appraisal; share-based payment</li></ul><p>Inferring expectations: set the model equal to the price and solve for one input, e.g. implied growth.</p></div>"
+  },
+  {
+    "id": "eq1-intel",
+    "topic": "Implied growth example",
+    "front": "Intel fell 30% after a growth miss; its old price implied 20% growth for 10 years. How do you judge whether the fall was an overreaction?",
+    "back": "<div class=\"ans\"><p>Compare the <strong>implied growth</strong> with the company’s history, industry growth and economic forecasts. 20% was far above Intel’s recent growth, so it was overvalued <strong>before</strong> the release, which acted as a catalyst.</p></div>"
+  },
+  {
+    "id": "eq1-process",
+    "topic": "The valuation process",
+    "front": "Name the five steps of the valuation process.",
+    "back": "<div class=\"ans\"><ul><li>Understand the business (industry, competition, quality of earnings)</li><li>Forecast performance</li><li>Select the model</li><li>Convert forecasts to value (sensitivity, situational adjustments)</li><li>Apply the conclusions</li></ul></div>"
+  },
+  {
+    "id": "eq1-industry",
+    "topic": "Industry and competitive analysis",
+    "front": "What three questions does industry and competitive analysis address?",
+    "back": "<div class=\"ans\"><ul><li>How <strong>attractive</strong> are the industries? (five forces)</li><li>What is the company’s <strong>competitive position</strong> and strategy? (market share, generic strategy)</li><li>How well has it <strong>executed</strong>, and what are its prospects?</li></ul></div>",
+    "gap": "Don’t extrapolate naively: long-run growth regresses toward the economy’s rate."
+  },
+  {
+    "id": "eq1-porter",
+    "topic": "Porter’s forces and strategies",
+    "front": "When are the five forces favorable for profitability? Name Porter’s three strategies.",
+    "back": "<div class=\"ans\"><ul><li>Low rivalry; high entry barriers; few substitutes / high switching costs; many suppliers; many customers</li></ul><p>Strategies: <strong>cost leadership</strong>, <strong>differentiation</strong>, <strong>focus</strong> (cost or differentiation within a segment).</p></div>"
+  },
+  {
+    "id": "eq1-qoe",
+    "topic": "Quality of earnings",
+    "front": "Where does quality of earnings analysis start, and why are high accruals a warning?",
+    "back": "<div class=\"ans\"><p>Compare <strong>net income with operating cash flow</strong>. Accruals = NI − (CFO + CFI).</p><p>The cash component is more persistent; high accruals predict lower future ROA (Sloan).</p></div>",
+    "gap": "Receivables growing much faster than sales is a red flag (Tangoe: revenue +12%, receivables +32%)."
+  },
+  {
+    "id": "eq1-qoe-signs",
+    "topic": "Earnings quality warning signs",
+    "front": "Give warning signs of low earnings quality in revenue, expenses, the balance sheet and cash flow.",
+    "back": "<div class=\"ans\"><ul><li>Revenue: early recognition (bill-and-hold); non-operating gains shown as operating</li><li>Expenses: reserves too high or low; capitalized costs; aggressive estimates (long lives, high return on plan assets)</li><li>Balance sheet: off-balance-sheet financing</li><li>Cash flow: overdraft increases classified as operating</li></ul></div>"
+  },
+  {
+    "id": "eq1-pension",
+    "topic": "Pension return assumption",
+    "front": "How does a high assumed return on pension plan assets distort earnings?",
+    "back": "<div class=\"ans\"><p>A bigger expected-return deduction <strong>understates pension expense</strong> and <strong>overstates net income</strong>. Find the assumption in the footnotes.</p></div>"
+  },
+  {
+    "id": "eq1-forecast",
+    "topic": "Forecasting approaches",
+    "front": "Contrast top-down and bottom-up forecasting.",
+    "back": "<div class=\"ans\"><ul><li><strong>Top-down</strong>: economy → industry → company (e.g. GDP × share × price)</li><li><strong>Bottom-up</strong>: aggregate detailed forecasts (e.g. sales per square meter by store)</li></ul></div>"
+  },
+  {
+    "id": "eq1-absolute",
+    "topic": "Absolute models",
+    "front": "What are absolute valuation models? Give the main types.",
+    "back": "<div class=\"ans\"><p>They estimate intrinsic value directly.</p><ul><li>PV models: DDM, FCFE, FCFF, residual income</li><li>Asset-based: market value of assets (natural resources)</li></ul></div>",
+    "gap": "Equity cash flows aren’t contractual: give a range and run sensitivity analysis."
+  },
+  {
+    "id": "eq1-relative",
+    "topic": "Relative models",
+    "front": "What do relative models conclude, and what is pairs trading?",
+    "back": "<div class=\"ans\"><p>A stock with a lower multiple than a comparable is <strong>relatively undervalued</strong>, not necessarily undervalued: the comparable may be overvalued.</p><p><strong>Pairs trading</strong>: long the relatively cheap stock, short the expensive one, regardless of market direction.</p></div>",
+    "gap": "Two analysts using different benchmarks (industry vs market) can both be right."
+  },
+  {
+    "id": "eq1-choose",
+    "topic": "Choosing a model",
+    "front": "What three criteria guide the choice of valuation model?",
+    "back": "<div class=\"ans\"><ul><li><strong>Company characteristics</strong>: how assets create value (banks suit P/B)</li><li><strong>Data quality and availability</strong>: no dividends → FCF over DDM; negative EPS → avoid P/E</li><li><strong>Purpose and perspective</strong>: a controlling buyer may use FCF</li></ul></div>"
+  },
+  {
+    "id": "eq1-sotp",
+    "topic": "Sum of the parts",
+    "front": "What is sum-of-the-parts valuation, when is it most useful, and why might a conglomerate trade at a discount?",
+    "back": "<div class=\"ans\"><p>Value each business as a going concern and add them: the <strong>breakup value</strong>. Most useful when segments differ in valuation characteristics, and for restructurings.</p><ul><li>Inefficient internal capital allocation</li><li>Endogenous factors (weak companies diversify)</li><li>Measurement error</li></ul></div>"
+  },
+  {
+    "id": "eq1-adjust",
+    "topic": "Situational adjustments",
+    "front": "Name the situational adjustments to a model value.",
+    "back": "<div class=\"ans\"><ul><li><strong>Control premium</strong>: a controlling stake</li><li><strong>Lack of marketability discount</strong>: no public market</li><li><strong>Illiquidity discount</strong>: public but thinly traded</li><li><strong>Blockage factor</strong>: a large, non-controlling block</li></ul></div>"
+  },
+  {
+    "id": "eq1-report",
+    "topic": "Research reports",
+    "front": "What makes a research report effective?",
+    "back": "<div class=\"ans\"><ul><li>Timely, clear, objective, with key assumptions identified</li><li><strong>Separates fact from opinion</strong></li><li>Consistent analysis, forecasts, valuation and recommendation</li><li>Enough detail to critique the valuation; key risks; conflicts disclosed</li></ul></div>",
+    "gap": "A good company is not necessarily a good investment: price matters."
+  }
+];
+
+flashDeck({
+  key: "cfa-c5-m1-review",
+  source: "CFA L2 Equity \u00b7 M1 Equity Valuation \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>
