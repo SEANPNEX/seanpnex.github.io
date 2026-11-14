@@ -1,105 +1,75 @@
 # Publicly Traded Real Estate Securities
 
-This module (2026 title: *Investments in Real Estate through Publicly Traded Securities*) covers the types of listed real estate securities (REITs, REOCs, MBS), why NAVPS is used and how to estimate it from cash NOI, FFO and AFFO, valuing a REIT share with NAV, P/FFO and P/AFFO, and dividend discount/DCF models, and the pros and cons of public vs private real estate.
-
-* [Learning Outcomes and Key Terms](#learning-outcomes-and-key-terms)
-* [Types of Publicly Traded Real Estate Securities](#types-of-publicly-traded-real-estate-securities): REITs, REOCs, MBS; REIT advantages and disadvantages
-* [Valuation: Net Asset Value](#net-asset-value): NAVPS calculation, premium/discount, limitations
-* [Valuation: Relative Value](#relative-value-price-multiple): FFO, AFFO, P/FFO, P/AFFO, EV/EBITDA
-* [Valuation: Dividend Discount / DCF](#dividend-discount-and-dcf)
-* [Mini-Case: Capitol Shopping Center REIT](#mini-case-capitol-shopping-center-reit)
-* [Comparison of Private and Public Real Estate Investment](#comparison-of-private-and-public-real-estate-investment)
-* [Quick Recall](#quick-recall)
-
-## Learning Outcomes and Key Terms
-
-The candidate should be able to:
-
-* Discuss types of publicly traded real estate securities
-* Justify the use of net asset value per share (NAVPS) in valuation of publicly traded real estate securities and estimate NAVPS based on forecasted cash net operating income
-* Describe the use of funds from operations (FFO) and adjusted funds from operations (AFFO) in REIT valuation
-* Calculate and interpret the value of a REIT share using the net asset value, relative value (price-to-FFO and price-to-AFFO), and discounted cash flow approaches
-* Explain advantages and disadvantages of investing in real estate through publicly traded securities compared to private vehicles
+The types of listed real estate securities (REITs, REOCs, MBS); why NAV per share is used and how to estimate it from cash NOI; FFO and AFFO; valuing a REIT share with NAV, P/FFO and P/AFFO, and dividend discount or DCF models; and public vs private real estate. (2026 title: *Investments in Real Estate through Publicly Traded Securities*.)
 
 | Term | Meaning |
 | --- | --- |
-| **NAVPS** | (Market value of assets − market value of liabilities) / shares |
+| **NAVPS** | (Market value of assets − market value of liabilities) ÷ shares |
 | **Cash NOI** | NOI with non-cash (straight-line) rent removed |
-| **Non-cash rent** (straight-line rent adjustment) | Straight-line (average contractual) rent booked as revenue − cash rent actually received |
-| **FFO** | Net income + depreciation + amortization − net gains on sale of real property |
+| **Non-cash rent** | Straight-line (average contractual) rent booked as revenue − cash rent actually received |
+| **FFO** | Net income + depreciation + amortization − net gains on sales of real property |
 | **AFFO** (FAD, CAD) | FFO − non-cash rent − recurring (maintenance-type) capex and leasing costs |
-| **TRS** | Taxable REIT subsidiary for non-qualifying activities |
+| **TRS** | Taxable REIT subsidiary, for non-qualifying activities |
 
-## Types of Publicly Traded Real Estate Securities
+## Types of Listed Real Estate Securities
 
-* **REITs**: companies that own, finance and (to a limited extent) develop income-producing real estate; must distribute **90%–100%** of taxable income. Dividends are deductible (or the REIT is simply exempt), so there is effectively no corporate income tax.
-  * **Equity REITs** own property; **mortgage REITs** make or invest in real estate loans
-* **REOCs**: ordinary **taxable** real estate companies. A business is a REOC rather than a REIT if it:
-  * is in a country without a REIT regime,
-  * engages largely in development of **for-sale** property, or
-  * offers other non-qualifying services (brokerage, third-party property management)
-* **MBS**: securitized rights to cash flows from mortgage pools (CMBS: commercial, ~100 loans down to one large loan; RMBS: residential, thousands of loans). The market value of real estate **debt** securities (especially RMBS) far exceeds that of listed real estate equity.
-* Private versions also exist (private REITs and REOCs, private mortgages and debt).
+* **REITs** own, finance and (to a limited extent) develop income-producing real estate. They must distribute **90%–100%** of taxable income; dividends are deductible (or the REIT is simply exempt), so there is effectively no corporate income tax. **Equity REITs** own property; **mortgage REITs** make or invest in real estate loans.
+* **REOCs** are ordinary **taxable** real estate companies. A business is a REOC rather than a REIT if it is in a country without a REIT regime, mainly develops property **for sale**, or offers other non-qualifying services (brokerage, third-party property management).
+* **MBS** are securitized claims on mortgage pools: CMBS (commercial, from about 100 loans down to one large loan) and RMBS (residential, thousands of loans). The market value of real estate **debt** securities (especially RMBS) far exceeds that of listed real estate equity.
+* Private versions exist too (private REITs and REOCs, private mortgages and debt).
 
-### REITs
+### REIT Rules
 
-In most countries REITs are required to:
+In most countries, a REIT must:
 
-* Distribute **90%–100%** of otherwise taxable earnings
-* Invest at least **75%** of assets in real estate
-* Derive at least **75%** of income from real estate rental income or interest on mortgages
+* Distribute **90%–100%** of otherwise taxable earnings.
+* Invest at least **75%** of its assets in real estate.
+* Earn at least **75%** of its income from rent or mortgage interest.
 
-Other possible rules: minimum shareholders, ownership concentration limits (US: at least 100 shareholders and the **5/50 rule**, i.e., five or fewer holders cannot own more than 50%), limits on non-rental income, development, leverage.
+Other possible rules: a minimum number of shareholders and limits on concentration (in the US, at least 100 shareholders, and the **5/50 rule**: five or fewer holders can't own more than 50%), and limits on non-rental income, development and leverage.
 
-* Most US REITs are **self-managed and self-advised** (fewer conflicts). **Externally managed** REITs pay fees to an adviser, which has an incentive to grow assets if fees are asset-based and may push affiliated services.
-* REIT structures dominate in North America (98% of listed real estate equity), REOCs are more common in Europe (59%) and Asia Pacific (51%) because of tax regimes.
+* Most US REITs are **self-managed and self-advised** (fewer conflicts). **Externally managed** REITs pay fees to an adviser, which may want to grow assets if fees are asset-based, and may push affiliated services.
+* REITs dominate in North America (98% of listed real estate equity); REOCs are more common in Europe (59%) and Asia Pacific (51%), because of tax regimes.
 
-Benefit of REITs investment (vs private real estate):
-
-* Liquidity
-* Transparency
-* Diversification of property holdings (type, geography, tenant credit)
-* High-quality portfolios
-* Active professional management (economies of scale)
-* Potentially stable income (sometimes monthly distributions)
-* Tax efficiency (single taxation)
-
-Disadvantages:
-
-* Lack of retained earnings: must keep raising external capital to grow
-* Regulatory costs of a public company
-* Reduced portfolio diversification benefits: share prices partly follow the stock market
-* Limited in types of assets owned → non-qualifying activities go into a **TRS**, which pays tax
+| Advantages of REITs (vs private real estate) | Disadvantages |
+| --- | --- |
+| Liquidity | No retained earnings: must keep raising external capital to grow |
+| Transparency | Regulatory costs of a public company |
+| Diversified property holdings (type, geography, tenant credit) | Less diversification benefit: share prices partly follow the stock market |
+| High-quality portfolios | Limited asset types: non-qualifying activities go into a taxed **TRS** |
+| Professional management (economies of scale) | |
+| Potentially stable income (sometimes monthly) | |
+| Tax efficiency (single taxation) | |
 
 ## Valuation
 
-Three approaches: asset value (NAV), price multiples (P/FFO, P/AFFO, EV/EBITDA), and discounted cash flow (DDM/DCF).
+Three approaches: asset value (NAV), price multiples (P/FFO, P/AFFO, EV/EBITDA), and discounted cash flow (DDM or DCF).
 
 ### Net Asset Value
 
-* **BVPS** uses depreciated historical cost; **NAVPS** uses market values and is the relevant measure for REITs and REOCs.
+* **BVPS** uses depreciated historical cost; **NAVPS** uses market values, and is the relevant measure for REITs and REOCs.
 * NAVPS is the **primary** valuation measure in **Europe and Asia**; US analysts more often use P/FFO.
-* NAV is the largest component of intrinsic value; it should also reflect non-asset income (fees), non-real-estate assets (cash), contingent liabilities, and value added by management.
-* Price < NAVPS suggests undervaluation, price > NAVPS overvaluation, unless justified (management quality, leverage, governance, expected events). REITs below NAV or highly levered find it harder to raise equity; issuing below NAV is **dilutive**.
-
-**Accounting**: under IFRS, investment property can use the **fair value model** (changes go through net income) or the **cost model** (must disclose fair value). Under US GAAP most owners use historical cost, which understates long-held appreciating assets and can overstate depreciation → book values must be replaced by market estimates.
+* NAV is the largest part of intrinsic value; it should also reflect income not from assets (fees), non-real-estate assets (cash), contingent liabilities, and value added by management.
+* A price below NAVPS suggests undervaluation, and above it overvaluation, unless justified (management, leverage, governance, expected events). REITs below NAV, or highly levered, find it harder to raise equity: issuing shares below NAV is **dilutive**.
+* **Accounting**: under IFRS, investment property can use the **fair value model** (changes go through net income) or the **cost model** (fair value disclosed). Under US GAAP, most owners use historical cost, which understates long-held appreciating assets and can overstate depreciation, so book values must be replaced with market estimates.
 
 $$
-NAVPS=\frac{\text{MV of assets}-\text{MV of liabilities}}{\text{Shares outstanding}}
+NAVPS=\frac{\text{Assets}-\text{Liabilities}}{\text{Shares}}
 $$
 
-Steps:
+with assets and liabilities at market value.
 
-1. Start with NOI (gross rental revenue − vacancy and collection loss − operating expenses; before interest, income tax, depreciation and amortization). Remove **non-cash rent**, add a full year for mid-year acquisitions → pro forma **cash NOI**; grow it one year → next-12-month cash NOI.
-2. Value operating real estate by capitalizing: $\text{Value}=\frac{NOI_1}{\text{cap rate}}$, cap rate from comparable transactions.
-3. Add other tangible assets at book: cash, accounts receivable, prepaid/other, **land held for development** (usually book, since land is hard to value) → **gross asset value**. Exclude goodwill, deferred financing costs and deferred tax assets.
-4. Subtract debt (at market value if materially different) and other liabilities; **exclude deferred tax liabilities** (an accounting provision, not an economic liability).
+**Steps:**
+
+1. Start with NOI (gross rent − vacancy and collection losses − operating expenses; before interest, tax, depreciation and amortization). Remove **non-cash rent**, and add a full year for mid-year acquisitions → pro forma **cash NOI**; grow it one year → next-12-month cash NOI.
+2. Value the operating real estate by capitalizing that NOI: value = $NOI_1$ ÷ cap rate, with the cap rate from comparable transactions.
+3. Add other tangible assets at book value: cash, receivables, prepaid and other assets, and **land held for development** (usually at book, as land is hard to value) → **gross asset value**. Exclude goodwill, deferred financing costs and deferred tax assets.
+4. Subtract debt (at market value, if materially different) and other liabilities, but **not deferred tax liabilities** (an accounting provision, not an economic liability).
 5. Divide by shares outstanding.
 
-> [!note]
-> NAV is a **pre-tax** value: taxes on liquidation are ignored because it's unclear how the company or assets would be sold.
+NAV is a **pretax** value: taxes on liquidation are ignored, because it's unclear how the company or its assets would be sold.
 
-**Textbook example (Exhibit 2, USD thousands):**
+**Example (USD thousands).**
 
 | Step | Amount |
 | --- | --- |
@@ -109,190 +79,188 @@ Steps:
 | Pro forma cash NOI (last 12 months) | 267,299 |
 | Plus: next-12-month growth (1.5%) | 4,009 |
 | **Next-12-month cash NOI** | **271,308** |
-| ÷ Cap rate 7.00% → operating real estate | 3,875,829 |
-| + Cash 65,554 + land for development 34,566 + receivables 45,667 + prepaid/other 23,456 | 169,243 |
+| ÷ 7.00% cap rate → operating real estate | 3,875,829 |
+| + Cash 65,554, land for development 34,566, receivables 45,667, prepaid and other 23,456 | 169,243 |
 | **Gross asset value** | **4,045,072** |
-| − Total debt 1,010,988 − other liabilities 119,886 | (1,130,874) |
+| − Total debt 1,010,988, other liabilities 119,886 | (1,130,874) |
 | **NAV** | **2,914,198** |
-| ÷ 55,689 shares → **NAVPS** | **$52.33** |
+| ÷ 55,689 shares → **NAVPS** | **USD52.33** |
 
-**Textbook practice question:** NOI $115m, book value $1,005m, market value of debt $505m, cap rate 7%, 100m shares → property value $115/0.07=1{,}642.9$m; NAV $=1{,}642.9-505=1{,}137.9$m → **NAVPS $11.38** (not $10.05 book per share, not $16.42 before debt).
+**Example.** NOI USD115m, book value USD1,005m, market value of debt USD505m, cap rate 7%, 100m shares → property value 115/0.07 = USD1,642.9m; NAV = 1,642.9 − 505 = USD1,137.9m → **NAVPS USD11.38** (not USD10.05, the book value per share, nor USD16.42, before debt).
 
 > [!IMPORTANT]
-> Higher cap rate → lower property value → **lower NAV**. Higher NOI growth → higher NAV. Deferred tax liabilities do **not** reduce NAV. Old land carried at book can be marked up to current value.
+> A higher cap rate → a lower property value → **lower NAV**. Faster NOI growth → higher NAV. Deferred tax liabilities do **not** reduce NAV. Old land carried at book value can be marked up to its current value.
 
-Ways to estimate NAV: (1) cap rate × NOI, (2) value per square foot/unit, (3) appraised values disclosed (IFRS), adjusted if the analyst disagrees.
+NAV can be estimated from (1) cap rate and NOI, (2) value per square foot or unit, or (3) appraised values disclosed under IFRS, adjusted if the analyst disagrees.
 
-Considerations:
+**Limitations of NAV:**
 
-* Cap rates and values per ft² come from private-market transactions; private buyers' discount rates may differ from REIT investors'
-* NAV reflects value to a **private market buyer**; stock investors focus on near-term changes in income and asset value, and appraisal-based NAV lags
-* REITs have traded at premiums and discounts of more than **25%** to NAV
-* NAV implicitly treats the REIT as a **static pool of assets**, not a going concern: it ignores management's ability to add or destroy value (a 10% premium can be justified by a stronger team)
-* NAV becomes **subjective** when property markets are illiquid (few transactions) or the REIT owns hundreds of properties; large-portfolio premium or discount; land, unique properties, service businesses and JVs are hard to value
+* Cap rates and values per ft² come from private-market transactions, and private buyers' discount rates may differ from REIT investors'.
+* NAV reflects value to a **private buyer**; stock investors focus on near-term changes in income and asset values, and appraisal-based NAV lags.
+* REITs have traded at premiums and discounts of more than **25%** to NAV.
+* NAV treats the REIT as a **static pool of assets**, not a going concern: it ignores management's ability to add or destroy value (a stronger team can justify a 10% premium).
+* NAV becomes **subjective** when property markets are illiquid (few transactions) or the REIT owns hundreds of properties; there may be a premium or discount for a large portfolio; and land, unique properties, service businesses and joint ventures are hard to value.
 
-Why REITs **should** trade at a premium to NAV when management creates value: daily liquidity (lower required return than private markets) and the public market attracts above-average management.
+REITs **should** trade at a premium to NAV when management creates value: daily liquidity lowers the required return relative to private markets, and public markets attract above-average managers. In practice, NAV is often used **relatively**: buy the REIT with the smallest premium (or sell the one with the smallest discount), or back out **implied cap rates** from share prices to compare similar portfolios.
 
-In practice NAV is often used as a **relative** tool: buy the REIT with the smallest premium (or sell the one with the smallest discount), or back out **implied cap rates** from the current price to compare similar portfolios.
+### Price Multiples
 
-### Relative Value (Price Multiple)
+P/FFO and P/AFFO (and, less often, EV/EBITDA) are used for relative valuation, usually on next-year estimates, against history, peers of the same property type, or all REITs.
 
-P/FFO or P/AFFO are used in relative valuation (EV/EBITDA to a lesser extent), usually on year-ahead estimates, vs history, peers in the same property type, or all REITs.
-
-#### FFO
+**Funds from operations:**
 
 $$
-FFO=\text{Net income}+\text{Depreciation}+\text{Amortization}-\text{Net gains on sale of real property}
+\begin{aligned}
+FFO={}&\text{Net income}+\text{Depreciation}\\
+&+\text{Amortization}\\
+&-\text{Gains on property sales}
+\end{aligned}
 $$
 
-Fuller (Nareit) definition: GAAP net income + losses (− gains) from property sales + real estate depreciation and amortization + real estate impairments and write-downs.
+The fuller (Nareit) definition: GAAP net income + losses (− gains) on property sales + real estate depreciation and amortization + real estate impairments and write-downs.
 
-* Depreciation is added back because real estate tends to hold or gain value; book depreciation doesn't reflect economic reality
-* Gains/losses on sales of depreciated property are not sustainable income
-* Amortization add-back includes leasing commissions, tenant improvements and allowances
-* FFO is **not** cash flow: it ignores capex needed to sustain cash flow and financing flows
-* Most common metric in the **US** (growing in Asia Pacific); readily available from data providers
+* Depreciation is added back because real estate tends to hold or gain value: book depreciation doesn't reflect economic reality.
+* Gains or losses on selling depreciated property aren't sustainable income.
+* The amortization add-back includes leasing commissions, tenant improvements and allowances.
+* FFO is **not** cash flow: it ignores the capex needed to sustain cash flow, and financing flows.
+* It's the most common metric in the **US** (and growing in Asia Pacific), and readily available from data providers.
 
-#### AFFO
+**Adjusted funds from operations:**
 
 $$
-AFFO=FFO-\text{Non-cash rent}-\text{Recurring maintenance capex and leasing costs}
+\begin{aligned}
+AFFO={}&FFO-\text{Non-cash rent}\\
+&-\text{Recurring capex}
+\end{aligned}
 $$
 
-* Minus non-cash (straight-line) rent: escalating leases make booked rent exceed cash rent in early years
-* Minus recurring maintenance capex and leasing costs (leasing commissions, tenant improvement allowances)
+* Recurring capex here includes leasing costs.
+* Subtract non-cash (straight-line) rent: with escalating leases, booked rent exceeds cash rent in the early years.
+* Subtract recurring maintenance capex and leasing costs (leasing commissions, tenant improvement allowances).
+* AFFO (also called funds available for distribution, **FAD**, or cash available for distribution, **CAD**) is a better measure of **economic income** and **dividend-paying capacity** than FFO. But it's more subjective (capex is lumpy), methods vary, and data providers generally **don't compile** AFFO estimates.
 
-> [!note]
->
-> AFFO is also known as funds available for distribution (**FAD**) or cash available for distribution (**CAD**). It is a better measure of **economic income** and of **dividend-paying capacity** than FFO, but it is more subjective (capex timing is lumpy), methods vary, and data providers generally **don't compile** AFFO estimates.
-
-**Textbook example (Office Equity REIT, SGD thousands, 55,689 shares):**
+**Example (Office Equity REIT, SGD thousands, 55,689 shares).**
 
 | FFO | | AFFO | |
 | --- | --- | --- | --- |
 | Net income | 160,638 | FFO | 261,738 |
 | + Depreciation and amortization | 76,100 | − Non-cash (straight-line) rent | (21,103) |
-| + Losses from sale of depreciable real estate | 25,000 | − Recurring maintenance capex and leasing commissions | (55,765) |
+| + Losses on sales of depreciable real estate | 25,000 | − Recurring maintenance capex and leasing commissions | (55,765) |
 | **FFO** | **261,738** | **AFFO** | **184,870** |
-| FFO/share | 4.70 | AFFO/share | 3.32 |
+| FFO per share | 4.70 | AFFO per share | 3.32 |
 
-**Textbook practice question (working back from AFFO):** AFFO $4,000,000, AFFO/share $5.00, non-cash rent $215,000, recurring capex $700,000, price $80 → shares $=800{,}000$; FFO $=4{,}000{,}000+215{,}000+700{,}000=4{,}915{,}000$ → FFO/share $6.14$ → **P/FFO = 13.0×**. (Do **not** add depreciation back to AFFO.)
+**Example (working back from AFFO).** AFFO USD4,000,000; AFFO per share USD5.00; non-cash rent USD215,000; recurring capex USD700,000; price USD80 → 800,000 shares; FFO = 4,000,000 + 215,000 + 700,000 = 4,915,000 → FFO per share USD6.14 → **P/FFO 13.0×**. (Don't add depreciation back to AFFO.)
 
-Drivers of P/FFO, P/AFFO and EV/EBITDA differences:
+**What drives differences in P/FFO, P/AFFO and EV/EBITDA:**
 
-1. **Expected growth in FFO/AFFO** → higher multiple (development success, supply-constrained prime markets such as New York or London, management, lease structure)
-2. **Risk of the underlying real estate** (asset type, quality, age, leases, location): apartments trade at higher multiples than hotels; young, well-maintained portfolios above older ones needing capex
-3. **Capital structure and access to capital**: higher leverage → higher required return → **lower** multiples; may create a stock overhang
+1. **Expected growth in FFO or AFFO** → a higher multiple (development success, supply-constrained prime markets such as New York or London, management, lease structure).
+2. **Risk of the real estate** (type, quality, age, leases, location): apartments trade at higher multiples than hotels; young, well-maintained portfolios above older ones needing capex.
+3. **Capital structure and access to capital**: higher leverage → a higher required return → **lower** multiples; it may also create a stock overhang.
 
 > [!IMPORTANT]
-> FFO and AFFO are **levered** (after interest), so P/FFO is lower for more levered REITs, all else equal. EV/EBITDA is unlevered, and EBITDA/EV approximates the cap rate (NOI/value). P/FFO is the REIT equivalent of P/E; P/AFFO is a quick "cash flow" multiple.
+> FFO and AFFO are **levered** (after interest), so P/FFO is lower for a more levered REIT, all else equal. EV/EBITDA is unlevered, and EBITDA/EV approximates the cap rate (NOI ÷ value). P/FFO is the REIT version of P/E; P/AFFO is a quick cash flow multiple.
 
-Advantages of P/FFO and P/AFFO:
+| Advantages of P/FFO and P/AFFO | Disadvantages |
+| --- | --- |
+| Widely accepted earnings multiples, so REITs can be compared with other investments | Miss the value of non-income-producing assets (land held for development, vacant buildings, development projects), underused assets and below-market rents |
+| FFO estimates are readily available | P/FFO ignores recurring capex; P/AFFO includes it, but AFFO estimates vary widely |
+| Can be combined with growth and leverage for a deeper comparison | One-time items and new revenue recognition rules complicate calculation and comparison |
 
-* Widely accepted earnings-type multiples, so REITs can be compared with other investments
-* FFO estimates are readily available
-* Can be combined with growth and leverage to deepen the comparison
+### Dividend Discount and DCF Models
 
-Disadvantages:
+REITs pay out most of their income, so dividend discount and DCF models suit them. Use **two- or three-stage** DDMs (near-, intermediate- and long-term growth); a DCF uses intermediate-term cash flow projections and a terminal value from historical cash flow multiples.
 
-* Miss value of non-income-producing assets (land held for development, vacant buildings, development projects), underused assets, and below-market rents
-* P/FFO ignores recurring capex; P/AFFO includes it but AFFO estimates vary widely
-* One-time items and new revenue recognition rules complicate calculation and comparison
-
-### Dividend discount and DCF
-
-REITs pay out most of their income, so dividend discount and DCF models fit well. Use **two- or three-step** DDMs (near-, intermediate- and long-term growth); DCF uses intermediate-term cash flow projections and a terminal value from historical cash flow multiples.
-
-**Textbook practice question (Baldwin REIT, two-step DDM):** CAPM $r=4\%+0.9\times5\%=8.5\%$; $D_1=1.00$, $D_2=1.06$, growth 5% from year 3.
+**Example (Baldwin REIT, two-stage DDM).** CAPM: $r$ = 4% + 0.9 × 5% = 8.5%; $D_1$ = 1.00, $D_2$ = 1.06, then 5% growth from year 3.
 
 $$
-D_3=1.06\times1.05\approx1.11,\quad P_2=\frac{1.11}{0.085-0.05}=31.71,\quad V_0=\frac{1.00}{1.085}+\frac{1.06+31.71}{1.085^2}=\$28.76
+D_3=1.06\times1.05\approx1.11
 $$
 
-> [!note]
-> Textbook issue (rounding): the solution rounds $D_3$ to 1.11; with the unrounded $D_3=1.113$, $P_2=31.80$ and $V_0\approx\$28.83$. Pick the closest answer.
+$$
+P_2=\frac{1.11}{0.085-0.05}=31.71
+$$
 
-**Textbook practice question (REIT C):** $r=8\%$, $D_1=4.00$, growth 4.5% in years 2–3, 4% after → $D_2=4.18$, $D_3=4.37$, $D_4=4.54$; $P_3=4.54/(0.08-0.04)=113.57$; $V_0=\frac{4.00}{1.08}+\frac{4.18}{1.08^2}+\frac{4.37+113.57}{1.08^3}=$ **$100.91**.
+$$
+V_0=\frac{1.00}{1.085}+\frac{1.06+31.71}{1.085^2}=28.76
+$$
 
-**Textbook practice questions (other methods):**
+**Example (REIT C).** $r$ = 8%; $D_1$ = 4.00; growth 4.5% in years 2–3, then 4% → $D_2$ = 4.18, $D_3$ = 4.37, $D_4$ = 4.54; $P_3$ = 4.54/(0.08 − 0.04) = 113.57.
 
-* NAV (REIT A): cash NOI 350,000 / 0.07 = 5,000,000 + cash and receivables 514,500 − debt and liabilities 2,014,000 = 3,500,500 / 56,100 shares = **$62.40**
-* P/FFO (REIT B): FFO/share $290{,}612/67{,}900=4.28$ × subsector 13.5× = **$57.78**
-* P/AFFO (REIT A): AFFO $=316{,}965-25{,}991-63{,}769=227{,}205$ → $4.05/share × 18.3× = **$74.12**
+$$
+\begin{aligned}
+V_0&=\frac{4.00}{1.08}+\frac{4.18}{1.08^2}+\frac{4.37+113.57}{1.08^3}\\
+&=100.91
+\end{aligned}
+$$
+
+**Examples (other methods).**
+
+* NAV (REIT A): cash NOI 350,000 ÷ 0.07 = 5,000,000, + cash and receivables 514,500, − debt and liabilities 2,014,000 = 3,500,500, ÷ 56,100 shares = **USD62.40**.
+* P/FFO (REIT B): FFO per share 290,612/67,900 = 4.28 × the subsector's 13.5× = **USD57.78**.
+* P/AFFO (REIT A): AFFO = 316,965 − 25,991 − 63,769 = 227,205 → USD4.05 a share × 18.3× = **USD74.12**.
 
 ## Mini-Case: Capitol Shopping Center REIT
 
-Capitol Shopping Center REIT (CSC) owns grocery- and drugstore-anchored shopping centres in the Washington, DC area (defensive tenants, government employment, strict zoning limiting new supply).
+Capitol Shopping Center REIT (CSC) owns grocery- and drugstore-anchored shopping centers around Washington, DC (defensive tenants, government employment, strict zoning that limits new supply).
 
 | Year 2 (USD thousands) | |
 | --- | --- |
 | Net income | 124,454 |
 | + Depreciation and amortization | 115,110 |
-| **FFO** (FFO/share 3.95) | **239,564** |
-| − Non-cash rents (change in deferred rent receivable) | (5,112) |
+| **FFO** (3.95 a share) | **239,564** |
+| − Non-cash rent (change in deferred rent receivable) | (5,112) |
 | − Recurring capex | (20,006) |
-| **AFFO** (AFFO/share 3.54) | **214,446** |
-| Dividend/share 2.80 → payout on FFO 70.9%, on AFFO 79.1% | |
+| **AFFO** (3.54 a share) | **214,446** |
+| Dividend 2.80 a share → payout 70.9% of FFO, 79.1% of AFFO | |
 
-* Balance sheet vs peers: debt/total market cap 40.5% (peers 47.1%), interest coverage 3.38× (peers 2.35×), net debt/EBITDA 5.01× (peers 7.10×) → stronger balance sheet.
-* Price $69.85, Yr3E FFO 4.23 → P/FFO **16.5×** vs 14.5× for shopping centre REITs (13.8% premium); P/AFFO 18.6× vs 16.1×.
-* Premium is consistent with steadier growth and lower leverage, but CSC may have less "upside" as fundamentals recover because it never saw the decline peers did.
-* Different methods give different values: re-examine assumptions, then use the most reliable method, a midpoint, or a weighted average.
+* Balance sheet vs peers: debt/total market cap 40.5% (peers 47.1%), interest coverage 3.38× (2.35×), net debt/EBITDA 5.01× (7.10×) → a stronger balance sheet.
+* Price USD69.85 and year-3 FFO estimate 4.23 → P/FFO **16.5×**, vs 14.5× for shopping center REITs (a 13.8% premium); P/AFFO 18.6× vs 16.1×.
+* The premium fits its steadier growth and lower leverage, but CSC may have less upside as fundamentals recover, because it never fell as far as its peers.
+* Different methods give different values: re-examine the assumptions, then use the most reliable method, a midpoint, or a weighted average.
 
 > [!IMPORTANT]
-> Case-style conclusions from the textbook questions:
-> * In a downturn with few transactions, NAV becomes **less** useful (more subjective); a defensive REIT's relative P/FFO may rise vs peers.
-> * Land held for development produces no FFO but has value → justifies a **higher** multiple.
+>
+> * In a downturn with few transactions, NAV becomes **less** useful (more subjective), and a defensive REIT's P/FFO may rise relative to peers.
+> * Land held for development produces no FFO but has value, which justifies a **higher** multiple.
 > * Higher required going-in cap rates → **lower** NAV.
-> * Lower long-term growth (e.g., zoning allows more new supply) → lower DDM value.
+> * Lower long-term growth (e.g., zoning that allows more new supply) → a lower DDM value.
 
-## Comparison of Private and Public Real Estate Investment
+## Public vs Private Real Estate
 
-Both give exposure to property fundamentals, a potential inflation hedge, attractive risk-adjusted returns and some diversification; many institutions hold both. Listed real estate's liquidity allows short-term views and arbitrage between public and private valuations (going private when shares trade well below NAV; IPOs when values are high).
+Both give exposure to property fundamentals, a potential inflation hedge, attractive risk-adjusted returns and some diversification, and many institutions hold both. Listed real estate's liquidity allows short-term views, and arbitrage between public and private values (going private when shares trade well below NAV; IPOs when values are high).
 
-### Advantage
+| Advantages of private (direct) real estate | Advantages of public real estate (equity REITs and REOCs) |
+| --- | --- |
+| Direct exposure to real estate fundamentals | Tracks real estate fundamentals over the long term |
+| Stable returns, low volatility | Liquidity |
+| Property performance drives returns | Professional management |
+| Low correlation with other assets | Potential inflation hedge |
+| Potential inflation hedge | Potential for strong alignment of interests |
+| Control (direct holdings, separate accounts) | Tax-efficient structure, no double taxation (REITs only) |
+| Potential illiquidity premium | Exposure to diversified portfolios |
+| Wide range of strategies, few restrictions | Access to diverse sectors (data centers, medical offices, self-storage) |
+| Tax benefits (accelerated depreciation; tax deferral when sale proceeds are reinvested, in some markets) | Low minimum investment and entry/exit costs |
+| | No special investor qualifications |
+| | Limited liability |
+| | More regulation and investor protection; high transparency |
 
-| **Private Real Estate** (direct)            | **Public Real Estate** (equity REITs and REOCs)             |
-| ------------------------------------------- | ----------------------------------------------------------- |
-| Direct exposure to real estate fundamentals | Tracks real estate fundamentals over the long term          |
-| Stable returns / low volatility             | Liquidity                                                   |
-| Property performance drives returns         | Access to professional management                           |
-| Low correlations with other asset classes   | Potential inflation hedge                                   |
-| Potential inflation hedge                   | Potential for strong alignment of interests                 |
-| Control (direct real estate and separate accounts) | Tax-efficient structure avoids double taxation (REITs only) |
-| Potential to earn illiquidity premium       | Potential for exposure to diversified portfolios            |
-| Wide variety of strategies / few restrictions | Access to diverse sectors, including data centers, medical offices, and self-storage |
-| Tax benefits (e.g., accelerated depreciation, deferred taxes in some markets when sales are reinvested in other real estate) | Low investment requirements |
-|                                             | Low entry/exit costs                                        |
-|                                             | No special investor qualifications beyond equity investing generally |
-|                                             | Limited liability                                           |
-|                                             | Greater regulation and investor protections                 |
-|                                             | High transparency                                           |
-
-### Disadvantage
-
-| **Private Real Estate**                                      | **Public Real Estate**                                       |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Low liquidity                                                | High volatility (compared with private real estate)          |
-| Difficult-to-exit funds; redemption activity is high         | Equity market correlation is high in short term              |
-| High fees and expenses                                       | REIT structure limits possible activities                    |
-| Appraisal valuations commonly lag changes in market conditions | Stock prices may not reflect underlying property values (i.e., trade at discount to NAV) |
-| Fewer regulations to protect investors                       | Dividends taxed at high current income tax rates             |
-| Some managers focus on asset gathering over high profitability | Regulatory compliance costs are prohibitive for small companies |
-| High investment minimums and high net-worth requirements     | Poor governance/mis-aligned interests can penalize stock performance |
-| Low transparency                                             | Equity markets often penalize companies with high leverage   |
-| High returns often derived from leverage                     |                                                              |
+| Disadvantages of private real estate | Disadvantages of public real estate |
+| --- | --- |
+| Low liquidity; funds hard to exit; heavy redemptions | Higher volatility than private real estate |
+| High fees and expenses | High short-term correlation with equities |
+| Appraisals lag market conditions | The REIT structure limits activities |
+| Less investor protection; low transparency | Share prices may not reflect property values (discounts to NAV) |
+| Some managers focus on gathering assets over profitability | Dividends taxed at high income tax rates |
+| High minimums and wealth requirements | Compliance costs prohibitive for small companies |
+| High returns often come from leverage | Poor governance or misaligned interests can hurt performance |
+| | Equity markets often penalize high leverage |
 
 > [!IMPORTANT]
-> * Most real estate expertise needed: **direct single-property** investment.
-> * Most operating and financial flexibility: **REOC** (no payout or activity limits) → best for maximum growth; REITs and REOCs best for liquidity.
-> * Advantage of REITs over direct property: diversification of **property holdings**, not of the overall portfolio.
+>
+> * The most real estate expertise is needed for **direct single-property** investment.
+> * The most operating and financial flexibility: **REOCs** (no payout or activity limits) → best for maximum growth; REITs and REOCs are best for liquidity.
+> * The advantage of REITs over direct property is diversification of **property holdings**, not of the overall portfolio.
 
-## Quick Recall
-
-* REIT: pay out 90–100%, ≥75% assets in real estate, ≥75% income from rent/mortgage interest; REOC: taxable, flexible, development for sale.
-* NAVPS: cash NOI₁ / cap rate + other tangible assets − debt and liabilities (ignore goodwill, DTA, DTL) ÷ shares. Higher cap rate → lower NAV.
-* NAV: static, private-market, subjective in illiquid markets; often used relatively (implied cap rates).
-* FFO = NI + D&A − gains on property sales; AFFO = FFO − non-cash rent − recurring capex/leasing costs; AFFO = better economic income and dividend capacity.
-* Multiples driven by growth, property risk, leverage; FFO is levered.
-* DDM: two- or three-step with CAPM discount rate.
+> [!NOTE]
+>
+> **Textbook rounding.** The Baldwin solution rounds $D_3$ to 1.11; unrounded ($D_3$ = 1.113), $P_2$ = 31.80 and $V_0$ ≈ USD28.83. Pick the closest answer.

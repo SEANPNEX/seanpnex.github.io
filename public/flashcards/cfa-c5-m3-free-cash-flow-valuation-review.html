@@ -39,20 +39,20 @@ const CARDS = [
     "id": "eq3-from-ni",
     "topic": "FCFF from NI and CFO",
     "front": "Write FCFF from net income and from CFO.",
-    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}FCFF={}&NI+NCC+Int(1-t)\\\\&-FCInv-WCInv\\end{aligned}$$</div><div class=\"eq-block\">$$FCFF=CFO+Int(1-t)-FCInv$$</div></div>",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}FCFF={}&NI+NCC\\\\&+Int(1-t)\\\\&-FCInv-WCInv\\end{aligned}$$</div><div class=\"eq-block\">$$\\begin{aligned}FCFF={}&CFO+Int(1-t)\\\\&-FCInv\\end{aligned}$$</div></div>",
     "gap": "Add back after-tax interest only if interest paid was deducted in CFO (IFRS may put it in financing)."
   },
   {
     "id": "eq3-from-ebit",
     "topic": "FCFF from EBIT and EBITDA",
     "front": "Write FCFF from EBIT and from EBITDA. Why does the EBITDA version add only \\(Dep\\times t\\)?",
-    "back": "<div class=\"ans\"><div class=\"eq-block\">$$FCFF=EBIT(1-t)+Dep-FCInv-WCInv$$</div><div class=\"eq-block\">$$\\begin{aligned}FCFF={}&EBITDA(1-t)+Dep\\cdot t\\\\&-FCInv-WCInv\\end{aligned}$$</div><p>Depreciation was never subtracted from EBITDA; only its tax shield is added.</p></div>"
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}FCFF={}&EBIT(1-t)+Dep\\\\&-FCInv-WCInv\\end{aligned}$$</div><div class=\"eq-block\">$$\\begin{aligned}FCFF={}&EBITDA(1-t)\\\\&+Dep\\cdot t\\\\&-FCInv-WCInv\\end{aligned}$$</div><p>Depreciation was never subtracted from EBITDA; only its tax shield is added.</p></div>"
   },
   {
     "id": "eq3-fcfe",
     "topic": "FCFE formulas",
     "front": "Write FCFE from FCFF, from NI and from CFO.",
-    "back": "<div class=\"ans\"><div class=\"eq-block\">$$FCFE=FCFF-Int(1-t)+\\text{Net borr.}$$</div><div class=\"eq-block\">$$\\begin{aligned}FCFE&=NI+NCC-FCInv\\\\&\\quad-WCInv+\\text{Net borr.}\\end{aligned}$$</div><div class=\"eq-block\">$$FCFE=CFO-FCInv+\\text{Net borr.}$$</div></div>"
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}FCFE={}&FCFF-Int(1-t)\\\\&+\\text{Net borr.}\\end{aligned}$$</div><div class=\"eq-block\">$$\\begin{aligned}FCFE={}&NI+NCC\\\\&-FCInv-WCInv\\\\&+\\text{Net borr.}\\end{aligned}$$</div><div class=\"eq-block\">$$\\begin{aligned}FCFE={}&CFO-FCInv\\\\&+\\text{Net borr.}\\end{aligned}$$</div></div>"
   },
   {
     "id": "eq3-pitts",
@@ -88,7 +88,7 @@ const CARDS = [
     "id": "eq3-target-dr",
     "topic": "Forecasting with a target debt ratio",
     "front": "Write FCFE when a target debt ratio DR funds net new investment.",
-    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}FCFE={}&NI-(1-DR)(FCInv-Dep)\\\\&-(1-DR)WCInv\\end{aligned}$$</div><p>Pitts: \\(264-0.5(100)-0.5(45)=\\) <strong>191.50</strong>.</p></div>",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}FCFE={}&NI-(1-DR)\\\\&\\quad\\times(FCInv-Dep)\\\\&-(1-DR)WCInv\\end{aligned}$$</div><p>Pitts: \\(264-0.5(100)-0.5(45)=\\) <strong>191.50</strong>.</p></div>",
     "gap": "Incremental FC rate = (capex − dep)/Δsales; incremental WC rate = ΔWC/Δsales."
   },
   {

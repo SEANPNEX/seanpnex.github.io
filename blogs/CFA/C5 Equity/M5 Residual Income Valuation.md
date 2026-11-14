@@ -94,10 +94,13 @@ $$
 
 The single-stage model assumes ROE and $g$ are constant **forever**, so excess returns persist indefinitely. In practice, ROE reverts to the mean: competitors enter high-ROE industries, and exits lift low-ROE ones.
 
-**Example (Philips).** $B_0$ €13.22, price €35.40, ROE 12%, $g$ 6.75%, $r$ 8.5%:
+**Example (Philips).** $B_0$ €13.22, price €35.40, ROE 12%, $g$ 6.75%, $r$ 8.5% (values in €):
 
 $$
-V_0=13.22+\frac{0.12-0.085}{0.085-0.0675}\times13.22=€39.66
+\begin{aligned}
+V_0&=13.22+\frac{0.12-0.085}{0.085-0.0675}\times13.22\\
+&=39.66
+\end{aligned}
 $$
 
 **Implied growth**: solve $35.40=13.22+\frac{0.12-0.085}{0.085-g}\times13.22$ → **$g$ = 6.41%**. The market price is about 2.7 × book because ROE exceeds $r$.

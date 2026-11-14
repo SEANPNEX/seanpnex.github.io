@@ -23,7 +23,8 @@ Real estate ranges from **core** (stable income, bond-like) to **opportunistic**
 
 $$
 \begin{aligned}
-NOI={}&\text{Effective gross income}-\text{Operating expenses}\\
+NOI={}&\text{Effective gross income}\\
+&-\text{Operating expenses}\\
 &-\text{Maintenance allowance}
 \end{aligned}
 $$
@@ -71,17 +72,20 @@ $$
 ### Equity Returns
 
 $$
-\text{Equity dividend rate}=\frac{NOI-\text{Debt service}}{\text{Price}-\text{Mortgage loan}}
+EDR=\frac{NOI-\text{Debt service}}{\text{Price}-\text{Loan}}
 $$
 
-The numerator is the pretax cash flow. It's a first-year, cash-only, pretax measure that ignores capital gains and losses. For Wallonia: (406,750 − 220,745)/750,000 = 186,005/750,000 = **24.8%**; with NOI of 382,600 → 161,855/750,000 = 21.6%.
+EDR is the equity dividend rate; the numerator is the pretax cash flow, and the denominator the equity invested. It's a first-year, cash-only, pretax measure that ignores capital gains and losses. For Wallonia: (406,750 − 220,745)/750,000 = 186,005/750,000 = **24.8%**; with NOI of 382,600 → 161,855/750,000 = 21.6%.
 
 $$
 \text{After-tax CF}=\text{Pretax CF}-\text{Taxes}
 $$
 
 $$
-\text{Taxes}=t\times(NOI-\text{Interest}-\text{Depreciation})
+\begin{aligned}
+\text{Taxes}={}&t\times(NOI-\text{Interest}\\
+&-\text{Depreciation})
+\end{aligned}
 $$
 
 The depreciable base is the cost (plus improvements) minus **land**: land isn't depreciated. For Wallonia, with land of 750,000 and a 30-year life: depreciation = 3,000,000/30 = 100,000; taxes = 0.25 × (406,750 − 120,000 − 100,000) = 46,688; after-tax cash flow = 186,005 − 46,688 = **139,317**.
@@ -190,11 +194,11 @@ The aim is to earn **rental income**.
 ### Cash Flow Analysis
 
 $$
-GPRI=\text{Market rent}\times\text{Rentable space}
+GPRI=\text{Market rent}\times\text{Space}
 $$
 
 $$
-GRI=\text{Current rent}\times\text{Rentable space}
+GRI=\text{Current rent}\times\text{Space}
 $$
 
 * **Loss to lease** = GPRI − GRI. Positive: current leases are **below** market rent. Negative: they are above it (e.g., excess supply and falling market rents).
@@ -293,12 +297,13 @@ Better when the analyst can see how NOI will change. The terminal value can also
 
 $$
 \begin{aligned}
-\text{Value}={}&\text{Replacement cost (land + construction + profit)}\\
-&-\text{Depreciation and other adjustments}
+\text{Value}={}&\text{Replacement cost}\\
+&-\text{Depreciation}\\
+&-\text{Other adjustments}
 \end{aligned}
 $$
 
-* Replacement cost: buying land and building a property with the **same economic use**, including soft costs, financing and **developer profit**.
+* Replacement cost = land + construction + developer profit: the cost of buying land and building a property with the **same economic use**, including soft costs, financing and **developer profit**.
 * Adjust down for age, a less ideal location, or the infeasibility of building it today (codes, historical protection); the adjustments can be larger or smaller than accounting depreciation.
 * An investor shouldn't pay more than the cost to build a comparable property; replacement cost exceeds market prices in **oversupply**.
 
@@ -327,10 +332,10 @@ Private-market indexes (appraisal- or transaction-based) are generally **not inv
 E.g., GREFI (NCREIF + INREV + ANREV): quarterly, cap-weighted.
 
 $$
-HPR=\frac{NOI-\text{Capex}+(MV_{\text{end}}-MV_{\text{begin}})}{MV_{\text{begin}}}
+HPR=\frac{NOI-\text{Capex}+\Delta MV}{MV_{\text{begin}}}
 $$
 
-This equals a single-period IRR using appraised values.
+where $\Delta MV=MV_{\text{end}}-MV_{\text{begin}}$, the change in appraised market value. This equals a single-period IRR using appraised values.
 
 **Example (Wallonia).** Bought for 3,750,000 two years ago; INREV returns of +5.6% then +3.2% → $MV_{\text{begin}}$ = 3,960,000, $MV_{\text{end}}$ = 4,086,720; NOI 406,750; capex 100,000:
 
@@ -357,10 +362,10 @@ R_t^*=aR_t+(1-a)R_{t-1}^*
 $$
 
 $$
-R_t=\frac{R_t^*}{a}+\frac{1-a}{a}\,R_{t-1}^*,\qquad 0\le a\le 1
+R_t=\frac{R_t^*}{a}+\frac{1-a}{a}\,R_{t-1}^*
 $$
 
-A higher $a$ means faster adjustment. E.g., $a$ = 0.6, $R_1^*$ = 0.50%, $R_0^*$ = 2.70% → $R_1$ = 0.50/0.6 + (0.4/0.6) × 2.70 = **2.63%**; in period 6: −8.70/0.6 + (0.4/0.6) × 1.00 = **−13.83%**. Unsmoothed returns are more volatile.
+with $0\le a\le 1$; a higher $a$ means faster adjustment. E.g., $a$ = 0.6, $R_1^*$ = 0.50%, $R_0^*$ = 2.70% → $R_1$ = 0.50/0.6 + (0.4/0.6) × 2.70 = **2.63%**; in period 6: −8.70/0.6 + (0.4/0.6) × 1.00 = **−13.83%**. Unsmoothed returns are more volatile.
 
 ### Transaction-Based Indexes
 

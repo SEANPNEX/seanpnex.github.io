@@ -126,7 +126,8 @@ Kaldor (1939): inventory levels shape the curve.
 
 $$
 \begin{aligned}
-\text{Futures price}={}&\text{Spot price}+\text{Storage costs}\\
+\text{Futures price}={}&\text{Spot price}\\
+&+\text{Storage costs}\\
 &-\text{Convenience yield}
 \end{aligned}
 $$
@@ -144,7 +145,8 @@ The total return on a **fully collateralized** commodity futures position:
 
 $$
 \begin{aligned}
-\text{Total return}={}&\text{Price return}+\text{Roll return}\\
+\text{Total return}={}&\text{Price return}\\
+&+\text{Roll return}\\
 &+\text{Collateral return}
 \end{aligned}
 $$
@@ -154,7 +156,7 @@ plus a **rebalance return** for an index.
 * **Price return** (spot yield): the change in the futures price, usually the front month:
 
 $$
-\text{Price return}=\frac{\text{Current price}-\text{Previous price}}{\text{Previous price}}
+\text{Price return}=\frac{P_{\text{now}}-P_{\text{before}}}{P_{\text{before}}}
 $$
 
 * **Roll return** (roll yield): from closing the near contract and opening a later one. It can't be captured on its own; it's an accounting calculation:

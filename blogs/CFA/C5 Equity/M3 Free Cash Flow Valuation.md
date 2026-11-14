@@ -15,9 +15,9 @@ $$\text{Firm value}=\sum_{t=1}^{\infty}\frac{FCFF_t}{(1+WACC)^t}$$
 
 $$\text{Equity value}=\sum_{t=1}^{\infty}\frac{FCFE_t}{(1+r)^t}$$
 
-$$WACC=\frac{D}{D+E}\,r_d(1-t)+\frac{E}{D+E}\,r$$
+$$WACC=w_d\,r_d(1-t)+w_e\,r$$
 
-Use **market-value** (or target) weights and the **marginal** tax rate.
+where $w_d=D/(D+E)$ and $w_e=E/(D+E)$. Use **market-value** (or target) weights and the **marginal** tax rate.
 
 **Which to use:**
 
@@ -47,15 +47,15 @@ $$
 > [!IMPORTANT]
 > The six formulas to memorize:
 >
-> $$FCFF=NI+NCC+Int(1-t)-FCInv-WCInv$$
+> $$\begin{aligned}FCFF={}&NI+NCC+Int(1-t)\\&-FCInv-WCInv\end{aligned}$$
 >
 > $$FCFF=CFO+Int(1-t)-FCInv$$
 >
-> $$FCFF=EBIT(1-t)+Dep-FCInv-WCInv$$
+> $$\begin{aligned}FCFF={}&EBIT(1-t)+Dep\\&-FCInv-WCInv\end{aligned}$$
 >
 > $$\begin{aligned}FCFF={}&EBITDA(1-t)+Dep\cdot t\\&-FCInv-WCInv\end{aligned}$$
 >
-> $$FCFE=FCFF-Int(1-t)+\text{Net borrowing}$$
+> $$\begin{aligned}FCFE={}&FCFF-Int(1-t)\\&+\text{Net borrowing}\end{aligned}$$
 >
 > $$\begin{aligned}FCFE&=NI+NCC-FCInv-WCInv\\&\quad+\text{Net borrowing}\\&=CFO-FCInv+\text{Net borrowing}\end{aligned}$$
 
@@ -154,14 +154,19 @@ $$
 $$
 
 $$
-FCFF=EBIT(1-t)-(FCInv-Dep)-WCInv
+\begin{aligned}
+FCFF={}&EBIT(1-t)\\
+&-(FCInv-Dep)\\
+&-WCInv
+\end{aligned}
 $$
 
 If a target debt ratio DR finances net new investment (with depreciation the only noncash charge):
 
 $$
 \begin{aligned}
-FCFE={}&NI-(1-DR)(FCInv-Dep)\\
+FCFE={}&NI\\
+&-(1-DR)(FCInv-Dep)\\
 &-(1-DR)\,WCInv
 \end{aligned}
 $$
@@ -228,15 +233,16 @@ The real $r$ is the country's real return adjusted for industry, size and levera
 
 $$
 \begin{aligned}
-\text{Firm value}={}&\sum_{t=1}^{n}\frac{FCFF_t}{(1+WACC)^t}\\
-&+\frac{FCFF_{n+1}}{WACC-g}\cdot\frac{1}{(1+WACC)^n}
+V_{\text{firm}}={}&\sum_{t=1}^{n}\frac{FCFF_t}{(1+WACC)^t}\\
+&+\frac{FCFF_{n+1}}{WACC-g}\\
+&\quad\times\frac{1}{(1+WACC)^n}
 \end{aligned}
 $$
 
 $$
 \begin{aligned}
-\text{Equity value}={}&\sum_{t=1}^{n}\frac{FCFE_t}{(1+r)^t}\\
-&+\frac{FCFE_{n+1}}{r-g}\cdot\frac{1}{(1+r)^n}
+V_{\text{equity}}={}&\sum_{t=1}^{n}\frac{FCFE_t}{(1+r)^t}\\
+&+\frac{FCFE_{n+1}}{(r-g)(1+r)^n}
 \end{aligned}
 $$
 
@@ -295,7 +301,7 @@ $V_{2023}$ = 3.759/(0.104 − 0.07) = \$110.56, with a PV of 74.425 → **$V_0$ 
 
 $$
 \begin{aligned}
-\text{Firm value}={}&\text{Operating assets (FCFF)}\\
+V_{\text{firm}}={}&\text{Operating assets}\\
 &+\text{Non-operating assets}
 \end{aligned}
 $$

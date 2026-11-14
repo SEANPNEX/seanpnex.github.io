@@ -267,7 +267,10 @@ $$
 The **sustainable growth rate** is the growth that retained earnings alone can fund, with a constant capital structure and **no new equity**. Strictly, use the return on new investment and **beginning** equity. The **PRAT** model splits ROE with DuPont:
 
 $$
-g=\underbrace{\frac{NI-D}{NI}}_{R}\times\underbrace{\frac{NI}{Sales}}_{P}\times\underbrace{\frac{Sales}{TA}}_{A}\times\underbrace{\frac{TA}{Equity}}_{T}
+\begin{aligned}
+g={}&\underbrace{\frac{NI-D}{NI}}_{R}\times\underbrace{\frac{NI}{Sales}}_{P}\\
+&\times\underbrace{\frac{Sales}{TA}}_{A}\times\underbrace{\frac{TA}{Equity}}_{T}
+\end{aligned}
 $$
 
 Profit margin × asset turnover (P × A) = ROA, from operations; retention and leverage (R, T) reflect financial policy.

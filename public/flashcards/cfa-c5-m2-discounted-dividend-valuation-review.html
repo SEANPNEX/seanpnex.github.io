@@ -74,7 +74,7 @@ const CARDS = [
     "id": "eq2-justified-pe",
     "topic": "Justified P/E",
     "front": "Write the justified leading and trailing P/E. Payout 0.5438, \\(r=5.6\\%\\), \\(g=4.25\\%\\): find both.",
-    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\frac{P_0}{E_1}=\\frac{1-b}{r-g},\\quad\\frac{P_0}{E_0}=\\frac{(1-b)(1+g)}{r-g}$$</div><p>Leading <strong>40.28</strong>; trailing <strong>42.00</strong>. An actual trailing P/E of 34.3 → undervalued.</p></div>"
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\frac{P_0}{E_1}=\\frac{1-b}{r-g}$$</div><div class=\"eq-block\">$$\\frac{P_0}{E_0}=\\frac{(1-b)(1+g)}{r-g}$$</div><p>Leading <strong>40.28</strong>; trailing <strong>42.00</strong>. An actual trailing P/E of 34.3 → undervalued.</p></div>"
   },
   {
     "id": "eq2-phases",
@@ -100,7 +100,7 @@ const CARDS = [
     "id": "eq2-h",
     "topic": "H-model",
     "front": "Write the H-model. \\(D_0=€1.77\\), 7% falling to 4% over 10 years, \\(r=8\\%\\): value?",
-    "back": "<div class=\"ans\"><div class=\"eq-block\">$$V_0=\\frac{D_0(1+g_L)+D_0H(g_S-g_L)}{r-g_L}$$</div><p>\\(H=5\\): \\((1.84+0.27)/0.04=\\) <strong>€52.75</strong>.</p></div>",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}V_0={}&\\frac{D_0(1+g_L)}{r-g_L}\\\\&+\\frac{D_0H(g_S-g_L)}{r-g_L}\\end{aligned}$$</div><p>\\(H=5\\): \\((1.84+0.27)/0.04=\\) <strong>€52.75</strong>.</p></div>",
     "gap": "\\(H\\) is half the high-growth period; the model is an approximation."
   },
   {
@@ -120,7 +120,7 @@ const CARDS = [
     "id": "eq2-implied-r",
     "topic": "Implied required return",
     "front": "Write the required return implied by the GGM and the H-model. \\(D_0=\\$1\\), price \\$20, 10%→6% over 10 years: find \\(r\\).",
-    "back": "<div class=\"ans\"><div class=\"eq-block\">$$r=\\frac{D_1}{P_0}+g$$</div><div class=\"eq-block\">$$r=\\frac{D_0}{P_0}[(1+g_L)+H(g_S-g_L)]+g_L$$</div><p>\\((1/20)(1.06+0.20)+0.06=\\) <strong>12.3%</strong>.</p></div>",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$r=\\frac{D_1}{P_0}+g$$</div><div class=\"eq-block\">$$\\begin{aligned}r={}&\\frac{D_0}{P_0}[(1+g_L)\\\\&+H(g_S-g_L)]+g_L\\end{aligned}$$</div><p>\\((1/20)(1.06+0.20)+0.06=\\) <strong>12.3%</strong>.</p></div>",
     "gap": "For other multistage models, solve for the IRR by trial and error."
   },
   {

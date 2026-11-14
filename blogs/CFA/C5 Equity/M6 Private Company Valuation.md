@@ -108,7 +108,10 @@ DLOC=1-\frac{1}{1+\text{Control premium}}
 $$
 
 $$
-\text{Total discount}=1-(1-DLOC)(1-DLOM)
+\begin{aligned}
+\text{Total}&=1-(1-DLOC)\\
+&\quad\times(1-DLOM)
+\end{aligned}
 $$
 
 * **DLOC**: without control, an investor can't choose the board or management, pay out cash, buy or sell assets, or arrange financing. It's justified when controlling holders get **disproportionate returns**, and is estimated from control premiums paid in public-company acquisitions.
@@ -144,7 +147,7 @@ A single-stage growing perpetuity, useful for stable companies with no projectio
 
 $$
 \begin{aligned}
-\text{Firm value}&=\frac{FCFF_1}{WACC-g}\\
+V_{\text{firm}}&=\frac{FCFF_1}{WACC-g}\\
 &=\frac{EBIT_1(1-t)(1-RIR)}{WACC-g}
 \end{aligned}
 $$
@@ -166,14 +169,14 @@ where RIR is the reinvestment rate and $r_e-g$ the **capitalization rate**. Equi
 Value the tangible assets at fair value; earnings above their required returns are attributed to intangibles.
 
 $$
-RI=\text{Normalized income}-WC\cdot r_{WC}-FA\cdot r_{FA}
+RI=NI_{\text{norm}}-WC\cdot r_{WC}-FA\cdot r_{FA}
 $$
 
 $$
 RV=\frac{RI(1+g)}{r_{RI}-g}
 $$
 
-Firm value = fair value of tangible assets + RV (the value of intangibles). Required returns rise from working capital (lowest) to fixed assets to intangibles (highest). It's rarely used for whole companies (only very small ones), but widely accepted for valuing **intangible assets** in financial reporting.
+where $NI_{\text{norm}}$ is normalized income, and WC and FA are working capital and fixed assets. Firm value = fair value of tangible assets + RV (the value of intangibles). Required returns rise from working capital (lowest) to fixed assets to intangibles (highest). It's rarely used for whole companies (only very small ones), but widely accepted for valuing **intangible assets** in financial reporting.
 
 **Example (Digigraf).** Working capital €200k at 5%; fixed assets €800k at 11%; normalized income €120k → RI = 120 − 10 − 88 = **€22k**; RV = 22 × 1.03/(0.12 − 0.03) = **€251,778**; firm **€1,251,778**. At 4% and 10%: RI €32k, RV €412k → **€1,412,000**.
 

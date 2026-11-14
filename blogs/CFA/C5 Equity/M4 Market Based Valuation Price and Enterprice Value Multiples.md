@@ -173,8 +173,10 @@ $$
 * Bank P/Bs differ by business model (Citigroup 0.69, Wells Fargo 1.21, US Bancorp 1.63).
 
 $$
-BVPS=\frac{\text{Equity}-\text{Preferred and arrears}}{\text{Common shares outstanding}}
+BVPS=\frac{\text{Equity}-\text{Preferred}}{\text{Common shares}}
 $$
+
+Preferred includes any preferred dividends in arrears.
 
 **Example (TD Bank).** 2018 BVPS = (80,040 − 5,000)/1,830.4 = **CAD41.00** (2017: 38.23; 2016: 37.58); price CAD73.03 → **P/B 1.78**.
 
@@ -192,8 +194,10 @@ $$
 $$
 
 $$
-\frac{P_0}{B_0}=1+\frac{PV(\text{expected residual earnings})}{B_0}
+\frac{P_0}{B_0}=1+\frac{PV(RI)}{B_0}
 $$
+
+where $PV(RI)$ is the present value of expected residual earnings.
 
 * E.g., ROE 12%, $r$ 10%, $g$ 7% → (0.12 − 0.07)/(0.10 − 0.07) = **1.67**.
 * P/B is driven by **ROE relative to $r$**: if ROE = $r$, P/B = 1; with $g$ = 0, P/B = ROE/$r$. At the same P/B, the higher-ROE stock is cheaper.
@@ -278,8 +282,9 @@ Higher growth → lower yield (high-yield screens are value-oriented); a higher 
 
 $$
 \begin{aligned}
-EV={}&\text{Equity}+\text{Preferred}+\text{Minority interest}\\
-&+\text{Debt}-\text{Cash and short-term investments}
+EV={}&\text{Equity}+\text{Preferred}\\
+&+\text{Minority interest}+\text{Debt}\\
+&-\text{Cash and ST investments}
 \end{aligned}
 $$
 

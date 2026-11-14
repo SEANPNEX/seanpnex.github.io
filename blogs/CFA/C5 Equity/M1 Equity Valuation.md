@@ -16,7 +16,10 @@ What "value" means and where perceived mispricing comes from; what valuation is 
 A perceived mispricing has two sources:
 
 $$
-E(IV)-P = \underbrace{(IV-P)}_{\text{true mispricing}}+\underbrace{(E(IV)-IV)}_{\text{valuation error}}
+\begin{aligned}
+E(IV)-P ={}& \underbrace{(IV-P)}_{\text{true mispricing}}\\
+&+\underbrace{(E(IV)-IV)}_{\text{valuation error}}
+\end{aligned}
 $$
 
 Only the true mispricing earns an abnormal return. To win consistently, an analyst's expectations must **differ from consensus and be right** on average.

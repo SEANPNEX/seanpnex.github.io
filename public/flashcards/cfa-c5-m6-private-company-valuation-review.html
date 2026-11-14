@@ -71,7 +71,7 @@ const CARDS = [
     "id": "eq6-dloc",
     "topic": "DLOC and total discount",
     "front": "Write DLOC and the total discount. Control premium 30%, DLOM 20%: find both.",
-    "back": "<div class=\"ans\"><div class=\"eq-block\">$$DLOC=1-\\frac{1}{1+CP}$$</div><div class=\"eq-block\">$$\\text{Total}=1-(1-DLOC)(1-DLOM)$$</div><p>DLOC = 23.1%; total = 1 − 0.769 × 0.8 = <strong>38.5%</strong>.</p></div>",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$DLOC=1-\\frac{1}{1+CP}$$</div><div class=\"eq-block\">$$\\begin{aligned}\\text{Total}={}&1-(1-DLOC)\\\\&\\times(1-DLOM)\\end{aligned}$$</div><p>DLOC = 23.1%; total = 1 − 0.769 × 0.8 = <strong>38.5%</strong>.</p></div>",
     "gap": "Discounts multiply, not add; DLOC is not the control premium."
   },
   {
@@ -91,21 +91,21 @@ const CARDS = [
     "id": "eq6-ccm",
     "topic": "Capitalized cash flow method",
     "front": "Write the capitalized cash flow method. FCFF BRL15m, WACC 14.16%, \\(g\\) 5%, debt BRL5m: equity?",
-    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\text{Firm}=\\frac{FCFF_1}{WACC-g},\\quad RIR=\\frac{g}{WACC}$$</div><p>\\(15.75/0.0916=171.9\\) → equity <strong>BRL166.9m</strong>.</p></div>",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\text{Firm}=\\frac{FCFF_1}{WACC-g}$$</div><div class=\"eq-block\">$$RIR=\\frac{g}{WACC}$$</div><p>\\(15.75/0.0916=171.9\\) → equity <strong>BRL166.9m</strong>.</p></div>",
     "gap": "Very sensitive to growth: at 2%, equity falls to BRL120.8m."
   },
   {
     "id": "eq6-eem",
     "topic": "Excess earnings method",
     "front": "Describe the excess earnings method. WC €200k at 5%, FA €800k at 11%, income €120k, \\(g\\) 3%, \\(r_{RI}\\) 12%: value?",
-    "back": "<div class=\"ans\"><div class=\"eq-block\">$$RI=NI-WC\\cdot r_{WC}-FA\\cdot r_{FA}$$</div><p>RI = 22k; RV = 22 × 1.03/0.09 = 251,778; firm = <strong>€1,251,778</strong>.</p></div>",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}RI={}&NI-WC\\cdot r_{WC}\\\\&-FA\\cdot r_{FA}\\end{aligned}$$</div><p>RI = 22k; RV = 22 × 1.03/0.09 = 251,778; firm = <strong>€1,251,778</strong>.</p></div>",
     "gap": "Widely used to value intangible assets for financial reporting; needs several discount rates."
   },
   {
     "id": "eq6-beta",
     "topic": "Relevering beta",
     "front": "Unlever a peer beta of 1.21 (D/E 50%, tax 21.6%) and relever it for D/E 25%, tax 18%.",
-    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\beta_U=\\frac{\\beta_L}{1+(1-t)D/E}=0.8693$$</div><div class=\"eq-block\">$$\\beta^*=0.8693\\times1.205=1.0475$$</div></div>"
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}\\beta_U&=\\frac{\\beta_L}{1+(1-t)D/E}\\\\&=0.8693\\end{aligned}$$</div><div class=\"eq-block\">$$\\beta^*=0.8693\\times1.205=1.0475$$</div></div>"
   },
   {
     "id": "eq6-gpcm",
