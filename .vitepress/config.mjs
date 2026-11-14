@@ -128,6 +128,13 @@ export default withMermaid(
     ],
     title: "Sean's Homepage",
     description: "Projects, research, notes, and learning plans by Sean Guo.",
+    // mermaid 11.17+ imports fastdom, a CommonJS module; pre-bundle it so the dev
+    // server can serve it as ESM (otherwise the whole site renders blank in dev).
+    vite: {
+      optimizeDeps: {
+        include: ["mermaid > fastdom", "mermaid > fastdom/extensions/fastdom-promised.js"],
+      },
+    },
     markdown: {
       math: true,
       theme: { light: "min-light", dark: "min-dark" },
