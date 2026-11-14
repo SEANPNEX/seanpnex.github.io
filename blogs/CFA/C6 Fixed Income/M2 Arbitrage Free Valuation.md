@@ -129,7 +129,7 @@ A binomial tree branches **forward** through time, one up and one down move per 
 
 * At step $n$ there are $n+1$ nodes. The tree **recombines** (up-then-down reaches the same node as down-then-up) because volatility is held unchanged; in reality volatility changes, but recombining keeps the tree small.
 * The shorter the time step, the more precise the tree. In the exam, the step is usually **one year**.
-* In CFA Level II **Fixed Income** only, the up and down moves are assumed to be **equally likely (50% each)**. In Derivatives, the probabilities must be calculated as risk-neutral probabilities; see [Risk-Neutral Probability](../C7%20Derivative/M2%20Options.md#risk-neutrual-probability).
+* In CFA Level II **Fixed Income** only, the up and down moves are assumed to be **equally likely (50% each)**. In Derivatives, the probabilities must be calculated as risk-neutral probabilities; see [Risk-Neutral Probability](../C7%20Derivative/M2%20Options.md#risk-neutral-probability).
 
 **Node spacing.** One-period rates are assumed to follow a **lognormal random walk**, so adjacent nodes differ by a constant factor that depends only on the interest rate volatility $\sigma$:
 

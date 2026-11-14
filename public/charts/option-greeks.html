@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Option Greeks · delta and gamma</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <script src="chart-fx.js"></script>
+</head>
+<body>
+  <main class="card" id="card" data-fx-scope>
+    <h2>Delta swings fastest, and gamma peaks, at the money near expiry.</h2>
+    <div class="sub">Black–Scholes–Merton, non-dividend stock · X = 50, σ = 30%, r = 5% · left: delta of a call (ink) and a put (mid gray), 6 months to expiry · right: gamma with 1 year (ink) and 1 month (mid gray) to expiry · hover for values</div>
+    <div class="grid">
+      <section class="panel">
+        <h3>Delta</h3>
+        <div class="hint">Call: N(d₁), from 0 to 1 · put: N(d₁) − 1, from −1 to 0 · the gap is always 1</div>
+        <svg id="delta" role="img" aria-label="Call delta rising from 0 to 1 and put delta rising from minus 1 to 0 as the stock price rises"></svg>
+      </section>
+      <section class="panel">
+        <h3>Gamma</h3>
+        <div class="hint">Same for calls and puts · highest at the money · near expiry it spikes at the money and falls away from it</div>
+        <svg id="gamma" role="img" aria-label="Gamma against stock price: a low wide hump with one year to expiry and a tall narrow spike at the strike with one month"></svg>
+      </section>
+    </div>
+    <div class="src">OPTION GREEKS · F2 HAIRLINE LINE · δ = ∂C/∂S, γ = ∂²C/∂S² = N′(d₁) / (Sσ√T)</div>
+  </main>
+  <script>
+(() => {
+  const { C, el, label, frame, axes, curve, guide, probe, mount } = curveKit;
+
+  // ── Data: BSM inputs ──
+  const X = 50, SIG = 0.3, R = 0.05, S0 = 20, S1 = 80, MID = '#6A6963';
+  const pdf = (z) => Math.exp(-z * z / 2) / Math.sqrt(2 * Math.PI);
+  // Normal CDF, Abramowitz–Stegun 26.2.17 (error < 1e-7).
+  const cdf = (z) => { const t = 1 / (1 + 0.2316419 * Math.abs(z)); const p = pdf(z) * t * (0.31938153 + t * (-0.356563782 + t * (1.781477937 + t * (-1.821255978 + t * 1.330274429)))); return z >= 0 ? 1 - p : p; };
+  const d1 = (S, T) => (Math.log(S / X) + (R + SIG * SIG / 2) * T) / (SIG * Math.sqrt(T));
+  const callDelta = (S) => cdf(d1(S, 0.5));
+  const putDelta = (S) => callDelta(S) - 1;
+  const gamma = (T) => (S) => pdf(d1(S, T)) / (S * SIG * Math.sqrt(T));
+  const g1 = gamma(1), gM = gamma(1 / 12);
+
+  const xLabels = (s, F) => [20, 35, 50, 65, 80].forEach((v) => label(s, F.x(v), F.BASE + 14, v === X ? 'X = 50' : String(v), { size: 9.5, weight: v === X ? 800 : 600, fill: v === X ? C.INK : C.MUTED, anchor: 'middle', halo: 0 }));
+  const grid = (s, F, vals, fmt) => vals.forEach((v) => {
+    el(s, 'line', { x1: F.X0, y1: F.y(v), x2: F.X1, y2: F.y(v), stroke: C.GRID, 'stroke-width': 0.6, 'stroke-dasharray': '2 4', class: 'fade' });
+    label(s, F.X0 - 6, F.y(v) + 3.5, fmt(v), { size: 9.5, weight: 600, fill: C.MUTED, anchor: 'end', halo: 0 });
+  });
+  const height = (W) => Math.max(220, Math.min(260, W * 0.75));
+
+  mount(document.getElementById('delta'), (s, W, H) => {
+    const F = frame(s, W, H, { l: 34, r: 10, t: 22, b: 38, xMin: S0, yMin: -1.05, noTicks: true }, S1, 1.05);
+    grid(s, F, [-1, -0.5, 0, 0.5, 1], (v) => (v > 0 ? '+' : v < 0 ? '−' : '') + Math.abs(v));
+    xLabels(s, F);
+    axes(s, F, 'stock price →', 'delta');
+    guide(s, F.x(X), F.y(-1), F.x(X), F.y(1), 0.3);
+    curve(s, F, putDelta, S0, S1, { stroke: MID, width: 1.5, delay: 0.1 }).setAttribute('data-hl', 'p');
+    curve(s, F, callDelta, S0, S1, { stroke: C.INK, width: 1.6 }).setAttribute('data-hl', 'c');
+    label(s, F.x(70), F.y(callDelta(70)) - 9, 'call', { size: 10.5, anchor: 'middle', delay: 0.8 });
+    label(s, F.x(30), F.y(putDelta(30)) - 9, 'put', { size: 10.5, fill: MID, anchor: 'middle', delay: 0.85 });
+    probe(s, F, [{ name: 'call δ', f: callDelta }, { name: 'put δ', f: putDelta, stroke: MID }], { xName: 'S', fmt: (v) => v.toFixed(2) });
+  }, height);
+
+  mount(document.getElementById('gamma'), (s, W, H) => {
+    const F = frame(s, W, H, { l: 38, r: 10, t: 22, b: 38, xMin: S0, noTicks: true }, S1, 0.1);
+    grid(s, F, [0.025, 0.05, 0.075], (v) => v.toFixed(3));
+    xLabels(s, F);
+    axes(s, F, 'stock price →', 'gamma');
+    curve(s, F, gM, S0, S1, { stroke: MID, width: 1.5, delay: 0.1 }).setAttribute('data-hl', 'm');
+    curve(s, F, g1, S0, S1, { stroke: C.INK, width: 1.6 }).setAttribute('data-hl', 'y');
+    label(s, F.x(53), F.y(gM(50)) + 4, '1 month', { size: 10.5, fill: MID, delay: 0.85 });
+    label(s, F.x(64), F.y(g1(64)) - 10, '1 year', { size: 10.5, delay: 0.8 });
+    probe(s, F, [{ name: 'γ, 1 year', f: g1 }, { name: 'γ, 1 month', f: gM, stroke: MID }], { xName: 'S', fmt: (v) => v.toFixed(3) });
+  }, height);
+})();
+  </script>
+</body>
+</html>

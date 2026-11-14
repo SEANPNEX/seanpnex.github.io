@@ -106,7 +106,7 @@ A **tranche CDS** covers only a slice of the losses on an index, e.g., the first
 
 ### Options on CDS
 
-A **CDS swaption** is an option to buy or sell protection at a fixed spread in the future: the credit version of the interest rate [swaption](../C7%20Derivative/M2%20Options.md#swapation) in Derivatives.
+A **CDS swaption** is an option to buy or sell protection at a fixed spread in the future: the credit version of the interest rate [swaption](../C7%20Derivative/M2%20Options.md#swaption) in Derivatives.
 
 ## Pricing of CDS
 

@@ -53,7 +53,7 @@ In bond pricing, credit risk can enter through either the numerator or the denom
 * **Numerator**: replace the promised cash flows with their expected values after default losses, and discount at the risk-free rate. The CVA does this.
 * **Denominator**: keep the promised cash flows, and discount at a higher rate, the risk-free rate plus a credit spread.
 
-The PODs used for pricing are **risk-neutral** probabilities, implied from market prices, in the same sense as the [risk-neutral probability](../C7%20Derivative/M2%20Options.md#risk-neutrual-probability) of option pricing. They are **higher than the actual (historical) PODs**, because the market price also includes compensation for risk aversion, liquidity and uncertainty about the default loss, and the risk-neutral POD absorbs all of it.
+The PODs used for pricing are **risk-neutral** probabilities, implied from market prices, in the same sense as the [risk-neutral probability](../C7%20Derivative/M2%20Options.md#risk-neutral-probability) of option pricing. They are **higher than the actual (historical) PODs**, because the market price also includes compensation for risk aversion, liquidity and uncertainty about the default loss, and the risk-neutral POD absorbs all of it.
 
 The **hazard rate** (HR) is the probability of default at a date **given that no default has occurred before**: a conditional POD. With a constant hazard rate, the bond must survive every date up to $t-1$ and then default at $t$:
 
