@@ -1,283 +1,222 @@
 # Environmental, Social, and Governance (ESG) Considerations in Investment Analysis
 
-This module covers how ownership structures shape corporate governance, how to evaluate a company's governance, and how to identify, evaluate and integrate ESG risks and opportunities into equity and credit analysis. Everything here is conceptual; there are no formulas to memorise.
-
-* [Learning Outcomes and Key Terms](#learning-outcomes-and-key-terms): what the module asks for, plus core vocabulary
-* [Ownership Structure](#ownership-structure): dispersed vs concentrated, horizontal/vertical, dual-class, conflicts, influential shareholders, effects on governance
-* [Corporate Goverance Evaluation](#corporate-goverance-evaluation): board policies and practices, remuneration, voting rights
-* [ESG](#esg): materiality, horizon, relevant factors, three identification approaches, equity vs credit, green bonds
-* [Evaluating ESG Risks and Opportunities](#evaluating-esg-risks-and-opportunities): ESG integration framework and the three textbook cases
-* [Quick Recall](#quick-recall): one-line summary of each topic
-
-## Learning Outcomes and Key Terms
-
-The candidate should be able to:
-
-* Describe global variations in ownership structures and the possible effects of these variations on corporate governance policies and practices
-* Evaluate the effectiveness of a company's corporate governance policies and practices
-* Describe how ESG-related risk exposures and investment opportunities may be identified and evaluated
-* Evaluate ESG risk exposures and investment opportunities related to a company
+How ownership structures shape corporate governance, how to evaluate a company's governance, and how to identify ESG risks and opportunities and build them into equity and credit analysis. The module is conceptual: there are no formulas to memorize.
 
 | Term | Meaning |
 | --- | --- |
-| **Controlling shareholders** | An individual or group (family, other company/companies, sovereign) able to exercise control. Can be **majority** (> 50%) **or minority** (< 50%) holders |
-| **Principal–agent problem** | Managers use company resources for their own interests instead of maximising shareholder value |
-| **Principal–principal problem** | Controlling shareholders allocate resources to themselves at the expense of minority shareholders |
-| **Voting caps** | Legal limits on the voting rights of large positions (often used by governments to deter foreign control of strategic companies) |
-| **Interlocking directorates** | The same individuals sit on the boards of several corporations (common in Latin America) |
-| **Insiders** | Managers and board directors who are also shareholders |
-| **Shareholder activism** | Strategies shareholders use to try to compel a company to act in a desired manner |
-| **ESG integration** | Implementing qualitative and quantitative ESG factors in traditional security and industry analysis **and portfolio construction** |
-| **Stranded assets** | Assets that are obsolete or not economically viable, often due to regulatory/policy changes or shifts in demand |
-| **Greenwashing** | Risk that a green bond's proceeds are not actually used for a beneficial environmental/climate project |
+| **Controlling shareholders** | An individual or group (a family, other companies, the state) able to exercise control, holding either a **majority** (> 50%) **or a minority** (< 50%) of the shares |
+| **Principal–agent problem** | Managers use company resources for their own interests instead of shareholders' |
+| **Principal–principal problem** | Controlling shareholders take resources at the expense of minority shareholders |
+| **Voting caps** | Legal limits on the votes of large holdings (often used by governments to deter foreign control of strategic companies) |
+| **Interlocking directorates** | The same people sit on the boards of several companies (common in Latin America) |
+| **Insiders** | Managers and directors who are also shareholders |
+| **Shareholder activism** | Strategies shareholders use to push a company to act in a certain way |
+| **ESG integration** | Using ESG factors, qualitative and quantitative, in security and industry analysis **and portfolio construction** |
+| **Stranded assets** | Assets made obsolete or uneconomic, often by regulation or shifts in demand |
+| **Greenwashing** | The risk that a green bond's proceeds don't actually fund a beneficial environmental project |
 
 ## Ownership Structure
 
-* Dispersed ownership: many shareholders, none of which can individually exercise control
-* Concentrated ownership: an individual shareholder or a group (controlling shareholders) can exercise control
-* Hyprid ownership (In the middle)
+* **Dispersed ownership**: many shareholders, none able to exercise control alone.
+* **Concentrated ownership**: one shareholder or a group (controlling shareholders) can exercise control.
+* **Hybrid**: in between.
 
 > [!IMPORTANT]
-> The textbook does **not** define dispersed/concentrated by fixed percentage cut-offs. The degree of share ownership alone may not show who controls the company: controlling shareholders can be **majority (> 50%) or minority (< 50%)** holders, because of horizontal/vertical arrangements and dual-class shares. (The only "25%" in the reading is the description of the UK, where few companies have holders owning 25% or more.)
+> There are no fixed percentage cut-offs. Ownership alone may not show who controls a company: controlling shareholders can hold a **majority or a minority** of the shares, through the arrangements below. (The only "25%" in the reading describes the UK, where few companies have a holder with 25% or more.)
 
-Global picture (OECD 2017): **38 of 47** jurisdictions are predominantly concentrated.
+Concentrated ownership is far more common: **38 of 47** jurisdictions surveyed by the OECD (2017).
 
 | Classification | Jurisdictions | Notes |
 | --- | --- | --- |
-| **Dispersed** | Australia, Ireland, UK, US | Australia: shares held (dispersed) mostly by financial institutions; US listed firms rarely controlled by a major holder |
-| **Hybrid** | Canada, Germany, Japan, Netherlands, Switzerland | e.g. Germany: many under "tight control" but listed shares broadly distributed |
-| **Concentrated** | The other 38 (e.g. China, France, India, Brazil, South Korea…) | State: China, Norway, Sweden. Families: Brazil, Mexico, Portugal, South Korea. Company groups: India, Russia |
+| **Dispersed** | Australia, Ireland, UK, US | Australia: shares held mostly by financial institutions; US listed companies rarely have a controlling holder |
+| **Hybrid** | Canada, Germany, Japan, Netherlands, Switzerland | e.g., Germany: many companies under tight control, but listed shares widely held |
+| **Concentrated** | The other 38 (e.g., China, France, India, Brazil, South Korea) | State: China, Norway, Sweden. Families: Brazil, Mexico, Portugal, South Korea. Company groups: India, Russia |
 
-Externally, there are structures as
+**How control can exceed ownership:**
 
-* Horizontal ownership: Companies with mutual business interest (e.g. key customers or suppliers) that have cross-holding share arrangement with each other. Helps strategic alliances and long-term relationships.
-* Vertical ownership (pyramid ownership): A company or group that has a controlling interest in 2 or more holding companies, which in turn have controlling interests in various operating companies.
+* **Horizontal ownership**: companies with shared business interests (key customers or suppliers) hold shares in each other. It supports strategic alliances and long-term relationships.
+* **Vertical (pyramid) ownership**: a company or group controls two or more holding companies, which in turn control operating companies.
+* **Dual-class shares**: one class has superior (or sole) voting rights, others have inferior or none. Combined with a pyramid, the group at the top can give itself the superior-voting shares and control the operating companies while owning relatively few shares.
 
-Voting power:
+### Conflicts by Ownership Structure
 
-**Dual-class shares**: Grant one share class superior or even sole voting rights, where as other share classes has inferior or no voting rights. Combined with a pyramid, the group at the top can issue itself the superior-voting shares and control the operating companies while owning relatively few total shares.
-
-### Conflicts within Different Ownership Structures
-
-| Ownership | Voting power | Shareholders vs managers | Main conflict |
+| Ownership | Voting power | Balance of power | Main conflict |
 | --- | --- | --- | --- |
 | Dispersed | Dispersed | Weak shareholders, **strong managers** | **Principal–agent** |
 | Concentrated | Concentrated | **Strong shareholders**, weak managers | **Principal–principal** |
-| Dispersed | Concentrated | Strong controlling holders **without a majority** of shares (via dual-class, pyramids) | **Principal–principal** |
-| Concentrated | Dispersed | Arises from **voting caps** | (Textbook gives the cause, not a named conflict) |
+| Dispersed | Concentrated | Controlling holders **without a majority** (via dual-class shares, pyramids) | **Principal–principal** |
+| Concentrated | Dispersed | Arises from **voting caps** | (not named in the reading) |
 
 > [!IMPORTANT]
-> Controlling shareholders **mitigate** the principal–agent problem (they control the board, appoint managers, and have the incentive to monitor), but they **create** the principal–principal problem.
+> Controlling shareholders **reduce** the principal–agent problem (they control the board, appoint managers, and have the incentive to monitor), but they **create** the principal–principal problem.
 
-**Textbook example (Company A).** Managers own ~30%; no other holder owns more than 1%; one share one vote. The textbook classifies this as dispersed ownership and dispersed voting power → weak shareholders, strong managers → **principal–agent** risk.
+**Example (Company A).** Managers own about 30%, no other holder owns more than 1%, one share one vote. This is dispersed ownership and dispersed voting power → weak shareholders, strong managers → **principal–agent** risk.
 
-Types of influential Shareholders:
+### Influential Shareholders
 
-* Banks
-  * Common in Europe and Asia; lender **and** equity holder
-  * Conflict: may push the company to take large loans, perhaps on less favorable terms, to the detriment of other shareholders
-* Families
-  * Predominant in Latin America, and to a lesser extent Asia and Europe; often with interlocking directorates
-  * Benefit: lower risks associated with principal-agent problems
-  * Drawbacks: poor transparency, lack of management accountability, modest consideration for minority shareholder rights, and difficulty in attracting quality talent for management.
-* State-owned enterprises (SOEs)
-  * Strategic sectors, capital needs beyond the private sector, or products the state wants at a set price/standard (e.g. power, health)
-  * Listed SOE = **mixed-ownership model**: lower market scrutiny of management (implicit/explicit state guarantee against bankruptcy); may pursue social/public policy at the expense of shareholder value
-* Institutioonal investors
-  * Mutual funds, pension funds, insurers, hedge funds; resources and expertise to use informed judgment
-  * In dispersed markets usually **not** large enough to be controlling, but promote good governance by holding board/management accountable
-* Group companies
-  * Horizontal/vertical structures → control disproportionate to ownership; cross-holdings restrict transfer of shares and block outsiders
-  * Higher risk of **related-party transactions** against minority holders (e.g. Samsung, Sanwa, Grupo Carso)
-* Private equity firms
-  * Venture capital (early stage, oversight) and LBO firms (majority control of mature companies)
-  * May bring corporate codes and performance-based manager pay
-* Foreign investors
-  * Influential in emerging markets when they own more than domestic investors; from stricter jurisdictions may demand more transparency
-  * Cross-listing in a stricter market can benefit local minority holders
-* Managers and board directors (insiders)
-  * Larger stakes → better alignment, more focus on long-term profitability
-  * But large stakes can also give power to protect their own interests at others' expense
+| Shareholder | Role and concerns |
+| --- | --- |
+| **Banks** | Common in Europe and Asia; both lender **and** shareholder. May push the company into large loans on unfavorable terms, at other shareholders' expense |
+| **Families** | Predominant in Latin America, less so in Asia and Europe; often with interlocking directorates. **+** fewer principal–agent problems. **−** poor transparency, weak management accountability, little regard for minority rights, hard to attract top managers |
+| **State-owned enterprises** | In strategic sectors, or where capital needs exceed the private sector, or where the state wants products at a set price or standard (power, health). A listed SOE (**mixed ownership**) faces less market scrutiny (implicit state guarantee against bankruptcy) and may pursue public policy at shareholders' expense |
+| **Institutional investors** | Mutual funds, pension funds, insurers, hedge funds; have the resources and expertise to judge. In dispersed markets rarely large enough to control, but promote good governance by holding boards and managers accountable |
+| **Group companies** | Horizontal or vertical structures give control out of proportion to ownership; cross-holdings restrict share transfers and keep outsiders out. Higher risk of **related-party transactions** against minority holders (e.g., Samsung, Sanwa, Grupo Carso) |
+| **Private equity** | Venture capital (early stage, oversight) and LBO firms (majority control of mature companies); may bring corporate codes and performance-based pay |
+| **Foreign investors** | Influential in emerging markets when they own more than domestic investors; those from stricter jurisdictions may demand more transparency. Cross-listing in a stricter market can benefit local minority holders |
+| **Insiders** | Larger stakes → better alignment with shareholders and a long-term focus; but large stakes can also give them the power to protect their own interests |
 
-Effects of Ownership Structure on Corporate Goverance
+### Effects on Governance
 
-* Independent board directors:
-  * No material relationship with company (employment, ownership or remuneration)
-  * Higher share of independent directors in dispersed jurisdictions (they originated there to strengthen monitoring of managers); share rose after scandals (e.g. Enron)
-  * U.S. requires audit, nomination, and compensation committees be composed entirely of independent directors.
-  * In most concentrated jurisdictions, nomination and remuneration committees are **not mandatory**; independent directors play a narrower role
-  * OECD countries require/recommend either a minimum number (typically 1–3) or a minimum ratio (typically 20% to 50%+)
-* Board Structure
-  * One-tier: Single board of directors, with executive (internal) and non-executive (external) directors. Most common
-  * 2-teir: Supervisory board that oversees a management board. Mandated in e.g. Argentina, Germany, Russia; optional in Brazil and France. Supervisory board inspects books, reviews annual report, oversees external auditors, sets/influences management pay; in Germany includes stakeholder representatives (banks, labor)
-* Special voting arrangement
-  * Help minority holders take part in board nomination/election (e.g. Brazil, India, Portugal, Turkey, Italy, Israel, UK)
-  * UK premium listing with a controlling holder: independent directors must be approved by **both** all shareholders **and** non-controlling shareholders
-* Corporate governance codes, laws, and listing requirements
-  * National codes: **"comply or explain"**. Japan goes further: a company with no outside directors must justify why appointing them is not appropriate
-  * Without a national code: company law/regulation (e.g. Chile) or exchange listing rules (e.g. India)
-* Steward code
-  * Stewardship codes: (mostly voluntary) codes encouraging investors to exercise their rights and engage. UK Stewardship Code: institutional investors must monitor investees; UK asset managers must publish a "comply or explain" statement
+* **Independent directors**: directors with no material relationship with the company (employment, ownership or pay). They originated in dispersed-ownership jurisdictions to strengthen monitoring of managers, and their share rose after scandals such as Enron. The US requires audit, nomination and compensation committees made up entirely of independent directors. In most concentrated jurisdictions, nomination and remuneration committees aren't mandatory, and independent directors play a narrower role. OECD countries require or recommend either a minimum number (typically 1–3) or a minimum share (typically 20% to more than 50%).
+* **Board structure**:
+  * **One-tier**: a single board of executive and non-executive directors. The most common structure.
+  * **Two-tier**: a supervisory board oversees a management board. Mandatory in, e.g., Argentina, Germany and Russia; optional in Brazil and France. The supervisory board inspects the books, reviews the annual report, oversees the auditors and sets or influences management pay; in Germany, it includes stakeholder representatives (banks, labor).
+* **Special voting arrangements**: help minority holders take part in nominating and electing directors (e.g., Brazil, India, Portugal, Turkey, Italy, Israel, UK). In the UK, a premium-listed company with a controlling holder must have its independent directors approved by **both** all shareholders **and** the non-controlling shareholders.
+* **Governance codes, laws and listing rules**: national codes work on a **comply-or-explain** basis. Japan goes further: a company with no outside directors must explain why appointing them isn't appropriate. Without a national code, company law (e.g., Chile) or exchange listing rules (e.g., India) apply.
+* **Stewardship codes**: mostly voluntary codes encouraging investors to use their rights and engage. Under the UK Stewardship Code, institutional investors must monitor the companies they invest in, and UK asset managers must publish a comply-or-explain statement.
 
 > [!IMPORTANT]
-> The principal–agent problem is generally **less** of a concern under concentrated ownership than under dispersed ownership, which is why independent directors play a narrower role there.
+> The principal–agent problem is generally **smaller** under concentrated ownership, which is why independent directors play a narrower role there.
 
-## Corporate Goverance Evaluation 
+## Evaluating Corporate Governance
 
-Effective governance may bring higher profitability, ROE growth, better access to credit, higher and sustainable dividends, good long-term share performance and a **lower cost of capital**. Ineffective governance: reputational damage, lower competitiveness, share price weakness/volatility, lower profitability, **higher cost of capital**.
+Effective governance can bring higher profitability and ROE growth, better access to credit, higher and sustainable dividends, good long-term share performance and a **lower cost of capital**. Ineffective governance brings reputational damage, weaker competitiveness, a weak or volatile share price, lower profitability and a **higher cost of capital**.
 
-* Governance factors are hard to quantify; start from disclosed policies, then dialogue/engagement; activism if needed
-* Also look at policies on business ethics, bribery and corruption, whistleblower protection and related-party transactions
-* In practice analysts reflect governance by adjusting the **risk premium (cost of capital) or credit spread**
+Governance is hard to quantify. Start with the disclosed policies (including business ethics, bribery and corruption, whistleblower protection and related-party transactions), then engage with management, and use activism if needed. In practice, analysts reflect governance by adjusting the **risk premium (cost of capital) or the credit spread**.
 
-### Board Policies and Practies
+### Board Policies and Practices
 
-* CEO duality: CEO also serves as chairperson of the board
-  * Concern: board's monitoring/oversight may be compromised. If the chair is not independent or roles are combined, a **lead independent director** may be appointed
-* Board independence 
-  * No independent directors, or only a minority, is a **negative**: management may act in a self-serving way → higher perceived risk
-* Board committee:
-  * Audit, Goverance, Renuimeration, Nomination, Risk, Compliance
-  * Check there are sufficiently independent committees on key concerns; non-independent or executive members raise conflicts on pay (remuneration), management selection (nomination) and reporting integrity (audit)
-* Board skills and experience: A board director's tenure is considered long if it exceeds 10 years.
-  * Concentrated skills, or diverse skills unrelated to core operations, may both be insufficient. Resource/high-ESG-risk sectors: board members typically have environmental, climate or social expertise
-  * Long tenure: **+** deep understanding of the business and of management's record; **−** may impair independence (too close to management) and resistance to change
-* Board composition: Reflects the number and diversity of directors (professional, cultural, geographical background, gender, age, tenure)
-  * Too many members or too little diversity may govern less effectively
-* Board evaluation: self-evaluation or external review; covers duties, leadership, structure (incl. committees), board–management interaction (culture); may be targeted to shareholders, regulators or other stakeholders
-* Executive Remuneration (compensation)
-  * Transparent
-  * Incentive plan (short-term and long-term performance criteria)
-  * Linkage with company strategy
-  * Pay differential between CEO and average worker
-  * Say-on-pay provision: **shareholders** can vote and/or give feedback on remuneration
-  * Claw-back policy: company can **recover previously paid** remuneration if events such as financial restatements, misconduct, breach of law or risk management deficiencies are uncovered
-  * Excessive remuneration (often CEO pay ÷ average-worker pay) $\to$ use KPI to analysis: check whether incentives drive company value
-* Voting rights
-  * Straight voting: one share, one vote
-  * Dual class: founders/management hold higher-vote shares than the public class → potential conflict with minority holders
+| Area | What to look for |
+| --- | --- |
+| **CEO duality** | CEO also chairs the board → the board's oversight may suffer. If the chair isn't independent, a **lead independent director** may be appointed |
+| **Board independence** | No independent directors, or only a minority, is a **negative**: management may act in its own interest → higher perceived risk |
+| **Committees** | Audit, governance, remuneration, nomination, risk, compliance. Check that key committees are independent: non-independent or executive members create conflicts over pay (remuneration), management selection (nomination) and reporting integrity (audit) |
+| **Skills and experience** | Skills that are too concentrated, or diverse but unrelated to the core business, may both fall short. In resource or high-ESG-risk sectors, boards typically include environmental, climate or social expertise |
+| **Tenure** | Over **10 years** is long. **+** deep knowledge of the business and of management's record; **−** may weaken independence (too close to management) and resist change |
+| **Composition** | Number and diversity of directors (professional, cultural and geographic background, gender, age, tenure). Too many members or too little diversity can govern less effectively |
+| **Board evaluation** | Self-evaluation or external review, covering duties, leadership, structure (including committees) and board–management relations; may be aimed at shareholders, regulators or other stakeholders |
 
-**Textbook example (Style, Italian clothing retailer).** 11-member board; chair (Leila Donato) is not the CEO; 2 independent directors; 4 of the 6 non-independent directors are Donato family, each 20+ years on the board; 5 women, ages 35–75.
+**Executive remuneration.** Look for transparency; short- and long-term incentive criteria; a link to the company's strategy; and the pay gap between the CEO and the average worker. Excessive pay (often CEO pay ÷ average-worker pay) is judged against KPIs: do the incentives drive company value?
+
+* **Say on pay**: **shareholders** can vote on, or give feedback on, remuneration.
+* **Clawback**: the company can **recover pay already awarded** if restatements, misconduct, breaches of law or risk-management failures come to light.
+
+**Voting rights.** **Straight voting** (one share, one vote) vs **dual-class** shares, where founders or managers hold higher-vote shares than the public: a potential conflict with minority holders.
+
+**Example (Style, Italian clothing retailer).** 11-member board; the chair (Leila Donato) isn't the CEO; 2 independent directors; 4 of the 6 non-independent directors are Donato family members, each with 20+ years on the board; 5 women, aged 35–75.
 
 | Positive | Negative |
 | --- | --- |
-| No CEO duality | Only 2 independent directors; family includes the chair |
+| No CEO duality | Only 2 independent directors; the family includes the chair |
 | Age and gender diversity | Family tenure far exceeds the typical 10 years |
 
-**Textbook example (Sumiyoshi Banking Group, Japan, vs domestic peers).**
+**Example (Sumiyoshi Banking Group, Japan, vs domestic peers).**
 
 | Factor | Peers | Sumiyoshi |
 | --- | --- | --- |
-| Board type / size | Two tier / 13 | Two tier / 14 |
+| Board type / size | Two-tier / 13 | Two-tier / 14 |
 | CEO duality | Yes | Yes |
 | Independent chair | Yes | **No** |
 | Board independence | 47% | **36%** |
 | Female directors | 17% | **7%** |
-| Long tenure (> 10 yrs) | 0% | **14%** |
+| Long tenure (> 10 years) | 0% | **14%** |
 | Committees | 5 (incl. governance) | 4 (no governance committee) |
-| Non-exec with industry exec experience / independent directors | 67% | **20%** |
+| Independent directors with industry executive experience | 67% | **20%** |
 | Incentive metrics disclosed | No | No |
-| Say-on-pay | Yes | **No** |
-| Ownership / voting | No single large holder; straight voting, no dual class | Same |
+| Say on pay | Yes | **No** |
+| Ownership / voting | No single large holder; straight voting | Same |
 
-Sumiyoshi lags on board composition. The analyst also uses credit risk as a governance proxy: NPLs / total loans is **50 bps above peers** → may raise the **equity risk premium** and the **credit spread** relative to peers.
+Sumiyoshi lags on board composition. The analyst also uses credit risk as a governance proxy: its NPLs / total loans ratio is **50 bp above peers**, which may justify a higher **equity risk premium** and a wider **credit spread** than peers'.
 
 > [!IMPORTANT]
-> Exam trap: CEO duality alone is not the whole story. Separate CEO/chair is positive, but independence, tenure and family/insider dominance can still make the board weak (Style).
+> Separating the CEO and chair roles is positive, but not the whole story: low independence, long tenure and family or insider dominance can still make a board weak (Style).
 
-## ESG
+## Identifying ESG Factors
 
-Main challenge: getting information that is **relevant, comparable and decision-useful**. ESG data come mostly from public filings and sustainability reports (may or may not be third-party assured); reporting is **inconsistent** and most ESG disclosure is **voluntary**, though disclosure has increased over time.
+The main challenge is getting information that is **relevant, comparable and decision-useful**. ESG data come mostly from public filings and sustainability reports (which may or may not be independently assured); most ESG disclosure is **voluntary** and **inconsistent**, though it has increased over time.
 
-**Materiality** refers to ESG-related issues that are expected to affect company's operations, financial performance and the valuation of its securities, not relating to positive or negative. Companies may label positive but immaterial ESG information "material", while minimising or not reporting negative information investors would consider material. Also considering the investment horizon match
+**Materiality.** An ESG issue is material if it is expected to affect a company's operations, financial performance and the valuation of its securities, whether positively or negatively. Companies may call positive but immaterial information "material" while downplaying negative information that investors would consider material.
 
-* Horizon matters especially for **credit analysts** (different bond maturities)
-* Impact horizon can shift from long term to short term (and back) after a regulation change or a controversy such as an oil spill
-* Textbook case: manufacturer facing stricter future environmental rules; short-horizon investor sees little near-term profit effect, long-horizon investor expects costly plant upgrades or fines
+**Investment horizon.** Whether an issue matters also depends on the horizon:
 
-Relevant factors by industry:
+* Horizon matters especially for **credit analysts**, because bonds have different maturities.
+* An issue's horizon can shift from long term to short term (or back) after a regulation change or a controversy such as an oil spill.
+* E.g., a manufacturer faces stricter future environmental rules: a short-horizon investor sees little effect on near-term profit; a long-horizon investor expects costly plant upgrades or fines.
 
-* Governance: reasonably consistent across companies (best practice varies regionally)
-* Environmental and social: **no globally accepted best practice**; relevance depends on industry
-  * Energy companies: more affected by **environmental** factors
-  * Banks: more by **social** factors (data security, privacy, customer satisfaction)
-  * Both: governance
+**Relevant factors by industry.** Governance best practice is fairly consistent across companies (though it varies by region). For environmental and social factors there is **no global best practice**: relevance depends on the industry. Energy companies are more exposed to **environmental** factors; banks to **social** ones (data security, privacy, customer satisfaction); both to governance.
 
-Three approaches to identify ESG factors (usable alone or combined):
+**Three ways to identify ESG factors** (alone or combined):
 
-| Approach | What it is | Examples from the textbook |
+| Approach | What it is | Examples |
 | --- | --- | --- |
-| **Proprietary methods** | Analyst/firm judgment and tools; research companies, news, industry groups, environmental groups, labor organisations, experts, government | Annual reports, sustainability reports, proxy reports, 10-K; CDL climate scenario disclosure |
-| **ESG data providers** | Vendors turn public disclosures into ESG analyses, scores and rankings, often with subjective analyst assessment; industry-relative rankings | MSCI, Sustainalytics |
-| **Not-for-profit initiatives and reporting frameworks** | Data, insights and tools on ESG issues | IIRC (standardised ESG disclosure framework), GRI (sustainability reporting standards by industry), SASB (uniform sustainability accounting standards; **materiality maps**), 2DII; Access to Nutrition Index |
+| **Proprietary methods** | The analyst's or firm's own judgment and tools, drawing on companies, news, industry and environmental groups, labor organizations, experts and government | Annual, sustainability and proxy reports, 10-K; CDL's climate scenario disclosure |
+| **ESG data providers** | Vendors turn public disclosures into ESG scores and rankings (often industry-relative), with some subjective analyst assessment | MSCI, Sustainalytics |
+| **Not-for-profit initiatives and reporting frameworks** | Data, insights and tools on ESG issues | IIRC (standardized disclosure framework), GRI (sustainability reporting standards by industry), SASB (uniform sustainability accounting standards; **materiality maps**), 2DII, Access to Nutrition Index |
 
-**Textbook example (City Developments Limited, CDL).** Climate scenario planning aligned with TCFD and IPCC, with 2030 scenarios for 2°C and 1.5°C warming.
+**Example (City Developments Limited, CDL).** Climate scenario planning aligned with TCFD and the IPCC, with 2030 scenarios for 2°C and 1.5°C of warming:
 
 | Type | Items |
 | --- | --- |
-| Transition risks | T1 policy risk (carbon taxes, stricter building standards; high priority), T2 water security, T3 waste responsibility, T4 higher insurance premiums / uninsurable assets |
-| Physical risk | P1 more frequent/severe floods and heatwaves → stranded assets |
-| Opportunities | O1 consumer activism, O2 global shift to low-carbon growth (high priority), O3 green finance in Singapore |
+| Transition risks | Policy risk (carbon taxes, stricter building standards; high priority), water security, waste responsibility, higher insurance premiums or uninsurable assets |
+| Physical risk | More frequent and severe floods and heatwaves → stranded assets |
+| Opportunities | Consumer activism, the global shift to low-carbon growth (high priority), green finance in Singapore |
 
-Disclosures range from minimal to many pages → **comparability problems** for analysts.
+Disclosures range from minimal to many pages, which makes comparisons hard. For example, GRI's topics for consumer durables and household and personal products include environmental ones (materials sourcing, packaging, plastic and chemicals, product energy efficiency), social ones (migrant workers, product safety, labeling, e-waste) and others (executive pay, gender on governance bodies, supplier screening).
 
-GRI example (consumer durables and household and personal products): environmental topics such as materials sourcing, packaging, plastic and chemicals use, energy efficiency of products; social topics such as migrant workers, product safety, labeling, e-waste; other topics such as corporate governance (executive compensation, gender on governance bodies) and supplier screening.
+## ESG Integration
 
-**ESG Integration** Implementation of qualitative and quantitative ESG factors in traditional security and industry analysis as well as portfolio construction:
-
-* Identify potential opportunites and mitigate downside risk
+ESG integration aims to identify opportunities and reduce downside risk.
 
 | | Equity | Fixed income (credit) |
 | --- | --- | --- |
-| Purpose | Identify **opportunities and** mitigate downside risk | Mainly **mitigate downside risk** (bond redeems at par) |
-| Techniques | Forecast financial metrics/ratios, adjust valuation inputs (e.g. **discount rate**), sensitivity/scenario analysis | Internal credit assessments, forecast ratios, relative credit ranking; relative value, **spread**, **duration**, sensitivity/scenario analysis |
-| Textbook illustration | Hotel: raise operating cost forecast for high employee turnover. Snack food: **lower** discount rate for moving to a sustainable key ingredient | Toy company: lawsuits hit credit ratios, cash flow, liquidity; spreads may widen. Coal company: stranded-asset risk hurts **10-year** notes much more than **1-year** notes |
+| Purpose | Identify **opportunities and** reduce downside risk | Mainly **reduce downside risk** (the best case is repayment at par) |
+| Techniques | Forecast financials and ratios, adjust valuation inputs (e.g., the **discount rate**), sensitivity and scenario analysis | Internal credit assessments, forecast ratios, relative credit ranking; relative value, **spread**, **duration**, sensitivity and scenario analysis |
+| Illustrations | Hotel: raise operating costs for high staff turnover. Snack maker: **lower** the discount rate for switching to a sustainable key ingredient | Toy maker: lawsuits hurt credit ratios, cash flow and liquidity; spreads may widen. Coal company: stranded-asset risk hurts its **10-year** notes much more than its **1-year** notes |
 
 > [!IMPORTANT]
-> Identification process and integration techniques are reasonably similar for equity and credit, but **material factors and implications differ**, and the credit (and CDS) effect can differ by **maturity**.
+> Identification and integration are similar for equity and credit, but the **material factors and their implications differ**, and the credit (and CDS) effect can differ by **maturity**.
 
-**Green bonds**:
+### Green Bonds
 
-* Bond with environmental or climate benefits: proceeds designated to fund specific green project(s)
-* First one: European Investment Bank's Climate Awareness Bond, **2007**
-* Issuer decides on the "green" label, in close cooperation with the lead underwriter; must disclose eligibility criteria and use of proceeds; may commission independent reviews
-* **Green Bond Principles** (2014, consortium of investment banks; voluntary; maintained by ICMA). Index providers, rating agencies and the Climate Bonds Initiative have their own methods; the European Commission is exploring specific criteria
-* Issuer: extra monitoring/reporting costs, but a more diversified investor base and potentially a new-issue premium
-* Forms: plain-vanilla corporates, project bonds, MBS/ABS, municipals (e.g. California's US\$300 million 2014 GO green bond, backed by the General Fund like its other GO bonds)
-* Same credit ratings and valuations: same ratings and bondholder recourse as the issuer's conventional bonds (all else equal); analysis and valuation essentially the same because only use of proceeds differs
-* May command a premium and a tighter credit spread **because of market demand** (not because they are less risky)
-* Greenwashing risk: investor may overpay for the green feature or hold a bond that fails an environmental mandate
-* Liquidity risk: often bought by buy-and-hold investors
+A **green bond** funds projects with environmental or climate benefits: its proceeds are designated for specific green projects.
+
+* The first was the European Investment Bank's Climate Awareness Bond, in **2007**.
+* The issuer decides on the "green" label with its lead underwriter, must disclose the eligibility criteria and use of proceeds, and may commission independent reviews. The **Green Bond Principles** (2014; voluntary; maintained by ICMA) guide this; index providers, rating agencies and the Climate Bonds Initiative have their own methods, and the European Commission is developing criteria.
+* For the issuer: extra monitoring and reporting costs, but a wider investor base and potentially a lower yield at issue.
+* Forms: plain corporates, project bonds, MBS/ABS and municipals (e.g., California's US\$300 million green general obligation bond of 2014, backed by the General Fund like its other GO bonds).
+* **Same rating and valuation** as the issuer's conventional bonds (all else equal): only the use of proceeds differs, and bondholders have the same recourse.
+* May trade at a premium (tighter spread) **because of demand**, not because it is less risky.
+* Risks: **greenwashing** (overpaying for a green feature, or holding a bond that fails an environmental mandate) and **liquidity** (many holders buy and hold).
 
 > [!IMPORTANT]
-> Exam trap: a green bond's credit risk is the issuer's credit risk. A tighter spread reflects **demand**, not lower default risk.
+> A green bond's credit risk is the issuer's credit risk. A tighter spread reflects **demand**, not lower default risk.
 
 ## Evaluating ESG Risks and Opportunities
 
-ESG integration steps:
+The integration process:
 
-1. Identify **material** qualitative and quantitative ESG factors for the company/industry
-2. Evaluate them historically, on a forecast basis and relative to peers
-3. Adjust financials and valuation
+1. Identify the **material** ESG factors for the company and its industry.
+2. Evaluate them over time, in forecasts, and against peers.
+3. Adjust the financial statements and the valuation:
 
 | Where | Typical ESG adjustments |
 | --- | --- |
-| Income statement / cash flow | Revenues, operating and non-operating costs, margins, earnings, capex |
-| Balance sheet | Estimate of **impaired assets** |
+| Income statement / cash flow | Revenue, operating and non-operating costs, margins, earnings, capex |
+| Balance sheet | Estimates of **impaired assets** |
 | Equity valuation | Cost of capital / **discount rate**, price multiple, terminal value |
 | Bond valuation | **Credit spread** or CDS |
 
-**ESG Integration Framework** (source: *Guidance and Case Studies for ESG Integration: Equities and Fixed Income*, 2018): research (qualitative and quantitative), security valuation (equities and fixed income), plus portfolio construction, asset allocation, scenario analysis and risk management.
+The *Guidance and Case Studies for ESG Integration: Equities and Fixed Income* (2018) framework covers research (qualitative and quantitative), security valuation, portfolio construction, asset allocation, scenario analysis and risk management.
 
-The textbook's three integration cases (each focuses on the most relevant pillar; the concepts carry over to other industries):
+The reading's three cases each focus on one pillar; the ideas carry over to other industries:
 
 | Case | Pillar | Key metric | Financial adjustment | Valuation effect |
 | --- | --- | --- | --- | --- |
-| **Frizzle Drinks** (US beverages) | Environmental | **Water intensity** = liters of water used per liter of product; normalised per US\$1 million revenue for peer comparison | Fell 27% 2009–2021, target another 13% by 2025F. COGS/revenue 2022F 40% (peers 42%), cut by 1% for lower water use → higher gross margin | Higher forecast earnings → higher fair value of stock; better operating cash flow for bonds/CDS; check whether lower ESG risk is **already in spreads** |
-| **Well Pharma** (European pharma) | Social | **Product quality**: controversies, regulatory warning letters, recalls, fines, % plants certified (e.g. ISO 9001) | Worst peer record (15 warning letters, 5 quality controversies vs fewer at peers). Revenue −2% next year; COGS/revenue +1.3%; non-operating expenses +4.5% of operating income. Treatment depends on whether issues are **recurring or non-recurring** | Hurts earnings and cash flow for shareholders **and** bondholders; possible impaired brand value |
-| **Sumiyoshi** (Japanese bank) | Governance | Board composition vs peers; **NPLs / total loans** as governance proxy | NPL ratio 50 bps above peers | Higher equity risk premium; wider credit spread |
+| **Frizzle Drinks** (US beverages) | Environmental | **Water intensity** = liters of water per liter of product (normalized per US\$1 million of revenue for peer comparison) | Fell 27% from 2009 to 2021, target another 13% by 2025. COGS/revenue 2022F 40% (peers 42%), cut by 1% for lower water use → higher gross margin | Higher earnings → higher fair value of the stock; better operating cash flow for bonds and CDS; check whether lower ESG risk is **already in spreads** |
+| **Well Pharma** (European pharma) | Social | **Product quality**: controversies, regulatory warning letters, recalls, fines, % of plants certified (e.g., ISO 9001) | Worst record among peers (15 warning letters, 5 quality controversies). Revenue −2% next year; COGS/revenue +1.3%; non-operating expenses +4.5% of operating income. Treatment depends on whether issues are **recurring or one-off** | Lower earnings and cash flow for shareholders **and** bondholders; possible impairment of brand value |
+| **Sumiyoshi** (Japanese bank) | Governance | Board composition vs peers; **NPLs / total loans** as a governance proxy | NPL ratio 50 bp above peers | Higher equity risk premium; wider credit spread |
 
-Well Pharma, factor → financial impact:
+How Well Pharma's quality issues flow into the financials:
 
 | Factor | Financial impact |
 | --- | --- |
@@ -285,20 +224,4 @@ Well Pharma, factor → financial impact:
 | Regulatory warning letters | Higher compliance costs |
 | Product recalls | Lost revenue; recall costs |
 | Regulatory fines | Provisions for sales returns and litigation |
-| Low quality-certification % | Higher risk of quality issues, recalls and costs |
-
-## Quick Recall
-
-* Ownership: dispersed / concentrated / hybrid; concentrated is far more common (38 of 47 OECD-surveyed jurisdictions)
-* Control ≠ ownership: horizontal (cross-holdings), vertical (pyramid), dual-class shares
-* Dispersed + dispersed → principal–agent; concentrated control (with or without majority ownership) → principal–principal; concentrated ownership + dispersed votes → voting caps
-* Influential holders: banks, families, SOEs, institutions, group companies, PE, foreign investors, insiders
-* Governance effects: independent directors, one- vs two-tier boards, special voting, comply-or-explain codes, stewardship codes
-* Board evaluation: CEO duality, independence, committees, skills, tenure (> 10 yrs = long), composition, evaluation process
-* Remuneration: transparency, incentives, strategy link, CEO/worker pay; say-on-pay (shareholders vote); clawback (recover paid pay)
-* Governance enters valuation via risk premium / credit spread
-* ESG data: voluntary, inconsistent, comparability problems; materiality = affects operations, financials, valuation; match investment horizon
-* Identify factors: proprietary, data providers (MSCI, Sustainalytics), not-for-profit frameworks (IIRC, GRI, SASB, 2DII)
-* Equity: opportunities + downside; credit: mainly downside; maturity matters
-* Green bonds: only use of proceeds differs; same rating; demand-driven premium; greenwashing and liquidity risk
-* Integration cases: Frizzle (E, water intensity), Well (S, product quality), Sumiyoshi (G, board + NPLs)
+| Low share of certified plants | Higher risk of quality problems, recalls and costs |

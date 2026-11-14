@@ -21,7 +21,7 @@ const CARDS = [
     "id": "ci3-wacc",
     "topic": "WACC",
     "front": "Write WACC and name three reasons it is hard to estimate.",
-    "back": "<div class=\"ans\"><div class=\"eq-block\">$$WACC=w_dr_d(1-t)+w_pr_p+w_er_e$$</div><ul><li>Many methods per component, no single right one</li><li>Needs the long-term <strong>target</strong> capital structure</li><li>Needs the <strong>marginal</strong> tax rate, not the average or effective rate</li></ul></div>"
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}WACC={}&w_dr_d(1-t)\\\\&+w_pr_p+w_er_e\\end{aligned}$$</div><ul><li>Many methods per component, no single right one</li><li>Needs the long-term <strong>target</strong> capital structure</li><li>Needs the <strong>marginal</strong> tax rate, not the average or effective rate</li></ul></div>"
   },
   {
     "id": "ci3-topdown",
@@ -67,7 +67,7 @@ const CARDS = [
     "id": "ci3-lease",
     "topic": "Leases",
     "front": "Write the equation for the rate implicit in the lease. G&S: 15 years, PMT €9m, asset FV €100m, lessor cost €5m, residual €10m.",
-    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}&\\text{PV(payments)}+\\text{PV(residual)}\\\\&=\\text{FV of asset}+\\text{lessor's direct costs}\\end{aligned}$$</div><p>N 15, PV −105, PMT 9, FV 10 → <strong>4.08%</strong>, below the 6% unsecured IBR.</p></div>",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}&\\text{PV(payments)}+\\text{PV(residual)}\\\\&=\\text{FV of asset}\\\\&\\quad+\\text{lessor's direct costs}\\end{aligned}$$</div><p>N 15, PV −105, PMT 9, FV 10 → <strong>4.08%</strong>, below the 6% unsecured IBR.</p></div>",
     "gap": "If the residual and lessor costs are unknown, use the IBR: the rate on a collateralized loan over the same term."
   },
   {
@@ -98,7 +98,7 @@ const CARDS = [
     "id": "ci3-gk",
     "topic": "Grinold–Kroner",
     "front": "Write the Grinold–Kroner ERP. Inputs: DY 2.2%, ΔP/E 0, i 1.6%, g 3%, ΔS −0.7%, rf 2.5%.",
-    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}ERP={}&[DY+\\Delta(P/E)+i+g\\\\&-\\Delta S]-E(r_f)\\end{aligned}$$</div><p>\\(\\{2.2+0+[1.6+3.0+0.7]\\}-2.5=\\) <strong>5.0%</strong>.</p></div>",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}ERP={}&DY+\\Delta(P/E)\\\\&+i+g-\\Delta S\\\\&-E(r_f)\\end{aligned}$$</div><p>\\(\\{2.2+0+[1.6+3.0+0.7]\\}-2.5=\\) <strong>5.0%</strong>.</p></div>",
     "gap": "Higher expected inflation doesn't change the ERP: i and rf rise together. The textbook's text says 3.6% for this case; its calculation gives 5.0%."
   },
   {
@@ -117,19 +117,19 @@ const CARDS = [
     "id": "ci3-byprp",
     "topic": "BYPRP",
     "front": "Write the bond yield plus risk premium approach and its drawbacks. Bond yield 4.3%, premium 6.1%.",
-    "back": "<div class=\"ans\"><div class=\"eq-block\">$$r_e=r_d+RP=4.3\\%+6.1\\%=10.4\\%$$</div><ul><li>RP is relatively arbitrary</li><li>Needs traded debt</li><li>No rule on which bond to use if several (usually the long-term YTM)</li></ul></div>"
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}r_e&=r_d+RP\\\\&=4.3\\%+6.1\\%=10.4\\%\\end{aligned}$$</div><ul><li>RP is relatively arbitrary</li><li>Needs traded debt</li><li>No rule on which bond to use if several (usually the long-term YTM)</li></ul></div>"
   },
   {
     "id": "ci3-ff",
     "topic": "Fama–French",
     "front": "Write the Fama–French five-factor model and define each factor. Why does its market beta differ from the CAPM beta?",
-    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}r_e={}&r_f+\\beta_1ERP+\\beta_2SMB+\\beta_3HML\\\\&+\\beta_4RMW+\\beta_5CMA\\end{aligned}$$</div><p>Size, value (book-to-market), profitability, investment. The extra factors change the estimated market beta.</p></div>"
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}r_e={}&r_f+\\beta_1ERP+\\beta_2SMB\\\\&+\\beta_3HML+\\beta_4RMW\\\\&+\\beta_5CMA\\end{aligned}$$</div><p>Size, value (book-to-market), profitability, investment. The extra factors change the estimated market beta.</p></div>"
   },
   {
     "id": "ci3-private",
     "topic": "Private company cost of equity",
     "front": "Write the expanded CAPM and the build-up approach. How do they treat beta?",
-    "back": "<div class=\"ans\"><div class=\"eq-block\">$$r_e=r_f+\\beta_{peer}ERP+SP+SCRP$$</div><div class=\"eq-block\">$$r_e=r_f+ERP+SP+IP+SCRP$$</div><p>Expanded CAPM uses a <strong>peer beta</strong>; build-up uses the ERP <strong>without beta</strong> (β = 1 implicit: \\(r_f\\) + ERP = average large-cap return).</p></div>",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}r_e={}&r_f+\\beta_{peer}ERP\\\\&+SP+SCRP\\end{aligned}$$</div><div class=\"eq-block\">$$\\begin{aligned}r_e={}&r_f+ERP+SP\\\\&+IP+SCRP\\end{aligned}$$</div><p>Expanded CAPM uses a <strong>peer beta</strong>; build-up uses the ERP <strong>without beta</strong> (β = 1 implicit: \\(r_f\\) + ERP = average large-cap return).</p></div>",
     "gap": "Illiquidity is handled as a discount for lack of marketability on value, not as a premium in r_e."
   },
   {
@@ -162,7 +162,7 @@ const CARDS = [
     "id": "ci3-precision",
     "topic": "Mini-case 2 · Precision",
     "front": "Industry beta 1.25, D/E 0.3025, tax 25%; Precision D/E 0.2120, tax 20%. Find Precision's beta.",
-    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\beta_{A}=\\frac{1.25}{1+0.75(0.3025)}=1.019$$</div><div class=\"eq-block\">$$\\beta=1.019[1+0.80(0.2120)]=1.19$$</div></div>",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}\\beta_{A}&=\\frac{1.25}{1+0.75(0.3025)}\\\\&=1.019\\end{aligned}$$</div><div class=\"eq-block\">$$\\begin{aligned}\\beta&=1.019[1+0.80(0.2120)]\\\\&=1.19\\end{aligned}$$</div></div>",
     "gap": "Unlever with the comparable's tax rate and D/E, relever with the subject's. D/E = debt ÷ (assets − debt)."
   },
   {

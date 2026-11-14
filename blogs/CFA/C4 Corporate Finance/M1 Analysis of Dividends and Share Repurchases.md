@@ -1,100 +1,65 @@
 # Analysis of Dividends and Share Repurchases
 
-This module covers the forms of dividends, the theories and practical factors behind payout policy, how share repurchases work and what they do to EPS and BVPS, and how to judge whether a dividend is safe.
-
-* [Learning Outcomes and Key Terms](#learning-outcomes-and-key-terms): what the module asks for, plus core vocabulary
-* [Concept of Dividends and Dividend Policies](#concept-of-dividends-and-dividend-policies): forms of dividends, their effect on wealth and on financial ratios
-* [Dividend Policy](#dividend-policy): MM vs bird in the hand vs taxes, signaling, agency costs
-* [Factors Affecting Dividend Policy in Practice](#factors-affecting-dividend-policy-in-practice): six factors, flotation costs, legal limits
-* [Tax Considerations](#tax-considerations): double taxation, imputation, split-rate
-* [Dividend Payout Policy](#dividend-payout-policy): stable (Lintner) vs constant payout ratio
-* [Global Trends in Payout Policy](#global-trends-in-payout-policy): fewer payers, more buybacks
-* [Share Repurchase and Effects](#share-repurchase-and-effects): methods, EPS and BVPS effects
-* [Valuation Equivalence of Cash Dividends and Share Repurchases](#valuation-equivalence-of-cash-dividends-and-share-repurchases): same wealth, all else equal
-* [The Dividend versus Share Repurchase Decision](#the-dividend-versus-share-repurchase-decision): why companies buy back shares
-* [Analysis of Dividend Safety](#analysis-of-dividend-safety): payout, coverage and FCFE coverage
-* [Quick Recall](#quick-recall): one-line summary of each topic
-
-## Learning Outcomes and Key Terms
-
-The candidate should be able to:
-
-* Describe the effect of regular, extra and liquidating dividends, stock dividends, splits and reverse splits on shareholder wealth and financial ratios
-* Compare theories of dividend policy and their implications for share value
-* Describe the signals sent by dividend initiations, increases, decreases and omissions
-* Explain how agency costs affect payout policy, and the factors that affect dividend policy in practice
-* Calculate the effective tax rate on corporate earnings under double taxation, imputation and split-rate systems
-* Compare stable vs constant payout ratio policies and calculate the dividend under each; describe trends in payout policy
-* Compare share repurchase methods; calculate the effect of a buyback on EPS (cash- vs debt-financed) and on BVPS
-* Explain the choice between cash dividends and repurchases
-* Calculate dividend coverage ratios based on net income and on FCFE; identify companies that may not be able to sustain their dividend
+How companies pay out cash (dividends and buybacks), the theories of why payout policy might matter, what buybacks do to EPS and book value, and how to tell whether a dividend is safe.
 
 | Term | Meaning |
 | --- | --- |
-| **Dividend** | Distribution declared by the board (shareholder approval needed in most of Europe, not in the US). **Discretionary**, not a legal obligation like bond interest |
-| **Ex-dividend date** | First day the share trades **without** the right to the dividend; price drops by about the dividend amount |
-| **Payout policy** | Principles guiding cash dividends **and** share repurchases (broader than dividend policy) |
-| **Dividend policy** | Strategy for the amount and timing of dividends |
-| **Dividend payout ratio** | Common cash dividends ÷ net income available to common shareholders |
+| **Dividend** | A distribution declared by the board (shareholders must also approve in most of Europe, not in the US). It is **discretionary**, unlike bond interest |
+| **Ex-dividend date** | The first day the share trades **without** the right to the dividend; the price drops by about the dividend |
+| **Payout policy** | How a company distributes cash: dividends **and** share repurchases |
+| **Dividend payout ratio** | Common dividends ÷ net income available to common shareholders |
 
-Dividends are a big part of total return: S&P 500 1926–2018 returned 10.0% a year with dividends reinvested vs 5.9% price only.
+Dividends are a large part of total return: the S&P 500 returned 10.0% a year from 1926 to 2018 with dividends reinvested, against 5.9% from price changes alone.
 
-## Concept of Dividends and Dividend Policies
+## Forms of Dividends
 
-Dividend classifications:
+**Cash dividends**
 
-* Cash dividend: Distribute cash to shareholders
-  * Regular dividends: paid on a schedule (quarterly in the US/Canada, semiannually in Japan/Australia, annually in Germany). Firms try to maintain or raise them and avoid cuts for temporary problems; an unexpected increase is usually good news
-  * Special/Extra dividends: paid by a company that does not pay regularly, or on top of regular dividends, when there is surplus cash, a strong earnings year or a one-off event (e.g. Tencent's special dividend after the Tencent Music IPO). Common for **cyclical** firms: small regular dividend + extra in good years
-  * Liquidating dividends: when the company goes out of business (net assets after liabilities paid out), sells part of the business for cash and pays out the proceeds, or pays a dividend greater than accumulated retained earnings. It is a **return of capital**, not a distribution of earnings
-* Stock dividend (bonus issue / scrip dividend): extra shares instead of cash, typically 2–10% of shares outstanding
-* Stock split (e.g. 2-for-1 split)
-  * Reverse stock split (e.g. 1-for-20 reverse stock split)
+* **Regular**: paid on a schedule (quarterly in the US and Canada, semiannually in Japan and Australia, annually in Germany). Companies try to keep or raise them and avoid cutting for temporary problems; an unexpected increase is usually good news.
+* **Special (extra)**: paid on top of regular dividends, or by a company that doesn't pay regularly, after a strong year or a one-off event (e.g., Tencent after the Tencent Music IPO). Common for **cyclical** companies: a small regular dividend plus an extra one in good years.
+* **Liquidating**: paid when a company winds up, sells part of its business and pays out the proceeds, or pays more than its accumulated retained earnings. It is a **return of capital**, not a distribution of earnings.
 
-**Textbook example (AfriSage, extra dividend).** Policy: ordinary dividend ≥ 35% of net income. 2018 EPS ZAR14.23, DPS ZAR7.61 → payout 7.61/14.23 = **53.5%** (2017: 10.68/12.65 = **84.4%**). Minimum ordinary dividend = 14.23 × 0.35 = **ZAR4.98**; extra dividend = 7.61 − 4.98 = **ZAR2.63**.
+**Stock dividends, splits and reverse splits**
 
-Effects of dividends on shareholders' wealth
+* **Stock dividend** (bonus issue): extra shares instead of cash, typically 2–10% of shares outstanding.
+* **Stock split**: e.g., 2-for-1. **Reverse split**: e.g., 1-for-20.
 
-* Cash: Stock price will drop by dividend amount, but wealth of shareholder will not change (all else equal)
-* Stock: Only change number, will not influence the wealth
-  * Total cost basis unchanged; cost per share falls (100 shares × US\$10 → 105 shares after a 5% stock dividend: US\$1,000/105 = **US\$9.52**). Generally not taxable
-  * Claimed benefits: larger float and better liquidity; keeps price in an "optimal" trading range (often US\$20–80 in the US)
-* Split: all per-share data fall proportionally; P/E, dividend yield and market value unchanged. A 2-for-1 split ≈ a 100% stock dividend; the difference is only accounting
-* Reverse split: fewer shares, higher price, market value unchanged. Used to get the price into a marketable range (listing minimums, institutions avoiding stocks below US\$5); most common in or after financial distress
+**Example (AfriSage, extra dividend).** The policy is an ordinary dividend of at least 35% of net income. In 2018, EPS is ZAR14.23 and DPS ZAR7.61, a payout of 7.61/14.23 = **53.5%** (2017: 10.68/12.65 = **84.4%**). The minimum ordinary dividend is 14.23 × 0.35 = **ZAR4.98**, so the extra dividend is 7.61 − 4.98 = **ZAR2.63**.
+
+### Effect on Shareholder Wealth
+
+* **Cash dividend**: the share price falls by the dividend, but the shareholder's wealth (share + cash) is unchanged, all else equal.
+* **Stock dividend**: more shares, same wealth. The total cost basis is unchanged, so the cost **per share** falls: 100 shares at US\$10 become 105 shares after a 5% stock dividend, at US\$1,000/105 = **US\$9.52** each. Generally not taxable. Claimed benefits: a larger float, better liquidity, and a price in an "optimal" trading range (often US\$20–80 in the US).
+* **Split**: all per-share figures fall in proportion; P/E, dividend yield and market value are unchanged. A 2-for-1 split is economically a 100% stock dividend; only the accounting differs.
+* **Reverse split**: fewer shares at a higher price, market value unchanged. Used to bring the price into a marketable range (listing minimums; institutions avoid stocks below US\$5); most common in or after financial distress.
 
 | | Stock dividend | Stock split |
 | --- | --- | --- |
 | Total equity | Unchanged | Unchanged |
-| Equity accounts | Retained earnings → contributed capital (new shares × price) | No account changes |
+| Equity accounts | Retained earnings → contributed capital (new shares × price) | No change |
 | Typical size | 2–10% | 2-for-1, 3-for-1 |
 
-**Textbook examples (condensed).**
+**Examples.**
 
-* 3% stock dividend, holder owns 10%: shares 1,000,000 → 1,030,000; EPS US\$1.00 → US\$0.97; price (P/E 20) US\$20 → US\$19.42; holder's 100,000 → 103,000 shares, value **US\$2,000,000** both before and after.
-* 2-for-1 split: shares 4m → 8m; price €40 → €20; EPS €1.50 → €0.75; DPS €0.50 → €0.25; yield **1.25%** and P/E **26.7** both before and after.
-* Globus Maritime 1-for-10 reverse split: US\$4.25 → **US\$42.50**. A reverse split does not by itself destroy wealth (market cap unchanged).
+* **3% stock dividend**, for a holder of 10%: shares 1,000,000 → 1,030,000; EPS US\$1.00 → US\$0.97; price (P/E 20) US\$20 → US\$19.42. The holder's 100,000 shares become 103,000, worth **US\$2,000,000** both before and after.
+* **2-for-1 split**: shares 4m → 8m; price €40 → €20; EPS €1.50 → €0.75; DPS €0.50 → €0.25. Yield **1.25%** and P/E **26.7** both before and after.
+* **Globus Maritime 1-for-10 reverse split**: US\$4.25 → **US\$42.50**. The reverse split doesn't destroy wealth by itself: market cap is unchanged.
 
-Effects of dividends on financial ratios
+### Effect on Financial Ratios
 
-* Cash:
-  * Reduces A and E in B/S
-  * Reduces Liquidity ratio since cash reduces
-  * Financial leverage ratio will increase (D/A, D/E)
-* Stock:
-  * No effect on A and total E (retained earnings move to contributed capital), volume increase
-  * Price and EPS will decline
+A **cash** dividend takes cash out: assets and equity fall, so liquidity ratios fall and leverage ratios (D/A, D/E) rise. A **stock** dividend or split moves nothing out of the company: total assets and equity are unchanged; only the number of shares, the price and EPS change.
 
-|                           | After cash dividends | After stock dividends / split |
-| ------------------------- | -------------------- | ----------------------------- |
-| Assets (cash)             | Lower                | The same                      |
-| Equity                    | Lower                | The same                      |
-| Price                     | Lower                | Lower                         |
-| EPS                       | The same             | Lower                         |
-| P/E                       | Lower                | The same                      |
-| Liquidity ratios          | Lower                | The same                      |
-| Financial leverage ratios | Higher               | The same                      |
+| | After a cash dividend | After a stock dividend / split |
+| --- | --- | --- |
+| Assets (cash) | Lower | Same |
+| Equity | Lower | Same |
+| Price | Lower | Lower |
+| EPS | Same | Lower |
+| P/E | Lower | Same |
+| Liquidity ratios | Lower | Same |
+| Leverage ratios | Higher | Same |
 
-**Worked example (added, not from the textbook): cash dividend vs stock dividend on ratios.** Cash 200, other current assets 300, current liabilities 250, total assets 1,000, debt 400, equity 600 (millions); 100m shares at US\$20.
+**Example (cash vs stock dividend).** Cash 200, other current assets 300, current liabilities 250, total assets 1,000, debt 400, equity 600 (US\$ millions); 100m shares at US\$20.
 
 | Ratio | Before | After US\$100m cash dividend | After 5% stock dividend |
 | --- | --- | --- | --- |
@@ -103,171 +68,181 @@ Effects of dividends on financial ratios
 | Debt/Equity | 400/600 = 0.67 | 400/500 = **0.80** | 0.67 |
 | Debt/Assets | 400/1,000 = 0.40 | 400/900 = **0.44** | 0.40 |
 
-Stock dividend: 5m new shares × US\$20 = US\$100m moved from retained earnings to contributed capital; equity stays 600. Price → 20/1.05 = US\$19.05; market cap 105m × 19.05 ≈ US\$2,000m, unchanged.
+The stock dividend moves 5m × US\$20 = US\$100m from retained earnings to contributed capital; equity stays 600. The price falls to 20/1.05 = US\$19.05, and market cap (105m × 19.05 ≈ US\$2,000m) is unchanged.
 
 > [!IMPORTANT]
-> Only **cash** dividends take cash out of the company. Stock dividends, splits and reverse splits just cut the pie into different slices: no change in wealth, total equity, liquidity or leverage (ignoring signaling).
+> Only **cash** dividends take cash out of the company. Stock dividends, splits and reverse splits cut the same pie into different slices: no change in wealth, total equity, liquidity or leverage (ignoring signaling).
 
 #### Exam traps
 
 * A stock dividend changes equity **accounts** but not **total** equity; a split changes no account.
-* Stock dividends lower the cost basis **per share**, not the total cost basis.
+* A stock dividend lowers the cost basis **per share**, not the total cost basis.
 * Any dividend above accumulated retained earnings is a liquidating dividend (return of capital).
 
-## Dividend Policy
+## Dividend Policy Theories
 
-MM theory proposes dividend does not matter. Bird-in-hand argument, Tax argument, Information signaling, and Agency costs theory proposes dividend matters.
+One theory says dividend policy doesn't matter (Miller–Modigliani); the others say it does.
 
-| Theory | Claim | Effect of a dividend increase on value |
+| Theory | Claim | Effect of a higher dividend on value |
 | --- | --- | --- |
-| **MM irrelevance** | Perfect markets; investors make homemade dividends | None |
-| **Bird in the hand** | Dividends are less risky than future gains | Lower cost of equity → price ↑ |
-| **Tax argument** | Dividends taxed more heavily than gains | Taxable investors prefer low payout / buybacks → price ↓ |
+| **MM irrelevance** | Perfect markets; investors can make "homemade" dividends | None |
+| **Bird in the hand** | A dividend today is less risky than a future gain | Lower cost of equity → price ↑ |
+| **Tax argument** | Dividends are taxed more than capital gains | Taxable investors prefer low payout or buybacks → price ↓ |
 
-**MM (1961).** Assumes no taxes, no transaction costs, symmetric information, a given capital budget and capital structure. Then the dividend decision is independent of investment and financing decisions.
+### Miller–Modigliani (1961)
 
-* Price A\$20 before an A\$1 dividend → A\$19 ex-dividend; holder has A\$20 either way.
-* Dividend = repurchase: 10,000 shares, FCF A\$10,000, PV of future CFs A\$190,000 → price **A\$20**. Buy back 10,000/20 = **500** shares; 190,000/9,500 = **A\$20**.
-* Homemade dividend: no dividend, holder of 1,000 shares sells **50** at A\$20 to get A\$1,000.
-* MM says dividend **policy** is irrelevant, not dividends themselves. Real-world frictions: flotation costs (often 4–10% of capital raised), investors' transaction costs and capital gains taxes.
+MM assume **no taxes, no transaction costs, symmetric information**, and a given capital budget and capital structure. Then the dividend decision is independent of investment and financing decisions:
 
-**Bird in the hand.** A dividend today is worth more than an uncertain gain, so payers have a lower cost of equity. MM's reply: paying a dividend does not change the risk of future cash flows.
+* A share at A\$20 before an A\$1 dividend trades at A\$19 ex-dividend: the holder has A\$20 either way.
+* A dividend equals a repurchase. 10,000 shares; FCF A\$10,000; PV of future cash flows A\$190,000 → price **A\$20**. Buying back 10,000/20 = **500** shares leaves 190,000/9,500 = **A\$20** a share.
+* **Homemade dividend**: if no dividend is paid, a holder of 1,000 shares who wants A\$1,000 sells **50** shares at A\$20.
 
-**Tax argument.** Where dividends are taxed more than capital gains, taxable investors prefer low payout or repurchases (in the extreme, zero payout). US since 2012: qualified dividends and long-term gains max 20%. Mainland China: no capital gains tax on shares; dividend tax 20% / 10% / 0% for holding periods < 1 month / 1 month–1 year / > 1 year.
+MM say dividend **policy** is irrelevant, not dividends themselves. Real-world frictions break the argument: flotation costs (often 4–10% of capital raised), investors' transaction costs, and taxes.
 
-* Information signaling: Dividend convey information about the company (positive or negative)
-  * Managers know more than investors; a cash signal is credible because it is **costly to mimic** (a firm without rising cash flow can't keep raising dividends, except briefly by borrowing)
-  * Initiation / increase → positive (future earnings growth, excess return on announcement). Cut / omission → negative. Holding the dividend under stress → problems seen as temporary
-  * Exceptions: a cut can be positive if the cash is reinvested or the cut looks prudent (Telstra 2017, BT 2018: shares +6.9%). A first dividend can signal confidence or maturity (eBay 2019)
-  * Consistent dividend raisers tend to have niche positions, less volatile earnings, high ROA and low debt
-* Agency Cost:
-  * Dividend reduces FCF for managers to overinvest and run out of control (Jensen's **free cash flow hypothesis**; empire building in negative-NPV projects). Market reaction to dividend changes is stronger where overinvestment risk is greater
-  * Dividend increase default risk on its debt: shareholder–bondholder conflict; large payouts can move wealth to shareholders and cause underinvestment. Bond covenants cap cumulative distributions and set coverage / leverage limits
+### Bird in the Hand and Taxes
 
-**Textbook examples (condensed).**
+* **Bird in the hand**: a dividend today is worth more than an uncertain gain, so dividend payers have a lower cost of equity. MM's reply: paying a dividend doesn't change the risk of future cash flows.
+* **Taxes**: where dividends are taxed more than capital gains, taxable investors prefer a low payout or buybacks (in the extreme, no dividends). In the US since 2012, qualified dividends and long-term gains are taxed at a maximum of 20%. In mainland China, there is no capital gains tax on shares, and dividends are taxed at 20%, 10% or 0% for holding periods under 1 month, 1 month to 1 year, and over 1 year.
 
-* Oracle 2009 initiation (≈ US\$1bn/yr vs US\$8bn operating CF) read as able to ride out the downturn. A poor-prospect firm raising its dividend to look good must later cut it or raise costly capital.
-* Two all-equity rivals, ~35% payout; the one with weaker governance (CEO = chair) and fewer good projects is pressed to pay more, to curb **overinvestment**.
-* Utilities pay high dividends and then issue equity: costly, but the equity market then monitors managers and regulators.
+### Signaling
+
+Managers know more than investors, so dividends convey information.
+
+* A cash signal is credible because it is **costly to mimic**: a company without rising cash flow can't keep raising its dividend (except briefly, by borrowing).
+* **Initiation or increase** → positive: future earnings growth, excess returns on announcement. **Cut or omission** → negative. Keeping the dividend under stress signals that problems are temporary.
+* Exceptions: a cut can be positive if the cash is reinvested or the cut looks prudent (Telstra 2017; BT 2018, shares +6.9%). A first dividend can signal confidence or maturity (eBay 2019).
+* Consistent dividend raisers tend to have niche positions, less volatile earnings, high ROA and low debt.
+
+**Examples.** Oracle's 2009 initiation (about US\$1bn a year against US\$8bn of operating cash flow) was read as a sign it could ride out the downturn. A company with poor prospects that raises its dividend to look good must later cut it or raise costly capital.
+
+### Agency Costs
+
+* **Managers vs shareholders**: dividends take free cash flow away from managers, who might overinvest in negative-NPV projects (empire building): Jensen's **free cash flow hypothesis**. The market reacts more to dividend changes where the risk of overinvestment is greater.
+* **Shareholders vs bondholders**: large dividends move wealth to shareholders and raise default risk, which can lead to underinvestment. Bond covenants cap cumulative distributions and set coverage or leverage limits.
+
+**Examples.** Of two all-equity rivals with about 35% payout, the one with weaker governance (CEO = chair) and fewer good projects is pressed to pay more, to curb **overinvestment**. Utilities pay high dividends and then issue equity: costly, but the equity market then monitors managers and regulators.
 
 > [!IMPORTANT]
-> Dividends **reduce** manager–shareholder agency costs (overinvestment) but **increase** shareholder–bondholder conflict (underinvestment, default risk). Don't swap them.
+> Dividends **reduce** the manager–shareholder agency cost (overinvestment) but **increase** the shareholder–bondholder conflict (underinvestment, default risk). Don't swap them.
 
 #### Exam traps
 
-* MM assumes no taxes, no transaction costs and symmetric information; it does not assume investors prefer dividends.
+* MM assume no taxes, no transaction costs and symmetric information; they don't assume investors prefer dividends.
 * The tax argument favors **low** payout when dividends are taxed more than gains.
 * A cut is usually, but not always, negative.
 
-Theory says reinvestment opportunities should drive payout: young fast-growing firms pay little, mature firms pay more. Evidence on the dividend–value link is inconclusive; the analyst should at least check that policy fits the firm's opportunities and legal/financial environment.
+In theory, reinvestment opportunities should drive payout: young, fast-growing companies pay little and mature ones pay more. The evidence on whether payout affects value is inconclusive, so the analyst should at least check that a company's policy fits its opportunities and its legal and financial environment.
 
-### Factors Affecting Dividend Policy in Practice
+## Factors Affecting Dividend Policy in Practice
 
-Once market imperfections exist, investment, financing and dividend decisions may no longer be independent.
+Once markets are imperfect, investment, financing and dividend decisions are no longer independent.
 
 | Factor | Effect on payout |
 | --- | --- |
-| **Investment opportunities** | More profitable projects → **lower** payout (internal funds are cheaper). Need to move fast (tech) → low payout; few opportunities (utilities) → higher payout |
-| **Volatility of future earnings** | More volatile → smaller, less frequent increases |
-| **Financial flexibility** | Need for cash → lower dividends or use repurchases (no commitment) |
+| **Investment opportunities** | More profitable projects → **lower** payout (internal funds are cheaper). Fast-moving industries (tech) pay little; companies with few opportunities (utilities) pay more |
+| **Volatility of future earnings** | More volatile earnings → smaller, less frequent increases |
+| **Financial flexibility** | A need for cash → lower dividends, or buybacks (no commitment) |
 | **Taxes** | See [Tax Considerations](#tax-considerations) |
-| **Flotation costs** | New equity costs more than retained earnings → avoid dividends that force share issuance; worse for small firms |
+| **Flotation costs** | New equity costs more than retained earnings, so avoid dividends that force share issues; worse for small companies |
 | **Contractual and legal restrictions** | Mandatory dividends (Brazil), impairment-of-capital rules (US, Canada), bond covenants, preferred dividends (cumulative arrears first) |
 
-* Surveys: managers set a target payout on **long-run sustainable earnings**, focus on **changes** rather than levels, and avoid increases they may have to reverse → **dividend smoothing**.
-* Skanska 2019: 30% "precautionary" cut to keep flexibility; shares −9%, then +7% above the pre-announcement level within two months.
+Surveys show that managers set a target payout on **long-run sustainable earnings**, focus on **changes** rather than levels, and avoid increases they might have to reverse: **dividend smoothing**. Skanska made a 30% "precautionary" cut in 2019 to keep flexibility; its shares fell 9%, then rose to 7% above the pre-announcement level within two months.
 
-**Textbook examples (condensed).**
+**Examples.**
 
-* Boar's Head: operating CF £500m vs £800m of positive-NPV projects, debt already above average → **no dividend initiation**; it would not issue shares just to pay dividends.
-* Makinasi Appliances cuts its quarterly dividend to US\$0.70 from US\$1.60 amid expected losses, falling sales, a US\$50m bond issue and a downgrade. Main factors: **earnings volatility** and **financial flexibility**, plus flotation costs.
+* **Boar's Head**: operating cash flow £500m against £800m of positive-NPV projects, and debt already above average → **no dividend initiation**: it wouldn't issue shares just to pay dividends.
+* **Makinasi Appliances** cuts its quarterly dividend from US\$1.60 to US\$0.70 amid expected losses, falling sales, a US\$50m bond issue and a downgrade. Main factors: **earnings volatility** and **financial flexibility**, plus flotation costs.
 
-### Tax Considerations
+## Tax Considerations
 
-#### Double Taxation System
+### Double Taxation
 
-Corporate pretax earnings are taxed at the corporate level and then taxed again at shareholder level if they are distributed to taxable shareholders as dividends.
+Corporate earnings are taxed at the company, and then again at the shareholder when paid out as dividends:
+
 $$
-Div_{net} = EBT\times \text{payout\%}(1-t_{corporate})(1-t_{individual\ div})
+\begin{aligned}
+Div_{net} ={}& EBT\times \text{payout}\\
+&\times(1-t_{c})(1-t_{i})
+\end{aligned}
 $$
-Then Effective tax rate = $t_{corporate}+(1-t_{corporate})t_{individual\ div} = 1-(1-t_{corporate})(1-t_{individual\ div})$.
 
-Textbook: US\$100 pretax, 35% corporate → 65 paid out; 15% personal tax = 9.75; net 55.25. Effective = (35 + 9.75)/100 = **44.75% ≈ 44.8%**.
-
-#### Dividend Imputation Tax System
-
-Ensure that profit distributed as dividends are taxed just once, at the shareholder's tax rate (Australia, New Zealand). The shareholder gets a **franking credit** for corporate tax paid.
 $$
-Div_{net} = EBT\times \text{payout\%}(1-t_{individual\ div})
+t_{\text{eff}} = 1-(1-t_{c})(1-t_{i})
 $$
-The Effective tax rate is just $t_{individual\ div}$
 
-Textbook (A\$100 pretax, 30% corporate, 70 paid out): shareholder at 15% owes 15 − 30 = **(15)**, a credit back; at 47% owes 47 − 30 = **17**. Effective rates **15%** and **47%**.
+where $t_c$ is the corporate rate, $t_i$ the individual's dividend tax rate, and $t_{\text{eff}}$ the effective tax rate. For example, US\$100 pretax at 35% corporate tax leaves 65 to pay out; personal tax at 15% is 9.75, leaving 55.25. The effective rate is (35 + 9.75)/100 = **44.75%**.
 
-#### Split-rate Tax System
+### Dividend Imputation
 
-Corporate earnings that are distributed as dividends are taxed at a lower rate at corporate level than earnings retained. Dividends are then taxed as ordinary income, so they are still taxed twice. Use the lower corporate rate on distributed earnings, $t_{c,dist} < t_{c,retained}$:
+Distributed profits are taxed only once, at the **shareholder's** rate (Australia, New Zealand). The shareholder receives a **franking credit** for the corporate tax already paid, so the effective tax rate is just $t_i$:
+
 $$
-Div_{net} = EBT\times \text{payout\%}(1-t_{c,dist})(1-t_{individual\ div})
+Div_{net} = EBT\times \text{payout}\times(1-t_{i})
 $$
-Then Effective tax rate = $t_{c,dist}+(1-t_{c,dist})t_{individual\ div}$.
 
-Textbook: earnings allocated to dividends taxed at 20% (retained at 35%) → dividend 80; shareholder rate 35% → net 0.65 × 80 = **€52**. Effective = 20% + 0.35 × 80% = **48%**.
+For example, A\$100 pretax at 30% corporate tax, 70 paid out: a shareholder at 15% owes 15 − 30 = **(15)**, a refund; one at 47% owes 47 − 30 = **17**. Effective rates **15%** and **47%**.
 
-> [!note]
-> Textbook issue: the split-rate exhibit is labeled "per €100" but starts from €200 pretax (€100 retained, €100 distributed). The 48% is per €100 allocated to dividends.
+### Split-Rate
 
-**Worked example (added, not from the textbook): the three systems with the same inputs.** €100 pretax, all distributed; corporate rate 30%; shareholder dividend rate 40%.
+Earnings paid out as dividends are taxed at a **lower** corporate rate than retained earnings, then taxed again as ordinary income: still double taxation, but with $t_{c,\text{dist}}<t_{c,\text{retained}}$:
+
+$$
+t_{\text{eff}} = t_{c,\text{dist}}+(1-t_{c,\text{dist}})\,t_{i}
+$$
+
+For example, earnings paid out are taxed at 20% (retained at 35%), leaving a dividend of 80 per 100; the shareholder's rate of 35% leaves 0.65 × 80 = **€52**. Effective rate = 20% + 0.35 × 80% = **48%**.
+
+**Example (the three systems with the same inputs).** €100 pretax, all paid out; corporate rate 30%; shareholder's dividend rate 40%.
 
 | System | Corporate tax | Dividend | Personal tax | Investor keeps | Effective rate |
 | --- | --- | --- | --- | --- | --- |
-| Double taxation | 30 | 70 | 0.40 × 70 = 28 | 42 | **58%** = $1-(0.70)(0.60)$ |
+| Double taxation | 30 | 70 | 0.40 × 70 = 28 | 42 | **58%** |
 | Imputation | 30 | 70 | 0.40 × 100 − 30 credit = 10 | 60 | **40%** |
-| Split-rate (20% distributed / 30% retained) | 20 | 80 | 0.40 × 80 = 32 | 48 | **52%** |
+| Split-rate (20% paid out / 30% retained) | 20 | 80 | 0.40 × 80 = 32 | 48 | **52%** |
 
-#### Shareholder Preference for Income vs Capital Gains
+### Shareholder Preferences
 
-* Investors prefer a lower tax **rate** on dividends; whether they want higher or lower **payout** depends on the dividend vs capital gains rates.
-* Capital gains tax can be **deferred** until sale; dividend tax is due when received, even if reinvested. Step-up at death (US, Australia) also favors gains.
-* High-payout shares may sit in tax-exempt accounts; **tax-exempt institutions** (pension funds, endowments) are indifferent.
-* Foreign withholding taxes matter for global investors (usually creditable at home under a tax treaty).
+* Investors want a lower tax **rate** on dividends; whether they prefer a higher or lower **payout** depends on dividend vs capital gains tax rates.
+* Capital gains tax can be **deferred** until the sale; dividend tax is due when received, even if reinvested. A step-up in basis at death (US, Australia) also favors gains.
+* **Tax-exempt** investors (pension funds, endowments) are indifferent; high-payout shares may sit in tax-exempt accounts.
+* Global investors also face foreign withholding taxes (usually creditable at home under a tax treaty).
 
 #### Exam traps
 
-* Double taxation: personal tax applies to the **after-corporate-tax** dividend.
-* Imputation: effective rate = shareholder's rate; low-bracket investors can get a **refund**.
-* Split-rate: use the **lower** distributed-earnings corporate rate.
+* Double taxation: the personal tax applies to the **after-corporate-tax** dividend.
+* Imputation: the effective rate is the shareholder's rate; low-bracket investors can get a **refund**.
+* Split-rate: use the **lower** corporate rate on distributed earnings.
 
-### Dividend Payout Policy
+## Dividend Payout Policy
 
-#### Stable Dividend Policy
+### Stable Dividend Policy
 
-The **most common** policy: dividends follow long-term sustainable earnings and ignore short-term volatility (e.g. Gruppo Hera: steadily rising DPS while payout ranged ~52%–125%). **Lintner (1956)**: firms set a **target payout ratio** on sustainable earnings, care about dividend **changes**, and cut only in extreme cases. The target payout adjustment model:
+The **most common** policy: dividends follow long-term sustainable earnings and ignore short-term swings (e.g., Gruppo Hera raised its DPS steadily while its payout ranged from about 52% to 125%). Lintner (1956) found that companies set a **target payout ratio** on sustainable earnings, care about dividend **changes**, and cut only in extreme cases. The **target payout adjustment model**:
 
 $$
-E(Div) = Div_{t-1}+(E(NI)\times r_{div}-Div_{t-1})\times \text{Adjustment Factor}
+E(Div) = Div_{t-1}+\Delta Div
 $$
 
-where Adjustment factor is $\frac{1}{N}$, $N$ is the number of years over which the adjustment in dividends should take place. $E(NI)$ is expected earnings (per share if $Div$ is per share) and $r_{div}$ is the target payout ratio.
-
-**Textbook examples (condensed).**
-
-* $Div_{t-1}$ = US\$0.40, target 50%, factor 0.2, EPS rises to US\$1.50: increase = (0.75 − 0.40) × 0.2 = **US\$0.07** → US\$0.47. Next year EPS dips to US\$1.34: (0.67 − 0.47) × 0.2 = **US\$0.04** → US\$0.51, the dividend still rises because it is below target.
-* Luna Inc.: $Div_{t-1}$ = US\$0.40, expected EPS US\$2.80, target 30%, 4 years: 0.40 + (0.84 − 0.40)/4 = **US\$0.51**; payout falls from 20% to 0.51/2.80 = **18.2%**.
-
-#### Constant Dividend Payout Ratio Policy
-
-Always pay dividend at a constant payout ratio
 $$
-Div = r_{div}\times NI
+\Delta Div=\frac{E(EPS)\times \text{Target}-Div_{t-1}}{N}
 $$
-This method is infrequently used because dividend fluctuates with earnings.
 
-Textbook (Pampas Fertilizer): switched from a fixed ARS1.50 a quarter to 25% of quarterly earnings; e.g. 2019:Q4 EPS 9.32 → 9.32 × 0.25 = ARS2.33 (reported 2.350, rounding).
+where Target is the target payout ratio, and $N$ is the number of years over which the dividend moves to its target, so the adjustment factor is $1/N$.
 
-**Worked example (added, not from the textbook): same earnings, two policies.** Last year EPS US\$2.00, DPS US\$0.80; next three years' EPS US\$3.00, US\$2.60, US\$3.40; payout/target 40%; Lintner factor 0.5.
+**Examples.**
 
-| Year | EPS | Constant payout | Stable (Lintner) | Stable payout |
+* $Div_{t-1}$ = US\$0.40, target 50%, factor 0.2, EPS rises to US\$1.50: increase = (0.75 − 0.40) × 0.2 = **US\$0.07** → US\$0.47. Next year EPS dips to US\$1.34: (0.67 − 0.47) × 0.2 = **US\$0.04** → US\$0.51. The dividend still rises, because it is below target.
+* **Luna Inc.**: $Div_{t-1}$ = US\$0.40, expected EPS US\$2.80, target 30%, 4 years: 0.40 + (0.84 − 0.40)/4 = **US\$0.51**. The payout falls from 20% to 0.51/2.80 = **18.2%**.
+
+### Constant Payout Ratio Policy
+
+Pay a fixed share of earnings: $Div = \text{Payout ratio}\times NI$. It is used infrequently, because the dividend then swings with earnings.
+
+**Example (Pampas Fertilizer).** It switched from a fixed ARS1.50 a quarter to 25% of quarterly earnings: e.g., 2019:Q4 EPS 9.32 → 9.32 × 0.25 = ARS2.33.
+
+**Example (same earnings, two policies).** Last year EPS US\$2.00, DPS US\$0.80; next three years' EPS US\$3.00, US\$2.60, US\$3.40; payout or target 40%; adjustment factor 0.5.
+
+| Year | EPS | Constant payout | Stable (target adjustment) | Stable payout |
 | --- | --- | --- | --- | --- |
 | 1 | 3.00 | 1.20 | 0.80 + (1.20 − 0.80) × 0.5 = **1.00** | 33.3% |
 | 2 | 2.60 | 1.04 | 1.00 + (1.04 − 1.00) × 0.5 = **1.02** | 39.2% |
@@ -284,128 +259,107 @@ The constant-payout dividend falls in year 2; the stable dividend rises every ye
 
 #### Exam traps
 
-* Apply the adjustment factor to the **gap** (target − previous dividend), then add it to the previous dividend. Factor = **1/years**.
-* If the target falls below the previous dividend the formula cuts it, but in practice firms prefer to hold the dividend.
+* Apply the adjustment factor to the **gap** (target − last dividend), then add it to the last dividend. Factor = **1/years**.
+* If the target is below the last dividend, the formula cuts it, though in practice companies prefer to hold the dividend.
 
-### Global Trends in Payout Policy
+### Global Trends
 
-* The **share of companies paying** cash dividends has declined long-term in most developed markets (US, Canada, EU, UK, Japan); US indexes have fewer payers than European ones.
-* **Aggregate** dividends and payout ratios have generally risen → dividends are concentrated in fewer, larger, more profitable firms with fewer growth opportunities. Asia-Pacific dividends tripled 2009–2019.
-* **Repurchases** are trending up: US since the early 1980s, UK/Europe since the early 1990s, Asia (China, Japan) in the late 2010s.
-* Better governance and disclosure (IFRS, investor protection) → **fewer** initiations and less generous payouts, because dividends matter less for signaling and agency control.
+* The **share of companies paying** dividends has declined over the long term in most developed markets (US, Canada, EU, UK, Japan); US indexes have fewer payers than European ones.
+* **Total** dividends and payout ratios have generally risen: dividends are concentrated in fewer, larger, more profitable companies with fewer growth opportunities. Asia-Pacific dividends tripled from 2009 to 2019.
+* **Repurchases** are rising: in the US since the early 1980s, in the UK and Europe since the early 1990s, and in Asia (China, Japan) in the late 2010s.
+* Better governance and disclosure (IFRS, investor protection) → **fewer** initiations and less generous payouts, because dividends matter less as a signal and as an agency control.
 
-## Share Repurchase and Effects
+## Share Repurchases
 
-**Share repurchase:** A transaction in which a company buys back its own shares. Repurchased stock are called **Treasury Shares** (they can be reissued; canceled shares are retired). They are not considered for dividends, voting or computing EPS.
+A **share repurchase** is a company buying back its own shares. Shares held by the company are **treasury shares** (they can be reissued; canceled shares are retired); they get no dividends and no votes, and are excluded from EPS.
 
 | | Cash dividend | Share repurchase |
 | --- | --- | --- |
-| Commitment | Declaration **commits** the company | Authorization **does not** commit |
+| Commitment | Declaration **commits** the company | Authorization **doesn't** commit it |
 | Distribution | **Pro rata** to all holders | Only sellers get cash |
 | Expected to continue | Yes (regular) | Generally no |
 
-Many markets limit buybacks more than the US (shareholder approval, often a 10% cap). US use grew after SEC Rule 10b-18 (1982).
+Many markets limit buybacks more than the US (shareholder approval, often a 10% cap). US buybacks grew after SEC Rule 10b-18 (1982).
 
-### Share Repurchase Methods
+### Repurchase Methods
 
-There are 3 repurchase methods:
-
-* Buy in the market: Flexible in time and amount
-* Tender offer
-  * Fixed price tender offer: Buy a fixed number of shares at a fixed price, typically at a premium to market
-  * Dutch auction: Use auction to determine the lowest price at which the company can buy the target number of shares; every accepted bid is paid that same clearing price
-* Direct negotiation: Often at premium to market (can be at a discount if the seller needs liquidity)
+* **Open market**: buy shares on the market; flexible in timing and amount.
+* **Fixed price tender offer**: offer to buy a fixed number of shares at a fixed price, usually at a premium; if oversubscribed, shares are bought pro rata.
+* **Dutch auction**: shareholders bid prices; the company finds the **lowest** price at which it can buy the target number of shares, and pays that same clearing price to every accepted bid.
+* **Direct negotiation**: buy from a specific large holder, often at a premium (or at a discount if the seller needs liquidity).
 
 | Method | Cost | Flexibility | Speed |
 | --- | --- | --- | --- |
-| **Open market** (most common; almost the only method outside US/Canada) | Low if well timed | **Highest**, no obligation to finish | Slow |
-| **Fixed price tender** (oversubscribed → pro rata) | Higher (premium, may be a positive signal) | Low | **Fastest** |
-| **Dutch auction** | Usually **lower** than fixed price tender | Low | Fast, usually a bit slower than fixed price |
+| **Open market** (most common; almost the only method outside the US and Canada) | Low if well timed | **Highest**: no obligation to finish | Slow |
+| **Fixed price tender** | Higher (premium; may be a positive signal) | Low | **Fastest** |
+| **Dutch auction** | Usually **lower** than a fixed price tender | Low | Fast, usually a bit slower than fixed price |
 | **Direct negotiation** (remove a large holder, block an activist, greenmail) | A premium **transfers wealth** from remaining holders | n/a | n/a |
 
-**Textbook example (BCII, 5m shares, price C\$37).** Fixed price tender at C\$40 costs 5m × 40 = **C\$200m**; Dutch auction clearing at C\$38 costs **C\$190m**, saving **C\$10m**.
+**Example (BCII, 5m shares at C\$37).** A fixed price tender at C\$40 costs 5m × 40 = **C\$200m**; a Dutch auction clearing at C\$38 costs **C\$190m**, saving **C\$10m**.
 
 ### Effect on EPS
 
-Effect on EPS:
-
-* Repurchased with excess cash
-  * A and E will decline, leverage ratio (D/A, D/E) will increase
-  * EPS will increase only if the cash would not earn its cost of capital if retained (e.g. idle cash)
-* Repurchase with debt
-  * D increase and E decline, leverage ratio increase (more than repurchase with cash)
-  * If Earning Yield (E/P) > after-tax cost of debt, EPS will increase, decrease otherwise
-
 $$
-EPS_{after} = \frac{\text{Earnings} - \text{After-tax cost of funds}}{\text{Shares outstanding after buyback}} \qquad \frac{E}{P} = \frac{1}{P/E}
+EPS_{\text{after}} = \frac{E - C}{N_{\text{after}}}
 $$
 
-**Textbook examples (condensed).**
+where $E$ is earnings before the buyback, $C$ the after-tax cost of the funds used (interest on new debt, or interest income given up on cash), and $N_{\text{after}}$ the shares outstanding after the buyback.
 
-* Takemiya (surplus cash earning ~0): 10m shares, NI ¥100m, price ¥120, ¥240m cash, buy at ¥140. Shares bought ≈ 240/140 = 1.7m → 8.3m left. EPS ¥10.00 → 100/8.3 ≈ **¥12.00** (+20%). Unrounded: ¥12.07.
-* Selamat (debt): borrow MYR12m at price MYR60 → 200,000 shares; earnings MYR6.6m, 2.2m → 2.0m shares, EPS MYR3, E/P 5%. After-tax cost 5%: (6.6 − 0.6)/2 = **MYR3.00**, unchanged. At 6%: (6.6 − 0.72)/2 = **MYR2.94**, lower.
+* **Funded with surplus cash**: assets and equity fall, so leverage rises. EPS rises only if the cash would not have earned its cost of capital (e.g., idle cash).
+* **Funded with debt**: debt rises and equity falls, so leverage rises more. EPS **rises if the earnings yield (E/P) exceeds the after-tax cost of debt**, and falls otherwise. Note $E/P = 1/(P/E)$.
 
-**Worked example (added, not from the textbook): surplus cash that earns interest.** NI US\$50m, 10m shares, EPS US\$5.00, price US\$50 → E/P = 10%. Spend US\$100m of cash earning 4% after tax to buy 2m shares.
+**Examples.**
 
-* Lost interest = 100 × 0.04 = 4 → NI 46 → EPS = 46/8 = **US\$5.75** (up).
-* If the cash earned 10%: 40/8 = **US\$5.00** (unchanged); at 12%: 38/8 = **US\$4.75** (down).
-* So the E/P test also works for cash: EPS rises when the after-tax return given up is below E/P (this framing is ours; the textbook states it as "funds would not earn their cost of capital").
+* **Takemiya** (surplus cash earning about 0): 10m shares, NI ¥100m, price ¥120; uses ¥240m of cash to buy at ¥140 → about 1.7m shares, leaving 8.3m. EPS rises from ¥10.00 to 100/8.3 ≈ **¥12.00** (+20%; ¥12.07 unrounded).
+* **Selamat** (debt): borrows MYR12m to buy at MYR60 → 200,000 shares. Earnings MYR6.6m; shares 2.2m → 2.0m; EPS MYR3; E/P 5%. At an after-tax cost of 5%: (6.6 − 0.6)/2 = **MYR3.00**, unchanged. At 6%: (6.6 − 0.72)/2 = **MYR2.94**, lower.
+* **Surplus cash that earns interest**: NI US\$50m, 10m shares, EPS US\$5.00, price US\$50 → E/P 10%. Spending US\$100m of cash that earns 4% after tax to buy 2m shares loses 4 of interest: NI 46, EPS 46/8 = **US\$5.75** (up). If the cash earned 10%: 40/8 = **US\$5.00** (unchanged); at 12%: 38/8 = **US\$4.75** (down). So the E/P test works for cash too: EPS rises when the after-tax return given up is below E/P.
 
 > [!IMPORTANT]
 > **Higher EPS ≠ higher shareholder wealth.** The same cash could be paid as a dividend, and any capital gain may just replace the dividend given up. More leverage also raises the required return.
 
-### Effect on Book Value Per Share
-
->[!note]
->
->BVPS = Book value of equity/ shares outstanding
-
-* Decrease if the repurchase price > original BVPS
-* Same if repurchase price = BVPS
-* Increase else
+### Effect on Book Value per Share
 
 $$
-BVPS_{after} = \frac{\text{Book equity} - \text{Buyback amount}}{\text{Shares} - \text{Shares repurchased}}
+BVPS_{\text{after}} = \frac{\text{Book equity} - \text{Buyback}}{N - N_{\text{bought}}}
 $$
 
-**Textbook example (US\$5m buyback at US\$20, 10m shares each).** 250,000 shares bought → 9.75m left. Company A (book equity US\$100m, BVPS 10): (100 − 5)/9.75 = **US\$9.74**, falls. Company B (book equity US\$300m, BVPS 30): (300 − 5)/9.75 = **US\$30.26**, rises.
+BVPS **falls** if the repurchase price is above the current BVPS, is unchanged if equal, and **rises** if below.
+
+**Example (US\$5m buyback at US\$20, 10m shares each).** 250,000 shares bought, 9.75m left. Company A (book equity US\$100m, BVPS 10): (100 − 5)/9.75 = **US\$9.74**, down. Company B (book equity US\$300m, BVPS 30): (300 − 5)/9.75 = **US\$30.26**, up.
 
 #### Exam traps
 
-* Compare the **after-tax** cost of debt with **E/P**, not with the pre-tax rate or with P/E.
+* Compare the **after-tax** cost of debt with **E/P**, not with the pretax rate or with P/E.
 * Use shares **after** the buyback, and base the number of shares bought on the **repurchase price** (including any premium).
-* Dutch auction: all accepted bidders receive the **same** clearing price.
-* Open market = most flexible; fixed price tender = fastest; Dutch auction usually cheaper than fixed price.
+* Dutch auction: every accepted bidder receives the **same** clearing price.
+* Open market = most flexible; fixed price tender = fastest; Dutch auction usually cheaper than a fixed price tender.
 
-## Valuation Equivalence of Cash Dividends and Share Repurchases
+### Dividends and Buybacks Are Equivalent in Value
 
-A repurchase is equivalent to a cash dividend of the **same amount** in its effect on shareholder wealth, all else equal (same **taxation** and same **information content**).
+A repurchase is equivalent to a cash dividend of the **same amount** in its effect on shareholder wealth, all else equal (same **taxes** and same **information content**).
 
-**Textbook example (Rohit Chemical, 10m shares at Rs200, distribute Rs500m).**
+**Example (Rohit Chemical, 10m shares at Rs200, distributing Rs500m).**
 
-* Special dividend Rs50: ex-dividend price = (2,000m − 500m)/10m = **Rs150**; wealth = 50 + 150 = **Rs200**.
-* Repurchase: 500m/200 = 2.5m shares; price = 1,500m/7.5m = **Rs200**; wealth **Rs200** whether you sell or not.
+* Special dividend of Rs50: ex-dividend price = (2,000m − 500m)/10m = **Rs150**; wealth = 50 + 150 = **Rs200**.
+* Repurchase: 500m/200 = 2.5m shares; price = 1,500m/7.5m = **Rs200**; wealth **Rs200**, whether or not you sell.
 
-**Textbook example (AfriCitrus, buyback at a premium).** 10m shares at ZAR200; buy ZAR500m from one holder at ZAR250 → 2m shares. New price = 1,500m/8m = **ZAR187.50**: other holders lose **ZAR12.50** a share, transferred to the seller.
+**Example (AfriCitrus, buyback at a premium).** 10m shares at ZAR200; buys ZAR500m of shares from one holder at ZAR250 → 2m shares. New price = 1,500m/8m = **ZAR187.50**: the other holders lose **ZAR12.50** a share, transferred to the seller.
 
-> [!note]
-> Textbook issue: the Rohit solution calls the company "WCII" once; it means RCII.
+## Dividends vs Share Repurchases
 
-## The Dividend versus Share Repurchase Decision
-
-Repurchase announcements are followed by positive excess returns at announcement and for two (some studies five) years, consistent with managers buying when shares are undervalued.
+Repurchase announcements are followed by positive excess returns, at announcement and for two (some studies say five) years, consistent with managers buying when shares are undervalued.
 
 | Reason to repurchase | Explanation |
 | --- | --- |
 | **Tax advantages** | Where dividends are taxed more than gains; even at equal rates, gains tax can be deferred |
-| **Price support / signaling** | Management can time buybacks when shares look undervalued. Counter-view: may signal **no good investment opportunities** |
-| **Flexibility** | No expectation of continuation, no obligation to finish; shareholders choose whether to sell |
-| **Offset option dilution** | Buy back shares issued on option exercises |
+| **Price support / signaling** | Management can buy when shares look undervalued. Counter-view: may signal **no good investment opportunities** |
+| **Flexibility** | No expectation of continuing, no obligation to finish; shareholders choose whether to sell |
+| **Offset dilution from options** | Buy back the shares issued when options are exercised |
 | **Raise leverage** | Debt-funded buybacks raise leverage more than cash-funded ones |
 
-Raising EPS is a weak reason: the required return rises with leverage, and fewer shares do not change total free cash flow.
+Raising EPS is a weak reason: the required return rises with leverage, and fewer shares don't change total free cash flow.
 
-**Textbook example (Deira Oasis, AED m).** Debt 30, equity 70; buy back AED7m.
+**Example (Deira Oasis, AED millions).** Debt 30, equity 70; buys back AED7m.
 
 | | Before | All cash | All debt |
 | --- | --- | --- | --- |
@@ -413,40 +367,37 @@ Raising EPS is a weak reason: the required return rises with leverage, and fewer
 | Equity | 70 (70%) | 63 (68%) | 63 (63%) |
 | Total | 100 | 93 | 100 |
 
-* Cash-funded: EPS ↑ → equity value likely above AED63m. Debt-funded with after-tax cost > E/P: EPS ↓ → equity below AED63m. With a downgrade, debt value also falls below 37, so the new weights are indeterminate.
+Funded by cash, EPS rises, so equity is likely worth more than AED63m. Funded by debt with an after-tax cost above E/P, EPS falls, so equity is worth less than AED63m; with a downgrade, the debt's value also falls below 37, so the new weights are uncertain.
 
-**Other textbook cases (condensed).**
+**Other examples.**
 
-* ITOCHU 2018–19: bought back 34,121,400 shares at avg ¥1,993 (¥68bn) to reach ROE ≥ 13%. (Exhibit 10 prints "1.997" for ¥1,997.)
-* Repurchases are **pro-cyclical** and a substitute for special dividends. Russell 1000: 2007 dividends US\$286bn vs buybacks US\$680bn; 4Q08–3Q09 US\$262bn vs US\$223bn (buybacks were cut much more).
-* Shenzhen Medical Devices: initiates a ¥0.40 dividend (payout 0.40/3.20 = **12.5%**, target 25%) after three years of buybacks. Initiations are linked to **higher** future growth, so "we are no longer a growth company" is wrong; a 2% stock dividend would not change wealth. Policy = **stable dividend / target payout adjustment**.
+* **ITOCHU** (2018–19) bought back 34,121,400 shares at an average ¥1,993 (¥68bn) to reach an ROE of at least 13%.
+* Repurchases are **pro-cyclical** and substitute for special dividends. Russell 1000: in 2007, dividends US\$286bn vs buybacks US\$680bn; from 4Q08 to 3Q09, US\$262bn vs US\$223bn: buybacks were cut much more.
+* **Shenzhen Medical Devices** initiates a ¥0.40 dividend (payout 0.40/3.20 = **12.5%**, target 25%) after three years of buybacks. Initiations are linked to **higher** future growth, so reading it as "we are no longer a growth company" is wrong, and a 2% stock dividend would not change wealth. The policy is a **stable dividend** with target payout adjustment.
 
 #### Exam traps
 
-* Shareholders prefer buybacks when the capital gains rate is **below** the dividend rate.
-* At-market buyback: price unchanged. Cash dividend: price falls by the dividend. Premium buyback from one holder: wealth transfer.
-* Buybacks can signal undervaluation (positive) or lack of opportunities (negative).
+* Shareholders prefer buybacks when the capital gains tax rate is **below** the dividend tax rate.
+* A buyback at the market price leaves the price unchanged; a cash dividend lowers it by the dividend; a premium buyback from one holder transfers wealth.
+* Buybacks can signal undervaluation (positive) or a lack of opportunities (negative).
 
-## Analysis of Dividend Safety
+## Dividend Safety
 
-> [!note]
->
-> Some ratios
->
-> * Dividend payout ratio = $\frac{div}{NI}$.
-> * Dividend coverage ratio = $\frac{NI}{div}$
-> * FCFE coverage ratio = $\frac{FCFE}{div+\text{shares repurchase}}$
-> * Warning signals for dividend cut:
->   * Negative external stock market indicators (market prices signalling an expected cut)
->   * Extremely high dividend yields.
-
-* Higher payout / lower coverage → higher risk of a cut. Large mature firms often target **40–60%** payout, i.e. coverage about **1.7×–2.5×**. Coverage near **1.0×** puts the dividend in jeopardy unless the dip is a one-off.
-* A record of stable or rising dividends is a plus; past cuts are a minus.
-* FCFE, not net income, funds dividends, and buybacks belong in the payout:
+| Ratio | Formula |
+| --- | --- |
+| Payout ratio | Dividends ÷ Net income |
+| Dividend coverage | Net income ÷ Dividends |
+| FCFE coverage | FCFE ÷ (Dividends + Share repurchases) |
 
 $$
-FCFE = CFO - FCInv + \text{Net borrowing}
+\begin{aligned}
+FCFE ={}& CFO - FCInv\\
+&+ \text{Net borrowing}
+\end{aligned}
 $$
+
+* A higher payout (lower coverage) means a higher risk of a cut. Large mature companies often target a **40–60%** payout, i.e., coverage of about **1.7×–2.5×**. Coverage near **1.0×** puts the dividend in jeopardy, unless the dip is a one-off.
+* FCFE, not net income, funds dividends, and buybacks count as payout:
 
 | FCFE coverage | Meaning |
 | --- | --- |
@@ -454,9 +405,9 @@ $$
 | ≫ 1 | Building liquidity |
 | ≪ 1 | **Not sustainable**: running down cash; will need equity or capex cuts |
 
-**Textbook example (Mature European SA).** NI €100m, dividends €40m → payout **40%**, coverage **2.5×**.
+**Example (Mature European SA).** NI €100m, dividends €40m → payout **40%**, coverage **2.5×**.
 
-**Textbook example (Lygon Resources, A\$m).**
+**Example (Lygon Resources, A\$ millions).**
 
 | | 2015 | 2016 | 2017 | 2018 |
 | --- | --- | --- | --- | --- |
@@ -471,29 +422,22 @@ $$
 | FCFE | 163 | 368 | 462 | 294 |
 | FCFE/(Div + Rep) | 1.35× | 1.02× | 0.83× | 0.91× |
 
-Coverage fell to 1.06× and FCFE coverage dropped below 1 in 2017–2018 (even with positive net borrowing in 2017) → stop buybacks and consider **cutting the dividend**.
+Coverage fell to 1.06×, and FCFE coverage was below 1 in 2017–2018 (even with positive net borrowing in 2017) → stop buybacks and consider **cutting the dividend**.
 
-Characteristics of companies that may not sustain their dividend:
+**Warning signs** that a company may not sustain its dividend:
 
-* High payout / coverage near 1×, worsening, and high vs peers or history
-* FCFE coverage < 1; payouts funded by **borrowing** or by **cutting productive capex**
-* Above-average financial leverage
-* Very high dividend yield vs its own history (StarHub: 9.4% before its 2019 cut); a high yield is a warning, not a bargain
-* A record of past cuts
+* A high payout (coverage near 1×) that is worsening, and high relative to peers or its history
+* FCFE coverage below 1; payouts funded by **borrowing** or by **cutting productive capex**
+* Above-average leverage
+* A very high dividend yield relative to its own history (StarHub: 9.4% before its 2019 cut): a high yield is a warning, not a bargain; market prices may already signal an expected cut
+* A record of past cuts (a record of stable or rising dividends is a plus)
 
 #### Exam traps
 
-* Coverage = NI/Div, the inverse of payout.
+* Coverage = NI/Div, the inverse of the payout ratio.
 * FCFE coverage includes **repurchases** in the denominator; net borrowing is added (negative = repayment).
-* Positive net borrowing raises FCFE but is not a sustainable source of payouts.
+* Positive net borrowing raises FCFE, but it isn't a sustainable source of payouts.
 
-## Quick Recall
-
-* Only **cash** dividends transfer value; stock dividends, splits and reverse splits don't change wealth or ratios.
-* MM irrelevance (homemade dividends) vs bird in the hand and tax arguments; signals and agency costs make policy matter.
-* Six practice factors: investment opportunities, earnings volatility, flexibility, taxes, flotation costs, legal/contractual limits.
-* Effective tax: double $1-(1-t_c)(1-t_i)$; imputation $t_i$; split-rate uses the lower rate on distributed earnings.
-* Stable (Lintner) $D = D_{t-1} + (\text{EPS}\times\text{target} - D_{t-1})\times\frac{1}{N}$; constant payout $D = \text{payout}\times\text{EPS}$.
-* Debt-funded buyback raises EPS iff $E/P >$ after-tax cost of debt; BVPS falls iff buyback price > BVPS.
-* Buyback = dividend in wealth terms, all else equal; premium buybacks transfer wealth.
-* Safety: payout, coverage, FCFE/(Div + Rep), leverage, yield level, dividend record.
+> [!NOTE]
+>
+> **Textbook typos.** The Rohit Chemical solution once calls the company "WCII" (it means RCII). The ITOCHU exhibit prints the average price as "1.997" for ¥1,997. The split-rate exhibit is labeled "per €100" but starts from €200 pretax (€100 retained, €100 distributed); the 48% is per €100 allocated to dividends.
