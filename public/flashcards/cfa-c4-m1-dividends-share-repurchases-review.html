@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Corporate Issuers M1 — Analysis of Dividends and Share Repurchases review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    "id": "ci1-forms",
+    "topic": "Forms of dividends",
+    "front": "Name the forms of dividends. Which one is a return of capital rather than a distribution of earnings?",
+    "back": "<div class=\"ans\"><ul><li><strong>Cash</strong>: regular, extra/special, liquidating</li><li><strong>Stock dividend</strong> (2–10% of shares), <strong>stock split</strong>, <strong>reverse split</strong></li></ul><p>A <strong>liquidating dividend</strong> (winding up, selling part of the business and paying out the proceeds, or paying more than accumulated retained earnings) is a return of capital.</p></div>",
+    "gap": "Any dividend above accumulated retained earnings counts as liquidating."
+  },
+  {
+    "id": "ci1-wealth",
+    "topic": "Effect on shareholder wealth",
+    "front": "How do a cash dividend, a stock dividend and a split affect shareholder wealth, all else equal?",
+    "back": "<div class=\"ans\"><ul><li><strong>Cash</strong>: price falls by about the dividend; wealth unchanged</li><li><strong>Stock dividend / split / reverse split</strong>: only the number of shares changes; wealth unchanged</li></ul><p>A stock dividend lowers the cost basis <strong>per share</strong>, not in total: 100 shares at USD10 → 105 shares at USD9.52.</p></div>"
+  },
+  {
+    "id": "ci1-ratios",
+    "topic": "Effect on financial ratios",
+    "front": "Compare a cash dividend with a stock dividend or split: effect on cash, equity, EPS, P/E, liquidity and leverage.",
+    "back": "<div class=\"ans\"><ul><li><strong>Cash dividend</strong>: assets and equity ↓; EPS same; P/E ↓; liquidity ratios ↓; leverage (D/E, D/A) <strong>↑</strong></li><li><strong>Stock dividend / split</strong>: assets and total equity same; price and EPS ↓; P/E, liquidity and leverage same</li></ul></div>",
+    "gap": "Only cash leaves the company. A stock dividend moves retained earnings to contributed capital; total equity is unchanged."
+  },
+  {
+    "id": "ci1-theories",
+    "topic": "Dividend policy theories",
+    "front": "Contrast MM irrelevance, bird in the hand and the tax argument: claim and effect of a higher dividend on value.",
+    "back": "<div class=\"ans\"><ul><li><strong>MM</strong>: perfect markets, investors make homemade dividends → no effect</li><li><strong>Bird in the hand</strong>: dividends are less risky than future gains → lower \\(r_e\\), price ↑</li><li><strong>Tax</strong>: dividends taxed more than gains → taxable investors prefer low payout or buybacks → price ↓</li></ul></div>",
+    "gap": "MM assumes no taxes, no transaction costs and symmetric information; it says dividend policy, not dividends themselves, is irrelevant."
+  },
+  {
+    "id": "ci1-homemade",
+    "topic": "Homemade dividend",
+    "front": "Shares trade at A$20. A holder of 1,000 shares wants A$1,000 of income from a company that pays no dividend. What does MM say they do?",
+    "back": "<div class=\"ans\"><p>Sell \\(1{,}000/20=50\\) shares. Wealth is the same as receiving a A$1 dividend on 1,000 shares (A$20 before, A$19 ex-dividend + A$1).</p></div>"
+  },
+  {
+    "id": "ci1-signal",
+    "topic": "Signaling",
+    "front": "What do dividend initiations, increases, cuts and omissions usually signal, and why is the signal credible?",
+    "back": "<div class=\"ans\"><ul><li>Initiation or increase → <strong>positive</strong> (expected earnings growth)</li><li>Cut or omission → usually <strong>negative</strong></li></ul><p>Credible because it is <strong>costly to mimic</strong>: a firm without rising cash flow can't keep raising dividends.</p></div>",
+    "gap": "A cut can be positive if the cash is reinvested or the cut looks prudent (Telstra 2017, BT 2018)."
+  },
+  {
+    "id": "ci1-agency",
+    "topic": "Agency costs",
+    "front": "How do dividends affect the manager–shareholder and the shareholder–bondholder conflicts?",
+    "back": "<div class=\"ans\"><ul><li>Manager–shareholder: dividends <strong>reduce</strong> free cash flow available for overinvestment (Jensen's free cash flow hypothesis)</li><li>Shareholder–bondholder: large payouts <strong>increase</strong> default risk and can cause underinvestment; covenants cap distributions</li></ul></div>",
+    "gap": "Don't swap them: dividends cut one agency cost and raise the other."
+  },
+  {
+    "id": "ci1-factors",
+    "topic": "Factors in practice",
+    "front": "List the six factors affecting dividend policy in practice and the direction of the main one.",
+    "back": "<div class=\"ans\"><ol><li><strong>Investment opportunities</strong>: more profitable projects → lower payout</li><li>Volatility of future earnings</li><li>Financial flexibility</li><li>Taxes</li><li>Flotation costs</li><li>Contractual and legal restrictions (impairment-of-capital rules, covenants, preferred arrears)</li></ol></div>"
+  },
+  {
+    "id": "ci1-double-tax",
+    "topic": "Double taxation",
+    "front": "Write the effective tax rate on distributed earnings under double taxation. Compute it for a 35% corporate rate and a 15% personal dividend rate.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$1-(1-t_c)(1-t_i)$$</div><p>\\(1-0.65\\times0.85=44.75\\%\\)</p></div>"
+  },
+  {
+    "id": "ci1-imputation",
+    "topic": "Imputation and split-rate",
+    "front": "What is the effective tax rate under an imputation system and under a split-rate system?",
+    "back": "<div class=\"ans\"><ul><li><strong>Imputation</strong>: just the shareholder's rate \\(t_i\\) (franking credit for corporate tax; low-bracket holders can get a refund)</li><li><strong>Split-rate</strong>: \\(t_{c,dist}+(1-t_{c,dist})\\,t_i\\), using the <strong>lower</strong> corporate rate on distributed earnings</li></ul><p>Textbook split-rate: 20% distributed rate, 35% personal → 20% + 0.35 × 80% = <strong>48%</strong>.</p></div>"
+  },
+  {
+    "id": "ci1-lintner",
+    "topic": "Stable dividend policy",
+    "front": "Write the target payout adjustment (Lintner) model. Luna Inc.: last dividend USD0.40, expected EPS USD2.80, target payout 30%, adjust over 4 years.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}E(D)={}&D_{t-1}+(\\text{EPS}\\times r_{div}\\\\&-D_{t-1})\\times\\tfrac{1}{N}\\end{aligned}$$</div><p>\\(0.40+(0.84-0.40)/4=\\) <strong>USD0.51</strong>.</p></div>",
+    "gap": "Apply the factor to the gap (target − previous dividend), then add the previous dividend. Factor = 1/years."
+  },
+  {
+    "id": "ci1-constant-payout",
+    "topic": "Constant payout ratio",
+    "front": "How does a constant payout ratio policy differ from a stable dividend policy, and which is more common?",
+    "back": "<div class=\"ans\"><ul><li><strong>Stable</strong>: based on long-run sustainable earnings; low dividend volatility; payout varies; <strong>most common</strong></li><li><strong>Constant payout</strong>: \\(D=r_{div}\\times\\text{NI}\\); dividends move with current earnings; used infrequently</li></ul></div>"
+  },
+  {
+    "id": "ci1-trends",
+    "topic": "Global trends",
+    "front": "Summarize global trends in payout policy.",
+    "back": "<div class=\"ans\"><ul><li>Share of companies paying dividends has <strong>fallen</strong> in most developed markets</li><li>Aggregate dividends have risen: concentrated in fewer, larger, more profitable firms</li><li><strong>Repurchases</strong> trending up (US since the 1980s, Europe 1990s, Asia late 2010s)</li><li>Better governance → fewer initiations</li></ul></div>"
+  },
+  {
+    "id": "ci1-repo-methods",
+    "topic": "Repurchase methods",
+    "front": "Rank the four repurchase methods on flexibility, speed and cost.",
+    "back": "<div class=\"ans\"><ul><li><strong>Open market</strong>: most common and most <strong>flexible</strong>; slow</li><li><strong>Fixed price tender</strong>: <strong>fastest</strong>; premium; pro rata if oversubscribed</li><li><strong>Dutch auction</strong>: usually <strong>cheaper</strong> than fixed price; all accepted bids get the same clearing price</li><li><strong>Direct negotiation</strong>: a premium transfers wealth from remaining holders</li></ul></div>",
+    "gap": "Direct negotiation is not the most flexible method: open market is."
+  },
+  {
+    "id": "ci1-eps-debt",
+    "topic": "Debt-financed buyback and EPS",
+    "front": "When does a debt-financed buyback raise EPS? Selamat: earnings MYR6.6m, 2.2m shares at MYR60, borrows MYR12m. Find EPS at a 5% and a 6% after-tax cost.",
+    "back": "<div class=\"ans\"><p>EPS rises if <strong>E/P &gt; after-tax cost of debt</strong>. E/P = 3/60 = 5%; 200,000 shares bought → 2.0m left.</p><ul><li>5%: \\((6.6-0.6)/2=3.00\\): unchanged</li><li>6%: \\((6.6-0.72)/2=2.94\\): lower</li></ul></div>",
+    "gap": "Subtract the after-tax interest on the new debt from earnings, and divide by shares after the buyback."
+  },
+  {
+    "id": "ci1-bvps",
+    "topic": "Buyback and BVPS",
+    "front": "When does a buyback lower BVPS? Book equity USD100m, 10m shares, buy back USD5m at USD20.",
+    "back": "<div class=\"ans\"><p>BVPS falls when the repurchase price exceeds BVPS.</p><div class=\"eq-block\">$$\\frac{100-5}{10-0.25}=9.74$$</div><p>BVPS falls from 10.00 to <strong>9.74</strong>.</p></div>"
+  },
+  {
+    "id": "ci1-equivalence",
+    "topic": "Dividend vs buyback equivalence",
+    "front": "Rohit Chemical: 10m shares at Rs200, distributes Rs500m. Compare wealth under a special dividend and a market-price buyback.",
+    "back": "<div class=\"ans\"><ul><li>Dividend Rs50: ex-price Rs150; wealth 50 + 150 = <strong>Rs200</strong></li><li>Buyback 2.5m shares: price 1,500/7.5 = <strong>Rs200</strong></li></ul><p>Equivalent, all else equal (same taxes and information content).</p></div>",
+    "gap": "A buyback at a premium from one holder (AfriCitrus) transfers wealth: remaining holders fall from ZAR200 to ZAR187.50."
+  },
+  {
+    "id": "ci1-why-buyback",
+    "topic": "Reasons to repurchase",
+    "front": "Give five reasons companies choose buybacks over dividends.",
+    "back": "<div class=\"ans\"><ol><li>Tax advantages (lower or deferred gains tax)</li><li>Price support / signal of undervaluation</li><li>Flexibility: no commitment to continue</li><li>Offset dilution from option exercises</li><li>Raise leverage toward a target</li></ol></div>",
+    "gap": "Raising EPS alone is a weak reason: more leverage raises the required return."
+  },
+  {
+    "id": "ci1-coverage",
+    "topic": "Dividend coverage",
+    "front": "Write the dividend coverage and FCFE coverage ratios.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\text{Coverage}=\\frac{\\text{NI}}{\\text{Dividends}}$$</div><div class=\"eq-block\">$$\\begin{aligned}\\text{FCFE cov.}={}&\\frac{\\text{FCFE}}{\\text{Div}+\\text{Repurchases}}\\end{aligned}$$</div><p>FCFE = CFO − FCInv + net borrowing. FCFE coverage well below 1 is not sustainable.</p></div>",
+    "gap": "Repurchases belong in the FCFE coverage denominator."
+  },
+  {
+    "id": "ci1-safety",
+    "topic": "Dividend safety warning signs",
+    "front": "What characteristics suggest a company may not sustain its dividend?",
+    "back": "<div class=\"ans\"><ul><li>High payout / coverage near 1×, worsening vs history and peers</li><li>FCFE coverage &lt; 1; payouts funded by borrowing or by cutting productive capex</li><li>Above-average leverage</li><li>Very high dividend yield vs its own history</li><li>Past dividend cuts</li></ul></div>",
+    "gap": "A very high yield is a warning, not a bargain (StarHub at 9.4% before its 2019 cut)."
+  },
+  {
+    "id": "ci1-lygon",
+    "topic": "Lygon Resources",
+    "front": "Lygon 2018: NI 341, dividends 323, no buyback; FCFE 294. Find payout, coverage and FCFE coverage, and the conclusion.",
+    "back": "<div class=\"ans\"><ul><li>Payout 323/341 = <strong>94.7%</strong>; coverage <strong>1.06×</strong></li><li>FCFE coverage 294/323 = <strong>0.91×</strong></li></ul><p>Below 1 for two years → stop buybacks and consider <strong>cutting the dividend</strong>.</p></div>"
+  }
+];
+
+flashDeck({
+  key: "cfa-c4-m1-review",
+  source: "CFA L2 Corporate Issuers \u00b7 M1 Analysis of Dividends and Share Repurchases \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

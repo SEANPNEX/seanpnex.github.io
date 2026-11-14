@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Corporate Issuers M2 — ESG Considerations in Investment Analysis review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    "id": "ci2-ownership",
+    "topic": "Ownership structures",
+    "front": "Define dispersed, concentrated and hybrid ownership. Which is most common globally?",
+    "back": "<div class=\"ans\"><ul><li><strong>Dispersed</strong>: many holders, none can control alone (US, UK, Australia, Ireland)</li><li><strong>Concentrated</strong>: an individual or group can exercise control</li><li><strong>Hybrid</strong>: in between (Canada, Germany, Japan, Netherlands, Switzerland)</li></ul><p>Concentrated: <strong>38 of 47</strong> jurisdictions (OECD 2017).</p></div>",
+    "gap": "No fixed % cut-off: controlling shareholders can be majority or minority holders."
+  },
+  {
+    "id": "ci2-structures",
+    "topic": "Control without ownership",
+    "front": "How can a group control a company while owning relatively few shares?",
+    "back": "<div class=\"ans\"><ul><li><strong>Horizontal</strong> ownership: cross-holdings between companies with mutual interests</li><li><strong>Vertical (pyramid)</strong> ownership: control of holding companies that control operating companies</li><li><strong>Dual-class shares</strong>: superior voting rights for one class</li></ul></div>"
+  },
+  {
+    "id": "ci2-conflicts",
+    "topic": "Conflicts by structure",
+    "front": "Which conflict dominates under (1) dispersed ownership and voting, (2) concentrated ownership and voting, (3) dispersed ownership with concentrated voting?",
+    "back": "<div class=\"ans\"><ol><li>Weak shareholders, strong managers → <strong>principal–agent</strong></li><li>Strong shareholders → <strong>principal–principal</strong></li><li>Control without a majority (dual-class, pyramids) → <strong>principal–principal</strong></li></ol><p>Concentrated ownership with dispersed voting arises from <strong>voting caps</strong>.</p></div>",
+    "gap": "Controlling shareholders mitigate the principal–agent problem but create the principal–principal problem."
+  },
+  {
+    "id": "ci2-influential",
+    "topic": "Influential shareholders",
+    "front": "Name the main types of influential shareholders and one governance concern for banks, families and SOEs.",
+    "back": "<div class=\"ans\"><p>Banks, families, SOEs, institutional investors, group companies, private equity, foreign investors, insiders.</p><ul><li><strong>Banks</strong>: may push large loans on unfavorable terms</li><li><strong>Families</strong>: less principal–agent risk, but poor transparency and weak minority rights</li><li><strong>SOEs</strong>: less market scrutiny; may pursue social policy at shareholders' expense</li></ul></div>"
+  },
+  {
+    "id": "ci2-board-structure",
+    "topic": "Board structures",
+    "front": "Compare one-tier and two-tier boards.",
+    "back": "<div class=\"ans\"><ul><li><strong>One-tier</strong>: a single board of executive and non-executive directors; most common</li><li><strong>Two-tier</strong>: a supervisory board oversees a management board (mandated in e.g. Germany, Argentina, Russia); in Germany it includes stakeholder representatives</li></ul></div>"
+  },
+  {
+    "id": "ci2-independent",
+    "topic": "Independent directors",
+    "front": "Why do independent directors play a narrower role in concentrated-ownership jurisdictions?",
+    "back": "<div class=\"ans\"><p>They originated in dispersed markets to monitor managers. Under concentrated ownership the <strong>principal–agent</strong> problem is less of a concern, and nomination and remuneration committees are often not mandatory.</p></div>",
+    "gap": "The US requires audit, nomination and compensation committees made up entirely of independent directors."
+  },
+  {
+    "id": "ci2-codes",
+    "topic": "Codes and stewardship",
+    "front": "What do \"comply or explain\" governance codes and stewardship codes require?",
+    "back": "<div class=\"ans\"><ul><li><strong>Governance codes</strong>: follow the code or explain why not (Japan: justify having no outside directors)</li><li><strong>Stewardship codes</strong> (mostly voluntary): investors should exercise rights and engage; UK asset managers publish a comply-or-explain statement</li></ul></div>"
+  },
+  {
+    "id": "ci2-board-eval",
+    "topic": "Board evaluation",
+    "front": "List the board policies and practices an analyst evaluates.",
+    "back": "<div class=\"ans\"><ul><li>CEO duality (consider a lead independent director)</li><li>Board independence</li><li>Committees (audit, governance, remuneration, nomination, risk, compliance)</li><li>Skills and experience; tenure (&gt; 10 years = long)</li><li>Composition and diversity</li><li>Board evaluation process</li></ul></div>",
+    "gap": "A separate CEO and chair is not enough: Style still had only 2 independent directors and long-tenured family members."
+  },
+  {
+    "id": "ci2-tenure",
+    "topic": "Board tenure",
+    "front": "What are the pros and cons of long board tenure, and what counts as long?",
+    "back": "<div class=\"ans\"><p>Long = more than <strong>10 years</strong>.</p><ul><li>+ deep knowledge of the business and of management's record</li><li>− may impair independence and resist change</li></ul></div>"
+  },
+  {
+    "id": "ci2-pay",
+    "topic": "Executive remuneration",
+    "front": "What do say-on-pay and claw-back provisions do? What else does the analyst check on pay?",
+    "back": "<div class=\"ans\"><ul><li><strong>Say-on-pay</strong>: shareholders vote or give feedback on remuneration</li><li><strong>Claw-back</strong>: company recovers previously paid pay after restatements, misconduct, breaches of law or risk failures</li></ul><p>Also: transparency, short- and long-term incentives, link to strategy, CEO-to-worker pay.</p></div>"
+  },
+  {
+    "id": "ci2-gov-valuation",
+    "topic": "Governance in valuation",
+    "front": "How do analysts typically reflect governance quality in valuation? What did the analyst use for Sumiyoshi?",
+    "back": "<div class=\"ans\"><p>Through the <strong>risk premium / cost of capital</strong> or the <strong>credit spread</strong>.</p><p>Sumiyoshi: weaker board than peers, and NPLs/total loans <strong>50 bp above peers</strong> as a governance proxy → higher ERP and wider spread.</p></div>"
+  },
+  {
+    "id": "ci2-materiality",
+    "topic": "Materiality and horizon",
+    "front": "What does ESG materiality mean, and why does the investment horizon matter?",
+    "back": "<div class=\"ans\"><p>Material ESG issues are those expected to affect operations, financial performance and <strong>security valuation</strong>, positive or negative.</p><p>Horizon: a risk can be immaterial to a short-horizon investor but material to a long one; especially relevant to credit analysts across maturities.</p></div>",
+    "gap": "Companies may call positive but immaterial items \"material\" and play down negative ones."
+  },
+  {
+    "id": "ci2-identify",
+    "topic": "Identifying ESG factors",
+    "front": "Name the three approaches to identifying ESG factors, with an example of each.",
+    "back": "<div class=\"ans\"><ol><li><strong>Proprietary methods</strong>: own research (annual and sustainability reports, news, experts)</li><li><strong>ESG data providers</strong>: MSCI, Sustainalytics scores and rankings</li><li><strong>Not-for-profit frameworks</strong>: IIRC, GRI, SASB (materiality maps), 2DII</li></ol></div>"
+  },
+  {
+    "id": "ci2-industry",
+    "topic": "Relevant factors by industry",
+    "front": "Which ESG pillar matters most for energy companies and for banks? Which is consistent across companies?",
+    "back": "<div class=\"ans\"><ul><li>Energy: <strong>environmental</strong></li><li>Banks: <strong>social</strong> (data security, privacy, customer satisfaction)</li><li><strong>Governance</strong>: reasonably consistent across companies</li></ul></div>"
+  },
+  {
+    "id": "ci2-equity-credit",
+    "topic": "Equity vs credit integration",
+    "front": "How does ESG integration differ between equity and credit analysis?",
+    "back": "<div class=\"ans\"><ul><li><strong>Equity</strong>: identify opportunities and mitigate downside; adjust forecasts and the discount rate</li><li><strong>Credit</strong>: mainly mitigate <strong>downside</strong> (bond redeems at par); adjust spreads, ratios, duration</li></ul><p>Effects can differ by <strong>maturity</strong>: coal stranded-asset risk hits 10-year notes more than 1-year notes.</p></div>"
+  },
+  {
+    "id": "ci2-green",
+    "topic": "Green bonds",
+    "front": "How do a green bond's credit rating and spread compare with the issuer's conventional bonds? What are its risks?",
+    "back": "<div class=\"ans\"><p>Same rating and recourse: only the <strong>use of proceeds</strong> differs. Any premium or tighter spread reflects <strong>demand</strong>, not lower risk.</p><p>Risks: <strong>greenwashing</strong> and <strong>liquidity</strong> (buy-and-hold holders).</p></div>",
+    "gap": "First green bond: EIB Climate Awareness Bond, 2007. Green Bond Principles (2014) are voluntary."
+  },
+  {
+    "id": "ci2-steps",
+    "topic": "ESG integration steps",
+    "front": "Give the three steps of ESG integration and where adjustments go.",
+    "back": "<div class=\"ans\"><ol><li>Identify <strong>material</strong> ESG factors</li><li>Evaluate them historically, on a forecast basis and vs peers</li><li>Adjust financials and valuation</li></ol><p>Income statement/cash flow (revenue, costs, capex), balance sheet (impaired assets), equity (discount rate, multiple, terminal value), bonds (credit spread, CDS).</p></div>"
+  },
+  {
+    "id": "ci2-cases",
+    "topic": "Integration cases",
+    "front": "Match each textbook case to its pillar, key metric and adjustment: Frizzle Drinks, Well Pharma, Sumiyoshi.",
+    "back": "<div class=\"ans\"><ul><li><strong>Frizzle</strong> (E): water intensity; COGS/revenue cut 1% → higher margin and value</li><li><strong>Well Pharma</strong> (S): product quality (warning letters, recalls); revenue −2%, COGS/revenue +1.3%, non-operating costs +4.5% of operating income</li><li><strong>Sumiyoshi</strong> (G): board composition and NPL ratio; higher ERP and spread</li></ul></div>",
+    "gap": "For Well Pharma, the treatment depends on whether quality issues are recurring or non-recurring."
+  }
+];
+
+flashDeck({
+  key: "cfa-c4-m2-review",
+  source: "CFA L2 Corporate Issuers \u00b7 M2 ESG \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

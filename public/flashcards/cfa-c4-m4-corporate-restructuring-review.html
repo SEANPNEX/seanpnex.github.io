@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Corporate Issuers M4 — Corporate Restructuring review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    "id": "ci4-categories",
+    "topic": "Three categories",
+    "front": "Define investment, divestment and restructuring actions and list the specific types in each.",
+    "back": "<div class=\"ans\"><ul><li><strong>Investment</strong> (size ↑): equity investment, joint venture, acquisition</li><li><strong>Divestment</strong> (size ↓): sale, spin off</li><li><strong>Restructuring</strong> (same size, improve): cost, balance sheet, reorganization</li></ul><p><strong>LBO</strong>: special case combining all three.</p></div>"
+  },
+  {
+    "id": "ci4-motives",
+    "topic": "Issuer-specific motivations",
+    "front": "Give the issuer-specific motivations for investment, divestment and restructuring actions.",
+    "back": "<div class=\"ans\"><ul><li><strong>Investment</strong>: synergies, growth, capabilities/resources, undervalued target</li><li><strong>Divestment</strong>: focus, valuation (conglomerate discount), liquidity, regulatory requirements</li><li><strong>Restructuring</strong>: improve returns on capital; financial challenges (bankruptcy, liquidation)</li></ul></div>",
+    "gap": "Increasing revenue is not a divestment motive: divestments shrink revenue."
+  },
+  {
+    "id": "ci4-topdown",
+    "topic": "Top-down drivers",
+    "front": "What are the top-down drivers of restructuring activity, and why does deal volume follow security prices?",
+    "back": "<div class=\"ans\"><p><strong>High security prices</strong> and <strong>industry shocks</strong> (regulatory, technological, industry growth changes).</p><p>Pro-cyclical because of greater CEO confidence, lower cost of financing, and managers using <strong>overvalued</strong> stock as currency.</p></div>",
+    "gap": "Deals done in weak economies created more value on average (BCG: nearly 10% higher three-year return)."
+  },
+  {
+    "id": "ci4-synergies",
+    "topic": "Synergies",
+    "front": "Distinguish cost and revenue synergies and their sources.",
+    "back": "<div class=\"ans\"><ul><li><strong>Cost</strong>: economies of <strong>scale</strong> (one headquarters, capacity utilization, route density, R&amp;D, marketing)</li><li><strong>Revenue</strong>: economies of <strong>scope</strong> (cross-selling, e.g. a bank selling insurance; pricing power from less competition)</li></ul></div>"
+  },
+  {
+    "id": "ci4-investment-types",
+    "topic": "Investment types",
+    "front": "Compare an equity investment, a joint venture and an acquisition on stake, control and accounting.",
+    "back": "<div class=\"ans\"><ul><li><strong>Equity investment</strong>: material stake &lt; 50% in an existing company; no control</li><li><strong>Joint venture</strong>: a <strong>new</strong> company jointly controlled by the partners; shares profit/loss</li><li><strong>Acquisition</strong>: most or all shares; full control; target <strong>consolidated</strong></li></ul></div>",
+    "gap": "An equity investment never gives control; acquisitions need much more capital."
+  },
+  {
+    "id": "ci4-sale-spin",
+    "topic": "Sale vs spin off",
+    "front": "Why might an issuer sell a segment rather than spin it off, and vice versa?",
+    "back": "<div class=\"ans\"><ul><li><strong>Sale</strong>: raises <strong>cash</strong> (liquidity); price is definitive; can be high with many bidders</li><li><strong>Spin off</strong>: shareholders get the shares; focus and stock pay tied to the unit; light regulatory scrutiny; takes several quarters</li></ul></div>"
+  },
+  {
+    "id": "ci4-restructuring-types",
+    "topic": "Restructuring actions",
+    "front": "Define cost restructuring, balance sheet restructuring and reorganization. Give two examples of each of the first two.",
+    "back": "<div class=\"ans\"><ul><li><strong>Cost</strong>: raise efficiency and margins: outsourcing, offshoring</li><li><strong>Balance sheet</strong>: change asset mix or capital structure: sale leaseback, dividend recapitalization</li><li><strong>Reorganization</strong>: court-supervised process for insolvent firms; operations continue</li></ul></div>",
+    "gap": "Liquidation follows a failed reorganization: the court sells assets and pays creditors."
+  },
+  {
+    "id": "ci4-opportunistic",
+    "topic": "Opportunistic vs forced",
+    "front": "What is the difference between opportunistic and forced restructuring? Give the textbook example of changing the business model.",
+    "back": "<div class=\"ans\"><ul><li><strong>Opportunistic</strong>: improve returns by choice (alter the business model, trim costs, change the balance sheet)</li><li><strong>Forced</strong>: returns below the required return → cost, balance sheet restructuring or reorganization</li></ul><p><strong>Franchising</strong>: divest the assets, license the IP for royalties (McDonald's, Kumon).</p></div>"
+  },
+  {
+    "id": "ci4-recap",
+    "topic": "Sale leaseback and dividend recap",
+    "front": "What does a sale leaseback do to cash, expenses and risk? What is a dividend recapitalization for?",
+    "back": "<div class=\"ans\"><ul><li><strong>Sale leaseback</strong>: cash now; lease expense usually <strong>higher</strong> than the depreciation it replaces; sheds ownership risks</li><li><strong>Dividend recap</strong>: debt-financed dividends or buybacks to swap equity for cheaper debt and <strong>lower WACC</strong>; suits stable cash flows</li></ul></div>"
+  },
+  {
+    "id": "ci4-lbo",
+    "topic": "Leveraged buyout",
+    "front": "What drives LBO returns, and how does the target's capital structure typically look after exit?",
+    "back": "<div class=\"ans\"><p>Purchase price, leverage, FCF during ownership (to repay debt), and exit price. The target usually exits <strong>more levered</strong> than before.</p><p>Hilton: Blackstone used USD14.5bn debt + USD5.5bn equity; long-term debt tripled.</p></div>"
+  },
+  {
+    "id": "ci4-initial",
+    "topic": "Initial evaluation",
+    "front": "What four questions make up the initial evaluation? How is materiality judged?",
+    "back": "<div class=\"ans\"><p>What? Why? Is it material? When?</p><ul><li><strong>Size</strong>: large if transaction value (cash + stock + debt assumed) &gt; <strong>10%</strong> of the acquirer's pre-deal EV</li><li><strong>Fit</strong>: does it signal a change in strategy?</li></ul></div>",
+    "gap": "A small deal can still be material by fit: Farfetch's USD704m deal (≈ 8% of EV) sent shares down 45%."
+  },
+  {
+    "id": "ci4-timing",
+    "topic": "Timing and announcement returns",
+    "front": "Why does timing matter in the initial evaluation, and how useful is the announcement-day price reaction?",
+    "back": "<div class=\"ans\"><p>Closing can take quarters or years; statements change only at <strong>closing</strong>; approvals (shareholder, creditor, antitrust) add uncertainty.</p><p>Announcement returns show <strong>no correlation</strong> with excess returns two or more years later.</p></div>"
+  },
+  {
+    "id": "ci4-comps",
+    "topic": "Comparable company analysis",
+    "front": "Give the advantages and disadvantages of comparable company analysis. When is it used most?",
+    "back": "<div class=\"ans\"><ul><li>+ market-based, data available, few assumptions</li><li>− hard to find comparables; sensitive to <strong>market mispricing</strong>; gives a trading price, so a <strong>takeover premium</strong> must be added</li></ul><p>Used more for <strong>spin offs</strong> than acquisitions.</p></div>"
+  },
+  {
+    "id": "ci4-transactions",
+    "topic": "Comparable transaction analysis",
+    "front": "How does comparable transaction analysis differ from comparable company analysis? List its drawbacks.",
+    "back": "<div class=\"ans\"><p>Uses multiples from past <strong>acquisitions</strong>, so the takeover premium is <strong>already included</strong>.</p><ul><li>Few, illiquid deals</li><li>Old multiples reflect old industry and macro conditions</li><li>Past buyers may have over- or underpaid</li></ul></div>",
+    "gap": "Don't add a premium to transaction multiples."
+  },
+  {
+    "id": "ci4-prm",
+    "topic": "Premium paid analysis",
+    "front": "Write the takeover premium formula. What price should be used for SP?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$PRM=\\frac{DP-SP}{SP}$$</div><p>SP = the <strong>unaffected</strong> price (e.g. a week before announcement, or a VWAP) to strip out rumor run-ups. Median premium 1990–2018 just over 30%.</p></div>"
+  },
+  {
+    "id": "ci4-hofer",
+    "topic": "Weighted comparable transactions",
+    "front": "Hofer: estimates USD47.95 (P/E), 44.17 (P/CF), 46.81 (P/BV), 55.15 (P/S), weights 20/40/20/20. Deal price USD55. Conclusion?",
+    "back": "<div class=\"ans\"><p>\\(9.59+17.67+9.36+11.03=\\) <strong>USD47.65</strong>, 13% below USD55 → the buyer <strong>overpaid</strong>.</p></div>"
+  },
+  {
+    "id": "ci4-proforma",
+    "topic": "Pro forma income statement",
+    "front": "How are revenue, opex, D&A, interest and shares built in a pro forma acquisition income statement?",
+    "back": "<div class=\"ans\"><ul><li>Revenue: combine ± revenue synergies</li><li>Opex: combine − cost synergies (+ one-time costs)</li><li>D&amp;A: combine + <strong>amortization of acquired intangibles</strong></li><li>Interest: acquirer's + new debt</li><li>Shares: acquirer's + <strong>new shares issued</strong></li></ul></div>"
+  },
+  {
+    "id": "ci4-wacc",
+    "topic": "Pro forma WACC",
+    "front": "How can a restructuring change WACC? Why do issuers protect an investment-grade rating?",
+    "back": "<div class=\"ans\"><p>It changes the <strong>weights</strong> (debt-funded deal → \\(w_d\\) ↑) and the <strong>costs</strong> via profitability, volatility, leverage, collateral and rates.</p><p>Dropping from investment to speculative grade adds several hundred bp to WACC.</p></div>",
+    "gap": "To protect the rating, pay with more stock and less debt-funded cash."
+  },
+  {
+    "id": "ci4-cn",
+    "topic": "CN capital structure",
+    "front": "CN: debt after the deal USD33bn (incl. 3.8 assumed and 19 new); 713m shares at USD105; issues 103m shares. Find debt weights before and after.",
+    "back": "<div class=\"ans\"><ul><li>Before: debt \\(33-3.8-19=10.2\\); equity 74.9 → <strong>12%</strong> debt</li><li>After: debt 33; equity \\(816\\times105=85.7\\) → <strong>28%</strong> debt</li></ul></div>"
+  },
+  {
+    "id": "ci4-dilmun",
+    "topic": "Equity investment effect",
+    "front": "Dilmun buys 30% of Spina (loss 450) for USD1.2bn of 6% debt, with 10 of amortization. Effect on EBIT and interest?",
+    "back": "<div class=\"ans\"><ul><li>EBIT: \\(0.3\\times450+10=\\) <strong>145</strong> lower</li><li>Interest: \\(1{,}200\\times6\\%=\\) <strong>72</strong> higher</li></ul><p>EPS 3.94 → 3.85; debt/EBITDA 1.37 → 1.51.</p></div>"
+  },
+  {
+    "id": "ci4-tulor",
+    "topic": "Acquisition multiple",
+    "front": "Tulor pays AUD3,000m for EBITDA of 183; peers trade at 8×; synergies 125. Explain the gap.",
+    "back": "<div class=\"ans\"><p>Paid \\(3{,}000/183=\\) <strong>16×</strong>, double the peers, because of the <strong>control premium</strong> and <strong>synergies</strong>. With synergies \\(3{,}000/308=\\) <strong>10×</strong>, within the peer range.</p></div>"
+  },
+  {
+    "id": "ci4-conglomerate",
+    "topic": "Conglomerate discount",
+    "front": "Benefit Ltd.: Consulting EBITDA 80 (after corporate costs) × 9; BenefitsExchange sales 75 × 12; current EV 1,437. Find the conglomerate discount.",
+    "back": "<div class=\"ans\"><p>\\(721+900=1{,}621\\); discount \\(1{,}621-1{,}437=\\) <strong>ZAR184m</strong>.</p></div>",
+    "gap": "Using the closest-growth peer (EV/S 15) raises the discount to 409."
+  },
+  {
+    "id": "ci4-cyrene",
+    "topic": "Cost restructuring",
+    "front": "Cyrene: revenue 18,990, EBIT 2,659 (14%). How much opex must be cut to reach the 20% peer median margin?",
+    "back": "<div class=\"ans\"><p>Opex \\(18{,}990-2{,}659=16{,}331\\); target \\(0.80\\times18{,}990=15{,}192\\).</p><p>Cut <strong>EUR1,139m (7%)</strong>.</p></div>",
+    "gap": "Risks: cutting spending that drives growth, and political backlash from layoffs."
+  },
+  {
+    "id": "ci4-kosala",
+    "topic": "Sale leaseback (Kosala)",
+    "front": "Kosala sells distribution centers at a 4.5% cap rate (peers: 3.0%, 5.5%, 8.0%) and repays debt. Is the price good? What happens to debt/EBITDA and coverage?",
+    "back": "<div class=\"ans\"><p>A lower cap rate means a higher price: 100 bp below the median is <strong>favorable</strong>.</p><p>Debt/EBITDA <strong>3.2 → 2.3</strong>; EBIT/interest <strong>2.9 → 4.3</strong> → BBB range.</p></div>"
+  }
+];
+
+flashDeck({
+  key: "cfa-c4-m4-review",
+  source: "CFA L2 Corporate Issuers \u00b7 M4 Corporate Restructuring \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

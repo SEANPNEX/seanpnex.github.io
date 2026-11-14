@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Corporate Issuers M3 — Cost of Capital review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    "id": "ci3-wacc",
+    "topic": "WACC",
+    "front": "Write WACC and name three reasons it is hard to estimate.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$WACC=w_dr_d(1-t)+w_pr_p+w_er_e$$</div><ul><li>Many methods per component, no single right one</li><li>Needs the long-term <strong>target</strong> capital structure</li><li>Needs the <strong>marginal</strong> tax rate, not the average or effective rate</li></ul></div>"
+  },
+  {
+    "id": "ci3-topdown",
+    "topic": "Top-down vs bottom-up factors",
+    "front": "List the top-down and bottom-up cost of capital factors. Where does each group show up?",
+    "back": "<div class=\"ans\"><ul><li><strong>Top-down</strong> (in \\(r_f\\) and the ERP): capital availability, market conditions, legal/regulatory and country risk, tax jurisdiction</li><li><strong>Bottom-up</strong> (in the credit spread and beta): revenue/earnings/cash flow volatility, asset nature and liquidity, financial strength and leverage, security features</li></ul></div>"
+  },
+  {
+    "id": "ci3-tax",
+    "topic": "Tax rate and cost of capital",
+    "front": "Country A raises its corporate tax rate from 15% to 25%. Effect on WACC, and what must be true?",
+    "back": "<div class=\"ans\"><p>After-tax cost of debt and WACC <strong>fall</strong>, but only if interest is <strong>deductible</strong> and the company has <strong>taxable income</strong>.</p></div>",
+    "gap": "If the company has hit an interest-deduction cap, don't tax-adjust the cost of new debt."
+  },
+  {
+    "id": "ci3-features",
+    "topic": "Security features",
+    "front": "Which security features raise and which lower the cost of capital at issuance?",
+    "back": "<div class=\"ans\"><ul><li><strong>Higher</strong>: callable debt; common shares with inferior cash flow or voting rights</li><li><strong>Lower</strong>: putable debt, convertible debt, cumulative preferred</li></ul><p>Put and conversion can cost more later (refinancing after a put; dilution after conversion).</p></div>"
+  },
+  {
+    "id": "ci3-volatility",
+    "topic": "Business model and cost of capital",
+    "front": "Which characteristics raise the cost of capital: revenue concentration, earnings predictability, operating leverage, tangible assets, ESG risk?",
+    "back": "<div class=\"ans\"><ul><li><strong>Raise</strong>: revenue concentration, higher operating and financial leverage, higher ESG risk</li><li><strong>Lower</strong>: earnings predictability, stable (subscription) revenue, fungible tangible and liquid assets</li></ul></div>",
+    "gap": "Collateralized debt lowers the cost of debt but can raise the cost of equity."
+  },
+  {
+    "id": "ci3-nontraded",
+    "topic": "Cost of non-traded debt",
+    "front": "How do you estimate the cost of debt for non-traded debt, rated and unrated?",
+    "back": "<div class=\"ans\"><ul><li><strong>Rated</strong>: matrix pricing from traded bonds with similar rating and maturity</li><li><strong>Unrated</strong>: synthetic rating from IC and leverage ratios, then the YTM (or \\(r_f\\) + spread) for that rating and maturity</li></ul></div>",
+    "gap": "Gamma: IC 1.5 says B, D/E 43% says BBB. When ratios conflict, look at trends and use judgement."
+  },
+  {
+    "id": "ci3-matrix",
+    "topic": "Matrix pricing (Gretna)",
+    "front": "BBB bonds: 4-year average YTM 5.166%, 8-year 6.011%. Estimate the 7-year YTM by linear interpolation.",
+    "back": "<div class=\"ans\"><p>Step \\((6.011-5.166)/4=0.211\\%\\) a year.</p><p>7-year \\(=5.166+3\\times0.211=\\) <strong>5.799% ≈ 5.8%</strong>.</p></div>",
+    "gap": "Gretna's own bond is thinly traded, so its true yield is slightly higher than the matrix estimate."
+  },
+  {
+    "id": "ci3-lease",
+    "topic": "Leases",
+    "front": "Write the equation for the rate implicit in the lease. G&S: 15 years, PMT €9m, asset FV €100m, lessor cost €5m, residual €10m.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}&\\text{PV(payments)}+\\text{PV(residual)}\\\\&=\\text{FV of asset}+\\text{lessor's direct costs}\\end{aligned}$$</div><p>N 15, PV −105, PMT 9, FV 10 → <strong>4.08%</strong>, below the 6% unsecured IBR.</p></div>",
+    "gap": "If the residual and lessor costs are unknown, use the IBR: the rate on a collateralized loan over the same term."
+  },
+  {
+    "id": "ci3-hist-erp",
+    "topic": "Historical ERP",
+    "front": "Name the four key decisions in a historical ERP estimate and its key assumptions.",
+    "back": "<div class=\"ans\"><ol><li>Equity index (broad, market-value-weighted)</li><li>Time period (longer generally preferred)</li><li>Mean type (arithmetic vs geometric)</li><li>Risk-free proxy (bill vs long bond)</li></ol><p>Assumes returns are <strong>stationary</strong> and markets relatively efficient.</p></div>"
+  },
+  {
+    "id": "ci3-mean-rf",
+    "topic": "Mean type and risk-free proxy",
+    "front": "Which choices of mean and risk-free proxy give a higher historical ERP, and which are generally preferred?",
+    "back": "<div class=\"ans\"><ul><li><strong>Arithmetic</strong> mean and a <strong>bill</strong> rate (normal curve) give a <strong>higher</strong> ERP</li><li>Geometric is generally preferred (less sensitive to outliers, matches terminal wealth); arithmetic suits single-period models like CAPM</li><li>Practice favors the <strong>long-term bond YTM</strong> (matches equity duration)</li></ul></div>"
+  },
+  {
+    "id": "ci3-hist-bias",
+    "topic": "Historical ERP biases",
+    "front": "How do survivorship bias and a non-recurring crisis in the sample affect a historical ERP?",
+    "back": "<div class=\"ans\"><ul><li><strong>Survivorship bias</strong> (failed firms dropped, back-filled index history): ERP biased <strong>up</strong></li><li>A crisis that depressed returns and won't recur: biased <strong>down</strong></li></ul></div>"
+  },
+  {
+    "id": "ci3-ddm-erp",
+    "topic": "DDM ERP",
+    "front": "Write the DDM-based ERP and its key assumption. FTSE 100: yield 1.94%, growth 5.0%, gilt 1.63%.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$ERP=E\\left(\\tfrac{D_1}{V_0}\\right)+E(g)-r_f$$</div><p>Assumes a <strong>constant P/E</strong>. \\(1.94+5.0-1.63=\\) <strong>5.31%</strong>.</p></div>"
+  },
+  {
+    "id": "ci3-gk",
+    "topic": "Grinold–Kroner",
+    "front": "Write the Grinold–Kroner ERP. Inputs: DY 2.2%, ΔP/E 0, i 1.6%, g 3%, ΔS −0.7%, rf 2.5%.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}ERP={}&[DY+\\Delta(P/E)+i+g\\\\&-\\Delta S]-E(r_f)\\end{aligned}$$</div><p>\\(\\{2.2+0+[1.6+3.0+0.7]\\}-2.5=\\) <strong>5.0%</strong>.</p></div>",
+    "gap": "Higher expected inflation doesn't change the ERP: i and rf rise together. The textbook's text says 3.6% for this case; its calculation gives 5.0%."
+  },
+  {
+    "id": "ci3-inflation",
+    "topic": "Expected inflation",
+    "front": "Estimate expected inflation from a 10-year Treasury at 2.3% and TIPS at 0.66%.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$i=\\frac{1.023}{1.0066}-1=1.6\\%$$</div><p>Approximately YTM(Treasury) − YTM(TIPS).</p></div>"
+  },
+  {
+    "id": "ci3-forward-limits",
+    "topic": "Forward-looking limitations",
+    "front": "Give the main limitation of survey, DDM and macroeconomic ERP estimates.",
+    "back": "<div class=\"ans\"><ul><li><strong>Surveys</strong>: sampling, response and behavioral biases (recency, confirmation)</li><li><strong>DDM</strong>: constant P/E assumption</li><li><strong>Macro models</strong>: modeling errors and forecasting biases; unsuitable where equities are a small part of the economy</li></ul></div>"
+  },
+  {
+    "id": "ci3-byprp",
+    "topic": "BYPRP",
+    "front": "Write the bond yield plus risk premium approach and its drawbacks. Bond yield 4.3%, premium 6.1%.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$r_e=r_d+RP=4.3\\%+6.1\\%=10.4\\%$$</div><ul><li>RP is relatively arbitrary</li><li>Needs traded debt</li><li>No rule on which bond to use if several (usually the long-term YTM)</li></ul></div>"
+  },
+  {
+    "id": "ci3-ff",
+    "topic": "Fama–French",
+    "front": "Write the Fama–French five-factor model and define each factor. Why does its market beta differ from the CAPM beta?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}r_e={}&r_f+\\beta_1ERP+\\beta_2SMB+\\beta_3HML\\\\&+\\beta_4RMW+\\beta_5CMA\\end{aligned}$$</div><p>Size, value (book-to-market), profitability, investment. The extra factors change the estimated market beta.</p></div>"
+  },
+  {
+    "id": "ci3-private",
+    "topic": "Private company cost of equity",
+    "front": "Write the expanded CAPM and the build-up approach. How do they treat beta?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$r_e=r_f+\\beta_{peer}ERP+SP+SCRP$$</div><div class=\"eq-block\">$$r_e=r_f+ERP+SP+IP+SCRP$$</div><p>Expanded CAPM uses a <strong>peer beta</strong>; build-up uses the ERP <strong>without beta</strong> (β = 1 implicit: \\(r_f\\) + ERP = average large-cap return).</p></div>",
+    "gap": "Illiquidity is handled as a discount for lack of marketability on value, not as a premium in r_e."
+  },
+  {
+    "id": "ci3-sp",
+    "topic": "Size premium and SCRP",
+    "front": "How is the size premium set, and why might a historical SP need a downward adjustment? Give SCRP drivers.",
+    "back": "<div class=\"ans\"><ul><li>SP is inversely related to size; based on the lowest market-cap decile → micro-cap return</li><li>Small-cap samples include fallen, distressed companies → adjust <strong>down</strong> for a healthy small company</li><li>SCRP: key person, customer/supplier and geographic concentration, governance, asset type, leverage, earnings volatility, pricing power</li></ul></div>"
+  },
+  {
+    "id": "ci3-crp",
+    "topic": "Country risk premium",
+    "front": "Write the country spread ERP and Damodaran's CRP. Makinassi: spreads 1.5% (home) and 3.2% (local), local σ equity 4.0%, σ bond 2.5%, 40% exposure.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$ERP=ERP_{dev}+\\lambda\\times CRP$$</div><div class=\"eq-block\">$$CRP=\\text{Spread}\\times\\frac{\\sigma_E}{\\sigma_B}$$</div><p>\\(1.7\\%\\times4.0/2.5=2.72\\%\\); \\(\\times0.40=\\) <strong>1.088%</strong>.</p></div>",
+    "gap": "The sovereign spread uses bonds denominated in the developed market's currency."
+  },
+  {
+    "id": "ci3-intl",
+    "topic": "Global and international CAPM",
+    "front": "Write the international CAPM. When are GCAPM and ICAPM reasonable, and what is GCAPM's problem?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}E(r_e)={}&r_f+\\beta_G(E(r_{gm})-r_f)\\\\&+\\beta_C(E(r_c)-r_f)\\end{aligned}$$</div><p>Reasonable for operations in <strong>developed</strong> countries. GCAPM: low EM–DM correlation → low or negative beta.</p></div>"
+  },
+  {
+    "id": "ci3-gretna",
+    "topic": "Mini-case 1 · Gretna",
+    "front": "Gretna: CAPM 7.11%, FF5 9.20%, BYPRP 12.0%, preferred 70/980 = 7.14%. Which estimate is not credible, and why?",
+    "back": "<div class=\"ans\"><p><strong>CAPM 7.11%</strong>: it is below the 7.14% cost of preferred, but common equity is junior and must require more.</p></div>",
+    "gap": "KM's ERP used a bill rate and an arithmetic mean: both push the ERP up."
+  },
+  {
+    "id": "ci3-precision",
+    "topic": "Mini-case 2 · Precision",
+    "front": "Industry beta 1.25, D/E 0.3025, tax 25%; Precision D/E 0.2120, tax 20%. Find Precision's beta.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\beta_{A}=\\frac{1.25}{1+0.75(0.3025)}=1.019$$</div><div class=\"eq-block\">$$\\beta=1.019[1+0.80(0.2120)]=1.19$$</div></div>",
+    "gap": "Unlever with the comparable's tax rate and D/E, relever with the subject's. D/E = debt ÷ (assets − debt)."
+  },
+  {
+    "id": "ci3-precision-wacc",
+    "topic": "Mini-case 2 · cost of debt and WACC",
+    "front": "Precision: IC 7.63, D/E 0.212 → A (spread 1.46%); rf 5.41%, CRP 2%, tax 20%; wd 0.1749; build-up re 24.41%. Find after-tax rd and WACC.",
+    "back": "<div class=\"ans\"><p>\\(r_d=5.41+1.46+2.00=8.87\\%\\); after tax <strong>7.096%</strong>.</p><p>WACC \\(=0.1749(8.87\\%)(0.8)+0.8251(24.41\\%)=\\) <strong>21.38%</strong>.</p></div>",
+    "gap": "The textbook's headline says 21.13%; its own calculation gives 21.38%."
+  }
+];
+
+flashDeck({
+  key: "cfa-c4-m3-review",
+  source: "CFA L2 Corporate Issuers \u00b7 M3 Cost of Capital \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>
