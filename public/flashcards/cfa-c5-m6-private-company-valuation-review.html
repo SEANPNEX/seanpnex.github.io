@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Equity M6 — Private Company Valuation review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    "id": "eq6-features",
+    "topic": "Private vs public",
+    "front": "Name the company-specific and stock-specific differences of private companies. Which usually lower value?",
+    "back": "<div class=\"ans\"><ul><li><strong>Company-specific</strong> (either way): life-cycle stage, smaller size, concentrated ownership, owner-managers (fewer agency problems)</li><li><strong>Stock-specific</strong> (negative): <strong>illiquidity</strong>, concentrated control, sale restrictions</li></ul></div>"
+  },
+  {
+    "id": "eq6-uses",
+    "topic": "Uses and focus areas",
+    "front": "Name the three uses of private company valuation and the three areas of analytical focus.",
+    "back": "<div class=\"ans\"><ul><li>Uses: <strong>transactions</strong> (incl. share-based pay), <strong>compliance</strong> (reporting, tax), <strong>litigation</strong></li><li>Focus: normalize earnings (numerator); adjust the discount rate (denominator); apply discounts/premiums</li></ul></div>"
+  },
+  {
+    "id": "eq6-normalize",
+    "topic": "Normalizing earnings",
+    "front": "What do normalized earnings remove, and what are typical adjustments?",
+    "back": "<div class=\"ans\"><p>Non-recurring and non-economic items <strong>and</strong> ongoing anomalies, so results match an efficiently run public company.</p><ul><li>Market-rate owner pay</li><li>Remove personal and non-operating assets; charge market rent</li><li>Arm’s-length related-party terms</li><li>Tax on adjusted income</li></ul></div>"
+  },
+  {
+    "id": "eq6-fli-norm",
+    "topic": "Normalization example",
+    "front": "FLI: CEO paid 1.5m vs market 0.5m; ranch and condo add SG&A 0.3m and D&A 0.1m; reported EBIT 14m. Normalized EBIT?",
+    "back": "<div class=\"ans\"><p>\\(14+1.0+0.3+0.1=\\) <strong>15.4m</strong>; after 17% tax, 12.782m.</p></div>",
+    "gap": "If the owner takes pay as dividends instead, normalize earnings down by a market salary."
+  },
+  {
+    "id": "eq6-scenarios",
+    "topic": "Scenario analysis",
+    "front": "Why use scenario analysis for private companies, and how can management forecasts be biased?",
+    "back": "<div class=\"ans\"><p>Outcomes can be binary or widely uncertain (IPO, sale, approvals): weight scenario values by probability.</p><p>Forecasts may be <strong>overstated</strong> for impairment tests and <strong>understated</strong> for option grants.</p></div>"
+  },
+  {
+    "id": "eq6-rate-factors",
+    "topic": "Discount rate adjustments",
+    "front": "Which factors adjust a private company’s discount rate? Whose capital structure should an acquisition valuation use?",
+    "back": "<div class=\"ans\"><ul><li>Size premium</li><li>Less access to debt → higher WACC</li><li>Projection risk premium</li><li>Use the <strong>target’s</strong> risk and capital structure; the buyer’s lower WACC pays the seller for the buyer’s value</li></ul></div>"
+  },
+  {
+    "id": "eq6-models",
+    "topic": "Required return models",
+    "front": "Write the expanded CAPM and the build-up approach. How do they differ?",
+    "back": "<div class=\"ans\"><ul><li>Expanded CAPM: \\(r_f+\\beta\\,ERP\\) + size + company-specific</li><li>Build-up: \\(r_f\\) + ERP + size + industry + company-specific (<strong>implicit β = 1</strong>)</li></ul></div>",
+    "gap": "FLI: CAPM 9.3%, expanded CAPM 13.3%, build-up 12.8%."
+  },
+  {
+    "id": "eq6-ladder",
+    "topic": "Value ladder",
+    "front": "Order the levels of value from highest to lowest, with the premium or discount between them.",
+    "back": "<div class=\"ans\"><ul><li>Strategic control (synergistic premium)</li><li>Financial control (control premium)</li><li>Marketable minority (public value)</li><li>Non-controlling minority (<strong>DLOC</strong>)</li><li>Non-marketable minority (<strong>DLOM</strong>)</li></ul></div>"
+  },
+  {
+    "id": "eq6-dloc",
+    "topic": "DLOC and total discount",
+    "front": "Write DLOC and the total discount. Control premium 30%, DLOM 20%: find both.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$DLOC=1-\\frac{1}{1+CP}$$</div><div class=\"eq-block\">$$\\text{Total}=1-(1-DLOC)(1-DLOM)$$</div><p>DLOC = 23.1%; total = 1 − 0.769 × 0.8 = <strong>38.5%</strong>.</p></div>",
+    "gap": "Discounts multiply, not add; DLOC is not the control premium."
+  },
+  {
+    "id": "eq6-dlom",
+    "topic": "Estimating DLOM",
+    "front": "How is DLOM estimated, and what are the pros and cons of the put-option method?",
+    "back": "<div class=\"ans\"><ul><li>Restricted stock, pre-IPO transactions, put option prices (ATM put ÷ price)</li></ul><p>Put: <strong>+</strong> captures volatility; <strong>−</strong> gives price protection, not liquidity, and keeps the upside.</p></div>",
+    "gap": "DLOM is smaller when an IPO or sale is near."
+  },
+  {
+    "id": "eq6-approaches",
+    "topic": "Valuation approaches",
+    "front": "Name the three approaches and their methods.",
+    "back": "<div class=\"ans\"><ul><li><strong>Income</strong>: DCF, capitalized cash flow, excess earnings</li><li><strong>Market</strong>: guideline public companies, guideline transactions, prior transactions</li><li><strong>Asset-based</strong>: FV of assets − FV of liabilities (holding, liquidating companies)</li></ul></div>"
+  },
+  {
+    "id": "eq6-ccm",
+    "topic": "Capitalized cash flow method",
+    "front": "Write the capitalized cash flow method. FCFF BRL15m, WACC 14.16%, \\(g\\) 5%, debt BRL5m: equity?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\text{Firm}=\\frac{FCFF_1}{WACC-g},\\quad RIR=\\frac{g}{WACC}$$</div><p>\\(15.75/0.0916=171.9\\) → equity <strong>BRL166.9m</strong>.</p></div>",
+    "gap": "Very sensitive to growth: at 2%, equity falls to BRL120.8m."
+  },
+  {
+    "id": "eq6-eem",
+    "topic": "Excess earnings method",
+    "front": "Describe the excess earnings method. WC €200k at 5%, FA €800k at 11%, income €120k, \\(g\\) 3%, \\(r_{RI}\\) 12%: value?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$RI=NI-WC\\cdot r_{WC}-FA\\cdot r_{FA}$$</div><p>RI = 22k; RV = 22 × 1.03/0.09 = 251,778; firm = <strong>€1,251,778</strong>.</p></div>",
+    "gap": "Widely used to value intangible assets for financial reporting; needs several discount rates."
+  },
+  {
+    "id": "eq6-beta",
+    "topic": "Relevering beta",
+    "front": "Unlever a peer beta of 1.21 (D/E 50%, tax 21.6%) and relever it for D/E 25%, tax 18%.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\beta_U=\\frac{\\beta_L}{1+(1-t)D/E}=0.8693$$</div><div class=\"eq-block\">$$\\beta^*=0.8693\\times1.205=1.0475$$</div></div>"
+  },
+  {
+    "id": "eq6-gpcm",
+    "topic": "Guideline public companies",
+    "front": "What are the key points of the guideline public company method?",
+    "back": "<div class=\"ans\"><ul><li>Choose comparables by industry, size, stage, risk, growth (not debt ratio)</li><li>Composite multiples for multi-segment companies</li><li>Public multiples are minority values: add a control premium (strategic &gt; financial; industry in play; form of payment)</li></ul></div>"
+  },
+  {
+    "id": "eq6-gtm",
+    "topic": "Guideline transactions",
+    "front": "Why is the guideline transactions method most relevant for control, and what must be considered?",
+    "back": "<div class=\"ans\"><p>Multiples come from acquisitions of whole companies, so they include control.</p><p>Consider synergies, earn-outs, non-cash payment, deal timing, and differences in size, country, tax and leverage.</p></div>"
+  },
+  {
+    "id": "eq6-everfloat",
+    "topic": "Composite multiples",
+    "front": "Everfloat: revenue weights 70/25/5%, peer EV/sales 2.8, 1.1, 8.0. Composite multiple, and why not EV/EBITDA for the energy segment?",
+    "back": "<div class=\"ans\"><p>\\(0.7(2.8)+0.25(1.1)+0.05(8.0)=\\) <strong>2.635</strong>.</p><p>Energy has negative EBITDA, which implies a negative value: value it on sales.</p></div>"
+  }
+];
+
+flashDeck({
+  key: "cfa-c5-m6-review",
+  source: "CFA L2 Equity \u00b7 M6 Private Company Valuation \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

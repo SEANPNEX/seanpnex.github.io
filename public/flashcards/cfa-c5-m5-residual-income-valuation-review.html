@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Equity M5 — Residual Income Valuation review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    "id": "eq5-ri",
+    "topic": "Residual income",
+    "front": "Define residual income. Why can positive net income still destroy value?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$RI=NI-r_e\\times B_{t-1}$$</div><p>Net income deducts the cost of debt (interest) but not the cost of equity. If ROE &lt; \\(r_e\\), RI is negative.</p></div>"
+  },
+  {
+    "id": "eq5-axis",
+    "topic": "Residual income example",
+    "front": "Assets €2m, half debt at 7% and half equity at 12%, EBIT €200,000, tax 30%. Find RI.",
+    "back": "<div class=\"ans\"><p>NI = (200,000 − 70,000) × 0.7 = 91,000; equity charge 120,000.</p><p><strong>RI = −€29,000</strong>: ROIC 7% is below the 8.45% capital charge, so P/B &lt; 1.</p></div>"
+  },
+  {
+    "id": "eq5-eva",
+    "topic": "EVA and MVA",
+    "front": "Define EVA and MVA. Name some EVA adjustments.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$EVA=NOPAT-C\\%\\times TC$$</div><p>MVA = market value of the company − book value of total capital.</p><ul><li>Capitalize R&amp;D</li><li>Cash taxes (drop deferred taxes)</li><li>Add LIFO reserve</li><li>Operating leases as capital leases</li></ul></div>"
+  },
+  {
+    "id": "eq5-model",
+    "topic": "The RI model",
+    "front": "Write the residual income valuation model. What relation is it derived from?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$V_0=B_0+\\sum_{t=1}^{\\infty}\\frac{(ROE_t-r)B_{t-1}}{(1+r)^t}$$</div><p>From the DDM, using <strong>clean surplus</strong>: \\(B_t=B_{t-1}+E_t-D_t\\).</p></div>",
+    "gap": "Use beginning book value for both ROE and the equity charge."
+  },
+  {
+    "id": "eq5-earlier",
+    "topic": "Earlier value recognition",
+    "front": "Bugg Properties is worth \\$11.15 by both the RI model and the DDM. How do they differ in timing?",
+    "back": "<div class=\"ans\"><p>RI recognizes \\$6.00 (book value) at \\(t=0\\); the DDM gets \\$9.20 from the final liquidating dividend.</p><p><strong>RI recognizes value earlier</strong>, so it depends less on the terminal value.</p></div>"
+  },
+  {
+    "id": "eq5-pb",
+    "topic": "RI and justified P/B",
+    "front": "Write the justified P/B from the RI model. When is P/B above 1?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\frac{P_0}{B_0}=1+\\frac{ROE-r}{r-g}$$</div><p>P/B &gt; 1 exactly when ROE &gt; \\(r\\) (PV of expected RI &gt; 0). ROE = \\(r\\) → P/B = 1.</p></div>"
+  },
+  {
+    "id": "eq5-tobin",
+    "topic": "Tobin’s q",
+    "front": "Define Tobin’s q and contrast it with P/B.",
+    "back": "<div class=\"ans\"><p>Market value of debt and equity ÷ <strong>replacement cost</strong> of total assets.</p><p>Unlike P/B: total capital over total assets, at replacement cost (reflects inflation), not historical cost. Hard to measure.</p></div>"
+  },
+  {
+    "id": "eq5-single",
+    "topic": "Single-stage RI model",
+    "front": "Value Philips: \\(B_0\\) €13.22, ROE 12%, \\(r\\) 8.5%, \\(g\\) 6.75%.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$V_0=B_0+\\frac{ROE-r}{r-g}B_0$$</div><p>\\(13.22+(0.035/0.0175)\\times13.22=\\) <strong>€39.66</strong>.</p></div>",
+    "gap": "It assumes ROE above \\(r\\) forever; in practice ROE reverts to the mean."
+  },
+  {
+    "id": "eq5-implied-g",
+    "topic": "Implied growth",
+    "front": "How do you find the market-implied growth rate with the RI model?",
+    "back": "<div class=\"ans\"><p>Set the single-stage model equal to the price and solve for \\(g\\). Philips at €35.40 → <strong>6.41%</strong>.</p></div>"
+  },
+  {
+    "id": "eq5-multistage",
+    "topic": "Multistage RI",
+    "front": "Write the multistage RI model with a terminal premium over book.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}V_0={}&B_0+\\sum_{t=1}^{T}\\frac{E_t-rB_{t-1}}{(1+r)^t}\\\\&+\\frac{P_T-B_T}{(1+r)^T}\\end{aligned}$$</div><p>\\(P_T\\) can come from a DDM, P/E or P/B.</p></div>"
+  },
+  {
+    "id": "eq5-continuing",
+    "topic": "Continuing residual income",
+    "front": "List the common assumptions for continuing residual income.",
+    "back": "<div class=\"ans\"><ul><li>Continues forever at a positive level</li><li>Zero from the terminal year</li><li>Declines to zero as ROE reverts to \\(r\\)</li><li>Reflects ROE reverting to a mean (e.g. industry) level</li></ul></div>"
+  },
+  {
+    "id": "eq5-persistence",
+    "topic": "Persistence model",
+    "front": "Write the terminal term of the persistence model. What does \\(\\omega\\) mean?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\frac{E_T-rB_{T-1}}{(1+r-\\omega)(1+r)^{T-1}}$$</div><p>\\(\\omega=1\\): RI continues forever; \\(\\omega=0\\): stops after \\(T\\). Average ≈ 0.62.</p></div>",
+    "gap": "Lower persistence: extreme ROE, special items, accruals. Higher: low payout, persistent industry."
+  },
+  {
+    "id": "eq5-consistency",
+    "topic": "RI vs DDM and FCF",
+    "front": "When do RI, DDM and FCF models give the same value?",
+    "back": "<div class=\"ans\"><p>With consistent forecasts and matching discount rates (\\(r\\) for DDM, FCFE, RI; WACC for FCFF).</p><p>Perpetuity example: DDM 1.00/0.10 = \\$10; RI 6.00 + 0.40/0.10 = \\$10.</p></div>"
+  },
+  {
+    "id": "eq5-when",
+    "topic": "When to use RI",
+    "front": "When is the RI model most and least appropriate?",
+    "back": "<div class=\"ans\"><ul><li><strong>Most</strong>: no or unpredictable dividends; negative near-term FCF; uncertain terminal values</li><li><strong>Least</strong>: big clean surplus violations; unpredictable book value and ROE</li></ul></div>",
+    "gap": "Positive, predictable FCF but no dividends → an FCF model fits better."
+  },
+  {
+    "id": "eq5-dirty",
+    "topic": "Clean surplus violations",
+    "front": "Which items bypass the income statement, and what do they distort?",
+    "back": "<div class=\"ans\"><ul><li>FVOCI / AFS fair value changes</li><li>Currency translation adjustments</li><li>Some pension and hedge items</li><li>IFRS only: revaluation surplus; own-credit changes on liabilities</li></ul><p>Book value is right, but <strong>NI and ROE are misstated</strong>.</p></div>"
+  },
+  {
+    "id": "eq5-intangibles",
+    "topic": "Intangibles and the RI model",
+    "front": "Does recognizing and later amortizing an omitted intangible change RI value? How should acquired-intangible amortization be treated?",
+    "back": "<div class=\"ans\"><p><strong>No</strong>: the higher \\(B_0\\) is offset by amortization plus the capital charge.</p><p>Add back amortization of acquired intangibles (Alpha/Beta: 7,000 understated → 7,500).</p></div>"
+  },
+  {
+    "id": "eq5-other-adj",
+    "topic": "Other accounting adjustments",
+    "front": "How should non-recurring items and aggressive accounting be handled?",
+    "back": "<div class=\"ans\"><ul><li>Forecast RI from <strong>recurring</strong> earnings; recurring restructuring may be an operating cost</li><li>Aggressive accounting (accelerated revenue, capitalized expenses, cookie-jar reserves) inflates earnings and book value</li></ul></div>"
+  }
+];
+
+flashDeck({
+  key: "cfa-c5-m5-review",
+  source: "CFA L2 Equity \u00b7 M5 Residual Income Valuation \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>
