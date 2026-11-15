@@ -22,6 +22,15 @@ const CARDS = [
       <p><strong>Position limit.</strong></p><ul><li><strong>Position limit:</strong> caps the size of an exposure (security, asset class, sector, issuer, or country).</li><li><strong>Scenario limit:</strong> caps the estimated loss allowed under a given scenario or stress test.</li><li><strong>Stop-loss limit:</strong> requires a reduction or close-out once a loss over a period exceeds a trigger.</li></ul><p>The reason behind a limit (here, a recession view) does not change its type.</p>
     </div>`,
     gap: "Answered scenario limit."
+  },
+  {
+    id: "pm-m6-ir-vs-sharpe-2026-11-15",
+    topic: "PM M6 · IR vs Sharpe",
+    front: `Where is the information ratio least appropriate?`,
+    back: `<div class="ans">
+      <p><strong>Quantifying return in excess of the risk-free rate.</strong> That is the Sharpe ratio: excess return over the risk-free rate per unit of total risk, \\(\\text{SR}_P=\\dfrac{R_P-R_f}{\\sigma_P}\\).</p><ul><li><strong>IR</strong> \\(=\\dfrac{R_A}{\\sigma_A}=\\dfrac{R_P-R_B}{\\sigma(R_P-R_B)}\\): active return per unit of active risk, measured against the benchmark.</li><li>IR <strong>is</strong> used in portfolio construction: \\(\\text{SR}_P^2=\\text{SR}_B^2+\\text{IR}^2\\), with optimal active risk \\(\\sigma_A^*=\\dfrac{\\text{IR}}{\\text{SR}_B}\\sigma_B\\).</li><li>The ex post IR is also used to evaluate past performance.</li></ul>
+    </div>`,
+    gap: "Chose constructing an actively managed portfolio."
   }
 ];
 

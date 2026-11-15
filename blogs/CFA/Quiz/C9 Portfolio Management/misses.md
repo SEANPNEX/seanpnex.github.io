@@ -3,3 +3,4 @@
 ## 2026-11-15 — Quiz misses
 
 - **PM M3 · Position vs scenario limit** — Gap: Answered scenario limit.
+- **PM M6 · IR vs Sharpe** — Gap: Chose constructing an actively managed portfolio.
