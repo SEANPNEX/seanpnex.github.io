@@ -59,3 +59,10 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
 2026-10-25 14:37:25-SEANPNEX-modified m2
 2026-11-12 20:55:42-SEANPNEX-modified C9m6
 2026-11-14 23:51:52-SEANPNEX-fix lock
+2026-11-15 04:59:32-SEANPNEX-Add translated deck pages (zh, jp, fr) for Corporate Issuers, Fixed Income, Derivatives, Alternatives and FSA M2-M4
+
+These topics have translated notes, so the translated sidebars replaced the English
+ones and dropped the review decks. Card text stays English until deck translations
+are added under public/flashcards/i18n.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
