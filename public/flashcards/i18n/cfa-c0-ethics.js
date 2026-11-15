@@ -171,5 +171,65 @@ deckI18n({
         gap: 'mosaïque connue comme permise ; documentation / traçabilité oubliée.',
       },
     },
+    "iiib-rating-change-preview-2026-10-20": {
+      "zh": {
+        "topic": "III(B) 公平对待",
+        "front": "一位分析师在正式发布前，把公司自己即将作出的评级变更预先透露给最大的客户。违反的是哪条标准：II(A) 重大非公开信息，还是 III(B) 公平对待？",
+        "back": "<div class=\"ans\"><p>是 <strong>III(B) 公平对待</strong>，不是 II(A)。</p><ul><li>公司自己的推荐变更<strong>不是发行人信息</strong>，所以不是关于该公司的重大非公开信息</li><li>违规在于<strong>选择性传播</strong>：所有客户都必须同时、公平地获得变更信息（教材例 1，Bradley Ames）</li></ul></div>",
+        "gap": "选了 MNPI；公司自己的评级变更提前透露给大客户，属于公平对待问题。"
+      },
+      "ja": {
+        "topic": "III(B) 公正な取扱い",
+        "front": "アナリストが、自社の今後の格付変更を一般公表前に最大の顧客たちに先に伝えた。違反するのはどの基準か：II(A) 重要な未公開情報か、III(B) 公正な取扱いか。",
+        "back": "<div class=\"ans\"><p>II(A) ではなく <strong>III(B) 公正な取扱い</strong>。</p><ul><li>自社の推奨変更は<strong>発行体の情報ではない</strong>ので、その企業に関する重要な未公開情報ではない</li><li>違反は<strong>選択的な開示</strong>：すべての顧客が同時に公正に変更を受け取らなければならない（教科書の例 1、Bradley Ames）</li></ul></div>",
+        "gap": "MNPI を選んだ。自社の格付変更を大口顧客に先に伝えるのは公正な取扱いの問題。"
+      },
+      "fr": {
+        "topic": "III(B) Traitement équitable",
+        "front": "Un analyste annonce en avant-première à ses plus gros clients le changement de notation que sa propre société va publier. Quelle norme est violée : II(A) information privilégiée ou III(B) traitement équitable ?",
+        "back": "<div class=\"ans\"><p><strong>III(B) Traitement équitable</strong>, pas II(A).</p><ul><li>Le changement de recommandation de la société elle-même <strong>n’est pas une information sur l’émetteur</strong> : ce n’est donc pas une information privilégiée sur l’entreprise</li><li>La violation est une <strong>diffusion sélective</strong> : tous les clients doivent recevoir le changement équitablement, au même moment (exemple 1 du manuel, Bradley Ames)</li></ul></div>",
+        "gap": "a choisi l’information privilégiée ; transmettre en avance aux gros clients un changement de notation interne relève du traitement équitable."
+      }
+    },
+    "iiib-block-partial-fill-2026-10-20": {
+      "zh": {
+        "topic": "III(B) 公平对待",
+        "front": "一笔大宗订单只部分成交。股票应如何在参与的客户账户之间分配？",
+        "back": "<div class=\"ans\"><ul><li>按<strong>书面交易分配政策</strong>，根据各账户订单<strong>按比例</strong>分配</li><li>每个账户获得<strong>相同的平均价格</strong></li><li>注意：可按<strong>最小交易单位</strong>调整比例分配，以避免不经济的零股（教材例 7，Hampton）</li><li><strong>不能</strong>逐案决定，也绝不能偏向较大或付费的账户</li></ul></div>",
+        "gap": "选了逐案决定；部分成交应按书面政策、以相同平均价格按比例分配。"
+      },
+      "ja": {
+        "topic": "III(B) 公正な取扱い",
+        "front": "ブロック注文が一部しか約定しなかった。参加した顧客口座の間で株式をどう配分しなければならないか。",
+        "back": "<div class=\"ans\"><ul><li><strong>書面の取引配分方針</strong>のもと、各口座の注文に<strong>比例して</strong>配分する</li><li>すべての口座が<strong>同じ平均価格</strong>を受ける</li><li>注意：不経済な端株を避けるため、<strong>最低売買単位</strong>に合わせて比例配分を調整してよい（教科書の例 7、Hampton）</li><li>ケース・バイ・ケースでは<strong>ない</strong>。大口口座や報酬を払う口座を優遇してはならない</li></ul></div>",
+        "gap": "ケース・バイ・ケースを選んだ。一部約定は書面の方針に従い、同じ平均価格で比例配分する。"
+      },
+      "fr": {
+        "topic": "III(B) Traitement équitable",
+        "front": "Un ordre de bloc n’est exécuté qu’en partie. Comment répartir les titres entre les comptes clients participants ?",
+        "back": "<div class=\"ans\"><ul><li><strong>Au prorata</strong> de l’ordre de chaque compte, selon une <strong>politique écrite d’allocation des ordres</strong></li><li>Chaque compte obtient le <strong>même prix moyen</strong></li><li>Réserve : le prorata peut être ajusté aux <strong>quotités minimales</strong> pour éviter des rompus non rentables (exemple 7 du manuel, Hampton)</li><li><strong>Pas</strong> au cas par cas, et sans jamais favoriser les comptes plus gros ou payants</li></ul></div>",
+        "gap": "a choisi le cas par cas ; les exécutions partielles se répartissent au prorata, au même prix moyen, selon une politique écrite."
+      }
+    },
+    "vib-iiib-toffler-parents-ipo-2026-10-23": {
+      "zh": {
+        "topic": "VI(B) 交易优先顺序 + III(B) 公平对待",
+        "front": "Erin Toffler 在满足所有其他合适客户之后，才把 IPO 股份分给父母付费的退休账户。涉及哪些标准？",
+        "back": "<div class=\"ans\"><ul><li><strong>VI(B) 交易优先顺序</strong>：属于<strong>付费客户</strong>的家庭账户与其他客户同等对待，不应受到不利对待（教材例 3）</li><li><strong>III(B) 公平对待</strong>也适用：父母是客户，最后才分配热门 IPO 不是公平对待</li><li>经验法则：作为客户的家庭账户，待遇<strong>不得更差，也不得更好</strong></li></ul></div>",
+        "gap": "（没有答错）你的观点：III(B) 与 VI(B) 同时适用。"
+      },
+      "ja": {
+        "topic": "VI(B) 取引の優先順位 + III(B) 公正な取扱い",
+        "front": "Erin Toffler は、両親の報酬を払う退職口座への IPO 株の配分を、他のすべての適合する顧客を満たした後にした。どの基準が関係するか。",
+        "back": "<div class=\"ans\"><ul><li><strong>VI(B) 取引の優先順位</strong>：<strong>報酬を払う顧客</strong>である家族の口座は他の顧客と同様に扱い、不利にしてはならない（教科書の例 3）</li><li><strong>III(B) 公正な取扱い</strong>も適用される：両親は顧客であり、人気の IPO を最後に配分するのは公正な取扱いではない</li><li>目安：顧客である家族の口座は、他の顧客より<strong>悪くも良くもない</strong>扱いを受ける</li></ul></div>",
+        "gap": "（間違いではない）あなたの指摘：VI(B) とともに III(B) も適用される。"
+      },
+      "fr": {
+        "topic": "VI(B) Priorité des transactions + III(B) Traitement équitable",
+        "front": "Erin Toffler n’attribue des actions d’IPO au compte retraite payant de ses parents qu’après avoir servi tous les autres clients concernés. Quelles normes sont en jeu ?",
+        "back": "<div class=\"ans\"><ul><li><strong>VI(B) Priorité des transactions</strong> : un compte familial qui est un <strong>client payant</strong> est traité comme tout autre client, il ne doit donc pas être désavantagé (exemple 3 du manuel)</li><li><strong>III(B) Traitement équitable</strong> s’applique aussi : les parents sont des clients, et leur attribuer l’IPO recherchée en dernier n’est pas un traitement équitable</li><li>Règle pratique : les comptes familiaux clients ne sont traités <strong>ni moins bien ni mieux</strong> que les autres clients</li></ul></div>",
+        "gap": "(pas d’erreur) votre remarque : III(B) s’applique en plus de VI(B)."
+      }
+    },
   },
 });

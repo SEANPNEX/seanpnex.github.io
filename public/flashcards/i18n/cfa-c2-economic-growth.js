@@ -175,5 +175,25 @@ deckI18n({
         gap: 'un choc de PGF change la courbe ; l’approfondissement du capital est un mouvement le long de la courbe existante.',
       },
     },
+    "econ-cirp-forward-premium-2026-10-25": {
+      "zh": {
+        "topic": "经济学 · CIRP 远期升水方向",
+        "front": "\\(S(\\text{USD/EUR})=1.10\\)，\\(i_{USD}=4\\%\\)，\\(i_{EUR}=2.5\\%\\)。求 1 年期远期汇率。欧元是远期升水还是贴水？",
+        "back": "<div class=\"ans\"><p>\\(F=1.10\\times\\dfrac{1.04}{1.025}=1.1161\\)：<strong>欧元远期升水</strong>。</p><ul><li>在 \\(S(f/d)\\) 中，USD 是报价货币，EUR 是基础货币。CIRP：\\(F=S\\times\\dfrac{1+i_{price}}{1+i_{base}}\\)。</li><li>规则：<strong>利率较低的货币远期升水</strong>；利率较高的货币远期贴水。远期升水抵消利差，因此没有套利。</li><li>UIRP：\\(\\%\\Delta S^e(f/d)\\approx i_f-i_d\\)。此处预期欧元升值约 1.5%。</li></ul></div>",
+        "gap": "方向弄反了：说成利率较低的货币远期贴水。"
+      },
+      "ja": {
+        "topic": "経済 · CIRP とフォワード・プレミアムの方向",
+        "front": "\\(S(\\text{USD/EUR})=1.10\\)、\\(i_{USD}=4\\%\\)、\\(i_{EUR}=2.5\\%\\)。1 年フォワードを求めよ。ユーロはフォワード・プレミアムかディスカウントか。",
+        "back": "<div class=\"ans\"><p>\\(F=1.10\\times\\dfrac{1.04}{1.025}=1.1161\\)：<strong>ユーロはフォワード・プレミアム</strong>。</p><ul><li>\\(S(f/d)\\) では USD が価格通貨、EUR が基準通貨。CIRP：\\(F=S\\times\\dfrac{1+i_{price}}{1+i_{base}}\\)。</li><li>ルール：<strong>金利の低い通貨はフォワード・プレミアム</strong>、金利の高い通貨はディスカウント。フォワード・プレミアムが金利差を相殺するので裁定はない。</li><li>UIRP：\\(\\%\\Delta S^e(f/d)\\approx i_f-i_d\\)。ここではユーロが約 1.5% 上昇すると予想される。</li></ul></div>",
+        "gap": "方向を逆にした：金利の低い通貨がディスカウントになると答えた。"
+      },
+      "fr": {
+        "topic": "Économie · sens de la prime à terme (CIRP)",
+        "front": "\\(S(\\text{USD/EUR})=1.10\\), \\(i_{USD}=4\\%\\), \\(i_{EUR}=2.5\\%\\). Trouvez le cours à terme à 1 an. L’EUR cote-t-il avec un report ou un déport ?",
+        "back": "<div class=\"ans\"><p>\\(F=1.10\\times\\dfrac{1.04}{1.025}=1.1161\\) : <strong>l’EUR cote avec un report (prime à terme)</strong>.</p><ul><li>Dans \\(S(f/d)\\), l’USD est la devise de cotation et l’EUR la devise de base. CIRP : \\(F=S\\times\\dfrac{1+i_{price}}{1+i_{base}}\\).</li><li>Règle : <strong>la devise au taux le plus bas cote avec un report</strong> ; celle au taux le plus élevé avec un déport. Le report compense l’écart de taux, il n’y a donc pas d’arbitrage.</li><li>UIRP : \\(\\%\\Delta S^e(f/d)\\approx i_f-i_d\\). Ici, l’EUR devrait s’apprécier d’environ 1,5 %.</li></ul></div>",
+        "gap": "Sens inversé : a dit que la devise au taux le plus bas cote avec un déport."
+      }
+    },
   },
 });
