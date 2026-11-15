@@ -409,12 +409,12 @@ deckI18n({
    "zh": {
     "topic": "Vega 与 rho",
     "front": "为什么看涨和看跌期权的 vega 都为正？为什么 rho 的符号不同？",
-    "back": "<div class=\"ans\"><ul><li><strong>Vega</strong> &gt; 0：波动率越高，出现大额收益的可能性越大，而损失以权利金为限</li><li><strong>Rho</strong>：利率越高，\\(X\\) 的现值越低，看涨持有人支付 \\(X\\)（看涨 ↑），看跌持有人收到 \\(X\\)（看跌 ↓）</li></ul></div>"
+    "back": "<div class=\"ans\"><ul><li><strong>Vega</strong> &gt; 0：波动率越高，出现大额收益的可能性越大，而损失以权利金为限</li><li><strong>Rho</strong>：利率越高，\\(X\\) 的现值越低，看涨持有人支付它（看涨 ↑），看跌持有人收到它（看跌 ↓）</li></ul></div>"
    },
    "ja": {
     "topic": "ベガとロー",
     "front": "なぜベガはコールでもプットでもプラスなのか。なぜローの符号は異なるのか。",
-    "back": "<div class=\"ans\"><ul><li><strong>ベガ</strong> &gt; 0：ボラティリティが高いほど大きなペイオフの可能性が増え、損失はプレミアムに限られる</li><li><strong>ロー</strong>：金利が上がると \\(X\\) の現在価値が下がる。コールの保有者は \\(X\\) を払い（コール ↑）、プットの保有者は \\(X\\) を受け取る（プット ↓）</li></ul></div>"
+    "back": "<div class=\"ans\"><ul><li><strong>ベガ</strong> &gt; 0：ボラティリティが高いほど大きなペイオフの可能性が増え、損失はプレミアムに限られる</li><li><strong>ロー</strong>：金利が上がると \\(X\\) の現在価値が下がる。コールの保有者はそれを払い（コール ↑）、プットの保有者はそれを受け取る（プット ↓）</li></ul></div>"
    },
    "fr": {
     "topic": "Véga et rhô",
