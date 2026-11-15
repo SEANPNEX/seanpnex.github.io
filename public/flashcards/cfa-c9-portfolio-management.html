@@ -31,6 +31,15 @@ const CARDS = [
       <p><strong>Quantifying return in excess of the risk-free rate.</strong> That is the Sharpe ratio: excess return over the risk-free rate per unit of total risk, \\(\\text{SR}_P=\\dfrac{R_P-R_f}{\\sigma_P}\\).</p><ul><li><strong>IR</strong> \\(=\\dfrac{R_A}{\\sigma_A}=\\dfrac{R_P-R_B}{\\sigma(R_P-R_B)}\\): active return per unit of active risk, measured against the benchmark.</li><li>IR <strong>is</strong> used in portfolio construction: \\(\\text{SR}_P^2=\\text{SR}_B^2+\\text{IR}^2\\), with optimal active risk \\(\\sigma_A^*=\\dfrac{\\text{IR}}{\\text{SR}_B}\\sigma_B\\).</li><li>The ex post IR is also used to evaluate past performance.</li></ul>
     </div>`,
     gap: "Chose constructing an actively managed portfolio."
+  },
+  {
+    id: "pm-m6-low-active-risk-passive-2026-11-15",
+    topic: "PM M6 · Low active risk / passive",
+    front: `A portfolio has return 6.5%, risk 10.9%, active return 0.15%, active risk 0.25% and IR 0.6. The benchmark has return 6.35% and risk 11.0%. What is the most appropriate conclusion about how the portfolio is managed?`,
+    back: `<div class="ans">
+      <p><strong>Might be passively managed, because active risk is close to zero.</strong></p><ul><li>Active risk (tracking error) of 0.25% is near zero, which points to an index fund or a closet indexer: a fund that advertises itself as active but is actually close to being an index fund.</li><li>A positive IR (here 0.6) does not prove the portfolio is actively managed. A closet index's IR can be indeterminate because active risk is so low, and is often close to zero or slightly negative after fees; a small positive active return can still produce a positive IR.</li><li>Total risk close to the benchmark's (10.9% vs 11.0%) does not measure how active the portfolio is. Tracking error and active share do.</li></ul>
+    </div>`,
+    gap: "Chose must be actively managed because IR is positive."
   }
 ];
 
