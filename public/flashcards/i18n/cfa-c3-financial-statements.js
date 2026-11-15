@@ -540,5 +540,105 @@ deckI18n({
         gap: 'deuxième erreur : charge reprise quand une condition de marché a échoué.',
       },
     },
+    "fsa-full-vs-partial-goodwill-2026-10-20": {
+      "zh": {
+        "topic": "企业合并 · 商誉",
+        "front": "母公司支付 800 收购子公司 80% 股权。可辨认净资产的公允价值为 750；NCI 的公允价值为 190。全部商誉和部分商誉各是多少？",
+        "back": "<div class=\"ans\"><ul><li><strong>全部商誉</strong> = 价款 + NCI 公允价值 − 100% × 可辨认净资产公允价值</li><li>= 800 + 190 − 750 = <strong>240</strong></li><li><strong>部分商誉</strong> = 价款 − 母公司持股比例 × 可辨认净资产公允价值</li><li>= 800 − 0.8 × 750 = 800 − 600 = <strong>200</strong></li><li>差额 40 是归属于 NCI 的商誉（190 − 0.2 × 750 = 40）</li><li>IFRS 两者皆可；US GAAP 要求全部商誉</li></ul></div>",
+        "gap": "答了 50；全部商誉要加上 NCI 公允价值，并减去 100% 的净资产。"
+      },
+      "ja": {
+        "topic": "企業結合 · のれん",
+        "front": "親会社が子会社の 80% を 800 で取得。識別可能純資産の公正価値は 750、NCI の公正価値は 190。全部のれんと部分のれんはそれぞれいくらか。",
+        "back": "<div class=\"ans\"><ul><li><strong>全部のれん</strong> = 取得価額 + NCI の公正価値 − 100% × 識別可能純資産の公正価値</li><li>= 800 + 190 − 750 = <strong>240</strong></li><li><strong>部分のれん</strong> = 取得価額 − 親会社持分比率 × 識別可能純資産の公正価値</li><li>= 800 − 0.8 × 750 = 800 − 600 = <strong>200</strong></li><li>差額 40 は NCI に帰属するのれん（190 − 0.2 × 750 = 40）</li><li>IFRS はどちらも可、US GAAP は全部のれんを要求</li></ul></div>",
+        "gap": "50 と答えた。全部のれんは NCI の公正価値を加え、純資産の 100% を差し引く。"
+      },
+      "fr": {
+        "topic": "Regroupements d’entreprises · goodwill",
+        "front": "La mère paie 800 pour 80 % d’une filiale. La JV des actifs nets identifiables est de 750 ; la JV des NCI est de 190. Quels sont le goodwill complet et le goodwill partiel ?",
+        "back": "<div class=\"ans\"><ul><li><strong>Goodwill complet</strong> = prix + JV des NCI − 100 % × JV des actifs nets identifiables</li><li>= 800 + 190 − 750 = <strong>240</strong></li><li><strong>Goodwill partiel</strong> = prix − % de la mère × JV des actifs nets identifiables</li><li>= 800 − 0,8 × 750 = 800 − 600 = <strong>200</strong></li><li>L’écart de 40 est le goodwill attribué aux NCI (190 − 0,2 × 750 = 40)</li><li>IFRS permet les deux ; US GAAP impose le goodwill complet</li></ul></div>",
+        "gap": "répondu 50 ; le goodwill complet ajoute la JV des NCI et retranche 100 % des actifs nets."
+      }
+    },
+    "fsa-m3-import-payable-eur-up-2026-10-20": {
+      "zh": {
+        "topic": "跨国经营 · 外币交易",
+        "front": "一家美国公司赊购 EUR 100,000 的存货。结算前欧元升值。是利得还是损失，计入哪里，存货会怎样？",
+        "back": "<div class=\"ans\"><ul><li>欧元<strong>应付款</strong>现在需要更多美元结算 → <strong>净利润</strong>中的<strong>汇兑损失</strong></li><li>资产负债表日尚未结算则为未实现；结算时为已实现</li><li><strong>存货保持</strong>按<strong>交易日汇率</strong>计量；只有货币性应付款重新计量</li></ul></div>",
+        "gap": "选了利得；欠一种升值的货币是损失，存货也不重新计量。"
+      },
+      "ja": {
+        "topic": "多国籍事業 · 外貨建取引",
+        "front": "米国企業が EUR 100,000 の棚卸資産を掛けで購入。決済前にユーロが上昇した。損益はどちらで、どこに計上し、棚卸資産はどうなるか。",
+        "back": "<div class=\"ans\"><ul><li>ユーロ建ての<strong>買掛金</strong>の決済により多くの USD が必要 → <strong>純利益</strong>に<strong>為替差損</strong></li><li>貸借対照表日に未決済なら未実現、決済時に実現</li><li><strong>棚卸資産は据え置き</strong>：<strong>取引日のレート</strong>のまま。再測定するのは貨幣性の買掛金だけ</li></ul></div>",
+        "gap": "利益を選んだ。上昇する通貨で債務を負うと損失になり、棚卸資産は再測定しない。"
+      },
+      "fr": {
+        "topic": "Opérations multinationales · transactions en devises",
+        "front": "Une société américaine achète à crédit des stocks pour 100 000 EUR. Avant le règlement, l’EUR s’apprécie. Gain ou perte, où, et qu’advient-il des stocks ?",
+        "back": "<div class=\"ans\"><ul><li>La <strong>dette</strong> en EUR demande désormais plus d’USD → <strong>perte de change</strong> en <strong>résultat net</strong></li><li>Latente à la date de clôture si elle n’est pas réglée ; réalisée au règlement</li><li>Les <strong>stocks restent</strong> au <strong>cours de la date de transaction</strong> ; seule la dette monétaire est réévaluée</li></ul></div>",
+        "gap": "a choisi un gain ; devoir une devise qui s’apprécie est une perte, et les stocks ne sont pas réévalués."
+      }
+    },
+    "fsa-m3-temporal-net-monetary-assets-2026-10-20": {
+      "zh": {
+        "topic": "跨国经营 · 时态法",
+        "front": "时态法：子公司有净货币性资产，其当地（外国）货币升值。重新计量是利得还是损失，列报在哪里？",
+        "back": "<div class=\"ans\"><ul><li>时态法下的风险敞口是<strong>净货币性头寸</strong>（只有货币性项目按现行汇率）</li><li>净货币性<strong>资产</strong> + 外币升值 → <strong>重新计量利得</strong></li><li>列报在<strong>净利润</strong>中（不是 OCI）</li><li>净货币性负债则相反：外币贬值时产生利得</li></ul></div>",
+        "gap": "选了损失；外币升值时，净货币性资产产生利得。"
+      },
+      "ja": {
+        "topic": "多国籍事業 · テンポラル法",
+        "front": "テンポラル法：子会社は純貨幣性資産を持ち、現地（外国）通貨が上昇した。再測定は利益か損失か、どこに報告するか。",
+        "back": "<div class=\"ans\"><ul><li>テンポラル法のエクスポージャーは<strong>純貨幣性ポジション</strong>（決算日レートで換算するのは貨幣性項目だけ）</li><li>純貨幣性<strong>資産</strong> + 外貨高 → <strong>再測定利益</strong></li><li><strong>純利益</strong>に報告（OCI ではない）</li><li>純貨幣性負債なら逆：外貨安のときに利益</li></ul></div>",
+        "gap": "損失を選んだ。外貨が上昇すると、純貨幣性資産は利益を生む。"
+      },
+      "fr": {
+        "topic": "Opérations multinationales · méthode temporelle",
+        "front": "Méthode temporelle : la filiale a des actifs monétaires nets et sa monnaie locale (étrangère) s’apprécie. Gain ou perte de réévaluation, et où est-il présenté ?",
+        "back": "<div class=\"ans\"><ul><li>L’exposition en méthode temporelle est la <strong>position monétaire nette</strong> (seuls les éléments monétaires sont au cours de clôture)</li><li><strong>Actifs</strong> monétaires nets + devise qui s’apprécie → <strong>gain de réévaluation</strong></li><li>Présenté en <strong>résultat net</strong> (pas en OCI)</li><li>Des passifs monétaires nets l’inversent : gain quand la devise se déprécie</li></ul></div>",
+        "gap": "a choisi une perte ; des actifs monétaires nets gagnent quand la devise s’apprécie."
+      }
+    },
+    "fsa-m5-altman-z-cutoffs-2026-10-22": {
+      "zh": {
+        "topic": "财务报告质量 · Altman Z 分数",
+        "front": "Altman Z 分数：困境区、灰色区和安全区的临界值是多少？",
+        "back": "<div class=\"ans\"><ul><li>\\(Z &lt; 1.81\\) → <strong>困境区</strong>（破产概率高）</li><li>\\(1.81 \\le Z \\le 3.0\\) → <strong>灰色区</strong></li><li>\\(Z &gt; 3.0\\) → <strong>安全区</strong>（破产概率低）</li><li><strong>Z 越高越安全</strong></li></ul></div>",
+        "gap": "把困境临界值说成 1.87；正确是 <strong>1.81</strong>。"
+      },
+      "ja": {
+        "topic": "財務報告の質 · アルトマンの Z スコア",
+        "front": "アルトマンの Z スコア：危険ゾーン、グレーゾーン、安全ゾーンの閾値は何か。",
+        "back": "<div class=\"ans\"><ul><li>\\(Z &lt; 1.81\\) → <strong>危険ゾーン</strong>（倒産確率が高い）</li><li>\\(1.81 \\le Z \\le 3.0\\) → <strong>グレーゾーン</strong></li><li>\\(Z &gt; 3.0\\) → <strong>安全ゾーン</strong>（倒産確率が低い）</li><li><strong>Z が高いほど安全</strong></li></ul></div>",
+        "gap": "危険ゾーンの閾値を 1.87 と答えた。正しくは <strong>1.81</strong>。"
+      },
+      "fr": {
+        "topic": "Qualité de l’information financière · Z-score d’Altman",
+        "front": "Z-score d’Altman : quels sont les seuils de la zone de détresse, de la zone grise et de la zone sûre ?",
+        "back": "<div class=\"ans\"><ul><li>\\(Z &lt; 1.81\\) → <strong>zone de détresse</strong> (forte probabilité de faillite)</li><li>\\(1.81 \\le Z \\le 3.0\\) → <strong>zone grise</strong></li><li>\\(Z &gt; 3.0\\) → <strong>zone sûre</strong> (faible probabilité de faillite)</li><li><strong>Z plus élevé = plus sûr</strong></li></ul></div>",
+        "gap": "a cité 1,87 comme seuil de détresse ; c’est <strong>1,81</strong>."
+      }
+    },
+    "fsa-m6-dupont-ex-associates-2026-10-23": {
+      "zh": {
+        "topic": "财务报表分析综合 · 剔除联营企业的杜邦分析",
+        "front": "NI 100 包含联营企业收益 9。平均资产 1,250 包含对联营企业的投资 125。平均权益 500。剔除联营企业后的 ROE 是多少？",
+        "back": "<div class=\"ans\"><ul><li>从<strong>两边</strong>同时剔除联营企业：NI \\(100-9=91\\)；资产 \\(1{,}250-125=1{,}125\\)</li><li>保持<strong>报告的杠杆</strong>：\\(1{,}250/500=2.5\\)</li><li>ROE \\(= \\dfrac{91}{1{,}125}\\times 2.5 = \\dfrac{91}{450} \\approx 20.2\\%\\)</li><li><strong>不是</strong> \\(91/500\\)：剔除投资会使资产负债表失衡，所以要通过杜邦因素（杠杆不变）来调整权益，而不是直接调整</li><li>联营企业回报为 \\(9/125=7.2\\%\\)，因此会<strong>摊薄</strong>报告的 ROE（20.0%）</li></ul></div>",
+        "gap": "用了 91/500；杠杆保持 2.5，所以权益变为 1,125/2.5 = 450。"
+      },
+      "ja": {
+        "topic": "財務諸表分析の統合 · 関連会社を除くデュポン分析",
+        "front": "NI 100 には関連会社からの利益 9 が含まれる。平均資産 1,250 には関連会社への投資 125 が含まれる。平均資本 500。関連会社を除いた ROE はいくらか。",
+        "back": "<div class=\"ans\"><ul><li>関連会社を<strong>両方</strong>から除く：NI \\(100-9=91\\)、資産 \\(1{,}250-125=1{,}125\\)</li><li><strong>報告上のレバレッジ</strong>を維持：\\(1{,}250/500=2.5\\)</li><li>ROE \\(= \\dfrac{91}{1{,}125}\\times 2.5 = \\dfrac{91}{450} \\approx 20.2\\%\\)</li><li>\\(91/500\\) <strong>ではない</strong>：投資を除くと B/S が一致しなくなるので、資本は直接ではなくデュポンの要素（レバレッジ一定）を通じて調整する</li><li>関連会社のリターンは \\(9/125=7.2\\%\\) なので、報告上の ROE（20.0%）を<strong>引き下げて</strong>いる</li></ul></div>",
+        "gap": "91/500 を使った。レバレッジを 2.5 に保つので、資本は 1,125/2.5 = 450 になる。"
+      },
+      "fr": {
+        "topic": "Intégration de l’analyse financière · DuPont hors entreprises associées",
+        "front": "Un RN de 100 inclut un résultat des entreprises associées de 9. L’actif moyen de 1 250 inclut une participation de 125 dans les associées. Capitaux propres moyens 500. Quel est le ROE hors entreprises associées ?",
+        "back": "<div class=\"ans\"><ul><li>Retirez les associées des <strong>deux</strong> côtés : RN \\(100-9=91\\) ; actifs \\(1{,}250-125=1{,}125\\)</li><li>Gardez le <strong>levier publié</strong> : \\(1{,}250/500=2.5\\)</li><li>ROE \\(= \\dfrac{91}{1{,}125}\\times 2.5 = \\dfrac{91}{450} \\approx 20.2\\%\\)</li><li><strong>Pas</strong> \\(91/500\\) : retirer la participation déséquilibre le bilan ; ajustez donc les capitaux propres via les facteurs DuPont (levier constant), pas directement</li><li>Les associées rapportent \\(9/125=7.2\\%\\) : elles <strong>diluent</strong> le ROE publié (20,0 %)</li></ul></div>",
+        "gap": "a utilisé 91/500 ; avec un levier maintenu à 2,5, les capitaux propres deviennent 1 125/2,5 = 450."
+      }
+    },
   },
 });
