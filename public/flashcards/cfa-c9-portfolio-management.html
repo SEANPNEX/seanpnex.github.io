@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Portfolio Management — quiz misses flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    id: "pm-m3-position-vs-scenario-limit-2026-11-15",
+    topic: "PM M3 · Position vs scenario limit",
+    front: `An analyst expects a recession and suggests limiting exposure to corporate bonds. What kind of constraint is that?`,
+    back: `<div class="ans">
+      <p><strong>Position limit.</strong></p><ul><li><strong>Position limit:</strong> caps the size of an exposure (security, asset class, sector, issuer, or country).</li><li><strong>Scenario limit:</strong> caps the estimated loss allowed under a given scenario or stress test.</li><li><strong>Stop-loss limit:</strong> requires a reduction or close-out once a loss over a period exceeds a trigger.</li></ul><p>The reason behind a limit (here, a recession view) does not change its type.</p>
+    </div>`,
+    gap: "Answered scenario limit."
+  }
+];
+
+flashDeck({
+  key: "cfa-c9-portfolio-management",
+  source: "CFA L2 Portfolio Management · Quiz misses",
+  gapLabel: "Gap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>
