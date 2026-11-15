@@ -40,6 +40,15 @@ const CARDS = [
       <p><strong>Might be passively managed, because active risk is close to zero.</strong></p><ul><li>Active risk (tracking error) of 0.25% is near zero, which points to an index fund or a closet indexer: a fund that advertises itself as active but is actually close to being an index fund.</li><li>A positive IR (here 0.6) does not prove the portfolio is actively managed. A closet index's IR can be indeterminate because active risk is so low, and is often close to zero or slightly negative after fees; a small positive active return can still produce a positive IR.</li><li>Total risk close to the benchmark's (10.9% vs 11.0%) does not measure how active the portfolio is. Tracking error and active share do.</li></ul>
     </div>`,
     gap: "Chose must be actively managed because IR is positive."
+  },
+  {
+    id: "pm-m2-apt-assumptions-2026-11-15",
+    topic: "PM M2 · APT assumptions",
+    front: `Which is not an assumption of the APT?`,
+    back: `<div class="ans">
+      <p><strong>Arbitrage will push the risk premium on systematic risk to zero.</strong></p><p>The APT's three key assumptions are:</p><ul><li>A factor model describes asset returns.</li><li>With many assets to choose from, investors can form well-diversified portfolios that eliminate asset-specific (idiosyncratic) risk.</li><li>No arbitrage opportunities exist among well-diversified portfolios.</li></ul><p>Arbitrage removes mispricing among well-diversified portfolios; it does not drive systematic factor risk premiums to zero. Those premiums, \\(\\lambda_j\\), are the expected reward for bearing the risk of factor \\(j\\). Asset-specific risk is diversified away and does not appear in expected return.</p>
+    </div>`,
+    gap: "Chose idiosyncratic risk can be eliminated by diversification."
   }
 ];
 
