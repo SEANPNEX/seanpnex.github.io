@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Derivatives M1 — Forwards, Futures and Swaps review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    "id": "dv1-value-zero",
+    "topic": "Forward vs futures value",
+    "front": "What is a forward or futures contract worth at initiation? How does a futures contract’s value differ from a forward’s afterwards?",
+    "back": "<div class=\"ans\"><p><strong>Zero</strong> for both sides at \\(t_0\\): the price is set so neither pays to enter.</p><ul><li><strong>Forward</strong>: value moves with the underlying and is realized at maturity</li><li><strong>Futures</strong>: <strong>marked to market</strong> daily, so its value resets to 0 after each settlement</li></ul></div>",
+    "gap": "The two sides always sum to zero: \\(V_{l,t}+V_{s,t}=0\\)."
+  },
+  {
+    "id": "dv1-price",
+    "topic": "Forward pricing",
+    "front": "Write the no-arbitrage forward price, with discrete and continuous compounding.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$F_0(T)=S_0(1+r_f)^T$$</div><div class=\"eq-block\">$$F_0(T)=S_0e^{r_f^cT}$$</div><p>Buying now and carrying the asset must cost the same as agreeing today to buy at \\(T\\).</p></div>"
+  },
+  {
+    "id": "dv1-carry",
+    "topic": "Carry arbitrage",
+    "front": "Describe the arbitrage when \\(F_0(T)\\) is above, and when it is below, \\(S_0(1+r_f)^T\\).",
+    "back": "<div class=\"ans\"><ul><li><strong>Too high</strong> (cash-and-carry): borrow \\(S_0\\), buy the asset, sell forward; deliver at \\(T\\) and repay the loan</li><li><strong>Too low</strong> (reverse): short the asset, invest the proceeds at \\(r_f\\), buy forward; buy at \\(F_0\\) at \\(T\\) to return it</li></ul></div>"
+  },
+  {
+    "id": "dv1-carry-benefits",
+    "topic": "Benefits and costs of carry",
+    "front": "How do carry benefits and costs change the forward price? Give both forms.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}F_0(T)={}&(S_0-PVB+PVC)\\\\&\\times(1+r_f)^T\\end{aligned}$$</div><div class=\"eq-block\">$$\\begin{aligned}F_0(T)={}&S_0(1+r_f)^T\\\\&-FVB+FVC\\end{aligned}$$</div></div>",
+    "gap": "Benefits (dividends, coupons) lower the forward price; costs (storage) raise it."
+  },
+  {
+    "id": "dv1-value",
+    "topic": "Forward valuation",
+    "front": "Write the value of a long forward at time \\(t\\), with and without carry benefits and costs.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$V_{l,t}=S_t-\\frac{F_0(T)}{(1+r_f)^{T-t}}$$</div><div class=\"eq-block\">$$\\begin{aligned}V_{l,t}={}&(S_t-PVB+PVC)\\\\&-\\frac{F_0(T)}{(1+r_f)^{T-t}}\\end{aligned}$$</div><p>Equivalently \\(\\frac{F_t(T)-F_0(T)}{(1+r_f)^{T-t}}\\). Count only benefits and costs between \\(t\\) and \\(T\\).</p></div>"
+  },
+  {
+    "id": "dv1-fi-fwd",
+    "topic": "Fixed income forwards",
+    "front": "How are bond forwards priced and valued? Which way does a short position’s value move when the forward price rises?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}F_0(T)={}&(S_0-\\text{PVCoupon})\\\\&\\times(1+r_f)^T\\end{aligned}$$</div><div class=\"eq-block\">$$V_{s,t}=\\frac{F_0(T)-F_t(T)}{(1+r_f)^{T-t}}$$</div><p>A rising forward price makes the short’s value <strong>negative</strong>.</p></div>"
+  },
+  {
+    "id": "dv1-index",
+    "topic": "Equity index futures",
+    "front": "Write the equity index futures price with a continuous dividend yield. When is the curve in contango?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$F_0(T)=S_0e^{(r_f^c-\\delta^c)T}$$</div><p>\\(r_f^c&gt;\\delta^c\\Rightarrow F_0&gt;S_0\\): <strong>contango</strong>; otherwise <strong>backwardation</strong>.</p><p>Use \\(r_f^c=\\ln(1+r_f)\\).</p></div>"
+  },
+  {
+    "id": "dv1-index-value",
+    "topic": "Equity index futures valuation",
+    "front": "Write the value of a long equity index forward at \\(t\\).",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}V_{l,t}={}&S_te^{-\\delta^c(T-t)}\\\\&-F_0(T)e^{-r_f^c(T-t)}\\end{aligned}$$</div><p>Since \\(S_te^{-\\delta^c(T-t)}=F_t(T)e^{-r_f^c(T-t)}\\), this is the discounted change in the futures price.</p></div>"
+  },
+  {
+    "id": "dv1-fra-def",
+    "topic": "FRA basics",
+    "front": "What is an FRA? What does each side pay, and what does \\(a\\times b\\) mean?",
+    "back": "<div class=\"ans\"><ul><li>An OTC forward on a floating rate (e.g. MRR), using <strong>simple interest</strong></li><li><strong>Long</strong>: pay fixed, receive floating (gains if rates rise); <strong>short</strong>: the reverse</li><li>\\(a\\): months to expiry (rate set, settlement); \\(b\\): months to loan maturity; the rate covers \\(b-a\\) months</li></ul></div>",
+    "gap": "A future borrower hedges by going long; a future lender by going short."
+  },
+  {
+    "id": "dv1-fra-price",
+    "topic": "FRA pricing",
+    "front": "How is the FRA rate found? 6-month spot 1.5%, 9-month spot 1.75%: find the 6×9 FRA rate.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}1+S_b\\tfrac{b}{12}={}&(1+S_a\\tfrac{a}{12})\\\\&\\times(1+FR\\tfrac{b-a}{12})\\end{aligned}$$</div><p>\\((1.0075)(1+FR/4)=1.013125\\Rightarrow FR\\approx2.22\\%\\).</p></div>"
+  },
+  {
+    "id": "dv1-fra-value",
+    "topic": "FRA valuation at expiry",
+    "front": "Write the long FRA’s value at expiry \\(a\\). Value a 1×4 FRA (NP 1m, fixed 7%) when the 3-month rate is set at 8%.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$V=\\frac{NP(r_{fl}-r_{fix})\\frac{b-a}{12}}{1+r_{fl}\\frac{b-a}{12}}$$</div><p>\\(\\frac{1\\text{m}\\times1\\%\\times0.25}{1.02}=2{,}450.98\\).</p></div>",
+    "gap": "The gain is earned at \\(b\\) but settled at \\(a\\): discount it over \\(b-a\\). Draw the timeline."
+  },
+  {
+    "id": "dv1-fra-before",
+    "topic": "FRA valuation before expiry",
+    "front": "How is an FRA valued at \\(t\\) before its expiry \\(a\\)?",
+    "back": "<div class=\"ans\"><p>Use today’s forward rate \\(FR_t\\) for \\(a\\) to \\(b\\), then discount from \\(b\\) to \\(t\\) with the spot rate for \\(b-t\\):</p><div class=\"eq-block\">$$V_{l,t}=\\frac{NP(FR_t-r_{fix})\\frac{b-a}{12}}{1+S_{b-t}\\frac{b-t}{12}}$$</div></div>"
+  },
+  {
+    "id": "dv1-bond-fut",
+    "topic": "Bond futures delivery",
+    "front": "Why do bond futures allow a basket of deliverable bonds? What is the conversion factor for?",
+    "back": "<div class=\"ans\"><ul><li>The basket (delivery option of the short) prevents squeezes in any single, possibly illiquid, issue</li><li>Prices are quoted for a hypothetical standard bond (6% coupon for US T-bond futures)</li><li>The <strong>conversion factor</strong> scales each bond’s price so deliverable bonds are roughly comparable</li></ul></div>"
+  },
+  {
+    "id": "dv1-invoice",
+    "topic": "Invoice price and CTD",
+    "front": "What does the short receive on delivery? What is the cheapest-to-deliver bond?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\text{Invoice}=\\text{Futures}\\times CF+AI$$</div><p>Futures × CF is the <strong>principal invoice amount</strong>. CF adjustment is imperfect, so one bond is <strong>cheapest to deliver</strong>; the futures price follows it.</p></div>"
+  },
+  {
+    "id": "dv1-bond-fut-price",
+    "topic": "Bond futures pricing",
+    "front": "Write the quoted bond futures price. Full price 108.083, \\(AI_T=0.25\\), \\(CF=0.729535\\), 1-month rate 0.1%: find it.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}F\\times CF={}&S_0(1+r_f)^T\\\\&-AI_T-FVC\\end{aligned}$$</div><p>\\(S_0\\) is the <strong>full</strong> price. \\((108.083\\times1.001^{1/12}-0.25)/0.729535=147.82\\).</p></div>"
+  },
+  {
+    "id": "dv1-swap-basics",
+    "topic": "Interest rate swap basics",
+    "front": "Define the long and short sides of a plain vanilla swap. How are floating payments set?",
+    "back": "<div class=\"ans\"><ul><li><strong>Long</strong> (payer): pay fixed, receive floating</li><li><strong>Short</strong> (receiver): pay floating, receive fixed</li><li>Floating payments are <strong>in arrears</strong>: set at the start of each period, paid at its end</li></ul></div>"
+  },
+  {
+    "id": "dv1-swap-equiv",
+    "topic": "Swaps as other instruments",
+    "front": "How can a pay-fixed swap be seen as bonds, forwards and FRAs?",
+    "back": "<div class=\"ans\"><ul><li><strong>Bonds</strong>: short a fixed-rate bond + long a floating-rate bond</li><li><strong>Forwards</strong>: a series of forwards at one fixed rate; each is off-market, only the sum is worth 0</li><li><strong>FRAs</strong>: a series of FRAs at the same fixed rate</li></ul></div>"
+  },
+  {
+    "id": "dv1-swap-price",
+    "topic": "Swap rate",
+    "front": "Derive the periodic swap rate. Discount factors 0.9938, 0.9852, 0.9744, 0.9615 (quarterly): find the annual swap rate.",
+    "back": "<div class=\"ans\"><p>The floating bond is at par on reset dates, so the fixed bond must be too:</p><div class=\"eq-block\">$$F=\\frac{1-D_n}{\\sum_{i=1}^nD_i}$$</div><p>\\(F=0.0385/3.9149\\approx0.98\\%\\); annualized \\(\\times4=3.92\\%\\).</p></div>",
+    "gap": "Discount factors use simple interest: \\(1/(1+r\\times\\text{days}/360)\\)."
+  },
+  {
+    "id": "dv1-swap-value",
+    "topic": "Swap valuation",
+    "front": "How is a pay-fixed swap valued between reset dates?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$V_{l,t}=PV_{float}-PV_{fix}$$</div><ul><li>Fixed: discount remaining coupons and par</li><li>Floating: discount par plus the <strong>next coupon already set</strong> from the next reset date</li></ul></div>"
+  },
+  {
+    "id": "dv1-swap-method2",
+    "topic": "Swap valuation: offsetting swap",
+    "front": "Value a swap as an offsetting swap at today’s rate. Receive-fixed at 2%, 100m, 5 years left, \\(\\sum D=4.823\\), new rate 1.29%: value?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$V_{l,t}=NP(F_t-F_0)\\textstyle\\sum D_i$$</div><p>Receiver: \\((2\\%-1.29\\%)\\times4.823\\times100\\text{m}\\approx3.4\\text{m}\\).</p></div>",
+    "gap": "Same as a forward: the change in the fixed rate, discounted over the remaining dates."
+  },
+  {
+    "id": "dv1-currency",
+    "topic": "Currency swaps",
+    "front": "How do currency swaps differ from interest rate swaps? How are they priced and valued?",
+    "back": "<div class=\"ans\"><ul><li>Principals exchanged at the start (spot rate) and returned at the end; interest not netted</li><li>Price each fixed rate with \\(F=(1-D_n)/\\sum D_i\\) in its own currency; float/float has no fixed rate to solve</li><li>Value: each leg as a bond in its currency, converted at the <strong>current spot</strong> rate</li></ul></div>"
+  },
+  {
+    "id": "dv1-equity-swap",
+    "topic": "Equity swaps",
+    "front": "How is an equity swap priced and valued? Give the value for the side receiving fixed and paying the equity return.",
+    "back": "<div class=\"ans\"><p>Fixed rate: same formula as an interest rate swap (the equity leg is at par at each reset).</p><div class=\"eq-block\">$$V_t=PV_{\\text{fixed}}-\\frac{S_t}{S_{t-1}}NP$$</div><p>\\(S_{t-1}\\): the price at the last reset. Uses: speculation, asset allocation, leverage, exposure without owning.</p></div>"
+  }
+];
+
+flashDeck({
+  key: "cfa-c7-m1-review",
+  source: "CFA L2 Derivatives \u00b7 M1 Forwards, Futures and Swaps \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

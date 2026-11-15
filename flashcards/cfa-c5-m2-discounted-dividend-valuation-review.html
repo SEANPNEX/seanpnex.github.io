@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Equity M2 — Discounted Dividend Valuation review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    "id": "eq2-which-cf",
+    "topic": "Which cash flow",
+    "front": "When is each suitable: dividends, free cash flow, residual income?",
+    "back": "<div class=\"ans\"><ul><li><strong>Dividends</strong>: a payer with a policy linked to profitability; minority perspective</li><li><strong>FCFE/FCFF</strong>: no or unrelated dividends; FCF tracks profit; <strong>control</strong> perspective</li><li><strong>Residual income</strong>: no dividends and <strong>negative FCF</strong> in the forecast horizon</li></ul></div>",
+    "gap": "FCFF is easier than FCFE when leverage is expected to change a lot."
+  },
+  {
+    "id": "eq2-ddm",
+    "topic": "DDM over a horizon",
+    "front": "Value a share paying \\$2.00, 2.10, 2.20, 3.50, 3.75 over five years, with \\(P_5=\\$40\\) and \\(r=10\\%\\).",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$V_0=\\sum_{t=1}^{n}\\frac{D_t}{(1+r)^t}+\\frac{P_n}{(1+r)^n}$$</div><p>PV dividends 9.926 + PV price 24.837 = <strong>\\$34.76</strong>.</p></div>",
+    "gap": "Even a finite-horizon investor depends on all future dividends, through \\(P_n\\)."
+  },
+  {
+    "id": "eq2-ggm",
+    "topic": "Gordon growth model",
+    "front": "Write the GGM and its assumptions. \\(D_0=\\$1.64\\), \\(g=4.5\\%\\), \\(r=7.3\\%\\): value?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$V_0=\\frac{D_0(1+g)}{r-g}=\\frac{D_1}{r-g}$$</div><p>Constant \\(g\\) forever, \\(r&gt;g\\), both long-term.</p><p>\\(1.64(1.045)/0.028=\\) <strong>\\$61.21</strong>.</p></div>",
+    "gap": "Use \\(D_1\\), not \\(D_0\\). Only use it when \\(g\\) is at most nominal GDP growth."
+  },
+  {
+    "id": "eq2-ggm-sw",
+    "topic": "GGM strengths and limits",
+    "front": "What are the GGM’s strengths and limitations?",
+    "back": "<div class=\"ans\"><ul><li><strong>Strengths</strong>: simple; fits mature dividend payers and broad indexes; gives terminal values; backs out implied \\(g\\) or \\(r\\)</li><li><strong>Limits</strong>: very sensitive to \\(r-g\\); useless for non-payers; invalid if \\(g\\ge r\\)</li></ul></div>",
+    "gap": "Middlesex: ±25 bp on \\(r\\) and \\(g\\) moves value from \\$33.92 to \\$53.02."
+  },
+  {
+    "id": "eq2-preferred",
+    "topic": "Preferred stock and negative growth",
+    "front": "Value a 4% perpetual preferred (\\$25 par) at \\(r=5.5\\%\\), and a share with \\(D_1=\\$4.25\\), \\(g=-4\\%\\), \\(r=9\\%\\).",
+    "back": "<div class=\"ans\"><p>Preferred: \\(V_0=D/r=1.00/0.055=\\) <strong>\\$18.18</strong>.</p><p>Negative growth: \\(4.25/0.13=\\) <strong>\\$32.69</strong>.</p></div>"
+  },
+  {
+    "id": "eq2-implied-g",
+    "topic": "Implied growth",
+    "front": "Write the implied growth rate from the GGM. Price \\$40, \\(D_0=\\$2\\), \\(r=12.2\\%\\): find \\(g\\).",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$g=\\frac{rP_0-D_0}{P_0+D_0}$$</div><p>\\((0.122\\times40-2)/42=\\) <strong>6.86%</strong>: the market prices in more growth than the 5% forecast.</p></div>"
+  },
+  {
+    "id": "eq2-pvgo",
+    "topic": "PVGO",
+    "front": "Split value into assets in place and growth. \\(E_1=\\$1.52\\), \\(r=6.8\\%\\), price \\$43.20: find PVGO.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$V_0=\\frac{E_1}{r}+PVGO$$</div><p>\\(E_1/r=22.42\\), so <strong>PVGO = \\$20.78</strong> (48% of the price).</p></div>",
+    "gap": "Growth adds value only if new investment earns more than \\(r\\). Negative PVGO signals value-destroying reinvestment."
+  },
+  {
+    "id": "eq2-pe-pvgo",
+    "topic": "P/E and PVGO",
+    "front": "How does PVGO enter the leading P/E?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\frac{P_0}{E_1}=\\frac{1}{r}+\\frac{PVGO}{E_1}$$</div><p>No-growth P/E plus a growth component. Middlesex: 28.4 = 14.7 + 13.67.</p></div>"
+  },
+  {
+    "id": "eq2-justified-pe",
+    "topic": "Justified P/E",
+    "front": "Write the justified leading and trailing P/E. Payout 0.5438, \\(r=5.6\\%\\), \\(g=4.25\\%\\): find both.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\frac{P_0}{E_1}=\\frac{1-b}{r-g}$$</div><div class=\"eq-block\">$$\\frac{P_0}{E_0}=\\frac{(1-b)(1+g)}{r-g}$$</div><p>Leading <strong>40.28</strong>; trailing <strong>42.00</strong>. An actual trailing P/E of 34.3 → undervalued.</p></div>"
+  },
+  {
+    "id": "eq2-phases",
+    "topic": "Life-cycle phases",
+    "front": "Describe growth, payout and FCFE in the growth, transition and mature phases.",
+    "back": "<div class=\"ans\"><ul><li><strong>Growth</strong>: high growth and margins; FCFE often negative; little or no payout</li><li><strong>Transition</strong>: growth slows; FCFE turns positive; payout rises</li><li><strong>Mature</strong>: ROE → \\(r\\); stable payout; GGM applies</li></ul></div>"
+  },
+  {
+    "id": "eq2-two-stage",
+    "topic": "Two-stage DDM",
+    "front": "Describe the two-stage DDM steps. Meditec: \\(D_{11}=€1.3671\\), \\(r=5.88\\%\\), \\(g_L=5\\%\\): find \\(V_{10}\\).",
+    "back": "<div class=\"ans\"><p>List \\(D_1\\dots D_n\\); \\(D_{n+1}=D_n(1+g_L)\\); \\(V_n=D_{n+1}/(r-g_L)\\); discount all at \\(r\\).</p><p>\\(V_{10}=1.3671/0.0088=\\) <strong>€155.36</strong>; \\(V_0=€94.21\\).</p></div>",
+    "gap": "The terminal value is often most of the value (93% here)."
+  },
+  {
+    "id": "eq2-timing",
+    "topic": "Terminal value timing",
+    "front": "A company pays its first dividend of \\$1 at \\(t=5\\), growing 5%, \\(r=11\\%\\). Value today?",
+    "back": "<div class=\"ans\"><p>\\(V_4=D_5/(r-g)=1/0.06=\\$16.67\\), the value at \\(t=4\\).</p><p>\\(V_0=16.67/1.11^4=\\) <strong>\\$10.98</strong>.</p></div>",
+    "gap": "The GGM on \\(D_5\\) gives value at \\(t=4\\): discount 4 years, not 5."
+  },
+  {
+    "id": "eq2-h",
+    "topic": "H-model",
+    "front": "Write the H-model. \\(D_0=€1.77\\), 7% falling to 4% over 10 years, \\(r=8\\%\\): value?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}V_0={}&\\frac{D_0(1+g_L)}{r-g_L}\\\\&+\\frac{D_0H(g_S-g_L)}{r-g_L}\\end{aligned}$$</div><p>\\(H=5\\): \\((1.84+0.27)/0.04=\\) <strong>€52.75</strong>.</p></div>",
+    "gap": "\\(H\\) is half the high-growth period; the model is an approximation."
+  },
+  {
+    "id": "eq2-three-stage",
+    "topic": "Three-stage DDM",
+    "front": "How does the version-2 three-stage model work?",
+    "back": "<div class=\"ans\"><ul><li>PV of stage-1 dividends at constant growth</li><li>H-model value at the start of stage 2, using \\(D_n\\)</li><li>Discount that to \\(t=0\\) and add</li></ul></div>",
+    "gap": "Rhinestone: stage 1 is 5.2% of value; stages 2–3 are 94.8%."
+  },
+  {
+    "id": "eq2-choose",
+    "topic": "Choosing a DDM",
+    "front": "Match each model to its use: GGM, two-stage, H-model, three-stage, spreadsheet.",
+    "back": "<div class=\"ans\"><ul><li>GGM: mature, growth ≤ GDP</li><li>Two-stage: high growth then an abrupt fall (patent expiry)</li><li>H-model: growth declining gradually</li><li>Three-stage: distinct growth, transition, mature phases</li><li>Spreadsheet: irregular patterns</li></ul></div>"
+  },
+  {
+    "id": "eq2-implied-r",
+    "topic": "Implied required return",
+    "front": "Write the required return implied by the GGM and the H-model. \\(D_0=\\$1\\), price \\$20, 10%→6% over 10 years: find \\(r\\).",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$r=\\frac{D_1}{P_0}+g$$</div><div class=\"eq-block\">$$\\begin{aligned}r={}&\\frac{D_0}{P_0}[(1+g_L)\\\\&+H(g_S-g_L)]+g_L\\end{aligned}$$</div><p>\\((1/20)(1.06+0.20)+0.06=\\) <strong>12.3%</strong>.</p></div>",
+    "gap": "For other multistage models, solve for the IRR by trial and error."
+  },
+  {
+    "id": "eq2-sustainable",
+    "topic": "Sustainable growth and PRAT",
+    "front": "Write sustainable growth and the PRAT decomposition. ROE 25%, retention 60%: find \\(g\\).",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$g=b\\times ROE$$</div><p>PRAT: retention × margin × turnover × leverage.</p><p>\\(0.60\\times25\\%=\\) <strong>15%</strong>.</p></div>",
+    "gap": "Use retention, not payout. A leverage-driven ROE (IBM’s 52%) won’t last: forecast mature components."
+  }
+];
+
+flashDeck({
+  key: "cfa-c5-m2-review",
+  source: "CFA L2 Equity \u00b7 M2 Discounted Dividend Valuation \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

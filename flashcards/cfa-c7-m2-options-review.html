@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Derivatives M2 — Options review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    "id": "dv2-binomial",
+    "topic": "Binomial step",
+    "front": "Write the risk-neutral up probability and the one-step option value on a binomial tree.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\pi_u=\\frac{(1+r_f)^t-D}{U-D}$$</div><div class=\"eq-block\">$$C_0=\\frac{\\pi_uC_u+\\pi_dC_d}{(1+r_f)^t}$$</div></div>",
+    "gap": "No arbitrage needs \\(D&lt;1+r_f&lt;U\\). Continuous version: \\(e^{r\\Delta t}\\) in place of \\((1+r_f)^t\\)."
+  },
+  {
+    "id": "dv2-crr",
+    "topic": "Choosing U and D",
+    "front": "How are \\(U\\) and \\(D\\) usually set from volatility, and why must the tree recombine?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$U=e^{\\sigma\\sqrt{\\Delta t}},\\quad D=\\frac1U$$</div><p>The log price moves \\(\\pm\\sigma\\sqrt{\\Delta t}\\) each step. With constant \\(U\\) and \\(D\\), up-down and down-up end at the same price, keeping the tree small.</p></div>"
+  },
+  {
+    "id": "dv2-risk-neutral",
+    "topic": "Risk-neutral probabilities",
+    "front": "Where do risk-neutral probabilities come from, and are they real-world probabilities?",
+    "back": "<div class=\"ans\"><p>From no arbitrage: under them the stock’s expected price grows at \\(r_f\\), \\(\\pi_uS_0U+\\pi_dS_0D=S_0(1+r_f)^t\\).</p><p><strong>No</strong>: neither the real probabilities nor the stock’s expected return enter the option price.</p></div>"
+  },
+  {
+    "id": "dv2-parity",
+    "topic": "Put–call parity",
+    "front": "State put–call parity and the two portfolios behind it.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$c+\\frac{X}{(1+r_f)^t}=S_0+p$$</div><p><strong>Fiduciary call</strong> (call + bond paying \\(X\\)) and <strong>protective put</strong> (stock + put) both pay \\(\\max(S_T,X)\\).</p></div>"
+  },
+  {
+    "id": "dv2-hedge",
+    "topic": "Hedge ratio",
+    "front": "Build a risk-free portfolio from shares and a short call. What is the hedge ratio, and how does it give the call value?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\delta=\\frac{C_u-C_d}{S_u-S_d}$$</div><p>Buy \\(\\delta\\) shares, sell one call. It is riskless, so it earns \\(r_f\\):</p><div class=\"eq-block\">$$c_0=\\delta S_0-\\frac{\\delta S_u-C_u}{(1+r_f)^t}$$</div></div>",
+    "gap": "If the market price differs, arbitrage by trading the call against δ shares."
+  },
+  {
+    "id": "dv2-two-period",
+    "topic": "Two-period example",
+    "front": "\\(S=50\\), \\(X=50\\), \\(r=5\\%\\), \\(U=1.356\\), \\(D=0.744\\), two years. Find \\(\\pi_u\\), the call and the put.",
+    "back": "<div class=\"ans\"><p>\\(\\pi_u=(1.05-0.744)/(1.356-0.744)=0.5\\).</p><ul><li>Expiry: \\(C^{++}=41.94\\), \\(C^{+-}=0.44\\), \\(P^{--}=22.32\\)</li><li>\\(C^+=20.18\\), \\(C^-=0.21\\); \\(C_0=9.71\\)</li><li>\\(P^-=10.63\\); \\(P_0=5.06\\) (parity checks)</li></ul></div>"
+  },
+  {
+    "id": "dv2-american",
+    "topic": "Early exercise",
+    "front": "When can American options be exercised early?",
+    "back": "<div class=\"ans\"><ul><li>Calls on non-dividend stocks: <strong>never</strong>; worth more alive than dead, so American = European</li><li>Calls on dividend-paying stocks: just before the ex-dividend date</li><li>Puts: when <strong>deep in the money</strong></li></ul><p>On a tree, take the higher of exercise and hold value at <strong>every</strong> node.</p></div>"
+  },
+  {
+    "id": "dv2-american-put",
+    "topic": "American put on the tree",
+    "front": "In the two-period example, is the put worth exercising early at the down node (\\(S=37.20\\))? What is the American put worth?",
+    "back": "<div class=\"ans\"><p>Exercise value \\(50-37.20=12.80\\) &gt; hold value 10.63: exercise.</p><p>Value today: \\(0.5\\times12.80/1.05=\\) <strong>6.10</strong>, versus 5.06 European.</p></div>"
+  },
+  {
+    "id": "dv2-bsm-assumptions",
+    "topic": "BSM assumptions",
+    "front": "List the assumptions of the Black–Scholes–Merton model.",
+    "back": "<div class=\"ans\"><ul><li>Underlying follows geometric Brownian motion (lognormal prices, continuous)</li><li>Constant, known risk-free rate; borrow and lend at it</li><li>Constant volatility</li><li>Frictionless: no costs or taxes, continuous trading, short selling allowed, no arbitrage</li><li>European options</li></ul></div>",
+    "gap": "BSM is the limit of the binomial model as the number of steps goes to infinity."
+  },
+  {
+    "id": "dv2-bsm",
+    "topic": "BSM formula",
+    "front": "Write the BSM call price and \\(d_1\\), \\(d_2\\).",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$C_0=S_0N(d_1)-Xe^{-r_f^cT}N(d_2)$$</div><div class=\"eq-block\">$$d_1=\\frac{\\ln\\frac{S_0}{X}+(r_f^c+\\frac{\\sigma^2}{2})T}{\\sigma\\sqrt T}$$</div><p>\\(d_2=d_1-\\sigma\\sqrt T\\). Put: \\(Xe^{-r_f^cT}N(-d_2)-S_0N(-d_1)\\).</p></div>"
+  },
+  {
+    "id": "dv2-replicate",
+    "topic": "BSM replicating portfolio",
+    "front": "What portfolios replicate a call and a put in BSM? What are \\(N(d_1)\\) and \\(N(d_2)\\)?",
+    "back": "<div class=\"ans\"><ul><li>Call: long \\(N(d_1)\\) shares, borrow \\(N(d_2)Xe^{-r_f^cT}\\)</li><li>Put: long \\(N(-d_2)\\) bonds paying \\(X\\), short \\(N(-d_1)\\) shares</li><li>\\(N(d_1)\\): call delta; \\(N(d_2)\\): risk-neutral probability the call ends in the money</li></ul></div>"
+  },
+  {
+    "id": "dv2-carry",
+    "topic": "BSM with a yield",
+    "front": "How does a continuous yield \\(\\gamma\\) on the underlying change BSM, and the option values?",
+    "back": "<div class=\"ans\"><p>Replace \\(S_0\\) by \\(S_0e^{-\\gamma T}\\), and \\(r_f^c\\) by \\(r_f^c-\\gamma\\) in \\(d_1\\).</p><div class=\"eq-block\">$$\\begin{aligned}C_0={}&S_0e^{-\\gamma T}N(d_1)\\\\&-Xe^{-r_f^cT}N(d_2)\\end{aligned}$$</div><p>A higher yield lowers the call and raises the put.</p></div>"
+  },
+  {
+    "id": "dv2-futopt",
+    "topic": "Options on futures",
+    "front": "What futures position does exercising each option give? When is each exercised?",
+    "back": "<div class=\"ans\"><ul><li>Long call → long futures at \\(X\\); exercised if \\(F_m&gt;X\\)</li><li>Long put → short futures at \\(X\\); exercised if \\(F_m&lt;X\\)</li></ul><p>The position is marked to market at once, so the holder receives \\(F_m-X\\) (call) or \\(X-F_m\\) (put).</p></div>"
+  },
+  {
+    "id": "dv2-black",
+    "topic": "Black model",
+    "front": "Write the Black model for a call on futures. Why are both terms discounted?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}C_0={}&e^{-r_f^cT}\\\\&\\times[F_0N(d_1)-XN(d_2)]\\end{aligned}$$</div><div class=\"eq-block\">$$d_1=\\frac{\\ln(F_0/X)+\\sigma^2T/2}{\\sigma\\sqrt T}$$</div><p>A futures position costs nothing to hold, so its “yield” equals \\(r_f\\): \\(S_0e^{-\\gamma T}\\) becomes \\(F_0e^{-r_f^cT}\\).</p></div>"
+  },
+  {
+    "id": "dv2-ir-option",
+    "topic": "Interest rate options",
+    "front": "How is an interest rate call valued with the Black model? What are caps and floors?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}C_0={}&NP\\times\\tfrac{(n-m)30}{360}\\\\&\\times e^{-r n\\frac{30}{360}}\\\\&\\times[FR\\,N(d_1)\\\\&\\quad-X\\,N(d_2)]\\end{aligned}$$</div><p>Discount over \\(n\\) (payment); accrue over \\(n-m\\). A <strong>cap</strong> is a series of calls (caplets), a <strong>floor</strong> of puts.</p></div>",
+    "gap": "Long cap + short floor at the same rate = pay-fixed swap."
+  },
+  {
+    "id": "dv2-swaption",
+    "topic": "Swaptions",
+    "front": "Define payer and receiver swaptions and write the payer’s value.",
+    "back": "<div class=\"ans\"><ul><li><strong>Payer</strong>: right to pay fixed; a call on the swap rate</li><li><strong>Receiver</strong>: right to receive fixed; a put</li></ul><div class=\"eq-block\">$$\\begin{aligned}C_0={}&NP\\cdot AP\\cdot PVA\\\\&\\times[R_{fix}N(d_1)\\\\&\\quad-R_XN(d_2)]\\end{aligned}$$</div></div>",
+    "gap": "PVA: sum of discount factors on the swap’s payment dates. Payer − receiver = forward pay-fixed swap."
+  },
+  {
+    "id": "dv2-greeks-def",
+    "topic": "Greeks · definitions",
+    "front": "Define delta, gamma, theta, vega and rho.",
+    "back": "<div class=\"ans\"><ul><li>\\(\\delta=\\partial C/\\partial S\\)</li><li>\\(\\gamma=\\partial^2C/\\partial S^2\\)</li><li>\\(\\theta=\\partial C/\\partial t\\) (time passing)</li><li>\\(\\upsilon=\\partial C/\\partial\\sigma\\)</li><li>\\(\\rho=\\partial C/\\partial r\\)</li></ul></div>"
+  },
+  {
+    "id": "dv2-greeks-signs",
+    "topic": "Greeks · signs",
+    "front": "Give the sign of each Greek for a long call and a long put.",
+    "back": "<div class=\"ans\"><ul><li>Delta: call 0 to 1; put −1 to 0</li><li>Gamma, vega: positive for both, highest at the money</li><li>Theta: usually negative for both</li><li>Rho: call positive, put negative</li></ul></div>"
+  },
+  {
+    "id": "dv2-delta",
+    "topic": "Delta",
+    "front": "Write call and put delta, with and without a dividend yield. How are they related?",
+    "back": "<div class=\"ans\"><p>No dividend: \\(\\delta_c=N(d_1)\\), \\(\\delta_p=N(d_1)-1\\), so \\(\\delta_c=\\delta_p+1\\).</p><div class=\"eq-block\">$$\\Delta_c=e^{-\\delta T}N(d_1)$$</div><div class=\"eq-block\">$$\\Delta_p=-e^{-\\delta T}N(-d_1)$$</div></div>",
+    "gap": "Delta changes most sharply near the money, and more so near expiry."
+  },
+  {
+    "id": "dv2-delta-gamma",
+    "topic": "Delta–gamma approximation",
+    "front": "Approximate an option’s value change for a stock move. How do you make a portfolio delta neutral and gamma neutral?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\Delta C\\approx\\delta\\,\\Delta S+\\tfrac12\\gamma(\\Delta S)^2$$</div><p>Gamma neutral: combine options (stock has no gamma). Then delta neutral: add shares, e.g. short \\(\\delta\\) shares per long option.</p></div>",
+    "gap": "Delta and gamma are the duration and convexity of options."
+  },
+  {
+    "id": "dv2-gamma",
+    "topic": "Gamma and time",
+    "front": "How does gamma change as expiry approaches?",
+    "back": "<div class=\"ans\"><ul><li><strong>At the money</strong>: gamma rises, spiking near expiry</li><li><strong>Deep in or out of the money</strong>: gamma falls toward 0</li></ul></div>"
+  },
+  {
+    "id": "dv2-theta",
+    "topic": "Theta",
+    "front": "Why is theta usually negative, and what is the exception?",
+    "back": "<div class=\"ans\"><p>Options lose time value as expiry nears (time decay).</p><p>Exception: <strong>deep in-the-money European puts</strong> can gain value as the strike they will receive gets closer.</p></div>"
+  },
+  {
+    "id": "dv2-vega-rho",
+    "topic": "Vega and rho",
+    "front": "Why is vega positive for calls and puts? Why does rho differ in sign?",
+    "back": "<div class=\"ans\"><ul><li><strong>Vega</strong> &gt; 0: higher volatility raises the chance of large payoffs, while losses are capped at the premium</li><li><strong>Rho</strong>: higher rates lower the PV of \\(X\\), which the call holder pays (call ↑) and the put holder receives (put ↓)</li></ul></div>"
+  }
+];
+
+flashDeck({
+  key: "cfa-c7-m2-review",
+  source: "CFA L2 Derivatives \u00b7 M2 Options \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

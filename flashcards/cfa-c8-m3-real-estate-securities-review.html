@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Alternative Investments M3 — Real Estate Securities review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    "id": "ai3-types",
+    "topic": "REITs, REOCs and MBS",
+    "front": "Distinguish REITs, REOCs and MBS. When is a company a REOC rather than a REIT?",
+    "back": "<div class=\"ans\"><ul><li><strong>REIT</strong>: distributes 90–100% of taxable income; effectively no corporate tax</li><li><strong>REOC</strong>: taxable; no REIT regime, develops for sale, or non-qualifying services</li><li><strong>MBS</strong>: claims on mortgage pools (CMBS, RMBS)</li></ul></div>"
+  },
+  {
+    "id": "ai3-rules",
+    "topic": "REIT requirements",
+    "front": "What do REITs typically have to meet? What is the US 5/50 rule?",
+    "back": "<div class=\"ans\"><ul><li>Distribute 90–100% of taxable earnings</li><li>At least 75% of assets in real estate</li><li>At least 75% of income from rent or mortgage interest</li></ul><p>5/50: five or fewer holders can’t own more than 50%; at least 100 shareholders.</p></div>"
+  },
+  {
+    "id": "ai3-pros-cons",
+    "topic": "REIT pros and cons",
+    "front": "Give the advantages and disadvantages of REITs relative to private real estate.",
+    "back": "<div class=\"ans\"><ul><li><strong>+</strong> liquidity, transparency, diversified holdings, quality portfolios, professional management, stable income, single taxation</li><li><strong>−</strong> no retained earnings, public company costs, less diversification (follow stocks), limited assets (non-qualifying activities in a taxed TRS)</li></ul></div>"
+  },
+  {
+    "id": "ai3-navps",
+    "topic": "NAVPS",
+    "front": "Why is NAVPS used for REITs rather than BVPS? Where is it the primary measure?",
+    "back": "<div class=\"ans\"><p>BVPS uses depreciated historical cost; NAVPS uses market values. Primary measure in <strong>Europe and Asia</strong>; US analysts lean on P/FFO.</p></div>",
+    "gap": "Issuing shares below NAV is dilutive."
+  },
+  {
+    "id": "ai3-nav-steps",
+    "topic": "Estimating NAV",
+    "front": "Describe the steps to estimate NAV from NOI.",
+    "back": "<div class=\"ans\"><ul><li>NOI − non-cash rent + full year of acquisitions → cash NOI; grow one year</li><li>Capitalize: NOI₁ ÷ cap rate</li><li>Add cash, receivables, prepaid, land at book (exclude goodwill, DTA)</li><li>Subtract debt and liabilities (<strong>not</strong> deferred tax liabilities); divide by shares</li></ul></div>"
+  },
+  {
+    "id": "ai3-nav-example",
+    "topic": "NAV example",
+    "front": "NOI USD115m, cap rate 7%, market value of debt USD505m, 100m shares. NAVPS?",
+    "back": "<div class=\"ans\"><p>Property 115/0.07 = 1,642.9m; NAV = 1,137.9m → <strong>USD11.38</strong>.</p></div>",
+    "gap": "A higher cap rate means lower NAV."
+  },
+  {
+    "id": "ai3-nav-limits",
+    "topic": "Limitations of NAV",
+    "front": "What are the limitations of NAV as a REIT valuation?",
+    "back": "<div class=\"ans\"><ul><li>Private-market cap rates may not suit REIT investors</li><li>Lags (appraisals); REITs trade 25%+ from NAV</li><li>Treats the REIT as a <strong>static pool</strong>; ignores management</li><li>Subjective in illiquid markets and large portfolios</li></ul></div>",
+    "gap": "Used relatively: compare premiums or back out implied cap rates."
+  },
+  {
+    "id": "ai3-ffo",
+    "topic": "FFO",
+    "front": "Define FFO. Why is depreciation added back, and why isn’t FFO cash flow?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}FFO={}&NI+Dep+Amort\\\\&-\\text{Gains on sales}\\end{aligned}$$</div><p>Real estate tends to hold value, so book depreciation isn’t economic. FFO ignores capex needed to sustain cash flow.</p></div>"
+  },
+  {
+    "id": "ai3-affo",
+    "topic": "AFFO",
+    "front": "Define AFFO. Why is it better than FFO, and what are its drawbacks?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}AFFO={}&FFO\\\\&-\\text{Non-cash rent}\\\\&-\\text{Recurring capex}\\end{aligned}$$</div><p>Better measure of economic income and <strong>dividend capacity</strong>; but subjective, methods vary, and providers don’t compile it.</p></div>"
+  },
+  {
+    "id": "ai3-ffo-example",
+    "topic": "FFO and AFFO example",
+    "front": "NI 160,638, D&A 76,100, losses on property sales 25,000, non-cash rent 21,103, recurring capex 55,765. FFO and AFFO?",
+    "back": "<div class=\"ans\"><p>FFO = 160,638 + 76,100 + 25,000 = <strong>261,738</strong>.</p><p>AFFO = 261,738 − 21,103 − 55,765 = <strong>184,870</strong>.</p></div>",
+    "gap": "Losses on property sales are added back; gains are subtracted."
+  },
+  {
+    "id": "ai3-back-out",
+    "topic": "From AFFO to P/FFO",
+    "front": "AFFO USD4m, AFFO/share USD5, non-cash rent 215,000, recurring capex 700,000, price USD80. P/FFO?",
+    "back": "<div class=\"ans\"><p>800,000 shares; FFO = 4,915,000 → USD6.14 a share → <strong>13.0×</strong>.</p></div>",
+    "gap": "Don’t add depreciation back to AFFO."
+  },
+  {
+    "id": "ai3-drivers",
+    "topic": "Multiple drivers",
+    "front": "What drives differences in REIT P/FFO multiples?",
+    "back": "<div class=\"ans\"><ul><li>Expected FFO growth (higher → higher multiple)</li><li>Property risk (apartments above hotels; young above old)</li><li>Leverage (higher → <strong>lower</strong> multiple)</li></ul></div>",
+    "gap": "FFO is levered; EV/EBITDA is unlevered, and EBITDA/EV approximates the cap rate."
+  },
+  {
+    "id": "ai3-multiple-sw",
+    "topic": "P/FFO pros and cons",
+    "front": "Give the advantages and disadvantages of P/FFO and P/AFFO.",
+    "back": "<div class=\"ans\"><ul><li><strong>+</strong> widely accepted; FFO estimates available; combinable with growth and leverage</li><li><strong>−</strong> miss value of land, vacant buildings, below-market rents; P/FFO ignores capex; AFFO varies</li></ul></div>"
+  },
+  {
+    "id": "ai3-ddm",
+    "topic": "REIT DDM",
+    "front": "Baldwin REIT: \\(r\\) 8.5%, \\(D_1\\) 1.00, \\(D_2\\) 1.06, then 5% growth. Value?",
+    "back": "<div class=\"ans\"><p>\\(P_2=1.11/0.035=31.71\\).</p><div class=\"eq-block\">$$\\begin{aligned}V_0&=\\frac{1.00}{1.085}+\\frac{1.06+31.71}{1.085^2}\\\\&=28.76\\end{aligned}$$</div></div>"
+  },
+  {
+    "id": "ai3-csc",
+    "topic": "Relative value case",
+    "front": "CSC trades at 16.5× FFO vs 14.5× for peers. What could justify the premium, and what is the caveat?",
+    "back": "<div class=\"ans\"><p>Steadier growth, lower leverage (debt/market cap 40.5% vs 47.1%), stronger coverage.</p><p>Caveat: less upside in a recovery, because it never fell as far as peers.</p></div>"
+  },
+  {
+    "id": "ai3-case-points",
+    "topic": "Valuation in a downturn",
+    "front": "How do a downturn, land held for development and higher cap rates affect REIT valuation?",
+    "back": "<div class=\"ans\"><ul><li>Few transactions → NAV more subjective, <strong>less useful</strong></li><li>Land for development: no FFO but value → justifies a <strong>higher</strong> multiple</li><li>Higher cap rates → <strong>lower</strong> NAV</li></ul></div>"
+  },
+  {
+    "id": "ai3-public-private",
+    "topic": "Public vs private real estate",
+    "front": "Contrast the main advantages of private and public real estate.",
+    "back": "<div class=\"ans\"><ul><li><strong>Private</strong>: direct exposure, low volatility, low correlation, control, illiquidity premium, tax benefits</li><li><strong>Public</strong>: liquidity, professional management, low minimums and costs, limited liability, transparency</li></ul></div>"
+  },
+  {
+    "id": "ai3-flexibility",
+    "topic": "Expertise and flexibility",
+    "front": "Which vehicle needs the most real estate expertise, and which offers the most flexibility?",
+    "back": "<div class=\"ans\"><ul><li>Most expertise: <strong>direct single-property</strong> investment</li><li>Most operating and financial flexibility: <strong>REOC</strong> (no payout or activity limits)</li></ul></div>",
+    "gap": "REITs diversify property holdings, not the overall portfolio."
+  }
+];
+
+flashDeck({
+  key: "cfa-c8-m3-review",
+  source: "CFA L2 Alternative Investments \u00b7 M3 Real Estate Securities \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

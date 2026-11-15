@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Equity M3 — Free Cash Flow Valuation review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    "id": "eq3-fcff-fcfe",
+    "topic": "FCFF vs FCFE",
+    "front": "Contrast FCFF and FCFE: who receives each, the discount rate, and what each values.",
+    "back": "<div class=\"ans\"><ul><li><strong>FCFF</strong>: all capital providers; discount at <strong>WACC</strong>; gives firm value (equity = firm − debt − preferred)</li><li><strong>FCFE</strong>: common shareholders; discount at <strong>\\(r\\)</strong>; gives equity value directly</li></ul></div>"
+  },
+  {
+    "id": "eq3-which",
+    "topic": "Choosing FCFF or FCFE",
+    "front": "When is FCFF preferred over FCFE? What is the ownership perspective behind FCF models?",
+    "back": "<div class=\"ans\"><ul><li>Levered company with <strong>negative FCFE</strong></li><li><strong>Changing capital structure</strong> (WACC less sensitive to leverage)</li></ul><p>FCFE is what the company <strong>can</strong> pay out; a controlling owner can redirect it, so FCF suits a control perspective.</p></div>"
+  },
+  {
+    "id": "eq3-cagiati",
+    "topic": "Constant-growth FCFF",
+    "front": "FCFF CHF700m, WACC 10.2%, \\(g\\) 5%, debt CHF2.2bn, 200m shares. Value per share?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\text{Firm}=\\frac{FCFF_0(1+g)}{WACC-g}$$</div><p>\\(735/0.052=14{,}134.6\\); equity 11,934.6 → <strong>CHF59.67</strong>.</p></div>"
+  },
+  {
+    "id": "eq3-from-ni",
+    "topic": "FCFF from NI and CFO",
+    "front": "Write FCFF from net income and from CFO.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}FCFF={}&NI+NCC\\\\&+Int(1-t)\\\\&-FCInv-WCInv\\end{aligned}$$</div><div class=\"eq-block\">$$\\begin{aligned}FCFF={}&CFO+Int(1-t)\\\\&-FCInv\\end{aligned}$$</div></div>",
+    "gap": "Add back after-tax interest only if interest paid was deducted in CFO (IFRS may put it in financing)."
+  },
+  {
+    "id": "eq3-from-ebit",
+    "topic": "FCFF from EBIT and EBITDA",
+    "front": "Write FCFF from EBIT and from EBITDA. Why does the EBITDA version add only \\(Dep\\times t\\)?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}FCFF={}&EBIT(1-t)+Dep\\\\&-FCInv-WCInv\\end{aligned}$$</div><div class=\"eq-block\">$$\\begin{aligned}FCFF={}&EBITDA(1-t)\\\\&+Dep\\cdot t\\\\&-FCInv-WCInv\\end{aligned}$$</div><p>Depreciation was never subtracted from EBITDA; only its tax shield is added.</p></div>"
+  },
+  {
+    "id": "eq3-fcfe",
+    "topic": "FCFE formulas",
+    "front": "Write FCFE from FCFF, from NI and from CFO.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}FCFE={}&FCFF-Int(1-t)\\\\&+\\text{Net borr.}\\end{aligned}$$</div><div class=\"eq-block\">$$\\begin{aligned}FCFE={}&NI+NCC\\\\&-FCInv-WCInv\\\\&+\\text{Net borr.}\\end{aligned}$$</div><div class=\"eq-block\">$$\\begin{aligned}FCFE={}&CFO-FCInv\\\\&+\\text{Net borr.}\\end{aligned}$$</div></div>"
+  },
+  {
+    "id": "eq3-pitts",
+    "topic": "Pitts: four routes to FCFF",
+    "front": "NI 240, Dep 300, interest 100, tax 40%, capex 400, WCInv 45, CFO 495, net borrowing 75. Find FCFF and FCFE.",
+    "back": "<div class=\"ans\"><ul><li>NI route: \\(240+300+60-400-45=\\) <strong>155</strong></li><li>CFO route: \\(495+60-400=155\\)</li><li>FCFE: \\(155-60+75=\\) <strong>170</strong></li></ul></div>"
+  },
+  {
+    "id": "eq3-wc",
+    "topic": "Working capital and FCInv",
+    "front": "What does WCInv exclude? How do you treat a gain on selling equipment?",
+    "back": "<div class=\"ans\"><ul><li>WCInv excludes <strong>cash and short-term debt</strong> (notes payable, current LTD are financing)</li><li>Gain on sale: <strong>subtract</strong> from NI; the proceeds reduce FCInv</li></ul></div>"
+  },
+  {
+    "id": "eq3-noncash",
+    "topic": "Noncash adjustments",
+    "front": "How do you adjust NI for bond discounts and premiums, restructuring reversals, and deferred taxes?",
+    "back": "<div class=\"ans\"><ul><li>Bond discount amortization: add back; premium: subtract</li><li>Restructuring expense: add back; reversal income: subtract</li><li>Deferred tax liabilities: add back only if not expected to reverse soon</li></ul></div>"
+  },
+  {
+    "id": "eq3-uses",
+    "topic": "What doesn’t change FCF",
+    "front": "How do dividends, buybacks, share issues and new debt affect FCFF and FCFE?",
+    "back": "<div class=\"ans\"><ul><li>Dividends, buybacks, share issues: <strong>no effect</strong> (they are uses of FCF)</li><li>New debt: no effect on FCFF; FCFE rises by the debt this year, then falls by \\(Int(1-t)\\)</li></ul></div>"
+  },
+  {
+    "id": "eq3-proxies",
+    "topic": "NI and EBITDA as proxies",
+    "front": "Why are net income and EBITDA poor proxies for free cash flow?",
+    "back": "<div class=\"ans\"><ul><li><strong>NI</strong> ignores capex, working capital and net borrowing</li><li><strong>EBITDA</strong> is pretax and ignores the depreciation tax shield, capex and working capital (and interest and borrowing for FCFE)</li></ul></div>"
+  },
+  {
+    "id": "eq3-target-dr",
+    "topic": "Forecasting with a target debt ratio",
+    "front": "Write FCFE when a target debt ratio DR funds net new investment.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}FCFE={}&NI-(1-DR)\\\\&\\quad\\times(FCInv-Dep)\\\\&-(1-DR)WCInv\\end{aligned}$$</div><p>Pitts: \\(264-0.5(100)-0.5(45)=\\) <strong>191.50</strong>.</p></div>",
+    "gap": "Incremental FC rate = (capex − dep)/Δsales; incremental WC rate = ΔWC/Δsales."
+  },
+  {
+    "id": "eq3-preferred",
+    "topic": "Preferred stock",
+    "front": "How does preferred stock change FCFF, FCFE and equity value?",
+    "back": "<div class=\"ans\"><ul><li>FCFF from NI: <strong>add back preferred dividends</strong></li><li>FCFE from NI: no adjustment; net preferred issuance counts like borrowing</li><li>Equity = firm value − debt − preferred</li></ul></div>"
+  },
+  {
+    "id": "eq3-real",
+    "topic": "Real single-stage model",
+    "front": "When is a real (inflation-adjusted) FCFE model useful? Value FCFE₀ CDF1,400, real \\(r\\) 7.65%, real \\(g\\) 2.5%.",
+    "back": "<div class=\"ans\"><p>International stocks; high or volatile inflation.</p><p>\\(1{,}435/0.0515=\\) <strong>CDF27,864</strong>.</p></div>"
+  },
+  {
+    "id": "eq3-sensitivity",
+    "topic": "Sensitivity analysis",
+    "front": "What does sensitivity analysis show in an FCF valuation? Which input mattered most for Petrobras?",
+    "back": "<div class=\"ans\"><p>Vary one input at a time to see which drives value most. For Petrobras, <strong>FCFE growth</strong> (5%–9%) gave the widest range: BRL24.02 to 38.57.</p></div>"
+  },
+  {
+    "id": "eq3-jump",
+    "topic": "FCFE jumps in stage 2",
+    "front": "Why can FCFE jump when growth slows, and how should you compute \\(FCFE_{n+1}\\)?",
+    "back": "<div class=\"ans\"><p>Investment needs fall faster than profits. Compute \\(FCFE_{n+1}\\) from the stage-2 assumptions, not as \\(FCFE_n(1+g_L)\\).</p><p>TechnoSchaft: FCFE 1.296 → 3.491 (+169%).</p></div>"
+  },
+  {
+    "id": "eq3-multistage",
+    "topic": "Multistage FCF models",
+    "front": "Write the two-stage FCFE model and when to use one-, two- or three-stage models.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}V_0={}&\\sum_{t=1}^{n}\\frac{FCFE_t}{(1+r)^t}\\\\&+\\frac{FCFE_{n+1}}{(r-g)(1+r)^n}\\end{aligned}$$</div><ul><li>One stage: mature</li><li>Two: high growth then stable</li><li>Three: growth, transition, maturity</li></ul></div>"
+  },
+  {
+    "id": "eq3-esg",
+    "topic": "ESG and non-operating assets",
+    "front": "How are ESG risks and non-operating assets handled in an FCF valuation?",
+    "back": "<div class=\"ans\"><ul><li>Quantifiable ESG (fines, capex) → adjust <strong>cash flows</strong>; hard-to-quantify → a <strong>premium on the cost of equity</strong></li><li>Non-operating assets (excess cash, land held for investment): value <strong>separately at market value</strong> and add</li></ul></div>"
+  }
+];
+
+flashDeck({
+  key: "cfa-c5-m3-review",
+  source: "CFA L2 Equity \u00b7 M3 Free Cash Flow Valuation \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>
