@@ -12,7 +12,7 @@ La régression linéaire multiple permet de :
 - tester des théories économiques ou financières, par exemple si plusieurs facteurs de risque expliquent les rendements ; et
 - prévoir une variable dépendante à partir d’un ensemble de prédicteurs.
 
-## Modèle de régression linéaire multiple
+## Modèle de régression linéaire multiple {#multiple-linear-regression-model}
 
 Pour l’observation $i$, un modèle à $k$ variables indépendantes s’écrit
 
