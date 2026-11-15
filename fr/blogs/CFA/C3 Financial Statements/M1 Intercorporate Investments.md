@@ -958,7 +958,7 @@ Si le prix payé est **inférieur** à la juste valeur de l’actif net identifi
 - **Les dépréciations peuvent être choisies dans le temps.** Les prévisions de flux et les taux d’actualisation qui sous-tendent le test relèvent du jugement de la direction ; les dépréciations arrivent donc souvent tard, quand la mauvaise nouvelle est déjà dans le cours.
 - **Pour comparer des entreprises**, envisagez de retirer le goodwill de l’actif et des capitaux propres, ou au moins d’utiliser la même méthode des deux côtés (goodwill complet ou partiel), avant de comparer ROA, ROE ou levier. Sinon, les entreprises qui ont grandi par acquisitions et celles qui ont grandi organiquement peuvent paraître très différentes pour des raisons sans rapport avec l’exploitation.
 
-# Coentreprises et SPE/VIE
+# Coentreprises et SPE/VIE {#joint-venture-and-spes-vies}
 
 Les regroupements d’entreprises portent sur le **contrôle par une seule partie**. Ce chapitre traite de deux autres façons dont une entreprise peut être liée à une autre entité : le **contrôle conjoint** partagé avec des partenaires, et le **contrôle par les contrats** plutôt que par les votes.
 
