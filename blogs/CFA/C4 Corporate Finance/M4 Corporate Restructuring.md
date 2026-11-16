@@ -74,7 +74,16 @@ A **leveraged buyout** (LBO) combines all three. The financial impact rises from
   * **Dividend recapitalization**: borrow to pay a dividend or buy back shares, shifting from equity to cheaper debt to **lower WACC**. Works when rates are low; raises leverage, so it suits issuers with stable revenue and operating cash flow.
 * **Reorganization**: a court-supervised restructuring of an insolvent company. The court oversees negotiations with creditors (asset sales, debt-for-equity swaps, refinancing); operations and management usually continue, and the plan needs court approval. If terms are agreed with creditors before filing, approval can be fast (some have taken under 24 hours). **Liquidation** follows a failed reorganization: the court sells the assets and pays creditors from the proceeds.
 
-**Example (Six Flags).** High fixed costs → EBIT −50% in 2006 and −34% in 2007; net debt/EBITDA about 12–13×. A 2008 cost restructuring couldn't prevent defaults, and it filed for Chapter 11 in June 2009. Bondholders invested USD725m and swapped over USD1bn of debt for equity; it emerged with USD784m of net debt (under 3.0× 2010 EBITDA). **The old shareholders lost everything.**
+#### Example: Six Flags
+
+| Date | Event |
+| --- | --- |
+| 2006–07 | High fixed costs: EBIT −50% in 2006 and −34% in 2007; net debt/EBITDA about 12–13× |
+| 2008 | A cost restructuring couldn't prevent defaults |
+| June 2009 | Filed for Chapter 11 (reorganization) |
+| Emergence | Bondholders invested USD725m and swapped over USD1bn of debt for equity; net debt USD784m (under 3.0× 2010 EBITDA) |
+
+**The old shareholders lost everything.**
 
 **Opportunistic restructuring:** the same cost and balance sheet actions, plus changing the **business model**, e.g., **franchising**: the owner sells its assets and licenses its intellectual property to franchisees for royalties, typically a mid-single-digit % of sales (McDonald's, Kumon). The franchisor runs a lean, fixed-cost business and shifts store-level risk to franchisees.
 
@@ -82,7 +91,18 @@ A **leveraged buyout** (LBO) combines all three. The financial impact rises from
 
 A **private equity** fund (not a company) buys a target using a lot of debt, restructures it, and aims to exit through a sale or a public listing. If the target was listed, it is a **take-private**. Returns depend on the purchase price, the leverage, the free cash flow during ownership (used to repay debt) and the exit price. The target usually exits **more levered** than before.
 
-**Example (Hilton / Blackstone, 2007).** About USD26bn: USD47.50 a share (about USD20bn) plus USD6bn of assumed debt, financed with USD14.5bn of borrowing and USD5.5bn of equity. Long-term debt rose from about USD7bn to USD21bn. Growth came through franchising and selling flagship properties; it re-listed in 2013, and by 2018 had earned over USD11bn of cumulative net profit on the USD5.5bn.
+#### Example: Hilton / Blackstone (2007)
+
+| Uses (USD bn) | | Sources (USD bn) | |
+| --- | ---: | --- | ---: |
+| Equity at USD47.50 a share | ≈ 20 | New borrowing | 14.5 |
+| Assumed debt | 6 | Blackstone equity | 5.5 |
+| | | Assumed debt | 6 |
+| **Total** | **≈ 26** | **Total** | **26** |
+
+* Long-term debt rose from about USD7bn to USD21bn: the target exits **more levered**.
+* Growth came through franchising and selling flagship properties; Hilton re-listed in 2013.
+* By 2018 it had earned over USD11bn of cumulative net profit on the USD5.5bn of equity.
 
 **Points worth remembering:**
 
@@ -92,7 +112,26 @@ A **private equity** fund (not a company) buys a target using a lot of debt, res
 * Reason to **sell** rather than spin off: the issuer needs **liquidity**.
 * At least two-thirds of acquisitions fail to create meaningful value, because of **overpaying**, **under-delivered synergies** and **integration problems**.
 
-**Example (AstraZeneca / Alexion).** USD500m of cost synergies = 500/2,646 = **19%** of Alexion's year-3 operating expenses. With synergies of 166/333/500 and one-time costs of 217/433/650, combined operating income is **7,799 / 9,125 / 10,613**. Revenue growth rises about **200 bp** (10%/9% → 12%/11%) and the operating margin **400–500 bp** (26–28% → 30–32%), because Alexion grows faster at higher margins.
+#### Example: AstraZeneca / Alexion
+
+**Size of the synergies.** USD500m of cost synergies against Alexion's year-3 operating expenses:
+
+$$\frac{500}{2{,}646}=19\%$$
+
+**Pro forma operating income** (USD m):
+
+| Year | 1 | 2 | 3 |
+| --- | ---: | ---: | ---: |
+| Cost synergies | 166 | 333 | 500 |
+| One-time costs | 217 | 433 | 650 |
+| **Combined operating income** | **7,799** | **9,125** | **10,613** |
+
+| | AstraZeneca alone | Combined |
+| --- | --- | --- |
+| Revenue growth | 10% / 9% | 12% / 11% (about **+200 bp**) |
+| Operating margin | 26–28% | 30–32% (about **+400–500 bp**) |
+
+Alexion grows faster, at higher margins, so it lifts both.
 
 #### Exam traps
 
@@ -108,7 +147,12 @@ The analyst works in four steps: **initial evaluation**, **preliminary valuation
 
 * **What and why**: read the press release, filings, call transcripts and third-party research, with **professional skepticism** (management always presents a deal positively).
 * **Is it material?** Look at **size** and **fit**.
-  * **Size**: for a deal, the transaction value (cash + stock issued + target debt assumed) ÷ the acquirer's enterprise value. Rule of thumb: **large** if above **10%** of the acquirer's pre-deal EV. For a cost restructuring, the cost cut as a % of revenue or operating expenses. Most deals (over 95%) are under USD1bn, and over 80% of targets are private, so most deals don't matter for large companies.
+
+$$
+\text{Relative size}=\frac{\text{Cash}+\text{Stock issued}+\text{Target debt assumed}}{\text{Acquirer's pre-deal EV}}
+$$
+
+  * **Size**: rule of thumb, **large** if above **10%**. For a cost restructuring, the cost cut as a % of revenue or operating expenses. Most deals (over 95%) are under USD1bn, and over 80% of targets are private, so most deals don't matter for large companies.
   * **Fit**: a small deal can still matter if it signals a change in strategy. E.g., **Farfetch** bought New Guards Group for USD704m, about 8% of its EV, moving from an asset-light marketplace to owning brands with inventory risk; its shares fell 45% the next day.
 * **When?** Closing can take several quarters, or over a year, and the deal enters the statements only at **closing**. Shareholder, creditor and regulatory (antitrust) approvals add uncertainty. Markets price in the expected effect, including the risk of not closing, at announcement.
 
@@ -137,11 +181,50 @@ $$
 | **Comparable company** | Sensible relative value ("like assets valued alike"); data readily available; taken from the market, with few assumptions | Hard to find comparables for unique leaders (e.g., YouTube); sensitive to **market mispricing**; gives a trading price, so needs a premium |
 | **Comparable transaction** | Based on actual deal prices; premium included | Few, illiquid deals; old multiples reflect old industry and market conditions; past buyers may have over- or underpaid (bidding wars) |
 
-**Example (premium paid).** Unaffected price USD40 (a week before rumors), deal price USD52 → PRM = (52 − 40)/40 = **30%**. Measuring from a rumor-inflated USD46 would show only (52 − 46)/46 = 13%, understating the premium.
+#### Example: Premium Paid
 
-**Example (Wang, spin off of Media).** Connectivity EBITDA 7,638 × 13 + Media 2,000 × 6 = **EUR111,294m**, against a current EV of 96,380m (10×): more than 15% higher, so a spin off **could add** value. But Media may not earn the peer multiple (growth, profitability, risk; years of underinvestment). Allocating EUR250m of head-office costs by revenue (8,000/28,100 = 28.5% → 71m) gives Media an adjusted EBITDA of **1,929m**. EV multiples don't depend on how much debt the spin off takes (though very high leverage could raise its cost of capital).
+The unaffected price is USD40 (a week before rumors), and the deal price USD52.
 
-**Example (Hofer, Medical Services at USD55).** Mean peer multiples P/E 18.3, P/CF 10.2, P/BV 3.7, P/S 2.4, applied to EPS 2.62, CFPS 4.33, BVPS 12.65 and SPS 22.98, give 47.95, 44.17, 46.81 and 55.15. Weighted 20/40/20/20 → **USD47.65**, 13% below USD55 → Hofer **overpaid**.
+$$PRM=\frac{52-40}{40}=30\%$$
+
+Measuring from a rumor-inflated USD46 would show only $(52-46)/46=13\%$, understating the premium.
+
+#### Example: Wang (Spin Off of Media)
+
+Wang's current EV is EUR96,380m (10× EBITDA). Value each segment at its own peer multiple:
+
+$$
+\begin{aligned}
+EV_{\text{SOTP}}&=\underbrace{7{,}638\times 13}_{\text{Connectivity}}+\underbrace{2{,}000\times 6}_{\text{Media}}\\
+&=99{,}294+12{,}000=111{,}294
+\end{aligned}
+$$
+
+That is more than 15% above the current EV, so a spin off **could add** value. But:
+
+* Media may not earn the peer multiple (growth, profitability, risk; years of underinvestment).
+* Allocate EUR250m of head-office costs by revenue: Media's share is $8{,}000/28{,}100=28.5\%$, or 71m, so its adjusted EBITDA is $2{,}000-71=$ **1,929m**.
+* EV multiples don't depend on how much debt the spin off takes (though very high leverage could raise its cost of capital).
+
+#### Example: Hofer Buys Medical Services at USD55
+
+| Multiple | Peer mean | × Medical Services | Value |
+| --- | ---: | --- | ---: |
+| P/E | 18.3 | EPS 2.62 | 47.95 |
+| P/CF | 10.2 | CFPS 4.33 | 44.17 |
+| P/BV | 3.7 | BVPS 12.65 | 46.81 |
+| P/S | 2.4 | SPS 22.98 | 55.15 |
+
+Weighting the four values 20/40/20/20:
+
+$$
+\begin{aligned}
+V&=0.2(47.95)+0.4(44.17)+0.2(46.81)+0.2(55.15)\\
+&=47.65
+\end{aligned}
+$$
+
+**USD47.65** is 13% below the USD55 paid: Hofer **overpaid**.
 
 ### Modeling and Valuation
 
@@ -171,7 +254,7 @@ For an acquisition: combine the acquirer and target → add the financing (borro
 
 Falling from investment grade to speculative grade adds several hundred bp to WACC (median US large-cap WACC about 4% at AAA/AA, 4.5% at BBB, 6.5% at B), so issuers structure deals to **keep an investment-grade rating**.
 
-**Example (Kansas City Southern: CP vs CN bids).**
+#### Example: Kansas City Southern (CP vs CN Bids)
 
 | | CP | CN |
 | --- | --- | --- |
@@ -181,9 +264,27 @@ Falling from investment grade to speculative grade adds several hundred bp to WA
 | Debt/EBITDA | 4.0× | 4.6× |
 | KCS holders' share of the combined company | 25% | 12.6% |
 
-* CN's debt before = 33 − 3.8 − 19 = USD10.2bn; equity 713m × 105 = USD74.9bn → **12% / 88%** debt/equity. After: debt 33; equity (713 + 103) × 105 = 85.7 → **28% / 72%**.
-* More stock in the offer → KCS holders own more of the combined company. CN funds its bigger cash component with **more debt**; the least attractive feature for KCS holders is CN's **higher leverage** (4.6×). To protect its rating, CN should use **more stock**.
-* CN pro forma (synergies 333/667/1,000; 5% on USD33bn of debt = 1,650 of interest; USD800m of intangible amortization; 22% tax; 103m new shares): EPS **5.24 / 5.89 / 6.60** vs standalone 6.16 / 6.41 / 6.74 → **dilutive**.
+**Step 1. CN's capital structure** (USD bn; CN's share price 105). Combined debt after the deal is 33, including KCS's assumed debt of 3.8 and the new 19:
+
+| | Before | After |
+| --- | --- | --- |
+| Debt | $33-3.8-19=10.2$ | 33 |
+| Equity | $713\text{m}\times 105=74.9$ | $(713+103)\text{m}\times 105=85.7$ |
+| **Debt / equity weights** | **12% / 88%** | **28% / 72%** |
+
+**Step 2. Compare the offers.**
+
+* More stock in the offer → KCS holders own more of the combined company.
+* CN funds its bigger cash component with **more debt**; the least attractive feature for KCS holders is CN's **higher leverage** (4.6×). To protect its rating, CN should use **more stock**.
+
+**Step 3. CN's pro forma EPS.** Synergies 333/667/1,000; interest of 5% × USD33bn = 1,650; USD800m of intangible amortization; 22% tax; 103m new shares.
+
+| Year | 1 | 2 | 3 |
+| --- | ---: | ---: | ---: |
+| Standalone EPS | 6.16 | 6.41 | 6.74 |
+| Pro forma EPS | **5.24** | **5.89** | **6.60** |
+
+The deal is **dilutive** in every year.
 
 **Practice: pro forma tables.** Three self-contained exercises (USD millions), not from the 2026 textbook.
 
@@ -231,23 +332,95 @@ Falling from investment grade to speculative grade adds several hundred bp to WA
 
 ## Evaluating Investment Actions
 
-**Example (Dilmun buys 30% of Spina: equity investment).** Tobacco company Dilmun (falling volumes, ESG pressure) buys **30%** of e-vapor leader Spina for USD1.2bn (Spina's EV is USD4.0bn), borrowing at 6%, plus service agreements (shelf space, marketing). Spina stays independent.
+#### Example: Dilmun Buys 30% of Spina (Equity Investment)
+
+Tobacco company Dilmun (falling volumes, ESG pressure) buys **30%** of e-vapor leader Spina for USD1.2bn, borrowing at 6%, plus service agreements (shelf space, marketing). Spina's EV is USD4.0bn, and it stays independent.
+
+**Step 1. Why this form?**
 
 * Alternatives: an **acquisition** (control, but far more capital in a risky target) or a **JV** (board seats, but more capital and less independence for Spina).
 * Motives: Dilmun gets exposure to growth and Spina's capabilities, diversifying away from cigarettes; Spina gets marketing synergies and cash while keeping control.
-* Valuation: EV/sales = 4,000/600 = **6.7×**, against a peer median of 5.1× and average of 6.1× (second highest; growth and lower risk may explain it).
-* 20X4E impact: equity-method loss 0.3 × 450 = 135, plus 10 of amortization = **145** off EBIT/EBITDA; interest 1,200 × 6% = **72**; tax shield 46. Net income 7,256 → 7,084; EPS **3.94 → 3.85**; debt/EBITDA 13,894/10,140 = **1.37 → 1.51** (15,094/9,995).
 
-**Example (Opone–Hapalla JV, OHAA).** Opone's 50% share of JV income is more than 100% of its profit; Hapalla gets to expand and share risk with a local partner. Opone trades at a P/E of **21** (peers 12) but a P/FCF of **7** (peers 17): the JV's dividends (20,000 received in 20X7) far exceed the JV income it recognizes (7,634).
+**Step 2. Price.**
 
-* Hapalla offers BRL45bn for another **25%** → OHAA is valued at 45/0.25 = **BRL180bn**; less year-end cash of 32,461, an equity value of 147,539m ≈ **10×** 20X7 profit (peers 12×).
-* Opone's 20X8E: derecognize half of the BRL26bn carrying value (13bn) → gain 45 − 13 = **BRL32bn**; JV income 9,379 → 4,689; tax 10% → profit after tax **7,761 → 31,735**.
-* Hapalla moves from the **equity method to consolidation** (75%): it records a **non-controlling interest** for Opone's 25%, derecognizes the JV investment, and recognizes OHAA's assets and liabilities.
+$$\frac{EV}{\text{Sales}}=\frac{4{,}000}{600}=6.7\times$$
 
-**Example (Tulor buys Caracol's Retail segment).** AUD2bn cash + 80m shares = AUD3bn. Caracol uses AUD1.6bn of after-tax proceeds to repay debt and refocuses on its upstream and downstream businesses. Tulor gets synergies of AUD125m by year 3 (over 15% of its EBITDA) and growth.
+That is the second highest against peers (median 5.1×, average 6.1×); growth and lower risk may explain it.
 
-* Price: EV/EBITDA = 3,000/183 = **16×**, against a peer median of **8×**: a control premium plus synergies. Including synergies, 3,000/(183 + 125) = **10×**, within the peer range.
-* 20X3E (synergies 42, amortization 200, 0.5% on cash, 6% on debt, 20% tax): EBITDA 1,803 → 2,035; D&A 652 → 960; interest income 24 → 19; interest expense 401 → 461; net income 620 → 506; shares 648 → 728. EPS **0.96 → 0.70**; debt/EBITDA 6,169/1,803 = **3.4 → 3.5** (7,169/2,035).
+**Step 3. Impact on 20X4E** (USD m). Spina expects a loss of 450:
+
+$$
+\begin{aligned}
+\text{Hit to EBIT and EBITDA}&=\underbrace{0.3\times 450}_{\text{equity-method loss}}+\underbrace{10}_{\text{amortization}}=145\\
+\text{Interest}&=1{,}200\times 6\%=72
+\end{aligned}
+$$
+
+| | Standalone | With Spina |
+| --- | ---: | ---: |
+| Net income (after a tax shield of 46) | 7,256 | 7,084 |
+| EPS | 3.94 | **3.85** |
+| Debt/EBITDA | $13{,}894/10{,}140=1.37$ | $15{,}094/9{,}995=$ **1.51** |
+
+#### Example: Opone–Hapalla JV (OHAA)
+
+Opone and Hapalla each own 50% of OHAA. Opone's share of JV income is more than 100% of its profit; Hapalla gets to expand and share risk with a local partner.
+
+| Opone | Opone | Peers |
+| --- | ---: | ---: |
+| P/E | **21** | 12 |
+| P/FCF | **7** | 17 |
+
+The P/FCF is low because the JV's dividends (20,000 received in 20X7) far exceed the JV income Opone recognizes (7,634).
+
+**Step 1. Value implied by Hapalla's offer** of BRL45bn for another **25%**:
+
+$$
+\begin{aligned}
+V_{\text{OHAA}}&=\frac{45}{0.25}=180\text{bn}\\
+\text{Equity value}&=180{,}000-\underbrace{32{,}461}_{\text{cash}}=147{,}539\text{m}
+\end{aligned}
+$$
+
+That is about **10×** 20X7 profit, against 12× for peers.
+
+**Step 2. Opone's 20X8E.** It sells half of its stake, carried at BRL26bn:
+
+$$\text{Gain}=45-\underbrace{26/2}_{13}=\text{BRL}32\text{bn}$$
+
+JV income falls from 9,379 to 4,689; with 10% tax, profit after tax goes from **7,761 to 31,735**.
+
+**Step 3. Hapalla's accounting** moves from the **equity method to consolidation** (75%): it records a **non-controlling interest** for Opone's 25%, derecognizes the JV investment, and recognizes OHAA's assets and liabilities.
+
+#### Example: Tulor Buys Caracol's Retail Segment
+
+Tulor pays AUD2bn in cash plus 80m shares, AUD3bn in all. Caracol uses AUD1.6bn of after-tax proceeds to repay debt and refocuses on its upstream and downstream businesses. Tulor gets growth and synergies of AUD125m by year 3 (over 15% of its EBITDA).
+
+**Step 1. Price.** Retail's EBITDA is 183:
+
+$$
+\begin{aligned}
+\frac{EV}{EBITDA}&=\frac{3{,}000}{183}=16\times\\
+\text{With synergies}&=\frac{3{,}000}{183+125}=10\times
+\end{aligned}
+$$
+
+16× is double the peer median of 8× (a control premium plus synergies); with synergies, 10× is within the peer range.
+
+**Step 2. Tulor's 20X3E** (synergies 42, amortization 200, 0.5% on cash, 6% on debt, 20% tax; AUD m):
+
+| | Standalone | Pro forma |
+| --- | ---: | ---: |
+| EBITDA | 1,803 | 2,035 |
+| D&A | 652 | 960 |
+| Interest income | 24 | 19 |
+| Interest expense | 401 | 461 |
+| Net income | 620 | 506 |
+| Shares (m) | 648 | 728 |
+| **EPS** | $620/648=0.96$ | $506/728=$ **0.70** |
+| **Debt/EBITDA** | $6{,}169/1{,}803=3.4$ | $7{,}169/2{,}035=$ **3.5** |
+
+EBITDA rises, but EPS falls: amortization, interest and new shares.
 
 #### Exam traps
 
@@ -259,15 +432,48 @@ Falling from investment grade to speculative grade adds several hundred bp to WA
 
 Companies may announce a **strategic review** before acting; analysts then weight the possible outcomes by likelihood, because markets price risk-adjusted outcomes at announcement.
 
-**Example (Benefit Ltd.).** Two segments: Consulting (LTM EBITDA 84) and BenefitsExchange (software; revenue 75, growing 36.4%; EBITDA −5); corporate costs 4. Market EV **ZAR1,437m**. An activist holds 8%.
+$$\text{Conglomerate discount}=EV_{\text{SOTP}}-EV_{\text{current}}$$
 
-* Sum of the parts: Consulting (84 − 4) × 9 (peer median EV/EBITDA) = **721**; BenefitsExchange 75 × 12 (median EV/sales) = **900** → **1,621**, a conglomerate discount of **184**.
-* Using the peer with the closest growth (35%, EV/sales 15): 75 × 15 = 1,125 → total 1,846 → discount **409**.
-* A ZAR800m bid for Consulting: 800/84 ≈ **10×**, against a comparable-transaction median and mean of **11×** → moderately low. But the market implicitly values Consulting at 1,437 − 1,125 = **312**, so the bid is **488** above that.
-* Sale plus a buyback (ZAR800m buys back 200m shares; corporate costs −1; D&A −12; 0% tax): EBIT −16, net income **−25**, shares 1,254 → EPS **−1.99 cents** (from +2.41): dilutive.
-* If a spin off would trade at **13×**, spinning off beats selling at 10×; but a sale price is **certain**, while a spin off's value can fall in a market correction.
+#### Example: Benefit Ltd.
 
-**Example (Saturn).** Upstream 14,400 × 19 + Midstream 5,760 × 17 + Downstream 3,840 × 13 = **USD421,440m**, against an EV of 408,000m. Averaging the multiples (16.33 × 24,000 = 392,000) is the wrong method.
+| ZAR m | Consulting | BenefitsExchange (software) |
+| --- | ---: | ---: |
+| LTM revenue | | 75 (growing 36.4%) |
+| LTM EBITDA | 84 | −5 |
+
+Corporate costs are 4; the market EV is **ZAR1,437m**. An activist holds 8%.
+
+**Step 1. Sum of the parts** (Consulting bears the corporate costs):
+
+$$
+\begin{aligned}
+\text{Consulting}&=(84-4)\times\underbrace{9}_{\text{EV/EBITDA}}\approx 721\\
+\text{BenefitsExchange}&=75\times\underbrace{12}_{\text{EV/sales}}=900\\
+\text{Discount}&=1{,}621-1{,}437=184
+\end{aligned}
+$$
+
+Using the peer with the closest growth (35%, EV/sales 15) instead: $75\times 15=1{,}125$, a total of 1,846 and a discount of **409**.
+
+**Step 2. A ZAR800m bid for Consulting.**
+
+* $800/84\approx 10\times$, against a comparable-transaction median and mean of **11×**: moderately low.
+* But the market implicitly values Consulting at $1{,}437-1{,}125=$ **312**, so the bid is **488** above that.
+
+**Step 3. Sale plus a buyback.** ZAR800m buys back 200m shares; corporate costs fall by 1 and D&A by 12; 0% tax. EBIT becomes −16 and net income **−25** on 1,254m shares: EPS goes from +2.41 cents to **−1.99 cents**, so the deal is dilutive.
+
+**Step 4. Sale vs spin off.** If a spin off would trade at **13×**, it beats selling at 10×; but a sale price is **certain**, while a spin off's value can fall in a market correction.
+
+#### Example: Saturn
+
+| Segment | EBITDA | Peer EV/EBITDA | EV |
+| --- | ---: | ---: | ---: |
+| Upstream | 14,400 | 19 | 273,600 |
+| Midstream | 5,760 | 17 | 97,920 |
+| Downstream | 3,840 | 13 | 49,920 |
+| **Total** | **24,000** | | **421,440** |
+
+The sum of the parts, **USD421,440m**, is above the current EV of 408,000m. Averaging the multiples ($16.33\times 24{,}000=392{,}000$) is the wrong method: it ignores each segment's size.
 
 #### Exam traps
 
@@ -277,26 +483,87 @@ Companies may announce a **strategic review** before acting; analysts then weigh
 
 ## Evaluating Restructuring Actions
 
-**Example (Cyrene SARL, cost restructuring).** Cyrene rejected a 20%-premium bid from an aggressive cost-cutter; shareholders warned that as long as it didn't act to increase shareholder value, it would stay vulnerable to an acquirer who would. Below-average profitability makes it cheap to buy once synergies are counted.
+$$\text{Required cost cut}=\text{Opex}-(1-\text{Target margin})\times\text{Revenue}$$
 
-* Peer median EBIT margin **20%**; Cyrene's 2,659/18,990 = **14%**. Operating expenses of 16,331 must fall to 0.80 × 18,990 = 15,192: a cut of **EUR1,139m (7%)**.
-* Over four years, +1.5% of margin a year. Next year's revenue 18,990 × 1.03 = 19,560; EBIT before one-time costs at a 15.5% margin = **3,032**; after 1,250 of one-time costs, **1,782 (9.1%)**.
-* Risks: cutting spending that drives its above-peer **growth** (4%), and **political** backlash from layoffs and closures.
-* Alternative: sell or spin off Household Goods (EBIT 496) → EBIT 2,163, a **16%** margin (+2 points), but EBIT **−19%**. To judge it, the analyst needs the unit's sale or spin off value, the effects on the remaining segments, the corporate cost savings, and the details of the cost plan.
+#### Example: Cyrene SARL (Cost Restructuring)
 
-**Example (Kosala Corp., sale leaseback of distribution centers).** Proceeds CHF425m: repay CHF215m of debt and buy back 10m shares. Rent CHF19m a year (Kosala keeps paying maintenance, taxes and utilities); cap rate **4.5%**; a gain of CHF200m amortized over 15 years; depreciation saved 30; interest saved 15; right-of-use asset and lease liability CHF198m.
+Cyrene rejected a 20%-premium bid from an aggressive cost-cutter; shareholders warned that as long as it didn't act to increase shareholder value, it would stay vulnerable to an acquirer who would. Below-average profitability makes it cheap to buy once synergies are counted.
 
-* Motives: unlock value in **non-core** real estate at an attractive cap rate; repay debt and aim for an **investment-grade** rating.
-* The cap rate of 4.5% vs comparables' 25th/50th/75th percentiles of 3.0%/5.5%/8.0% is **100 bp below the median** → favorable (a lower cap rate means a higher price). Location and physical condition drive cap rates.
-* Pro forma (25% tax): SG&A +19; D&A 67 − 30 + 13 (gain amortization) = **50**; EBIT 124 → 122; interest 43 → 28; net income 61 → 70; shares 97 → 87; EPS **0.63 → 0.81**. Debt/EBITDA 615/191 = **3.2 → 2.3** (400/172); EBIT/interest **2.9 → 4.3**.
-* On the rating grid, 2.3× and 4.3× → **BBB**: a spread of 450 bp + Treasury 125 bp = 5.75% × 400 = **CHF23m** of interest, CHF5m less than 28.
+**Step 1. The gap to peers** (EUR m; revenue 18,990, operating expenses 16,331, EBIT 2,659):
 
-**Example (Jupiter).** A sale leaseback of 100 owned stores is a **balance sheet restructuring**; a better rating should **lower** (not raise) its cost of capital; and its 5.50% cap rate equals the comparables' median (5.00/5.50/6.00), so it is **supported**.
+$$
+\begin{aligned}
+\text{Margin}&=\frac{2{,}659}{18{,}990}=14\%\quad\text{vs peers' }20\%\\
+\text{Cut}&=16{,}331-0.80\times 18{,}990=16{,}331-15{,}192=1{,}139
+\end{aligned}
+$$
+
+A cut of **EUR1,139m (7%)**.
+
+**Step 2. Next year**, closing the gap at 1.5 points of margin a year over four years, with 3% revenue growth:
+
+$$
+\begin{aligned}
+\text{Revenue}&=18{,}990\times 1.03=19{,}560\\
+EBIT_{\text{before one-time costs}}&=15.5\%\times 19{,}560=3{,}032\\
+EBIT&=3{,}032-1{,}250=1{,}782\ (9.1\%)
+\end{aligned}
+$$
+
+**Step 3. Risks.** Cutting spending that drives its above-peer **growth** (4%), and **political** backlash from layoffs and closures.
+
+**Alternative.** Selling or spinning off Household Goods (EBIT 496) leaves EBIT of 2,163: a **16%** margin (+2 points), but EBIT **−19%**. To judge it, the analyst needs the unit's sale or spin off value, the effects on the remaining segments, the corporate cost savings, and the details of the cost plan.
+
+$$\text{Cap rate}=\frac{\text{Annual rent (net operating income)}}{\text{Sale price}}$$
+
+#### Example: Kosala Corp. (Sale Leaseback of Distribution Centers)
+
+| Term | Value |
+| --- | --- |
+| Proceeds | CHF425m: repay CHF215m of debt, buy back 10m shares |
+| Rent | CHF19m a year (Kosala keeps paying maintenance, taxes and utilities) |
+| Gain on sale | CHF200m, amortized over 15 years |
+| Savings | Depreciation 30; interest 15 |
+| Right-of-use asset and lease liability | CHF198m |
+
+**Step 1. Motives.** Unlock value in **non-core** real estate at an attractive cap rate; repay debt and aim for an **investment-grade** rating.
+
+**Step 2. Is the price good?**
+
+$$\text{Cap rate}=\frac{19}{425}=4.5\%$$
+
+Comparables' 25th/50th/75th percentiles are 3.0%/5.5%/8.0%, so Kosala's is **100 bp below the median**: favorable, since a lower cap rate means a higher price. Location and physical condition drive cap rates.
+
+**Step 3. Pro forma** (25% tax; CHF m). SG&A rises by the rent of 19, and D&A is $67-30+13=50$ (the textbook adds the 13 of gain amortization).
+
+| | Before | After |
+| --- | ---: | ---: |
+| EBIT | 124 | 122 |
+| Interest | 43 | 28 |
+| Net income | 61 | 70 |
+| Shares (m) | 97 | 87 |
+| **EPS** | 0.63 | **0.81** |
+| **Debt/EBITDA** | $615/191=3.2$ | $400/172=$ **2.3** |
+| **EBIT/interest** | 2.9 | **4.3** |
+
+**Step 4. Rating.** On the rating grid, 2.3× and 4.3× map to **BBB**:
+
+$$\text{Interest}=(4.50\%+1.25\%)\times 400=\text{CHF}23\text{m}$$
+
+That is CHF5m less than 28.
+
+#### Example: Jupiter
+
+| Question | Answer |
+| --- | --- |
+| A sale leaseback of 100 owned stores is a… | **Balance sheet restructuring** |
+| Effect of a better rating on the cost of capital | **Lower** (not higher) |
+| Cap rate 5.50% vs comparables' 5.00/5.50/6.00 | Equals the median: the price is **supported** |
 
 #### Exam traps
 
 * A **lower** cap rate means a **higher** sale price: good for the seller-lessee.
-* In a sale leaseback, depreciation falls, rent rises, and the amortized gain reduces D&A; repaying debt cuts interest.
+* In a sale leaseback, depreciation on the sold assets falls, rent rises, and repaying debt cuts interest.
 * Required cost cut for a target margin = operating expenses − (1 − target margin) × revenue.
 
 > [!NOTE]
@@ -304,4 +571,6 @@ Companies may announce a **strategic review** before acting; analysts then weigh
 > **Textbook issues.**
 >
 > * OHAA: the solution **subtracts** cash from the BRL180bn to get the equity value. The usual bridge is equity = EV − debt + cash, so the step looks reversed; and 147,539/15,267 = 9.7×, which the text rounds to 10×. Follow the given numbers if the exam reuses them.
+> * Kosala: the solution adds the 13 of gain amortization to D&A (67 − 30 + 13 = 50), which the EBIT of 122 relies on. A deferred gain would normally **reduce** expense; 13 also equals the right-of-use asset's depreciation (198/15), which is the more natural reading of the +13.
+> * Benefit: (84 − 4) × 9 = 720; the textbook's 721 (and so 1,621, 184, 1,846 and 409) presumably comes from unrounded EBITDA.
 > * Tulor: the solution says the share issue "is alone responsible for a loss of AUD0.26 per share". But 0.26 is the **total** EPS drop: spreading the old 620 of net income over 728 shares costs only 0.96 − 0.85 = 0.11; the rest comes from amortization and interest.

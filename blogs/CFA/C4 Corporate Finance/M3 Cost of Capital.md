@@ -22,16 +22,40 @@ $$
 
 where $t$ is the **marginal** tax rate and the weights (non-negative, summing to 1) are the **target** capital structure.
 
-* $r_d=r_f+\text{credit spread}$ (pretax).
-* $r_e=r_f+\beta\times ERP$ (CAPM, the most common model in practice): $\beta$ is the stock's sensitivity to the market; the ERP is what investors demand for holding equities rather than the risk-free asset.
+$$
+\begin{aligned}
+r_d&=r_f+\text{Credit spread}\quad\text{(pretax)}\\
+r_e&=r_f+\beta\times ERP\quad\text{(CAPM)}
+\end{aligned}
+$$
+
+* The CAPM is the most common model in practice: $\beta$ is the stock's sensitivity to the market; the ERP is what investors demand for holding equities rather than the risk-free asset.
 * Preferred stock has a stated dividend and a prior claim over common, so usually $r_d < r_p < r_e$.
 
 WACC is hard to estimate because each component can be estimated in many ways, with no single right one; the **long-term target** capital structure may differ from the current one; and the **marginal** tax rate may differ from the average or effective rate.
 
-**Example (WACC with preferred stock and a capped interest deduction).** Target weights: debt 30%, preferred 10%, common 60%. Pretax $r_d$ 6%, $r_p$ 7%, $r_e$ 11%; marginal tax 25%.
+#### Example: WACC with Preferred Stock and a Capped Interest Deduction
 
-* Interest deductible: 0.30 × 6% × 0.75 + 0.10 × 7% + 0.60 × 11% = 1.35% + 0.70% + 6.60% = **8.65%**.
-* Already at the interest-deduction cap (no tax benefit on new debt): 0.30 × 6% + 0.70% + 6.60% = **9.10%**.
+| Component | Target weight | Pretax cost |
+| --- | ---: | ---: |
+| Debt | 30% | 6% |
+| Preferred | 10% | 7% |
+| Common | 60% | 11% |
+
+The marginal tax rate is 25%.
+
+**Case 1. Interest is deductible.**
+
+$$
+\begin{aligned}
+WACC&=0.30\times 6\%\times 0.75+0.10\times 7\%+0.60\times 11\%\\
+&=1.35\%+0.70\%+6.60\%=8.65\%
+\end{aligned}
+$$
+
+**Case 2. The company is already at the interest-deduction cap,** so new debt gets no tax benefit:
+
+$$WACC=0.30\times 6\%+0.70\%+6.60\%=9.10\%$$
 
 ## What Drives the Cost of Capital
 
@@ -82,9 +106,31 @@ Top-down factors are systematic and show up in the **risk-free rate and ERP**; b
 * A **put** or **conversion** option benefits the investor, so the yield at issue is lower, though the cost may rise later (refinancing at higher rates after a put; dilution after conversion).
 * **Cumulative** preferred: missed dividends must be paid before any common dividend, so investors accept a lower return than on non-cumulative preferred.
 
-**Example (two countries).** Country A: wide spreads, high rate volatility and inflation, low capital availability, 15% tax. Country B: narrow spreads, low volatility and inflation, high availability, 25% tax → **Country B** has the lower cost of capital. Raising A's tax rate from 15% to 25% lowers the after-tax cost of debt, **if** interest is deductible and the company has taxable income.
+#### Example: Two Countries
 
-**Example (two companies).** Company 1 vs Company 2: cash and securities 20% vs 17%; intangibles 10% vs 24%; PP&E 46% vs 29%; net debt/EBITDA 2.1 vs 2.5; interest coverage 12.6 vs 7.9; low operating leverage; top-5 customers 15% vs 27%; **putable** debt (Company 2's is callable) → **Company 1** has the lower cost of capital on every count.
+| Factor | Country A | Country B |
+| --- | --- | --- |
+| Credit spreads | Wide | Narrow |
+| Rate volatility and inflation | High | Low |
+| Capital availability | Low | High |
+| Tax rate | 15% | 25% |
+| **Cost of capital** | Higher | **Lower** |
+
+Raising A's tax rate from 15% to 25% would lower its after-tax cost of debt, **if** interest is deductible and the company has taxable income.
+
+#### Example: Two Companies
+
+| Factor | Company 1 | Company 2 | Lower cost |
+| --- | ---: | ---: | --- |
+| Cash and securities / assets | 20% | 17% | 1 |
+| Intangibles / assets | 10% | 24% | 1 |
+| PP&E / assets | 46% | 29% | 1 |
+| Net debt/EBITDA | 2.1 | 2.5 | 1 |
+| Interest coverage | 12.6 | 7.9 | 1 |
+| Top-5 customers' share of sales | 15% | 27% | 1 |
+| Debt feature | Putable | Callable | 1 |
+
+Both have low operating leverage. **Company 1** has the lower cost of capital on every count.
 
 #### Exam traps
 
@@ -117,7 +163,16 @@ The method depends on the type of debt (traded, non-traded, bank, lease), its li
 | C | 0.3 < IC < 0.6 | 80% < D/E < 100% |
 | D | IC < 0.3 | D/E > 100% |
 
-**Example (Gamma Company).** IC 1.5 → **B**; D/E 43% → **BBB**. The ratios conflict, so use judgment and look at their **trend** (e.g., a rising IC could justify BB).
+$$IC=\frac{EBIT}{\text{Interest}}\qquad D/E=\frac{\text{Debt}}{\text{Equity}}$$
+
+#### Example: Gamma Company
+
+| Ratio | Gamma | Implied rating |
+| --- | ---: | --- |
+| Interest coverage | 1.5 | **B** (1.4 < IC < 2) |
+| D/E | 43% | **BBB** (42% < D/E < 44%) |
+
+The ratios conflict, so use judgment and look at their **trend**: e.g., a rising IC could justify BB.
 
 * **Bank loans**: use the rate on the most recent borrowing, if market conditions and the company's risk haven't changed materially since. Loans can be fixed or floating, and fully, partly or non-amortizing. **Amortizing** loans usually cost less than bullet loans, because principal is repaid over the term (lower default risk).
 * **Leases**: a **finance lease** is like an amortizing secured loan, so it usually costs less than unsecured borrowing (operating leases are expensed). Under IFRS 16 / ASC 842, the **rate implicit in the lease** (RIIL) solves:
@@ -134,14 +189,35 @@ $$
   * If the residual value and lessor costs are unknown, use the **incremental borrowing rate** (IBR); if the IBR is also unknown, use the non-traded debt methods. Most public lessees disclose their lease rates.
   * Where a finance lease counts as a purchase for tax, interest is deductible → use the after-tax rate.
 
-**Example (G&S Airlines lease).** 15 years, payment €9.0m a year, aircraft fair value €100m, lessor direct cost €5m, residual €10m. Net cash flows: −105 at $t=0$, +9 a year, +19 in year 15.
+#### Example: G&S Airlines Lease
 
-* N = 15, PV = −105, PMT = 9, FV = 10 → **RIIL = 4.08%**.
-* Cheaper than the unsecured IBR (6%) and equity (11%, and dilutive); avoids ownership risks, but **raises leverage**.
+| Input | Value |
+| --- | --- |
+| Term | 15 years |
+| Lease payment | €9.0m a year |
+| Aircraft fair value | €100m |
+| Lessor's direct initial costs | €5m |
+| Residual value to the lessor | €10m |
 
-* **International**: the cost of debt should be in the **currency of the cash flows**. For less mature markets, add a country risk premium based on a **country risk rating (CRR)** that reflects economic conditions, political risk, exchange-rate risk and the development and regulation of securities markets: CRP = the median rate for the country's rating class − the benchmark country's rate. Sovereign risk (default on government debt) is only **one part** of country risk, which also covers political stability, economic competitiveness and human development.
+**Step 1. Set up the RIIL equation.**
 
-**Example (country risk premiums).** Benchmark Country A (rating 1), median rate 4.0% → CRP 0%. Country C (rating 2), 4.5% → CRP **0.5%**. Country D (rating 8), 15.5% → CRP **11.5%**.
+$$\sum_{t=1}^{15}\frac{9}{(1+RIIL)^t}+\frac{10}{(1+RIIL)^{15}}=100+5$$
+
+**Step 2. Solve.** N = 15, PV = −105, PMT = 9, FV = 10 → **RIIL = 4.08%**.
+
+**Step 3. Compare.** The lease is cheaper than unsecured borrowing (IBR 6%) and equity (11%, and dilutive), and avoids ownership risks, but it **raises leverage**.
+
+* **International**: the cost of debt should be in the **currency of the cash flows**. For less mature markets, add a country risk premium based on a **country risk rating (CRR)** that reflects economic conditions, political risk, exchange-rate risk and the development and regulation of securities markets. Sovereign risk (default on government debt) is only **one part** of country risk, which also covers political stability, economic competitiveness and human development.
+
+$$CRP=\text{Median rate}_{\text{country's rating class}}-\text{Rate}_{\text{benchmark country}}$$
+
+#### Example: Country Risk Premiums
+
+| Country | CRR | Median rate | CRP |
+| --- | ---: | ---: | ---: |
+| A (benchmark) | 1 | 4.0% | 0% |
+| C | 2 | 4.5% | $4.5-4.0=$ **0.5%** |
+| D | 8 | 15.5% | $15.5-4.0=$ **11.5%** |
 
 * **Interest deduction limits**: if the company has already hit the cap, **don't** tax-adjust the cost of new debt (there's no further tax benefit).
 
@@ -196,7 +272,17 @@ With a normal upward-sloping yield curve, a bill-based ERP is **higher** than a 
 
 **Limitations.** The ERP can vary over time (a permanent shift makes long histories unrepresentative), and **survivorship bias** inflates historical estimates (failed companies drop out of the index, and back-filled index histories do the same).
 
-**Example (Smith vs Müller).** Smith: Russell 3000, 35 years, 30-year T-bond, arithmetic mean: 12.96% − 6.25% = **6.71%**. Müller: S&P 500, 65 years, 3-month T-bill, geometric mean: 11.23% − 3.11% = **8.12%**. Both can be valid: they made different choices.
+#### Example: Smith vs Müller
+
+| Choice | Smith | Müller |
+| --- | --- | --- |
+| Equity index | Russell 3000 | S&P 500 |
+| Period | 35 years | 65 years |
+| Risk-free proxy | 30-year T-bond | 3-month T-bill |
+| Mean | Arithmetic | Geometric |
+| **ERP** | $12.96\%-6.25\%=$ **6.71%** | $11.23\%-3.11\%=$ **8.12%** |
+
+Both can be valid: they made different choices.
 
 ### Forward-Looking Approach
 
@@ -214,7 +300,18 @@ $$
 * Some analysts add index **buybacks** to the yield (total payout), and then consider how buybacks change growth.
 * For fast-growing economies, use **three stages** (fast growth, transition, mature) and solve for the rate that equates the PV of all stages to the index level, then subtract $r_f$.
 
-**Example (FTSE 100).** Yield 1.94%, growth 5.0%, gilt yield 1.63% → ERP = 1.94 + 5.0 − 1.63 = **5.31%**. The range of forecasts runs from 1.5 + 4 − 2.5 = **3%** to 3.5 + 6 − 1.5 = **8%** (useful for simulation).
+#### Example: FTSE 100
+
+The dividend yield is 1.94%, expected growth 5.0% and the gilt yield 1.63%.
+
+$$ERP=1.94\%+5.0\%-1.63\%=5.31\%$$
+
+The range of forecasts (useful for simulation):
+
+| | Yield | Growth | $r_f$ | ERP |
+| --- | ---: | ---: | ---: | ---: |
+| Low | 1.5% | 4% | 2.5% | **3%** |
+| High | 3.5% | 6% | 1.5% | **8%** |
 
 **Macroeconomic model (Grinold–Kroner, 2001).**
 
@@ -245,13 +342,35 @@ $$
 
 * More reliable where listed equities are a **large share of the economy** (developed markets); not appropriate where the stock market is small (many developing countries).
 
-**Examples.**
+#### Example: Grinold–Kroner Scenarios
 
-* 10-year Treasury 2.3%, TIPS 0.66% → $i$ = 1.023/1.0066 − 1 = **1.6%**.
-* Scenario 1: $r_f$ 2.5, $i$ 1.6, $g$ 3, $\Delta(P/E)$ 0, DY 2.2, $\Delta S$ −0.7 → {2.2 + 0 + [1.6 + 3.0 − (−0.7)]} − 2.5 = **5.0%**.
-* Scenario 2: $r_f$ 3, $i$ 3, $g$ 2, $\Delta(P/E)$ 1, DY 2, $\Delta S$ 0 → {2.0 + 1.0 + [3.0 + 2.0 − 0]} − 3.0 = **5.0%**.
-* Higher expected inflation: **no effect** on the ERP ($i$ and $r_f$ rise together). Lower expected income: the ERP **falls**.
-* Same market, two methods: historical 9.96 − 3.15 = **6.81%**; Grinold–Kroner {1.8 − 1.2 + (1.9 + 2.7 − 0)} − 0.96 = **4.24%**.
+**Step 1. Expected inflation.** The 10-year Treasury yields 2.3% and TIPS 0.66%:
+
+$$i=\frac{1.023}{1.0066}-1=1.6\%$$
+
+**Step 2. ERP in two scenarios** (all in %):
+
+| Input | Scenario 1 | Scenario 2 |
+| --- | ---: | ---: |
+| DY | 2.2 | 2.0 |
+| $\Delta(P/E)$ | 0 | 1.0 |
+| $i$ | 1.6 | 3.0 |
+| $g$ | 3.0 | 2.0 |
+| $\Delta S$ | −0.7 | 0 |
+| $r_f$ | 2.5 | 3.0 |
+| **ERP** | $2.2+0+(1.6+3.0+0.7)-2.5=$ **5.0** | $2.0+1.0+(3.0+2.0-0)-3.0=$ **5.0** |
+
+* Higher expected inflation has **no effect** on the ERP ($i$ and $r_f$ rise together).
+* Lower expected income (DY) makes the ERP **fall**.
+
+#### Example: Same Market, Two Methods
+
+$$
+\begin{aligned}
+\text{Historical: }ERP&=9.96\%-3.15\%=6.81\%\\
+\text{Grinold–Kroner: }ERP&=1.8-1.2+(1.9+2.7-0)-0.96=4.24\%
+\end{aligned}
+$$
 
 **Limitations of forward-looking estimates:**
 
@@ -259,7 +378,19 @@ $$
 * **DDM**: assumes a constant P/E; needs adjusting when earnings, dividends and prices grow at different rates.
 * **Macro models**: errors in macro data; behavioral biases in forecasting.
 
-**Example (a new market with 20 years of history).** Index returns back-filled for 4 years before launch from the surviving members → **upward** survivorship bias. A 5-year border conflict that depressed returns and won't recur → historical ERP biased **downward**. Inverted curve (short rate 9%, 10-year 7%): a required return built on the short rate is biased **upward**. Grinold–Kroner with $i$ = 4% (long-term), $g$ = 4%, $\Delta(P/E)$ = 1%, DY 1%, $r_f$ = 7% (10-year) → {1 + 1 + [4 + 4 + 0]} − 7 = **3.0%**; so average-risk stocks require at least 7% + 2% to 3% = **9% or more**.
+#### Example: A New Market with 20 Years of History
+
+| Issue | Bias in the estimate |
+| --- | --- |
+| Index returns back-filled for 4 years before launch, from the surviving members | Historical ERP **up** (survivorship) |
+| A 5-year border conflict that depressed returns and won't recur | Historical ERP **down** |
+| Inverted curve (short rate 9%, 10-year 7%); required return built on the short rate | Required return **up** |
+
+**Grinold–Kroner instead.** Use the long-term inflation forecast and the 10-year yield: $i$ = 4%, $g$ = 4%, $\Delta(P/E)$ = 1%, DY = 1%, $\Delta S$ = 0, $r_f$ = 7%.
+
+$$ERP=1+1+(4+4-0)-7=3.0\%$$
+
+So average-risk stocks require at least 7% + (2% to 3%) = **9% or more**.
 
 #### Exam traps
 
@@ -279,15 +410,23 @@ $$
 
 For a listed company with stable, predictable dividends:
 
-* **Gordon growth**: $r_e=\dfrac{D_1}{P_0}+g$
-* **Multiyear forecast**: solve for the IRR, $P_0 = \sum_{t=1}^n \dfrac{D_t}{(1+r_e)^t}+\dfrac{P_n}{(1+r_e)^n}$
+$$
+\begin{aligned}
+\text{Gordon growth: }r_e&=\frac{D_1}{P_0}+g\\
+\text{Multiyear (solve for the IRR): }P_0&=\sum_{t=1}^n \frac{D_t}{(1+r_e)^t}+\frac{P_n}{(1+r_e)^n}\\
+\text{Preferred (}g=0\text{): }r_p&=\frac{D}{P}
+\end{aligned}
+$$
 
-**Examples.**
+#### Example: DDM Cost of Equity
 
-* Company X: $P_0$ €40, $D_1$ €1.04, $g$ 4% → 1.04/40 + 0.04 = **6.6%**.
-* Multiyear: $P_0$ USD40; dividends 1.00, 1.25, 1.35, 1.50; $P_4$ USD45 → cash flows −40, 1, 1.25, 1.35, 46.5 → IRR = **6.015%**.
-* $D_0$ USD2.50, $P_0$ USD50, $g$ 5% → 2.625/50 + 0.05 = **10.25%**. A higher $g$ raises $r_e$ (both $D_1$ and $g$ rise); a lower price raises $r_e$.
-* Preferred stock (a perpetuity, $g$ = 0): $r_p = D/P$.
+| Case | Inputs | $r_e$ |
+| --- | --- | --- |
+| Company X (Gordon) | $P_0$ €40, $D_1$ €1.04, $g$ 4% | $1.04/40+4\%=$ **6.6%** |
+| Gordon from $D_0$ | $P_0$ USD50, $D_0$ USD2.50, $g$ 5% | $2.50\times 1.05/50+5\%=$ **10.25%** |
+| Multiyear | $P_0$ USD40; dividends 1.00, 1.25, 1.35, 1.50; $P_4$ USD45 | IRR of −40, 1, 1.25, 1.35, 46.5 = **6.015%** |
+
+A higher $g$ raises $r_e$ (both $D_1$ and $g$ rise); so does a lower price.
 
 ### Bond Yield Plus Risk Premium (BYPRP)
 
@@ -301,7 +440,9 @@ where $r_d$ is usually the YTM on the company's **long-term** debt, and $RP$ is 
 * The premium is fairly arbitrary and may not be stable over time.
 * It needs traded debt; if there are several bonds with different features, there's no rule on which yield to use (common practice: the long-term bond).
 
-**Example.** Bond yield 4.3% + historical premium 6.1% = **10.40%**.
+#### Example: BYPRP
+
+$$r_e=\underbrace{4.3\%}_{\text{bond yield}}+\underbrace{6.1\%}_{\text{historical premium}}=10.40\%$$
 
 ### CAPM
 
@@ -336,11 +477,42 @@ The three-factor model uses only the first three factors.
 
 The betas come from regressing the company's excess returns on the factors. The market beta in a multifactor model **differs** from the CAPM beta, and different models give different answers. A short-term $r_f$ in the regression can understate $r_f$ when the curve slopes up.
 
-**Examples.**
+#### Example: Five-Factor Model
 
-* Five-factor: 3.82% + 1.2(6.5%) + 0.10(1.8%) − 0.20(4.0%) + 0.5(2.0%) + 0.2(1.0%) = **12.2%**.
-* Three-factor with an intercept: $r_e - r_f$ = 0.003 + 1.2(0.05) − 0.4(0.01) + 0.2(0.04) = 0.067 → $r_e$ = **8.7%** (with $r_f$ 2%).
-* CAPM vs three-factor ($r_f$ 6%, market 10%): CAPM 6% + 0.8(4%) = **9.2%**; three-factor 6% + 0.01 + 0.75(4%) + 0.15(5%) + 0.05(2%) = **10.85%**. SMB and HML add 0.85%.
+| Factor | Premium | Beta | Contribution |
+| --- | ---: | ---: | ---: |
+| $r_f$ | | | 3.82% |
+| ERP | 6.5% | 1.2 | 7.80% |
+| SMB | 1.8% | 0.10 | 0.18% |
+| HML | 4.0% | −0.20 | −0.80% |
+| RMW | 2.0% | 0.5 | 1.00% |
+| CMA | 1.0% | 0.2 | 0.20% |
+| **$r_e$** | | | **12.2%** |
+
+#### Example: Three-Factor Model with an Intercept
+
+$r_f$ = 2%; the intercept is 0.3%.
+
+$$
+\begin{aligned}
+r_e-r_f&=0.003+1.2\times 0.05-0.4\times 0.01+0.2\times 0.04=0.067\\
+r_e&=2\%+6.7\%=8.7\%
+\end{aligned}
+$$
+
+#### Example: CAPM vs Three-Factor
+
+$r_f$ = 6% and the expected market return 10% (ERP 4%).
+
+$$
+\begin{aligned}
+\text{CAPM: }r_e&=6\%+0.8\times 4\%=9.2\%\\
+\text{Three-factor: }r_e&=6\%+1\%+0.75\times 4\%+0.15\times 5\%+0.05\times 2\%\\
+&=10.85\%
+\end{aligned}
+$$
+
+The 1% is the intercept; SMB and HML add 0.85%.
 
 ### Private Companies
 
@@ -388,7 +560,23 @@ $$
 
 where $\sigma_{\text{equity}}$ and $\sigma_{\text{bond}}$ are the volatilities of the local equity and bond markets. This needs return histories for both.
 
-**Example (Makinassi).** Headquarters in Country X (spread 1.5%); Country Y (40% of sales) has a spread of 3.2%, $\sigma_E$ 4.0% and $\sigma_B$ 2.5%. The relevant spread is 3.2 − 1.5 = 1.7%; CRP = 1.7% × 4.0/2.5 = 2.72%; times the 40% exposure = **1.088%** added to $r_e$.
+#### Example: Makinassi
+
+Makinassi is headquartered in Country X (sovereign spread 1.5%). Country Y, 40% of its sales, has a spread of 3.2%, equity volatility 4.0% and bond volatility 2.5%.
+
+**Step 1. The relevant spread** is Y's over X's:
+
+$$3.2\%-1.5\%=1.7\%$$
+
+**Step 2. Scale to equity.**
+
+$$CRP=1.7\%\times\frac{4.0}{2.5}=2.72\%$$
+
+**Step 3. Apply the exposure.**
+
+$$\lambda\times CRP=0.40\times 2.72\%=1.088\%$$
+
+Add **1.088%** to $r_e$.
 
 **Global CAPM.** A single factor: a global market index as $r_m$, assuming no significant risk differences across countries. Problem: emerging and developed returns have low correlation, which gives low or even **negative** betas. Adding a domestic index factor helps, if local data are reliable.
 
@@ -416,10 +604,17 @@ $$
 
 ## Mini-Case 1: Gretna Engines
 
-A small-cap listed engine maker: cyclical, high fixed costs, assets mainly inventory and PP&E. Capital: debt 20% (7% coupon, 7 years, BBB, thinly traded), preferred 15% (7% dividend, par 1,000, price 980, redeemable at par), common 65%. It plans to issue unsecured debt to retire the preferred.
+A small-cap listed engine maker: cyclical, high fixed costs, assets mainly inventory and PP&E. It plans to issue unsecured debt to retire the preferred.
 
-* **Why its cost of capital is high**: cyclical, volatile revenue and earnings; illiquid assets; high operating leverage.
-* **Cost of debt by matrix pricing** (four liquid BBB bonds, semiannual):
+| Capital | Weight | Terms |
+| --- | ---: | --- |
+| Debt | 20% | 7% coupon, 7 years, BBB, thinly traded |
+| Preferred | 15% | 7% dividend, par 1,000, price 980, redeemable at par |
+| Common | 65% | Beta 0.91; $r_f$ 2.1%; ERP 5.5% |
+
+**Why its cost of capital is high**: cyclical, volatile revenue and earnings; illiquid assets; high operating leverage.
+
+**Step 1. Cost of debt by matrix pricing** (four liquid BBB bonds, semiannual):
 
 | Bond | Coupon | Maturity | Price | YTM |
 | --- | --- | --- | --- | --- |
@@ -428,10 +623,38 @@ A small-cap listed engine maker: cyclical, high fixed costs, assets mainly inven
 | 3 | 6% | 8 | 100.00 | 6.000% |
 | 4 | 8% | 8 | 112.42 | 6.021% |
 
-  The 4-year average is **5.166%** and the 8-year average **6.011%**, a step of (6.011 − 5.166)/4 = 0.211% a year → 5 years 5.377%, 6 years 5.588%, 7 years **5.799% ≈ 5.8%**. Gretna's thin trading means its true yield is slightly higher.
-* **Cost of preferred**: 70/980 = **7.14%**.
-* After replacing the preferred with debt (35% debt, 65% equity), the new debt will cost more than 5.8% but less than 7.14%. Redeeming at par when the price is 980 implies low $r_f$ and/or tight spreads, i.e., good timing. To cut the cost further, issue **secured**, **putable** or **convertible** debt.
-* **Cost of equity**: CAPM 2.1% + 0.91 × 5.5% = **7.11%**; five-factor 2.1% + 0.95(5.5) + 0.45(1.8) + 0.14(3.9) − 0.19(3.1) + 0.30(3.7) = **9.20%**; BYPRP 5.8% + 6.2% = **12.0%**.
+Interpolate linearly between the 4-year and 8-year averages for Gretna's 7-year bond:
+
+$$
+\begin{aligned}
+\bar y_4&=\frac{5.140+5.191}{2}=5.166\%\\
+\bar y_8&=\frac{6.000+6.021}{2}=6.011\%\\
+\text{Step per year}&=\frac{6.011-5.166}{4}=0.211\%\\
+y_7&=5.166+3\times 0.211=5.799\%\approx 5.8\%
+\end{aligned}
+$$
+
+Gretna's thin trading means its true yield is slightly higher.
+
+**Step 2. Cost of preferred.**
+
+$$r_p=\frac{0.07\times 1{,}000}{980}=7.14\%$$
+
+After replacing the preferred with debt (35% debt, 65% equity), the new debt will cost more than 5.8% but less than 7.14%. Redeeming at par when the price is 980 implies low $r_f$ and/or tight spreads, i.e., good timing. To cut the cost further, issue **secured**, **putable** or **convertible** debt.
+
+**Step 3. Cost of equity, three ways.**
+
+$$
+\begin{aligned}
+\text{CAPM: }r_e&=2.1\%+0.91\times 5.5\%=7.11\%\\
+\text{Five-factor: }r_e&=2.1+0.95(5.5)+0.45(1.8)+0.14(3.9)\\
+&\quad-0.19(3.1)+0.30(3.7)=9.20\%\\
+\text{BYPRP: }r_e&=5.8\%+6.2\%=12.0\%
+\end{aligned}
+$$
+
+**Step 4. Sanity checks.**
+
 * The CAPM's 7.11% is **below** the 7.14% cost of preferred, so it isn't credible: common stock is junior to preferred.
 * The ERP was estimated with a **bill rate** and the **arithmetic** mean, both of which push it **up**.
 
@@ -450,10 +673,31 @@ A private software company in a higher-risk emerging market, compared with liste
 
 Local 10-year $r_f$ 5.41%; ERP 6%, SP 5%, IP 1%, SCRP 6%, CRP 2%.
 
-* **Cost of debt**: IC = 12.2/1.6 = **7.63**; D/E = 18.4/(105.2 − 18.4) = **0.2120** → synthetic rating **A**, spread 1.46%. $r_d$ = 5.41 + 1.46 + 2.00 (CRP) = **8.87%**; after tax, 8.87% × 0.8 = **7.096%**.
+**Step 1. Cost of debt from a synthetic rating.**
+
+$$
+\begin{aligned}
+IC&=\frac{12.2}{1.6}=7.63\\
+D/E&=\frac{18.4}{105.2-18.4}=0.2120
+\end{aligned}
+$$
+
+That maps to a synthetic rating of **A**, with a spread of 1.46%. Country risk applies to debt too:
+
+$$
+\begin{aligned}
+r_d&=5.41\%+1.46\%+\underbrace{2.00\%}_{CRP}=8.87\%\\
+r_d(1-t)&=8.87\%\times 0.8=7.096\%
+\end{aligned}
+$$
+
+**Step 2. Premiums.**
+
 * **Size premium near the top of the 3–6% range**: Precision's assets are under a tenth of the industry average.
-* **SCRP**: **higher** because of more intangibles (47% vs 32%) and less cash (9% vs 14%); 70% of revenue from five nearby customers (customer and geographic concentration); a founder-CEO with no succession plan (key person). **Lower** because of 60% subscription revenue and lower leverage (D/E 0.2120 vs 0.3025; IC 7.63 vs 7.55).
-* **Beta**: unlever the industry beta with the **industry's** tax rate and D/E, then relever with Precision's:
+* **SCRP higher** because of more intangibles (47% vs 32%) and less cash (9% vs 14%); 70% of revenue from five nearby customers (customer and geographic concentration); a founder-CEO with no succession plan (key person).
+* **SCRP lower** because of 60% subscription revenue and lower leverage (D/E 0.2120 vs the industry's 296.4/979.8 = 0.3025; IC 7.63 vs 7.55).
+
+**Step 3. Beta.** Unlever the industry beta with the **industry's** tax rate and D/E, then relever with Precision's:
 
 $$
 \begin{aligned}
@@ -470,9 +714,20 @@ $$
 \end{aligned}
 $$
 
-* **Expanded CAPM** (including IP and CRP): 5.41 + 1.19(6) + 5 + 1 + 6 + 2 = **26.55%**.
-* **Build-up** (as computed in the solution, without IP): 5.41 + 6 + 5 + 6 + 2 = **24.41%**.
-* **WACC** with $w_d$ = 18.4/105.2 = 0.1749 and $w_e$ = 0.8251: 0.1749 × 8.87% × 0.8 + 0.8251 × 24.41% = **21.38%**.
+**Step 4. Cost of equity** (in %).
+
+$$
+\begin{aligned}
+\text{Expanded CAPM (with IP and CRP): }r_e&=5.41+1.19(6)+5+1+6+2\\
+&=26.55\%\\
+\text{Build-up (as in the solution, no IP): }r_e&=5.41+6+5+6+2\\
+&=24.41\%
+\end{aligned}
+$$
+
+**Step 5. WACC**, with $w_d=18.4/105.2=0.1749$ and $w_e=0.8251$:
+
+$$WACC=0.1749\times 7.096\%+0.8251\times 24.41\%=21.38\%$$
 
 #### Exam traps
 

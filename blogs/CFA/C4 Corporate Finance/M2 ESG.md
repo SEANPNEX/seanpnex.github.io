@@ -50,7 +50,14 @@ Concentrated ownership is far more common: **38 of 47** jurisdictions surveyed b
 > [!IMPORTANT]
 > Controlling shareholders **reduce** the principal–agent problem (they control the board, appoint managers, and have the incentive to monitor), but they **create** the principal–principal problem.
 
-**Example (Company A).** Managers own about 30%, no other holder owns more than 1%, one share one vote. This is dispersed ownership and dispersed voting power → weak shareholders, strong managers → **principal–agent** risk.
+#### Example: Company A
+
+| Fact | Implication |
+| --- | --- |
+| Managers own about 30%; no other holder owns more than 1% | Dispersed ownership |
+| One share, one vote | Dispersed voting power |
+
+Dispersed ownership and voting → weak shareholders, strong managers → **principal–agent** risk.
 
 ### Influential Shareholders
 
@@ -103,14 +110,26 @@ Governance is hard to quantify. Start with the disclosed policies (including bus
 
 **Voting rights.** **Straight voting** (one share, one vote) vs **dual-class** shares, where founders or managers hold higher-vote shares than the public: a potential conflict with minority holders.
 
-**Example (Style, Italian clothing retailer).** 11-member board; the chair (Leila Donato) isn't the CEO; 2 independent directors; 4 of the 6 non-independent directors are Donato family members, each with 20+ years on the board; 5 women, aged 35–75.
+#### Example: Style (Italian Clothing Retailer)
+
+| Board fact | Detail |
+| --- | --- |
+| Size | 11 members |
+| Chair | Leila Donato, not the CEO |
+| Independence | 2 independent directors |
+| Family | 4 of the 6 non-independent directors are Donato family members, each with 20+ years on the board |
+| Diversity | 5 women; aged 35–75 |
+
+Assessment:
 
 | Positive | Negative |
 | --- | --- |
 | No CEO duality | Only 2 independent directors; the family includes the chair |
 | Age and gender diversity | Family tenure far exceeds the typical 10 years |
 
-**Example (Sumiyoshi Banking Group, Japan, vs domestic peers).**
+#### Example: Sumiyoshi Banking Group
+
+Sumiyoshi, a Japanese bank, compared with its domestic peers:
 
 | Factor | Peers | Sumiyoshi |
 | --- | --- | --- |
@@ -153,7 +172,9 @@ The main challenge is getting information that is **relevant, comparable and dec
 | **ESG data providers** | Vendors turn public disclosures into ESG scores and rankings (often industry-relative), with some subjective analyst assessment | MSCI, Sustainalytics |
 | **Not-for-profit initiatives and reporting frameworks** | Data, insights and tools on ESG issues | IIRC (standardized disclosure framework), GRI (sustainability reporting standards by industry), SASB (uniform sustainability accounting standards; **materiality maps**), 2DII, Access to Nutrition Index |
 
-**Example (City Developments Limited, CDL).** Climate scenario planning aligned with TCFD and the IPCC, with 2030 scenarios for 2°C and 1.5°C of warming:
+#### Example: City Developments Limited (CDL)
+
+CDL's climate scenario planning is aligned with TCFD and the IPCC, with 2030 scenarios for 2°C and 1.5°C of warming:
 
 | Type | Items |
 | --- | --- |

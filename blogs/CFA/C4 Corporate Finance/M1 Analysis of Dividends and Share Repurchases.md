@@ -24,12 +24,38 @@ Dividends are a large part of total return: the S&P 500 returned 10.0% a year fr
 * **Stock dividend** (bonus issue): extra shares instead of cash, typically 2–10% of shares outstanding.
 * **Stock split**: e.g., 2-for-1. **Reverse split**: e.g., 1-for-20.
 
-**Example (AfriSage, extra dividend).** The policy is an ordinary dividend of at least 35% of net income. In 2018, EPS is ZAR14.23 and DPS ZAR7.61, a payout of 7.61/14.23 = **53.5%** (2017: 10.68/12.65 = **84.4%**). The minimum ordinary dividend is 14.23 × 0.35 = **ZAR4.98**, so the extra dividend is 7.61 − 4.98 = **ZAR2.63**.
+$$
+\begin{aligned}
+\text{Payout ratio}&=\frac{DPS}{EPS}\\
+\text{Extra dividend}&=DPS-\text{Minimum payout}\times EPS
+\end{aligned}
+$$
+
+#### Example: AfriSage (Extra Dividend)
+
+AfriSage's policy is an ordinary dividend of at least 35% of net income.
+
+| | 2017 | 2018 |
+| --- | ---: | ---: |
+| EPS (ZAR) | 12.65 | 14.23 |
+| DPS (ZAR) | 10.68 | 7.61 |
+| Payout | $10.68/12.65=$ **84.4%** | $7.61/14.23=$ **53.5%** |
+
+**Extra dividend in 2018.**
+
+$$
+\begin{aligned}
+\text{Minimum ordinary}&=0.35\times 14.23=4.98\\
+\text{Extra}&=7.61-4.98=2.63
+\end{aligned}
+$$
+
+**ZAR2.63** of the 2018 dividend is extra.
 
 ### Effect on Shareholder Wealth
 
 * **Cash dividend**: the share price falls by the dividend, but the shareholder's wealth (share + cash) is unchanged, all else equal.
-* **Stock dividend**: more shares, same wealth. The total cost basis is unchanged, so the cost **per share** falls: 100 shares at US\$10 become 105 shares after a 5% stock dividend, at US\$1,000/105 = **US\$9.52** each. Generally not taxable. Claimed benefits: a larger float, better liquidity, and a price in an "optimal" trading range (often US\$20–80 in the US).
+* **Stock dividend**: more shares, same wealth. The total cost basis is unchanged, so the cost **per share** falls: 100 shares at US\$10 become 105 shares after a 5% stock dividend, at $1{,}000/105=$ **US\$9.52** each. Generally not taxable. Claimed benefits: a larger float, better liquidity, and a price in an "optimal" trading range (often US\$20–80 in the US).
 * **Split**: all per-share figures fall in proportion; P/E, dividend yield and market value are unchanged. A 2-for-1 split is economically a 100% stock dividend; only the accounting differs.
 * **Reverse split**: fewer shares at a higher price, market value unchanged. Used to bring the price into a marketable range (listing minimums; institutions avoid stocks below US\$5); most common in or after financial distress.
 
@@ -39,11 +65,43 @@ Dividends are a large part of total return: the S&P 500 returned 10.0% a year fr
 | Equity accounts | Retained earnings → contributed capital (new shares × price) | No change |
 | Typical size | 2–10% | 2-for-1, 3-for-1 |
 
-**Examples.**
+With a stock dividend of $d$ (e.g., 3%), or a split of $k$-for-1:
 
-* **3% stock dividend**, for a holder of 10%: shares 1,000,000 → 1,030,000; EPS US\$1.00 → US\$0.97; price (P/E 20) US\$20 → US\$19.42. The holder's 100,000 shares become 103,000, worth **US\$2,000,000** both before and after.
-* **2-for-1 split**: shares 4m → 8m; price €40 → €20; EPS €1.50 → €0.75; DPS €0.50 → €0.25. Yield **1.25%** and P/E **26.7** both before and after.
-* **Globus Maritime 1-for-10 reverse split**: US\$4.25 → **US\$42.50**. The reverse split doesn't destroy wealth by itself: market cap is unchanged.
+$$
+\begin{aligned}
+N_{\text{after}}&=N(1+d)&P_{\text{after}}&=\frac{P}{1+d}\\
+N_{\text{after}}&=kN&P_{\text{after}}&=\frac{P}{k}
+\end{aligned}
+$$
+
+#### Example: 3% Stock Dividend
+
+A shareholder owns 10% of a company with 1,000,000 shares, EPS of US\$1.00 and a P/E of 20 (price US\$20).
+
+| | Before | After a 3% stock dividend |
+| --- | ---: | ---: |
+| Shares outstanding | 1,000,000 | 1,030,000 |
+| EPS | US\$1.00 | $1.00/1.03=$ US\$0.97 |
+| Price (P/E 20) | US\$20.00 | $20/1.03=$ US\$19.42 |
+| Holder's shares | 100,000 | 103,000 |
+| **Holder's wealth** | **US\$2,000,000** | **US\$2,000,000** |
+
+#### Example: 2-for-1 Split
+
+| | Before | After |
+| --- | ---: | ---: |
+| Shares | 4m | 8m |
+| Price | €40 | €20 |
+| EPS | €1.50 | €0.75 |
+| DPS | €0.50 | €0.25 |
+| Dividend yield | $0.50/40=$ **1.25%** | $0.25/20=$ **1.25%** |
+| P/E | $40/1.50=$ **26.7** | $20/0.75=$ **26.7** |
+
+#### Example: Globus Maritime 1-for-10 Reverse Split
+
+$$P_{\text{after}}=4.25\times 10=\text{US\$}42.50$$
+
+The reverse split doesn't destroy wealth by itself: market cap is unchanged.
 
 ### Effect on Financial Ratios
 
@@ -59,7 +117,9 @@ A **cash** dividend takes cash out: assets and equity fall, so liquidity ratios 
 | Liquidity ratios | Lower | Same |
 | Leverage ratios | Higher | Same |
 
-**Example (cash vs stock dividend).** Cash 200, other current assets 300, current liabilities 250, total assets 1,000, debt 400, equity 600 (US\$ millions); 100m shares at US\$20.
+#### Example: Cash vs Stock Dividend
+
+In US\$ millions: cash 200, other current assets 300, current liabilities 250, total assets 1,000, debt 400, equity 600; 100m shares at US\$20.
 
 | Ratio | Before | After US\$100m cash dividend | After 5% stock dividend |
 | --- | --- | --- | --- |
@@ -93,9 +153,17 @@ One theory says dividend policy doesn't matter (Miller–Modigliani); the others
 
 MM assume **no taxes, no transaction costs, symmetric information**, and a given capital budget and capital structure. Then the dividend decision is independent of investment and financing decisions:
 
-* A share at A\$20 before an A\$1 dividend trades at A\$19 ex-dividend: the holder has A\$20 either way.
-* A dividend equals a repurchase. 10,000 shares; FCF A\$10,000; PV of future cash flows A\$190,000 → price **A\$20**. Buying back 10,000/20 = **500** shares leaves 190,000/9,500 = **A\$20** a share.
-* **Homemade dividend**: if no dividend is paid, a holder of 1,000 shares who wants A\$1,000 sells **50** shares at A\$20.
+#### Example: MM Irrelevance
+
+A company has 10,000 shares, free cash flow of A\$10,000 this year, and future cash flows worth A\$190,000.
+
+$$P_0=\frac{10{,}000+190{,}000}{10{,}000}=\text{A\$}20$$
+
+| Payout choice | Calculation | Holder's wealth per share |
+| --- | --- | ---: |
+| A\$1 dividend | Ex-dividend price $=190{,}000/10{,}000=$ A\$19, plus A\$1 cash | A\$20 |
+| Repurchase | Buys $10{,}000/20=500$ shares; price $=190{,}000/9{,}500=$ A\$20 | A\$20 |
+| **Homemade dividend** (none paid) | A holder of 1,000 shares wanting A\$1,000 sells $1{,}000/20=50$ shares | A\$20 |
 
 MM say dividend **policy** is irrelevant, not dividends themselves. Real-world frictions break the argument: flotation costs (often 4–10% of capital raised), investors' transaction costs, and taxes.
 
@@ -113,14 +181,20 @@ Managers know more than investors, so dividends convey information.
 * Exceptions: a cut can be positive if the cash is reinvested or the cut looks prudent (Telstra 2017; BT 2018, shares +6.9%). A first dividend can signal confidence or maturity (eBay 2019).
 * Consistent dividend raisers tend to have niche positions, less volatile earnings, high ROA and low debt.
 
-**Examples.** Oracle's 2009 initiation (about US\$1bn a year against US\$8bn of operating cash flow) was read as a sign it could ride out the downturn. A company with poor prospects that raises its dividend to look good must later cut it or raise costly capital.
+#### Examples: Signaling
+
+* **Oracle (2009)** initiated a dividend of about US\$1bn a year against US\$8bn of operating cash flow: read as a sign it could ride out the downturn.
+* **A company with poor prospects** that raises its dividend to look good must later cut it or raise costly capital: the signal is costly to fake.
 
 ### Agency Costs
 
 * **Managers vs shareholders**: dividends take free cash flow away from managers, who might overinvest in negative-NPV projects (empire building): Jensen's **free cash flow hypothesis**. The market reacts more to dividend changes where the risk of overinvestment is greater.
 * **Shareholders vs bondholders**: large dividends move wealth to shareholders and raise default risk, which can lead to underinvestment. Bond covenants cap cumulative distributions and set coverage or leverage limits.
 
-**Examples.** Of two all-equity rivals with about 35% payout, the one with weaker governance (CEO = chair) and fewer good projects is pressed to pay more, to curb **overinvestment**. Utilities pay high dividends and then issue equity: costly, but the equity market then monitors managers and regulators.
+#### Examples: Agency Costs
+
+* **Two all-equity rivals**, both with about a 35% payout: the one with weaker governance (CEO = chair) and fewer good projects is pressed to pay more, to curb **overinvestment**.
+* **Utilities** pay high dividends and then issue equity: costly, but the equity market then monitors managers and regulators.
 
 > [!IMPORTANT]
 > Dividends **reduce** the manager–shareholder agency cost (overinvestment) but **increase** the shareholder–bondholder conflict (underinvestment, default risk). Don't swap them.
@@ -148,10 +222,12 @@ Once markets are imperfect, investment, financing and dividend decisions are no 
 
 Surveys show that managers set a target payout on **long-run sustainable earnings**, focus on **changes** rather than levels, and avoid increases they might have to reverse: **dividend smoothing**. Skanska made a 30% "precautionary" cut in 2019 to keep flexibility; its shares fell 9%, then rose to 7% above the pre-announcement level within two months.
 
-**Examples.**
+#### Examples: Policy Factors
 
-* **Boar's Head**: operating cash flow £500m against £800m of positive-NPV projects, and debt already above average → **no dividend initiation**: it wouldn't issue shares just to pay dividends.
-* **Makinasi Appliances** cuts its quarterly dividend from US\$1.60 to US\$0.70 amid expected losses, falling sales, a US\$50m bond issue and a downgrade. Main factors: **earnings volatility** and **financial flexibility**, plus flotation costs.
+| Company | Facts | Decision and main factors |
+| --- | --- | --- |
+| **Boar's Head** | Operating cash flow £500m vs £800m of positive-NPV projects; debt already above average | **No dividend initiation**: investment opportunities come first, and it wouldn't issue shares just to pay dividends |
+| **Makinasi Appliances** | Expected losses, falling sales, a US\$50m bond issue and a downgrade | Cuts the quarterly dividend from US\$1.60 to US\$0.70: **earnings volatility** and **financial flexibility**, plus flotation costs |
 
 ## Tax Considerations
 
@@ -170,17 +246,32 @@ $$
 t_{\text{eff}} = 1-(1-t_{c})(1-t_{i})
 $$
 
-where $t_c$ is the corporate rate, $t_i$ the individual's dividend tax rate, and $t_{\text{eff}}$ the effective tax rate. For example, US\$100 pretax at 35% corporate tax leaves 65 to pay out; personal tax at 15% is 9.75, leaving 55.25. The effective rate is (35 + 9.75)/100 = **44.75%**.
+where $t_c$ is the corporate rate, $t_i$ the individual's dividend tax rate, and $t_{\text{eff}}$ the effective tax rate. For example, US\$100 pretax, all paid out, at 35% corporate and 15% personal tax:
+
+$$
+\begin{aligned}
+Div_{net}&=100\times(1-0.35)(1-0.15)=55.25\\
+t_{\text{eff}}&=1-0.65\times 0.85=44.75\%
+\end{aligned}
+$$
 
 ### Dividend Imputation
 
 Distributed profits are taxed only once, at the **shareholder's** rate (Australia, New Zealand). The shareholder receives a **franking credit** for the corporate tax already paid, so the effective tax rate is just $t_i$:
 
 $$
-Div_{net} = EBT\times \text{payout}\times(1-t_{i})
+\begin{aligned}
+Div_{net}&=EBT\times \text{payout}\times(1-t_{i})\\
+\text{Personal tax due}&=t_i\times EBT-\text{Franking credit}
+\end{aligned}
 $$
 
-For example, A\$100 pretax at 30% corporate tax, 70 paid out: a shareholder at 15% owes 15 − 30 = **(15)**, a refund; one at 47% owes 47 − 30 = **17**. Effective rates **15%** and **47%**.
+For example, A\$100 pretax at 30% corporate tax, with the 70 paid out and a franking credit of 30:
+
+| Shareholder's rate | Tax due | Effective rate |
+| ---: | --- | ---: |
+| 15% | $15-30=$ **(15)**, a refund | **15%** |
+| 47% | $47-30=$ **17** | **47%** |
 
 ### Split-Rate
 
@@ -190,9 +281,19 @@ $$
 t_{\text{eff}} = t_{c,\text{dist}}+(1-t_{c,\text{dist}})\,t_{i}
 $$
 
-For example, earnings paid out are taxed at 20% (retained at 35%), leaving a dividend of 80 per 100; the shareholder's rate of 35% leaves 0.65 × 80 = **€52**. Effective rate = 20% + 0.35 × 80% = **48%**.
+For example, earnings paid out are taxed at 20% (retained at 35%), and the shareholder's rate is 35%:
 
-**Example (the three systems with the same inputs).** €100 pretax, all paid out; corporate rate 30%; shareholder's dividend rate 40%.
+$$
+\begin{aligned}
+Div&=100\times(1-0.20)=80\\
+Div_{net}&=80\times(1-0.35)=52\\
+t_{\text{eff}}&=0.20+0.80\times 0.35=48\%
+\end{aligned}
+$$
+
+#### Example: The Three Systems with the Same Inputs
+
+€100 pretax, all paid out; the corporate rate is 30% (20% on distributed earnings under split-rate), and the shareholder's dividend rate is 40%.
 
 | System | Corporate tax | Dividend | Personal tax | Investor keeps | Effective rate |
 | --- | --- | --- | --- | --- | --- |
@@ -229,18 +330,45 @@ $$
 
 where Target is the target payout ratio, and $N$ is the number of years over which the dividend moves to its target, so the adjustment factor is $1/N$.
 
-**Examples.**
+#### Example: Target Payout Adjustment
 
-* $Div_{t-1}$ = US\$0.40, target 50%, factor 0.2, EPS rises to US\$1.50: increase = (0.75 − 0.40) × 0.2 = **US\$0.07** → US\$0.47. Next year EPS dips to US\$1.34: (0.67 − 0.47) × 0.2 = **US\$0.04** → US\$0.51. The dividend still rises, because it is below target.
-* **Luna Inc.**: $Div_{t-1}$ = US\$0.40, expected EPS US\$2.80, target 30%, 4 years: 0.40 + (0.84 − 0.40)/4 = **US\$0.51**. The payout falls from 20% to 0.51/2.80 = **18.2%**.
+Last year's dividend was US\$0.40; the target payout is 50% and the adjustment factor 0.2 (5 years).
+
+| Year | EPS | Target dividend | Increase | Dividend |
+| --- | ---: | ---: | --- | ---: |
+| 1 | 1.50 | $0.50\times 1.50=0.75$ | $(0.75-0.40)\times 0.2=$ **0.07** | 0.47 |
+| 2 | 1.34 | $0.50\times 1.34=0.67$ | $(0.67-0.47)\times 0.2=$ **0.04** | 0.51 |
+
+In Year 2, EPS falls but the dividend still rises, because it is below target.
+
+#### Example: Luna Inc.
+
+Last year's dividend was US\$0.40 (a 20% payout). Expected EPS is US\$2.80, the target payout 30%, and the adjustment period 4 years.
+
+$$
+\begin{aligned}
+E(Div)&=0.40+\frac{0.30\times 2.80-0.40}{4}=0.40+\frac{0.44}{4}=0.51\\
+\text{Payout}&=\frac{0.51}{2.80}=18.2\%
+\end{aligned}
+$$
+
+The dividend rises to **US\$0.51**, but the payout **falls** to 18.2%: earnings grew faster than the dividend.
 
 ### Constant Payout Ratio Policy
 
-Pay a fixed share of earnings: $Div = \text{Payout ratio}\times NI$. It is used infrequently, because the dividend then swings with earnings.
+Pay a fixed share of earnings. It is used infrequently, because the dividend then swings with earnings.
 
-**Example (Pampas Fertilizer).** It switched from a fixed ARS1.50 a quarter to 25% of quarterly earnings: e.g., 2019:Q4 EPS 9.32 → 9.32 × 0.25 = ARS2.33.
+$$Div=\text{Payout ratio}\times NI$$
 
-**Example (same earnings, two policies).** Last year EPS US\$2.00, DPS US\$0.80; next three years' EPS US\$3.00, US\$2.60, US\$3.40; payout or target 40%; adjustment factor 0.5.
+#### Example: Pampas Fertilizer
+
+Pampas switched from a fixed ARS1.50 a quarter to 25% of quarterly earnings. In 2019:Q4, EPS was 9.32:
+
+$$DPS=0.25\times 9.32=\text{ARS}2.33$$
+
+#### Example: Same Earnings, Two Policies
+
+Last year EPS was US\$2.00 and DPS US\$0.80. The payout (or target) is 40%, and the adjustment factor 0.5.
 
 | Year | EPS | Constant payout | Stable (target adjustment) | Stable payout |
 | --- | --- | --- | --- | --- |
@@ -295,7 +423,16 @@ Many markets limit buybacks more than the US (shareholder approval, often a 10% 
 | **Dutch auction** | Usually **lower** than a fixed price tender | Low | Fast, usually a bit slower than fixed price |
 | **Direct negotiation** (remove a large holder, block an activist, greenmail) | A premium **transfers wealth** from remaining holders | n/a | n/a |
 
-**Example (BCII, 5m shares at C\$37).** A fixed price tender at C\$40 costs 5m × 40 = **C\$200m**; a Dutch auction clearing at C\$38 costs **C\$190m**, saving **C\$10m**.
+#### Example: BCII
+
+BCII wants to buy back 5m shares; the price is C\$37.
+
+| Method | Price paid | Cost |
+| --- | ---: | ---: |
+| Fixed price tender | C\$40 | $5\text{m}\times 40=$ **C\$200m** |
+| Dutch auction | C\$38 (clearing price) | $5\text{m}\times 38=$ **C\$190m** |
+
+The Dutch auction saves **C\$10m**.
 
 ### Effect on EPS
 
@@ -308,11 +445,39 @@ where $E$ is earnings before the buyback, $C$ the after-tax cost of the funds us
 * **Funded with surplus cash**: assets and equity fall, so leverage rises. EPS rises only if the cash would not have earned its cost of capital (e.g., idle cash).
 * **Funded with debt**: debt rises and equity falls, so leverage rises more. EPS **rises if the earnings yield (E/P) exceeds the after-tax cost of debt**, and falls otherwise. Note $E/P = 1/(P/E)$.
 
-**Examples.**
+#### Example: Takemiya (Surplus Cash)
 
-* **Takemiya** (surplus cash earning about 0): 10m shares, NI ¥100m, price ¥120; uses ¥240m of cash to buy at ¥140 → about 1.7m shares, leaving 8.3m. EPS rises from ¥10.00 to 100/8.3 ≈ **¥12.00** (+20%; ¥12.07 unrounded).
-* **Selamat** (debt): borrows MYR12m to buy at MYR60 → 200,000 shares. Earnings MYR6.6m; shares 2.2m → 2.0m; EPS MYR3; E/P 5%. At an after-tax cost of 5%: (6.6 − 0.6)/2 = **MYR3.00**, unchanged. At 6%: (6.6 − 0.72)/2 = **MYR2.94**, lower.
-* **Surplus cash that earns interest**: NI US\$50m, 10m shares, EPS US\$5.00, price US\$50 → E/P 10%. Spending US\$100m of cash that earns 4% after tax to buy 2m shares loses 4 of interest: NI 46, EPS 46/8 = **US\$5.75** (up). If the cash earned 10%: 40/8 = **US\$5.00** (unchanged); at 12%: 38/8 = **US\$4.75** (down). So the E/P test works for cash too: EPS rises when the after-tax return given up is below E/P.
+Takemiya has 10m shares, NI ¥100m and a price of ¥120. It uses ¥240m of surplus cash, earning about 0, to buy back shares at ¥140.
+
+$$
+\begin{aligned}
+N_{\text{bought}}&=\frac{240}{140}=1.714\text{m}\\
+EPS_{\text{after}}&=\frac{100-0}{10-1.714}=\frac{100}{8.286}=12.07
+\end{aligned}
+$$
+
+EPS rises from ¥10.00 to about **¥12.07** (+20%).
+
+#### Example: Selamat (Debt-Funded)
+
+Selamat has 2.2m shares at MYR60 and earnings of MYR6.6m (EPS MYR3, E/P = 3/60 = 5%). It borrows MYR12m to buy back $12/60=0.2$m shares, leaving 2.0m.
+
+| After-tax cost of debt | Calculation | EPS after | vs E/P |
+| ---: | --- | ---: | --- |
+| 5% | $(6.6-0.05\times 12)/2.0$ | **MYR3.00** (unchanged) | Equal |
+| 6% | $(6.6-0.06\times 12)/2.0$ | **MYR2.94** (lower) | Above E/P |
+
+#### Example: Surplus Cash That Earns Interest
+
+NI is US\$50m on 10m shares (EPS US\$5.00); at US\$50 a share, E/P is 10%. The company spends US\$100m of cash to buy back 2m shares, leaving 8m, and gives up the interest the cash was earning.
+
+| After-tax return on the cash | Interest lost | EPS after | Effect |
+| ---: | ---: | ---: | --- |
+| 4% | 4 | $46/8=$ **US\$5.75** | Up |
+| 10% | 10 | $40/8=$ **US\$5.00** | Unchanged |
+| 12% | 12 | $38/8=$ **US\$4.75** | Down |
+
+The E/P test works for cash too: EPS rises when the after-tax return given up is below E/P.
 
 > [!IMPORTANT]
 > **Higher EPS ≠ higher shareholder wealth.** The same cash could be paid as a dividend, and any capital gain may just replace the dividend given up. More leverage also raises the required return.
@@ -325,7 +490,14 @@ $$
 
 BVPS **falls** if the repurchase price is above the current BVPS, is unchanged if equal, and **rises** if below.
 
-**Example (US\$5m buyback at US\$20, 10m shares each).** 250,000 shares bought, 9.75m left. Company A (book equity US\$100m, BVPS 10): (100 − 5)/9.75 = **US\$9.74**, down. Company B (book equity US\$300m, BVPS 30): (300 − 5)/9.75 = **US\$30.26**, up.
+#### Example: Buyback Above and Below Book Value
+
+Companies A and B each have 10m shares at US\$20 and spend US\$5m on a buyback: $5\text{m}/20=250{,}000$ shares, leaving 9.75m.
+
+| | Book equity | BVPS before | BVPS after | Price vs BVPS |
+| --- | ---: | ---: | --- | --- |
+| A | US\$100m | 10 | $(100-5)/9.75=$ **US\$9.74** (down) | Above |
+| B | US\$300m | 30 | $(300-5)/9.75=$ **US\$30.26** (up) | Below |
 
 #### Exam traps
 
@@ -338,12 +510,23 @@ BVPS **falls** if the repurchase price is above the current BVPS, is unchanged i
 
 A repurchase is equivalent to a cash dividend of the **same amount** in its effect on shareholder wealth, all else equal (same **taxes** and same **information content**).
 
-**Example (Rohit Chemical, 10m shares at Rs200, distributing Rs500m).**
+#### Example: Rohit Chemical
 
-* Special dividend of Rs50: ex-dividend price = (2,000m − 500m)/10m = **Rs150**; wealth = 50 + 150 = **Rs200**.
-* Repurchase: 500m/200 = 2.5m shares; price = 1,500m/7.5m = **Rs200**; wealth **Rs200**, whether or not you sell.
+Rohit has 10m shares at Rs200 (market cap Rs2,000m) and distributes Rs500m.
 
-**Example (AfriCitrus, buyback at a premium).** 10m shares at ZAR200; buys ZAR500m of shares from one holder at ZAR250 → 2m shares. New price = 1,500m/8m = **ZAR187.50**: the other holders lose **ZAR12.50** a share, transferred to the seller.
+| | Special dividend of Rs50 | Repurchase at Rs200 |
+| --- | --- | --- |
+| Shares after | 10m | $10-500/200=7.5$m |
+| Price after | $(2{,}000-500)/10=$ **Rs150** | $1{,}500/7.5=$ **Rs200** |
+| Wealth per share | $150+50=$ **Rs200** | **Rs200**, whether or not you sell |
+
+#### Example: AfriCitrus (Buyback at a Premium)
+
+AfriCitrus has 10m shares at ZAR200. It buys ZAR500m of shares from one holder at ZAR250: $500/250=2$m shares.
+
+$$P_{\text{after}}=\frac{2{,}000-500}{10-2}=\frac{1{,}500}{8}=187.50$$
+
+The remaining holders lose $200-187.50=$ **ZAR12.50** a share, transferred to the seller.
 
 ## Dividends vs Share Repurchases
 
@@ -359,7 +542,9 @@ Repurchase announcements are followed by positive excess returns, at announcemen
 
 Raising EPS is a weak reason: the required return rises with leverage, and fewer shares don't change total free cash flow.
 
-**Example (Deira Oasis, AED millions).** Debt 30, equity 70; buys back AED7m.
+#### Example: Deira Oasis
+
+In AED millions, debt is 30 and equity 70. Deira Oasis buys back AED7m of shares, funded by cash or by debt.
 
 | | Before | All cash | All debt |
 | --- | --- | --- | --- |
@@ -369,11 +554,28 @@ Raising EPS is a weak reason: the required return rises with leverage, and fewer
 
 Funded by cash, EPS rises, so equity is likely worth more than AED63m. Funded by debt with an after-tax cost above E/P, EPS falls, so equity is worth less than AED63m; with a downgrade, the debt's value also falls below 37, so the new weights are uncertain.
 
-**Other examples.**
+#### Example: ITOCHU (2018–19)
 
-* **ITOCHU** (2018–19) bought back 34,121,400 shares at an average ¥1,993 (¥68bn) to reach an ROE of at least 13%.
-* Repurchases are **pro-cyclical** and substitute for special dividends. Russell 1000: in 2007, dividends US\$286bn vs buybacks US\$680bn; from 4Q08 to 3Q09, US\$262bn vs US\$223bn: buybacks were cut much more.
-* **Shenzhen Medical Devices** initiates a ¥0.40 dividend (payout 0.40/3.20 = **12.5%**, target 25%) after three years of buybacks. Initiations are linked to **higher** future growth, so reading it as "we are no longer a growth company" is wrong, and a 2% stock dividend would not change wealth. The policy is a **stable dividend** with target payout adjustment.
+ITOCHU bought back 34,121,400 shares at an average ¥1,993, about ¥68bn, to reach an ROE of at least 13%.
+
+#### Example: Buybacks Are Pro-Cyclical
+
+| Russell 1000 | Dividends | Buybacks |
+| --- | ---: | ---: |
+| 2007 | US\$286bn | US\$680bn |
+| 4Q08–3Q09 | US\$262bn | US\$223bn |
+
+In the crisis, buybacks were cut much more than dividends: they substitute for special dividends.
+
+#### Example: Shenzhen Medical Devices
+
+After three years of buybacks, Shenzhen initiates a ¥0.40 dividend on EPS of ¥3.20, with a 25% target payout:
+
+$$\text{Payout}=\frac{0.40}{3.20}=12.5\%$$
+
+* The policy is a **stable dividend** with target payout adjustment.
+* Reading the initiation as "we are no longer a growth company" is wrong: initiations are linked to **higher** future growth.
+* A 2% stock dividend instead would not change wealth.
 
 #### Exam traps
 
@@ -383,16 +585,12 @@ Funded by cash, EPS rises, so equity is likely worth more than AED63m. Funded by
 
 ## Dividend Safety
 
-| Ratio | Formula |
-| --- | --- |
-| Payout ratio | Dividends ÷ Net income |
-| Dividend coverage | Net income ÷ Dividends |
-| FCFE coverage | FCFE ÷ (Dividends + Share repurchases) |
-
 $$
 \begin{aligned}
-FCFE ={}& CFO - FCInv\\
-&+ \text{Net borrowing}
+\text{Payout ratio}&=\frac{\text{Dividends}}{\text{Net income}}\\
+\text{Dividend coverage}&=\frac{\text{Net income}}{\text{Dividends}}\\
+\text{FCFE coverage}&=\frac{FCFE}{\text{Dividends}+\text{Repurchases}}\\
+FCFE&=CFO-FCInv+\text{Net borrowing}
 \end{aligned}
 $$
 
@@ -405,9 +603,15 @@ $$
 | ≫ 1 | Building liquidity |
 | ≪ 1 | **Not sustainable**: running down cash; will need equity or capex cuts |
 
-**Example (Mature European SA).** NI €100m, dividends €40m → payout **40%**, coverage **2.5×**.
+#### Example: Mature European SA
 
-**Example (Lygon Resources, A\$ millions).**
+NI is €100m and dividends €40m.
+
+$$\text{Payout}=\frac{40}{100}=40\%\qquad\text{Coverage}=\frac{100}{40}=2.5\times$$
+
+#### Example: Lygon Resources
+
+In A\$ millions. E.g. 2015: FCFE = 837 − 554 − 120 = 163, and FCFE coverage = 163/(121 + 0) = 1.35×.
 
 | | 2015 | 2016 | 2017 | 2018 |
 | --- | --- | --- | --- | --- |

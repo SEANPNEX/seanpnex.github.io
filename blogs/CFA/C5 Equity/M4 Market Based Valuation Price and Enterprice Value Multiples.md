@@ -15,9 +15,30 @@ Valuing a stock with multiples, either by comparing it with similar assets (the 
 | Conclusion | **Relative** value (the comparables may themselves be mispriced) | Absolute (intrinsic) value |
 
 * A **justified multiple** is the multiple's fair value, from either method. Justified > actual → undervalued.
-* Use the peers' **median** to limit outliers. E.g., peer median P/B 2.2 × BVPS \$23 = \$50.60; a residual income value of \$46 implies a justified P/B of 46/23 = **2.0**.
+* Use the peers' **median** to limit outliers.
 
-**Example (the simplest comparison).** A's EPS is \$1.50; competitor B's P/E is 22. At \$37.50, A's P/E is 25 > 22 → A is **overvalued** relative to B; at B's P/E, A is worth 1.50 × 22 = **\$33**.
+$$
+\begin{aligned}
+\text{Value}&=\text{Benchmark multiple}\\
+&\quad\times\text{Company's fundamental}\\
+\text{Justified multiple}&=\frac{\text{Intrinsic value}}{\text{Fundamental}}
+\end{aligned}
+$$
+
+E.g., with BVPS of \$23: a peer median P/B of 2.2 gives $2.2\times 23=\$50.60$; a residual income value of \$46 implies a justified P/B of $46/23=$ **2.0**.
+
+#### Example: The Simplest Comparison
+
+Company A's EPS is \$1.50 and its price \$37.50; competitor B's P/E is 22.
+
+$$
+\begin{aligned}
+P/E_A&=\frac{37.50}{1.50}=25>22\\
+\text{Value at B's P/E}&=22\times 1.50=\$33
+\end{aligned}
+$$
+
+A is **overvalued** relative to B.
 
 ## Price to Earnings
 
@@ -29,15 +50,28 @@ Valuing a stock with multiples, either by comparing it with similar assets (the 
 
 ### Trailing and Forward P/E
 
-* **Trailing P/E** = price ÷ EPS over the last four quarters (TTM).
-* **Forward (leading) P/E** = price ÷ next year's expected EPS: the next four quarters, the next twelve months (NTM), or the next fiscal year (FY1, FY2). Use the **same definition** for every company. When earnings are rising, the forward P/E is below the trailing P/E.
+$$
+\begin{aligned}
+\text{Trailing P/E}&=\frac{P_0}{EPS_{\text{last 4 quarters}}}\\
+\text{Forward P/E}&=\frac{P_0}{E(EPS_{\text{next year}})}\\
+EPS_{NTM}&=\tfrac{m}{12}\,FY1+\tfrac{12-m}{12}\,FY2
+\end{aligned}
+$$
+
+where $m$ is the number of months left in the current fiscal year.
+
+* **Forward (leading) P/E** can use the next four quarters, the next twelve months (NTM), or the next fiscal year (FY1, FY2). Use the **same definition** for every company. When earnings are rising, the forward P/E is below the trailing P/E.
 * Forward P/E is preferred when forecasts exist, or after a major acquisition or change in leverage; trailing when earnings aren't predictable.
-* **NTM EPS** is a time-weighted mix of fiscal-year estimates, e.g., (10/12) × FY1 + (2/12) × FY2.
 
-**Examples.**
+#### Example: IBM
 
-* **IBM** at \$137.90: FY1 EPS \$13.91 → **9.9**; FY2 EPS \$14.17 → **9.7**.
-* **Selene Gaming** (volatile EPS), price \$12.20 on 9 Aug 2020:
+At \$137.90, with FY1 EPS \$13.91 and FY2 EPS \$14.17:
+
+$$\frac{137.90}{13.91}=9.9\qquad\frac{137.90}{14.17}=9.7$$
+
+#### Example: Selene Gaming (Volatile EPS)
+
+The price is \$12.20 on 9 Aug 2020; the fiscal year ends in December, so 5 months of FY2020 remain.
 
 | Definition | EPS | P/E |
 | --- | --- | --- |
@@ -50,12 +84,29 @@ With earnings this volatile and procyclical, normalize them.
 
 ### Adjusting EPS
 
-1. **Dilution**: prefer diluted EPS for comparisons. E.g., Siemens: basic €7.12, diluted €7.01, price €95.94 → P/E 13.47 vs **13.69**.
+1. **Dilution**: prefer diluted EPS for comparisons. E.g., Siemens at €95.94: $95.94/7.12=13.47$ on basic EPS vs $95.94/7.01=$ **13.69** on diluted EPS.
 2. **Nonrecurring items** → **underlying** (core, persistent) earnings. Company-reported "core EPS" is a non-IFRS/non-GAAP measure with no rules: use your own judgment. Income statement classification alone isn't enough.
 3. **The business cycle** → **normalized** (mid-cycle) EPS. Cyclicals' P/Es are high at the bottom of the cycle and low at the top (the **Molodovsky effect**).
 4. **Comparability**: adjust for accounting differences (e.g., LIFO vs FIFO).
 
-**Example (Evergreen, nonrecurring items).** Price £50.11. Reported TTM EPS £4.52 → P/E **11.1**; the company's core EPS £6.01 → **8.3**; the analyst's view (only the legal provision is nonrecurring; amortization and repeated restructuring are ongoing) gives EPS £4.60 → **10.9**.
+#### Example: Evergreen (Nonrecurring Items)
+
+The price is £50.11. The analyst treats only the legal provision as nonrecurring; amortization and repeated restructuring charges are ongoing.
+
+| EPS definition | EPS | P/E |
+| --- | ---: | ---: |
+| Reported TTM | £4.52 | $50.11/4.52=$ **11.1** |
+| Company's "core" EPS | £6.01 | **8.3** |
+| Analyst's underlying EPS | £4.60 | **10.9** |
+
+The company's core EPS flatters the stock; the analyst's P/E is close to the reported one.
+
+$$
+\begin{aligned}
+\text{Normalized EPS (historical)}&=\overline{EPS}_{\text{cycle}}\\
+\text{Normalized EPS (ROE)}&=\overline{ROE}_{\text{cycle}}\times BVPS_{\text{current}}
+\end{aligned}
+$$
 
 | Normalizing method | Normalized EPS | Note |
 | --- | --- | --- |
@@ -64,10 +115,20 @@ With earnings this volatile and procyclical, normalize them.
 
 Long-run ROA × total assets, or long-run ROE × equity, also work (useful when the company reported a loss).
 
-**Example (Zenlandia Chemical).** Price \$18.21; EPS 2014–20: 0.74, 0.63, 0.61, 0.54, 1.07, 0.88, 1.08; average ROE 22.6%; current BVPS \$4.82.
+#### Example: Zenlandia Chemical
 
-* Average EPS = \$0.79 → P/E = **23.1**.
-* Average ROE: 0.226 × 4.82 = \$1.09 → P/E = **16.7**. BVPS grew 61%, so the ROE method reflects the larger company, which looks cheaper.
+The price is \$18.21, average ROE over the cycle 22.6%, and current BVPS \$4.82.
+
+| Year | 2014 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| EPS (\$) | 0.74 | 0.63 | 0.61 | 0.54 | 1.07 | 0.88 | 1.08 |
+
+| Method | Normalized EPS | P/E |
+| --- | --- | ---: |
+| Historical average | $5.55/7=\$0.79$ | $18.21/0.79=$ **23.1** |
+| Average ROE | $0.226\times 4.82=\$1.09$ | $18.21/1.09=$ **16.7** |
+
+BVPS grew 61% over the cycle, so the ROE method reflects the larger company, which looks **cheaper**.
 
 **Negative or tiny earnings.** Report the P/E as not meaningful (NM). Use normalized or forward EPS, or rank by **earnings yield** (E/P): price is never negative, so the ranking stays consistent, and E/P is less skewed by outliers. E.g., Tesla's EPS of −7.72 gives P/E NM, E/P −2.51%.
 
@@ -93,12 +154,28 @@ $$
 
 The justified P/E falls with $r$ (risk) and rises with $g$, in any DCF model. For more complex models, justified P/E = DCF value ÷ EPS.
 
-**Examples.**
+#### Example: BP and Toyota
 
-* **BP**: retention 40%, $g$ 3.5%, $r$ 7.6% → $P_0/E_1$ = 0.60/0.041 = **14.6**.
-* **Toyota**: FCFE value ¥6,980, FY2020 EPS ¥720 → justified forward P/E **9.7** vs the market's 6,688/720 = 9.3 → about 4% undervalued.
+**BP** (GGM): retention 40%, $g$ 3.5%, $r$ 7.6%.
 
-**Predicted P/E** comes from a cross-sectional regression on fundamentals (payout, beta, growth). E.g., predicted P/E = 12.12 + 2.25(0.45) − 0.20(0.9) + 14.43(0.08) = **14.1**, below the actual 18 → **overvalued**. Limitations: the regression is valid only for its sample and period; coefficients and explanatory power change over time; and **multicollinearity** makes individual coefficients hard to interpret.
+$$\frac{P_0}{E_1}=\frac{1-0.40}{0.076-0.035}=\frac{0.60}{0.041}=14.6$$
+
+**Toyota** (FCFE model): value ¥6,980, price ¥6,688, FY2020 EPS ¥720.
+
+$$\text{Justified}=\frac{6{,}980}{720}=9.7\qquad\text{Actual}=\frac{6{,}688}{720}=9.3$$
+
+Toyota trades about **4% below** its justified P/E: undervalued.
+
+**Predicted P/E** comes from a cross-sectional regression on fundamentals (payout, beta, growth):
+
+$$
+\begin{aligned}
+\widehat{P/E}&=12.12+2.25\times\underbrace{0.45}_{\text{payout}}-0.20\times\underbrace{0.9}_{\beta}+14.43\times\underbrace{0.08}_{g}\\
+&=14.1
+\end{aligned}
+$$
+
+That is below the actual 18, so the stock is **overvalued**. Limitations: the regression is valid only for its sample and period; coefficients and explanatory power change over time; and **multicollinearity** makes individual coefficients hard to interpret.
 
 ### Comparing P/Es
 
@@ -108,19 +185,61 @@ The steps for any multiple: (1) choose and compute the multiple; (2) choose comp
 * Comparables start from the narrowest GICS (sub-industry) or ICB (subsector) group, then filter by size and markets served.
 * All else equal: **higher growth → higher justified P/E; higher risk → lower justified P/E**.
 
-**Example (Verizon vs peers).** Trailing P/Es: AT&T 13.20, Comcast 16.23, CenturyLink NM, China Telecom 13.14, Charter 70.67, Verizon 15.03, Windstream 19.01. The mean (excluding CenturyLink), 24.55, is distorted by Charter, so use the **median, 15.03**. Verizon is at the median → fairly valued; AT&T, China Telecom and CenturyLink look undervalued. Check cash flow too: telecoms have large noncash charges.
+#### Example: Verizon vs Peers
 
-**PEG ratio** = P/E ÷ expected EPS growth (in percent). Lower is more attractive; some treat below 1 as attractive. Limitations: it assumes a **linear** P/E–growth relationship, and ignores **risk** and how long growth lasts.
+| Company | Trailing P/E |
+| --- | ---: |
+| China Telecom | 13.14 |
+| AT&T | 13.20 |
+| Verizon | 15.03 |
+| Comcast | 16.23 |
+| Windstream | 19.01 |
+| Charter | 70.67 |
+| CenturyLink | NM |
+| **Mean** (excluding CenturyLink) | 24.55 |
+| **Median** | **15.03** |
 
-**Example (telecoms, with fundamentals).** CenturyLink: forward P/E 8.89, growth 8.52%, PEG 1.04 (the lowest among the low-P/E names) → relatively undervalued. AT&T: forward EPS \$3.63 × peer median 11.99, adjusted up to 13.0 (superior profitability, below-average risk) = **\$47.19** vs a price of \$33.98 → undervalued.
+* Charter distorts the mean, so use the **median**.
+* Verizon is at the median: **fairly valued**. AT&T, China Telecom and CenturyLink look undervalued.
+* Check cash flow too: telecoms have large noncash charges.
+
+$$PEG=\frac{P/E}{\text{Expected EPS growth, in percent}}$$
+
+Lower is more attractive; some treat below 1 as attractive. Limitations: it assumes a **linear** P/E–growth relationship, and ignores **risk** and how long growth lasts.
+
+#### Example: Telecoms with Fundamentals
+
+**CenturyLink.** Its PEG is the lowest among the low-P/E names, so it is relatively undervalued:
+
+$$PEG=\frac{8.89}{8.52}=1.04$$
+
+**AT&T.** Start from the peer median forward P/E of 11.99, and adjust it up to 13.0 for superior profitability and below-average risk:
+
+$$\text{Value}=13.0\times 3.63=\$47.19$$
+
+That is well above the \$33.98 price: **undervalued**.
 
 **Industry and market comparisons.** Larger groups cancel out individual mispricings but are less similar. Cap-weighted index P/Es are dominated by the largest stocks, so use the **median** for mid-caps.
 
-**Example (vs the S&P 500).** Index P/E 21.8. Stock A: P/E 15.2, historically 80% of the index (→ 17.4). Stock C: P/E 15.2, historically 105% (→ 22.9) → **C is undervalued**. Stock B: P/E 30 vs a historical 120% (26.2) → expensive. This assumes the historical relationships still hold.
+#### Example: Stocks vs the S&P 500
+
+The index P/E is 21.8. Each stock's benchmark P/E is its historical ratio to the index × 21.8.
+
+| Stock | Actual P/E | Historical ratio to the index | Benchmark P/E | Verdict |
+| --- | ---: | ---: | ---: | --- |
+| A | 15.2 | 80% | 17.4 | Somewhat cheap |
+| B | 30.0 | 120% | 26.2 | Expensive |
+| C | 15.2 | 105% | 22.9 | **Most undervalued** |
+
+This assumes the historical relationships still hold.
 
 **Market-level models.**
 
-* **Fed model**: the market is overvalued when its forward E/P is below the 10-year Treasury yield; the justified P/E = 1 ÷ the Treasury yield. E.g., a yield of 2.72% → justified P/E 36.8 vs a trailing P/E of 18.9. Criticisms: it ignores the ERP and growth, handles inflation poorly, is nonlinear at low rates, and is very sensitive to small rate changes.
+* **Fed model**: the market is overvalued when its forward E/P is below the 10-year Treasury yield:
+
+$$\text{Justified P/E}=\frac{1}{y_{\text{10-year Treasury}}}$$
+
+  E.g., a yield of 2.72% gives $1/0.0272=36.8$, against a trailing P/E of 18.9. Criticisms: it ignores the ERP and growth, handles inflation poorly, is nonlinear at low rates, and is very sensitive to small rate changes.
 * **Yardeni model**: the earnings yield = CBY − b × LTEG + residual, so
 
 $$
@@ -129,9 +248,20 @@ $$
 
   where CBY is the A-rated corporate bond yield, LTEG the consensus 5-year earnings growth, and $b$ historically 0.10 (later 0.10, 0.20, 0.25). Higher CBY → lower P/E; higher growth → higher P/E.
 
-**The stock's own history.** Justified price = benchmark own-history P/E × the most recent (or normalized) EPS. It breaks down if the business mix, leverage, interest rates or inflation have changed.
+**The stock's own history.** It breaks down if the business mix, leverage, interest rates or inflation have changed.
 
-**Example (Honda).** Five-year P/Es 6.9, 10.0, 10.9, 10.8, 9.7: median **10.0**, mean 9.7. EPS ¥381.93 → justified ¥3,819 (median) or ¥3,704 (mean). The recent price, about ¥2,817–2,837, is about 24–26% below → possibly undervalued.
+$$\text{Justified price}=\overline{P/E}_{\text{own history}}\times EPS_{\text{recent or normalized}}$$
+
+#### Example: Honda
+
+Honda's P/Es over five years were 6.9, 10.0, 10.9, 10.8 and 9.7; EPS is ¥381.93 and the price about ¥2,837.
+
+| Benchmark | P/E | Justified price | Price vs justified |
+| --- | ---: | ---: | ---: |
+| Median | 10.0 | $10.0\times 381.93=$ ¥3,819 | −26% |
+| Mean | 9.7 | $9.7\times 381.93=$ ¥3,704 | −23% |
+
+The price is about 23–26% below either value: **possibly undervalued**.
 
 **Inflation and P/E.** With no real growth, full payout, a pass-through rate λ of cost inflation $I$, and a real required return $\rho=r-I$:
 
@@ -139,7 +269,14 @@ $$
 \frac{P_0}{E_1}=\frac{1}{\rho+(1-\lambda)I}
 $$
 
-With full pass-through (λ = 1), P/E = 1/ρ; with none (λ = 0), 1/$r$. With incomplete pass-through, **higher inflation → lower P/E**; at the same inflation, **more pass-through → higher P/E**. E.g., ρ = 3%: at λ = 75%, $I$ = 6% → **22.2** and $I$ = 2% → **28.6**; at $I$ = 6%, λ = 90% → **27.8** and λ = 70% → **20.8**.
+With full pass-through (λ = 1), P/E = 1/ρ; with none (λ = 0), 1/$r$. With incomplete pass-through, **higher inflation → lower P/E**; at the same inflation, **more pass-through → higher P/E**. With ρ = 3%:
+
+| λ | $I$ | $1/[\rho+(1-\lambda)I]$ | P/E |
+| ---: | ---: | --- | ---: |
+| 75% | 6% | $1/(0.03+0.25\times 0.06)$ | **22.2** |
+| 75% | 2% | $1/(0.03+0.25\times 0.02)$ | **28.6** |
+| 90% | 6% | $1/(0.03+0.10\times 0.06)$ | **27.8** |
+| 70% | 6% | $1/(0.03+0.30\times 0.06)$ | **20.8** |
 
 ### Terminal Value from Multiples
 
@@ -154,10 +291,25 @@ $$
 * A **fundamentals-based** terminal multiple is the GGM restated as a multiple (sensitive to $r$, payout and $g$).
 * A **comparables-based** multiple (median or average industry P/E, the stock's own past P/E) is grounded in market data, but carries any market mispricing into the terminal value.
 
-**Example (oil exploration company).** $r$ 10%, mature payout 45%, industry ROE 13%, $E_3$ \$3.00, industry P/E 14.3.
+#### Example: Oil Exploration Company
 
-* Comparables: 14.3 × 3.00 = **\$42.90**.
-* GGM: $D_3$ = 1.35, $g$ = 0.55 × 13% = 7.15% → $V_3$ = 1.35(1.0715)/(0.10 − 0.0715) = **\$50.76** (18.3% higher).
+Find the terminal value at Year 3. $E_3$ = \$3.00, $r$ = 10%, mature payout 45%, industry ROE 13%, industry P/E 14.3.
+
+**Comparables-based.**
+
+$$V_3=14.3\times 3.00=\$42.90$$
+
+**Fundamentals-based (GGM).**
+
+$$
+\begin{aligned}
+D_3&=0.45\times 3.00=\$1.35\\
+g&=(1-0.45)\times 13\%=7.15\%\\
+V_3&=\frac{1.35\times 1.0715}{0.10-0.0715}=\$50.76
+\end{aligned}
+$$
+
+The fundamentals-based value is **18.3% higher**.
 
 ## Price to Book
 
@@ -178,14 +330,39 @@ $$
 
 Preferred includes any preferred dividends in arrears.
 
-**Example (TD Bank).** 2018 BVPS = (80,040 − 5,000)/1,830.4 = **CAD41.00** (2017: 38.23; 2016: 37.58); price CAD73.03 → **P/B 1.78**.
+#### Example: TD Bank
+
+In 2018, TD's equity was CAD80,040m, including CAD5,000m of preferred, with 1,830.4m common shares; the price is CAD73.03.
+
+$$
+\begin{aligned}
+BVPS&=\frac{80{,}040-5{,}000}{1{,}830.4}=41.00\\
+P/B&=\frac{73.03}{41.00}=1.78
+\end{aligned}
+$$
+
+**P/B = 1.78** (BVPS was 38.23 in 2017 and 37.58 in 2016).
 
 **Adjustments**: use **tangible book value** (at least remove goodwill; separable intangibles such as patents may stay); convert LIFO to FIFO; include off-balance-sheet items; restate to fair value.
 
-**Example (Barclays, 2012).** Price £2.4239; 12,614m diluted shares; equity £62,957m; goodwill and intangibles £7,915m; the fair value of financial assets is £17,333m below their carrying amount, and of liabilities £399m below.
+#### Example: Barclays (2012)
 
-* BVPS £4.9910 → P/B **0.49**; tangible BVPS £4.3636 → **0.56**.
-* Adjusted BVPS = (62,957 − 7,915 − 17,333 + 399)/12,614 = £3.0211 → **0.80**.
+| Input | £m |
+| --- | ---: |
+| Equity | 62,957 |
+| Goodwill and intangibles | 7,915 |
+| Fair value of financial assets below carrying amount | 17,333 |
+| Fair value of liabilities below carrying amount | 399 |
+| Diluted shares | 12,614m |
+| Price | £2.4239 |
+
+A lower fair value of assets cuts book value; a lower fair value of liabilities raises it.
+
+| Book value | Per share | P/B |
+| --- | ---: | ---: |
+| Reported: $62{,}957/12{,}614$ | £4.9910 | **0.49** |
+| Tangible: $(62{,}957-7{,}915)/12{,}614$ | £4.3636 | **0.56** |
+| Adjusted: $(62{,}957-7{,}915-17{,}333+399)/12{,}614$ | £3.0211 | **0.80** |
 
 **Justified P/B** (GGM with $g$ = $b$ × ROE, based on $B_0$):
 
@@ -199,10 +376,19 @@ $$
 
 where $PV(RI)$ is the present value of expected residual earnings.
 
-* E.g., ROE 12%, $r$ 10%, $g$ 7% → (0.12 − 0.07)/(0.10 − 0.07) = **1.67**.
+* E.g., ROE 12%, $r$ 10%, $g$ 7%:
+
+$$\frac{P_0}{B_0}=\frac{0.12-0.07}{0.10-0.07}=1.67$$
+
 * P/B is driven by **ROE relative to $r$**: if ROE = $r$, P/B = 1; with $g$ = 0, P/B = ROE/$r$. At the same P/B, the higher-ROE stock is cheaper.
 
-**Example (brokers).** E\*TRADE's P/B of 0.65 is under 30% of Schwab's (2.31) or TD Ameritrade's (2.53), and under 60% of its own mean (1.14). But its lower forecast growth in book value and revenue (1.5%, −1.0%) and higher beta (1.65) explain it.
+#### Example: Brokers
+
+| | E\*TRADE | Schwab | TD Ameritrade |
+| --- | ---: | ---: | ---: |
+| P/B | **0.65** | 2.31 | 2.53 |
+
+E\*TRADE's P/B is under 30% of its peers' and under 60% of its own historical mean (1.14). It looks cheap, but its fundamentals explain the gap: lower forecast growth in book value (1.5%) and revenue (−1.0%), and a higher beta (1.65).
 
 ## Price to Sales
 
@@ -214,9 +400,18 @@ where $PV(RI)$ is the present value of expected residual earnings.
 | Fits mature, cyclical and loss-making companies | Revenue recognition can still distort it |
 | P/S differences relate to long-run returns | |
 
-P/S = P/E × net profit margin.
+$$\frac{P}{S}=\frac{P}{E}\times\frac{E}{S}=P/E\times\text{Net profit margin}$$
 
-**Example (Stora Enso).** Sales €10,486m, about 788.5m shares → sales per share €13.30; price €10.34 → **P/S 0.778**.
+#### Example: Stora Enso
+
+Sales are €10,486m, with about 788.5m shares; the price is €10.34.
+
+$$
+\begin{aligned}
+\text{Sales per share}&=\frac{10{,}486}{788.5}=13.30\\
+P/S&=\frac{10.34}{13.30}=0.778
+\end{aligned}
+$$
 
 Revenue recognition red flags: **barter** of advertising between internet companies (1998–2000), **bill-and-hold** sales (Diebold: a \$25m SEC settlement), **gross vs net** revenue (Groupon's restatement cut its sales by more than half). If manipulation is suspected, use a higher risk premium (a lower justified P/S), or avoid the stock.
 
@@ -232,10 +427,28 @@ $$
 
 It rises with the profit margin, both directly and through growth: $g=b\times PM\times\frac{Sales}{TA}\times\frac{TA}{Equity}$.
 
-**Examples.**
+#### Example: Getinge
 
-* **Getinge**: $r$ 9%, forecast margin 9%, payout 35%, $g$ 7% → $P_0/S_1$ = 0.09 × 0.35/0.02 = **1.575**. With 2019 sales per share of SEK94.3, the value is **SEK148.52**, above the SEK133.70 price → undervalued.
-* **Comparables**: Getinge's P/S of 1.54 is the lowest (CMD 3.96, NEO 8.79), so it looks cheapest. But its margin (−2.49%), leverage and EV/revenue (1.88) are closer to CMD's than to NEO's (margin 14.53%), so CMD is the better comparable.
+**Justified P/S.** $r$ = 9%, forecast margin 9%, payout 35%, $g$ = 7%; 2019 sales per share SEK94.3; price SEK133.70.
+
+$$
+\begin{aligned}
+\frac{P_0}{S_1}&=\frac{0.09\times 0.35}{0.09-0.07}=1.575\\
+V_0&=1.575\times 94.3=148.52
+\end{aligned}
+$$
+
+**SEK148.52** is above the SEK133.70 price: **undervalued**.
+
+**Comparables.**
+
+| | Getinge | CMD | NEO |
+| --- | ---: | ---: | ---: |
+| P/S | **1.54** | 3.96 | 8.79 |
+| Net margin | −2.49% | | 14.53% |
+| EV/revenue | 1.88 | | |
+
+Getinge has the lowest P/S, so it looks cheapest. But its margin, leverage and EV/revenue are closer to CMD's than to NEO's, so **CMD is the better comparable**.
 
 ## Price to Cash Flow
 
@@ -253,20 +466,71 @@ It rises with the profit margin, both directly and through growth: $g=b\times PM
 | **FCFE** | Strongest link to theory; volatile (capex timing), so use an average or the DCF value |
 | **EBITDA** | Before interest → pair with **EV**, not price |
 
-**Examples.**
+$$CF=EPS+\text{Depreciation, amortization and depletion per share}$$
 
-* **Depreciation methods**: same cash flows, but A uses straight-line (flat EPS of \$10) and B accelerated (EPS growing 29% a year, 7.50 → 12.50); CF is \$15 a share for both. EPS growth can be an accounting artifact.
-* **Philips**: EPS €1.41 + D&A per share €1.17 = CF €2.58; price €36.31 → **P/CF 14.1**.
-* **Colgate, justified multiples**: FCFE₀ \$2.66, CF \$3.26, $r$ 7.4%, $g$ 3.2% → $V_0$ = 1.032(2.66)/0.042 = **\$65.36**; justified P/CF = 65.36/3.26 = **20.05**; P/FCFE = **24.57**.
-* **Two companies**: A's P/CF is 9.8 vs B's 11.4, but A's growth forecast is 280 bp higher and its FCFE is positive (B's is negative) → A is relatively undervalued.
+#### Example: Depreciation Methods
+
+A and B have identical cash flows: CF is \$15 a share for both. A uses straight-line depreciation; B uses an accelerated method.
+
+| | EPS | EPS growth | CF per share |
+| --- | --- | --- | ---: |
+| A (straight-line) | Flat at \$10 | 0% | 15 |
+| B (accelerated) | 7.50 → 12.50 | 29% a year | 15 |
+
+B's EPS growth is an **accounting artifact**; P/CF sees through it.
+
+#### Example: Philips
+
+$$
+\begin{aligned}
+CF&=\underbrace{1.41}_{EPS}+\underbrace{1.17}_{\mathrm{D\&A}}=2.58\\
+P/CF&=\frac{36.31}{2.58}=14.1
+\end{aligned}
+$$
+
+#### Example: Colgate (Justified Multiples)
+
+$FCFE_0$ = \$2.66, CF = \$3.26, $r$ = 7.4%, $g$ = 3.2%.
+
+$$
+\begin{aligned}
+V_0&=\frac{2.66\times 1.032}{0.074-0.032}=\$65.36\\
+\text{Justified P/CF}&=\frac{65.36}{3.26}=20.05\\
+\text{Justified P/FCFE}&=\frac{65.36}{2.66}=24.57
+\end{aligned}
+$$
+
+#### Example: Two Companies
+
+| | A | B |
+| --- | ---: | ---: |
+| P/CF | 9.8 | 11.4 |
+| Growth forecast | 280 bp higher | |
+| FCFE | Positive | Negative |
+
+A has the lower multiple **and** better fundamentals: **A is relatively undervalued**.
 
 ## Dividend Yield
 
 * **Rationales**: a component of total return, and a less risky one.
 * **Drawbacks**: only part of the return; **dividend displacement of earnings** (paying now lowers future growth, though payout may correlate with future profitability); the "safer" argument assumes markets misprice risk.
-* **Trailing yield** = the dividend rate (4 × the latest quarterly dividend, or the latest annual total for uneven semiannual payers) ÷ price. **Leading yield** = next year's forecast dividends ÷ price.
+$$
+\begin{aligned}
+\text{Trailing yield}&=\frac{\text{Dividend rate}}{P_0}\\
+\text{Leading yield}&=\frac{\text{Forecast dividends, next year}}{P_0}
+\end{aligned}
+$$
 
-**Example (BCE, BT).** BCE: 4 × 0.58 = \$2.32 ÷ \$39.53 = **5.87%**. BT (uneven semiannual): \$0.976/\$15.20 = **6.42%**.
+The **dividend rate** is 4 × the latest quarterly dividend, or the latest annual total for uneven semiannual payers.
+
+#### Example: BCE and BT
+
+$$
+\begin{aligned}
+\text{BCE (quarterly)}&=\frac{4\times 0.58}{39.53}=\frac{2.32}{39.53}=5.87\%\\
+\text{BT (uneven semiannual)}&=\frac{0.976}{15.20}=6.42\%
+\end{aligned}
+$$
 
 **Justified dividend yield** (GGM):
 
@@ -276,7 +540,15 @@ $$
 
 Higher growth → lower yield (high-yield screens are value-oriented); a higher $r$ → higher yield. Check dividend **safety**: the payout ratio, interest coverage, net debt/EBITDA.
 
-**Example (utilities).** Duke yields 4.24%, but its payout is 89% (the dividend is at risk); PPL yields 5.37%, but growth is only 0.60%; Portland General yields 2.76% plus 5.20% growth ≈ **7.96%** expected return, with no strong negatives → focus there.
+#### Example: Utilities
+
+| | Yield | Issue | Expected return ≈ yield + $g$ |
+| --- | ---: | --- | --- |
+| Duke | 4.24% | Payout 89%: the dividend is at risk | |
+| PPL | 5.37% | Growth only 0.60% | |
+| Portland General | 2.76% | No strong negatives; growth 5.20% | $2.76\%+5.20\%=$ **7.96%** |
+
+The highest yield isn't the best pick: **focus on Portland General**.
 
 ## Enterprise Value Multiples
 
@@ -298,13 +570,44 @@ $$
 
 EV multiples take a **control** perspective and are less sensitive to leverage than price multiples.
 
-**Example (Colgate-Palmolive EV/EBITDA, \$m).** Market cap 863 × \$66.48 = 57,372; debt (long-term debt 6,354 + current portion 0 + other non-current liabilities 2,269) = 8,623; non-controlling interest 299; cash 726 → **EV 65,034**. EBITDA = NI 2,400 + interest 143 + tax 906 + D&A 511 = **3,960** → **EV/EBITDA 16.6**.
+#### Example: Colgate-Palmolive EV/EBITDA
+
+Amounts in \$m; 863m shares at \$66.48.
+
+**Step 1. Enterprise value.**
+
+$$
+\begin{aligned}
+\text{Market cap}&=863\times 66.48=57{,}372\\
+\text{Debt}&=\underbrace{6{,}354}_{\text{LT debt}}+\underbrace{0}_{\text{current}}+\underbrace{2{,}269}_{\text{other NCL}}=8{,}623\\
+EV&=57{,}372+8{,}623+\underbrace{299}_{\text{NCI}}-\underbrace{726}_{\text{cash}}=65{,}568
+\end{aligned}
+$$
+
+**Step 2. EBITDA.**
+
+$$EBITDA=\underbrace{2{,}400}_{NI}+\underbrace{143}_{\text{Int}}+\underbrace{906}_{\text{Tax}}+\underbrace{511}_{\mathrm{D\&A}}=3{,}960$$
+
+**Step 3. Multiple.**
+
+$$\frac{EV}{EBITDA}=\frac{65{,}568}{3{,}960}=16.6$$
 
 * With preferred stock, start EBITDA from net income available to **both** preferred and common shareholders.
 * The justified EV/EBITDA rises with expected **FCFF growth** and **ROIC** (after-tax operating profit ÷ invested capital), and falls with **WACC**.
 * A lower EV/EBITDA than peers → relatively undervalued (one input among several).
 
-**Example (household products).** EV/EBITDA: Colgate 16.9, Kimberly-Clark 14.7, Clorox 17.6, Church & Dwight 22.5 (TIC/EBITDA ranks them the same; rankings could differ only if cash holdings varied a lot). Colgate is cheaper than Clorox and Church & Dwight (it grows more slowly than Church & Dwight), and dearer than Kimberly-Clark (margin 14.8% vs 9.8%).
+#### Example: Household Products
+
+| | EV/EBITDA |
+| --- | ---: |
+| Kimberly-Clark | 14.7 |
+| **Colgate** | **16.9** |
+| Clorox | 17.6 |
+| Church & Dwight | 22.5 |
+
+* Colgate is **cheaper** than Clorox and Church & Dwight (though it grows more slowly than Church & Dwight).
+* It is **dearer** than Kimberly-Clark, justified by its higher margin (14.8% vs 9.8%).
+* TIC/EBITDA ranks them the same; the rankings could differ only if cash holdings varied a lot.
 
 **Other EV denominators**, built up from net income:
 
@@ -315,7 +618,14 @@ EV multiples take a **control** perspective and are less sensitive to leverage t
 | EBITA | + | + | | + | When amortization is large, depreciation isn't |
 | EBIT | + | + | | | When neither is large |
 
-Industry-specific measures include EV/EBITDAR (airlines), EV/subscribers and EV/reserves. **EV/sales** fixes P/S's mismatch for companies with different capital structures: e.g., Stora Enso's equity €8,154m + debt €2,970m − cash €1,130m = **€9,994m** → EV/sales = **0.953**.
+Industry-specific measures include EV/EBITDAR (airlines), EV/subscribers and EV/reserves. **EV/sales** fixes P/S's mismatch for companies with different capital structures. E.g., [Stora Enso](#example-stora-enso):
+
+$$
+\begin{aligned}
+EV&=8{,}154+2{,}970-1{,}130=9{,}994\\
+EV/\text{Sales}&=\frac{9{,}994}{10{,}486}=0.953
+\end{aligned}
+$$
 
 ## Justified Multiples: Summary
 
@@ -352,18 +662,49 @@ The most frequent adjustment is pensions; the largest by value is goodwill. **P/
 
 | Indicator | Definition |
 | --- | --- |
-| Unexpected earnings (surprise) | $UE_t=EPS_t-E(EPS_t)$; % surprise = UE ÷ expected EPS |
+| Unexpected earnings (surprise) | The actual EPS minus the expected EPS |
 | Scaled earnings surprise | UE ÷ standard deviation of **analysts' forecasts** (their dispersion) |
-| Standardized unexpected earnings | $SUE_t=\dfrac{EPS_t-E(EPS_t)}{\sigma[EPS_t-E(EPS_t)]}$, using the standard deviation of **past surprises** (e.g., 20 quarters) |
+| Standardized unexpected earnings | UE ÷ standard deviation of **past surprises** (e.g., 20 quarters) |
 | Relative strength | The stock's compound return over a period (price momentum), or stock ÷ index, often scaled to 1.0 at the start |
+
+$$
+\begin{aligned}
+UE_t&=EPS_t-E(EPS_t)\\
+\text{Scaled surprise}&=\frac{UE_t}{\sigma_{\text{analysts' forecasts}}}\\
+SUE_t&=\frac{EPS_t-E(EPS_t)}{\sigma\left[EPS_t-E(EPS_t)\right]}\\
+RS_t&=\frac{P_{\text{stock},t}/P_{\text{stock},0}}{P_{\text{index},t}/P_{\text{index},0}}
+\end{aligned}
+$$
 
 The rationale: positive surprises may be followed by persistent abnormal returns, and returns may show persistence or reversal. Caveats: data snooping and hindsight bias, and technical rules tend to stop working once widely used. Momentum can hint at **when** a price will converge to intrinsic value.
 
-**Examples.**
+#### Example: BP Scaled Surprise
 
-* **BP scaled surprise**: consensus \$3.26, high estimate \$3.74, standard deviation of forecasts \$0.29 → (3.74 − 3.26)/0.29 = **1.66**.
-* **SUE**: a \$0.05 surprise with a \$0.20 standard deviation of past surprises → SUE 0.25; with a \$0.07 standard deviation → 0.71. Exxon, September 2013: (1.79 − 1.77)/0.1250 = **0.16**. VW had larger % surprises, but Exxon's SUE swung more (smaller standard deviation), so "accuracy" depends on the measure.
-* **Relative strength vs the S&P 500** (March 2018 = 1.0): by August 2019, TLT **1.067** (+6.7% vs the index), FEU **0.847** (−15.3%), EEM **0.743** (−25.7%). In December 2018, EEM's relative strength rose from 0.852 to 0.872 while FEU's fell from 0.909 to 0.885.
+The consensus is \$3.26, the high estimate \$3.74, and the standard deviation of forecasts \$0.29. If EPS comes in at the high estimate:
+
+$$\text{Scaled surprise}=\frac{3.74-3.26}{0.29}=1.66$$
+
+#### Example: SUE
+
+| Case | Surprise | σ of past surprises | SUE |
+| --- | ---: | ---: | ---: |
+| Volatile history | \$0.05 | \$0.20 | 0.25 |
+| Same surprise, steadier history | \$0.05 | \$0.07 | **0.71** |
+| Exxon, Sept 2013 | $1.79-1.77=0.02$ | \$0.1250 | **0.16** |
+
+The same surprise matters more for a company whose earnings are usually predictable. VW had larger % surprises, but Exxon's SUE swung more (its σ is smaller), so "accuracy" depends on the measure.
+
+#### Example: Relative Strength vs the S&P 500
+
+Each ETF's price ÷ the index, scaled to 1.0 in March 2018:
+
+| ETF | Aug 2019 | vs the index |
+| --- | ---: | ---: |
+| TLT | 1.067 | +6.7% |
+| FEU | 0.847 | −15.3% |
+| EEM | 0.743 | −25.7% |
+
+In December 2018, EEM's relative strength rose (0.852 → 0.872) while FEU's fell (0.909 → 0.885).
 
 ## Averaging Multiples
 
@@ -379,7 +720,15 @@ $$
 * The harmonic mean is below the arithmetic mean (unless all values are equal). It gives less weight to high multiples, so it reduces the effect of **large** outliers, but can amplify **small** ones (it's bounded by zero).
 * The **median** limits outliers in both directions.
 
-**Example (a two-stock portfolio).** €715m market cap with €71.5m of earnings (P/E 10), and €585m with €29.25m (P/E 20). Portfolio P/E = 1,300/100.75 = **12.90**.
+#### Example: A Two-Stock Portfolio
+
+| Stock | Market cap (€m) | Earnings (€m) | P/E | Weight |
+| --- | ---: | ---: | ---: | ---: |
+| 1 | 715 | 71.50 | 10 | 55% |
+| 2 | 585 | 29.25 | 20 | 45% |
+| **Portfolio** | **1,300** | **100.75** | $1{,}300/100.75=$ **12.90** | |
+
+Only the weighted harmonic mean reproduces the portfolio's true P/E:
 
 | Measure | Calculation | P/E |
 | --- | --- | --- |
@@ -388,13 +737,33 @@ $$
 | Harmonic mean | 1/[0.5(0.1) + 0.5(0.05)] | 13.33 |
 | **Weighted harmonic** | 1/[0.55(0.1) + 0.45(0.05)] | **12.90** |
 
-**Example (telecom P/Es).** Including Charter's 70.67: arithmetic mean 25.30, median 15.23, harmonic mean 17.70 (closer to the median). Without outliers: 16.43, 15.03, 15.39.
+#### Example: Telecom P/Es
+
+| | Arithmetic mean | Median | Harmonic mean |
+| --- | ---: | ---: | ---: |
+| Including Charter (70.67) | 25.30 | 15.23 | 17.70 |
+| Without outliers | 16.43 | 15.03 | 15.39 |
+
+With the large outlier, the harmonic mean stays much closer to the median than the arithmetic mean does.
 
 **Using several indicators.** Analysts combine DCF values with multiples (P/E, EV/EBITDA, dividend yield). In backtests, watch for **look-ahead bias** (using data not yet reported at the time).
 
 **Screening** narrows the universe by criteria. Limitations: no control over how inputs such as EPS are computed, and no qualitative factors.
 
-**Example (Larsen's screen).** P/E < 20, P/B < 2, PEG < 1, yield ≥ 3%, market cap > \$10bn → 10 stocks. She is a **large-cap value** investor, using no momentum indicators. Limitations: no profitability or risk criteria (a low P/E may reflect low profitability or high risk), unadjusted database inputs, no qualitative factors.
+#### Example: Larsen's Screen
+
+| Criterion | Threshold |
+| --- | --- |
+| P/E | < 20 |
+| P/B | < 2 |
+| PEG | < 1 |
+| Dividend yield | ≥ 3% |
+| Market cap | > \$10bn |
+
+The screen returns 10 stocks.
+
+* **Style**: a **large-cap value** investor, using no momentum indicators.
+* **Limitations**: no profitability or risk criteria (a low P/E may reflect low profitability or high risk), unadjusted database inputs, and no qualitative factors.
 
 > [!NOTE]
 >
@@ -403,7 +772,8 @@ $$
 > * Honda: the price is given as ¥2,837, but the solution computes with ¥2,817 (2,817/3,819 − 1 = −26.2%). With ¥2,837, the gaps are −25.7% and −23.4%; the conclusion is the same.
 > * Barclays uses total equity including £9,371m of non-controlling interests. Strictly, common book value should exclude them (£53,586m); follow the textbook's numbers for this example.
 > * BT: the solution prints "0.0642, or 6.52%"; 0.976/15.20 = 6.42%.
-> * Colgate's EV counts "other non-current liabilities" (\$2,269m) as debt; normally only interest-bearing debt is included.
+> * Colgate's EV counts "other non-current liabilities" (\$2,269m) as debt; normally only interest-bearing debt is included. Its components sum to \$65,568m, which gives the 16.6 multiple.
+> * Verizon: the median of the six numeric P/Es is 15.63; the median of 15.03 counts CenturyLink's NM as the lowest P/E.
 > * Stora Enso: shares are given as 788.4m in one place and 788.6m in another, and the EV line prints equity as €8,145m, though €8,154m gives €9,994m.
 > * SUE: the solution says VW's SUE ranged "−3.57 to +1.13", but the table's maximum is 1.97. The relative strength solution says "December 2019" when it means December 2018.
 > * Exhibit 28 lists Windstream at 24.55 (the earlier group mean) instead of its P/E of 19.01, and its summary statistics don't exactly reproduce from either input. The concept: the harmonic mean pulls the average toward the median when there is a large outlier.

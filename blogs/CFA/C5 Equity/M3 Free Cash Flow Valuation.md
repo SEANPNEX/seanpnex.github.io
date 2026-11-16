@@ -37,10 +37,36 @@ $$
 \text{Equity value}=\frac{FCFE_0(1+g)}{r-g}
 $$
 
-**Example (Cagiati).** FCFF CHF700m; $r_d$ 5.7%; $r$ 11.8%; debt/equity weights 20/80; tax 33.33%; $g$ 5%; debt CHF2.2bn; 200m shares.
+#### Example: Cagiati
 
-* WACC = 0.20(5.7%)(0.6667) + 0.80(11.8%) = **10.2%**.
-* Firm value = 700(1.05)/(0.102 − 0.05) = 735/0.052 = CHF14,134.6m → equity = 14,134.6 − 2,200 = CHF11,934.6m → **CHF59.67 a share**.
+| Input | Value |
+| --- | --- |
+| $FCFF_0$ | CHF700m |
+| $r_d$ / $r$ | 5.7% / 11.8% |
+| Weights $w_d$ / $w_e$ | 20% / 80% |
+| Tax rate | 33.33% |
+| $g$ | 5% |
+| Debt | CHF2,200m |
+| Shares | 200m |
+
+**Step 1. WACC.**
+
+$$WACC=0.20\times 5.7\%\times(1-0.3333)+0.80\times 11.8\%=10.2\%$$
+
+**Step 2. Firm value.**
+
+$$\text{Firm value}=\frac{700\times 1.05}{0.102-0.05}=\frac{735}{0.052}=14{,}134.6$$
+
+**Step 3. Equity per share.**
+
+$$
+\begin{aligned}
+\text{Equity}&=14{,}134.6-2{,}200=11{,}934.6\\
+\text{Per share}&=\frac{11{,}934.6}{200}=59.67
+\end{aligned}
+$$
+
+**CHF59.67 a share.**
 
 ## Computing FCFF and FCFE
 
@@ -69,7 +95,13 @@ The building blocks:
 * **Net borrowing**: new debt − repayments.
 * From EBIT, depreciation is added back in full; from EBITDA, only its **tax shield**, $Dep\times t$, is added (depreciation was never subtracted).
 
-**Example (Cane Distribution, \$000).** Tax 30%, interest at 7%.
+#### Example: Cane Distribution
+
+Amounts are in \$000; the tax rate is 30%, and debt pays 7% interest.
+
+**Step 1. FCFF from net income.**
+
+$$FCFF=NI+NCC+Int(1-t)-FCInv-WCInv$$
 
 | | 2018 | 2019 | 2020 |
 | --- | --- | --- | --- |
@@ -80,10 +112,41 @@ The building blocks:
 | − WCInv | (56.00) | (11.60) | (12.76) |
 | **FCFF** | **97.50** | **107.26** | **117.97** |
 
-* From CFO (86.52 / 145.18 / 159.69) + Int(1 − t) − FCInv → the same FCFF.
-* FCFE = FCFF − Int(1 − t) + net borrowing (22.40 / 24.64 / 27.10) = **108.92 / 119.82 / 131.79**.
+**Step 2. Check from CFO.** $FCFF=CFO+Int(1-t)-FCInv$ gives the same result; e.g. 2018: $86.52+10.98-0=97.50$.
 
-**Example (Pitts Corporation, 2020, \$m).** NI 240, depreciation 300, interest 100, tax 40%, capex 400, CFO 495, EBIT 500, EBITDA 800. WCInv = ΔAR 40 + Δinventory 30 − ΔAP 15 − Δaccrued 10 = **45** (excluding cash and notes payable). Net borrowing = Δnotes payable 50 + Δlong-term debt 25 = **75**.
+**Step 3. FCFE.**
+
+$$FCFE=FCFF-Int(1-t)+\text{Net borrowing}$$
+
+| | 2018 | 2019 | 2020 |
+| --- | ---: | ---: | ---: |
+| FCFF | 97.50 | 107.26 | 117.97 |
+| − Int(1 − t) | (10.98) | (12.08) | (13.28) |
+| + Net borrowing | 22.40 | 24.64 | 27.10 |
+| **FCFE** | **108.92** | **119.82** | **131.79** |
+
+#### Example: Pitts Corporation
+
+Pitts's 2020 figures, in \$m:
+
+| Item | Value | Item | Value |
+| --- | ---: | --- | ---: |
+| Net income | 240 | CFO | 495 |
+| Depreciation | 300 | EBIT | 500 |
+| Interest | 100 | EBITDA | 800 |
+| Tax rate | 40% | Capex | 400 |
+
+**Step 1. Building blocks.** Working capital excludes cash and notes payable; notes payable count as borrowing.
+
+$$
+\begin{aligned}
+Int(1-t)&=100\times 0.6=60\\
+WCInv&=\underbrace{40}_{\Delta AR}+\underbrace{30}_{\Delta\text{Inv}}-\underbrace{15}_{\Delta AP}-\underbrace{10}_{\Delta\text{Accrued}}=45\\
+\text{Net borrowing}&=\underbrace{50}_{\Delta\text{Notes}}+\underbrace{25}_{\Delta LTD}=75
+\end{aligned}
+$$
+
+**Step 2. Every route gives the same answer.**
 
 | Start from | Calculation | Result |
 | --- | --- | --- |
@@ -129,20 +192,54 @@ FCFE exceeds FCFF here only because borrowing was large.
 * **Stock options**: the expense is noncash, but exercise cash and part of the tax benefit go to financing. Don't forecast flows that won't persist, and use the **expected** share count (dilution).
 * Remove **non-recurring** items from the base year.
 
-**Example (Duplico, sustainable working capital).** Capex and depreciation went from €997.8m and €235.4m (2020) to €317.6m and €309.2m (2022). Higher depreciation **lowers NI** by Dep(1 − t) but **raises CFO** by Dep × t (the tax shield). Rising inventory and receivables reduce CFO and FCFE; rising payables and accruals add to them. Shrinking assets or growing payables can't continue forever, and a growing company's working capital needs grow too.
+$$
+\begin{aligned}
+\Delta NI&=-\Delta Dep\times(1-t)\\
+\Delta CFO&=+\Delta Dep\times t
+\end{aligned}
+$$
+
+#### Example: Duplico (Sustainable Working Capital)
+
+| €m | 2020 | 2022 |
+| --- | ---: | ---: |
+| Capex | 997.8 | 317.6 |
+| Depreciation | 235.4 | 309.2 |
+
+* **Depreciation rose**: it lowers NI by $\Delta Dep(1-t)$ but **raises CFO** by $\Delta Dep\times t$, the tax shield.
+* **Working capital**: rising inventory and receivables reduce CFO and FCFE; rising payables and accruals add to them.
+* **Is it sustainable?** Capex has fallen to about depreciation. Shrinking assets or growing payables can't continue forever, and a growing company's working capital needs grow too.
 
 ### Uses of Free Cash Flow
 
 Uses must equal sources: a consistency check that also shows the capital structure policy.
 
-* Uses of FCFF = Δcash + Int(1 − t) + (repayments − new borrowing) + dividends + (buybacks − issuance).
-* Uses of FCFE = Δcash + dividends + (buybacks − issuance).
+$$
+\begin{aligned}
+FCFF={}&\Delta\text{Cash}+Int(1-t)\\
+&+(\text{Repayments}-\text{New debt})\\
+&+\text{Dividends}+(\text{Buybacks}-\text{Issuance})\\
+FCFE={}&\Delta\text{Cash}+\text{Dividends}\\
+&+(\text{Buybacks}-\text{Issuance})
+\end{aligned}
+$$
 
-**Example (Pitts).** FCFF 155 = Δcash 10 + 60 − 75 + dividends 160 + 0; FCFE 170 = 10 + 160 + 0. CFO (495) covered capex (400), so the new debt effectively paid dividends → rising leverage.
+#### Example: Pitts (Uses)
+
+Pitts's cash rose by 10, it paid dividends of 160, and it neither bought back nor issued shares.
+
+$$
+\begin{aligned}
+FCFF&=10+60-75+160+0=155\\
+FCFE&=10+160+0=170
+\end{aligned}
+$$
+
+CFO (495) covered capex (400), so the 75 of new debt effectively paid the dividend: **leverage is rising**.
 
 ## Forecasting FCFF and FCFE
 
-1. **Constant growth** on a (normalized) base. E.g., Pitts at 15%: FCFF 155 → 178.25 → 204.99 → 235.74.
+1. **Constant growth** on a (normalized) base: $FCFF_t=FCFF_0(1+g)^t$. E.g., Pitts at 15%: FCFF 155 → 178.25 → 204.99 → 235.74.
 2. **Forecast the components**, usually tied to sales, assuming (FCInv − Dep) and WCInv are constant fractions of the **increase in sales**:
 
 $$
@@ -171,16 +268,38 @@ FCFE={}&NI\\
 \end{aligned}
 $$
 
-**Example (Pitts, sales-based).** Sales \$3,000m (up \$300m last year), EBIT margin 16.67%, tax 40%; incremental FC = (400 − 300)/300 = **33.33%**; incremental WC = 45/300 = **15%**. Next year, sales +10%:
+#### Example: Pitts (Sales-Based Forecast)
 
-| | FCFF | FCFE (net margin 8%, DR 50%) |
-| --- | --- | --- |
-| Sales | 3,300 | 3,300 |
-| EBIT(1 − t) / NI | 330 | 264 |
-| Incremental FC | (100) | (100) |
-| Incremental WC | (45) | (45) |
-| Net borrowing | | 72.50 |
-| **Result** | **185** | **191.50** |
+Pitts's sales were \$3,000m, up \$300m last year, when capex was 400, depreciation 300 and WCInv 45. The EBIT margin is 16.67%, the net margin 8%, the tax rate 40% and the target debt ratio 50%. Sales grow 10% next year.
+
+**Step 1. Incremental rates from last year.**
+
+$$
+\begin{aligned}
+\text{FC rate}&=\frac{400-300}{300}=33.33\%\\
+\text{WC rate}&=\frac{45}{300}=15\%
+\end{aligned}
+$$
+
+**Step 2. Next year's investment.** Sales rise by 300, to 3,300:
+
+$$
+\begin{aligned}
+FCInv-Dep&=33.33\%\times 300=100\\
+WCInv&=15\%\times 300=45
+\end{aligned}
+$$
+
+**Step 3. FCFF and FCFE.**
+
+$$
+\begin{aligned}
+FCFF&=\underbrace{3{,}300\times 16.67\%\times 0.6}_{330}-100-45=185\\
+FCFE&=\underbrace{3{,}300\times 8\%}_{264}-0.5\times 100-0.5\times 45=191.50
+\end{aligned}
+$$
+
+Equivalently, FCFE subtracts the full 145 of investment and adds net borrowing of 50% × 145 = 72.50.
 
 Over five years, with the EBIT margin falling from 16.67% to 14.5%: FCFF 185.00, 188.98, 195.90, 202.31, 208.05. The method is less accurate when there are significant noncash charges other than depreciation.
 
@@ -198,13 +317,52 @@ Over five years, with the EBIT margin falling from 16.67% to 14.5%: FCFF 185.00,
 
 * FCFF from NI: **add back preferred dividends** (like after-tax interest, but not tax-deductible).
 * FCFE from NI (already after preferred dividends): no further adjustment; net preferred **issuance** counts like net borrowing.
-* Equity value = firm value − debt − preferred.
 
-**Example (Welch Corporation, \$m).** Bonds 400 at 8%, preferred 100 at 8%, common 500 at 12%; NI 110, interest 32, preferred dividends 8, depreciation 40, FCInv 70, WCInv 20, net borrowing 25, tax 30%; FCFF growth 4%, FCFE growth 5.4%.
+$$
+\begin{aligned}
+FCFF={}&NI+NCC+Int(1-t)+\text{Pref div}\\
+&-FCInv-WCInv\\
+WACC={}&w_d\,r_d(1-t)+w_p\,r_p+w_e\,r\\
+\text{Equity}={}&\text{Firm value}-\text{Debt}-\text{Preferred}
+\end{aligned}
+$$
 
-* WACC = 0.4(8%)(0.7) + 0.1(8%) + 0.5(12%) = **9.04%**.
-* FCFF = 110 + 40 + 32(0.7) + 8 − 70 − 20 = **90.4** → firm value = 90.4(1.04)/0.0504 = 1,865.40 → equity = 1,865.40 − 400 − 100 = **1,365.40**.
-* FCFE = 110 + 40 − 70 − 20 + 25 = **85** → equity = 85(1.054)/(0.12 − 0.054) = **1,357.42**.
+#### Example: Welch Corporation
+
+Amounts in \$m; the tax rate is 30%.
+
+| Capital | Amount | Weight | Cost |
+| --- | ---: | ---: | ---: |
+| Bonds | 400 | 40% | 8% |
+| Preferred | 100 | 10% | 8% |
+| Common | 500 | 50% | 12% |
+
+NI 110, interest 32, preferred dividends 8, depreciation 40, FCInv 70, WCInv 20, net borrowing 25. FCFF grows 4% and FCFE 5.4%.
+
+**Step 1. WACC.**
+
+$$WACC=0.4\times 8\%\times 0.7+0.1\times 8\%+0.5\times 12\%=9.04\%$$
+
+**Step 2. Value from FCFF.**
+
+$$
+\begin{aligned}
+FCFF&=110+40+32\times 0.7+8-70-20=90.4\\
+\text{Firm value}&=\frac{90.4\times 1.04}{0.0904-0.04}=1{,}865.40\\
+\text{Equity}&=1{,}865.40-400-100=1{,}365.40
+\end{aligned}
+$$
+
+**Step 3. Value from FCFE.**
+
+$$
+\begin{aligned}
+FCFE&=110+40-70-20+25=85\\
+\text{Equity}&=\frac{85\times 1.054}{0.12-0.054}=1{,}357.42
+\end{aligned}
+$$
+
+The two routes give close values (**1,365.40** vs **1,357.42**).
 
 ## Single-Stage Models: Variations and Sensitivity
 
@@ -216,13 +374,40 @@ $$
 
 The real $r$ is the country's real return adjusted for industry, size and leverage; the real $g$ is benchmarked to the country's real growth.
 
-**Example (Mukamba Ventures, DRC).** FCFE₀ CDF1,400; $r$ = 7.30% + 0.80% − 0.33% − 0.12% = **7.65%**; $g$ = 3.0% − 0.5% = 2.5% → $V_0$ = 1,435/0.0515 = **CDF27,864**.
+#### Example: Mukamba Ventures (Real Model)
+
+Mukamba, in the Democratic Republic of the Congo, has $FCFE_0$ = CDF1,400.
+
+**Step 1. Real required return.** Start from the country's real return and adjust for industry, size and leverage:
+
+$$r_{\text{real}}=7.30\%+0.80\%-0.33\%-0.12\%=7.65\%$$
+
+**Step 2. Real growth.** The country's real growth of 3.0%, less 0.5% for the company:
+
+$$g_{\text{real}}=3.0\%-0.5\%=2.5\%$$
+
+**Step 3. Value.**
+
+$$V_0=\frac{1{,}400\times 1.025}{0.0765-0.025}=\frac{1{,}435}{0.0515}=27{,}864$$
+
+**CDF27,864.**
 
 **Sensitivity analysis** varies one input at a time to see which matters most. Value moves in proportion to the **base-year** FCF.
 
-**Example (Petrobras).** FCFE₀ BRL2.59, $g$ 7%, $r$ = 8.9% + 1.4(5.3%) = 16.32% → $V_0$ = 2.59(1.07)/0.0932 = **BRL29.73**.
+#### Example: Petrobras (Sensitivity)
 
-| Input | Low → value | High → value |
+$FCFE_0$ = BRL2.59 and $g$ = 7%; the risk-free rate is 8.9%, beta 1.4 and the ERP 5.3%.
+
+$$
+\begin{aligned}
+r&=8.9\%+1.4\times 5.3\%=16.32\%\\
+V_0&=\frac{2.59\times 1.07}{0.1632-0.07}=\frac{2.7713}{0.0932}=29.73
+\end{aligned}
+$$
+
+The base value is **BRL29.73**. Changing one input at a time:
+
+| Input (low / high) | Value at low | Value at high |
 | --- | --- | --- |
 | Beta 1.2 / 1.6 | 33.55 | 26.70 |
 | $r_f$ 7.9% / 9.9% | 33.31 | 26.85 |
@@ -253,7 +438,28 @@ $$
 > [!IMPORTANT]
 > When growth drops, FCFE can **jump**, because investment needs fall faster than profits. Always compute $FCFE_{n+1}$ from the stage-2 assumptions; don't just grow $FCFE_n$ at $g_L$.
 
-**Example (TechnoSchaft, constant growth in each stage).** Sales per share €25, growing 20% for 3 years then 6%; net margin 10%; net FCInv 50% and WCInv 20% of the sales increase; 40% debt-financed; $r$ = 7% + 1.2(4.5%) = 12.4%.
+Per share, with a target debt ratio DR financing net investment:
+
+$$
+\begin{aligned}
+FCFE_t={}&EPS_t-(1-DR)\\
+&\times\left[(FCInv-Dep)_t+WCInv_t\right]
+\end{aligned}
+$$
+
+#### Example: TechnoSchaft (Constant Growth in Each Stage)
+
+| Input | Value |
+| --- | --- |
+| Sales per share | €25, growing 20% for 3 years, then 6% |
+| Net margin | 10% |
+| Net FCInv / WCInv | 50% / 20% of the sales increase |
+| Debt financing (DR) | 40% |
+| $r$ | 7% + 1.2 × 4.5% = 12.4% |
+
+**Step 1. FCFE per share.** E.g. Year 1: sales rise by 5.00, so
+
+$$FCFE_1=3.00-0.6\times(2.50+1.00)=0.90$$
 
 | Year | 1 | 2 | 3 | 4 |
 | --- | --- | --- | --- | --- |
@@ -264,30 +470,134 @@ $$
 | Debt financing | 1.400 | 1.680 | 2.016 | 0.726 |
 | **FCFE** | **0.900** | **1.080** | **1.296** | **3.491** (+169%) |
 
-$TV_3$ = 3.491/(0.124 − 0.06) = €54.55, with a PV of 38.415 → **$V_0$ = 0.801 + 0.855 + 0.913 + 38.415 = €40.98** (the terminal value is about 94%).
+FCFE jumps 169% in Year 4: growth falls from 20% to 6%, so investment needs shrink.
 
-**Example (Sindhuh, declining EPS growth in stage 1).** EPS₀ \$2.40; growth 30, 18, 12, 9, 7%, then 7%; net capex per share 3.00, 2.50, 2.00, 1.50, 1.00 (then +7%); WCInv = 50% of net capex; 30% debt-financed; $r$ = 6% + 1.1(4%) = 10.4%.
+**Step 2. Terminal value at Year 3.**
+
+$$
+\begin{aligned}
+TV_3&=\frac{FCFE_4}{r-g}=\frac{3.491}{0.124-0.06}=54.55\\
+\text{PV}(TV_3)&=\frac{54.55}{1.124^3}=38.415
+\end{aligned}
+$$
+
+**Step 3. Add.**
+
+$$V_0=\underbrace{0.801+0.855+0.913}_{\text{PV}(FCFE_1\dots FCFE_3)}+38.415=40.98$$
+
+**$V_0$ = €40.98**; the terminal value is about 94% of it.
+
+#### Example: Sindhuh (Declining EPS Growth in Stage 1)
+
+| Input | Value |
+| --- | --- |
+| $EPS_0$ | \$2.40 |
+| EPS growth | 30%, 18%, 12%, 9%, 7% (2020–2024), then 7% |
+| Net capex per share | 3.00, 2.50, 2.00, 1.50, 1.00, then growing 7% |
+| WCInv | 50% of net capex |
+| DR | 30% |
+| $r$ | 6% + 1.1 × 4% = 10.4% |
+
+**Step 1. FCFE per share.** E.g. 2020:
+
+$$FCFE_{2020}=3.120-0.7\times(3.00+1.50)=-0.030$$
 
 | | 2020 | 2021 | 2022 | 2023 | 2024 |
 | --- | --- | --- | --- | --- | --- |
 | EPS | 3.120 | 3.682 | 4.123 | 4.494 | 4.809 |
 | FCFE | −0.030 | 1.057 | 2.023 | 2.919 | 3.759 |
 
-$V_{2023}$ = 3.759/(0.104 − 0.07) = \$110.56, with a PV of 74.425 → **$V_0$ = \$78.73**. The trailing P/E is 78.73/2.40 = 32.8 now and 110.56/4.494 = 24.6 at the start of 2024: the P/E falls as growth fades.
+**Step 2. Terminal value at the end of 2023.**
 
-**Example (Medina Werks, declining sales growth and margin).** Sales C\$600m; growth 20, 16, 12, 10, 8, 7%; net margin 14, 13, 12, 11, 10.5, 10%; net capex 60% and WC 25% of the sales increase; 40% debt; $r$ = 6% + 1.1(4.5%) = 10.95%; 70m shares.
+$$
+\begin{aligned}
+V_{2023}&=\frac{FCFE_{2024}}{r-g}=\frac{3.759}{0.104-0.07}=110.56\\
+\text{PV}(V_{2023})&=\frac{110.56}{1.104^4}=74.425
+\end{aligned}
+$$
 
-* FCFE in years 1–5: 39.600, 49.824, 61.137, 65.480, 74.703 (PV ≈ 208.57); FCFE₆ = 79.235.
-* $TV_5$ = 79.235/0.0395 = C\$2,005.95m, with a PV of 1,193.12.
-* Equity = **C\$1,401.69m → C\$20.02 a share**.
+**Step 3. Add** the PV of FCFE for 2020–2023 (4.31): **$V_0$ = \$78.73**.
+
+**P/E check.** The trailing P/E is $78.73/2.40=32.8$ now and $110.56/4.494=24.6$ at the start of 2024: the P/E falls as growth fades.
+
+#### Example: Medina Werks (Declining Sales Growth and Margin)
+
+Sales are C\$600m; 70m shares; 40% debt financing; $r$ = 6% + 1.1 × 4.5% = 10.95%. Net capex is 60% and WCInv 25% of the sales increase.
+
+| Year | 1 | 2 | 3 | 4 | 5 | 6 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Sales growth | 20% | 16% | 12% | 10% | 8% | 7% |
+| Net margin | 14% | 13% | 12% | 11% | 10.5% | 10% |
+| FCFE (C\$m) | 39.600 | 49.824 | 61.137 | 65.480 | 74.703 | 79.235 |
+
+**Step 1. FCFE.** E.g. Year 1: sales rise by 120 to 720.
+
+$$FCFE_1=\underbrace{720\times 14\%}_{100.8}-0.6\times(0.60+0.25)\times 120=39.60$$
+
+**Step 2. Terminal value at Year 5.**
+
+$$
+\begin{aligned}
+TV_5&=\frac{79.235}{0.1095-0.07}=2{,}005.95\\
+\text{PV}(TV_5)&=\frac{2{,}005.95}{1.1095^5}=1{,}193.12
+\end{aligned}
+$$
+
+**Step 3. Add** the PV of FCFE for Years 1–5 (about 208.57):
+
+$$
+\begin{aligned}
+\text{Equity}&=208.57+1{,}193.12=1{,}401.69\\
+\text{Per share}&=\frac{1{,}401.69}{70}=20.02
+\end{aligned}
+$$
+
+**C\$20.02 a share.**
 
 **Three-stage models** combine a constant stage 1, a declining (or constant) stage 2 and a stable stage 3: a good approximation when cash flows fluctuate in reality.
 
-**Example (Reliant Home Furnishings, three-stage FCFF).** FCFF₀ \$745m; 309.39m shares; $r$ = 5.04% + 0.9(5.5%) = 9.99%; WACC = 0.2(7.1%)(0.66) + 0.8(9.99%) = **8.93%**; debt \$1.518bn; growth 8.8% (years 1–4), then 7.4%, 6.0%, 4.6%, then 3.2%.
+#### Example: Reliant Home Furnishings (Three-Stage FCFF)
 
-* FCFF: 811, 882, 959, 1,044, 1,121, 1,188, 1,243; 1,283 in year 8.
-* PV of years 1–7 = \$5,097m; $TV_7$ = 1,283/(0.0893 − 0.032) = \$22,391m, with a PV of \$12,304m.
-* Firm value \$17,401m → equity \$15,883m → **\$51.34 a share**.
+| Input | Value |
+| --- | --- |
+| $FCFF_0$ | \$745m |
+| Shares | 309.39m |
+| Debt | \$1,518m |
+| $r$ | 5.04% + 0.9 × 5.5% = 9.99% |
+| Pretax $r_d$, tax rate | 7.1%, 34% |
+| Weights $w_d$ / $w_e$ | 20% / 80% |
+| Growth | 8.8% (Years 1–4); 7.4%, 6.0%, 4.6% (Years 5–7); then 3.2% |
+
+**Step 1. WACC.**
+
+$$WACC=0.2\times 7.1\%\times 0.66+0.8\times 9.99\%=8.93\%$$
+
+**Step 2. FCFF forecast.**
+
+| Year | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| FCFF (\$m) | 811 | 882 | 959 | 1,044 | 1,121 | 1,188 | 1,243 | 1,283 |
+
+**Step 3. Terminal value at Year 7.**
+
+$$
+\begin{aligned}
+TV_7&=\frac{1{,}283}{0.0893-0.032}=22{,}391\\
+\text{PV}(TV_7)&=\frac{22{,}391}{1.0893^7}=12{,}304
+\end{aligned}
+$$
+
+**Step 4. Firm, equity and per share.**
+
+$$
+\begin{aligned}
+\text{Firm value}&=5{,}097+12{,}304=17{,}401\\
+\text{Equity}&=17{,}401-1{,}518=15{,}883\\
+\text{Per share}&=\frac{15{,}883}{309.39}=51.34
+\end{aligned}
+$$
+
+**\$51.34 a share.**
 
 **Choosing a model.** Single-stage for stable, mature companies (growth at or below the economy's); two-stage for a period of high growth followed by stability; three-stage for growth → transition → maturity. Compare the value with the market price to judge over- or undervaluation.
 
@@ -295,7 +605,31 @@ $V_{2023}$ = 3.759/(0.104 − 0.07) = \$110.56, with a PV of 74.425 → **$V_0$ 
 
 * Quantifiable ESG items (fines, extra capex) → adjust the **cash flows**; hard-to-quantify ESG risks → add a judgmental **premium to the cost of equity**.
 
-**Example (American Copper Mining Co., three-stage FCFF with ESG).** Stages: before the new mine operates, while it operates, after it closes. ESG adjustments: the licence is delayed from 3 to 5 years, water capex adds 10% to capex, and labor risk adds **75 bp** to the cost of equity. $r_d$ = 5%(0.75) = 3.75%; $r_e$ = 3% + 1.2(5%) + 0.75% = 9.75%; WACC = 0.5(3.75%) + 0.5(9.75%) = **6.75%**. Total PV of FCFF \$1,936m − debt \$968m = equity \$968m → **\$97 a share** vs a price of \$110 → **sell**.
+#### Example: American Copper Mining Co. (Three-Stage FCFF with ESG)
+
+The three stages are: before the new mine operates, while it operates, and after it closes.
+
+| ESG issue | Quantifiable? | Adjustment |
+| --- | --- | --- |
+| Licence delayed from 3 to 5 years | Yes | Shift the mine's cash flows |
+| Water-treatment capex | Yes | Capex +10% |
+| Labor relations risk | No | Cost of equity **+75 bp** |
+
+**Step 1. Discount rate.** Pretax $r_d$ is 5%, the tax rate 25%, and debt and equity are 50/50.
+
+$$
+\begin{aligned}
+r_d(1-t)&=5\%\times 0.75=3.75\%\\
+r_e&=3\%+1.2\times 5\%+0.75\%=9.75\%\\
+WACC&=0.5\times 3.75\%+0.5\times 9.75\%=6.75\%
+\end{aligned}
+$$
+
+**Step 2. Value.**
+
+$$\text{Equity}=\underbrace{1{,}936}_{\text{PV of FCFF}}-\underbrace{968}_{\text{Debt}}=\$968\text{m}$$
+
+That is **\$97 a share**, against a price of \$110: **sell**.
 
 **Non-operating assets** (excess cash and marketable securities, land held for investment, non-operating financial investments) are valued **separately, at market value**, and added:
 

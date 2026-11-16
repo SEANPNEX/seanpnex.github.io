@@ -14,11 +14,13 @@ Valuing a private company uses the same DCF and multiples tools as for a public 
 * Stock-specific factors generally **lower** value; company-specific factors can go either way (a founder-led start-up may grow faster than public peers).
 * Risk and return vary more widely than among public companies; family firms (e.g., Germany's *Mittelstand*) dominate many economies.
 
-**Examples.**
+#### Examples: Which Difference Applies?
 
-* **Thunder Corp.** is owned by non-employee shareholders and run by hired managers, so **principal–agent issues** are the *least* likely difference from a public company.
-* **Sun and Moon** (two 35% partners, three 10% partners): per-share value differences come from **concentrated control** (the two 35% holders together control 70%).
-* **Privacy Group vs PT Corp.** (identical apart from listing): the difference comes from the **illiquidity of the shares**.
+| Case | Facts | Main difference from a public company |
+| --- | --- | --- |
+| **Thunder Corp.** | Owned by non-employee shareholders, run by hired managers | **Principal–agent issues** are the *least* likely difference: like a public company, owners and managers are separate |
+| **Sun and Moon** | Two 35% partners and three 10% partners | **Concentrated control**: the two 35% holders together control 70% |
+| **Privacy Group vs PT Corp.** | Identical apart from listing | **Illiquidity of the shares** |
 
 ## Uses and Areas of Focus
 
@@ -43,23 +45,84 @@ Three areas of focus:
 * Watch for above-market owner pay (which lowers taxable income); personal expenses, homes, aircraft and vehicles run through the company; life insurance; shareholder loans. Owners of loss-making companies may **under**pay themselves, understating expenses.
 * **Real estate**: strip out the property's revenue and expenses, charge a market rent, and treat the property as a non-operating asset (with different risk and growth).
 
-**Example (Fyt for Life, FLI).** Reported: revenue SGD50m, COGS 30m, SG&A 5m, D&A 1m, EBIT 14m, tax 17% → operating income after tax **11.62m**.
+$$
+\begin{aligned}
+\text{Normalized EBIT}={}&\text{Reported EBIT}\\
+&+\text{Above-market owner pay}\\
+&+\text{Non-operating expenses}\\
+&-\text{Market rent for free-use assets}
+\end{aligned}
+$$
 
-* CEO pay is 1.5m vs a market rate of 0.5m → SG&A −1.0m.
+#### Example: Fyt for Life (FLI)
+
+Debt is below optimal, so normalize **operating income after tax** (ignore interest). The tax rate is 17%.
+
+**Step 1. Adjustments.**
+
+* CEO pay is 1.5m against a market rate of 0.5m → SG&A −1.0m.
 * A non-operating ranch and condo → SG&A −0.3m, D&A −0.1m.
-* Debt is below optimal → use operating income after tax (ignore interest).
-* Adjusted: SG&A 3.7m, EBITDA 16.3m, D&A 0.9m, EBIT **15.4m**, tax 2.618m → **12.782m**.
-* If the owner (Xin) took the 1.5m as a dividend instead of salary, normalize earnings **down** (deduct a 0.5m market salary). Free use of a family-owned building → deduct a market rent.
 
-**Example (Chandra Consolidated).** The shops use the holding company's ground floor rent-free. Add a market rent as an expense of Chandra Shops (lowering its earnings and value) and as rental income of Chandra Holdings (raising them).
+**Step 2. Normalized income statement.**
+
+| SGD m | Reported | Adjustment | Normalized |
+| --- | ---: | ---: | ---: |
+| Revenue | 50.0 | | 50.0 |
+| COGS | (30.0) | | (30.0) |
+| SG&A | (5.0) | +1.3 | (3.7) |
+| EBITDA | 15.0 | | 16.3 |
+| D&A | (1.0) | +0.1 | (0.9) |
+| **EBIT** | **14.0** | | **15.4** |
+| Tax at 17% | (2.38) | | (2.618) |
+| **Operating income after tax** | **11.62** | | **12.782** |
+
+**What if the facts differ?**
+
+* If the owner (Xin) took the 1.5m as a **dividend** instead of salary, normalize earnings **down**: deduct a 0.5m market salary.
+* Free use of a family-owned building → deduct a market rent.
+
+#### Example: Chandra Consolidated
+
+Chandra Shops uses the holding company's ground floor rent-free. Charge a market rent on both sides:
+
+| Entity | Adjustment | Effect on earnings and value |
+| --- | --- | --- |
+| Chandra Shops | Market rent as an **expense** | Lower |
+| Chandra Holdings | Market rent as **rental income** | Higher |
 
 **Cash flow issues.** The interest being valued (a minority stake vs total equity) changes the assumptions. Outcomes may be very uncertain (an IPO, a sale, bankruptcy, approval milestones), so use **scenario analysis**. Management forecasts may be biased: **overstated** for goodwill impairment tests, **understated** for option grants. Check that projections include future capital needs.
 
-**Example (Nano Beta, scenarios).** WACC 15%; 80% chance of preliminary approval, then 40% broad approval, 40% limited, 20% failure (worth 0).
+$$V_0=\frac{\sum_i p_i\,V_{i,T}}{(1+r)^T}$$
 
-* Broad: 200(1.05)/(0.15 − 0.05) = **€2.1bn**; limited: 50(1.02)/0.13 = **€392.3m** (both values at $t$ = 2).
-* Expected value at $t$ = 2: 0.32 × 2,100 + 0.32 × 392.3 = €797.5m → today 797.5/1.15² = **€603.1m**.
-* With 60% preliminary, 60% broad and 20% limited: 0.36 × 2,100 + 0.12 × 392.3 = 803.1 → **€607.2m** (+€4.2m).
+#### Example: Nano Beta (Scenarios)
+
+WACC is 15%. Preliminary approval has an 80% chance; after it, final approval is broad (40%), limited (40%) or fails (20%, worth 0). Values are at $t$ = 2, when the outcome is known.
+
+**Step 1. Value each scenario at $t$ = 2** (€m; the cash flows grow at 5% and 2%):
+
+$$
+\begin{aligned}
+V_{\text{broad}}&=\frac{200\times 1.05}{0.15-0.05}=2{,}100\\
+V_{\text{limited}}&=\frac{50\times 1.02}{0.15-0.02}=392.3
+\end{aligned}
+$$
+
+**Step 2. Probability-weight and discount.**
+
+$$
+\begin{aligned}
+E(V_2)&=\underbrace{0.8\times 0.4}_{0.32}\times 2{,}100+0.32\times 392.3=797.5\\
+V_0&=\frac{797.5}{1.15^2}=603.1
+\end{aligned}
+$$
+
+**€603.1m.**
+
+**Sensitivity.** With 60% preliminary, 60% broad and 20% limited:
+
+$$E(V_2)=0.36\times 2{,}100+0.12\times 392.3=803.1\ \Rightarrow\ V_0=607.2$$
+
+That is only €4.2m more.
 
 ## Discount Rates
 
@@ -70,18 +133,29 @@ Adjustments to consider:
 * **Acquisitions**: use the **target's** risk and capital structure. Using the buyer's lower WACC means the buyer pays the seller for value the buyer brings.
 * **Projection risk**: less information, or inexperienced management forecasting → a higher, judgmental premium.
 
-| Model | Required return on equity |
-| --- | --- |
-| CAPM | $r_f+\beta(r_m-r_f)$ |
-| Expanded CAPM | CAPM + small-stock premium + company-specific premium |
-| Build-up | $r_f$ + ERP + small-stock premium + industry premium (±) + company-specific premium (**implicit β = 1**) |
+$$
+\begin{aligned}
+\text{CAPM: }r_e={}&r_f+\beta\times ERP\\
+\text{Expanded CAPM: }r_e={}&r_f+\beta\times ERP+SP+SCRP\\
+\text{Build-up: }r_e={}&r_f+ERP+SP\pm IP+SCRP
+\end{aligned}
+$$
+
+where SP is the small-stock premium, SCRP the company-specific risk premium and IP the industry premium. The build-up approach has an **implicit β = 1**.
 
 * The CAPM may not fit: private owners are often undiversified, and small companies aren't comparable to public peers with betas.
 * The build-up approach is used when there are no good guideline public companies.
 
-**Example (FLI's discount rate).** $r_f$ 3.8%, ERP 5%, beta 1.1, small-stock premium 3%, company-specific premium 1%, industry premium 0%, pretax cost of debt 7.5%, tax 17% (after-tax 6.225%); debt/capital: peers 20%, optimal 10%, actual 2%.
+#### Example: FLI's Discount Rate
 
-| Measure | Calculation | Result |
+| Input | Value |
+| --- | --- |
+| $r_f$ / ERP / beta | 3.8% / 5% / 1.1 |
+| Small-stock / company-specific / industry premium | 3% / 1% / 0% |
+| Cost of debt | 7.5% pretax; $7.5\%\times 0.83=6.225\%$ after 17% tax |
+| Debt/capital | Peers 20%, optimal 10%, actual 2% |
+
+| Measure | Calculation (%) | Result |
 | --- | --- | --- |
 | CAPM | 3.8 + 1.1 × 5 | **9.3%** |
 | Expanded CAPM | 3.8 + 5.5 + 3 + 1 | **13.3%** |
@@ -121,10 +195,46 @@ $$
 * Other discounts: key person, portfolio (non-homogeneous assets), non-voting shares.
 * Apply discounts **multiplicatively**, in sequence: control first, then marketability.
 
-**Examples.**
+#### Example: Everfloat (DLOC and DLOM)
 
-* **Everfloat**: value GBP1.65bn, control premium 15% → DLOC = 1 − 1/1.15 = **13.0%** → GBP1.4355bn. DLOM from Shipline's at-the-money 6-month put (forward 50e^0.025 = 51.27, σ 60%) = 8.40 → 8.40/50 = **16.8%**. Total = 1 − 0.87 × 0.832 = **27.6%**.
-* **Starbeam**, valued as 100% management-owned (control, non-marketable): selling a non-controlling stake → apply only **DLOC**; a financial buyer taking control → a **financial control premium**. With a 30% control premium and 20% DLOM: DLOC 23.1%; total 1 − 0.769 × 0.8 = **38.5%**.
+Everfloat's control value is GBP1.65bn, and the control premium is 15%. The DLOM is estimated from an at-the-money 6-month put on Shipline (price 50, σ 60%, forward $50e^{0.025}=51.27$), which costs 8.40.
+
+**Step 1. DLOC.**
+
+$$
+\begin{aligned}
+DLOC&=1-\frac{1}{1.15}=13.0\%\\
+\text{Minority value}&=1.65\times(1-0.13)=1.4355
+\end{aligned}
+$$
+
+**Step 2. DLOM.**
+
+$$DLOM=\frac{\text{Put premium}}{\text{Share price}}=\frac{8.40}{50}=16.8\%$$
+
+**Step 3. Combine multiplicatively.**
+
+$$\text{Total}=1-(1-0.13)(1-0.168)=1-0.87\times 0.832=27.6\%$$
+
+**27.6%**, not $13\%+16.8\%=29.8\%$.
+
+#### Example: Starbeam
+
+Starbeam is valued as if 100% management-owned: a **controlling, non-marketable** interest.
+
+| Transaction | Adjustment |
+| --- | --- |
+| Selling a non-controlling stake | Apply only **DLOC** (the value is already non-marketable) |
+| A financial buyer taking control | Add a **financial control premium** |
+
+With a 30% control premium and a 20% DLOM:
+
+$$
+\begin{aligned}
+DLOC&=1-\frac{1}{1.30}=23.1\%\\
+\text{Total}&=1-(1-0.231)(1-0.20)=38.5\%
+\end{aligned}
+$$
 
 #### Exam traps
 
@@ -162,7 +272,36 @@ $$
 
 where RIR is the reinvestment rate and $r_e-g$ the **capitalization rate**. Equity = firm value − market value of debt (face value is acceptable if debt is small and operations stable).
 
-**Example (Vinuvia).** FCFF BRL15m; $r_e$ 15%; $r_d$ 10%; tax 34%; 10% debt (BRL5m); $g$ 5%. WACC = 0.1 × 0.66 × 10% + 0.9 × 15% = **14.2%** (14.16%). Firm value = 15.75/0.0916 = BRL171.9m → equity **BRL166.9m**. At $g$ = 2%: **BRL120.8m**, over 25% lower: very sensitive to growth.
+#### Example: Vinuvia
+
+| Input | Value |
+| --- | --- |
+| $FCFF_0$ | BRL15m |
+| $r_e$ / pretax $r_d$ | 15% / 10% |
+| Tax rate | 34% |
+| Debt | 10% of capital (BRL5m) |
+| $g$ | 5% |
+
+**Step 1. WACC.**
+
+$$WACC=0.1\times 10\%\times 0.66+0.9\times 15\%=14.16\%$$
+
+**Step 2. Firm and equity value.**
+
+$$
+\begin{aligned}
+V_{\text{firm}}&=\frac{15\times 1.05}{0.1416-0.05}=\frac{15.75}{0.0916}=171.9\\
+V_{\text{equity}}&=171.9-5=166.9
+\end{aligned}
+$$
+
+**BRL166.9m.**
+
+**Sensitivity.** At $g$ = 2%:
+
+$$V_{\text{equity}}=\frac{15\times 1.02}{0.1416-0.02}-5=125.8-5=120.8$$
+
+**BRL120.8m**, over 25% lower: the method is very sensitive to growth.
 
 ### Excess Earnings Method
 
@@ -178,7 +317,31 @@ $$
 
 where $NI_{\text{norm}}$ is normalized income, and WC and FA are working capital and fixed assets. Firm value = fair value of tangible assets + RV (the value of intangibles). Required returns rise from working capital (lowest) to fixed assets to intangibles (highest). It's rarely used for whole companies (only very small ones), but widely accepted for valuing **intangible assets** in financial reporting.
 
-**Example (Digigraf).** Working capital €200k at 5%; fixed assets €800k at 11%; normalized income €120k → RI = 120 − 10 − 88 = **€22k**; RV = 22 × 1.03/(0.12 − 0.03) = **€251,778**; firm **€1,251,778**. At 4% and 10%: RI €32k, RV €412k → **€1,412,000**.
+#### Example: Digigraf
+
+| Input | Value | Required return |
+| --- | ---: | ---: |
+| Working capital | €200k | 5% |
+| Fixed assets | €800k | 11% |
+| Intangibles (residual income) | | 12% |
+| Normalized income | €120k | |
+| Growth of RI | 3% | |
+
+**Step 1. Residual income.**
+
+$$RI=120-\underbrace{0.05\times 200}_{10}-\underbrace{0.11\times 800}_{88}=22$$
+
+**Step 2. Value of the intangibles.**
+
+$$RV=\frac{22\times 1.03}{0.12-0.03}=251.778$$
+
+**Step 3. Firm value.**
+
+$$V=\underbrace{200+800}_{\text{tangible}}+251.778=1{,}251.778$$
+
+**€1,251,778.**
+
+**Sensitivity.** With required returns of 4%, 10% and 11%: RI = 120 − 8 − 80 = €32k and RV = 32 × 1.03/0.08 = €412k, so the firm is worth **€1,412,000**.
 
 The capitalized cash flow method needs **one** discount rate (WACC); excess earnings needs several. Neither needs public comparables.
 
@@ -194,7 +357,26 @@ $$
 \beta_L^*=\beta_U\left[1+(1-t^*)(D/E)^*\right]
 $$
 
-**Example (Quik Chip).** Peers' mean beta 1.21, D/E 50%, tax 21.6% → $\beta_U$ = 1.21/1.392 = **0.8693**. Quik Chip: D/E 25%, tax 18% → β* = 0.8693 × 1.205 = **1.0475**. EV: 17.3 × €35m EBIT = **€605.5m**; 2.0 × €250m sales = **€500m** (its EBIT margin is 14% vs peers' 11.6%).
+#### Example: Quik Chip
+
+Peers' mean beta is 1.21, with D/E 50% and tax 21.6%. Quik Chip has D/E 25% and tax 18%; its EBIT is €35m on sales of €250m.
+
+**Step 1. Unlever the peers' beta.**
+
+$$\beta_U=\frac{1.21}{1+(1-0.216)\times 0.50}=\frac{1.21}{1.392}=0.8693$$
+
+**Step 2. Relever at Quik Chip's structure.**
+
+$$\beta^*=0.8693\times\left[1+(1-0.18)\times 0.25\right]=0.8693\times 1.205=1.0475$$
+
+**Step 3. EV from peers' multiples.**
+
+| Multiple | Peers | × Quik Chip | EV |
+| --- | ---: | ---: | ---: |
+| EV/EBIT | 17.3 | €35m | **€605.5m** |
+| EV/sales | 2.0 | €250m | **€500m** |
+
+EV/sales gives less, because Quik Chip's EBIT margin (14%) is above the peers' (11.6%).
 
 * For multi-segment companies, use a **composite** multiple, weighted by each segment's share of sales or EBITDA (or peers with the same business mix).
 * Pros: a large pool of companies and rich data. Cons: comparability; subjective adjustments for risk and growth.
@@ -220,9 +402,22 @@ $$
 
 From a non-controlling perspective:
 
-* WACC **12.55%** ($r_e$ = 13%, the average of 13.3% and 12.8%; and the average of the debt-ratio assumptions).
-* Base FCFF = 16.3m × 0.83 + 0.9m × 0.17 − 1.2m − 0.5m = **SGD11.982m** (equivalently, EBIT 15.4m × 0.83 + D&A 0.9m − 1.7m).
-* Five-year growth of 2% (downside), 5% (base) or 8% (optimistic); terminal growth 3% → TV = FCFF₅ × 1.03/(0.1255 − 0.03).
+**Step 1. WACC = 12.55%.** $r_e$ = 13% (the average of 13.3% and 12.8%), and the WACC averages the debt-ratio assumptions.
+
+**Step 2. Base-year FCFF** (SGD m; ΔLT assets 1.2, ΔWC 0.5):
+
+$$
+\begin{aligned}
+FCFF&=16.3\times 0.83+0.9\times 0.17-1.2-0.5\\
+&=11.982
+\end{aligned}
+$$
+
+Equivalently, $15.4\times 0.83+0.9-1.7=11.982$.
+
+**Step 3. EV and equity.** FCFF grows 2% (downside), 5% (base) or 8% (optimistic) for five years, then 3%:
+
+$$TV_5=\frac{FCFF_5\times 1.03}{0.1255-0.03}$$
 
 | SGD m | Downside | Base | Optimistic |
 | --- | --- | --- | --- |
@@ -232,17 +427,61 @@ From a non-controlling perspective:
 | Equity (− debt 2.5) | 121.527 | 137.702 | 155.661 |
 | After 18% DLOM (no DLOC) | **99.653** | **112.916** | **127.642** |
 
-**Example (Macro Associates).** A selling partner's above-market pay → normalize costs **down**, EBIT **up**. With no public comparables → the build-up approach (ERP without beta, implicit β = 1). The capitalized cash flow method's advantage over excess earnings: a single discount rate.
+**Step 4.** Apply the 18% DLOM (no DLOC: the cash flows are already on a non-controlling basis), as in the last row of the table.
+
+#### Example: Macro Associates
+
+| Issue | Answer |
+| --- | --- |
+| A selling partner's above-market pay | Normalize costs **down**, so EBIT goes **up** |
+| No public comparables | The **build-up** approach (ERP without beta, implicit β = 1) |
+| Capitalized cash flow vs excess earnings | The capitalized cash flow method needs only **one** discount rate |
 
 ### Market Approach (Everfloat)
 
 Steps: (1) comparables for each business line; (2) gather and weight the multiples; (3) EV from the multiples (a public-equivalent value); (4) apply DLOC and DLOM.
 
-**Example (Everfloat, GBP m).** Revenue 700 / 250 / 50 (marine / logistics / energy); EBITDA 187.5 / 75 / −12.5 (total 250). Peers' EV/sales 2.8 / 1.1 / 8.0; EV/EBITDA 8.2 / 8.1 / 20.0.
+$$\text{Composite multiple}=\sum_i w_i\times\text{Multiple}_i$$
 
-* Composite EV/sales = 0.7(2.8) + 0.25(1.1) + 0.05(8.0) = **2.635** → EV **2,635** (segments 1,960 / 275 / 400; logistics is the least valuable).
-* Composite EV/EBITDA = 0.75(8.2) + 0.30(8.1) − 0.05(20) = **7.58** → EV **1,895**. A segment with negative EBITDA implies a negative value, so value energy on sales instead.
-* After the 27.6% total discount: **1,907.74** (EV/sales) and **1,371.98** (EV/EBITDA); average **1,639.86**.
+#### Example: Everfloat (Composite Multiples)
+
+| GBP m | Marine | Logistics | Energy | Total |
+| --- | ---: | ---: | ---: | ---: |
+| Revenue | 700 | 250 | 50 | 1,000 |
+| EBITDA | 187.5 | 75 | −12.5 | 250 |
+| Peers' EV/sales | 2.8 | 1.1 | 8.0 | |
+| Peers' EV/EBITDA | 8.2 | 8.1 | 20.0 | |
+
+**Step 1. EV/sales,** weighted by revenue:
+
+$$
+\begin{aligned}
+\text{Composite}&=0.70\times 2.8+0.25\times 1.1+0.05\times 8.0=2.635\\
+EV&=2.635\times 1{,}000=2{,}635
+\end{aligned}
+$$
+
+By segment: 1,960 / 275 / 400 (logistics is the least valuable).
+
+**Step 2. EV/EBITDA,** weighted by EBITDA:
+
+$$
+\begin{aligned}
+\text{Composite}&=0.75\times 8.2+0.30\times 8.1-0.05\times 20.0=7.58\\
+EV&=7.58\times 250=1{,}895
+\end{aligned}
+$$
+
+Energy's negative EBITDA implies a negative value, so value energy on sales instead.
+
+**Step 3. Apply the 27.6% total discount** ([above](#example-everfloat-dloc-and-dlom)):
+
+| | EV/sales | EV/EBITDA |
+| --- | ---: | ---: |
+| Public-equivalent EV | 2,635 | 1,895 |
+| × (1 − 0.276) | **1,907.74** | **1,371.98** |
+
+The average is **GBP1,639.86m**.
 
 > [!NOTE]
 >
