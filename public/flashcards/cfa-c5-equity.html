@@ -31,6 +31,15 @@ const CARDS = [
       <p><strong>10.5.</strong></p><ul><li>Trailing: \\(\\dfrac{P_0}{E_0}=\\dfrac{(1-b)(1+g)}{r-g}=\\dfrac{0.40\\times1.05}{0.04}=10.5\\).</li><li>Leading (forward): \\(\\dfrac{P_0}{E_1}=\\dfrac{1-b}{r-g}=\\dfrac{0.40}{0.04}=10\\).</li></ul><p>\\(b\\) is the retention ratio; the numerator uses the payout, \\(1-b\\). The trailing multiple also includes \\((1+g)\\), because \\(E_1=E_0(1+g)\\).</p>
     </div>`,
     gap: "Used the retention ratio \\(b=0.6\\) instead of the payout \\(1-b=0.4\\), and left out \\((1+g)\\) for the trailing P/E."
+  },
+  {
+    id: "eq-m6-dloc-from-control-premium-2026-11-15",
+    topic: "EQ M6 · DLOC from control premium",
+    front: `The control premium is 25% and the DLOM is 20%. What is the total discount for a minority, non-marketable stake?`,
+    back: `<div class="ans">
+      <p><strong>36%.</strong></p><ul><li>\\(\\text{DLOC}=1-\\dfrac{1}{1+\\text{Control premium}}=1-\\dfrac{1}{1.25}=20\\%\\). The DLOC is not the control premium itself.</li><li>\\(\\text{Total discount}=1-(1-\\text{DLOC})(1-\\text{DLOM})=1-0.8\\times0.8=36\\%\\).</li></ul><p>If both discounts apply, they are applied in sequence and the total is multiplicative, not additive.</p>
+    </div>`,
+    gap: "Used the 25% control premium directly as the DLOC, and got 40%."
   }
 ];
 
