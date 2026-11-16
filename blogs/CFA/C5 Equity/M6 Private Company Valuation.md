@@ -14,14 +14,6 @@ Valuing a private company uses the same DCF and multiples tools as for a public 
 * Stock-specific factors generally **lower** value; company-specific factors can go either way (a founder-led start-up may grow faster than public peers).
 * Risk and return vary more widely than among public companies; family firms (e.g., Germany's *Mittelstand*) dominate many economies.
 
-#### Examples: Which Difference Applies?
-
-| Case | Facts | Main difference from a public company |
-| --- | --- | --- |
-| **Thunder Corp.** | Owned by non-employee shareholders, run by hired managers | **Principal–agent issues** are the *least* likely difference: like a public company, owners and managers are separate |
-| **Sun and Moon** | Two 35% partners and three 10% partners | **Concentrated control**: the two 35% holders together control 70% |
-| **Privacy Group vs PT Corp.** | Identical apart from listing | **Illiquidity of the shares** |
-
 ## Uses and Areas of Focus
 
 | Transactions | Compliance | Litigation |
@@ -80,15 +72,6 @@ Debt is below optimal, so normalize **operating income after tax** (ignore inter
 
 * If the owner (Xin) took the 1.5m as a **dividend** instead of salary, normalize earnings **down**: deduct a 0.5m market salary.
 * Free use of a family-owned building → deduct a market rent.
-
-#### Example: Chandra Consolidated
-
-Chandra Shops uses the holding company's ground floor rent-free. Charge a market rent on both sides:
-
-| Entity | Adjustment | Effect on earnings and value |
-| --- | --- | --- |
-| Chandra Shops | Market rent as an **expense** | Lower |
-| Chandra Holdings | Market rent as **rental income** | Higher |
 
 **Cash flow issues.** The interest being valued (a minority stake vs total equity) changes the assumptions. Outcomes may be very uncertain (an IPO, a sale, bankruptcy, approval milestones), so use **scenario analysis**. Management forecasts may be biased: **overstated** for goodwill impairment tests, **understated** for option grants. Check that projections include future capital needs.
 
@@ -239,25 +222,6 @@ $$
 $$
 
 **27.6%**, not $13\%+16.8\%=29.8\%$.
-
-#### Example: Starbeam
-
-Starbeam is valued as if 100% management-owned: a **controlling, non-marketable** interest.
-
-| Transaction | Adjustment |
-| --- | --- |
-| Selling a non-controlling stake | Apply only **DLOC** (the value is already non-marketable) |
-| A financial buyer taking control | Add a **financial control premium** |
-
-With a 30% control premium and a 20% DLOM:
-
-$$
-\begin{aligned}
-DLOC&=1-\frac{1}{1.30}=23.1\%\\
-\text{Total}&=1-(1-0.231)(1-0.20)\\
-&=38.5\%
-\end{aligned}
-$$
 
 #### Exam traps
 
@@ -480,14 +444,6 @@ $$TV_5=\frac{FCFF_5\times 1.03}{0.1255-0.03}$$
 | After 18% DLOM (no DLOC) | **99.653** | **112.916** | **127.642** |
 
 **Step 4.** Apply the 18% DLOM (no DLOC: the cash flows are already on a non-controlling basis), as in the last row of the table.
-
-#### Example: Macro Associates
-
-| Issue | Answer |
-| --- | --- |
-| A selling partner's above-market pay | Normalize costs **down**, so EBIT goes **up** |
-| No public comparables | The **build-up** approach (ERP without beta, implicit β = 1) |
-| Capitalized cash flow vs excess earnings | The capitalized cash flow method needs only **one** discount rate |
 
 ### Market Approach (Everfloat)
 

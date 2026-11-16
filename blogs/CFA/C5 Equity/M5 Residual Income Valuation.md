@@ -430,15 +430,6 @@ Items that bypass the income statement:
 
 Book value is right (it includes accumulated OCI), but **net income and ROE are misstated** for RI purposes. There is a bias only if the PV of the violations doesn't net to zero. Compute historical ROE in aggregate (NI ÷ equity), because buybacks and issues distort per-share ROE.
 
-#### Example: Nokia and SAP (2018)
-
-| | Translation adjustments bypassing income |
-| --- | ---: |
-| Nokia | +€341m |
-| SAP ("other components of equity") | +€887m |
-
-Both would have **raised** income, so an upward ROE adjustment may be warranted if the trend continues (but currencies may reverse).
-
 #### Example: Forecasting with OCI
 
 This year NI is \$120 on beginning equity of \$1,000 (ROE 12%), OCI is −\$100, and all earnings are retained; $r$ = 10%.

@@ -222,6 +222,7 @@ FCFE exceeds FCFF here only because borrowing was large.
 * **Deferred tax assets** (e.g., from non-deductible restructuring charges): subtract only if expected to recur.
 * **Stock options**: the expense is noncash, but exercise cash and part of the tax benefit go to financing. Don't forecast flows that won't persist, and use the **expected** share count (dilution).
 * Remove **non-recurring** items from the base year.
+* **Higher depreciation** lowers NI but **raises CFO** by its tax shield:
 
 $$
 \begin{aligned}
@@ -230,16 +231,7 @@ $$
 \end{aligned}
 $$
 
-#### Example: Duplico (Sustainable Working Capital)
-
-| €m | 2020 | 2022 |
-| --- | ---: | ---: |
-| Capex | 997.8 | 317.6 |
-| Depreciation | 235.4 | 309.2 |
-
-* **Depreciation rose**: it lowers NI by $\Delta Dep(1-t)$ but **raises CFO** by $\Delta Dep\times t$, the tax shield.
-* **Working capital**: rising inventory and receivables reduce CFO and FCFE; rising payables and accruals add to them.
-* **Is it sustainable?** Capex has fallen to about depreciation. Shrinking assets or growing payables can't continue forever, and a growing company's working capital needs grow too.
+* **Working capital**: rising inventory and receivables reduce CFO and FCFE; rising payables and accruals add to them. Shrinking assets or growing payables can't continue forever, and a growing company's working capital needs grow too.
 
 ### Uses of Free Cash Flow
 
@@ -600,47 +592,6 @@ $$
 
 **P/E check.** The trailing P/E is $78.73/2.40=32.8$ now and $110.56/4.494=24.6$ at the start of 2024: the P/E falls as growth fades.
 
-#### Example: Medina Werks (Declining Sales Growth and Margin)
-
-Sales are C\$600m; 70m shares; 40% debt financing; $r$ = 6% + 1.1 × 4.5% = 10.95%. Net capex is 60% and WCInv 25% of the sales increase.
-
-| Year | 1 | 2 | 3 | 4 | 5 | 6 |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Sales growth | 20% | 16% | 12% | 10% | 8% | 7% |
-| Net margin | 14% | 13% | 12% | 11% | 10.5% | 10% |
-| FCFE (C\$m) | 39.600 | 49.824 | 61.137 | 65.480 | 74.703 | 79.235 |
-
-**Step 1. FCFE.** E.g. Year 1: sales rise by 120 to 720.
-
-$$
-\begin{aligned}
-FCFE_1&=\underbrace{720\times 14\%}_{100.8}\\
-&\quad-0.6\times(0.60+0.25)\times 120\\
-&=39.60
-\end{aligned}
-$$
-
-**Step 2. Terminal value at Year 5.**
-
-$$
-\begin{aligned}
-TV_5&=\frac{79.235}{0.1095-0.07}=2{,}005.95\\
-\text{PV}(TV_5)&=\frac{2{,}005.95}{1.1095^5}=1{,}193.12
-\end{aligned}
-$$
-
-**Step 3. Add** the PV of FCFE for Years 1–5 (about 208.57):
-
-$$
-\begin{aligned}
-\text{Equity}&=208.57+1{,}193.12\\
-&=1{,}401.69\\
-\text{Per share}&=\frac{1{,}401.69}{70}=20.02
-\end{aligned}
-$$
-
-**C\$20.02 a share.**
-
 **Three-stage models** combine a constant stage 1, a declining (or constant) stage 2 and a stable stage 3: a good approximation when cash flows fluctuate in reality.
 
 #### Example: Reliant Home Furnishings (Three-Stage FCFF)
@@ -696,35 +647,7 @@ $$
 
 ## ESG and Non-Operating Assets
 
-* Quantifiable ESG items (fines, extra capex) → adjust the **cash flows**; hard-to-quantify ESG risks → add a judgmental **premium to the cost of equity**.
-
-#### Example: American Copper Mining Co. (Three-Stage FCFF with ESG)
-
-The three stages are: before the new mine operates, while it operates, and after it closes.
-
-| ESG issue | Quantifiable? | Adjustment |
-| --- | --- | --- |
-| Licence delayed from 3 to 5 years | Yes | Shift the mine's cash flows |
-| Water-treatment capex | Yes | Capex +10% |
-| Labor relations risk | No | Cost of equity **+75 bp** |
-
-**Step 1. Discount rate.** Pretax $r_d$ is 5%, the tax rate 25%, and debt and equity are 50/50.
-
-$$
-\begin{aligned}
-r_d(1-t)&=5\%\times 0.75=3.75\%\\
-r_e&=3\%+1.2\times 5\%+0.75\%\\
-&=9.75\%\\
-WACC&=0.5\times 3.75\%\\
-&\quad+0.5\times 9.75\%=6.75\%
-\end{aligned}
-$$
-
-**Step 2. Value.**
-
-$$\text{Equity}=\underbrace{1{,}936}_{\text{PV of FCFF}}-\underbrace{968}_{\text{Debt}}=\$968\text{m}$$
-
-That is **\$97 a share**, against a price of \$110: **sell**.
+* Quantifiable ESG items (fines, extra capex, a delayed licence) → adjust the **cash flows**; hard-to-quantify ESG risks (e.g., labor relations) → add a judgmental **premium to the cost of equity**.
 
 **Non-operating assets** (excess cash and marketable securities, land held for investment, non-operating financial investments) are valued **separately, at market value**, and added:
 
@@ -739,6 +662,5 @@ $$
 >
 > **Textbook issues.**
 >
-> * American Copper: the text says the mine runs 2025–2039 (stage 3 from 2040), but the exhibit shows it closing around 2036, with a row labelled "PV of FCFF Years 2016–2035". The final numbers (\$1,936m, \$97 a share) are what matter.
 > * The Pitts sales-based example says it "forecasts FCFF for 2013"; it means 2021.
 > * Sindhuh's solution says WCInv is "50% of the increase in net capital expenditures", but the numbers use 50% of net capex itself, as in the setup.

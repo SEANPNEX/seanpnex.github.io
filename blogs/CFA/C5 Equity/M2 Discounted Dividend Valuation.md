@@ -26,16 +26,6 @@ $$
 * **FCFE** is the cash flow after debt; net payments are interest and principal, net of new debt.
 * **Residual income** usually **recognizes value earlier** than FCF models, and relies on the **clean surplus** relation.
 
-#### Example: AB InBev vs Diageo
-
-Is a dividend discount model appropriate for each brewer?
-
-| | AB InBev | Diageo |
-| --- | --- | --- |
-| Payout ratio | 18% to 542% (acquisitions; a dividend cut in 2018) | Mostly 50–60% |
-| Dividends vs earnings | No stable link | DPS growth 6.3% tracks EPS growth 6.8% |
-| **DDM appropriate?** | **No**: use a company-level cash flow (FCFF or FCFE) | **Yes** |
-
 ## Dividend Discount Model
 
 For one period, $n$ periods and forever:
@@ -388,21 +378,6 @@ $$
 
 * The first term is the value if growth were $g_L$ from now; the second is the extra value from above-normal growth. It is an **approximation**, less accurate for a large $H$ or a large $g_S-g_L$.
 * $H$ is **half** the length of the high-growth period (10 years → $H$ = 5).
-
-#### Example: Meditec as an H-Model
-
-Use the [Meditec](#example-carl-zeiss-meditec) inputs, but let growth decline linearly from 9% to 5% over 10 years ($H$ = 5).
-
-$$
-\begin{aligned}
-V_0&=\frac{0.55\times 1.05}{0.0588-0.05}\\
-&\quad+\frac{0.55\times 5\times(0.09-0.05)}{0.0588-0.05}\\
-&=\frac{0.5775+0.1100}{0.0088}\\
-&=78.13
-\end{aligned}
-$$
-
-**$V_0$ = €78.13**, against €94.21 from the two-stage model: growth now fades instead of staying at 9% for all 10 years.
 
 #### Example: H-Model Value vs Price
 

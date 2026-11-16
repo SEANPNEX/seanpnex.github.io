@@ -192,24 +192,6 @@ The steps for any multiple: (1) choose and compute the multiple; (2) choose comp
 * Comparables start from the narrowest GICS (sub-industry) or ICB (subsector) group, then filter by size and markets served.
 * All else equal: **higher growth → higher justified P/E; higher risk → lower justified P/E**.
 
-#### Example: Verizon vs Peers
-
-| Company | Trailing P/E |
-| --- | ---: |
-| China Telecom | 13.14 |
-| AT&T | 13.20 |
-| Verizon | 15.03 |
-| Comcast | 16.23 |
-| Windstream | 19.01 |
-| Charter | 70.67 |
-| CenturyLink | NM |
-| **Mean** (excluding CenturyLink) | 24.55 |
-| **Median** | **15.03** |
-
-* Charter distorts the mean, so use the **median**.
-* Verizon is at the median: **fairly valued**. AT&T, China Telecom and CenturyLink look undervalued.
-* Check cash flow too: telecoms have large noncash charges.
-
 $$
 PEG=\frac{P/E}{\text{EPS growth (in percent)}}
 $$
@@ -396,14 +378,6 @@ $$\frac{P_0}{B_0}=\frac{0.12-0.07}{0.10-0.07}=1.67$$
 
 * P/B is driven by **ROE relative to $r$**: if ROE = $r$, P/B = 1; with $g$ = 0, P/B = ROE/$r$. At the same P/B, the higher-ROE stock is cheaper.
 
-#### Example: Brokers
-
-| | E\*TRADE | Schwab | TD Ameritrade |
-| --- | ---: | ---: | ---: |
-| P/B | **0.65** | 2.31 | 2.53 |
-
-E\*TRADE's P/B is under 30% of its peers' and under 60% of its own historical mean (1.14). It looks cheap, but its fundamentals explain the gap: lower forecast growth in book value (1.5%) and revenue (−1.0%), and a higher beta (1.65).
-
 ## Price to Sales
 
 | Rationales | Drawbacks |
@@ -459,16 +433,6 @@ $$
 
 **SEK148.52** is above the SEK133.70 price: **undervalued**.
 
-**Comparables.**
-
-| | Getinge | CMD | NEO |
-| --- | ---: | ---: | ---: |
-| P/S | **1.54** | 3.96 | 8.79 |
-| Net margin | −2.49% | | 14.53% |
-| EV/revenue | 1.88 | | |
-
-Getinge has the lowest P/S, so it looks cheapest. But its margin, leverage and EV/revenue are closer to CMD's than to NEO's, so **CMD is the better comparable**.
-
 ## Price to Cash Flow
 
 | Rationales | Drawbacks |
@@ -492,16 +456,7 @@ CF={}&EPS+\text{Depreciation}\\
 \end{aligned}
 $$
 
-#### Example: Depreciation Methods
-
-A and B have identical cash flows: CF is \$15 a share for both. A uses straight-line depreciation; B uses an accelerated method.
-
-| | EPS | EPS growth | CF per share |
-| --- | --- | --- | ---: |
-| A (straight-line) | Flat at \$10 | 0% | 15 |
-| B (accelerated) | 7.50 → 12.50 | 29% a year | 15 |
-
-B's EPS growth is an **accounting artifact**; P/CF sees through it.
+CF is unaffected by the depreciation method, so P/CF sees through EPS growth that is only an accounting artifact (e.g., accelerated depreciation).
 
 #### Example: Philips
 
@@ -525,20 +480,11 @@ V_0&=\frac{2.66\times 1.032}{0.074-0.032}\\
 \end{aligned}
 $$
 
-#### Example: Two Companies
-
-| | A | B |
-| --- | ---: | ---: |
-| P/CF | 9.8 | 11.4 |
-| Growth forecast | 280 bp higher | |
-| FCFE | Positive | Negative |
-
-A has the lower multiple **and** better fundamentals: **A is relatively undervalued**.
-
 ## Dividend Yield
 
 * **Rationales**: a component of total return, and a less risky one.
 * **Drawbacks**: only part of the return; **dividend displacement of earnings** (paying now lowers future growth, though payout may correlate with future profitability); the "safer" argument assumes markets misprice risk.
+
 $$
 \begin{aligned}
 \text{Trailing yield}&=\frac{\text{Dividend rate}}{P_0}\\
@@ -564,17 +510,7 @@ $$
 \frac{D_0}{P_0}=\frac{r-g}{1+g}
 $$
 
-Higher growth → lower yield (high-yield screens are value-oriented); a higher $r$ → higher yield. Check dividend **safety**: the payout ratio, interest coverage, net debt/EBITDA.
-
-#### Example: Utilities
-
-| | Yield | Issue | Expected return ≈ yield + $g$ |
-| --- | ---: | --- | --- |
-| Duke | 4.24% | Payout 89%: the dividend is at risk | |
-| PPL | 5.37% | Growth only 0.60% | |
-| Portland General | 2.76% | No strong negatives; growth 5.20% | $2.76\%+5.20\%=$ **7.96%** |
-
-The highest yield isn't the best pick: **focus on Portland General**.
+Higher growth → lower yield (high-yield screens are value-oriented); a higher $r$ → higher yield. Check dividend **safety**: the payout ratio, interest coverage, net debt/EBITDA. The highest yield isn't necessarily the best pick: compare expected return ≈ yield + $g$.
 
 ## Enterprise Value Multiples
 
@@ -630,20 +566,7 @@ $$\frac{EV}{EBITDA}=\frac{65{,}568}{3{,}960}=16.6$$
 
 * With preferred stock, start EBITDA from net income available to **both** preferred and common shareholders.
 * The justified EV/EBITDA rises with expected **FCFF growth** and **ROIC** (after-tax operating profit ÷ invested capital), and falls with **WACC**.
-* A lower EV/EBITDA than peers → relatively undervalued (one input among several).
-
-#### Example: Household Products
-
-| | EV/EBITDA |
-| --- | ---: |
-| Kimberly-Clark | 14.7 |
-| **Colgate** | **16.9** |
-| Clorox | 17.6 |
-| Church & Dwight | 22.5 |
-
-* Colgate is **cheaper** than Clorox and Church & Dwight (though it grows more slowly than Church & Dwight).
-* It is **dearer** than Kimberly-Clark, justified by its higher margin (14.8% vs 9.8%).
-* TIC/EBITDA ranks them the same; the rankings could differ only if cash holdings varied a lot.
+* A lower EV/EBITDA than peers → relatively undervalued (one input among several). TIC/EBITDA usually ranks peers the same way; rankings differ only if cash holdings vary a lot.
 
 **Other EV denominators**, built up from net income:
 
@@ -731,18 +654,6 @@ $$\text{Scaled surprise}=\frac{3.74-3.26}{0.29}=1.66$$
 
 The same surprise matters more for a company whose earnings are usually predictable. VW had larger % surprises, but Exxon's SUE swung more (its σ is smaller), so "accuracy" depends on the measure.
 
-#### Example: Relative Strength vs the S&P 500
-
-Each ETF's price ÷ the index, scaled to 1.0 in March 2018:
-
-| ETF | Aug 2019 | vs the index |
-| --- | ---: | ---: |
-| TLT | 1.067 | +6.7% |
-| FEU | 0.847 | −15.3% |
-| EEM | 0.743 | −25.7% |
-
-In December 2018, EEM's relative strength rose (0.852 → 0.872) while FEU's fell (0.909 → 0.885).
-
 ## Averaging Multiples
 
 $$
@@ -774,33 +685,9 @@ Only the weighted harmonic mean reproduces the portfolio's true P/E:
 | Harmonic mean | 1/[0.5(0.1) + 0.5(0.05)] | 13.33 |
 | **Weighted harmonic** | 1/[0.55(0.1) + 0.45(0.05)] | **12.90** |
 
-#### Example: Telecom P/Es
-
-| | Arithmetic mean | Median | Harmonic mean |
-| --- | ---: | ---: | ---: |
-| Including Charter (70.67) | 25.30 | 15.23 | 17.70 |
-| Without outliers | 16.43 | 15.03 | 15.39 |
-
-With the large outlier, the harmonic mean stays much closer to the median than the arithmetic mean does.
-
 **Using several indicators.** Analysts combine DCF values with multiples (P/E, EV/EBITDA, dividend yield). In backtests, watch for **look-ahead bias** (using data not yet reported at the time).
 
-**Screening** narrows the universe by criteria. Limitations: no control over how inputs such as EPS are computed, and no qualitative factors.
-
-#### Example: Larsen's Screen
-
-| Criterion | Threshold |
-| --- | --- |
-| P/E | < 20 |
-| P/B | < 2 |
-| PEG | < 1 |
-| Dividend yield | ≥ 3% |
-| Market cap | > \$10bn |
-
-The screen returns 10 stocks.
-
-* **Style**: a **large-cap value** investor, using no momentum indicators.
-* **Limitations**: no profitability or risk criteria (a low P/E may reflect low profitability or high risk), unadjusted database inputs, and no qualitative factors.
+**Screening** narrows the universe by criteria. Limitations: no control over how inputs such as EPS are computed, and no qualitative factors. A screen with only low-multiple, high-yield criteria (e.g., P/E < 20, P/B < 2, yield ≥ 3%) has no profitability or risk filter, so a low P/E may just reflect low profitability or high risk.
 
 > [!NOTE]
 >
@@ -810,7 +697,5 @@ The screen returns 10 stocks.
 > * Barclays uses total equity including £9,371m of non-controlling interests. Strictly, common book value should exclude them (£53,586m); follow the textbook's numbers for this example.
 > * BT: the solution prints "0.0642, or 6.52%"; 0.976/15.20 = 6.42%.
 > * Colgate's EV counts "other non-current liabilities" (\$2,269m) as debt; normally only interest-bearing debt is included. Its components sum to \$65,568m, which gives the 16.6 multiple.
-> * Verizon: the median of the six numeric P/Es is 15.63; the median of 15.03 counts CenturyLink's NM as the lowest P/E.
 > * Stora Enso: shares are given as 788.4m in one place and 788.6m in another, and the EV line prints equity as €8,145m, though €8,154m gives €9,994m.
-> * SUE: the solution says VW's SUE ranged "−3.57 to +1.13", but the table's maximum is 1.97. The relative strength solution says "December 2019" when it means December 2018.
-> * Exhibit 28 lists Windstream at 24.55 (the earlier group mean) instead of its P/E of 19.01, and its summary statistics don't exactly reproduce from either input. The concept: the harmonic mean pulls the average toward the median when there is a large outlier.
+> * SUE: the solution says VW's SUE ranged "−3.57 to +1.13", but the table's maximum is 1.97.

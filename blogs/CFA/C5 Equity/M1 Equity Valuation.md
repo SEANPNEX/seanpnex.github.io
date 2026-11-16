@@ -57,19 +57,6 @@ Only the true mispricing earns an abnormal return. To win consistently, an analy
 * **Appraising private businesses** (transactions, tax, IPOs).
 * **Share-based payment** (compensation).
 
-#### Example: Intel (Cornell, 2001)
-
-After Intel announced a revenue-growth shortfall, its price fell about 30% in five days. Was the fall an overreaction or a correction?
-
-| | Before the announcement | After |
-| --- | --- | --- |
-| Price | \$61.50 | \$43.31 |
-| Growth implied by the price | About 20% for 10 years, then 6% | Well under 15% |
-
-**Method.** Reverse engineer the price: hold every other input fixed and solve for the growth rate. Then compare the **implied growth** with the company's history, its industry's growth and economic forecasts.
-
-**Conclusion.** 20% was far above Intel's recent five-year growth: the stock was overvalued **before** the release, and the announcement acted as the catalyst.
-
 ## The Valuation Process
 
 1. **Understand the business**: industry and competitive analysis, and quality of earnings.
@@ -102,13 +89,6 @@ Porter's three competitive strategies:
 
 A **business model** is how the company makes money (its customers, products, delivery and financing), e.g., a low-cost airline with one class of service and one aircraft type.
 
-#### Example: Oilfield Services
-
-Schlumberger, Halliburton, Baker Hughes, Saipem, NOV and Weatherford.
-
-* **Industry attractiveness.** Demand follows exploration and production spending, which follows oil and gas prices. So research oil and gas supply (inventories, OPEC capacity, discoveries, depletion) and demand (household, commercial and power-generation use, GDP growth).
-* **Competitive position.** To spot the **cost leader**, compare the level and trend of profit margins (adjusted for pricing power) and **revenue per employee**.
-
 * For new companies and products, **non-financial measures** matter (clinical trial results, unique visitors).
 * Sources: regulatory filings (the 10-K/20-F business description and MD&A; 10-Q/6-K interim reports), earnings releases, conference calls, investor relations and third parties. **Regulation FD** and the CFA Standards bar the use of material non-public information.
 * ESG sources (e.g., for US autos): sustainability reports, OSHA, EEOC, SASB, the Carbon Disclosure Project, Ceres.
@@ -136,34 +116,6 @@ $$
 | Balance sheet | Off-balance-sheet financing (receivable securitization) | Assets and liabilities misstated |
 | Operating cash flow | A rise in bank overdrafts classified as operating | CFO inflated |
 
-#### Example: Buffett on Pension Assumptions
-
-S&P companies assumed an 8% return on plan assets. With 28% of assets in cash and bonds earning 5%, the equities must earn:
-
-$$\frac{8\%-0.28\times 5\%}{0.72}=9.2\%\ \text{(after fees)}$$
-
-That is unrealistic. A high assumed return means a bigger "expected return" deduction, so pension expense is **understated** and net income **overstated**. The assumption is disclosed in the **footnotes**.
-
-#### Example: Tangoe (SEC, 2018)
-
-Tangoe booked revenue from customers unlikely to pay and understated its bad-debt allowance, which inflated revenue, earnings and receivables; NI ran above CFO. The warning sign was in receivables:
-
-| | Growth | Receivables turnover | Days receivable $=365/\text{turnover}$ |
-| --- | ---: | ---: | ---: |
-| Revenue | +12% | | |
-| Average receivables | +32% | 4.6× → 4.2× | **79 → 87** |
-
-#### Example: Livent
-
-Livent capitalized pre-production costs (ads, sets, rehearsal salaries), which raised EPS and created an asset. EBITDA then added the amortization back, which overstated financial strength:
-
-| | As reported | Without the add-back |
-| --- | ---: | ---: |
-| 1996 debt/EBITDA | 1.7 | **5.5** |
-| 1997 EBITDA | +\$58.3m | **−\$52.6m** |
-
-Livent went bankrupt in 1998.
-
 **Fraud risk factors** (incentive, opportunity, attitude): pressure to hit targets plus dominant management; pay tied to profit or the share price; pressure on profitability; covenant or forecast pressure; related-party transactions; a complex structure; high turnover of managers, directors or legal counsel; disputes with or changes of auditors; a history of violations or late filings.
 
 ### 2. Forecasting Company Performance
@@ -190,15 +142,6 @@ Combine industry analysis with financial statement analysis, and include qualita
 * Conservative uses over- or underweight stocks against a benchmark; aggressive **relative value investing** includes **pairs trading** (long the relatively undervalued stock, short the overvalued one, regardless of market direction).
 * Advantages: simple, tied to market prices, economically sound and widely understood. It gives intrinsic value only if the comparison asset is fairly valued.
 
-#### Example: Smithson Genomics
-
-| Analyst | Benchmark | Conclusion |
-| --- | --- | --- |
-| A | Industry median P/E | 15% **overvalued** |
-| B | Russell 3000 median P/E | 10% **undervalued** |
-
-**Both can be right**: they use different benchmarks, and both conclusions are relative. E.g., the whole industry may be cheap relative to the market.
-
 **Choosing a model.** The model should fit:
 
 * **The company's characteristics**: the nature of its assets and how they create value. A bank (mostly marketable assets) suits asset-based or relative valuation (P/B) better than a service company does.
@@ -219,18 +162,6 @@ V_{\text{SOTP}}={}&\sum_i V_{\text{segment }i}\\
 &-\text{Unallocated items}
 \end{aligned}
 $$
-
-#### Example: Donaldson
-
-| 2018 (\$m) | Engine Products | Industrial Products |
-| --- | ---: | ---: |
-| Sales | 1,849.0 | 885.2 |
-| EBT | 261.3 | 137.1 |
-| **EBT margin** | **14.1%** | **15.5%** |
-
-* Engine Products is larger and growing faster; Industrial Products has the higher margin.
-* Management's goal of Industrial reaching 48% of the portfolio by 2021 looks unlikely.
-* Value each segment from its own forecasts, then adjust for corporate items (taxes, overhead, unallocated assets and liabilities).
 
 **Conglomerate discount.** The market values companies in several **unrelated** businesses below focused companies. Explanations:
 
@@ -255,10 +186,4 @@ It is most visible when companies divest businesses with few synergies with the 
 * Analysts help clients make better decisions, make markets more efficient (capital flows to its best uses) and **monitor management** (reducing agency costs).
 * An effective research report is timely and clear; objective and well researched, with key assumptions identified; **separates fact from opinion**; has internally consistent analysis, forecasts, valuation and recommendation; gives enough information for the reader to critique the valuation; states the key risks; and discloses conflicts of interest.
 * A target price needs a basis, a time frame and its uncertainty. Keep "good company" separate from "good investment": price matters.
-* **Example (two research notes)**: TXI's note communicates better.
-
-| | MXI's note | TXI's note |
-| --- | --- | --- |
-| Valuation | Vague and hedged; no clear value | DDM value €3.08 vs €2.25 price: $3.08/2.25-1=$ **+36.8%** |
-| Recommendation | Unclear | Clear |
 * Relevant CFA Standards: I(B) Independence and Objectivity; I(C) Misrepresentation; V(A) Diligence and Reasonable Basis; V(B) Communication with Clients (process, limitations and risks, important factors, **fact vs opinion**); V(C) Record Retention.
