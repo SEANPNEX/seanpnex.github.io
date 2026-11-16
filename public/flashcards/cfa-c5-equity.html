@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Equity — quiz misses flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    id: "eq-m4-ev-ebitda-vs-ev-fcff-capex-2026-11-15",
+    topic: "EQ M4 · EV/EBITDA vs EV/FCFF",
+    front: `Two firms have the same EV/EBITDA, but Firm A requires much heavier capex than Firm B. Which firm is more expensive, and why? Does EV/FCFF have the same limitation?`,
+    back: `<div class="ans">
+      <p><strong>Firm A is more expensive.</strong> EV/EBITDA hides differences in capital programs because EBITDA ignores capex (it reflects capex only if D&amp;A ≈ capex). FCFF does <strong>not</strong> have the same blind spot.</p><ul><li>FCFF adds back non-cash D&amp;A but subtracts actual capex (FCInv) and WCInv: \\(\\text{FCFF}=\\text{EBITDA}(1-t)+\\text{Dep}\\times t-\\text{FCInv}-\\text{WCInv}\\).</li><li>So EV/FCFF reveals capital intensity; EV/EBITDA does not. FCFF “directly reflects the amount of the company’s required capital expenditures” and has a stronger link to valuation theory than EBITDA.</li></ul><p><em>Simplified illustration, not a textbook example</em> (taxes and WCInv ignored, so \\(\\text{FCFF}=\\text{EBITDA}-\\text{FCInv}\\)): EV 1,000 and EBITDA 100 for both (EV/EBITDA 10x). Capex 60 for A vs 20 for B → FCFF 40 vs 80 → EV/FCFF 25x vs 12.5x.</p>
+    </div>`,
+    gap: "Identified A as more expensive but couldn't explain why; thought FCFF has the same blind spot because it adds back D&A."
+  }
+];
+
+flashDeck({
+  key: "cfa-c5-equity",
+  source: "CFA L2 Equity Valuation · Quiz misses",
+  gapLabel: "Gap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>
