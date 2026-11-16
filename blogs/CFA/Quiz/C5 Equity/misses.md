@@ -11,6 +11,7 @@
 ## 2026-11-16 — Quiz struggles
 
 - **EQ M4 · Justified trailing P/S** — Struggle (got it right): had to infer the inputs — retention from $\Delta$RE/NI, $g$ from ROE $\times b$, and $\mathrm{PM}_0=E_0/S_0$ from NI/sales; the trailing form includes $(1+g)$.
+- **EQ M3 · FCFE from sales growth, target DR** — Struggle (got it right): didn't know how to infer investment from sales growth (rate $\times \Delta$Sales; net FCInv already nets out depreciation; equity bears only $(1-\mathrm{DR})$).
 
 ## 2026-11-16 — Quiz misses
 

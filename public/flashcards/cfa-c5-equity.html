@@ -15,6 +15,15 @@
 /* Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
 const CARDS = [
   {
+    id: "eq-m3-fcfe-from-sales-growth-target-dr-2026-11-16",
+    topic: "EQ M3 · FCFE from sales growth, target DR",
+    front: `The target capital structure is 40% debt / 60% equity. Sales rise by 500 million. Incremental net fixed capital investment is 30%, and working capital investment is 20%, of the sales increase. NI is 1,000 million. What is FCFE?`,
+    back: `<div class="ans">
+      <p><strong>850 million.</strong> Investment is the given rate times the sales increase; “net” fixed capital investment already nets out depreciation. With a target debt ratio, equity bears only \\((1-\\text{DR})\\) of new investment. (Figures are quiz data, not a textbook example.)</p><ul><li>Net FCInv is \\((\\text{FCInv}-\\text{Dep})=0.30\\times500=150\\); \\(\\text{WCInv}=0.20\\times500=100\\); total investment is 250. Equity funds \\((1-\\text{DR})\\times250=0.6\\times250=150\\).</li><li>\\(\\text{FCFE}=\\text{NI}-(1-\\text{DR})(\\text{FCInv}-\\text{Dep})-(1-\\text{DR})\\text{WCInv}=1{,}000-150=850\\).</li></ul>
+    </div>`,
+    gap: "Guessed right but was completely blind — didn't know how to infer investment from sales growth."
+  },
+  {
     id: "eq-m4-ev-ebitda-vs-ev-fcff-capex-2026-11-15",
     topic: "EQ M4 · EV/EBITDA vs EV/FCFF",
     front: `Two firms have the same EV/EBITDA, but Firm A requires much heavier capex than Firm B. Which firm is more expensive, and why? Does EV/FCFF have the same limitation?`,
