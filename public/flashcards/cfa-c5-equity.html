@@ -24,6 +24,15 @@ const CARDS = [
     gap: "Guessed right but was completely blind — didn't know how to infer investment from sales growth."
   },
   {
+    id: "eq-m3-wcinv-fcinv-from-balance-sheet-2026-11-16",
+    topic: "EQ M3 · WCInv and FCInv from the balance sheet",
+    front: `How do you infer WCInv and FCInv from the balance sheet? In the quiz figures, current assets excluding cash are 1,418 vs 1,388, current liabilities excluding short-term debt are 2,581 vs 2,657, NI is 1,399, depreciation is 347, interest is 285, the tax rate is 32% and capex is 680. What is FCFF?`,
+    back: `<div class="ans">
+      <p><strong>1,153.8.</strong> For free cash flow, working capital excludes cash and short-term debt (notes payable and the current portion of long-term debt are financing). \\(\\text{WCInv}=\\text{WC}_t-\\text{WC}_{t-1}\\); a positive WCInv is an outflow. FCInv is gross capex: the increase in gross fixed assets, or \\(\\Delta\\text{Net PP\\&E}+\\text{Dep}\\) when there are no disposals, or the stated capex — not \\(\\Delta(\\text{total assets}-\\text{current assets})\\). (Figures are quiz data, not a textbook example.)</p><ul><li>\\(\\text{WC}=(\\text{CA}-\\text{cash})-(\\text{CL}-\\text{short-term debt})\\). That is 1,418 vs 1,388 minus 2,581 vs 2,657, so WC is \\(-1{,}163\\) vs \\(-1{,}269\\) and \\(\\text{WCInv}=-1{,}163-(-1{,}269)=106\\). Shortcut: an increase in an operating asset is a use of cash and an increase in an operating liability is a source. The current-asset changes net to \\(26+51-47=30\\), and operating current liabilities fall by 76 (a use), so WCInv is \\(30+76=106\\).</li><li>\\(\\text{FCFF}=\\text{NI}+\\text{Dep}+\\text{Int}(1-t)-\\text{FCInv}-\\text{WCInv}=1{,}399+347+285(1-0.32)-680-106=1{,}153.8\\), since \\(285\\times 0.68=193.8\\).</li><li>\\(\\text{FCFF}=\\text{FCFE}\\) only if net borrowing equals \\(\\text{Int}(1-t)\\).</li></ul>
+    </div>`,
+    gap: "Didn't know how to infer WCInv from the balance sheet, and used \\(\\Delta(\\text{total assets}-\\text{current assets})\\) as FCInv."
+  },
+  {
     id: "eq-m4-ev-ebitda-vs-ev-fcff-capex-2026-11-15",
     topic: "EQ M4 · EV/EBITDA vs EV/FCFF",
     front: `Two firms have the same EV/EBITDA, but Firm A requires much heavier capex than Firm B. Which firm is more expensive, and why? Does EV/FCFF have the same limitation?`,
