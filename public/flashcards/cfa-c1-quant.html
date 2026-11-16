@@ -42,12 +42,21 @@ const CARDS = [
 </ul>
 </div>`,
     gap: "left out “holding all other Xs constant”, the part that makes it a partial coefficient."
+  },
+  {
+    id: "quant-ts-differenced-random-walk-2026-11-15",
+    topic: "M5 Time Series · Random walk",
+    front: `An AR(1) is estimated on the first-differenced series \\(y_t=x_t-x_{t-1}\\): \\(y_t=b_0+b_1 y_{t-1}+\\varepsilon_t\\). The slope is 0.052 (\\(t=0.585\\)) and the intercept is insignificant (\\(t=-1.13\\)). What process does the original series \\(x_t\\) follow?`,
+    back: `<div class="ans">
+      <p><strong>A random walk</strong> (without drift).</p><ul><li>Neither the intercept nor the lag of the first difference differs significantly from 0, consistent with \\(b_0=0\\) and \\(b_1=0\\) in the differenced AR(1). A first-differenced random walk is just \\(y_t=\\varepsilon_t\\): nothing is left to predict, so we conclude the original series is a random walk.</li><li>The levels AR(1) is then \\(x_t=x_{t-1}+\\varepsilon_t\\), the special case \\(b_0=0\\), \\(b_1=1\\). It has a unit root, so it is <strong>not</strong> covariance stationary: \\(\\operatorname{Var}(x_t)=(t-1)\\sigma^2\\) grows without bound.</li><li>The mean-reverting level of the original series, \\(b_0/(1-b_1)\\), is \\(0/0\\) and is undefined.</li></ul><p>The first difference is covariance stationary; that is the evidence that the original series is a random walk, which is not.</p>
+    </div>`,
+    gap: "Chose covariance stationary."
   }
 ];
 
 flashDeck({
   key: "cfa-c1-quant",
-  source: "CFA L2 Quantitative Methods · Multiple regression · Quiz misses",
+  source: "CFA L2 Quantitative Methods · Quiz misses",
   gapLabel: "Gap",
   cards: CARDS,
 });
