@@ -51,6 +51,15 @@ const CARDS = [
     gap: "Got it right, but struggled with inferring the inputs."
   },
   {
+    id: "eq-m5-multistage-ri-pb-terminal-2026-11-16",
+    topic: "EQ M5 · Multistage RI, P/B terminal",
+    front: `\\(B_0\\) (start of 2020) is 10, ROE is 20% for 3 years, the payout is 50%, \\(r\\) is 12%, and the forecast P/B at the end of 2022 is 1.5. What is the value today?`,
+    back: `<div class="ans">
+      <p><strong>16.84.</strong> “Today” is the start of 2020, so the end-2022 premium is discounted three years. The terminal piece is the premium over book, \\(P_T-B_T\\), not the full price — \\(B_0\\) already counts book. (Figures are quiz data, not a textbook example.)</p><ul><li>Retention is 50%, so \\(g=\\text{ROE}\\times b=20\\%\\times50\\%=10\\%\\). Thus \\(B_1=11\\), \\(B_2=12.10\\), \\(B_3=13.31\\). Each RI uses beginning-of-year book: \\(\\text{RI}_t=(\\text{ROE}-r)B_{t-1}\\) equals 0.80, 0.88 and 0.968. Their PVs are \\(0.714+0.702+0.689=2.105\\).</li><li>Terminal premium \\(P_T-B_T=(1.5-1)B_3=0.5\\times13.31=6.655\\); PV is \\(6.655/1.12^3=4.737\\). \\(V_0=B_0+2.105+4.737=16.84\\).</li><li>Leaving the 6.655 undiscounted gives \\(10+2.105+6.655=18.76\\). Using the full price \\(1.5\\times B_3\\) instead of the premium double-counts book and gives about 26.3.</li></ul>
+    </div>`,
+    gap: "Used the terminal premium undiscounted and got 18.76."
+  },
+  {
     id: "eq-m6-dloc-from-control-premium-2026-11-15",
     topic: "EQ M6 · DLOC from control premium",
     front: `The control premium is 25% and the DLOM is 20%. What is the total discount for a minority, non-marketable stake?`,

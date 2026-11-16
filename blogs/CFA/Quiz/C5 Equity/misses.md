@@ -16,3 +16,4 @@
 ## 2026-11-16 — Quiz misses
 
 - **EQ M6 · Normalized operating income, tax the add-back** — Gap: Added the 480k pre-tax to after-tax operating income and got 1,355k.
+- **EQ M5 · Multistage RI, P/B terminal** — Gap: Used the terminal premium undiscounted and got 18.76.
