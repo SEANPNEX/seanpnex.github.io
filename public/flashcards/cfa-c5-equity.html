@@ -40,6 +40,24 @@ const CARDS = [
       <p><strong>36%.</strong></p><ul><li>\\(\\text{DLOC}=1-\\dfrac{1}{1+\\text{Control premium}}=1-\\dfrac{1}{1.25}=20\\%\\). The DLOC is not the control premium itself.</li><li>\\(\\text{Total discount}=1-(1-\\text{DLOC})(1-\\text{DLOM})=1-0.8\\times0.8=36\\%\\).</li></ul><p>If both discounts apply, they are applied in sequence and the total is multiplicative, not additive.</p>
     </div>`,
     gap: "Used the 25% control premium directly as the DLOC, and got 40%."
+  },
+  {
+    id: "eq-m6-excess-earnings-intangibles-2026-11-15",
+    topic: "EQ M6 · Excess earnings method",
+    front: `How does the excess earnings method value intangibles?`,
+    back: `<div class="ans">
+      <p>It capitalizes the earnings that remain after the required returns on tangible assets — it does not take intangibles from the financial statements.</p><ul><li>Estimate normalized earnings. Then take the fair market value of working capital and fixed assets and their required returns. Those required returns rise from working capital (lowest, \\(r_{WC}\\)) to fixed assets (\\(r_{FA}\\)) to intangibles (highest, \\(r_{RI}\\)).</li><li>\\(\\text{RI}_t=\\text{Normalized income}-(WC\\times r_{WC})-(FA\\times r_{FA})\\). Capitalize the excess earnings at the intangible-asset (residual-income) discount rate: \\(\\text{RV}_t=\\dfrac{\\text{RI}_t(1+g)}{r_{RI}-g}\\).</li><li>Firm value = working capital + fixed assets + the value of intangibles (\\(\\text{RV}_t\\)).</li></ul>
+    </div>`,
+    gap: "Said intangibles are taken from financial reports and usually not included."
+  },
+  {
+    id: "eq-m6-normalize-any-buyer-2026-11-15",
+    topic: "EQ M6 · Normalize earnings, any buyer",
+    front: `Owner compensation is USD 600,000 against a market rate of USD 350,000. How should earnings be normalized, and for which type of buyer?`,
+    back: `<div class="ans">
+      <p>Add back the USD 250,000 of excess compensation — a <strong>pre-tax</strong> SG&amp;A adjustment (then recompute tax). This normalization applies for <strong>any buyer</strong>: it restates earnings as if the firm were acquired and run efficiently at a market rate of pay.</p><ul><li>A <strong>strategic</strong> buyer additionally layers in synergies (investment value: increase revenue and/or cut costs beyond current expectations).</li><li>A <strong>financial</strong> buyer values the firm standalone, without those synergies.</li></ul>
+    </div>`,
+    gap: "Said normalize for the strategic buyer only."
   }
 ];
 
