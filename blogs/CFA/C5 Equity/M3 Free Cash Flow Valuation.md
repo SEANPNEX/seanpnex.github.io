@@ -51,17 +51,29 @@ $$
 
 **Step 1. WACC.**
 
-$$WACC=0.20\times 5.7\%\times(1-0.3333)+0.80\times 11.8\%=10.2\%$$
+$$
+\begin{aligned}
+WACC&=0.20\times 5.7\%\times(1-0.3333)\\
+&\quad+0.80\times 11.8\%\\
+&=10.2\%
+\end{aligned}
+$$
 
 **Step 2. Firm value.**
 
-$$\text{Firm value}=\frac{700\times 1.05}{0.102-0.05}=\frac{735}{0.052}=14{,}134.6$$
+$$
+\begin{aligned}
+\text{Firm value}&=\frac{700\times 1.05}{0.102-0.05}\\
+&=\frac{735}{0.052}=14{,}134.6
+\end{aligned}
+$$
 
 **Step 3. Equity per share.**
 
 $$
 \begin{aligned}
-\text{Equity}&=14{,}134.6-2{,}200=11{,}934.6\\
+\text{Equity}&=14{,}134.6-2{,}200\\
+&=11{,}934.6\\
 \text{Per share}&=\frac{11{,}934.6}{200}=59.67
 \end{aligned}
 $$
@@ -101,7 +113,12 @@ Amounts are in \$000; the tax rate is 30%, and debt pays 7% interest.
 
 **Step 1. FCFF from net income.**
 
-$$FCFF=NI+NCC+Int(1-t)-FCInv-WCInv$$
+$$
+\begin{aligned}
+FCFF={}&NI+NCC+Int(1-t)\\
+&-FCInv-WCInv
+\end{aligned}
+$$
 
 | | 2018 | 2019 | 2020 |
 | --- | --- | --- | --- |
@@ -112,11 +129,24 @@ $$FCFF=NI+NCC+Int(1-t)-FCInv-WCInv$$
 | − WCInv | (56.00) | (11.60) | (12.76) |
 | **FCFF** | **97.50** | **107.26** | **117.97** |
 
-**Step 2. Check from CFO.** $FCFF=CFO+Int(1-t)-FCInv$ gives the same result; e.g. 2018: $86.52+10.98-0=97.50$.
+**Step 2. Check from CFO.** The CFO route gives the same result; e.g. 2018:
+
+$$
+\begin{aligned}
+FCFF&=CFO+Int(1-t)\\
+&\quad-FCInv\\
+&=86.52+10.98-0=97.50
+\end{aligned}
+$$
 
 **Step 3. FCFE.**
 
-$$FCFE=FCFF-Int(1-t)+\text{Net borrowing}$$
+$$
+\begin{aligned}
+FCFE={}&FCFF-Int(1-t)\\
+&+\text{Net borrowing}
+\end{aligned}
+$$
 
 | | 2018 | 2019 | 2020 |
 | --- | ---: | ---: | ---: |
@@ -141,8 +171,9 @@ Pitts's 2020 figures, in \$m:
 $$
 \begin{aligned}
 Int(1-t)&=100\times 0.6=60\\
-WCInv&=\underbrace{40}_{\Delta AR}+\underbrace{30}_{\Delta\text{Inv}}-\underbrace{15}_{\Delta AP}-\underbrace{10}_{\Delta\text{Accrued}}=45\\
-\text{Net borrowing}&=\underbrace{50}_{\Delta\text{Notes}}+\underbrace{25}_{\Delta LTD}=75
+WCInv&=\underbrace{40}_{\Delta AR}+\underbrace{30}_{\Delta\text{Inv}}\\
+&\quad-\underbrace{15}_{\Delta AP}-\underbrace{10}_{\Delta\text{Accr}}=45\\
+\text{Borrowing}&=\underbrace{50}_{\Delta\text{Notes}}+\underbrace{25}_{\Delta LTD}=75
 \end{aligned}
 $$
 
@@ -217,8 +248,9 @@ Uses must equal sources: a consistency check that also shows the capital structu
 $$
 \begin{aligned}
 FCFF={}&\Delta\text{Cash}+Int(1-t)\\
-&+(\text{Repayments}-\text{New debt})\\
-&+\text{Dividends}+(\text{Buybacks}-\text{Issuance})\\
+&+(\text{Repaid}-\text{New debt})\\
+&+\text{Dividends}\\
+&+(\text{Buybacks}-\text{Issuance})\\
 FCFE={}&\Delta\text{Cash}+\text{Dividends}\\
 &+(\text{Buybacks}-\text{Issuance})
 \end{aligned}
@@ -230,7 +262,8 @@ Pitts's cash rose by 10, it paid dividends of 160, and it neither bought back no
 
 $$
 \begin{aligned}
-FCFF&=10+60-75+160+0=155\\
+FCFF&=10+60-75+160+0\\
+&=155\\
 FCFE&=10+160+0=170
 \end{aligned}
 $$
@@ -262,8 +295,8 @@ If a target debt ratio DR finances net new investment (with depreciation the onl
 
 $$
 \begin{aligned}
-FCFE={}&NI\\
-&-(1-DR)(FCInv-Dep)\\
+FCFE={}&NI-(1-DR)\\
+&\times(FCInv-Dep)\\
 &-(1-DR)\,WCInv
 \end{aligned}
 $$
@@ -294,8 +327,10 @@ $$
 
 $$
 \begin{aligned}
-FCFF&=\underbrace{3{,}300\times 16.67\%\times 0.6}_{330}-100-45=185\\
-FCFE&=\underbrace{3{,}300\times 8\%}_{264}-0.5\times 100-0.5\times 45=191.50
+FCFF&=\underbrace{3{,}300\times 16.67\%\times 0.6}_{330}\\
+&\quad-100-45=185\\
+FCFE&=\underbrace{3{,}300\times 8\%}_{264}-0.5\times 100\\
+&\quad-0.5\times 45=191.50
 \end{aligned}
 $$
 
@@ -320,10 +355,13 @@ Over five years, with the EBIT margin falling from 16.67% to 14.5%: FCFF 185.00,
 
 $$
 \begin{aligned}
-FCFF={}&NI+NCC+Int(1-t)+\text{Pref div}\\
+FCFF={}&NI+NCC+Int(1-t)\\
+&+\text{Pref div}\\
 &-FCInv-WCInv\\
-WACC={}&w_d\,r_d(1-t)+w_p\,r_p+w_e\,r\\
-\text{Equity}={}&\text{Firm value}-\text{Debt}-\text{Preferred}
+WACC={}&w_d\,r_d(1-t)+w_p\,r_p\\
+&+w_e\,r\\
+\text{Equity}={}&\text{Firm value}-\text{Debt}\\
+&-\text{Preferred}
 \end{aligned}
 $$
 
@@ -341,15 +379,24 @@ NI 110, interest 32, preferred dividends 8, depreciation 40, FCInv 70, WCInv 20,
 
 **Step 1. WACC.**
 
-$$WACC=0.4\times 8\%\times 0.7+0.1\times 8\%+0.5\times 12\%=9.04\%$$
+$$
+\begin{aligned}
+WACC&=0.4\times 8\%\times 0.7\\
+&\quad+0.1\times 8\%+0.5\times 12\%\\
+&=9.04\%
+\end{aligned}
+$$
 
 **Step 2. Value from FCFF.**
 
 $$
 \begin{aligned}
-FCFF&=110+40+32\times 0.7+8-70-20=90.4\\
-\text{Firm value}&=\frac{90.4\times 1.04}{0.0904-0.04}=1{,}865.40\\
-\text{Equity}&=1{,}865.40-400-100=1{,}365.40
+FCFF&=110+40+32\times 0.7\\
+&\quad+8-70-20=90.4\\
+\text{Firm value}&=\frac{90.4\times 1.04}{0.0904-0.04}\\
+&=1{,}865.40\\
+\text{Equity}&=1{,}865.40-400-100\\
+&=1{,}365.40
 \end{aligned}
 $$
 
@@ -357,8 +404,10 @@ $$
 
 $$
 \begin{aligned}
-FCFE&=110+40-70-20+25=85\\
-\text{Equity}&=\frac{85\times 1.054}{0.12-0.054}=1{,}357.42
+FCFE&=110+40-70-20+25\\
+&=85\\
+\text{Equity}&=\frac{85\times 1.054}{0.12-0.054}\\
+&=1{,}357.42
 \end{aligned}
 $$
 
@@ -380,7 +429,13 @@ Mukamba, in the Democratic Republic of the Congo, has $FCFE_0$ = CDF1,400.
 
 **Step 1. Real required return.** Start from the country's real return and adjust for industry, size and leverage:
 
-$$r_{\text{real}}=7.30\%+0.80\%-0.33\%-0.12\%=7.65\%$$
+$$
+\begin{aligned}
+r_{\text{real}}&=7.30\%+0.80\%\\
+&\quad-0.33\%-0.12\%\\
+&=7.65\%
+\end{aligned}
+$$
 
 **Step 2. Real growth.** The country's real growth of 3.0%, less 0.5% for the company:
 
@@ -388,7 +443,12 @@ $$g_{\text{real}}=3.0\%-0.5\%=2.5\%$$
 
 **Step 3. Value.**
 
-$$V_0=\frac{1{,}400\times 1.025}{0.0765-0.025}=\frac{1{,}435}{0.0515}=27{,}864$$
+$$
+\begin{aligned}
+V_0&=\frac{1{,}400\times 1.025}{0.0765-0.025}\\
+&=\frac{1{,}435}{0.0515}=27{,}864
+\end{aligned}
+$$
 
 **CDF27,864.**
 
@@ -401,7 +461,8 @@ $FCFE_0$ = BRL2.59 and $g$ = 7%; the risk-free rate is 8.9%, beta 1.4 and the ER
 $$
 \begin{aligned}
 r&=8.9\%+1.4\times 5.3\%=16.32\%\\
-V_0&=\frac{2.59\times 1.07}{0.1632-0.07}=\frac{2.7713}{0.0932}=29.73
+V_0&=\frac{2.59\times 1.07}{0.1632-0.07}\\
+&=\frac{2.7713}{0.0932}=29.73
 \end{aligned}
 $$
 
@@ -443,7 +504,8 @@ Per share, with a target debt ratio DR financing net investment:
 $$
 \begin{aligned}
 FCFE_t={}&EPS_t-(1-DR)\\
-&\times\left[(FCInv-Dep)_t+WCInv_t\right]
+&\times\left[(FCInv-Dep)_t\right.\\
+&\quad\left.+\,WCInv_t\right]
 \end{aligned}
 $$
 
@@ -459,7 +521,12 @@ $$
 
 **Step 1. FCFE per share.** E.g. Year 1: sales rise by 5.00, so
 
-$$FCFE_1=3.00-0.6\times(2.50+1.00)=0.90$$
+$$
+\begin{aligned}
+FCFE_1&=3.00-0.6\times(2.50+1.00)\\
+&=0.90
+\end{aligned}
+$$
 
 | Year | 1 | 2 | 3 | 4 |
 | --- | --- | --- | --- | --- |
@@ -476,14 +543,20 @@ FCFE jumps 169% in Year 4: growth falls from 20% to 6%, so investment needs shri
 
 $$
 \begin{aligned}
-TV_3&=\frac{FCFE_4}{r-g}=\frac{3.491}{0.124-0.06}=54.55\\
+TV_3&=\frac{FCFE_4}{r-g}=\frac{3.491}{0.124-0.06}\\
+&=54.55\\
 \text{PV}(TV_3)&=\frac{54.55}{1.124^3}=38.415
 \end{aligned}
 $$
 
 **Step 3. Add.**
 
-$$V_0=\underbrace{0.801+0.855+0.913}_{\text{PV}(FCFE_1\dots FCFE_3)}+38.415=40.98$$
+$$
+\begin{aligned}
+V_0&=\underbrace{0.801+0.855+0.913}_{\text{PV of }FCFE_1\dots FCFE_3}\\
+&\quad+38.415=40.98
+\end{aligned}
+$$
 
 **$V_0$ = €40.98**; the terminal value is about 94% of it.
 
@@ -500,7 +573,13 @@ $$V_0=\underbrace{0.801+0.855+0.913}_{\text{PV}(FCFE_1\dots FCFE_3)}+38.415=40.9
 
 **Step 1. FCFE per share.** E.g. 2020:
 
-$$FCFE_{2020}=3.120-0.7\times(3.00+1.50)=-0.030$$
+$$
+\begin{aligned}
+FCFE_{2020}&=3.120\\
+&\quad-0.7\times(3.00+1.50)\\
+&=-0.030
+\end{aligned}
+$$
 
 | | 2020 | 2021 | 2022 | 2023 | 2024 |
 | --- | --- | --- | --- | --- | --- |
@@ -511,7 +590,8 @@ $$FCFE_{2020}=3.120-0.7\times(3.00+1.50)=-0.030$$
 
 $$
 \begin{aligned}
-V_{2023}&=\frac{FCFE_{2024}}{r-g}=\frac{3.759}{0.104-0.07}=110.56\\
+V_{2023}&=\frac{FCFE_{2024}}{r-g}\\
+&=\frac{3.759}{0.104-0.07}=110.56\\
 \text{PV}(V_{2023})&=\frac{110.56}{1.104^4}=74.425
 \end{aligned}
 $$
@@ -532,7 +612,13 @@ Sales are C\$600m; 70m shares; 40% debt financing; $r$ = 6% + 1.1 × 4.5% = 10.9
 
 **Step 1. FCFE.** E.g. Year 1: sales rise by 120 to 720.
 
-$$FCFE_1=\underbrace{720\times 14\%}_{100.8}-0.6\times(0.60+0.25)\times 120=39.60$$
+$$
+\begin{aligned}
+FCFE_1&=\underbrace{720\times 14\%}_{100.8}\\
+&\quad-0.6\times(0.60+0.25)\times 120\\
+&=39.60
+\end{aligned}
+$$
 
 **Step 2. Terminal value at Year 5.**
 
@@ -547,7 +633,8 @@ $$
 
 $$
 \begin{aligned}
-\text{Equity}&=208.57+1{,}193.12=1{,}401.69\\
+\text{Equity}&=208.57+1{,}193.12\\
+&=1{,}401.69\\
 \text{Per share}&=\frac{1{,}401.69}{70}=20.02
 \end{aligned}
 $$
@@ -570,7 +657,13 @@ $$
 
 **Step 1. WACC.**
 
-$$WACC=0.2\times 7.1\%\times 0.66+0.8\times 9.99\%=8.93\%$$
+$$
+\begin{aligned}
+WACC&=0.2\times 7.1\%\times 0.66\\
+&\quad+0.8\times 9.99\%\\
+&=8.93\%
+\end{aligned}
+$$
 
 **Step 2. FCFF forecast.**
 
@@ -620,8 +713,10 @@ The three stages are: before the new mine operates, while it operates, and after
 $$
 \begin{aligned}
 r_d(1-t)&=5\%\times 0.75=3.75\%\\
-r_e&=3\%+1.2\times 5\%+0.75\%=9.75\%\\
-WACC&=0.5\times 3.75\%+0.5\times 9.75\%=6.75\%
+r_e&=3\%+1.2\times 5\%+0.75\%\\
+&=9.75\%\\
+WACC&=0.5\times 3.75\%\\
+&\quad+0.5\times 9.75\%=6.75\%
 \end{aligned}
 $$
 

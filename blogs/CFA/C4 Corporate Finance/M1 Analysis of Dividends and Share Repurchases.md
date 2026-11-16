@@ -27,7 +27,8 @@ Dividends are a large part of total return: the S&P 500 returned 10.0% a year fr
 $$
 \begin{aligned}
 \text{Payout ratio}&=\frac{DPS}{EPS}\\
-\text{Extra dividend}&=DPS-\text{Minimum payout}\times EPS
+\text{Extra}&=DPS\\
+&\quad-\text{Min. payout}\times EPS
 \end{aligned}
 $$
 
@@ -45,7 +46,7 @@ AfriSage's policy is an ordinary dividend of at least 35% of net income.
 
 $$
 \begin{aligned}
-\text{Minimum ordinary}&=0.35\times 14.23=4.98\\
+\text{Minimum}&=0.35\times 14.23=4.98\\
 \text{Extra}&=7.61-4.98=2.63
 \end{aligned}
 $$
@@ -250,7 +251,8 @@ where $t_c$ is the corporate rate, $t_i$ the individual's dividend tax rate, and
 
 $$
 \begin{aligned}
-Div_{net}&=100\times(1-0.35)(1-0.15)=55.25\\
+Div_{net}&=100\times(1-0.35)(1-0.15)\\
+&=55.25\\
 t_{\text{eff}}&=1-0.65\times 0.85=44.75\%
 \end{aligned}
 $$
@@ -262,7 +264,7 @@ Distributed profits are taxed only once, at the **shareholder's** rate (Australi
 $$
 \begin{aligned}
 Div_{net}&=EBT\times \text{payout}\times(1-t_{i})\\
-\text{Personal tax due}&=t_i\times EBT-\text{Franking credit}
+\text{Tax due}&=t_i\times EBT-\text{Credit}
 \end{aligned}
 $$
 
@@ -347,7 +349,8 @@ Last year's dividend was US\$0.40 (a 20% payout). Expected EPS is US\$2.80, the 
 
 $$
 \begin{aligned}
-E(Div)&=0.40+\frac{0.30\times 2.80-0.40}{4}=0.40+\frac{0.44}{4}=0.51\\
+E(Div)&=0.40+\frac{0.30\times 2.80-0.40}{4}\\
+&=0.40+\frac{0.44}{4}=0.51\\
 \text{Payout}&=\frac{0.51}{2.80}=18.2\%
 \end{aligned}
 $$
@@ -452,7 +455,8 @@ Takemiya has 10m shares, NI ¥100m and a price of ¥120. It uses ¥240m of surpl
 $$
 \begin{aligned}
 N_{\text{bought}}&=\frac{240}{140}=1.714\text{m}\\
-EPS_{\text{after}}&=\frac{100-0}{10-1.714}=\frac{100}{8.286}=12.07
+EPS_{\text{after}}&=\frac{100-0}{10-1.714}\\
+&=\frac{100}{8.286}=12.07
 \end{aligned}
 $$
 
@@ -524,7 +528,12 @@ Rohit has 10m shares at Rs200 (market cap Rs2,000m) and distributes Rs500m.
 
 AfriCitrus has 10m shares at ZAR200. It buys ZAR500m of shares from one holder at ZAR250: $500/250=2$m shares.
 
-$$P_{\text{after}}=\frac{2{,}000-500}{10-2}=\frac{1{,}500}{8}=187.50$$
+$$
+\begin{aligned}
+P_{\text{after}}&=\frac{2{,}000-500}{10-2}\\
+&=\frac{1{,}500}{8}=187.50
+\end{aligned}
+$$
 
 The remaining holders lose $200-187.50=$ **ZAR12.50** a share, transferred to the seller.
 
@@ -587,10 +596,11 @@ $$\text{Payout}=\frac{0.40}{3.20}=12.5\%$$
 
 $$
 \begin{aligned}
-\text{Payout ratio}&=\frac{\text{Dividends}}{\text{Net income}}\\
-\text{Dividend coverage}&=\frac{\text{Net income}}{\text{Dividends}}\\
-\text{FCFE coverage}&=\frac{FCFE}{\text{Dividends}+\text{Repurchases}}\\
-FCFE&=CFO-FCInv+\text{Net borrowing}
+\text{Payout}&=\frac{\text{Dividends}}{\text{Net income}}\\
+\text{Coverage}&=\frac{\text{Net income}}{\text{Dividends}}\\
+\text{FCFE cov.}&=\frac{FCFE}{\text{Dividends}+\text{Buybacks}}\\
+FCFE&=CFO-FCInv\\
+&\quad+\text{Net borrowing}
 \end{aligned}
 $$
 
@@ -607,7 +617,12 @@ $$
 
 NI is €100m and dividends €40m.
 
-$$\text{Payout}=\frac{40}{100}=40\%\qquad\text{Coverage}=\frac{100}{40}=2.5\times$$
+$$
+\begin{aligned}
+\text{Payout}&=\frac{40}{100}=40\%\\
+\text{Coverage}&=\frac{100}{40}=2.5\times
+\end{aligned}
+$$
 
 #### Example: Lygon Resources
 

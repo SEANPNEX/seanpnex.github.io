@@ -19,9 +19,9 @@ Valuing a stock with multiples, either by comparing it with similar assets (the 
 
 $$
 \begin{aligned}
-\text{Value}&=\text{Benchmark multiple}\\
-&\quad\times\text{Company's fundamental}\\
-\text{Justified multiple}&=\frac{\text{Intrinsic value}}{\text{Fundamental}}
+\text{Value}={}&\text{Benchmark multiple}\\
+&\times\text{Fundamental}\\
+\text{Justified}={}&\frac{\text{Intrinsic value}}{\text{Fundamental}}
 \end{aligned}
 $$
 
@@ -103,8 +103,9 @@ The company's core EPS flatters the stock; the analyst's P/E is close to the rep
 
 $$
 \begin{aligned}
-\text{Normalized EPS (historical)}&=\overline{EPS}_{\text{cycle}}\\
-\text{Normalized EPS (ROE)}&=\overline{ROE}_{\text{cycle}}\times BVPS_{\text{current}}
+\text{Historical: }EPS_N&=\overline{EPS}_{\text{cycle}}\\
+\text{ROE: }EPS_N&=\overline{ROE}_{\text{cycle}}\\
+&\quad\times BVPS_{\text{current}}
 \end{aligned}
 $$
 
@@ -162,7 +163,12 @@ $$\frac{P_0}{E_1}=\frac{1-0.40}{0.076-0.035}=\frac{0.60}{0.041}=14.6$$
 
 **Toyota** (FCFE model): value ¥6,980, price ¥6,688, FY2020 EPS ¥720.
 
-$$\text{Justified}=\frac{6{,}980}{720}=9.7\qquad\text{Actual}=\frac{6{,}688}{720}=9.3$$
+$$
+\begin{aligned}
+\text{Justified}&=\frac{6{,}980}{720}=9.7\\
+\text{Actual}&=\frac{6{,}688}{720}=9.3
+\end{aligned}
+$$
 
 Toyota trades about **4% below** its justified P/E: undervalued.
 
@@ -170,8 +176,9 @@ Toyota trades about **4% below** its justified P/E: undervalued.
 
 $$
 \begin{aligned}
-\widehat{P/E}&=12.12+2.25\times\underbrace{0.45}_{\text{payout}}-0.20\times\underbrace{0.9}_{\beta}+14.43\times\underbrace{0.08}_{g}\\
-&=14.1
+\widehat{P/E}={}&12.12+2.25\times\underbrace{0.45}_{\text{payout}}\\
+&-0.20\times\underbrace{0.9}_{\beta}+14.43\times\underbrace{0.08}_{g}\\
+={}&14.1
 \end{aligned}
 $$
 
@@ -203,7 +210,9 @@ The steps for any multiple: (1) choose and compute the multiple; (2) choose comp
 * Verizon is at the median: **fairly valued**. AT&T, China Telecom and CenturyLink look undervalued.
 * Check cash flow too: telecoms have large noncash charges.
 
-$$PEG=\frac{P/E}{\text{Expected EPS growth, in percent}}$$
+$$
+PEG=\frac{P/E}{\text{EPS growth (in percent)}}
+$$
 
 Lower is more attractive; some treat below 1 as attractive. Limitations: it assumes a **linear** P/E–growth relationship, and ignores **risk** and how long growth lasts.
 
@@ -250,7 +259,12 @@ $$
 
 **The stock's own history.** It breaks down if the business mix, leverage, interest rates or inflation have changed.
 
-$$\text{Justified price}=\overline{P/E}_{\text{own history}}\times EPS_{\text{recent or normalized}}$$
+$$
+\begin{aligned}
+\text{Price}={}&\overline{P/E}_{\text{own history}}\\
+&\times EPS_{\text{recent or normalized}}
+\end{aligned}
+$$
 
 #### Example: Honda
 
@@ -400,7 +414,12 @@ E\*TRADE's P/B is under 30% of its peers' and under 60% of its own historical me
 | Fits mature, cyclical and loss-making companies | Revenue recognition can still distort it |
 | P/S differences relate to long-run returns | |
 
-$$\frac{P}{S}=\frac{P}{E}\times\frac{E}{S}=P/E\times\text{Net profit margin}$$
+$$
+\begin{aligned}
+\frac{P}{S}&=\frac{P}{E}\times\frac{E}{S}\\
+&=P/E\times\text{Net margin}
+\end{aligned}
+$$
 
 #### Example: Stora Enso
 
@@ -466,7 +485,12 @@ Getinge has the lowest P/S, so it looks cheapest. But its margin, leverage and E
 | **FCFE** | Strongest link to theory; volatile (capex timing), so use an average or the DCF value |
 | **EBITDA** | Before interest → pair with **EV**, not price |
 
-$$CF=EPS+\text{Depreciation, amortization and depletion per share}$$
+$$
+\begin{aligned}
+CF={}&EPS+\text{Depreciation}\\
+&+\text{Amortization}+\text{Depletion}
+\end{aligned}
+$$
 
 #### Example: Depreciation Methods
 
@@ -494,9 +518,10 @@ $FCFE_0$ = \$2.66, CF = \$3.26, $r$ = 7.4%, $g$ = 3.2%.
 
 $$
 \begin{aligned}
-V_0&=\frac{2.66\times 1.032}{0.074-0.032}=\$65.36\\
-\text{Justified P/CF}&=\frac{65.36}{3.26}=20.05\\
-\text{Justified P/FCFE}&=\frac{65.36}{2.66}=24.57
+V_0&=\frac{2.66\times 1.032}{0.074-0.032}\\
+&=\$65.36\\
+\text{P/CF}&=\frac{65.36}{3.26}=20.05\\
+\text{P/FCFE}&=\frac{65.36}{2.66}=24.57
 \end{aligned}
 $$
 
@@ -517,7 +542,7 @@ A has the lower multiple **and** better fundamentals: **A is relatively underval
 $$
 \begin{aligned}
 \text{Trailing yield}&=\frac{\text{Dividend rate}}{P_0}\\
-\text{Leading yield}&=\frac{\text{Forecast dividends, next year}}{P_0}
+\text{Leading yield}&=\frac{\text{Next year's }E(D)}{P_0}
 \end{aligned}
 $$
 
@@ -527,8 +552,9 @@ The **dividend rate** is 4 × the latest quarterly dividend, or the latest annua
 
 $$
 \begin{aligned}
-\text{BCE (quarterly)}&=\frac{4\times 0.58}{39.53}=\frac{2.32}{39.53}=5.87\%\\
-\text{BT (uneven semiannual)}&=\frac{0.976}{15.20}=6.42\%
+\text{BCE}&=\frac{4\times 0.58}{39.53}=\frac{2.32}{39.53}\\
+&=5.87\%\\
+\text{BT}&=\frac{0.976}{15.20}=6.42\%
 \end{aligned}
 $$
 
@@ -574,19 +600,29 @@ EV multiples take a **control** perspective and are less sensitive to leverage t
 
 Amounts in \$m; 863m shares at \$66.48.
 
-**Step 1. Enterprise value.**
+**Step 1. Enterprise value.** Debt is long-term debt, its current portion and other non-current liabilities (NCL); NCI is the non-controlling interest.
 
 $$
 \begin{aligned}
-\text{Market cap}&=863\times 66.48=57{,}372\\
-\text{Debt}&=\underbrace{6{,}354}_{\text{LT debt}}+\underbrace{0}_{\text{current}}+\underbrace{2{,}269}_{\text{other NCL}}=8{,}623\\
-EV&=57{,}372+8{,}623+\underbrace{299}_{\text{NCI}}-\underbrace{726}_{\text{cash}}=65{,}568
+\text{Market cap}&=863\times 66.48\\
+&=57{,}372\\
+\text{Debt}&=\underbrace{6{,}354}_{\text{LT}}+\underbrace{0}_{\text{current}}+\underbrace{2{,}269}_{\text{other}}\\
+&=8{,}623\\
+EV&=57{,}372+8{,}623\\
+&\quad+\underbrace{299}_{\text{NCI}}-\underbrace{726}_{\text{cash}}\\
+&=65{,}568
 \end{aligned}
 $$
 
 **Step 2. EBITDA.**
 
-$$EBITDA=\underbrace{2{,}400}_{NI}+\underbrace{143}_{\text{Int}}+\underbrace{906}_{\text{Tax}}+\underbrace{511}_{\mathrm{D\&A}}=3{,}960$$
+$$
+\begin{aligned}
+EBITDA&=\underbrace{2{,}400}_{NI}+\underbrace{143}_{\text{Int}}\\
+&\quad+\underbrace{906}_{\text{Tax}}+\underbrace{511}_{\mathrm{D\&A}}\\
+&=3{,}960
+\end{aligned}
+$$
 
 **Step 3. Multiple.**
 
@@ -622,7 +658,8 @@ Industry-specific measures include EV/EBITDAR (airlines), EV/subscribers and EV/
 
 $$
 \begin{aligned}
-EV&=8{,}154+2{,}970-1{,}130=9{,}994\\
+EV&=8{,}154+2{,}970-1{,}130\\
+&=9{,}994\\
 EV/\text{Sales}&=\frac{9{,}994}{10{,}486}=0.953
 \end{aligned}
 $$
@@ -670,7 +707,7 @@ The most frequent adjustment is pensions; the largest by value is goodwill. **P/
 $$
 \begin{aligned}
 UE_t&=EPS_t-E(EPS_t)\\
-\text{Scaled surprise}&=\frac{UE_t}{\sigma_{\text{analysts' forecasts}}}\\
+\text{Scaled}&=\frac{UE_t}{\sigma_{\text{forecasts}}}\\
 SUE_t&=\frac{EPS_t-E(EPS_t)}{\sigma\left[EPS_t-E(EPS_t)\right]}\\
 RS_t&=\frac{P_{\text{stock},t}/P_{\text{stock},0}}{P_{\text{index},t}/P_{\text{index},0}}
 \end{aligned}

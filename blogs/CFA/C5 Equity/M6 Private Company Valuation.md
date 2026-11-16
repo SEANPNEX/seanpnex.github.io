@@ -47,10 +47,10 @@ Three areas of focus:
 
 $$
 \begin{aligned}
-\text{Normalized EBIT}={}&\text{Reported EBIT}\\
-&+\text{Above-market owner pay}\\
-&+\text{Non-operating expenses}\\
-&-\text{Market rent for free-use assets}
+EBIT_{\text{norm}}={}&\text{Reported EBIT}\\
+&+\text{Excess owner pay}\\
+&+\text{Non-operating costs}\\
+&-\text{Market rent owed}
 \end{aligned}
 $$
 
@@ -111,7 +111,9 @@ $$
 
 $$
 \begin{aligned}
-E(V_2)&=\underbrace{0.8\times 0.4}_{0.32}\times 2{,}100+0.32\times 392.3=797.5\\
+E(V_2)&=\underbrace{0.8\times 0.4}_{0.32}\times 2{,}100\\
+&\quad+0.32\times 392.3\\
+&=797.5\\
 V_0&=\frac{797.5}{1.15^2}=603.1
 \end{aligned}
 $$
@@ -120,7 +122,13 @@ $$
 
 **Sensitivity.** With 60% preliminary, 60% broad and 20% limited:
 
-$$E(V_2)=0.36\times 2{,}100+0.12\times 392.3=803.1\ \Rightarrow\ V_0=607.2$$
+$$
+\begin{aligned}
+E(V_2)&=0.36\times 2{,}100+0.12\times 392.3\\
+&=803.1\\
+V_0&=\frac{803.1}{1.15^2}=607.2
+\end{aligned}
+$$
 
 That is only €4.2m more.
 
@@ -136,8 +144,10 @@ Adjustments to consider:
 $$
 \begin{aligned}
 \text{CAPM: }r_e={}&r_f+\beta\times ERP\\
-\text{Expanded CAPM: }r_e={}&r_f+\beta\times ERP+SP+SCRP\\
-\text{Build-up: }r_e={}&r_f+ERP+SP\pm IP+SCRP
+\text{Expanded: }r_e={}&r_f+\beta\times ERP\\
+&+SP+SCRP\\
+\text{Build-up: }r_e={}&r_f+ERP+SP\\
+&\pm IP+SCRP
 \end{aligned}
 $$
 
@@ -204,17 +214,29 @@ Everfloat's control value is GBP1.65bn, and the control premium is 15%. The DLOM
 $$
 \begin{aligned}
 DLOC&=1-\frac{1}{1.15}=13.0\%\\
-\text{Minority value}&=1.65\times(1-0.13)=1.4355
+\text{Minority}&=1.65\times(1-0.13)\\
+&=1.4355
 \end{aligned}
 $$
 
 **Step 2. DLOM.**
 
-$$DLOM=\frac{\text{Put premium}}{\text{Share price}}=\frac{8.40}{50}=16.8\%$$
+$$
+\begin{aligned}
+DLOM&=\frac{\text{Put premium}}{\text{Share price}}\\
+&=\frac{8.40}{50}=16.8\%
+\end{aligned}
+$$
 
 **Step 3. Combine multiplicatively.**
 
-$$\text{Total}=1-(1-0.13)(1-0.168)=1-0.87\times 0.832=27.6\%$$
+$$
+\begin{aligned}
+\text{Total}&=1-(1-0.13)(1-0.168)\\
+&=1-0.87\times 0.832\\
+&=27.6\%
+\end{aligned}
+$$
 
 **27.6%**, not $13\%+16.8\%=29.8\%$.
 
@@ -232,7 +254,8 @@ With a 30% control premium and a 20% DLOM:
 $$
 \begin{aligned}
 DLOC&=1-\frac{1}{1.30}=23.1\%\\
-\text{Total}&=1-(1-0.231)(1-0.20)=38.5\%
+\text{Total}&=1-(1-0.231)(1-0.20)\\
+&=38.5\%
 \end{aligned}
 $$
 
@@ -284,13 +307,20 @@ where RIR is the reinvestment rate and $r_e-g$ the **capitalization rate**. Equi
 
 **Step 1. WACC.**
 
-$$WACC=0.1\times 10\%\times 0.66+0.9\times 15\%=14.16\%$$
+$$
+\begin{aligned}
+WACC&=0.1\times 10\%\times 0.66\\
+&\quad+0.9\times 15\%\\
+&=14.16\%
+\end{aligned}
+$$
 
 **Step 2. Firm and equity value.**
 
 $$
 \begin{aligned}
-V_{\text{firm}}&=\frac{15\times 1.05}{0.1416-0.05}=\frac{15.75}{0.0916}=171.9\\
+V_{\text{firm}}&=\frac{15\times 1.05}{0.1416-0.05}\\
+&=\frac{15.75}{0.0916}=171.9\\
 V_{\text{equity}}&=171.9-5=166.9
 \end{aligned}
 $$
@@ -299,7 +329,12 @@ $$
 
 **Sensitivity.** At $g$ = 2%:
 
-$$V_{\text{equity}}=\frac{15\times 1.02}{0.1416-0.02}-5=125.8-5=120.8$$
+$$
+\begin{aligned}
+V_{\text{equity}}&=\frac{15\times 1.02}{0.1416-0.02}-5\\
+&=125.8-5=120.8
+\end{aligned}
+$$
 
 **BRL120.8m**, over 25% lower: the method is very sensitive to growth.
 
@@ -329,7 +364,12 @@ where $NI_{\text{norm}}$ is normalized income, and WC and FA are working capital
 
 **Step 1. Residual income.**
 
-$$RI=120-\underbrace{0.05\times 200}_{10}-\underbrace{0.11\times 800}_{88}=22$$
+$$
+\begin{aligned}
+RI&=120-\underbrace{0.05\times 200}_{10}-\underbrace{0.11\times 800}_{88}\\
+&=22
+\end{aligned}
+$$
 
 **Step 2. Value of the intangibles.**
 
@@ -363,11 +403,22 @@ Peers' mean beta is 1.21, with D/E 50% and tax 21.6%. Quik Chip has D/E 25% and 
 
 **Step 1. Unlever the peers' beta.**
 
-$$\beta_U=\frac{1.21}{1+(1-0.216)\times 0.50}=\frac{1.21}{1.392}=0.8693$$
+$$
+\begin{aligned}
+\beta_U&=\frac{1.21}{1+(1-0.216)\times 0.50}\\
+&=\frac{1.21}{1.392}=0.8693
+\end{aligned}
+$$
 
 **Step 2. Relever at Quik Chip's structure.**
 
-$$\beta^*=0.8693\times\left[1+(1-0.18)\times 0.25\right]=0.8693\times 1.205=1.0475$$
+$$
+\begin{aligned}
+\beta^*&=0.8693\times\left[1+(1-0.18)\times 0.25\right]\\
+&=0.8693\times 1.205\\
+&=1.0475
+\end{aligned}
+$$
 
 **Step 3. EV from peers' multiples.**
 
@@ -408,7 +459,8 @@ From a non-controlling perspective:
 
 $$
 \begin{aligned}
-FCFF&=16.3\times 0.83+0.9\times 0.17-1.2-0.5\\
+FCFF&=16.3\times 0.83+0.9\times 0.17\\
+&\quad-1.2-0.5\\
 &=11.982
 \end{aligned}
 $$
@@ -441,7 +493,9 @@ $$TV_5=\frac{FCFF_5\times 1.03}{0.1255-0.03}$$
 
 Steps: (1) comparables for each business line; (2) gather and weight the multiples; (3) EV from the multiples (a public-equivalent value); (4) apply DLOC and DLOM.
 
-$$\text{Composite multiple}=\sum_i w_i\times\text{Multiple}_i$$
+$$
+\text{Composite}=\sum_i w_i\times\text{Multiple}_i
+$$
 
 #### Example: Everfloat (Composite Multiples)
 
@@ -456,7 +510,9 @@ $$\text{Composite multiple}=\sum_i w_i\times\text{Multiple}_i$$
 
 $$
 \begin{aligned}
-\text{Composite}&=0.70\times 2.8+0.25\times 1.1+0.05\times 8.0=2.635\\
+\text{Composite}&=0.70\times 2.8+0.25\times 1.1\\
+&\quad+0.05\times 8.0\\
+&=2.635\\
 EV&=2.635\times 1{,}000=2{,}635
 \end{aligned}
 $$
@@ -467,7 +523,9 @@ By segment: 1,960 / 275 / 400 (logistics is the least valuable).
 
 $$
 \begin{aligned}
-\text{Composite}&=0.75\times 8.2+0.30\times 8.1-0.05\times 20.0=7.58\\
+\text{Composite}&=0.75\times 8.2+0.30\times 8.1\\
+&\quad-0.05\times 20.0\\
+&=7.58\\
 EV&=7.58\times 250=1{,}895
 \end{aligned}
 $$

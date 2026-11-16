@@ -14,8 +14,9 @@ Seen from all capital providers (the total capital charge is WACC in money terms
 
 $$
 \begin{aligned}
-RI&=NOPAT-\text{Total capital charge}\\
-&=(ROIC-\text{Effective capital charge})\times\text{Beginning capital}
+RI={}&NOPAT-\text{Total capital charge}\\
+={}&(ROIC-\text{Effective charge})\\
+&\times\text{Beginning capital}
 \end{aligned}
 $$
 
@@ -35,9 +36,12 @@ The two views agree when the marginal cost of debt equals its current cost, and 
 
 $$
 \begin{aligned}
-NI&=(200{,}000-\underbrace{70{,}000}_{\text{Interest}})\times 0.7=91{,}000\\
-\text{Equity charge}&=0.12\times 1{,}000{,}000=120{,}000\\
-RI&=91{,}000-120{,}000=-29{,}000
+NI&=(200{,}000-\underbrace{70{,}000}_{\text{Int}})\times 0.7\\
+&=91{,}000\\
+\text{Charge}&=0.12\times 1{,}000{,}000\\
+&=120{,}000\\
+RI&=91{,}000-120{,}000\\
+&=-29{,}000
 \end{aligned}
 $$
 
@@ -46,8 +50,11 @@ $$
 $$
 \begin{aligned}
 NOPAT&=200{,}000\times 0.7=140{,}000\\
-\text{Capital charge}&=120{,}000+0.07\times 0.7\times 1{,}000{,}000=169{,}000\\
-RI&=140{,}000-169{,}000=-29{,}000
+\text{Charge}&=120{,}000\\
+&\quad+0.07\times 0.7\times 1{,}000{,}000\\
+&=169{,}000\\
+RI&=140{,}000-169{,}000\\
+&=-29{,}000
 \end{aligned}
 $$
 
@@ -76,8 +83,8 @@ where $C\%$ is the cost of capital and TC the total capital. Typical adjustments
 
 $$
 \begin{aligned}
-MVA={}&\text{Market value of the company}\\
-&-\text{Book value of total capital}
+MVA={}&\text{Market value of company}\\
+&-\text{Book value of capital}
 \end{aligned}
 $$
 
@@ -148,10 +155,14 @@ $B_0$ = \$6.00 and $r$ = 10%. Bugg liquidates after Year 3.
 
 $$
 \begin{aligned}
-V_{RI}&=6.00+\frac{1.40}{1.10}+\frac{1.80}{1.10^2}+\frac{3.175}{1.10^3}\\
-&=6.00+1.2727+1.4876+2.3854=11.15\\
+V_{RI}&=6.00+\frac{1.40}{1.10}+\frac{1.80}{1.10^2}\\
+&\quad+\frac{3.175}{1.10^3}\\
+&=6.00+1.2727\\
+&\quad+1.4876+2.3854\\
+&=11.15\\
 V_{DDM}&=\frac{1.00}{1.10}+\frac{1.25}{1.10^2}+\frac{12.25}{1.10^3}\\
-&=0.9091+1.0331+9.2036=11.15
+&=0.9091+1.0331+9.2036\\
+&=11.15
 \end{aligned}
 $$
 
@@ -166,14 +177,20 @@ $B_0$ = \$255.40 and $r$ = 8.2%; Alphabet pays no dividends, and the price is \$
 $$
 \begin{aligned}
 EPS_{2019}&=0.202\times 255.40=51.59\\
-RI_{2019}&=51.59-\underbrace{0.082\times 255.40}_{20.94}=30.65\\
+RI_{2019}&=51.59-\underbrace{0.082\times 255.40}_{20.94}\\
+&=30.65\\
 \text{PV}&=\frac{30.65}{1.082}=28.33
 \end{aligned}
 $$
 
 **Step 2. Repeat to 2042 and add $B_0$.** Book value grows by each year's EPS (no dividends):
 
-$$V_0=255.40+\sum_{t=2019}^{2042}\text{PV}(RI_t)=\$972.25$$
+$$
+\begin{aligned}
+V_0&=255.40+\sum_{t=2019}^{2042}\text{PV}(RI_t)\\
+&=\$972.25
+\end{aligned}
+$$
 
 That is below the \$1,037.39 price.
 
@@ -194,7 +211,9 @@ $$
 * The RI model is most closely related to **P/B**: the justified P/B exceeds 1 exactly when the PV of expected RI is positive.
 * **Tobin's q**: unlike P/B, it puts total capital over total assets, at replacement cost (which reflects inflation) instead of historical cost. Higher asset productivity → higher q (Tobin expected q to average 1). Replacement cost is hard to measure.
 
-$$\text{Tobin's }q=\frac{\text{Market value of debt and equity}}{\text{Replacement cost of total assets}}$$
+$$
+\text{Tobin's }q=\frac{\text{MV of debt and equity}}{\text{Replacement cost}}
+$$
 
 ## Single-Stage RI Model
 
@@ -217,8 +236,10 @@ $$
 
 $$
 \begin{aligned}
-35.40&=13.22+\frac{0.12-0.085}{0.085-g}\times13.22\\
-0.085-g&=\frac{0.035\times 13.22}{22.18}=0.0209\\
+35.40&=13.22\\
+&\quad+\frac{0.12-0.085}{0.085-g}\times13.22\\
+0.085-g&=\frac{0.035\times 13.22}{22.18}\\
+&=0.0209\\
 g&=6.41\%
 \end{aligned}
 $$
@@ -292,7 +313,8 @@ $$
 
 $$
 \begin{aligned}
-\text{PV of the fading RI}&=\frac{23.8664}{(1+0.12-0.60)\times 1.12^{19}}=5.33\\
+\text{PV}&=\frac{23.8664}{(1+0.12-0.60)\times 1.12^{19}}\\
+&=5.33\\
 V_0&=83.93+5.33=86.26
 \end{aligned}
 $$
@@ -305,7 +327,12 @@ $B_0$ = €15.00 and $r$ = 7.95%. EPS is 25% of beginning book value (ROE 25%), 
 
 **Step 1. RI for Years 1–6.** Book value grows at $0.70\times 25\%=17.5\%$ a year:
 
-$$RI_1=(0.25-0.0795)\times 15.00=2.558$$
+$$
+\begin{aligned}
+RI_1&=(0.25-0.0795)\times 15.00\\
+&=2.558
+\end{aligned}
+$$
 
 | Year | 1 | 2 | 3 | 4 | 5 | 6 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -317,14 +344,20 @@ Their PV is **17.755**, and $B_6=15.00\times 1.175^6=39.475$.
 
 $$
 \begin{aligned}
-P_6-B_6&=(1.80-1)\times 39.475=31.580\\
+P_6-B_6&=(1.80-1)\times 39.475\\
+&=31.580\\
 \text{PV}&=\frac{31.580}{1.0795^6}=19.956
 \end{aligned}
 $$
 
 **Step 3. Add.**
 
-$$V_0=15.000+17.755+19.956=52.711$$
+$$
+\begin{aligned}
+V_0&=15.000+17.755+19.956\\
+&=52.711
+\end{aligned}
+$$
 
 **€52.711.** The DDM agrees: PV of dividends 7.810 + PV of $P_6$ (71.054) 44.901 = €52.711.
 
@@ -377,8 +410,8 @@ A company with positive, predictable FCF that pays no dividend suits an **FCF mo
 
 $$
 \begin{aligned}
-\text{Expensed: }ROE&=\frac{200{,}000}{1{,}000{,}000}=20\%\\
-\text{Capitalized: }ROE&=\frac{250{,}000}{1{,}050{,}000}=23.81\%
+\text{Expensed}&=\frac{200{,}000}{1{,}000{,}000}=20\%\\
+\text{Capitalized}&=\frac{250{,}000}{1{,}050{,}000}=23.81\%
 \end{aligned}
 $$
 
@@ -468,8 +501,10 @@ $r$ = 10%, with no growth, so $V=B+\dfrac{ROE-r}{r}B$.
 
 $$
 \begin{aligned}
-V_{\text{Alpha}}&=5{,}000+\frac{0.12-0.10}{0.10}\times 5{,}000=6{,}000\\
-V_{\text{Beta}}&=1{,}000+\frac{0.15-0.10}{0.10}\times 1{,}000=1{,}500
+V_{\text{Alpha}}&=5{,}000+\frac{0.12-0.10}{0.10}\times 5{,}000\\
+&=6{,}000\\
+V_{\text{Beta}}&=1{,}000+\frac{0.15-0.10}{0.10}\times 1{,}000\\
+&=1{,}500
 \end{aligned}
 $$
 

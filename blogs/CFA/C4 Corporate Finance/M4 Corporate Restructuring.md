@@ -149,10 +149,10 @@ The analyst works in four steps: **initial evaluation**, **preliminary valuation
 * **Is it material?** Look at **size** and **fit**.
 
 $$
-\text{Relative size}=\frac{\text{Cash}+\text{Stock issued}+\text{Target debt assumed}}{\text{Acquirer's pre-deal EV}}
+\text{Relative size}=\frac{\text{Deal value}}{\text{Acquirer's EV}}
 $$
 
-  * **Size**: rule of thumb, **large** if above **10%**. For a cost restructuring, the cost cut as a % of revenue or operating expenses. Most deals (over 95%) are under USD1bn, and over 80% of targets are private, so most deals don't matter for large companies.
+  * **Size**: deal value = cash + stock issued + target debt assumed, and the acquirer's EV is pre-deal. Rule of thumb: **large** if above **10%**. For a cost restructuring, the cost cut as a % of revenue or operating expenses. Most deals (over 95%) are under USD1bn, and over 80% of targets are private, so most deals don't matter for large companies.
   * **Fit**: a small deal can still matter if it signals a change in strategy. E.g., **Farfetch** bought New Guards Group for USD704m, about 8% of its EV, moving from an asset-light marketplace to owning brands with inventory risk; its shares fell 45% the next day.
 * **When?** Closing can take several quarters, or over a year, and the deal enters the statements only at **closing**. Shareholder, creditor and regulatory (antitrust) approvals add uncertainty. Markets price in the expected effect, including the risk of not closing, at announcement.
 
@@ -219,8 +219,9 @@ Weighting the four values 20/40/20/20:
 
 $$
 \begin{aligned}
-V&=0.2(47.95)+0.4(44.17)+0.2(46.81)+0.2(55.15)\\
-&=47.65
+V={}&0.2(47.95)+0.4(44.17)\\
+&+0.2(46.81)+0.2(55.15)\\
+={}&47.65
 \end{aligned}
 $$
 
@@ -351,7 +352,8 @@ That is the second highest against peers (median 5.1×, average 6.1×); growth a
 
 $$
 \begin{aligned}
-\text{Hit to EBIT and EBITDA}&=\underbrace{0.3\times 450}_{\text{equity-method loss}}+\underbrace{10}_{\text{amortization}}=145\\
+\text{EBIT hit}&=\underbrace{0.3\times 450}_{\text{equity method}}+\underbrace{10}_{\text{amort.}}\\
+&=145\\
 \text{Interest}&=1{,}200\times 6\%=72
 \end{aligned}
 $$
@@ -378,7 +380,8 @@ The P/FCF is low because the JV's dividends (20,000 received in 20X7) far exceed
 $$
 \begin{aligned}
 V_{\text{OHAA}}&=\frac{45}{0.25}=180\text{bn}\\
-\text{Equity value}&=180{,}000-\underbrace{32{,}461}_{\text{cash}}=147{,}539\text{m}
+\text{Equity}&=180{,}000-\underbrace{32{,}461}_{\text{cash}}\\
+&=147{,}539\text{m}
 \end{aligned}
 $$
 
@@ -432,7 +435,12 @@ EBITDA rises, but EPS falls: amortization, interest and new shares.
 
 Companies may announce a **strategic review** before acting; analysts then weight the possible outcomes by likelihood, because markets price risk-adjusted outcomes at announcement.
 
-$$\text{Conglomerate discount}=EV_{\text{SOTP}}-EV_{\text{current}}$$
+$$
+\begin{aligned}
+\text{Conglomerate discount}\\
+=EV_{\text{SOTP}}-EV_{\text{current}}
+\end{aligned}
+$$
 
 #### Example: Benefit Ltd.
 
@@ -447,8 +455,9 @@ Corporate costs are 4; the market EV is **ZAR1,437m**. An activist holds 8%.
 
 $$
 \begin{aligned}
-\text{Consulting}&=(84-4)\times\underbrace{9}_{\text{EV/EBITDA}}\approx 721\\
-\text{BenefitsExchange}&=75\times\underbrace{12}_{\text{EV/sales}}=900\\
+\text{Consulting}&=(84-4)\times\underbrace{9}_{\text{EV/EBITDA}}\\
+&\approx 721\\
+\text{BenefitsEx.}&=75\times\underbrace{12}_{\text{EV/sales}}=900\\
 \text{Discount}&=1{,}621-1{,}437=184
 \end{aligned}
 $$
@@ -483,7 +492,13 @@ The sum of the parts, **USD421,440m**, is above the current EV of 408,000m. Aver
 
 ## Evaluating Restructuring Actions
 
-$$\text{Required cost cut}=\text{Opex}-(1-\text{Target margin})\times\text{Revenue}$$
+$$
+\begin{aligned}
+\text{Cut}={}&\text{Opex}\\
+&-(1-\text{Target margin})\\
+&\times\text{Revenue}
+\end{aligned}
+$$
 
 #### Example: Cyrene SARL (Cost Restructuring)
 
@@ -493,20 +508,23 @@ Cyrene rejected a 20%-premium bid from an aggressive cost-cutter; shareholders w
 
 $$
 \begin{aligned}
-\text{Margin}&=\frac{2{,}659}{18{,}990}=14\%\quad\text{vs peers' }20\%\\
-\text{Cut}&=16{,}331-0.80\times 18{,}990=16{,}331-15{,}192=1{,}139
+\text{Margin}&=\frac{2{,}659}{18{,}990}=14\%\\
+\text{Cut}&=16{,}331-0.80\times 18{,}990\\
+&=16{,}331-15{,}192\\
+&=1{,}139
 \end{aligned}
 $$
 
-A cut of **EUR1,139m (7%)**.
+Cyrene's 14% margin is 6 points below peers' 20%. The cut is **EUR1,139m (7%)**.
 
-**Step 2. Next year**, closing the gap at 1.5 points of margin a year over four years, with 3% revenue growth:
+**Step 2. Next year**, closing the gap at 1.5 points of margin a year over four years, with 3% revenue growth ($EBIT_{\text{pre}}$ is before the one-time costs):
 
 $$
 \begin{aligned}
 \text{Revenue}&=18{,}990\times 1.03=19{,}560\\
-EBIT_{\text{before one-time costs}}&=15.5\%\times 19{,}560=3{,}032\\
-EBIT&=3{,}032-1{,}250=1{,}782\ (9.1\%)
+EBIT_{\text{pre}}&=15.5\%\times 19{,}560=3{,}032\\
+EBIT&=3{,}032-1{,}250\\
+&=1{,}782\ (9.1\%)
 \end{aligned}
 $$
 
@@ -514,7 +532,9 @@ $$
 
 **Alternative.** Selling or spinning off Household Goods (EBIT 496) leaves EBIT of 2,163: a **16%** margin (+2 points), but EBIT **−19%**. To judge it, the analyst needs the unit's sale or spin off value, the effects on the remaining segments, the corporate cost savings, and the details of the cost plan.
 
-$$\text{Cap rate}=\frac{\text{Annual rent (net operating income)}}{\text{Sale price}}$$
+$$
+\text{Cap rate}=\frac{\text{Annual rent (NOI)}}{\text{Sale price}}
+$$
 
 #### Example: Kosala Corp. (Sale Leaseback of Distribution Centers)
 
@@ -548,7 +568,12 @@ Comparables' 25th/50th/75th percentiles are 3.0%/5.5%/8.0%, so Kosala's is **100
 
 **Step 4. Rating.** On the rating grid, 2.3× and 4.3× map to **BBB**:
 
-$$\text{Interest}=(4.50\%+1.25\%)\times 400=\text{CHF}23\text{m}$$
+$$
+\begin{aligned}
+\text{Interest}&=(4.50\%+1.25\%)\times 400\\
+&=\text{CHF}23\text{m}
+\end{aligned}
+$$
 
 That is CHF5m less than 28.
 

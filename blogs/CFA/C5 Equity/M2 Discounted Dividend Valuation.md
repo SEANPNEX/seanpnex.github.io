@@ -14,10 +14,11 @@ $$
 \begin{aligned}
 FCFF&=CFO-\text{Capex}\\
 \text{Equity}&=\text{PV}(FCFF)-\text{Debt}\\
-FCFE&=FCFF-\text{Net payments to debtholders}\\
+FCFE&=FCFF\\
+&\quad-\text{Net payments to debt}\\
 RI_t&=E_t-r\times B_{t-1}\\
 V_0&=B_0+\text{PV}(RI_t)\\
-B_t&=B_{t-1}+E_t-D_t\quad\text{(clean surplus)}
+B_t&=B_{t-1}+E_t-D_t
 \end{aligned}
 $$
 
@@ -51,7 +52,12 @@ Dividends are assumed to be paid once, at the end of each period. Even an invest
 
 Carrefour is expected to pay a dividend of €0.46 next year and then trade at €23.00. The required return is 8%.
 
-$$V_0=\frac{D_1+P_1}{1+r}=\frac{0.46+23.00}{1.08}=21.72$$
+$$
+\begin{aligned}
+V_0&=\frac{D_1+P_1}{1+r}\\
+&=\frac{0.46+23.00}{1.08}=21.72
+\end{aligned}
+$$
 
 **$V_0$ = €21.72.**
 
@@ -66,9 +72,12 @@ The required return is 10%, and the share is expected to sell for \$40 at the en
 
 $$
 \begin{aligned}
-\text{PV of dividends}&=1.818+1.736+1.653+2.391+2.328=9.926\\
+\text{PV of dividends}&=1.818+1.736\\
+&\quad+1.653+2.391\\
+&\quad+2.328=9.926\\
 \text{PV of price}&=\frac{40}{1.10^5}=24.837\\
-V_0&=9.926+24.837=34.76
+V_0&=9.926+24.837\\
+&=34.76
 \end{aligned}
 $$
 
@@ -102,7 +111,12 @@ $$
 
 **Step 2. Value.**
 
-$$V_0=\frac{1.64\times 1.045}{0.073-0.045}=\frac{1.7138}{0.028}=\$61.21$$
+$$
+\begin{aligned}
+V_0&=\frac{1.64\times 1.045}{0.073-0.045}\\
+&=\frac{1.7138}{0.028}=\$61.21
+\end{aligned}
+$$
 
 **$V_0$ = \$61.21** is above the \$59.55 price, so Sonoco is slightly **undervalued**.
 
@@ -136,7 +150,12 @@ $$V_0=\frac{1.00}{0.055}=\$18.18$$
 
 * **Negative growth** works too. Afton Mines: $D_1$ = \$4.25, $g$ = −4%, $r$ = 9%:
 
-$$V_0=\frac{4.25}{0.09-(-0.04)}=\frac{4.25}{0.13}=\$32.69$$
+$$
+\begin{aligned}
+V_0&=\frac{4.25}{0.09-(-0.04)}\\
+&=\frac{4.25}{0.13}=\$32.69
+\end{aligned}
+$$
 
 | Strengths | Limitations |
 | --- | --- |
@@ -169,7 +188,13 @@ $$
 
 **Step 2. Growth implied by the price.**
 
-$$g=\frac{rP_0-D_0}{P_0+D_0}=\frac{0.122\times 40-2.00}{40+2.00}=\frac{2.88}{42}=6.86\%$$
+$$
+\begin{aligned}
+g&=\frac{rP_0-D_0}{P_0+D_0}\\
+&=\frac{0.122\times 40-2.00}{40+2.00}\\
+&=\frac{2.88}{42}=6.86\%
+\end{aligned}
+$$
 
 The value (\$29.17) is below the price (\$40): the market prices in **6.86%** growth, more than the analyst's 5%.
 
@@ -247,7 +272,12 @@ $$
 
 **Step 2. Compare with the market.**
 
-$$\text{Actual trailing P/E}=\frac{242.70}{7.08}=34.3<42.0$$
+$$
+\begin{aligned}
+\text{Actual trailing P/E}&=\frac{242.70}{7.08}\\
+&=34.3<42.0
+\end{aligned}
+$$
 
 L'Oréal is **undervalued**: equivalently, the GGM value $3.85\times 1.0425/0.0135$ = €297.31 is above the €242.70 price.
 
@@ -295,8 +325,9 @@ $$
 $$
 \begin{aligned}
 \text{PV}(V_{10})&=\frac{155.36}{1.0588^{10}}=87.74\\
-\text{PV}(D_1\dots D_{10})&=6.47\\
-V_0&=6.47+87.74=94.21
+\text{PV of }D_1\dots D_{10}&=6.47\\
+V_0&=6.47+87.74\\
+&=94.21
 \end{aligned}
 $$
 
@@ -323,8 +354,9 @@ $$
 $$
 \begin{aligned}
 \text{PV}(V_4)&=\frac{119.68}{1.065^4}=\$93.03\\
-\text{PV}(D_1\dots D_4)&=\$10.52\\
-V_0&=10.52+93.03=\$103.55
+\text{PV of }D_1\dots D_4&=\$10.52\\
+V_0&=10.52+93.03\\
+&=\$103.55
 \end{aligned}
 $$
 
@@ -363,8 +395,10 @@ Use the [Meditec](#example-carl-zeiss-meditec) inputs, but let growth decline li
 
 $$
 \begin{aligned}
-V_0&=\frac{0.55\times 1.05+0.55\times 5\times(0.09-0.05)}{0.0588-0.05}\\
-&=\frac{0.5775+0.1100}{0.0088}=78.13
+V_0&=\frac{0.55\times 1.05}{0.0588-0.05}\\
+&\quad+\frac{0.55\times 5\times(0.09-0.05)}{0.0588-0.05}\\
+&=\frac{0.5775+0.1100}{0.0088}\\
+&=78.13
 \end{aligned}
 $$
 
@@ -376,8 +410,10 @@ A share trades at €41.70. $D_0$ = €1.77; growth is 7%, declining linearly to
 
 $$
 \begin{aligned}
-V_0&=\underbrace{\frac{1.77\times 1.04}{0.08-0.04}}_{\text{normal growth}}+\underbrace{\frac{1.77\times 5\times 0.03}{0.08-0.04}}_{\text{above-normal growth}}\\
-&=\frac{1.84}{0.04}+\frac{0.27}{0.04}=46.00+6.75=52.75
+V_0&=\underbrace{\frac{1.77\times 1.04}{0.08-0.04}}_{\text{normal growth}}\\
+&\quad+\underbrace{\frac{1.77\times 5\times 0.03}{0.08-0.04}}_{\text{above-normal growth}}\\
+&=\frac{1.84}{0.04}+\frac{0.27}{0.04}\\
+&=46.00+6.75=52.75
 \end{aligned}
 $$
 
@@ -388,7 +424,10 @@ $$
 **Version 1: three constant-growth stages.** Grow $D_0$ at $g_1$, then $g_2$, list each dividend, and cap the last stage with the GGM:
 
 $$
-V_0=\sum_{t=1}^{n}\frac{D_t}{(1+r)^t}+\frac{D_{n}(1+g_L)/(r-g_L)}{(1+r)^n}
+\begin{aligned}
+V_0={}&\sum_{t=1}^{n}\frac{D_t}{(1+r)^t}\\
+&+\frac{D_{n}(1+g_L)/(r-g_L)}{(1+r)^n}
+\end{aligned}
 $$
 
 #### Example: Three Constant-Growth Stages
@@ -445,9 +484,12 @@ $$D_5=0.56\times 1.11^5=\$0.9436$$
 
 $$
 \begin{aligned}
-V_5&=\frac{0.9436\times 1.065}{0.08-0.065}+\frac{0.9436\times 5\times(0.11-0.065)}{0.08-0.065}\\
-&=66.9979+14.1545=\$81.1524\\
-\text{PV}(V_5)&=\frac{81.1524}{1.08^5}=\$55.2310
+V_5&=\frac{0.9436\times 1.065}{0.08-0.065}\\
+&\quad+\frac{0.9436\times 5\times 0.045}{0.08-0.065}\\
+&=66.9979+14.1545\\
+&=\$81.1524\\
+\text{PV}(V_5)&=\frac{81.1524}{1.08^5}\\
+&=\$55.2310
 \end{aligned}
 $$
 

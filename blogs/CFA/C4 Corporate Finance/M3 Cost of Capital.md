@@ -48,14 +48,21 @@ The marginal tax rate is 25%.
 
 $$
 \begin{aligned}
-WACC&=0.30\times 6\%\times 0.75+0.10\times 7\%+0.60\times 11\%\\
-&=1.35\%+0.70\%+6.60\%=8.65\%
+WACC&=0.30\times 6\%\times 0.75\\
+&\quad+0.10\times 7\%+0.60\times 11\%\\
+&=1.35\%+0.70\%+6.60\%\\
+&=8.65\%
 \end{aligned}
 $$
 
 **Case 2. The company is already at the interest-deduction cap,** so new debt gets no tax benefit:
 
-$$WACC=0.30\times 6\%+0.70\%+6.60\%=9.10\%$$
+$$
+\begin{aligned}
+WACC&=0.30\times 6\%+0.70\%\\
+&\quad+6.60\%=9.10\%
+\end{aligned}
+$$
 
 ## What Drives the Cost of Capital
 
@@ -201,7 +208,12 @@ $$
 
 **Step 1. Set up the RIIL equation.**
 
-$$\sum_{t=1}^{15}\frac{9}{(1+RIIL)^t}+\frac{10}{(1+RIIL)^{15}}=100+5$$
+$$
+\begin{aligned}
+&\sum_{t=1}^{15}\frac{9}{(1+RIIL)^t}+\frac{10}{(1+RIIL)^{15}}\\
+&=100+5
+\end{aligned}
+$$
 
 **Step 2. Solve.** N = 15, PV = −105, PMT = 9, FV = 10 → **RIIL = 4.08%**.
 
@@ -209,7 +221,12 @@ $$\sum_{t=1}^{15}\frac{9}{(1+RIIL)^t}+\frac{10}{(1+RIIL)^{15}}=100+5$$
 
 * **International**: the cost of debt should be in the **currency of the cash flows**. For less mature markets, add a country risk premium based on a **country risk rating (CRR)** that reflects economic conditions, political risk, exchange-rate risk and the development and regulation of securities markets. Sovereign risk (default on government debt) is only **one part** of country risk, which also covers political stability, economic competitiveness and human development.
 
-$$CRP=\text{Median rate}_{\text{country's rating class}}-\text{Rate}_{\text{benchmark country}}$$
+$$
+\begin{aligned}
+CRP={}&\text{Median rate of the class}\\
+&-\text{Benchmark's rate}
+\end{aligned}
+$$
 
 #### Example: Country Risk Premiums
 
@@ -304,7 +321,12 @@ $$
 
 The dividend yield is 1.94%, expected growth 5.0% and the gilt yield 1.63%.
 
-$$ERP=1.94\%+5.0\%-1.63\%=5.31\%$$
+$$
+\begin{aligned}
+ERP&=1.94\%+5.0\%-1.63\%\\
+&=5.31\%
+\end{aligned}
+$$
 
 The range of forecasts (useful for simulation):
 
@@ -367,8 +389,9 @@ $$i=\frac{1.023}{1.0066}-1=1.6\%$$
 
 $$
 \begin{aligned}
-\text{Historical: }ERP&=9.96\%-3.15\%=6.81\%\\
-\text{Grinold–Kroner: }ERP&=1.8-1.2+(1.9+2.7-0)-0.96=4.24\%
+ERP_{\text{hist}}&=9.96\%-3.15\%=6.81\%\\
+ERP_{\text{GK}}&=1.8-1.2+(1.9+2.7-0)\\
+&\quad-0.96=4.24\%
 \end{aligned}
 $$
 
@@ -388,7 +411,12 @@ $$
 
 **Grinold–Kroner instead.** Use the long-term inflation forecast and the 10-year yield: $i$ = 4%, $g$ = 4%, $\Delta(P/E)$ = 1%, DY = 1%, $\Delta S$ = 0, $r_f$ = 7%.
 
-$$ERP=1+1+(4+4-0)-7=3.0\%$$
+$$
+\begin{aligned}
+ERP&=1+1+(4+4-0)-7\\
+&=3.0\%
+\end{aligned}
+$$
 
 So average-risk stocks require at least 7% + (2% to 3%) = **9% or more**.
 
@@ -411,10 +439,15 @@ So average-risk stocks require at least 7% + (2% to 3%) = **9% or more**.
 For a listed company with stable, predictable dividends:
 
 $$
+\text{Gordon growth: }r_e=\frac{D_1}{P_0}+g
+$$
+
+Multiyear forecast (solve for the IRR $r_e$), and preferred stock ($g$ = 0):
+
+$$
 \begin{aligned}
-\text{Gordon growth: }r_e&=\frac{D_1}{P_0}+g\\
-\text{Multiyear (solve for the IRR): }P_0&=\sum_{t=1}^n \frac{D_t}{(1+r_e)^t}+\frac{P_n}{(1+r_e)^n}\\
-\text{Preferred (}g=0\text{): }r_p&=\frac{D}{P}
+P_0&=\sum_{t=1}^n \frac{D_t}{(1+r_e)^t}+\frac{P_n}{(1+r_e)^n}\\
+r_p&=\frac{D}{P}
 \end{aligned}
 $$
 
@@ -442,7 +475,12 @@ where $r_d$ is usually the YTM on the company's **long-term** debt, and $RP$ is 
 
 #### Example: BYPRP
 
-$$r_e=\underbrace{4.3\%}_{\text{bond yield}}+\underbrace{6.1\%}_{\text{historical premium}}=10.40\%$$
+$$
+\begin{aligned}
+r_e&=\underbrace{4.3\%}_{\text{bond yield}}+\underbrace{6.1\%}_{\text{premium}}\\
+&=10.40\%
+\end{aligned}
+$$
 
 ### CAPM
 
@@ -495,8 +533,10 @@ $r_f$ = 2%; the intercept is 0.3%.
 
 $$
 \begin{aligned}
-r_e-r_f&=0.003+1.2\times 0.05-0.4\times 0.01+0.2\times 0.04=0.067\\
-r_e&=2\%+6.7\%=8.7\%
+r_e-r_f={}&0.003+1.2\times 0.05\\
+&-0.4\times 0.01+0.2\times 0.04\\
+={}&0.067\\
+r_e={}&2\%+6.7\%=8.7\%
 \end{aligned}
 $$
 
@@ -506,9 +546,10 @@ $r_f$ = 6% and the expected market return 10% (ERP 4%).
 
 $$
 \begin{aligned}
-\text{CAPM: }r_e&=6\%+0.8\times 4\%=9.2\%\\
-\text{Three-factor: }r_e&=6\%+1\%+0.75\times 4\%+0.15\times 5\%+0.05\times 2\%\\
-&=10.85\%
+r_e^{\text{CAPM}}={}&6\%+0.8\times 4\%=9.2\%\\
+r_e^{\text{3F}}={}&6\%+1\%+0.75\times 4\%\\
+&+0.15\times 5\%+0.05\times 2\%\\
+={}&10.85\%
 \end{aligned}
 $$
 
@@ -629,8 +670,9 @@ $$
 \begin{aligned}
 \bar y_4&=\frac{5.140+5.191}{2}=5.166\%\\
 \bar y_8&=\frac{6.000+6.021}{2}=6.011\%\\
-\text{Step per year}&=\frac{6.011-5.166}{4}=0.211\%\\
-y_7&=5.166+3\times 0.211=5.799\%\approx 5.8\%
+\text{Step}&=\frac{6.011-5.166}{4}=0.211\%\\
+y_7&=5.166+3\times 0.211\\
+&=5.799\%\approx 5.8\%
 \end{aligned}
 $$
 
@@ -646,10 +688,12 @@ After replacing the preferred with debt (35% debt, 65% equity), the new debt wil
 
 $$
 \begin{aligned}
-\text{CAPM: }r_e&=2.1\%+0.91\times 5.5\%=7.11\%\\
-\text{Five-factor: }r_e&=2.1+0.95(5.5)+0.45(1.8)+0.14(3.9)\\
-&\quad-0.19(3.1)+0.30(3.7)=9.20\%\\
-\text{BYPRP: }r_e&=5.8\%+6.2\%=12.0\%
+r_e^{\text{CAPM}}={}&2.1\%+0.91\times 5.5\%\\
+={}&7.11\%\\
+r_e^{\text{5F}}={}&2.1+0.95(5.5)+0.45(1.8)\\
+&+0.14(3.9)-0.19(3.1)\\
+&+0.30(3.7)=9.20\%\\
+r_e^{\text{BYPRP}}={}&5.8\%+6.2\%=12.0\%
 \end{aligned}
 $$
 
@@ -686,7 +730,8 @@ That maps to a synthetic rating of **A**, with a spread of 1.46%. Country risk a
 
 $$
 \begin{aligned}
-r_d&=5.41\%+1.46\%+\underbrace{2.00\%}_{CRP}=8.87\%\\
+r_d&=5.41\%+1.46\%+\underbrace{2.00\%}_{CRP}\\
+&=8.87\%\\
 r_d(1-t)&=8.87\%\times 0.8=7.096\%
 \end{aligned}
 $$
@@ -714,20 +759,27 @@ $$
 \end{aligned}
 $$
 
-**Step 4. Cost of equity** (in %).
+**Step 4. Cost of equity** (in %). The expanded CAPM includes IP and CRP; the build-up follows the solution, without IP.
 
 $$
 \begin{aligned}
-\text{Expanded CAPM (with IP and CRP): }r_e&=5.41+1.19(6)+5+1+6+2\\
+r_e^{\text{expanded}}&=5.41+1.19(6)+5\\
+&\quad+1+6+2\\
 &=26.55\%\\
-\text{Build-up (as in the solution, no IP): }r_e&=5.41+6+5+6+2\\
+r_e^{\text{build-up}}&=5.41+6+5+6+2\\
 &=24.41\%
 \end{aligned}
 $$
 
 **Step 5. WACC**, with $w_d=18.4/105.2=0.1749$ and $w_e=0.8251$:
 
-$$WACC=0.1749\times 7.096\%+0.8251\times 24.41\%=21.38\%$$
+$$
+\begin{aligned}
+WACC&=0.1749\times 7.096\%\\
+&\quad+0.8251\times 24.41\%\\
+&=21.38\%
+\end{aligned}
+$$
 
 #### Exam traps
 

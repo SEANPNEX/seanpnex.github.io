@@ -14,8 +14,10 @@ What "value" means and where perceived mispricing comes from; what valuation is 
 
 $$
 \begin{aligned}
-\text{Ex ante alpha}&=E(R)-\text{Required return}\\
-\text{Ex post alpha}&=R_{\text{actual}}-R_{\text{required, contemporaneous}}
+\text{Ex ante alpha}={}&E(R)\\
+&-\text{Required return}\\
+\text{Ex post alpha}={}&R_{\text{actual}}\\
+&-R_{\text{required, same period}}
 \end{aligned}
 $$
 * A **catalyst** (a market or corporate event) may be needed for the price to converge to value within the investor's horizon.
@@ -116,7 +118,12 @@ Schlumberger, Halliburton, Baker Hughes, Saipem, NOV and Weatherford.
 * Earnings with large non-recurring parts (litigation wins, temporary tax cuts, gains on selling non-operating assets) are lower quality.
 * Start by comparing **net income with operating cash flow**. The cash component is **more persistent**; high accruals predict lower future ROA (Sloan 1996), i.e., lower earnings quality.
 
-$$\text{Accrual component}=NI-(CFO+CFI)$$
+$$
+\begin{aligned}
+\text{Accrual component}\\
+=NI-(CFO+CFI)
+\end{aligned}
+$$
 * An asset account growing much faster than sales (receivables, deferred costs) may signal aggressive accounting.
 
 | Area | Warning sign | Possible meaning |
@@ -208,7 +215,8 @@ Using **more than one model** adds insight (institutional investors use about 17
 $$
 \begin{aligned}
 V_{\text{SOTP}}={}&\sum_i V_{\text{segment }i}\\
-&-\text{Corporate costs and unallocated items}
+&-\text{Corporate costs}\\
+&-\text{Unallocated items}
 \end{aligned}
 $$
 
