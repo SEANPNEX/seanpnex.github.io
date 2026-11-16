@@ -33,6 +33,15 @@ const CARDS = [
     gap: "Used the retention ratio \\(b=0.6\\) instead of the payout \\(1-b=0.4\\), and left out \\((1+g)\\) for the trailing P/E."
   },
   {
+    id: "eq-m4-justified-trailing-ps-inferred-inputs-2026-11-16",
+    topic: "EQ M4 · Justified trailing P/S",
+    front: `NI is 1,200, ROE is 16.67%, sales are 12,000, \\(r\\) is 12%, and the increase in retained earnings is 720. What is the justified trailing P/S?`,
+    back: `<div class="ans">
+      <p><strong>2.2.</strong> Infer the inputs, then use the trailing form (which includes \\((1+g)\\)).</p><ul><li>Retention is \\(b=720/1{,}200=0.6\\), so the payout is \\(1-b=0.4\\). Sustainable growth is \\(g=\\text{ROE}\\times b=16.67\\%\\times0.6=10\\%\\). Profit margin is \\(\\text{PM}_0=E_0/S_0=1{,}200/12{,}000=10\\%\\).</li><li>\\(\\dfrac{P_0}{S_0}=\\dfrac{\\text{PM}_0(1-b)(1+g)}{r-g}=\\dfrac{0.10\\times0.40\\times1.10}{0.12-0.10}=2.2\\).</li></ul>
+    </div>`,
+    gap: "Got it right, but struggled with inferring the inputs."
+  },
+  {
     id: "eq-m6-dloc-from-control-premium-2026-11-15",
     topic: "EQ M6 · DLOC from control premium",
     front: `The control premium is 25% and the DLOM is 20%. What is the total discount for a minority, non-marketable stake?`,

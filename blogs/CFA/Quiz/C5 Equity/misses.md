@@ -7,3 +7,7 @@
 - **EQ M6 · DLOC from control premium** — Gap: Used the 25% control premium directly as the DLOC, and got 40%.
 - **EQ M6 · Excess earnings method** — Gap: Said intangibles are taken from financial reports and usually not included.
 - **EQ M6 · Normalize earnings, any buyer** — Gap: Said normalize for the strategic buyer only.
+
+## 2026-11-16 — Quiz struggles
+
+- **EQ M4 · Justified trailing P/S** — Struggle (got it right): had to infer the inputs — retention from $\Delta$RE/NI, $g$ from ROE $\times b$, and $\mathrm{PM}_0=E_0/S_0$ from NI/sales; the trailing form includes $(1+g)$.
