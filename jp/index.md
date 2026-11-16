@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Sean Guo — 公開で学ぶ
-description: Sean Guo のプロジェクト、研究、ノート、学習計画。
+description: Sean Guo のプロジェクト、研究、ノート。
 ---
 
 <script setup>
@@ -41,9 +41,8 @@ const projects = [
 ]
 
 const learning = [
-  { title: 'CFA レベル II', detail: '分析・評価・ケース', link: '/jp/blogs/CFA/plan', stat: `${cfaOpened}/${cfaNotes.length} モジュール`, ticks: cfaNotes },
-  { title: 'JLPT N2', detail: '読解・聴解・流暢さ', link: '/jp/blogs/JLPT-N2/plan', stat: '24 週間プラン' },
-  { title: 'ビジネスドイツ語', detail: '職場でのコミュニケーション', link: '/jp/blogs/German/plan', stat: '24 週間プラン' }
+  { title: 'CFA レベル II', detail: '分析・評価・ケース', link: '/jp/blogs/0-start#cfa-level-ii-directory', stat: `${cfaOpened}/${cfaNotes.length} モジュール`, ticks: cfaNotes },
+  { title: 'JLPT N2', detail: '読解・聴解・流暢さ', link: '/jp/blogs/JLPT-N2/grammars', stat: '文法ノート' }
 ]
 </script>
 

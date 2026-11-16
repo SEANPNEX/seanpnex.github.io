@@ -4,7 +4,7 @@ title: Learning Base
 
 # Learning Base
 
-This is my working library for concepts I want to understand, retain, and apply. It contains structured study plans, topic notes, worked examples, visual explanations, and implementation exercises.
+This is my working library for concepts I want to understand, retain, and apply. It contains topic notes, worked examples, visual explanations, and implementation exercises.
 
 > [!NOTE]
 > These are evolving study notes rather than definitive reference material. I revise them as my understanding improves and use the official curriculum or primary documentation when accuracy matters.
@@ -14,23 +14,17 @@ This is my working library for concepts I want to understand, retain, and apply.
 Choose a track based on what you need today.
 
 <div class="learning-directory">
-  <a class="directory-card directory-card--primary" href="/blogs/CFA/plan">
+  <a class="directory-card directory-card--primary" href="#cfa-level-ii-directory">
     <span class="directory-card__number">01 · CFA LEVEL II</span>
     <strong>Start the CFA notes</strong>
-    <span class="directory-card__description">Intensive runway to the 18 Nov exam (FSA-first through Oct, mocks in Nov). Open the plan, then follow “Next” through the curriculum.</span>
-    <span class="directory-card__action">Open the plan <b>→</b></span>
+    <span class="directory-card__description">Intensive runway to the 18 Nov exam. Open the directory, then follow “Next” through the curriculum.</span>
+    <span class="directory-card__action">Open the notes <b>→</b></span>
   </a>
-  <a class="directory-card" href="/blogs/JLPT-N2/plan">
+  <a class="directory-card" href="/blogs/JLPT-N2/grammars">
     <span class="directory-card__number">02 · JLPT N2</span>
-    <strong>Japanese learning plan</strong>
-    <span class="directory-card__description">2 h/day hard cap through mid-November (exam 6 Dec): vocab, video, grammar, and rotated practice.</span>
-    <span class="directory-card__action">View the plan <b>↗</b></span>
-  </a>
-  <a class="directory-card" href="/blogs/German/plan">
-    <span class="directory-card__number">03 · BUSINESS GERMAN</span>
-    <strong>German learning plan</strong>
-    <span class="directory-card__description">Practical communication for meetings, presentations, and workplace writing.</span>
-    <span class="directory-card__action">View the plan <b>↗</b></span>
+    <strong>Japanese grammar notes</strong>
+    <span class="directory-card__description">Vocab, video, grammar, and rotated practice, toward the 6 Dec exam.</span>
+    <span class="directory-card__action">Open the notes <b>↗</b></span>
   </a>
 </div>
 
@@ -46,7 +40,7 @@ Topics follow the curriculum order. Every note links to the previous and next mo
 
 ## How I use these notes
 
-1. **Plan:** choose the week’s outcome from the relevant learning plan.
+1. **Plan:** choose the week’s outcome from the relevant notes.
 2. **Learn:** read a module and restate its main idea without looking.
 3. **Apply:** complete calculations, questions, code, or a short real-world task.
 4. **Diagnose:** record why an incorrect answer or failed implementation seemed reasonable.

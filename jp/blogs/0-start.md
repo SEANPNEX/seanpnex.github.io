@@ -4,7 +4,7 @@ title: 学習ベース
 
 # 学習ベース
 
-理解し、覚え、使えるようにしたい概念を集めた作業用のライブラリです。体系的な学習計画、トピック別ノート、例題、図解、実装演習をまとめています。
+理解し、覚え、使えるようにしたい概念を集めた作業用のライブラリです。トピック別ノート、例題、図解、実装演習をまとめています。
 
 > [!NOTE]
 > これは常に更新中の学習ノートであり、決定版の参考資料ではありません。理解が深まるたびに見直しています。正確さが必要な場面では、公式カリキュラムや一次資料を参照してください。
@@ -14,23 +14,17 @@ title: 学習ベース
 今日必要なものに合わせてトラックを選んでください。
 
 <div class="learning-directory">
-  <a class="directory-card directory-card--primary" href="/jp/blogs/CFA/plan">
+  <a class="directory-card directory-card--primary" href="#cfa-level-ii-directory">
     <span class="directory-card__number">01 · CFA レベル II</span>
     <strong>CFA ノートを始める</strong>
-    <span class="directory-card__description">11 月 18 日の試験に向けた集中プラン（10 月は FSA 優先、11 月は模試）。計画を開き、「次のページ」からカリキュラム順に進めます。</span>
-    <span class="directory-card__action">計画を開く <b>→</b></span>
+    <span class="directory-card__description">11 月 18 日の試験に向けて集中して進めるノート。目次を開き、「次のページ」からカリキュラム順に進めます。</span>
+    <span class="directory-card__action">ノートを開く <b>→</b></span>
   </a>
-  <a class="directory-card" href="/jp/blogs/JLPT-N2/plan">
+  <a class="directory-card" href="/jp/blogs/JLPT-N2/grammars">
     <span class="directory-card__number">02 · JLPT N2</span>
-    <strong>日本語の学習計画</strong>
-    <span class="directory-card__description">11 月中旬まで 1 日 2 時間が上限（試験は 12 月 6 日）：語彙、動画、文法、ローテーション演習。</span>
-    <span class="directory-card__action">計画を見る <b>↗</b></span>
-  </a>
-  <a class="directory-card" href="/jp/blogs/German/plan">
-    <span class="directory-card__number">03 · ビジネスドイツ語</span>
-    <strong>ドイツ語の学習計画</strong>
-    <span class="directory-card__description">会議、プレゼンテーション、ビジネス文書のための実践的なコミュニケーション。</span>
-    <span class="directory-card__action">計画を見る <b>↗</b></span>
+    <strong>日本語の文法ノート</strong>
+    <span class="directory-card__description">語彙、動画、文法、ローテーション演習。試験は 12 月 6 日。</span>
+    <span class="directory-card__action">ノートを開く <b>↗</b></span>
   </a>
 </div>
 
@@ -46,7 +40,7 @@ title: 学習ベース
 
 ## ノートの使い方
 
-1. **計画：** 該当する学習計画から、その週に達成することを決める。
+1. **計画：** 該当するノートから、その週に達成することを決める。
 2. **学習：** モジュールを読み、ノートを見ずに要点を言い直す。
 3. **応用：** 計算、問題、コード、または短い実務タスクに取り組む。
 4. **診断：** 間違った答えや失敗した実装が、なぜそのときは正しく見えたのかを記録する。

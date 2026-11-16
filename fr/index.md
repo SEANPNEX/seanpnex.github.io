@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Sean Guo — Apprendre en public
-description: Projets, recherches, notes et plans d’apprentissage de Sean Guo.
+description: Projets, recherches et notes de Sean Guo.
 ---
 
 <script setup>
@@ -41,9 +41,8 @@ const projects = [
 ]
 
 const learning = [
-  { title: 'CFA niveau II', detail: 'Analyse, évaluation et cas', link: '/fr/blogs/CFA/plan', stat: `${cfaOpened}/${cfaNotes.length} modules`, ticks: cfaNotes },
-  { title: 'JLPT N2', detail: 'Lecture, écoute et aisance', link: '/fr/blogs/JLPT-N2/plan', stat: 'Plan sur 24 semaines' },
-  { title: 'Allemand des affaires', detail: 'Communication professionnelle', link: '/fr/blogs/German/plan', stat: 'Plan sur 24 semaines' }
+  { title: 'CFA niveau II', detail: 'Analyse, évaluation et cas', link: '/fr/blogs/0-start#cfa-level-ii-directory', stat: `${cfaOpened}/${cfaNotes.length} modules`, ticks: cfaNotes },
+  { title: 'JLPT N2', detail: 'Lecture, écoute et aisance', link: '/fr/blogs/JLPT-N2/grammars', stat: 'Notes de grammaire' }
 ]
 </script>
 

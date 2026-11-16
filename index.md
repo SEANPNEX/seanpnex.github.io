@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Sean Guo — Learning in Public
-description: Sean Guo's projects, research, notes, and learning plans.
+description: Sean Guo's projects, research, and notes.
 ---
 
 <script setup>
@@ -41,9 +41,8 @@ const projects = [
 ]
 
 const learning = [
-  { title: 'CFA Level II', detail: 'Analysis, valuation & cases', link: '/blogs/CFA/plan', stat: `${cfaOpened}/${cfaNotes.length} modules`, ticks: cfaNotes },
-  { title: 'JLPT N2', detail: 'Reading, listening & fluency', link: '/blogs/JLPT-N2/plan', stat: '24-week plan' },
-  { title: 'Business German', detail: 'Workplace communication', link: '/blogs/German/plan', stat: '24-week plan' }
+  { title: 'CFA Level II', detail: 'Analysis, valuation & cases', link: '/blogs/0-start#cfa-level-ii-directory', stat: `${cfaOpened}/${cfaNotes.length} modules`, ticks: cfaNotes },
+  { title: 'JLPT N2', detail: 'Reading, listening & fluency', link: '/blogs/JLPT-N2/grammars', stat: 'Grammar notes' }
 ]
 </script>
 

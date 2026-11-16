@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Sean Guo — 公开学习
-description: Sean Guo 的项目、研究、笔记与学习计划。
+description: Sean Guo 的项目、研究与笔记。
 ---
 
 <script setup>
@@ -41,9 +41,8 @@ const projects = [
 ]
 
 const learning = [
-  { title: 'CFA 二级', detail: '分析、估值与案例', link: '/zh/blogs/CFA/plan', stat: `${cfaOpened}/${cfaNotes.length} 个模块`, ticks: cfaNotes },
-  { title: 'JLPT N2', detail: '阅读、听力与流利度', link: '/zh/blogs/JLPT-N2/plan', stat: '24 周计划' },
-  { title: '商务德语', detail: '职场沟通', link: '/zh/blogs/German/plan', stat: '24 周计划' }
+  { title: 'CFA 二级', detail: '分析、估值与案例', link: '/zh/blogs/0-start#cfa-level-ii-directory', stat: `${cfaOpened}/${cfaNotes.length} 个模块`, ticks: cfaNotes },
+  { title: 'JLPT N2', detail: '阅读、听力与流利度', link: '/zh/blogs/JLPT-N2/grammars', stat: '语法笔记' }
 ]
 </script>
 

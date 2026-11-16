@@ -10,15 +10,13 @@ const overview = { text: "Learning Base", link: "/blogs/0-start" };
 const learningSidebar = {
   "/blogs/CFA/": set_sidebar("/blogs/CFA", { before: [overview] }),
   "/blogs/JLPT-N2/": set_sidebar("/blogs/JLPT-N2", { before: [overview] }),
-  "/blogs/German/": set_sidebar("/blogs/German", { before: [overview] }),
   "/blogs/": [
     overview,
     {
       text: "Tracks",
       items: [
-        { text: "CFA Level II", link: "/blogs/CFA/plan" },
-        { text: "JLPT N2", link: "/blogs/JLPT-N2/plan" },
-        { text: "Business German", link: "/blogs/German/plan" },
+        { text: "CFA Level II", link: "/blogs/0-start#cfa-level-ii-directory" },
+        { text: "JLPT N2", link: "/blogs/JLPT-N2/grammars" },
       ],
     },
   ],
@@ -29,9 +27,9 @@ const learningSidebar = {
 const LOCALE_TEXT = {
   zh: {
     title: "Sean 的主页",
-    description: "Sean Guo 的项目、研究、笔记与学习计划。",
+    description: "Sean Guo 的项目、研究与笔记。",
     home: "首页", projects: "项目", learning: "学习", base: "学习库", tracks: "学习路线",
-    cfa: "CFA 二级", jlpt: "JLPT N2", german: "商务德语",
+    cfa: "CFA 二级", jlpt: "JLPT N2",
     outline: "本页目录", prev: "上一页", next: "下一页",
     appearance: "外观", menu: "菜单", top: "返回顶部", language: "切换语言",
     light: "切换到浅色模式", dark: "切换到深色模式", skip: "跳到正文",
@@ -40,9 +38,9 @@ const LOCALE_TEXT = {
   },
   jp: {
     title: "Sean のホームページ",
-    description: "Sean Guo のプロジェクト、研究、ノート、学習計画。",
+    description: "Sean Guo のプロジェクト、研究、ノート。",
     home: "ホーム", projects: "プロジェクト", learning: "学習", base: "学習ベース", tracks: "学習トラック",
-    cfa: "CFA レベル II", jlpt: "JLPT N2", german: "ビジネスドイツ語",
+    cfa: "CFA レベル II", jlpt: "JLPT N2",
     outline: "このページの内容", prev: "前のページ", next: "次のページ",
     appearance: "外観", menu: "メニュー", top: "トップへ戻る", language: "言語を切り替え",
     light: "ライトモードに切り替え", dark: "ダークモードに切り替え", skip: "本文へスキップ",
@@ -51,9 +49,9 @@ const LOCALE_TEXT = {
   },
   fr: {
     title: "Le site de Sean",
-    description: "Projets, recherches, notes et plans d’apprentissage de Sean Guo.",
+    description: "Projets, recherches et notes de Sean Guo.",
     home: "Accueil", projects: "Projets", learning: "Apprentissage", base: "Base d’apprentissage", tracks: "Parcours",
-    cfa: "CFA niveau II", jlpt: "JLPT N2", german: "Allemand des affaires",
+    cfa: "CFA niveau II", jlpt: "JLPT N2",
     outline: "Sur cette page", prev: "Page précédente", next: "Page suivante",
     appearance: "Apparence", menu: "Menu", top: "Retour en haut", language: "Changer de langue",
     light: "Passer en mode clair", dark: "Passer en mode sombre", skip: "Aller au contenu",
@@ -67,10 +65,9 @@ function localeConfig(key, lang) {
   const base = `/${key}`;
   const overview = { text: t.base, link: `${base}/blogs/0-start` };
   const track = (folder) => set_sidebar(`${base}/blogs/${folder}`, { before: [overview], labels: TOPIC_LABELS[lang] });
-  const plans = [
-    { text: t.cfa, link: `${base}/blogs/CFA/plan` },
-    { text: t.jlpt, link: `${base}/blogs/JLPT-N2/plan` },
-    { text: t.german, link: `${base}/blogs/German/plan` },
+  const tracks = [
+    { text: t.cfa, link: `${base}/blogs/0-start#cfa-level-ii-directory` },
+    { text: t.jlpt, link: `${base}/blogs/JLPT-N2/grammars` },
   ];
   return {
     title: t.title,
@@ -80,14 +77,13 @@ function localeConfig(key, lang) {
       nav: [
         { text: t.home, link: `${base}/` },
         { text: t.projects, link: `${base}/projects/NCCP` },
-        { text: t.learning, activeMatch: `^${base}/blogs/`, items: [overview, ...plans] },
+        { text: t.learning, activeMatch: `^${base}/blogs/`, items: [overview, ...tracks] },
       ],
       sidebar: {
         [`${base}/projects/`]: set_sidebar(`${base}/projects`),
         [`${base}/blogs/CFA/`]: track("CFA"),
         [`${base}/blogs/JLPT-N2/`]: track("JLPT-N2"),
-        [`${base}/blogs/German/`]: track("German"),
-        [`${base}/blogs/`]: [overview, { text: t.tracks, items: plans }],
+        [`${base}/blogs/`]: [overview, { text: t.tracks, items: tracks }],
       },
       docFooter: { prev: t.prev, next: t.next },
       darkModeSwitchLabel: t.appearance,
@@ -127,7 +123,7 @@ export default withMermaid(
       ["meta", { name: "theme-color", content: "#F0EFEB" }],
     ],
     title: "Sean's Homepage",
-    description: "Projects, research, notes, and learning plans by Sean Guo.",
+    description: "Projects, research, and notes by Sean Guo.",
     // mermaid 11.17+ imports fastdom, a CommonJS module; pre-bundle it so the dev
     // server can serve it as ESM (otherwise the whole site renders blank in dev).
     vite: {
@@ -146,9 +142,8 @@ export default withMermaid(
         { text: 'Projects', link: '/projects/NCCP' },
         { text: 'Learning', activeMatch: '^/blogs/', items: [
           { text: 'Learning Base', link: '/blogs/0-start' },
-          { text: 'CFA Level II', link: '/blogs/CFA/plan' },
-          { text: 'JLPT N2', link: '/blogs/JLPT-N2/plan' },
-          { text: 'Business German', link: '/blogs/German/plan' },
+          { text: 'CFA Level II', link: '/blogs/0-start#cfa-level-ii-directory' },
+          { text: 'JLPT N2', link: '/blogs/JLPT-N2/grammars' },
         ]},
       ],
       sidebar: {

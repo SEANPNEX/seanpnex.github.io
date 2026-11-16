@@ -4,7 +4,7 @@ title: Base d’apprentissage
 
 # Base d’apprentissage
 
-Voici ma bibliothèque de travail pour les concepts que je veux comprendre, retenir et appliquer. Elle réunit des plans d’étude structurés, des notes thématiques, des exemples résolus, des explications visuelles et des exercices de mise en œuvre.
+Voici ma bibliothèque de travail pour les concepts que je veux comprendre, retenir et appliquer. Elle réunit des notes thématiques, des exemples résolus, des explications visuelles et des exercices de mise en œuvre.
 
 > [!NOTE]
 > Ce sont des notes d’étude en évolution, pas une référence définitive. Je les révise à mesure que ma compréhension progresse ; quand la précision compte, référez-vous au programme officiel ou à la documentation de première main.
@@ -14,23 +14,17 @@ Voici ma bibliothèque de travail pour les concepts que je veux comprendre, rete
 Choisissez un parcours selon ce dont vous avez besoin aujourd’hui.
 
 <div class="learning-directory">
-  <a class="directory-card directory-card--primary" href="/fr/blogs/CFA/plan">
+  <a class="directory-card directory-card--primary" href="#cfa-level-ii-directory">
     <span class="directory-card__number">01 · CFA NIVEAU II</span>
     <strong>Commencer les notes CFA</strong>
-    <span class="directory-card__description">Sprint intensif jusqu’à l’examen du 18 nov. (FSA d’abord en octobre, examens blancs en novembre). Ouvrez le plan, puis suivez « Page suivante » dans l’ordre du programme.</span>
-    <span class="directory-card__action">Ouvrir le plan <b>→</b></span>
+    <span class="directory-card__description">Sprint intensif jusqu’à l’examen du 18 nov. Ouvrez le sommaire, puis suivez « Page suivante » dans l’ordre du programme.</span>
+    <span class="directory-card__action">Ouvrir les notes <b>→</b></span>
   </a>
-  <a class="directory-card" href="/fr/blogs/JLPT-N2/plan">
+  <a class="directory-card" href="/fr/blogs/JLPT-N2/grammars">
     <span class="directory-card__number">02 · JLPT N2</span>
-    <strong>Plan d’apprentissage du japonais</strong>
-    <span class="directory-card__description">2 h par jour maximum jusqu’à mi-novembre (examen le 6 déc.) : vocabulaire, vidéo, grammaire et exercices en rotation.</span>
-    <span class="directory-card__action">Voir le plan <b>↗</b></span>
-  </a>
-  <a class="directory-card" href="/fr/blogs/German/plan">
-    <span class="directory-card__number">03 · ALLEMAND DES AFFAIRES</span>
-    <strong>Plan d’apprentissage de l’allemand</strong>
-    <span class="directory-card__description">Une communication pratique pour les réunions, les présentations et l’écrit professionnel.</span>
-    <span class="directory-card__action">Voir le plan <b>↗</b></span>
+    <strong>Notes de grammaire japonaise</strong>
+    <span class="directory-card__description">Vocabulaire, vidéo, grammaire et exercices en rotation, en vue de l’examen du 6 déc.</span>
+    <span class="directory-card__action">Ouvrir les notes <b>↗</b></span>
   </a>
 </div>
 
@@ -46,7 +40,7 @@ Les thèmes suivent l’ordre du programme. Chaque note renvoie au module préc�
 
 ## Comment j’utilise ces notes
 
-1. **Planifier :** choisir le résultat de la semaine dans le plan d’apprentissage concerné.
+1. **Planifier :** choisir le résultat de la semaine dans les notes concernées.
 2. **Apprendre :** lire un module et en reformuler l’idée principale sans regarder.
 3. **Appliquer :** faire des calculs, des questions, du code ou une courte tâche concrète.
 4. **Diagnostiquer :** noter pourquoi une mauvaise réponse ou une implémentation ratée semblait raisonnable.
