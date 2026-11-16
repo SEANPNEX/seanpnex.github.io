@@ -15,8 +15,8 @@ const learningSidebar = {
     {
       text: "Tracks",
       items: [
-        { text: "CFA Level II", link: "/blogs/0-start#cfa-level-ii-directory" },
-        { text: "JLPT N2", link: "/blogs/JLPT-N2/grammars" },
+        { text: "CFA Level II", collapsed: false, items: set_sidebar("/blogs/CFA") },
+        { text: "JLPT N2", collapsed: true, items: set_sidebar("/blogs/JLPT-N2") },
       ],
     },
   ],
@@ -83,7 +83,10 @@ function localeConfig(key, lang) {
         [`${base}/projects/`]: set_sidebar(`${base}/projects`),
         [`${base}/blogs/CFA/`]: track("CFA"),
         [`${base}/blogs/JLPT-N2/`]: track("JLPT-N2"),
-        [`${base}/blogs/`]: [overview, { text: t.tracks, items: tracks }],
+        [`${base}/blogs/`]: [overview, { text: t.tracks, items: [
+          { text: t.cfa, collapsed: false, items: set_sidebar(`${base}/blogs/CFA`, { labels: TOPIC_LABELS[lang] }) },
+          { text: t.jlpt, collapsed: true, items: set_sidebar(`${base}/blogs/JLPT-N2`, { labels: TOPIC_LABELS[lang] }) },
+        ] }],
       },
       docFooter: { prev: t.prev, next: t.next },
       darkModeSwitchLabel: t.appearance,
