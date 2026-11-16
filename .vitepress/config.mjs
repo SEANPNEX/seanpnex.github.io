@@ -4,12 +4,10 @@ import { set_sidebar, unpublishedNotes } from "./auto-sidebar.mjs";
 import { TOPIC_LABELS } from "./topics.mjs";
 import { withMermaid } from "vitepress-plugin-mermaid";
 
-// Each learning track gets its own sidebar so prev/next stays inside the track.
-// The overview link comes first, so every track's first page links back to it.
+// One learning sidebar for every page under /blogs/: Learning Base, then CFA and
+// JLPT as top-level groups, so the full tree stays visible inside a track.
 const overview = { text: "Learning Base", link: "/blogs/0-start" };
 const learningSidebar = {
-  "/blogs/CFA/": set_sidebar("/blogs/CFA", { before: [overview] }),
-  "/blogs/JLPT-N2/": set_sidebar("/blogs/JLPT-N2", { before: [overview] }),
   "/blogs/": [
     overview,
     { text: "CFA Level II", collapsed: false, items: set_sidebar("/blogs/CFA") },
@@ -59,7 +57,6 @@ function localeConfig(key, lang) {
   const t = LOCALE_TEXT[key];
   const base = `/${key}`;
   const overview = { text: t.base, link: `${base}/blogs/0-start` };
-  const track = (folder) => set_sidebar(`${base}/blogs/${folder}`, { before: [overview], labels: TOPIC_LABELS[lang] });
   const tracks = [
     { text: t.cfa, link: `${base}/blogs/0-start#cfa-level-ii-directory` },
     { text: t.jlpt, link: `${base}/blogs/JLPT-N2/grammars` },
@@ -76,8 +73,6 @@ function localeConfig(key, lang) {
       ],
       sidebar: {
         [`${base}/projects/`]: set_sidebar(`${base}/projects`),
-        [`${base}/blogs/CFA/`]: track("CFA"),
-        [`${base}/blogs/JLPT-N2/`]: track("JLPT-N2"),
         [`${base}/blogs/`]: [overview,
           { text: t.cfa, collapsed: false, items: set_sidebar(`${base}/blogs/CFA`, { labels: TOPIC_LABELS[lang] }) },
           { text: t.jlpt, collapsed: true, items: set_sidebar(`${base}/blogs/JLPT-N2`, { labels: TOPIC_LABELS[lang] }) },
