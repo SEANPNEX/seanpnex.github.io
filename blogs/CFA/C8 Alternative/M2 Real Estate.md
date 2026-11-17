@@ -34,10 +34,23 @@ $$
 * Operating expenses are fixed (taxes, insurance, servicing, repairs) or variable (utilities), borne by the owner or passed through to tenants.
 * The maintenance allowance is common in Europe and North America, less so in, e.g., Japan.
 
-**Example (Wallonia Transit).** A 10,000 m² warehouse with one tenant; base rent EUR52.50/m². The tenant pays property tax (12,500) and insurance (40,000); the owner recovers EUR10.25/m² for servicing and repairs, which cost 120,750; maintenance allowance 100,000.
+#### Example: Wallonia Transit NOI
+
+A 10,000 m² warehouse with one tenant (EUR).
+
+| Input | Value |
+| --- | ---: |
+| Base rent | 52.50 per m² |
+| Recovery of servicing and repairs (fixed) | 10.25 per m² |
+| Servicing and repairs, paid by the owner | 120,750 |
+| Property tax, passed through to the tenant | 12,500 |
+| Insurance, passed through to the tenant | 40,000 |
+| Maintenance allowance | 100,000 |
+
+**Step 1. NOI.**
 
 | Wallonia Transit | EUR |
-| --- | --- |
+| --- | ---: |
 | Gross rent (52.50 × 10,000) | 525,000 |
 | Operating expense recovery (10.25 × 10,000) | 102,500 |
 | Pass-through property tax + insurance | 52,500 |
@@ -46,9 +59,12 @@ $$
 | Property maintenance allowance | (100,000) |
 | **NOI** | **406,750** |
 
-* If servicing and repairs run 20% over (144,900), the extra 24,150 is **not** recovered (the recovery is fixed at 102,500) → NOI falls to **382,600**.
-* With 10% vacancy (if it had several tenants), deduct 10% of gross rent (52,500) → NOI **354,250**.
-* Only lower servicing and repair costs raise NOI; taxes and insurance are fully passed through.
+**Step 2. Sensitivities.**
+
+* Servicing and repairs run 20% over (144,900): the extra 24,150 is **not** recovered (the recovery is fixed at 102,500) → NOI **382,600**.
+* 10% vacancy (if it had several tenants): deduct 10% of gross rent, 52,500 → NOI **354,250**.
+
+NOI is **EUR406,750**. Only lower servicing and repair costs raise it; taxes and insurance are fully passed through.
 
 ### Leverage and Coverage
 
@@ -63,11 +79,46 @@ $$
 * A lower LTV means more owner equity. LTV changes as values move and principal is repaid.
 * Debt service = **interest + principal**. Lenders set LTV and DSC limits in covenants.
 
-**Example (Wallonia).** Price 3,750,000; a 20-year fully amortizing loan of 3,000,000 at 4%, with annual payments of 220,745 (interest in year 1: 120,000).
+#### Example: Wallonia Leverage and Coverage
 
-* LTV after year 1 = [3,000,000 − (220,745 − 120,000)]/3,750,000 = 2,899,255/3,750,000 = **0.773**.
-* If the property's value rises 10%: LTV = 2,899,255/4,125,000 = **0.703**.
-* DSC = 406,750/220,745 = **1.84**; with NOI of 382,600 → 1.73.
+| Input | EUR |
+| --- | ---: |
+| Price | 3,750,000 |
+| Loan (20-year, fully amortizing, 4%) | 3,000,000 |
+| Annual payment | 220,745 |
+| Interest in year 1 | 120,000 |
+| NOI | 406,750 |
+
+**Step 1. Loan balance after year 1.**
+
+$$
+\begin{aligned}
+\text{Principal}&=220{,}745-120{,}000\\
+&=100{,}745\\
+\text{Balance}&=3{,}000{,}000-100{,}745\\
+&=2{,}899{,}255
+\end{aligned}
+$$
+
+**Step 2. LTV**, now and if the value rises 10%.
+
+$$
+\begin{aligned}
+LTV&=\frac{2{,}899{,}255}{3{,}750{,}000}=0.773\\
+LTV_{+10\%}&=\frac{2{,}899{,}255}{4{,}125{,}000}=0.703
+\end{aligned}
+$$
+
+**Step 3. DSC**, with NOI of 406,750 and of 382,600.
+
+$$
+\begin{aligned}
+DSC&=\frac{406{,}750}{220{,}745}=1.84\\
+DSC_{\text{low}}&=\frac{382{,}600}{220{,}745}=1.73
+\end{aligned}
+$$
+
+LTV is **0.773** and DSC **1.84**.
 
 ### Equity Returns
 
@@ -75,7 +126,7 @@ $$
 EDR=\frac{NOI-\text{Debt service}}{\text{Price}-\text{Loan}}
 $$
 
-EDR is the equity dividend rate; the numerator is the pretax cash flow, and the denominator the equity invested. It's a first-year, cash-only, pretax measure that ignores capital gains and losses. For Wallonia: (406,750 − 220,745)/750,000 = 186,005/750,000 = **24.8%**; with NOI of 382,600 → 161,855/750,000 = 21.6%.
+EDR is the equity dividend rate; the numerator is the pretax cash flow, and the denominator the equity invested. It's a first-year, cash-only, pretax measure that ignores capital gains and losses.
 
 $$
 \text{After-tax CF}=\text{Pretax CF}-\text{Taxes}
@@ -88,7 +139,45 @@ $$
 \end{aligned}
 $$
 
-The depreciable base is the cost (plus improvements) minus **land**: land isn't depreciated. For Wallonia, with land of 750,000 and a 30-year life: depreciation = 3,000,000/30 = 100,000; taxes = 0.25 × (406,750 − 120,000 − 100,000) = 46,688; after-tax cash flow = 186,005 − 46,688 = **139,317**.
+The depreciable base is the cost (plus improvements) minus **land**: land isn't depreciated.
+
+#### Example: Wallonia Equity Returns
+
+The loan above; land is worth 750,000, the building has a 30-year life, and the tax rate is 25%.
+
+**Step 1. EDR.** Equity invested = 3,750,000 − 3,000,000 = 750,000.
+
+$$
+\begin{aligned}
+EDR&=\frac{406{,}750-220{,}745}{750{,}000}\\
+&=\frac{186{,}005}{750{,}000}=24.8\%
+\end{aligned}
+$$
+
+With NOI of 382,600: 161,855/750,000 = 21.6%.
+
+**Step 2. Taxes.**
+
+$$
+\begin{aligned}
+\text{Dep.}&=\frac{3{,}750{,}000-750{,}000}{30}\\
+&=100{,}000\\
+\text{Taxable}&=406{,}750-120{,}000\\
+&\quad-100{,}000=186{,}750\\
+\text{Taxes}&=0.25\times 186{,}750=46{,}688
+\end{aligned}
+$$
+
+**Step 3. After-tax cash flow.**
+
+$$
+\begin{aligned}
+\text{After-tax CF}&=186{,}005-46{,}688\\
+&=139{,}317
+\end{aligned}
+$$
+
+EDR is **24.8%**, and the after-tax cash flow **EUR139,317**.
 
 > [!IMPORTANT]
 > Same price and NOI, but a **lower land value** → a larger depreciable base → more depreciation → less tax → a **higher** after-tax cash flow.
@@ -176,7 +265,38 @@ Real estate offers current income, capital appreciation, an inflation hedge, div
 * **Diversification**: low correlation with stocks, bonds and cash; but **public** real estate (REITs, MBS) is more correlated with stocks and bonds in the short to medium term.
 * **Tax benefits**: tax depreciation faster than the useful life (e.g., in the US); REITs avoid double taxation.
 
-**Example (Chandra Shops, overage rent).** A 500 ft² store; base rent cut 10%, from INR300 to INR270/ft² a month, plus 8% overage on monthly sales above INR1,000,000. With sales of INR1,250,000: base 270 × 500 = 135,000 + overage 0.08 × 250,000 = 20,000 = **INR155,000**, against INR150,000 under the old lease. (A 9.6% cut with 5.6% overage gives INR149,600, which Chandra would prefer.)
+$$
+\begin{aligned}
+\text{Rent}={}&\text{Base rent}\times\text{Area}\\
+&+\text{Overage rate}\\
+&\times(\text{Sales}-\text{Breakeven})
+\end{aligned}
+$$
+
+#### Example: Chandra Shops Overage Rent
+
+A 500 ft² store with monthly sales of INR1,250,000.
+
+| | Old lease | New lease |
+| --- | --- | --- |
+| Base rent per ft² a month | INR300 | INR270 (−10%) |
+| Overage | None | 8% of sales above INR1,000,000 |
+
+**Step 1. Rent under the new lease.**
+
+$$
+\begin{aligned}
+\text{Base}&=270\times 500=135{,}000\\
+\text{Overage}&=0.08\times 250{,}000\\
+&=20{,}000\\
+\text{Rent}&=135{,}000+20{,}000\\
+&=155{,}000
+\end{aligned}
+$$
+
+**Step 2. Compare.** The old lease costs 300 × 500 = 150,000.
+
+The new lease costs **INR155,000** a month, 5,000 more. A 9.6% cut with 5.6% overage would cost 135,600 + 14,000 = 149,600, which Chandra would prefer.
 
 ## Commercial Property Types
 
@@ -206,11 +326,24 @@ $$
 * Total (effective gross) income = net rental income + other income + expense recoveries.
 * NOI = total income − operating and leasing expenses − maintenance allowance.
 
-**Example (Pinebranch Estates).** 240 units of 1,200 ft²; market rent AUD2.00/ft² a month; the owner pays taxes and insurance.
+#### Example: Pinebranch Estates NOI
+
+240 units of 1,200 ft²; the market rent is AUD2.00/ft² a month; the owner pays taxes and insurance.
+
+**Step 1. Gross potential rental income.**
+
+$$
+\begin{aligned}
+GPRI&=240\times 1{,}200\times 2.00\times 12\\
+&=6{,}912{,}000
+\end{aligned}
+$$
+
+**Step 2. From GPRI to NOI.**
 
 | Pinebranch Estates | AUD |
-| --- | --- |
-| Gross potential rental income (240 × 1,200 × 2.00 × 12) | 6,912,000 |
+| --- | ---: |
+| Gross potential rental income | 6,912,000 |
 | Less: loss to lease | (128,200) |
 | **Gross rental income** | 6,783,800 |
 | Less: vacancy and collection loss | (791,236) |
@@ -223,11 +356,45 @@ $$
 | Less: maintenance allowance | (655,000) |
 | **NOI** | **2,919,651** |
 
-Unlike Wallonia, many tenants and short leases make the rental deductions much more important.
+NOI is **AUD2,919,651**. Unlike Wallonia, many tenants and short leases make the rental deductions much more important.
 
-**Example (Eastmain Plaza, mixed-use).** 350,000 ft²: 90% office at MYR100/ft², 10% retail at MYR250/ft² → gross rent = 0.9 × 100 × 350,000 + 0.1 × 250 × 350,000 = **MYR40,250,000**; current NOI 13,085,217. In a downside scenario (new retail nearby), it loses overage rent of 450,800 and half of its retail rent, 4,375,000 → NOI falls by 4,825,800 (37%) to **8,259,417**.
+#### Example: Eastmain Plaza Downside Scenario
 
-**Practice table** (GBP; from earlier notes, not the 2026 textbook):
+A 350,000 ft² mixed-use property; current NOI is MYR13,085,217.
+
+| Space | Share | Rent per ft² |
+| --- | ---: | ---: |
+| Office | 90% | MYR100 |
+| Retail | 10% | MYR250 |
+
+**Step 1. Gross rent.**
+
+$$
+\begin{aligned}
+\text{Office}&=0.9\times 100\times 350{,}000\\
+&=31{,}500{,}000\\
+\text{Retail}&=0.1\times 250\times 350{,}000\\
+&=8{,}750{,}000\\
+\text{Total}&=40{,}250{,}000
+\end{aligned}
+$$
+
+**Step 2. Downside.** New retail nearby costs the overage rent (450,800) and half of the retail rent (4,375,000).
+
+$$
+\begin{aligned}
+\text{Loss}&=450{,}800+4{,}375{,}000\\
+&=4{,}825{,}800\\
+NOI&=13{,}085{,}217-4{,}825{,}800\\
+&=8{,}259{,}417
+\end{aligned}
+$$
+
+NOI falls 37%, to **MYR8,259,417**.
+
+#### Practice: GPRI to NOI
+
+In GBP; from earlier notes, not the 2026 textbook.
 
 | Item | GBP |
 | --- | --- |
@@ -272,7 +439,19 @@ $$
 * Cap rates usually come from comparable sales; they compare with a bond's current yield, or the inverse of EV/EBITDA.
 * Best when NOI is **stable**; otherwise use **stabilized NOI**.
 
-**Example (Wallonia).** $r$ = 12.5%, $g$ = 2%: value = 406,750/0.105 = **EUR3,873,810**; with NOI of 382,600 → EUR3,643,810 (−6%). Include the higher costs only if they will recur.
+#### Example: Wallonia Direct Capitalization
+
+$r$ = 12.5% and $g$ = 2%; NOI is 406,750 (382,600 with the cost overrun).
+
+$$
+\begin{aligned}
+\text{Cap rate}&=12.5\%-2\%=10.5\%\\
+V&=\frac{406{,}750}{0.105}=3{,}873{,}810\\
+V_{\text{low}}&=\frac{382{,}600}{0.105}=3{,}643{,}810
+\end{aligned}
+$$
+
+The value is **EUR3,873,810**. The cost overrun would cut it by 6%: include it only if it will recur.
 
 ### Income Approach: DCF
 
@@ -286,12 +465,50 @@ $$
 
 Better when the analyst can see how NOI will change. The terminal value can also come from capitalizing comparable properties' NOI.
 
-**Example (Eastmain, 5-year hold, $r$ = 14%, $g$ = 3% after year 5).** NOI 8,259,417; 6,092,385; 13,539,114; 14,020,153; 14,515,622.
+#### Example: Eastmain DCF
 
-* PV of NOI = **MYR36,911,526**.
-* Terminal value = 14,515,622 × 1.03/0.11 = **MYR135,919,006**.
-* Value = 36,911,526 + 135,919,006/1.14⁵ = **MYR107,503,599**.
-* The going-in cap rate, 8,259,417/107,503,599 = 7.68%, is below the terminal cap rate of 14% − 3% = 11%, because NOI in years 1–2 is depressed by the downside scenario (the risk, $r$, is the same in every year).
+A 5-year hold; $r$ = 14%, and NOI grows at $g$ = 3% after year 5 (MYR).
+
+**Step 1. PV of NOI.**
+
+| Year | NOI | PV at 14% |
+| ---: | ---: | ---: |
+| 1 | 8,259,417 | 7,245,103 |
+| 2 | 6,092,385 | 4,687,892 |
+| 3 | 13,539,114 | 9,138,516 |
+| 4 | 14,020,153 | 8,301,056 |
+| 5 | 14,515,622 | 7,538,959 |
+| **Total** | | **36,911,526** |
+
+**Step 2. Terminal value.**
+
+$$
+\begin{aligned}
+TV&=\frac{14{,}515{,}622\times 1.03}{0.14-0.03}\\
+&=135{,}919{,}006
+\end{aligned}
+$$
+
+**Step 3. Value.**
+
+$$
+\begin{aligned}
+V&=36{,}911{,}526+\frac{135{,}919{,}006}{1.14^5}\\
+&=36{,}911{,}526+70{,}592{,}073\\
+&=107{,}503{,}599
+\end{aligned}
+$$
+
+**Step 4. Cap rates.**
+
+$$
+\begin{aligned}
+\text{Going-in}&=\frac{8{,}259{,}417}{107{,}503{,}599}=7.68\%\\
+\text{Terminal}&=14\%-3\%=11\%
+\end{aligned}
+$$
+
+The value is **MYR107,503,599**. The going-in cap rate is below the terminal one because NOI in years 1–2 is depressed by the downside scenario (the risk, $r$, is the same in every year).
 
 ### Cost Approach
 
@@ -307,7 +524,42 @@ $$
 * Adjust down for age, a less ideal location, or the infeasibility of building it today (codes, historical protection); the adjustments can be larger or smaller than accounting depreciation.
 * An investor shouldn't pay more than the cost to build a comparable property; replacement cost exceeds market prices in **oversupply**.
 
-**Example (Wallonia).** Cost estimate 4,350,000 (hard costs 2,675,000 + soft costs, interest and profit 925,000 + land 750,000); depreciable base 4,350,000 − 750,000 = 3,600,000; 30-year life → 120,000 a year; 4 years old → value 4,350,000 − 480,000 = **EUR3,870,000**.
+#### Example: Wallonia Cost Approach
+
+| Input | EUR |
+| --- | ---: |
+| Hard costs | 2,675,000 |
+| Soft costs, interest and developer profit | 925,000 |
+| Land | 750,000 |
+| Useful life | 30 years |
+| Age | 4 years |
+
+**Step 1. Replacement cost.**
+
+$$
+\begin{aligned}
+RC&=2{,}675{,}000+925{,}000\\
+&\quad+750{,}000=4{,}350{,}000
+\end{aligned}
+$$
+
+**Step 2. Depreciation** (land isn't depreciated).
+
+$$
+\begin{aligned}
+\text{Annual}&=\frac{4{,}350{,}000-750{,}000}{30}\\
+&=120{,}000\\
+\text{4 years}&=4\times 120{,}000=480{,}000
+\end{aligned}
+$$
+
+**Step 3. Value.**
+
+$$
+V=4{,}350{,}000-480{,}000=3{,}870{,}000
+$$
+
+The value is **EUR3,870,000**.
 
 ### Sales Comparison Approach
 
@@ -315,7 +567,20 @@ $$
 * Adjust for the sale date (an older sale in a rising market → adjust **up**), size (larger → discount), location (a comparable farther from the center is worth less → adjust up) and age (a newer comparable → adjust the subject **down**).
 * Average the adjusted unit prices × the subject's size; more recent sales carry more weight.
 
-**Example (Pinebranch, 288,000 ft²).** Adjusted prices per ft² 89.27, 104.23, 103.60 → average **AUD99.03** → value ≈ **AUD28.52 million** (28,520,640 using 99.03; 28,521,036 using the unrounded average).
+#### Example: Pinebranch Sales Comparison
+
+The subject has 288,000 ft²; the three comparables' adjusted prices are AUD89.27, 104.23 and 103.60 per ft².
+
+$$
+\begin{aligned}
+\text{Average}&=\frac{89.27+104.23+103.60}{3}\\
+&=99.03\\
+V&=99.03\times 288{,}000\\
+&=28{,}520{,}640
+\end{aligned}
+$$
+
+The value is about **AUD28.52 million** (28,521,036 with the unrounded adjusted prices).
 
 | Approach | Most used for |
 | --- | --- |
@@ -337,14 +602,40 @@ $$
 
 where $\Delta MV=MV_{\text{end}}-MV_{\text{begin}}$, the change in appraised market value. This equals a single-period IRR using appraised values.
 
-**Example (Wallonia).** Bought for 3,750,000 two years ago; INREV returns of +5.6% then +3.2% → $MV_{\text{begin}}$ = 3,960,000, $MV_{\text{end}}$ = 4,086,720; NOI 406,750; capex 100,000:
+#### Example: Wallonia Appraisal-Based Return
+
+| Input | EUR |
+| --- | ---: |
+| Purchase price two years ago | 3,750,000 |
+| INREV return, year 1 / year 2 | +5.6% / +3.2% |
+| NOI | 406,750 |
+| Capex | 100,000 |
+
+**Step 1. Appraised values** at the start and end of year 2.
 
 $$
 \begin{aligned}
+MV_{\text{begin}}&=3{,}750{,}000\times 1.056\\
+&=3{,}960{,}000\\
+MV_{\text{end}}&=3{,}960{,}000\times 1.032\\
+&=4{,}086{,}720
+\end{aligned}
+$$
+
+**Step 2. HPR.**
+
+$$
+\begin{aligned}
+\text{Income}&=406{,}750-100{,}000\\
+&=306{,}750\\
+\Delta MV&=4{,}086{,}720-3{,}960{,}000\\
+&=126{,}720\\
 HPR&=\frac{306{,}750+126{,}720}{3{,}960{,}000}\\
 &=10.95\%
 \end{aligned}
 $$
+
+The holding period return is **10.95%**.
 
 A drawback: the income component (NOI − capex) is **not** what fund or REIT investors receive as distributions.
 
@@ -362,10 +653,30 @@ R_t^*=aR_t+(1-a)R_{t-1}^*
 $$
 
 $$
-R_t=\frac{R_t^*}{a}+\frac{1-a}{a}\,R_{t-1}^*
+R_t=\frac{R_t^*-(1-a)\,R_{t-1}^*}{a}
 $$
 
-with $0\le a\le 1$; a higher $a$ means faster adjustment. E.g., $a$ = 0.6, $R_1^*$ = 0.50%, $R_0^*$ = 2.70% → $R_1$ = 0.50/0.6 + (0.4/0.6) × 2.70 = **2.63%**; in period 6: −8.70/0.6 + (0.4/0.6) × 1.00 = **−13.83%**. Unsmoothed returns are more volatile.
+with $0\le a\le 1$; a higher $a$ means faster adjustment.
+
+#### Example: Unsmoothing Appraisal Returns
+
+$a$ = 0.6.
+
+| Period | Appraised $R_t^*$ | Prior $R_{t-1}^*$ |
+| ---: | ---: | ---: |
+| 1 | 0.50% | 2.70% |
+| 6 | −8.70% | 1.00% |
+
+$$
+\begin{aligned}
+R_1&=\frac{0.50-0.4\times 2.70}{0.6}\\
+&=\frac{-0.58}{0.6}=-0.97\%\\
+R_6&=\frac{-8.70-0.4\times 1.00}{0.6}\\
+&=\frac{-9.10}{0.6}=-15.17\%
+\end{aligned}
+$$
+
+The true returns, **−0.97%** and **−15.17%**, are more extreme than the appraised ones: unsmoothed returns are more volatile.
 
 ### Transaction-Based Indexes
 
@@ -381,4 +692,8 @@ with $0\le a\le 1$; a higher $a$ means faster adjustment. E.g., $a$ = 0.6, $R_1^
 
 > [!NOTE]
 >
-> **Textbook issue.** The Wallonia pro forma table prints gross rent as 525,500, but the calculation (and the 680,000 total) use 525,000.
+> **Textbook and note issues.**
+>
+> * The Wallonia pro forma table prints gross rent as 525,500, but the calculation (and the 680,000 total) use 525,000.
+> * Pinebranch: 5,507,440 + 295,211 + 525,800 = 6,328,451, not the 6,327,651 printed (recoveries of 525,000 would match); the NOI of 2,919,651 follows the printed total.
+> * Unsmoothing: earlier versions of these notes **added** the lag term ($R_t^*/a+\frac{1-a}{a}R_{t-1}^*$), giving 2.63% and −13.83%. Solving $R_t^*=aR_t+(1-a)R_{t-1}^*$ for $R_t$ **subtracts** it.

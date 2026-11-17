@@ -69,24 +69,75 @@ with assets and liabilities at market value.
 
 NAV is a **pretax** value: taxes on liquidation are ignored, because it's unclear how the company or its assets would be sold.
 
-**Example (USD thousands).**
+#### Example: NAVPS from Cash NOI
 
-| Step | Amount |
-| --- | --- |
+In USD thousands; the cap rate is 7.00%, and there are 55,689 shares.
+
+**Step 1. Next-12-month cash NOI.**
+
+| | Amount |
+| --- | ---: |
 | Last-12-month NOI | 270,432 |
 | Less: non-cash rent | (7,667) |
 | Plus: full-year effect of acquisitions | 4,534 |
 | Pro forma cash NOI (last 12 months) | 267,299 |
 | Plus: next-12-month growth (1.5%) | 4,009 |
 | **Next-12-month cash NOI** | **271,308** |
-| ÷ 7.00% cap rate → operating real estate | 3,875,829 |
-| + Cash 65,554, land for development 34,566, receivables 45,667, prepaid and other 23,456 | 169,243 |
-| **Gross asset value** | **4,045,072** |
-| − Total debt 1,010,988, other liabilities 119,886 | (1,130,874) |
-| **NAV** | **2,914,198** |
-| ÷ 55,689 shares → **NAVPS** | **USD52.33** |
 
-**Example.** NOI USD115m, book value USD1,005m, market value of debt USD505m, cap rate 7%, 100m shares → property value 115/0.07 = USD1,642.9m; NAV = 1,642.9 − 505 = USD1,137.9m → **NAVPS USD11.38** (not USD10.05, the book value per share, nor USD16.42, before debt).
+**Step 2. Value the operating real estate.**
+
+$$
+\begin{aligned}
+\text{Real estate}&=\frac{271{,}308}{0.07}\\
+&=3{,}875{,}829
+\end{aligned}
+$$
+
+**Step 3. Gross asset value.** Add cash 65,554, land for development 34,566, receivables 45,667, and prepaid and other assets 23,456 (169,243 in all):
+
+$$
+\begin{aligned}
+GAV&=3{,}875{,}829+169{,}243\\
+&=4{,}045{,}072
+\end{aligned}
+$$
+
+**Step 4. NAV.** Subtract total debt 1,010,988 and other liabilities 119,886 (1,130,874):
+
+$$
+\begin{aligned}
+NAV&=4{,}045{,}072-1{,}130{,}874\\
+&=2{,}914{,}198
+\end{aligned}
+$$
+
+**Step 5. NAVPS.**
+
+$$
+NAVPS=\frac{2{,}914{,}198}{55{,}689}=52.33
+$$
+
+NAVPS is **USD52.33**.
+
+#### Example: NAVPS vs Book Value
+
+| Input | Value |
+| --- | ---: |
+| NOI | USD115m |
+| Cap rate | 7% |
+| Book value of equity | USD1,005m |
+| Market value of debt | USD505m |
+| Shares | 100m |
+
+$$
+\begin{aligned}
+\text{Property}&=\frac{115}{0.07}=1{,}642.9\\
+NAV&=1{,}642.9-505=1{,}137.9\\
+NAVPS&=\frac{1{,}137.9}{100}=11.38
+\end{aligned}
+$$
+
+NAVPS is **USD11.38**, not USD10.05 (book value per share) nor USD16.43 (before subtracting debt).
 
 > [!IMPORTANT]
 > A higher cap rate → a lower property value → **lower NAV**. Faster NOI growth → higher NAV. Deferred tax liabilities do **not** reduce NAV. Old land carried at book value can be marked up to its current value.
@@ -139,17 +190,69 @@ $$
 * Subtract recurring maintenance capex and leasing costs (leasing commissions, tenant improvement allowances).
 * AFFO (also called funds available for distribution, **FAD**, or cash available for distribution, **CAD**) is a better measure of **economic income** and **dividend-paying capacity** than FFO. But it's more subjective (capex is lumpy), methods vary, and data providers generally **don't compile** AFFO estimates.
 
-**Example (Office Equity REIT, SGD thousands, 55,689 shares).**
+#### Example: Office Equity REIT FFO and AFFO
 
-| FFO | | AFFO | |
-| --- | --- | --- | --- |
-| Net income | 160,638 | FFO | 261,738 |
-| + Depreciation and amortization | 76,100 | − Non-cash (straight-line) rent | (21,103) |
-| + Losses on sales of depreciable real estate | 25,000 | − Recurring maintenance capex and leasing commissions | (55,765) |
-| **FFO** | **261,738** | **AFFO** | **184,870** |
-| FFO per share | 4.70 | AFFO per share | 3.32 |
+In SGD thousands; 55,689 shares.
 
-**Example (working back from AFFO).** AFFO USD4,000,000; AFFO per share USD5.00; non-cash rent USD215,000; recurring capex USD700,000; price USD80 → 800,000 shares; FFO = 4,000,000 + 215,000 + 700,000 = 4,915,000 → FFO per share USD6.14 → **P/FFO 13.0×**. (Don't add depreciation back to AFFO.)
+| Input | Amount |
+| --- | ---: |
+| Net income | 160,638 |
+| Depreciation and amortization | 76,100 |
+| Losses on sales of depreciable real estate | 25,000 |
+| Non-cash (straight-line) rent | 21,103 |
+| Recurring maintenance capex and leasing commissions | 55,765 |
+
+**Step 1. FFO.** Add back the loss on sales (it isn't recurring):
+
+$$
+\begin{aligned}
+FFO&=160{,}638+76{,}100\\
+&\quad+25{,}000=261{,}738\\
+\text{Per share}&=\frac{261{,}738}{55{,}689}=4.70
+\end{aligned}
+$$
+
+**Step 2. AFFO.**
+
+$$
+\begin{aligned}
+AFFO&=261{,}738-21{,}103\\
+&\quad-55{,}765=184{,}870\\
+\text{Per share}&=\frac{184{,}870}{55{,}689}=3.32
+\end{aligned}
+$$
+
+FFO is **SGD4.70** a share and AFFO **SGD3.32**.
+
+#### Example: P/FFO from AFFO
+
+| Input | USD |
+| --- | ---: |
+| AFFO | 4,000,000 |
+| AFFO per share | 5.00 |
+| Non-cash rent | 215,000 |
+| Recurring capex | 700,000 |
+| Share price | 80 |
+
+**Step 1. Shares.** $4{,}000{,}000/5.00=800{,}000$.
+
+**Step 2. FFO.** Reverse the AFFO adjustments (don't add depreciation back: it's already in FFO):
+
+$$
+\begin{aligned}
+FFO&=4{,}000{,}000+215{,}000\\
+&\quad+700{,}000=4{,}915{,}000\\
+\text{Per share}&=\frac{4{,}915{,}000}{800{,}000}=6.14
+\end{aligned}
+$$
+
+**Step 3. Multiple.**
+
+$$
+P/FFO=\frac{80}{6.14}=13.0\times
+$$
+
+P/FFO is **13.0×**.
 
 **What drives differences in P/FFO, P/AFFO and EV/EBITDA:**
 
@@ -170,33 +273,114 @@ $$
 
 REITs pay out most of their income, so dividend discount and DCF models suit them. Use **two- or three-stage** DDMs (near-, intermediate- and long-term growth); a DCF uses intermediate-term cash flow projections and a terminal value from historical cash flow multiples.
 
-**Example (Baldwin REIT, two-stage DDM).** CAPM: $r$ = 4% + 0.9 × 5% = 8.5%; $D_1$ = 1.00, $D_2$ = 1.06, then 5% growth from year 3.
-
-$$
-D_3=1.06\times1.05\approx1.11
-$$
-
-$$
-P_2=\frac{1.11}{0.085-0.05}=31.71
-$$
-
-$$
-V_0=\frac{1.00}{1.085}+\frac{1.06+31.71}{1.085^2}=28.76
-$$
-
-**Example (REIT C).** $r$ = 8%; $D_1$ = 4.00; growth 4.5% in years 2–3, then 4% → $D_2$ = 4.18, $D_3$ = 4.37, $D_4$ = 4.54; $P_3$ = 4.54/(0.08 − 0.04) = 113.57.
-
 $$
 \begin{aligned}
-V_0&=\frac{4.00}{1.08}+\frac{4.18}{1.08^2}+\frac{4.37+113.57}{1.08^3}\\
-&=100.91
+V_0={}&\sum_{t=1}^{n}\frac{D_t}{(1+r)^t}+\frac{P_n}{(1+r)^n}\\
+P_n={}&\frac{D_{n+1}}{r-g}
 \end{aligned}
 $$
 
-**Examples (other methods).**
+#### Example: Baldwin REIT Two-Stage DDM
 
-* P/FFO (REIT B): FFO per share 290,612/67,900 = 4.28 × the subsector's 13.5× = **USD57.78**.
-* P/AFFO (REIT A): AFFO = 316,965 − 25,991 − 63,769 = 227,205 → USD4.05 a share × 18.3× = **USD74.12**.
+| Input | Value |
+| --- | ---: |
+| Risk-free rate | 4% |
+| Beta | 0.9 |
+| Equity risk premium | 5% |
+| $D_1$ / $D_2$ | 1.00 / 1.06 |
+| Growth from year 3 | 5% |
+
+**Step 1. Required return (CAPM).**
+
+$$
+r=4\%+0.9\times 5\%=8.5\%
+$$
+
+**Step 2. Price at the end of year 2.**
+
+$$
+\begin{aligned}
+D_3&=1.06\times 1.05\approx 1.11\\
+P_2&=\frac{1.11}{0.085-0.05}=31.71
+\end{aligned}
+$$
+
+**Step 3. Value today.**
+
+$$
+\begin{aligned}
+V_0&=\frac{1.00}{1.085}+\frac{1.06+31.71}{1.085^2}\\
+&=0.92+27.84=28.76
+\end{aligned}
+$$
+
+The value is **USD28.76** a share.
+
+#### Example: REIT C Three-Stage DDM
+
+$r$ = 8%; $D_1$ = 4.00; growth is 4.5% in years 2–3, then 4%.
+
+**Step 1. Dividends.**
+
+$$
+\begin{aligned}
+D_2&=4.00\times 1.045=4.18\\
+D_3&=4.18\times 1.045=4.37\\
+D_4&=4.37\times 1.04=4.54
+\end{aligned}
+$$
+
+**Step 2. Price at the end of year 3.**
+
+$$
+P_3=\frac{4.54}{0.08-0.04}=113.57
+$$
+
+(113.57 uses the unrounded $D_4$ of 4.543.)
+
+**Step 3. Value today.**
+
+$$
+\begin{aligned}
+V_0={}&\frac{4.00}{1.08}+\frac{4.18}{1.08^2}\\
+&+\frac{4.37+113.57}{1.08^3}\\
+={}&3.704+3.584+93.625\\
+={}&100.91
+\end{aligned}
+$$
+
+The value is **USD100.91** a share.
+
+#### Example: Values from P/FFO and P/AFFO
+
+$$
+\begin{aligned}
+V&=\frac{FFO}{\text{Shares}}\times\text{Peer }P/FFO\\
+V&=\frac{AFFO}{\text{Shares}}\times\text{Peer }P/AFFO
+\end{aligned}
+$$
+
+**REIT B (P/FFO).** FFO is 290,612 on 67,900 shares; the subsector trades at 13.5×.
+
+$$
+\begin{aligned}
+FFO/\text{share}&=\frac{290{,}612}{67{,}900}=4.28\\
+V&=4.28\times 13.5=57.78
+\end{aligned}
+$$
+
+**REIT A (P/AFFO).** FFO is 316,965, non-cash rent 25,991 and recurring capex 63,769, on 56,100 shares; the multiple is 18.3×.
+
+$$
+\begin{aligned}
+AFFO&=316{,}965-25{,}991\\
+&\quad-63{,}769=227{,}205\\
+AFFO/\text{share}&=\frac{227{,}205}{56{,}100}=4.05\\
+V&=4.05\times 18.3=74.12
+\end{aligned}
+$$
+
+REIT B is worth **USD57.78** a share and REIT A **USD74.12**.
 
 ## Mini-Case: Capitol Shopping Center REIT
 

@@ -92,13 +92,22 @@ Taxonomies combine (1) instruments, (2) trading philosophy (systematic vs discre
 * Leverage: **high** (up to 300% long vs 300% short with portfolio margining). Key risk: the prime broker forces **downsizing** after a large drawdown; tail risk in stress (quant pairs can effectively be short volatility).
 * Vehicle: **LP** (the leverage exceeds mutual fund limits).
 
-**Example (pairs trade).** Long USD1,000,000 of Coca-Cola (beta 0.55), short PepsiCo (beta 0.65) with equal beta-weighted exposure:
-
 $$
-\text{Short PEP}=\frac{1{,}000{,}000}{0.65/0.55}=846{,}154
+\text{Short}=\text{Long}\times\frac{\beta_{\text{long}}}{\beta_{\text{short}}}
 $$
 
-Index weights don't matter.
+#### Example: Coca-Cola / PepsiCo Pairs Trade
+
+Long USD1,000,000 of Coca-Cola (beta 0.55); short PepsiCo (beta 0.65) so that the beta-weighted exposures are equal.
+
+$$
+\begin{aligned}
+\text{Short}&=\frac{1{,}000{,}000\times 0.55}{0.65}\\
+&=846{,}154
+\end{aligned}
+$$
+
+Short **USD846,154** of PepsiCo: each leg then carries 550,000 of beta exposure, so the net beta is zero. Index weights don't matter.
 
 ## Event-Driven Strategies
 
@@ -116,11 +125,43 @@ These profit from corporate events (M&A, bankruptcy, issuance, buybacks, restruc
 * Leverage: **moderate to high, 3–5×**. Vehicle: mostly LPs; some low-leverage liquid alts exist.
 * Attraction: a high Sharpe ratio (low double-digit return, mid-single-digit volatility), with left-tail risk.
 
-**Example.** Acquirer A, trading at USD45, offers 1 A share for 2 target T shares; T jumps from USD15 to USD19, and A falls to USD42. Buy 20,000 T (USD380,000) and short 10,000 A (+USD420,000).
+#### Example: Stock-for-Stock Merger Arbitrage
 
-* The deal closes: net spread **+USD40,000**.
-* The deal fails (prices revert): the A short loses 420,000 − 450,000 = −30,000; the T long loses 300,000 − 380,000 = −80,000 → **−USD110,000**.
-* So the position = a riskless bond paying USD40,000 + a short binary put paying out USD110,000 if the deal fails.
+Acquirer A offers 1 A share for every 2 target (T) shares.
+
+| | Before | After the announcement |
+| --- | ---: | ---: |
+| A share price | USD45 | USD42 |
+| T share price | USD15 | USD19 |
+
+**Step 1. Set up the position** in the offer ratio: buy 20,000 T and short 10,000 A.
+
+$$
+\begin{aligned}
+\text{Long T}&=20{,}000\times 19=380{,}000\\
+\text{Short A}&=10{,}000\times 42=420{,}000
+\end{aligned}
+$$
+
+**Step 2. The deal closes.** The 20,000 T shares become the 10,000 A shares that close the short:
+
+$$
+\text{Profit}=420{,}000-380{,}000=40{,}000
+$$
+
+**Step 3. The deal fails**, and prices revert to USD45 and USD15:
+
+$$
+\begin{aligned}
+\text{A short}&=420{,}000-450{,}000\\
+&=-30{,}000\\
+\text{T long}&=300{,}000-380{,}000\\
+&=-80{,}000\\
+\text{Total}&=-110{,}000
+\end{aligned}
+$$
+
+The position is a riskless bond paying **USD40,000** plus a short binary put that loses **USD110,000** if the deal fails.
 
 ### Distressed Securities
 
@@ -145,7 +186,23 @@ These exploit relative mispricing driven by credit quality, liquidity and implie
 * Leverage: **high**, typically **4–5×** (up to 12–15× in some multi-strategy funds), through repo with **haircuts**; available leverage falls as product complexity rises.
 * Liquidity: US government curve trades are very liquid but have the fewest mispricings; liquidity falls in other sovereigns, mortgages and especially corporates.
 
-**Example (TIPS vs Treasuries in distress).** Buy 5-year TIPS (receive 3.74% + inflation), short 5-year Treasuries (pay 2.56%), and enter an inflation swap (receive 1.36% fixed, pay inflation) → net **receive 2.54%**, at zero net cost. Nearly risk-free, but it needs repo access to borrow the Treasuries and bank credit lines for the swap (both shrink in crises), and the borrowed bonds could be recalled.
+#### Example: TIPS vs Treasuries in Distress
+
+| Leg (5-year) | Receive | Pay |
+| --- | --- | --- |
+| Buy TIPS | 3.74% + inflation | |
+| Short Treasuries | | 2.56% |
+| Inflation swap | 1.36% fixed | Inflation |
+
+$$
+\begin{aligned}
+\text{Net}={}&(3.74\%+i)-2.56\%\\
+&+(1.36\%-i)\\
+={}&2.54\%
+\end{aligned}
+$$
+
+Inflation cancels, so the trade **receives 2.54%** at zero net cost. It is nearly risk-free, but it needs repo access to borrow the Treasuries and bank credit lines for the swap (both shrink in crises), and the borrowed bonds could be recalled.
 
 ### Convertible Bond Arbitrage
 
@@ -157,7 +214,32 @@ These exploit relative mispricing driven by credit quality, liquidity and implie
 * Works best with **heavy issuance, moderate volatility and ample liquidity**; does poorly in credit stress and illiquidity (hedge funds are the natural market makers, and face redemptions → left-tail risk).
 * Leverage: **high**, typically **300% long vs 200% short** (the short is delta-adjusted).
 
-**Example (QXR).** The convertible trades at 120% of par = €1,200, with a conversion ratio of 50 → conversion price **€24**, vs a share price of €30 (the stock is also 50% rich on P/E, P/BV and P/CF) → buy the convertible, short the shares.
+$$
+\text{Conversion price}=\frac{\text{Bond price}}{\text{Conv. ratio}}
+$$
+
+#### Example: QXR Convertible Arbitrage
+
+| Input | Value |
+| --- | ---: |
+| Convertible price | 120% of €1,000 par = €1,200 |
+| Conversion ratio | 50 shares |
+| Share price | €30 |
+| Coupon | €50 a year |
+| Dividend | €1 a share |
+| Cost to borrow shares | €2 a share |
+
+The stock is also about 50% rich on P/E, P/BV and P/CF.
+
+**Step 1. Conversion price.**
+
+$$
+\frac{1{,}200}{50}=24<30
+$$
+
+The convertible buys the stock at €24, so buy the convertible and short the shares.
+
+**Step 2. Hedged payoff** per share, whatever the share price:
 
 | QXR share price | Long stock via the convertible | Short stock | Total |
 | --- | --- | --- | --- |
@@ -165,7 +247,13 @@ These exploit relative mispricing driven by credit quality, liquidity and implie
 | 30 | +6 | 0 | **+6** |
 | 36 | +12 | −6 | **+6** |
 
-Adding carry: borrowing cost €2 + dividend paid €1 = −€3 per share; coupon €50 ÷ 50 shares = +€1 → profit **€4 per share**.
+**Step 3. Add carry.** The coupon is €50 ÷ 50 shares = €1 a share; borrowing costs €2 and the dividend owed on the short €1.
+
+$$
+\text{Profit}=6+1-2-1=4
+$$
+
+The trade earns about **€4 a share**.
 
 ## Opportunistic Strategies
 
@@ -228,31 +316,63 @@ There are three ways to combine strategies: build your own mix, a **fund-of-fund
 * Process: source managers (databases, capital introduction events) → strategic allocation → screen peer groups, interviews, AIMA due diligence questionnaires, on-site visits → operational due diligence (offering memorandum, LPA, service providers) → monitor style drift, personnel and regulatory issues.
 * Disadvantages: a **double layer of fees** (historically 1%/10% on top of 1%–2%/10%–20%; now often 50 bp/5% or 1% flat); less transparency; **netting risk**; an extra principal–agent layer; a liquidity mismatch (the fund-of-funds offers monthly or quarterly liquidity after a 1-year lock-up, while underlying funds may gate) → stagger investments, and keep a credit line as backstop.
 
-**Example (Squaw Valley fund-of-funds, 1%/10% on two funds charging 2%/20%; fees at year-end; no compounding).** Both funds earn 20% gross:
-
 $$
 \begin{aligned}
-\text{Underlying net}&=20\%-2\%\\
-&\quad-20\%(20\%-2\%)\\
-&=14.4\%
+\text{Net}={}&\text{Gross}-\text{MF}\\
+&-\text{IF}\times(\text{Gross}-\text{MF})
 \end{aligned}
 $$
 
+where MF is the management fee and IF the incentive fee rate (no incentive fee on a loss).
+
+#### Example: Squaw Valley Fund-of-Funds Fees
+
+Squaw Valley charges 1%/10% and invests equally in two funds that each charge 2%/20%. Fees are charged at year-end, with no compounding.
+
+**Step 1. Both funds earn 20% gross.**
+
 $$
 \begin{aligned}
+\text{Fund net}&=20\%-2\%\\
+&\quad-20\%(20\%-2\%)\\
+&=14.4\%\\
 \text{FoF net}&=14.4\%-1\%\\
 &\quad-10\%(14.4\%-1\%)\\
 &=12.06\%
 \end{aligned}
 $$
 
-Fees take (2 + 3.6 + 1 + 1.34)/20 = **39.7%** of the gross return.
+$$
+\begin{aligned}
+\text{Fees}&=2+3.6+1+1.34=7.94\\
+\text{Share}&=\frac{7.94}{20}=39.7\%
+\end{aligned}
+$$
 
-If one fund earns 20% and the other loses 5%:
+**Step 2. One fund earns 20%, the other loses 5%.** The loser pays no incentive fee.
 
-* The winner nets 14.4%; the loser nets −5% − 2% − 0 = −7.0%; the fund-of-funds gross return = 0.5 × 14.4% + 0.5 × (−7.0%) = 3.7%.
-* Fund-of-funds net = 3.7% − 1% − 10% × (3.7% − 1%) = **2.43%**.
-* Fees take {0.5 × (2 + 3.6 + 2 + 0) + (1 + 0.27)}/7.5 = **67.6%** of the 7.5% gross return → **netting risk**.
+$$
+\begin{aligned}
+\text{Loser net}&=-5\%-2\%=-7\%\\
+\text{FoF gross}&=0.5(14.4\%)+0.5(-7\%)\\
+&=3.7\%\\
+\text{FoF net}&=3.7\%-1\%\\
+&\quad-10\%(3.7\%-1\%)\\
+&=2.43\%
+\end{aligned}
+$$
+
+**Step 3. Fee share.** The funds' gross return is 0.5 × 20% + 0.5 × (−5%) = 7.5%:
+
+$$
+\begin{aligned}
+\text{Fees}&=0.5(2+3.6)+0.5(2)\\
+&\quad+1+0.27=5.07\\
+\text{Share}&=\frac{5.07}{7.5}=67.6\%
+\end{aligned}
+$$
+
+Fees take **39.7%** of gross returns when both funds win, but **67.6%** when one loses: that jump is **netting risk**.
 
 > [!IMPORTANT]
 > Incentive fees are charged on gains **after** the management fee. A losing fund pays no incentive fee, but the winning fund's incentive fee is still paid, so the fund-of-funds investor pays fees on gains that are offset elsewhere.
@@ -328,7 +448,29 @@ $$
 * Multi-strategy funds beat funds-of-funds (mean 7.85% TASS, 8.52% CISDM), though Rho above 20% signals less liquid holdings → gates.
 * Funds-of-funds (except macro or systematic) have positive equity betas (0.14–0.33), and multi-manager funds as a group show **no crisis hedging** (no significantly negative DSNP500): diversifying across hedge fund strategies didn't reduce risk in 2007–09. Many equity funds-of-funds turned significantly negative on VIX (60%) and USD in crises.
 
-**Example (BAM short-biased fund).** SNP500 −0.572 (significant); VIX −0.164 (significant → **short volatility**, perhaps from selling puts); DSNP500 +0.236 → crisis equity beta = −0.572 + 0.236 = **−0.336**: still short, but **less** short in crises (taking profits on shorts into weakness). The desired crisis profile: equity beta falls (negative DSNP500) and volatility exposure turns positive (positive DVIX).
+#### Example: BAM Short-Biased Fund
+
+| Factor | Coefficient | Significant? |
+| --- | ---: | --- |
+| SNP500 (normal) | −0.572 | Yes |
+| VIX (normal) | −0.164 | Yes |
+| DSNP500 (extra in crises) | +0.236 | |
+
+**Step 1. Crisis equity beta.**
+
+$$
+\begin{aligned}
+\beta_{\text{crisis}}&=-0.572+0.236\\
+&=-0.336
+\end{aligned}
+$$
+
+**Step 2. Read the exposures.**
+
+* The negative VIX coefficient means the fund is **short volatility** in normal times, perhaps from selling puts.
+* In crises it stays short equities, but **less** short (taking profits on shorts into weakness).
+
+The crisis equity beta is **−0.336**. The desired crisis profile is the reverse: equity beta falls (negative DSNP500) and volatility exposure turns positive (positive DVIX).
 
 ## Adding Hedge Funds to a Portfolio
 

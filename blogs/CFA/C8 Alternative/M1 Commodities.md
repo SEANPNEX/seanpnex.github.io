@@ -167,12 +167,74 @@ $$
 
 * **Collateral return** (collateral yield): interest on the cash or bonds backing the position. For indexes, collateral = notional (no leverage), usually in T-bills; for long-horizon forecasts, use a government bond of matching term.
 
-**Examples.**
+#### Example: WTI Roll in the S&P GSCI
 
-* **WTI roll** (the S&P GSCI rolls over five days, 20% a day): March USD52.64, April USD53.00 → gross roll return (52.64 − 53.00)/52.64 = −0.68%; × 20% = **−0.13%** net (contango).
-* **Total return**: price return 5%, roll return 2.5%, collateral 100% at 2% → 5% + 2.5% + 2% = **9.5%**.
-* **Rolling to keep the same exposure**: USD10,000 long, near contract at USD4.00, far at USD2.50 → sell 10,000/4.00 = 2,500 near contracts and buy 10,000/2.50 = 4,000 far contracts.
-* **Backwardation**: near USD80.00, far USD78.40, 100% rolled; price return +4% over the year; T-bills 3% on full collateral → roll return (80.00 − 78.40)/80.00 = **+2.0%**; total return 4% + 2% + 3% = **9%**.
+The S&P GSCI rolls over five days, moving 20% of the position each day.
+
+| Contract | Price |
+| --- | ---: |
+| Near (March) | USD52.64 |
+| Far (April) | USD53.00 |
+
+**Step 1. Gross roll return.**
+
+$$
+\begin{aligned}
+\text{Gross}&=\frac{52.64-53.00}{52.64}\\
+&=-0.68\%
+\end{aligned}
+$$
+
+**Step 2. Scale by the share rolled.**
+
+$$
+\text{Net}=-0.68\%\times 20\%=-0.13\%
+$$
+
+The far contract is dearer (contango), so each day's roll **costs 0.13%**.
+
+#### Example: Total Return in Backwardation
+
+| Input | Value |
+| --- | ---: |
+| Near contract | USD80.00 |
+| Far contract | USD78.40 |
+| Share rolled | 100% |
+| Price return over the year | +4% |
+| Collateral (full, in T-bills) | 3% |
+
+**Step 1. Roll return.**
+
+$$
+\begin{aligned}
+\text{Roll}&=\frac{80.00-78.40}{80.00}\times 100\%\\
+&=2.0\%
+\end{aligned}
+$$
+
+**Step 2. Total return.**
+
+$$
+\begin{aligned}
+\text{Total}&=4\%+2\%+3\%\\
+&=9\%
+\end{aligned}
+$$
+
+The far contract is cheaper (backwardation), so the roll **adds** 2%, and the total return is **9%**.
+
+#### Example: Rolling to Keep the Same Exposure
+
+A USD10,000 long position; the near contract is at USD4.00 and the far one at USD2.50.
+
+$$
+\begin{aligned}
+\text{Near sold}&=\frac{10{,}000}{4.00}=2{,}500\\
+\text{Far bought}&=\frac{10{,}000}{2.50}=4{,}000
+\end{aligned}
+$$
+
+The far contract is cheaper (backwardation), so it takes **more** contracts (4,000 vs 2,500) to keep USD10,000 of exposure.
 
 | Curve | Far vs near | To keep the same exposure | Roll return |
 | --- | --- | --- | --- |
@@ -212,10 +274,53 @@ A **commodity swap** exchanges payments on several dates, based on commodity ref
 | **Variance swap** | Realized vs fixed variance; the buyer receives if realized exceeds fixed (often capped) | Volatility traders |
 | **Volatility swap** | Realized vs expected volatility; the seller profits if realized is below expected | Volatility traders |
 
-**Examples.**
+$$
+\begin{aligned}
+\text{TRS payment}&=\text{Notional}\\
+&\quad\times\text{Index return}\\
+\text{Call-style ERS}&=\max(0,\ P-\text{Strike})
+\end{aligned}
+$$
 
-* **Excess return swap**: a refiner goes long a swap paying the amount above USD70 a barrel at each month-end, January to September, for a USD25 premium (effectively a strip of calls). Monthly prices 70, 75, 71, 66, 65, 63, 66, 72, 78 → payoffs 5 + 1 + 2 + 8 = USD16 → net −USD9 (about USD1 a barrel a month), but the refiner was protected from a price spike and knew its cost up front.
-* **Total return swap**: USD100 million notional, monthly reset. The index rises 3% → the dealer pays the manager **USD3 million**; it falls 2% → the manager pays the dealer **USD2 million**. Payments are periodic, not deferred to maturity.
+where TRS is a total return swap and ERS an excess return swap structured as a strip of calls (payoff per unit on each settlement date).
+
+#### Example: Refiner's Excess Return Swap
+
+A refiner goes long a swap that pays the amount by which oil exceeds USD70 a barrel at each month-end, January to September, for a premium of USD25 a barrel.
+
+| Month | Price | Payoff |
+| --- | ---: | ---: |
+| Jan | 70 | 0 |
+| Feb | 75 | 5 |
+| Mar | 71 | 1 |
+| Apr | 66 | 0 |
+| May | 65 | 0 |
+| Jun | 63 | 0 |
+| Jul | 66 | 0 |
+| Aug | 72 | 2 |
+| Sep | 78 | 8 |
+
+**Step 1. Net result.**
+
+$$
+\begin{aligned}
+\text{Payoffs}&=5+1+2+8=16\\
+\text{Net}&=16-25=-9
+\end{aligned}
+$$
+
+The refiner lost **USD9 a barrel** (about USD1 a month), but it was protected from a price spike and knew its cost up front.
+
+#### Example: Total Return Swap
+
+USD100 million notional, reset monthly.
+
+| Index move | Payment |
+| --- | --- |
+| +3% | Dealer pays the manager $0.03\times 100\text{m}=$ **USD3 million** |
+| −2% | Manager pays the dealer $0.02\times 100\text{m}=$ **USD2 million** |
+
+Payments are made each month, not deferred to maturity.
 
 ## Commodity Indexes
 
