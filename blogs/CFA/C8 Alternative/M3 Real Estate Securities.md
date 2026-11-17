@@ -195,7 +195,6 @@ $$
 
 **Examples (other methods).**
 
-* NAV (REIT A): cash NOI 350,000 ÷ 0.07 = 5,000,000, + cash and receivables 514,500, − debt and liabilities 2,014,000 = 3,500,500, ÷ 56,100 shares = **USD62.40**.
 * P/FFO (REIT B): FFO per share 290,612/67,900 = 4.28 × the subsector's 13.5× = **USD57.78**.
 * P/AFFO (REIT A): AFFO = 316,965 − 25,991 − 63,769 = 227,205 → USD4.05 a share × 18.3× = **USD74.12**.
 

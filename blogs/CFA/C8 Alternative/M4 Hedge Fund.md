@@ -80,9 +80,8 @@ Taxonomies combine (1) instruments, (2) trading philosophy (systematic vs discre
 * Targets: failing business models, fraudulent accounting, mismanagement, weak governance, excess leverage, single unproven products. Tools: CDS and bond spreads, put implied volatility, technicals, the **Altman Z-score** (bankruptcy) and the **Beneish M-score** (earnings manipulation).
 * Difficulties: borrowing costs and recall risk; losing positions **grow** (the opposite of longs); management may block access; regulation (the US alternative uptick rule after a 10% fall; short-sale bans in the GFC).
 * A lower return goal than other strategies, but **negatively correlated** with markets; more volatile than long/short equity; returns historically lumpy and disappointing.
+* When short interest and borrowing costs are high, a squeeze is a risk: express the bearish view with puts or a short risk reversal instead of a short sale.
 * Leverage: **low** (there's enough natural volatility). Vehicle: best as an **LP** (operationally complex). Benchmark: few managers; compare with the inverse of stock index returns.
-
-**Example (Generic Inc.).** Overvalued (P/E and P/B 50% and 40% above the industry; EPS growth 3% vs 18% for the industry), but with short interest of 60% and a 20% borrowing cost, there's **short-squeeze** risk before trial results. So don't short the stock. Instead: buy puts; a long put calendar spread; buy shares and lend them out at 20%, with protective puts; or a short risk reversal (sell expensive OTM calls, buy OTM puts).
 
 ### Equity Market Neutral
 
@@ -180,8 +179,6 @@ Top-down and multi-asset. Classified by analysis (fundamental vs technical), imp
 * Returns come from correctly anticipating **trends**; low-volatility, **mean-reverting** markets are its bane (the QE era). Lumpy returns, higher volatility.
 * Leverage: high, through derivatives: a margin-to-equity ratio of **15%–25%** controls **6–7×** the fund's assets. Many positions diversify less than in long/short equity, because "risk-on/risk-off" makes assets move together.
 
-**Example (emerging-market devaluation risk).** Buy puts on EM currencies, EM government bond futures and EM equity indexes (in the money for high conviction, out of the money for lower; the loss is capped at the premiums), plus calls on developed-market reserve currencies and highly rated DM bond futures (a flight to safety).
-
 ### Managed Futures
 
 * Futures, options on futures, forwards and swaps on indexes, rates, commodities and currencies (some exotic: weather, carbon).
@@ -200,8 +197,6 @@ Top-down and multi-asset. Classified by analysis (fundamental vs technical), imp
 | Volatility | High end of hedge funds; cyclical | High end; rises with the time horizon |
 | Leverage | High; options add convexity | High; 6–7× notional with 10%–20% margin-to-equity |
 
-**Example (precious metals, 6-month signals).** CSM goes long the top two and short the bottom two of four metals (roughly hedged, less volatile). TSM goes long those with positive and short those with negative trailing returns (possibly all long or all short) → more volatile, more sensitive to sector trends.
-
 ## Specialist Strategies
 
 ### Volatility Trading
@@ -216,14 +211,10 @@ Top-down and multi-asset. Classified by analysis (fundamental vs technical), imp
 * Long volatility is **convex** (a right-skewed payoff: a small premium for potential multiples), but suffers roll-down and premium bleed.
 * Leverage: notionally levered, but asymmetric. Hard to benchmark (CBOE Eurekahedge long, short, relative value and tail risk volatility indexes).
 
-**Example (long OTM puts).** Puts bought for USD100 (12% implied volatility) fall to USD50 three months later as the index rallies 20%. After a crisis (the index 10% below its starting level, the puts now at the money, implied volatility 30%), they show a large gain. If the market then moves sideways, time decay erodes the premium to zero unless the manager actively delta-hedges.
-
 ### Reinsurance and Life Settlements
 
 * **Life settlements**: buy life insurance policies from their holders (through brokers) for more than the surrender value; the fund pays the ongoing premiums and receives the death benefit. Look for (1) a low surrender value offered, (2) low ongoing premiums and (3) a high probability that the insured dies earlier than standard actuarial estimates. It succeeds when PV(death benefit) > PV(lump sum + premiums). It needs biometric and actuarial expertise, and returns are **uncorrelated** with financial markets.
 * **Catastrophe reinsurance**: provide capital to reinsurers against floods, hurricanes and earthquakes. Needs geographic and policy diversity, a loss reserve buffer and enough premium income; uses cat bonds and cat futures (issued seasonally before the hurricane season).
-
-**Example (SingStar).** A pool of NextLife policies (low premiums, weak underwriting) on people with early-onset Alzheimer's (life expectancy about 10 years shorter) → forecast premium outflows and the timing of death benefits, discount at a risk-adjusted rate, and bid below the PV.
 
 ## Multi-Manager Strategies
 
@@ -337,9 +328,7 @@ $$
 * Multi-strategy funds beat funds-of-funds (mean 7.85% TASS, 8.52% CISDM), though Rho above 20% signals less liquid holdings → gates.
 * Funds-of-funds (except macro or systematic) have positive equity betas (0.14–0.33), and multi-manager funds as a group show **no crisis hedging** (no significantly negative DSNP500): diversifying across hedge fund strategies didn't reduce risk in 2007–09. Many equity funds-of-funds turned significantly negative on VIX (60%) and USD in crises.
 
-**Example (BAM short-biased fund).** SNP500 −0.572 (significant); VIX −0.164 (significant → **short volatility**, perhaps from selling puts); DSNP500 +0.236 → crisis equity beta = −0.572 + 0.236 = **−0.336**: still short, but **less** short in crises (taking profits on shorts into weakness).
-
-**Example (reading crisis exposures).** A fund has SNP500 beta 0.45, DSNP500 −0.30, VIX −0.10, DVIX +0.15. In normal times it is long equity and short volatility. In a crisis, its equity beta is 0.45 − 0.30 = 0.15 (de-risked) and its VIX exposure −0.10 + 0.15 = +0.05 (now long volatility): the desired crisis profile.
+**Example (BAM short-biased fund).** SNP500 −0.572 (significant); VIX −0.164 (significant → **short volatility**, perhaps from selling puts); DSNP500 +0.236 → crisis equity beta = −0.572 + 0.236 = **−0.336**: still short, but **less** short in crises (taking profits on shorts into weakness). The desired crisis profile: equity beta falls (negative DSNP500) and volatility exposure turns positive (positive DVIX).
 
 ## Adding Hedge Funds to a Portfolio
 
@@ -356,19 +345,6 @@ Add a **20%** allocation (equal-weighted funds in one category) to a **60/40** p
 
 > [!IMPORTANT]
 > The Sharpe ratio uses total volatility (penalizing upside and downside alike); the **Sortino** ratio uses downside deviation, so it's better for strategies with large negative events. Maximum drawdown is the largest fall from a high-water mark to a later low.
-
-**Example (Evergreen endowment: maximize risk-adjusted return, limit downside, keep liquidity, avoid layered fees).**
-
-| 48/32/20 with | Mean | Volatility | Sharpe | Sortino | Max drawdown |
-| --- | --- | --- | --- | --- | --- |
-| 60/40 alone | 6.96 | 8.66 | 0.62 | 1.13 | 14.42 |
-| US small-cap long/short | 7.53 | 8.75 | 0.68 | 1.23 | 27.02 |
-| Event-driven | 7.19 | 7.83 | 0.71 | 1.31 | 20.57 |
-| Sovereign debt fixed-income arbitrage | 7.50 | 7.82 | **0.75** | **1.39** | **12.68** |
-| Equity fund-of-funds | 6.39 | 7.76 | 0.62 | 1.11 | 21.63 |
-
-* **Least suitable: the equity fund-of-funds** (no Sharpe or Sortino gain, a 50% larger drawdown, two layers of lock-ups and fees, netting risk).
-* **Most suitable: sovereign debt fixed-income arbitrage** (the highest Sharpe and Sortino ratios, the smallest drawdown, liquid sovereigns, one layer of fees).
 
 > [!NOTE]
 >

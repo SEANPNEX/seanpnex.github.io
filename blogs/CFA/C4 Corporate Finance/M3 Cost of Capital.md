@@ -113,32 +113,6 @@ Top-down factors are systematic and show up in the **risk-free rate and ERP**; b
 * A **put** or **conversion** option benefits the investor, so the yield at issue is lower, though the cost may rise later (refinancing at higher rates after a put; dilution after conversion).
 * **Cumulative** preferred: missed dividends must be paid before any common dividend, so investors accept a lower return than on non-cumulative preferred.
 
-#### Example: Two Countries
-
-| Factor | Country A | Country B |
-| --- | --- | --- |
-| Credit spreads | Wide | Narrow |
-| Rate volatility and inflation | High | Low |
-| Capital availability | Low | High |
-| Tax rate | 15% | 25% |
-| **Cost of capital** | Higher | **Lower** |
-
-Raising A's tax rate from 15% to 25% would lower its after-tax cost of debt, **if** interest is deductible and the company has taxable income.
-
-#### Example: Two Companies
-
-| Factor | Company 1 | Company 2 | Lower cost |
-| --- | ---: | ---: | --- |
-| Cash and securities / assets | 20% | 17% | 1 |
-| Intangibles / assets | 10% | 24% | 1 |
-| PP&E / assets | 46% | 29% | 1 |
-| Net debt/EBITDA | 2.1 | 2.5 | 1 |
-| Interest coverage | 12.6 | 7.9 | 1 |
-| Top-5 customers' share of sales | 15% | 27% | 1 |
-| Debt feature | Putable | Callable | 1 |
-
-Both have low operating leverage. **Company 1** has the lower cost of capital on every count.
-
 #### Exam traps
 
 * A higher tax rate **lowers** WACC only through the debt tax shield; with no deductibility or no taxable income, there's no effect.
@@ -172,14 +146,7 @@ The method depends on the type of debt (traded, non-traded, bank, lease), its li
 
 $$IC=\frac{EBIT}{\text{Interest}}\qquad D/E=\frac{\text{Debt}}{\text{Equity}}$$
 
-#### Example: Gamma Company
-
-| Ratio | Gamma | Implied rating |
-| --- | ---: | --- |
-| Interest coverage | 1.5 | **B** (1.4 < IC < 2) |
-| D/E | 43% | **BBB** (42% < D/E < 44%) |
-
-The ratios conflict, so use judgment and look at their **trend**: e.g., a rising IC could justify BB.
+If the two ratios imply different ratings (e.g., IC 1.5 → B but D/E 43% → BBB), use judgment and look at their **trend**.
 
 * **Bank loans**: use the rate on the most recent borrowing, if market conditions and the company's risk haven't changed materially since. Loans can be fixed or floating, and fully, partly or non-amortizing. **Amortizing** loans usually cost less than bullet loans, because principal is repaid over the term (lower default risk).
 * **Leases**: a **finance lease** is like an amortizing secured loan, so it usually costs less than unsecured borrowing (operating leases are expensed). Under IFRS 16 / ASC 842, the **rate implicit in the lease** (RIIL) solves:
@@ -289,18 +256,6 @@ With a normal upward-sloping yield curve, a bill-based ERP is **higher** than a 
 
 **Limitations.** The ERP can vary over time (a permanent shift makes long histories unrepresentative), and **survivorship bias** inflates historical estimates (failed companies drop out of the index, and back-filled index histories do the same).
 
-#### Example: Smith vs Müller
-
-| Choice | Smith | Müller |
-| --- | --- | --- |
-| Equity index | Russell 3000 | S&P 500 |
-| Period | 35 years | 65 years |
-| Risk-free proxy | 30-year T-bond | 3-month T-bill |
-| Mean | Arithmetic | Geometric |
-| **ERP** | $12.96\%-6.25\%=$ **6.71%** | $11.23\%-3.11\%=$ **8.12%** |
-
-Both can be valid: they made different choices.
-
 ### Forward-Looking Approach
 
 Forward-looking estimates use only expectations for the variables that drive future cash flows, so they suffer less from non-stationarity and data biases.
@@ -385,40 +340,11 @@ $$i=\frac{1.023}{1.0066}-1=1.6\%$$
 * Higher expected inflation has **no effect** on the ERP ($i$ and $r_f$ rise together).
 * Lower expected income (DY) makes the ERP **fall**.
 
-#### Example: Same Market, Two Methods
-
-$$
-\begin{aligned}
-ERP_{\text{hist}}&=9.96\%-3.15\%=6.81\%\\
-ERP_{\text{GK}}&=1.8-1.2+(1.9+2.7-0)\\
-&\quad-0.96=4.24\%
-\end{aligned}
-$$
-
 **Limitations of forward-looking estimates:**
 
 * **Surveys**: sampling and response bias; behavioral biases (**recency**, **confirmation**).
 * **DDM**: assumes a constant P/E; needs adjusting when earnings, dividends and prices grow at different rates.
 * **Macro models**: errors in macro data; behavioral biases in forecasting.
-
-#### Example: A New Market with 20 Years of History
-
-| Issue | Bias in the estimate |
-| --- | --- |
-| Index returns back-filled for 4 years before launch, from the surviving members | Historical ERP **up** (survivorship) |
-| A 5-year border conflict that depressed returns and won't recur | Historical ERP **down** |
-| Inverted curve (short rate 9%, 10-year 7%); required return built on the short rate | Required return **up** |
-
-**Grinold–Kroner instead.** Use the long-term inflation forecast and the 10-year yield: $i$ = 4%, $g$ = 4%, $\Delta(P/E)$ = 1%, DY = 1%, $\Delta S$ = 0, $r_f$ = 7%.
-
-$$
-\begin{aligned}
-ERP&=1+1+(4+4-0)-7\\
-&=3.0\%
-\end{aligned}
-$$
-
-So average-risk stocks require at least 7% + (2% to 3%) = **9% or more**.
 
 #### Exam traps
 
@@ -473,15 +399,6 @@ where $r_d$ is usually the YTM on the company's **long-term** debt, and $RP$ is 
 * The premium is fairly arbitrary and may not be stable over time.
 * It needs traded debt; if there are several bonds with different features, there's no rule on which yield to use (common practice: the long-term bond).
 
-#### Example: BYPRP
-
-$$
-\begin{aligned}
-r_e&=\underbrace{4.3\%}_{\text{bond yield}}+\underbrace{6.1\%}_{\text{premium}}\\
-&=10.40\%
-\end{aligned}
-$$
-
 ### CAPM
 
 $$
@@ -526,19 +443,6 @@ The betas come from regressing the company's excess returns on the factors. The 
 | RMW | 2.0% | 0.5 | 1.00% |
 | CMA | 1.0% | 0.2 | 0.20% |
 | **$r_e$** | | | **12.2%** |
-
-#### Example: Three-Factor Model with an Intercept
-
-$r_f$ = 2%; the intercept is 0.3%.
-
-$$
-\begin{aligned}
-r_e-r_f={}&0.003+1.2\times 0.05\\
-&-0.4\times 0.01+0.2\times 0.04\\
-={}&0.067\\
-r_e={}&2\%+6.7\%=8.7\%
-\end{aligned}
-$$
 
 #### Example: CAPM vs Three-Factor
 

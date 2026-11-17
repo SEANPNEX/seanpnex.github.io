@@ -58,7 +58,7 @@ $$
 * **Cash dividend**: the share price falls by the dividend, but the shareholder's wealth (share + cash) is unchanged, all else equal.
 * **Stock dividend**: more shares, same wealth. The total cost basis is unchanged, so the cost **per share** falls: 100 shares at US\$10 become 105 shares after a 5% stock dividend, at $1{,}000/105=$ **US\$9.52** each. Generally not taxable. Claimed benefits: a larger float, better liquidity, and a price in an "optimal" trading range (often US\$20–80 in the US).
 * **Split**: all per-share figures fall in proportion; P/E, dividend yield and market value are unchanged. A 2-for-1 split is economically a 100% stock dividend; only the accounting differs.
-* **Reverse split**: fewer shares at a higher price, market value unchanged. Used to bring the price into a marketable range (listing minimums; institutions avoid stocks below US\$5); most common in or after financial distress.
+* **Reverse split**: fewer shares at a higher price, market value unchanged. Used to bring the price into a marketable range (listing minimums; institutions avoid stocks below US\$5); most common in or after financial distress. E.g., Globus Maritime's 1-for-10 reverse split took the price from US\$4.25 to US\$42.50.
 
 | | Stock dividend | Stock split |
 | --- | --- | --- |
@@ -97,12 +97,6 @@ A shareholder owns 10% of a company with 1,000,000 shares, EPS of US\$1.00 and a
 | DPS | €0.50 | €0.25 |
 | Dividend yield | $0.50/40=$ **1.25%** | $0.25/20=$ **1.25%** |
 | P/E | $40/1.50=$ **26.7** | $20/0.75=$ **26.7** |
-
-#### Example: Globus Maritime 1-for-10 Reverse Split
-
-$$P_{\text{after}}=4.25\times 10=\text{US\$}42.50$$
-
-The reverse split doesn't destroy wealth by itself: market cap is unchanged.
 
 ### Effect on Financial Ratios
 
@@ -182,20 +176,10 @@ Managers know more than investors, so dividends convey information.
 * Exceptions: a cut can be positive if the cash is reinvested or the cut looks prudent (Telstra 2017; BT 2018, shares +6.9%). A first dividend can signal confidence or maturity (eBay 2019).
 * Consistent dividend raisers tend to have niche positions, less volatile earnings, high ROA and low debt.
 
-#### Examples: Signaling
-
-* **Oracle (2009)** initiated a dividend of about US\$1bn a year against US\$8bn of operating cash flow: read as a sign it could ride out the downturn.
-* **A company with poor prospects** that raises its dividend to look good must later cut it or raise costly capital: the signal is costly to fake.
-
 ### Agency Costs
 
-* **Managers vs shareholders**: dividends take free cash flow away from managers, who might overinvest in negative-NPV projects (empire building): Jensen's **free cash flow hypothesis**. The market reacts more to dividend changes where the risk of overinvestment is greater.
+* **Managers vs shareholders**: dividends take free cash flow away from managers, who might overinvest in negative-NPV projects (empire building): Jensen's **free cash flow hypothesis**. The market reacts more to dividend changes where the risk of overinvestment is greater. Utilities that pay high dividends and then issue equity accept the flotation cost in exchange for monitoring by the equity market.
 * **Shareholders vs bondholders**: large dividends move wealth to shareholders and raise default risk, which can lead to underinvestment. Bond covenants cap cumulative distributions and set coverage or leverage limits.
-
-#### Examples: Agency Costs
-
-* **Two all-equity rivals**, both with about a 35% payout: the one with weaker governance (CEO = chair) and fewer good projects is pressed to pay more, to curb **overinvestment**.
-* **Utilities** pay high dividends and then issue equity: costly, but the equity market then monitors managers and regulators.
 
 > [!IMPORTANT]
 > Dividends **reduce** the manager–shareholder agency cost (overinvestment) but **increase** the shareholder–bondholder conflict (underinvestment, default risk). Don't swap them.
@@ -222,13 +206,6 @@ Once markets are imperfect, investment, financing and dividend decisions are no 
 | **Contractual and legal restrictions** | Mandatory dividends (Brazil), impairment-of-capital rules (US, Canada), bond covenants, preferred dividends (cumulative arrears first) |
 
 Surveys show that managers set a target payout on **long-run sustainable earnings**, focus on **changes** rather than levels, and avoid increases they might have to reverse: **dividend smoothing**. Skanska made a 30% "precautionary" cut in 2019 to keep flexibility; its shares fell 9%, then rose to 7% above the pre-announcement level within two months.
-
-#### Examples: Policy Factors
-
-| Company | Facts | Decision and main factors |
-| --- | --- | --- |
-| **Boar's Head** | Operating cash flow £500m vs £800m of positive-NPV projects; debt already above average | **No dividend initiation**: investment opportunities come first, and it wouldn't issue shares just to pay dividends |
-| **Makinasi Appliances** | Expected losses, falling sales, a US\$50m bond issue and a downgrade | Cuts the quarterly dividend from US\$1.60 to US\$0.70: **earnings volatility** and **financial flexibility**, plus flotation costs |
 
 ## Tax Considerations
 
@@ -332,17 +309,6 @@ $$
 
 where Target is the target payout ratio, and $N$ is the number of years over which the dividend moves to its target, so the adjustment factor is $1/N$.
 
-#### Example: Target Payout Adjustment
-
-Last year's dividend was US\$0.40; the target payout is 50% and the adjustment factor 0.2 (5 years).
-
-| Year | EPS | Target dividend | Increase | Dividend |
-| --- | ---: | ---: | --- | ---: |
-| 1 | 1.50 | $0.50\times 1.50=0.75$ | $(0.75-0.40)\times 0.2=$ **0.07** | 0.47 |
-| 2 | 1.34 | $0.50\times 1.34=0.67$ | $(0.67-0.47)\times 0.2=$ **0.04** | 0.51 |
-
-In Year 2, EPS falls but the dividend still rises, because it is below target.
-
 #### Example: Luna Inc.
 
 Last year's dividend was US\$0.40 (a 20% payout). Expected EPS is US\$2.80, the target payout 30%, and the adjustment period 4 years.
@@ -362,12 +328,6 @@ The dividend rises to **US\$0.51**, but the payout **falls** to 18.2%: earnings 
 Pay a fixed share of earnings. It is used infrequently, because the dividend then swings with earnings.
 
 $$Div=\text{Payout ratio}\times NI$$
-
-#### Example: Pampas Fertilizer
-
-Pampas switched from a fixed ARS1.50 a quarter to 25% of quarterly earnings. In 2019:Q4, EPS was 9.32:
-
-$$DPS=0.25\times 9.32=\text{ARS}2.33$$
 
 #### Example: Same Earnings, Two Policies
 
@@ -445,7 +405,7 @@ $$
 
 where $E$ is earnings before the buyback, $C$ the after-tax cost of the funds used (interest on new debt, or interest income given up on cash), and $N_{\text{after}}$ the shares outstanding after the buyback.
 
-* **Funded with surplus cash**: assets and equity fall, so leverage rises. EPS rises only if the cash would not have earned its cost of capital (e.g., idle cash).
+* **Funded with surplus cash**: assets and equity fall, so leverage rises. The same test applies: EPS rises if the after-tax return given up on the cash is **below E/P** (e.g., idle cash), and falls if above.
 * **Funded with debt**: debt rises and equity falls, so leverage rises more. EPS **rises if the earnings yield (E/P) exceeds the after-tax cost of debt**, and falls otherwise. Note $E/P = 1/(P/E)$.
 
 #### Example: Takemiya (Surplus Cash)
@@ -470,18 +430,6 @@ Selamat has 2.2m shares at MYR60 and earnings of MYR6.6m (EPS MYR3, E/P = 3/60 =
 | ---: | --- | ---: | --- |
 | 5% | $(6.6-0.05\times 12)/2.0$ | **MYR3.00** (unchanged) | Equal |
 | 6% | $(6.6-0.06\times 12)/2.0$ | **MYR2.94** (lower) | Above E/P |
-
-#### Example: Surplus Cash That Earns Interest
-
-NI is US\$50m on 10m shares (EPS US\$5.00); at US\$50 a share, E/P is 10%. The company spends US\$100m of cash to buy back 2m shares, leaving 8m, and gives up the interest the cash was earning.
-
-| After-tax return on the cash | Interest lost | EPS after | Effect |
-| ---: | ---: | ---: | --- |
-| 4% | 4 | $46/8=$ **US\$5.75** | Up |
-| 10% | 10 | $40/8=$ **US\$5.00** | Unchanged |
-| 12% | 12 | $38/8=$ **US\$4.75** | Down |
-
-The E/P test works for cash too: EPS rises when the after-tax return given up is below E/P.
 
 > [!IMPORTANT]
 > **Higher EPS ≠ higher shareholder wealth.** The same cash could be paid as a dividend, and any capital gain may just replace the dividend given up. More leverage also raises the required return.
@@ -551,40 +499,7 @@ Repurchase announcements are followed by positive excess returns, at announcemen
 
 Raising EPS is a weak reason: the required return rises with leverage, and fewer shares don't change total free cash flow.
 
-#### Example: Deira Oasis
-
-In AED millions, debt is 30 and equity 70. Deira Oasis buys back AED7m of shares, funded by cash or by debt.
-
-| | Before | All cash | All debt |
-| --- | --- | --- | --- |
-| Debt | 30 (30%) | 30 (32%) | 37 (37%) |
-| Equity | 70 (70%) | 63 (68%) | 63 (63%) |
-| Total | 100 | 93 | 100 |
-
-Funded by cash, EPS rises, so equity is likely worth more than AED63m. Funded by debt with an after-tax cost above E/P, EPS falls, so equity is worth less than AED63m; with a downgrade, the debt's value also falls below 37, so the new weights are uncertain.
-
-#### Example: ITOCHU (2018–19)
-
-ITOCHU bought back 34,121,400 shares at an average ¥1,993, about ¥68bn, to reach an ROE of at least 13%.
-
-#### Example: Buybacks Are Pro-Cyclical
-
-| Russell 1000 | Dividends | Buybacks |
-| --- | ---: | ---: |
-| 2007 | US\$286bn | US\$680bn |
-| 4Q08–3Q09 | US\$262bn | US\$223bn |
-
-In the crisis, buybacks were cut much more than dividends: they substitute for special dividends.
-
-#### Example: Shenzhen Medical Devices
-
-After three years of buybacks, Shenzhen initiates a ¥0.40 dividend on EPS of ¥3.20, with a 25% target payout:
-
-$$\text{Payout}=\frac{0.40}{3.20}=12.5\%$$
-
-* The policy is a **stable dividend** with target payout adjustment.
-* Reading the initiation as "we are no longer a growth company" is wrong: initiations are linked to **higher** future growth.
-* A 2% stock dividend instead would not change wealth.
+Buybacks are **pro-cyclical**: Russell 1000 buybacks fell from US\$680bn (2007) to US\$223bn (4Q08–3Q09) while dividends barely moved (US\$286bn to US\$262bn). Buybacks substitute for special dividends, not regular ones.
 
 #### Exam traps
 
@@ -612,17 +527,6 @@ $$
 | = 1 | Paying out all available cash |
 | ≫ 1 | Building liquidity |
 | ≪ 1 | **Not sustainable**: running down cash; will need equity or capex cuts |
-
-#### Example: Mature European SA
-
-NI is €100m and dividends €40m.
-
-$$
-\begin{aligned}
-\text{Payout}&=\frac{40}{100}=40\%\\
-\text{Coverage}&=\frac{100}{40}=2.5\times
-\end{aligned}
-$$
 
 #### Example: Lygon Resources
 
@@ -659,4 +563,4 @@ Coverage fell to 1.06×, and FCFE coverage was below 1 in 2017–2018 (even with
 
 > [!NOTE]
 >
-> **Textbook typos.** The Rohit Chemical solution once calls the company "WCII" (it means RCII). The ITOCHU exhibit prints the average price as "1.997" for ¥1,997. The split-rate exhibit is labeled "per €100" but starts from €200 pretax (€100 retained, €100 distributed); the 48% is per €100 allocated to dividends.
+> **Textbook typos.** The Rohit Chemical solution once calls the company "WCII" (it means RCII). The split-rate exhibit is labeled "per €100" but starts from €200 pretax (€100 retained, €100 distributed); the 48% is per €100 allocated to dividends.

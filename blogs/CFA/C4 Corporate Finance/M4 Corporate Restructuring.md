@@ -72,37 +72,13 @@ A **leveraged buyout** (LBO) combines all three. The financial impact rises from
 * **Balance sheet restructuring**: change the asset mix, the capital structure, or both.
   * **Sale leaseback**: sell an asset to a lessor and immediately lease it back, often for its remaining life. It unlocks value in non-core assets, raises cash quickly (airlines during COVID-19), repays debt and can improve the credit rating. The lease cost is usually **higher** than the depreciation it replaces (the lessor earns interest): the seller swaps ownership risks for higher, less predictable operating costs.
   * **Dividend recapitalization**: borrow to pay a dividend or buy back shares, shifting from equity to cheaper debt to **lower WACC**. Works when rates are low; raises leverage, so it suits issuers with stable revenue and operating cash flow.
-* **Reorganization**: a court-supervised restructuring of an insolvent company. The court oversees negotiations with creditors (asset sales, debt-for-equity swaps, refinancing); operations and management usually continue, and the plan needs court approval. If terms are agreed with creditors before filing, approval can be fast (some have taken under 24 hours). **Liquidation** follows a failed reorganization: the court sells the assets and pays creditors from the proceeds.
-
-#### Example: Six Flags
-
-| Date | Event |
-| --- | --- |
-| 2006–07 | High fixed costs: EBIT −50% in 2006 and −34% in 2007; net debt/EBITDA about 12–13× |
-| 2008 | A cost restructuring couldn't prevent defaults |
-| June 2009 | Filed for Chapter 11 (reorganization) |
-| Emergence | Bondholders invested USD725m and swapped over USD1bn of debt for equity; net debt USD784m (under 3.0× 2010 EBITDA) |
-
-**The old shareholders lost everything.**
+* **Reorganization**: a court-supervised restructuring of an insolvent company. The court oversees negotiations with creditors (asset sales, debt-for-equity swaps, refinancing); operations and management usually continue, and the plan needs court approval. If terms are agreed with creditors before filing, approval can be fast (some have taken under 24 hours). **Liquidation** follows a failed reorganization: the court sells the assets and pays creditors from the proceeds. E.g., Six Flags (Chapter 11, 2009): bondholders swapped over USD1bn of debt for equity, and the old shareholders lost everything.
 
 **Opportunistic restructuring:** the same cost and balance sheet actions, plus changing the **business model**, e.g., **franchising**: the owner sells its assets and licenses its intellectual property to franchisees for royalties, typically a mid-single-digit % of sales (McDonald's, Kumon). The franchisor runs a lean, fixed-cost business and shifts store-level risk to franchisees.
 
 ### Leveraged Buyouts
 
-A **private equity** fund (not a company) buys a target using a lot of debt, restructures it, and aims to exit through a sale or a public listing. If the target was listed, it is a **take-private**. Returns depend on the purchase price, the leverage, the free cash flow during ownership (used to repay debt) and the exit price. The target usually exits **more levered** than before.
-
-#### Example: Hilton / Blackstone (2007)
-
-| Uses (USD bn) | | Sources (USD bn) | |
-| --- | ---: | --- | ---: |
-| Equity at USD47.50 a share | ≈ 20 | New borrowing | 14.5 |
-| Assumed debt | 6 | Blackstone equity | 5.5 |
-| | | Assumed debt | 6 |
-| **Total** | **≈ 26** | **Total** | **26** |
-
-* Long-term debt rose from about USD7bn to USD21bn: the target exits **more levered**.
-* Growth came through franchising and selling flagship properties; Hilton re-listed in 2013.
-* By 2018 it had earned over USD11bn of cumulative net profit on the USD5.5bn of equity.
+A **private equity** fund (not a company) buys a target using a lot of debt, restructures it, and aims to exit through a sale or a public listing. If the target was listed, it is a **take-private**. Returns depend on the purchase price, the leverage, the free cash flow during ownership (used to repay debt) and the exit price. The target usually exits **more levered** than before: in Blackstone's 2007 take-private of Hilton (USD5.5bn of equity in a USD26bn deal), long-term debt rose from about USD7bn to USD21bn.
 
 **Points worth remembering:**
 
@@ -111,27 +87,6 @@ A **private equity** fund (not a company) buys a target using a lot of debt, res
 * Matching cases to actions: negative operating cash flow with debt coming due → **reorganization**; saturated markets → **acquisition**; one segment hit by regulation → **spin off**; capital- and labor-intensive clinics → **balance sheet restructuring** (franchising, sale leaseback).
 * Reason to **sell** rather than spin off: the issuer needs **liquidity**.
 * At least two-thirds of acquisitions fail to create meaningful value, because of **overpaying**, **under-delivered synergies** and **integration problems**.
-
-#### Example: AstraZeneca / Alexion
-
-**Size of the synergies.** USD500m of cost synergies against Alexion's year-3 operating expenses:
-
-$$\frac{500}{2{,}646}=19\%$$
-
-**Pro forma operating income** (USD m):
-
-| Year | 1 | 2 | 3 |
-| --- | ---: | ---: | ---: |
-| Cost synergies | 166 | 333 | 500 |
-| One-time costs | 217 | 433 | 650 |
-| **Combined operating income** | **7,799** | **9,125** | **10,613** |
-
-| | AstraZeneca alone | Combined |
-| --- | --- | --- |
-| Revenue growth | 10% / 9% | 12% / 11% (about **+200 bp**) |
-| Operating margin | 26–28% | 30–32% (about **+400–500 bp**) |
-
-Alexion grows faster, at higher margins, so it lifts both.
 
 #### Exam traps
 
@@ -473,21 +428,11 @@ Using the peer with the closest growth (35%, EV/sales 15) instead: $75\times 15=
 
 **Step 4. Sale vs spin off.** If a spin off would trade at **13×**, it beats selling at 10×; but a sale price is **certain**, while a spin off's value can fall in a market correction.
 
-#### Example: Saturn
-
-| Segment | EBITDA | Peer EV/EBITDA | EV |
-| --- | ---: | ---: | ---: |
-| Upstream | 14,400 | 19 | 273,600 |
-| Midstream | 5,760 | 17 | 97,920 |
-| Downstream | 3,840 | 13 | 49,920 |
-| **Total** | **24,000** | | **421,440** |
-
-The sum of the parts, **USD421,440m**, is above the current EV of 408,000m. Averaging the multiples ($16.33\times 24{,}000=392{,}000$) is the wrong method: it ignores each segment's size.
-
 #### Exam traps
 
 * Conglomerate discount = sum-of-the-parts EV − **current** EV (positive = discount).
 * Allocate corporate costs before applying a multiple if the question says so.
+* Value each segment at its **own** multiple; applying the average multiple to total EBITDA ignores each segment's size.
 * Selling a profitable unit and buying back stock can still be **dilutive** if the remaining business earns little.
 
 ## Evaluating Restructuring Actions
@@ -576,14 +521,6 @@ $$
 $$
 
 That is CHF5m less than 28.
-
-#### Example: Jupiter
-
-| Question | Answer |
-| --- | --- |
-| A sale leaseback of 100 owned stores is a… | **Balance sheet restructuring** |
-| Effect of a better rating on the cost of capital | **Lower** (not higher) |
-| Cap rate 5.50% vs comparables' 5.00/5.50/6.00 | Equals the median: the price is **supported** |
 
 #### Exam traps
 

@@ -50,15 +50,6 @@ Concentrated ownership is far more common: **38 of 47** jurisdictions surveyed b
 > [!IMPORTANT]
 > Controlling shareholders **reduce** the principal–agent problem (they control the board, appoint managers, and have the incentive to monitor), but they **create** the principal–principal problem.
 
-#### Example: Company A
-
-| Fact | Implication |
-| --- | --- |
-| Managers own about 30%; no other holder owns more than 1% | Dispersed ownership |
-| One share, one vote | Dispersed voting power |
-
-Dispersed ownership and voting → weak shareholders, strong managers → **principal–agent** risk.
-
 ### Influential Shareholders
 
 | Shareholder | Role and concerns |
@@ -110,45 +101,8 @@ Governance is hard to quantify. Start with the disclosed policies (including bus
 
 **Voting rights.** **Straight voting** (one share, one vote) vs **dual-class** shares, where founders or managers hold higher-vote shares than the public: a potential conflict with minority holders.
 
-#### Example: Style (Italian Clothing Retailer)
-
-| Board fact | Detail |
-| --- | --- |
-| Size | 11 members |
-| Chair | Leila Donato, not the CEO |
-| Independence | 2 independent directors |
-| Family | 4 of the 6 non-independent directors are Donato family members, each with 20+ years on the board |
-| Diversity | 5 women; aged 35–75 |
-
-Assessment:
-
-| Positive | Negative |
-| --- | --- |
-| No CEO duality | Only 2 independent directors; the family includes the chair |
-| Age and gender diversity | Family tenure far exceeds the typical 10 years |
-
-#### Example: Sumiyoshi Banking Group
-
-Sumiyoshi, a Japanese bank, compared with its domestic peers:
-
-| Factor | Peers | Sumiyoshi |
-| --- | --- | --- |
-| Board type / size | Two-tier / 13 | Two-tier / 14 |
-| CEO duality | Yes | Yes |
-| Independent chair | Yes | **No** |
-| Board independence | 47% | **36%** |
-| Female directors | 17% | **7%** |
-| Long tenure (> 10 years) | 0% | **14%** |
-| Committees | 5 (incl. governance) | 4 (no governance committee) |
-| Independent directors with industry executive experience | 67% | **20%** |
-| Incentive metrics disclosed | No | No |
-| Say on pay | Yes | **No** |
-| Ownership / voting | No single large holder; straight voting | Same |
-
-Sumiyoshi lags on board composition. The analyst also uses credit risk as a governance proxy: its NPLs / total loans ratio is **50 bp above peers**, which may justify a higher **equity risk premium** and a wider **credit spread** than peers'.
-
 > [!IMPORTANT]
-> Separating the CEO and chair roles is positive, but not the whole story: low independence, long tenure and family or insider dominance can still make a board weak (Style).
+> Separating the CEO and chair roles is positive, but not the whole story: low independence, long tenure and family or insider dominance can still make a board weak.
 
 ## Identifying ESG Factors
 
@@ -168,19 +122,9 @@ The main challenge is getting information that is **relevant, comparable and dec
 
 | Approach | What it is | Examples |
 | --- | --- | --- |
-| **Proprietary methods** | The analyst's or firm's own judgment and tools, drawing on companies, news, industry and environmental groups, labor organizations, experts and government | Annual, sustainability and proxy reports, 10-K; CDL's climate scenario disclosure |
+| **Proprietary methods** | The analyst's or firm's own judgment and tools, drawing on companies, news, industry and environmental groups, labor organizations, experts and government | Annual, sustainability and proxy reports, 10-K; TCFD-aligned climate scenario disclosures (transition and physical risks) |
 | **ESG data providers** | Vendors turn public disclosures into ESG scores and rankings (often industry-relative), with some subjective analyst assessment | MSCI, Sustainalytics |
 | **Not-for-profit initiatives and reporting frameworks** | Data, insights and tools on ESG issues | IIRC (standardized disclosure framework), GRI (sustainability reporting standards by industry), SASB (uniform sustainability accounting standards; **materiality maps**), 2DII, Access to Nutrition Index |
-
-#### Example: City Developments Limited (CDL)
-
-CDL's climate scenario planning is aligned with TCFD and the IPCC, with 2030 scenarios for 2°C and 1.5°C of warming:
-
-| Type | Items |
-| --- | --- |
-| Transition risks | Policy risk (carbon taxes, stricter building standards; high priority), water security, waste responsibility, higher insurance premiums or uninsurable assets |
-| Physical risk | More frequent and severe floods and heatwaves → stranded assets |
-| Opportunities | Consumer activism, the global shift to low-carbon growth (high priority), green finance in Singapore |
 
 Disclosures range from minimal to many pages, which makes comparisons hard. For example, GRI's topics for consumer durables and household and personal products include environmental ones (materials sourcing, packaging, plastic and chemicals, product energy efficiency), social ones (migrant workers, product safety, labeling, e-waste) and others (executive pay, gender on governance bodies, supplier screening).
 
