@@ -18,3 +18,5 @@
 - **EQ M6 · Normalized operating income, tax the add-back** — Gap: Added the 480k pre-tax to after-tax operating income and got 1,355k.
 - **EQ M5 · Multistage RI, P/B terminal** — Gap: Used the terminal premium undiscounted and got 18.76.
 - **EQ M3 · WCInv and FCInv from the balance sheet** — Gap: Didn't know how to infer WCInv from the balance sheet, and used $\Delta$(total assets − current assets) as FCInv.
+- **EQ M3 · FCFE from statements, net borrowing** — Gap: Picked FCFF (1,154) instead of FCFE.
+- **EQ M3 · FCF vs DDM, control perspective** — Gap: Said “DDM is superior to FCF if there is a change in control” was correct.

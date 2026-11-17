@@ -33,6 +33,24 @@ const CARDS = [
     gap: "Didn't know how to infer WCInv from the balance sheet, and used \\(\\Delta(\\text{total assets}-\\text{current assets})\\) as FCInv."
   },
   {
+    id: "eq-m3-fcfe-from-statements-net-borrowing-2026-11-16",
+    topic: "EQ M3 · FCFE from statements, net borrowing",
+    front: `In the quiz figures, FCFF is 1,153.8, after-tax interest is 193.8, long-term debt is 2,848 vs 2,579, NI is 1,399, depreciation is 347, FCInv is 680 and WCInv is 106. Current liabilities are not broken out as notes payable or current LTD. What is FCFE?`,
+    back: `<div class="ans">
+      <p><strong>1,229.</strong> Net borrowing is the change in interest-bearing debt. Current liabilities are operating items unless notes payable or the current portion of long-term debt are broken out. Here that is only long-term debt: \\(\\text{NB}=2{,}848-2{,}579=269\\). (Figures are quiz data, not a textbook example.)</p><ul><li>\\(\\text{FCFE}=\\text{FCFF}-\\text{Int}(1-t)+\\text{NB}=1{,}153.8-193.8+269=1{,}229\\). Directly: \\(\\text{FCFE}=\\text{NI}+\\text{Dep}-\\text{FCInv}-\\text{WCInv}+\\text{NB}=1{,}399+347-680-106+269=1{,}229\\). FCFF (1,154) is the trap from the previous question; \\(\\text{FCFF}=\\text{FCFE}\\) only if net borrowing equals \\(\\text{Int}(1-t)\\).</li><li>Per share with a target debt ratio, \\(\\text{FCFE}=\\text{EPS}-(1-\\text{DR})\\times\\text{net capex}-(1-\\text{DR})\\times\\text{WCInv}\\). “Net capex” already nets depreciation, and \\((1-\\text{DR})\\) multiplies only the investment terms, never EPS. With 2021 EPS of 2.0, net capex of 40% of EPS and WCInv of 15% of EPS, FCFE is \\(2.0-0.7\\times0.80-0.7\\times0.30=1.23\\). Discount FCFE at the required return on equity, not WACC. The valuation date is year-end 2020 and the vignette says 2021 EPS will be 2.0, so 1.23 is already \\(\\text{FCFE}_1\\) and \\(V_0=1.23/(0.135-0.07)=18.92\\) (answer B). Do not multiply again by \\((1+g)\\).</li></ul>
+    </div>`,
+    gap: "Picked FCFF (1,154) instead of FCFE."
+  },
+  {
+    id: "eq-m3-fcf-vs-ddm-control-2026-11-16",
+    topic: "EQ M3 · FCF vs DDM, control perspective",
+    front: `Is DDM superior to FCF if there is a change in control? When is FCF preferred to DDM, and when is FCFF preferred to FCFE?`,
+    back: `<div class="ans">
+      <p><strong>No. FCF is better when control may change.</strong> FCFE is what the company can pay out without hurting its value, not what it does pay. A controlling owner can redirect that cash, so FCF models suit a control perspective (or a takeover target). DDM values the dividends actually paid.</p><ul><li>FCF is also preferred when dividends are zero or low, discretionary, or very different from FCFE — they then fail to reflect what the company can pay.</li><li>If the capital structure is unstable or changing, prefer FCFF to FCFE: FCFE growth swings with net borrowing, while FCFF growth reflects fundamentals and WACC is less sensitive to leverage than the required return on equity. A stable capital structure favors FCFE (simpler and more direct).</li></ul>
+    </div>`,
+    gap: "Said “DDM is superior to FCF if there is a change in control” was correct."
+  },
+  {
     id: "eq-m4-ev-ebitda-vs-ev-fcff-capex-2026-11-15",
     topic: "EQ M4 · EV/EBITDA vs EV/FCFF",
     front: `Two firms have the same EV/EBITDA, but Firm A requires much heavier capex than Firm B. Which firm is more expensive, and why? Does EV/FCFF have the same limitation?`,
