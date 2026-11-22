@@ -43,7 +43,7 @@ title: Investissements intersociétés
 
 ## Catégories de base des investissements d’entreprise {#basic-corporate-investment-categories}
 
-### Catégories {#catagories}
+### Catégories {#categories}
 
 Le schéma suivant présente les catégories d’investissement du point de vue comptable.
 
@@ -312,7 +312,7 @@ Dans toutes les normes comptables, le prix d’acquisition (PP) d’une particip
 ></iframe>
 
 
-##### Goodwill {#good-will}
+##### Goodwill {#goodwill}
 
 > [!note]
 >
@@ -645,11 +645,11 @@ Non, pour deux raisons. En IFRS, l’option est réservée aux sociétés de cap
 
 
 
-# Regroupements d’entreprises
+## Regroupements d’entreprises
 
-## Notions de base {#basic-concepts}
+### Notions de base {#basic-concepts}
 
-### Contrôle {#controls}
+#### Contrôle {#controls}
 
 C’est le **contrôle** qui fait d’un investissement un regroupement d’entreprises : l’investisseur (la **société mère**) consolide l’entité détenue (la **filiale**) ligne à ligne au lieu de la présenter comme une seule participation. Les deux normes définissent le contrôle différemment.
 
@@ -674,7 +674,7 @@ C’est le **contrôle** qui fait d’un investissement un regroupement d’entr
 >
 > *Exemple.* Une entreprise transfère ses créances à une SPE. Des investisseurs extérieurs détiennent une fine tranche de capitaux propres, et la SPE est surtout financée par une dette que l’entreprise garantit, tandis que l’entreprise continue de recouvrer les créances. Les actionnaires ne contrôlent pas la SPE. L’entreprise dirige son activité principale et supporte ses pertes via la garantie ; elle consolide donc la SPE, et la dette revient à son bilan.
 
-### Regroupements d’entreprises {#business-combinations-1}
+#### Regroupements d’entreprises {#business-combinations-1}
 
 Un **regroupement d’entreprises** place deux activités distinctes sous un même contrôle : deux entités deviennent une seule unité économique. Ce qui change d’une forme à l’autre, c’est quelles entités juridiques subsistent. Les US GAAP distinguent trois formes ; les IFRS ne les distinguent pas, et toutes trois sont comptabilisées de la même façon (la méthode de l’acquisition ci-dessous).
 
@@ -706,7 +706,7 @@ Seule la forme **acquisition** laisse côte à côte une mère et une filiale ; 
 - **aucun nouveau goodwill** n’apparaît ; l’écart entre le prix payé et la valeur comptable va en **capitaux propres** ;
 - les US GAAP présentent les entités regroupées **comme si elles l’avaient toujours été**. Les IFRS n’ont pas de norme spécifique, et en pratique cette approche à la valeur comptable (« du prédécesseur ») est courante.
 
-### Méthode de l’acquisition {#acquisition-method}
+#### Méthode de l’acquisition {#acquisition-method}
 
 **De la mise en commun à l’achat, puis à l’acquisition.** Les regroupements étaient autrefois comptabilisés de deux façons :
 
@@ -742,7 +742,7 @@ $$
 
 Avec la méthode de l’acquisition, le bilan regroupé montre ce que A a réellement payé : 800 d’actif net identifiable plus 200 de goodwill, soit 1 000 au total. La mise en commun aurait inscrit à la fois l’actif net de B et les nouvelles actions de A à 600 ; les 400 restants du prix ne seraient jamais apparus.
 
-## Processus de consolidation {#consolidation-process}
+### Processus de consolidation {#consolidation-process}
 
 Une fois que A contrôle B, A garde dans ses propres comptes une seule ligne, *Participation dans B*. Les **états consolidés** du groupe, eux, présentent B ligne à ligne, comme si A détenait directement les actifs de B et devait directement ses passifs. La consolidation consiste à remplacer cette ligne de participation par tout ce qu’elle recouvre.
 
@@ -770,7 +770,7 @@ Tous les cas ci-dessous utilisent les deux mêmes sociétés. **Avant l’opéra
 
 L’actif net identifiable de B est de 600 en valeur comptable et de 800 en juste valeur : une **réévaluation de 200** sur les autres actifs de B.
 
-### Cas 1 : achat de 100 % en trésorerie {#case-1-buy-100-for-cash}
+#### Cas 1 : achat de 100 % en trésorerie {#case-1-buy-100-for-cash}
 
 A paie **1 000 en trésorerie** pour la totalité de B.
 
@@ -793,7 +793,7 @@ A paie **1 000 en trésorerie** pour la totalité de B.
 - **Les capitaux propres consolidés sont ceux de A uniquement**, 3 000. Les capitaux propres de B, 800, sont éliminés contre la participation.
 - **Les actifs propres de A restent à la valeur comptable.** Seuls ceux de B sont retraités à la juste valeur.
 
-### Cas 1b : achat de 100 % en actions nouvelles {#case-1b-buy-100-with-new-shares}
+#### Cas 1b : achat de 100 % en actions nouvelles {#case-1b-buy-100-with-new-shares}
 
 Même opération, mais A **émet des actions** d’une valeur de 1 000 (nominal 100) au lieu de payer en trésorerie.
 
@@ -811,7 +811,7 @@ Même opération, mais A **émet des actions** d’une valeur de 1 000 (nominal 
 
 Par rapport au cas 1, le groupe a 1 000 de trésorerie et 1 000 de capitaux propres en plus. Payer en actions fait grossir le bilan ; payer en trésorerie ne fait que le réorganiser.
 
-### Cas 2 : achat de moins de 100 % (participations ne donnant pas le contrôle) {#case-2-buy-less-than-100-noncontrolling-interest}
+#### Cas 2 : achat de moins de 100 % (participations ne donnant pas le contrôle) {#case-2-buy-less-than-100-noncontrolling-interest}
 
 Quand A achète moins de la totalité de B, la consolidation ajoute quand même **100 %** des actifs et passifs de B, car A les contrôle tous. La part des capitaux propres de B qui revient aux autres propriétaires est présentée en **participations ne donnant pas le contrôle (NCI)**, une ligne distincte **au sein des capitaux propres**, et non un passif.
 
@@ -838,7 +838,7 @@ Le montant du goodwill dépend de la manière dont les NCI sont évaluées :
 
 La seule différence est les 20 de goodwill qui reviennent aux NCI : le goodwill complet les comptabilise, le goodwill partiel non. Le total de l’actif, les capitaux propres et donc la ROA et la ROE diffèrent légèrement entre les deux méthodes.
 
-### Compte de résultat {#income-statement}
+#### Compte de résultat {#income-statement}
 
 1. **Additionner 100 % des produits et charges de A et de B**, même si A détient moins de 100 %.
 2. **Éliminer les transactions intragroupe.** Une vente de A à B n’est pas une vente pour le groupe ; le produit et le coût correspondant sont donc supprimés, ainsi que tout profit encore latent dans les stocks de l’acheteur.
@@ -864,7 +864,7 @@ La seule différence est les 20 de goodwill qui reviennent aux NCI : le goodwill
 - La part des NCI repose sur le résultat net de B **après** l’amortissement de la réévaluation, $200-20=180$ : la réévaluation appartient à tous les propriétaires de B.
 - En fin d’année, les NCI au bilan s’élèvent à $100+18=118$ (goodwill complet, pas de dividendes).
 
-### Contrepartie éventuelle {#contingent-consideration}
+#### Contrepartie éventuelle {#contingent-consideration}
 
 Une partie du prix est souvent **éventuelle** : un **complément de prix (earn-out)** versé seulement si la cible atteint un objectif, comme un niveau de chiffre d’affaires ou de bénéfice, après l’opération.
 
@@ -877,11 +877,11 @@ Une partie du prix est souvent **éventuelle** : un **complément de prix (earn-
 
 **Exemple.** Dans le cas 1, A s’engage aussi à payer 100 de plus en trésorerie si le chiffre d’affaires de B dépasse 1 000 dans les deux ans. À l’acquisition, la juste valeur du complément de prix est de 40 ; la contrepartie est donc de $1{,}000+40=1{,}040$ et le goodwill de $1{,}040-800=240$. Un an plus tard, B fait mieux que prévu et la juste valeur du complément monte à 70 : A comptabilise une **perte de 30** en résultat et le passif passe à 70, tandis que le goodwill reste à 240.
 
-## Traitement comptable du goodwill {#accounting-treatment-of-goodwill}
+### Traitement comptable du goodwill {#accounting-treatment-of-goodwill}
 
 Le goodwill est la part du prix d’acquisition qui ne peut être rattachée à aucun actif ou passif identifiable : synergies, équipe constituée, position de marché. Il n’est comptabilisé que lors d’une acquisition. Une entreprise ne comptabilise jamais le goodwill qu’elle crée elle-même.
 
-### Goodwill complet ou partiel {#full-vs-partial-goodwill}
+#### Goodwill complet ou partiel {#full-vs-partial-goodwill}
 
 Quand la mère achète **moins de 100 %**, le goodwill peut être évalué de deux façons. La différence est de savoir si le goodwill est comptabilisé pour la **totalité** de la filiale ou seulement pour la **quote-part de la mère**.
 
@@ -916,7 +916,7 @@ L’*actif net identifiable* comprend tous les actifs corporels et incorporels i
 
 **Effet sur les ratios.** Le goodwill complet ajoute les 20 de goodwill des NCI à l’**actif** et aux **capitaux propres** (via les NCI). Le résultat net étant le même dans les deux méthodes, le goodwill complet donne une **ROA et une ROE légèrement plus faibles**. Une dépréciation ultérieure du goodwill est aussi **plus importante** avec le goodwill complet, puisqu’il y a plus de goodwill à déprécier. Gardez-le en tête pour comparer une société IFRS ayant choisi le goodwill partiel et une société US GAAP.
 
-### Dépréciation du goodwill {#impairment-of-goodwill}
+#### Dépréciation du goodwill {#impairment-of-goodwill}
 
 Le goodwill **n’est pas amorti**. Il est **testé pour dépréciation au moins une fois par an**, et dès que des événements suggèrent une baisse de sa valeur. À l’acquisition, le goodwill est affecté aux unités censées en bénéficier : les **unités génératrices de trésorerie (UGT)** en IFRS, les **unités de reporting** en US GAAP.
 
@@ -948,21 +948,21 @@ La perte IFRS est ici plus importante, car elle compare l’unité entière et p
 
 Si la valeur recouvrable de B était tombée à **700** en IFRS, la perte de 300 effacerait la totalité des 200 de goodwill, et les 100 restants réduiraient les autres actifs de B au prorata de leur valeur comptable.
 
-### Goodwill négatif (acquisition à des conditions avantageuses) {#negative-goodwill-bargain-purchase}
+#### Goodwill négatif (acquisition à des conditions avantageuses) {#negative-goodwill-bargain-purchase}
 
 Si le prix payé est **inférieur** à la juste valeur de l’actif net identifiable, l’acquéreur **revérifie** d’abord que chaque actif et passif a été correctement identifié et évalué. L’excédent qui subsiste est un **profit sur acquisition à des conditions avantageuses**, comptabilisé **immédiatement en résultat** en IFRS comme en US GAAP. Il n’est pas inscrit à l’actif ni différé.
 
-### Notes pour l’analyste {#analyst-notes}
+#### Notes pour l’analyste {#analyst-notes}
 
 - **Les dépréciations de goodwill sont non monétaires**, et les entreprises les excluent souvent des bénéfices « ajustés ». Elles montrent pourtant que l’entreprise a **trop payé**, ou que l’acquisition fait moins bien que prévu.
 - **Les dépréciations peuvent être choisies dans le temps.** Les prévisions de flux et les taux d’actualisation qui sous-tendent le test relèvent du jugement de la direction ; les dépréciations arrivent donc souvent tard, quand la mauvaise nouvelle est déjà dans le cours.
 - **Pour comparer des entreprises**, envisagez de retirer le goodwill de l’actif et des capitaux propres, ou au moins d’utiliser la même méthode des deux côtés (goodwill complet ou partiel), avant de comparer ROA, ROE ou levier. Sinon, les entreprises qui ont grandi par acquisitions et celles qui ont grandi organiquement peuvent paraître très différentes pour des raisons sans rapport avec l’exploitation.
 
-# Coentreprises et SPE/VIE {#joint-venture-and-spes-vies}
+## Coentreprises et SPE/VIE {#joint-venture-and-spes-vies}
 
 Les regroupements d’entreprises portent sur le **contrôle par une seule partie**. Ce chapitre traite de deux autres façons dont une entreprise peut être liée à une autre entité : le **contrôle conjoint** partagé avec des partenaires, et le **contrôle par les contrats** plutôt que par les votes.
 
-## Coentreprises {#joint-ventures}
+### Coentreprises {#joint-ventures}
 
 Une **coentreprise** est une entité **contrôlée conjointement par deux parties ou plus** (les *coentrepreneurs*), généralement pour partager le coût et le risque d’un grand projet : un gisement pétrolier, un nouveau marché, une usine.
 
@@ -1010,7 +1010,7 @@ Activité propre de A, hors JV : actifs 2 000, passifs 1 000, produits 3 000, ch
 
 Avec la mise en équivalence, la quote-part de A dans la **dette de JV reste hors de son bilan**, et les produits de JV sont invisibles. A paraît moins endettée et plus rentable par unité de ventes et d’actifs. Les analystes retraitent souvent les coentreprises d’une société en intégration proportionnelle pour voir l’ampleur réelle de son activité et de sa dette.
 
-## Entités ad hoc {#special-purpose-entities}
+### Entités ad hoc {#special-purpose-entities}
 
 Une **entité ad hoc (SPE)** est une entité juridique, souvent un trust, une société de personnes ou une société, créée par un **promoteur** dans un **but étroit et précis**, par exemple :
 
@@ -1026,7 +1026,7 @@ Comme le promoteur détient souvent peu ou pas de capitaux propres de la SPE, le
 - Les **IFRS** n’ont pas de règle distincte pour les SPE. Le même test de contrôle que pour toute filiale s’applique (pouvoir, exposition aux rendements variables, et lien entre les deux ; voir [Contrôle](#controls)). Les IFRS appellent ces entités **entités structurées** et exigent des informations supplémentaires à leur sujet.
 - Les **US GAAP** les traitent par le modèle des **entités à droits variables** ci-dessous.
 
-## Entités à droits variables {#variable-interest-entities}
+### Entités à droits variables {#variable-interest-entities}
 
 Une **entité à droits variables (VIE)** est le terme US GAAP pour une entité dont le contrôle **ne peut pas être apprécié par les actions avec droit de vote**. Une entité est une VIE si :
 
@@ -1058,7 +1058,7 @@ S dirige l’activité clé de la SPE (le recouvrement des créances) et absorbe
 
 La consolidation montre l’opération pour ce qu’elle est : un **emprunt garanti par des créances**, et non une vente. L’actif et le passif de S sont tous deux plus élevés ; ses ratios de levier augmentent. Dans le tableau des flux de trésorerie, les 1 000 relèvent surtout du **financement** (emprunt) plutôt que d’un encaissement d’exploitation lié au recouvrement des créances.
 
-# Investissements intersociétés
+## Comparaison des méthodes comptables {#comparison-of-accounting-methods}
 
 <iframe
   class="fx-concept-chart fsa-methods-chart"
@@ -1068,7 +1068,7 @@ La consolidation montre l’opération pour ce qu’elle est : un **emprunt gara
 ></iframe>
 
 
-## Résultat net et capitaux propres {#net-income-and-sharholder-s-equity}
+### Résultat net et capitaux propres {#net-income-and-shareholders-equity}
 
 Le résultat net est le même quelle que soit la méthode utilisée pour comptabiliser la participation :
 
@@ -1107,7 +1107,7 @@ Les méthodes ne diffèrent que par **la part de JV qu’elles font entrer dans 
 
 
 
-## Consolidation sur une ligne ou ligne à ligne {#one-line-consolidation-vs-line-by-line-consolidation}
+### Consolidation sur une ligne ou ligne à ligne {#one-line-consolidation-vs-line-by-line-consolidation}
 
 <iframe
   class="fx-concept-chart fsa-ratio-chart"
@@ -1124,7 +1124,7 @@ Les méthodes ne diffèrent que par **la part de JV qu’elles font entrer dans 
 
 **Ce que cela implique pour l’analyse.** La mise en équivalence laisse les produits, actifs et **dettes** de l’entité détenue hors des états de l’investisseur ; celui-ci paraît donc plus rentable par unité de ventes et d’actifs et moins endetté qu’il ne l’est réellement. Pour comparer une société qui applique la mise en équivalence et une société qui consolide, retraitez l’une des deux (souvent en intégration proportionnelle) avant de comparer marges, ROA ou levier.
 
-## Goodwill complet et partiel {#full-and-partial-goodwill}
+### Goodwill complet et partiel {#full-and-partial-goodwill}
 
 Le choix entre goodwill complet et partiel (voir *Goodwill complet ou partiel* ci-dessus) **ne change pas le résultat net** tant qu’il n’y a pas de dépréciation : le goodwill n’est pas amorti, aucune des deux méthodes ne fait donc passer de charge au compte de résultat. Ce qui change, c’est le **bilan**. Le goodwill complet ajoute la quote-part de goodwill des NCI à l’actif, et le même montant aux capitaux propres via les NCI ; tout ratio qui divise par l’actif ou les capitaux propres ressort donc légèrement **plus faible** avec le goodwill complet.
 
@@ -1151,7 +1151,7 @@ Le choix entre goodwill complet et partiel (voir *Goodwill complet ou partiel* c
 
 L’écart est faible ici car les NCI ne détiennent que 10 %. Il augmente avec la taille des NCI et avec la part du prix constituée de goodwill. **C’est par la dépréciation que le choix atteint le résultat net** : si tout le goodwill de B était déprécié plus tard, la perte serait de 200 avec le goodwill complet mais de seulement 180 avec le goodwill partiel.
 
-## Limites de la mise en équivalence {#issues-for-equity-method}
+### Limites de la mise en équivalence {#issues-for-equity-method}
 
 La mise en équivalence est simple à appliquer, mais elle laisse à l’analyste moins d’information que la consolidation et plus de place au jugement de la direction.
 

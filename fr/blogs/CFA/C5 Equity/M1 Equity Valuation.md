@@ -15,6 +15,15 @@ L’**évaluation** consiste à estimer la valeur d’un actif à partir de vari
 * La **valeur intrinsèque** (IV) est la valeur qu’un investisseur attribuerait à l’actif s’il en comprenait parfaitement les caractéristiques d’investissement.
 * Sur un marché efficient, le prix est la meilleure estimation de l’IV. Mais selon le **paradoxe de Grossman–Stiglitz**, si les prix étaient parfaitement efficients, personne ne paierait pour l’analyse, et les prix ne pourraient donc pas l’être. La vision des **marchés rationnellement efficients** : les investisseurs ne collectent de l’information que s’ils en attendent des rendements plus élevés couvrant son coût. Comme l’IV est difficile à cerner et que les transactions sont coûteuses, les prix peuvent s’écarter de la valeur.
 * L’**alpha** (rendement anormal) est le rendement supérieur à celui que justifie le risque ; une **erreur de valorisation perçue** est l’IV estimée moins le prix.
+
+$$
+\begin{aligned}
+\text{Ex ante alpha}={}&E(R)\\
+&-\text{Required return}\\
+\text{Ex post alpha}={}&R_{\text{actual}}\\
+&-R_{\text{required, same period}}
+\end{aligned}
+$$
 * Un **catalyseur** (un événement de marché ou d’entreprise) peut être nécessaire pour que le prix converge vers la valeur dans l’horizon de l’investisseur.
 
 Une erreur de valorisation perçue a deux sources :
@@ -52,8 +61,6 @@ Seule la véritable erreur de valorisation procure un rendement anormal. Pour ga
 * **Évaluer des entreprises non cotées** (transactions, fiscalité, introductions en bourse).
 * **Paiements fondés sur des actions** (rémunération).
 
-**Exemple (Intel, Cornell 2001).** Le cours est passé de \$61.50 à \$43.31 (environ 30 %) en cinq jours après une croissance du chiffre d’affaires inférieure aux attentes. Le cours d’avant l’annonce impliquait environ 20 % de croissance pendant 10 ans, puis 6 % ; celui d’après impliquait bien moins de 15 %. Pour juger si la chute était une surréaction ou une correction, comparez la **croissance implicite** avec l’historique de l’entreprise, la croissance de son secteur et les prévisions économiques. Cornell a constaté que 20 % dépassait de loin la croissance d’Intel sur les cinq dernières années : l’action était surévaluée **avant** l’annonce, qui a joué le rôle de catalyseur.
-
 ## Le processus d’évaluation
 
 1. **Comprendre l’activité** : analyse du secteur et de la concurrence, et qualité des bénéfices.
@@ -86,8 +93,6 @@ Les trois stratégies concurrentielles de Porter :
 
 Un **modèle économique** est la façon dont l’entreprise gagne de l’argent (ses clients, ses produits, sa distribution et son financement), p. ex. une compagnie aérienne à bas coûts avec une seule classe et un seul type d’avion.
 
-**Exemple (services pétroliers : Schlumberger, Halliburton, Baker Hughes, Saipem, NOV, Weatherford).** La demande suit l’exploration-production de pétrole et de gaz, qui suit les prix du pétrole et du gaz ; étudiez donc leur offre et leur demande (stocks, capacités de l’OPEP, découvertes, usages résidentiel, commercial et de production d’électricité, croissance du PIB, épuisement). Pour repérer le **leader par les coûts**, comparez le niveau et l’évolution des marges (ajustées du pouvoir de fixation des prix) et le **chiffre d’affaires par salarié**.
-
 * Pour les nouvelles entreprises et les nouveaux produits, les **indicateurs non financiers** comptent (résultats d’essais cliniques, visiteurs uniques).
 * Sources : documents réglementaires (description de l’activité et MD&A des 10-K/20-F ; rapports intermédiaires 10-Q/6-K), communiqués de résultats, conférences téléphoniques, relations investisseurs et tiers. La **Regulation FD** et les normes du CFA interdisent l’usage d’informations privilégiées.
 * Sources ESG (p. ex. pour l’automobile américaine) : rapports de durabilité, OSHA, EEOC, SASB, Carbon Disclosure Project, Ceres.
@@ -95,7 +100,14 @@ Un **modèle économique** est la façon dont l’entreprise gagne de l’argent
 L’**analyse de la qualité des bénéfices** examine **tous** les états pour juger (1) de la **durabilité** de la performance et (2) de la fidélité avec laquelle les comptes reflètent la réalité économique.
 
 * Des bénéfices comportant d’importantes composantes non récurrentes (procès gagnés, baisses d’impôt temporaires, plus-values sur la vente d’actifs hors exploitation) sont de moindre qualité.
-* Commencez par comparer le **résultat net au flux de trésorerie d’exploitation**. La composante d’accruals est RN − (CFO + CFI). La composante de trésorerie est **plus persistante** ; des accruals élevés annoncent un ROA futur plus faible (Sloan 1996), donc une qualité des bénéfices plus faible.
+* Commencez par comparer le **résultat net au flux de trésorerie d’exploitation**. La composante de trésorerie est **plus persistante** ; des accruals élevés annoncent un ROA futur plus faible (Sloan 1996), donc une qualité des bénéfices plus faible.
+
+$$
+\begin{aligned}
+\text{Accrual component}\\
+=NI-(CFO+CFI)
+\end{aligned}
+$$
 * Un compte d’actif qui croît bien plus vite que les ventes (créances, charges différées) peut signaler une comptabilité agressive.
 
 | Domaine | Signal d’alerte | Signification possible |
@@ -107,12 +119,6 @@ L’**analyse de la qualité des bénéfices** examine **tous** les états pour 
 | | Estimations agressives (dépréciations, longues durées d’amortissement, taux d’actualisation des retraites élevé, faible croissance des salaires, rendement attendu des actifs du régime élevé) | Gonfle le résultat courant ; les changements peuvent masquer des problèmes |
 | Bilan | Financement hors bilan (titrisation de créances) | Actifs et passifs mal présentés |
 | Flux d’exploitation | Hausse des découverts bancaires classée en exploitation | CFO gonflé |
-
-**Exemples.**
-
-* **Buffett sur les hypothèses de retraite** : les entreprises du S&P supposaient un rendement de 8 % sur les actifs des régimes ; avec 28 % en trésorerie et obligations rapportant 5 %, les actions devraient rapporter 9,2 % nets de frais. Un rendement supposé élevé signifie une déduction de « rendement attendu » plus forte → charge de retraite **sous-estimée**, résultat net **surestimé**. L’hypothèse figure dans les **notes annexes**.
-* **Tangoe** (SEC, 2018) : chiffre d’affaires comptabilisé sur des clients peu susceptibles de payer, et provision pour créances douteuses sous-estimée → chiffre d’affaires, bénéfices et créances gonflés ; RN supérieur au CFO. Le signal d’alerte : chiffre d’affaires +12 % alors que les créances moyennes +32 % ; rotation des créances 4,6× → 4,2× ; délai de recouvrement **79 → 87** jours.
-* **Livent** : immobilisation des coûts de préproduction (publicité, décors, salaires des répétitions), qui augmentait le BPA et créait un actif. Réintégrer l’amortissement dans l’EBITDA surestimait la solidité financière : la dette/EBITDA de 1996 était de 1,7 publiée mais de **5,5** sans la réintégration ; l’EBITDA 1997 était de +\$58.3m publié contre **−\$52.6m**. Faillite en 1998.
 
 **Facteurs de risque de fraude** (incitation, occasion, attitude) : pression pour atteindre des objectifs plus une direction dominante ; rémunération liée au bénéfice ou au cours ; pression sur la rentabilité ; pression des covenants ou des prévisions ; transactions avec des parties liées ; structure complexe ; forte rotation des dirigeants, administrateurs ou conseils juridiques ; litiges avec les auditeurs ou changements d’auditeurs ; antécédents d’infractions ou de dépôts tardifs.
 
@@ -140,8 +146,6 @@ Les **modèles relatifs** évaluent un actif par rapport à d’autres (des acti
 * Les usages prudents sur- ou sous-pondèrent des actions par rapport à un indice de référence ; l’**investissement en valeur relative** agressif comprend le **pairs trading** (acheter l’action relativement sous-évaluée, vendre à découvert la surévaluée, quel que soit le sens du marché).
 * Avantages : simple, lié aux prix de marché, économiquement fondé et largement compris. Elle ne donne la valeur intrinsèque que si l’actif de comparaison est correctement évalué.
 
-**Exemple (Smithson Genomics).** Un analyste la juge surévaluée de 15 % par rapport au P/E médian du secteur ; un autre sous-évaluée de 10 % par rapport au P/E médian du Russell 3000. **Les deux peuvent avoir raison** : ils utilisent des références différentes, et les deux approches sont relatives (p. ex. tout le secteur peut être bon marché par rapport au marché).
-
 **Choisir un modèle.** Le modèle doit être adapté :
 
 * **Aux caractéristiques de l’entreprise** : la nature de ses actifs et la façon dont ils créent de la valeur. Une banque (surtout des actifs négociables) se prête mieux qu’une société de services à une évaluation par les actifs ou relative (P/B).
@@ -155,7 +159,13 @@ Utiliser **plusieurs modèles** enrichit l’analyse (les investisseurs institut
 * Surtout utile quand les secteurs appartiennent à des industries aux **caractéristiques d’évaluation différentes**, et pour les restructurations (scission, split-off, tracking stock, introduction partielle en bourse).
 * Une valeur de démantèlement supérieure à la valeur de continuité peut déclencher des cessions ou des scissions.
 
-**Exemple (Donaldson).** Engine Products est plus grand et croît plus vite ; Industrial Products a la marge 2018 la plus élevée (EBT/ventes 137.1/885.2 = **15,5 %** contre 261.3/1,849.0 = **14,1 %**). L’objectif de la direction de porter Industrial à 48 % du portefeuille d’ici 2021 paraît peu probable. Évaluez chaque secteur à partir de ses propres prévisions, puis ajustez des éléments de l’entreprise (impôts, frais généraux, actifs et passifs non affectés).
+$$
+\begin{aligned}
+V_{\text{SOTP}}={}&\sum_i V_{\text{segment }i}\\
+&-\text{Corporate costs}\\
+&-\text{Unallocated items}
+\end{aligned}
+$$
 
 **Décote de conglomérat.** Le marché valorise les entreprises présentes dans plusieurs activités **sans lien** en dessous des entreprises spécialisées. Explications :
 
@@ -180,5 +190,4 @@ Elle est surtout visible quand les entreprises cèdent des activités ayant peu 
 * Les analystes aident les clients à mieux décider, rendent les marchés plus efficients (le capital va vers ses meilleurs usages) et **surveillent la direction** (réduisant les coûts d’agence).
 * Un rapport de recherche efficace est opportun et clair ; objectif et bien documenté, avec ses hypothèses clés identifiées ; **distingue les faits des opinions** ; présente une analyse, des prévisions, une évaluation et une recommandation cohérentes ; donne assez d’informations pour que le lecteur critique l’évaluation ; énonce les risques clés ; et révèle les conflits d’intérêts.
 * Un cours cible exige un fondement, un horizon et une mesure de son incertitude. Distinguez « bonne entreprise » et « bon investissement » : le prix compte.
-* **Exemple (deux notes de recherche)** : celle de MXI est vague et prudente, sans évaluation claire ; celle de TXI donne une valeur DDM explicite de €3.08 contre un cours de €2.25 (+36,8 % de potentiel) et une recommandation claire. Celle de TXI communique mieux.
 * Normes CFA pertinentes : I(B) Indépendance et objectivité ; I(C) Déclarations trompeuses ; V(A) Diligence et fondement raisonnable ; V(B) Communication avec les clients (processus, limites et risques, facteurs importants, **faits contre opinions**) ; V(C) Conservation des dossiers.

@@ -38,10 +38,23 @@ $$
 * Les charges d’exploitation sont fixes (taxes, assurance, services, réparations) ou variables (énergie et fluides), supportées par le propriétaire ou refacturées aux locataires.
 * La provision pour entretien est courante en Europe et en Amérique du Nord, moins par exemple au Japon.
 
-**Exemple (Wallonia Transit).** Un entrepôt de 10 000 m² avec un seul locataire ; loyer de base 52,50 EUR/m². Le locataire paie la taxe foncière (12 500) et l’assurance (40 000) ; le propriétaire récupère 10,25 EUR/m² pour les services et réparations, qui coûtent 120 750 ; provision pour entretien 100 000.
+#### Exemple : NOI de Wallonia Transit
+
+Un entrepôt de 10 000 m² avec un seul locataire (EUR).
+
+| Donnée | Valeur |
+| --- | ---: |
+| Loyer de base | 52,50 par m² |
+| Récupération des services et réparations (fixe) | 10,25 par m² |
+| Services et réparations, payés par le propriétaire | 120 750 |
+| Taxe foncière, refacturée au locataire | 12 500 |
+| Assurance, refacturée au locataire | 40 000 |
+| Provision pour entretien | 100 000 |
+
+**Étape 1. NOI.**
 
 | Wallonia Transit | EUR |
-| --- | --- |
+| --- | ---: |
 | Loyer brut (52.50 × 10,000) | 525,000 |
 | Récupération des charges d’exploitation (10.25 × 10,000) | 102,500 |
 | Taxe foncière + assurance refacturées | 52,500 |
@@ -50,9 +63,12 @@ $$
 | Provision pour entretien | (100,000) |
 | **NOI** | **406,750** |
 
-* Si services et réparations dépassent de 20 % (144 900), le surplus de 24 150 n’est **pas** récupéré (la récupération est fixée à 102 500) → le NOI tombe à **382 600**.
-* Avec 10 % de vacance (s’il y avait plusieurs locataires), déduire 10 % du loyer brut (52 500) → NOI **354 250**.
-* Seule une baisse des coûts de services et de réparations augmente le NOI ; taxes et assurance sont entièrement refacturées.
+**Étape 2. Sensibilités.**
+
+* Services et réparations dépassent de 20 % (144 900) : le surplus de 24 150 n’est **pas** récupéré (la récupération est fixée à 102 500) → NOI **382 600**.
+* 10 % de vacance (s’il y avait plusieurs locataires) : déduire 10 % du loyer brut, 52 500 → NOI **354 250**.
+
+Le NOI est de **406 750 EUR**. Seule une baisse des coûts de services et de réparations l’augmente ; taxes et assurance sont entièrement refacturées.
 
 ### Levier et couverture
 
@@ -67,11 +83,46 @@ $$
 * Un LTV plus bas signifie plus de fonds propres pour le propriétaire. Le LTV varie avec les valeurs et le remboursement du principal.
 * Service de la dette = **intérêts + principal**. Les prêteurs fixent des limites de LTV et de DSC dans les covenants.
 
-**Exemple (Wallonia).** Prix 3 750 000 ; un prêt de 3 000 000 sur 20 ans entièrement amortissable à 4 %, avec des annuités de 220 745 (intérêts de la 1re année : 120 000).
+#### Exemple : levier et couverture de Wallonia
 
-* LTV après la 1re année = [3,000,000 − (220,745 − 120,000)]/3,750,000 = 2,899,255/3,750,000 = **0,773**.
-* Si la valeur du bien augmente de 10 % : LTV = 2,899,255/4,125,000 = **0,703**.
-* DSC = 406,750/220,745 = **1,84** ; avec un NOI de 382 600 → 1,73.
+| Donnée | EUR |
+| --- | ---: |
+| Prix | 3,750,000 |
+| Prêt (20 ans, entièrement amortissable, 4 %) | 3,000,000 |
+| Annuité | 220,745 |
+| Intérêts de la 1re année | 120,000 |
+| NOI | 406,750 |
+
+**Étape 1. Solde du prêt après la 1re année.**
+
+$$
+\begin{aligned}
+\text{Principal}&=220{,}745-120{,}000\\
+&=100{,}745\\
+\text{Balance}&=3{,}000{,}000-100{,}745\\
+&=2{,}899{,}255
+\end{aligned}
+$$
+
+**Étape 2. LTV**, aujourd’hui et si la valeur augmente de 10 %.
+
+$$
+\begin{aligned}
+LTV&=\frac{2{,}899{,}255}{3{,}750{,}000}=0.773\\
+LTV_{+10\%}&=\frac{2{,}899{,}255}{4{,}125{,}000}=0.703
+\end{aligned}
+$$
+
+**Étape 3. DSC**, avec un NOI de 406 750 et de 382 600.
+
+$$
+\begin{aligned}
+DSC&=\frac{406{,}750}{220{,}745}=1.84\\
+DSC_{\text{low}}&=\frac{382{,}600}{220{,}745}=1.73
+\end{aligned}
+$$
+
+Le LTV est de **0,773** et le DSC de **1,84**.
 
 ### Rendements des fonds propres
 
@@ -79,7 +130,7 @@ $$
 EDR=\frac{NOI-\text{Debt service}}{\text{Price}-\text{Loan}}
 $$
 
-L’EDR est le taux de dividende des fonds propres ; le numérateur est le flux avant impôt, le dénominateur les fonds propres investis. C’est une mesure de première année, en trésorerie seulement, avant impôt, qui ignore plus et moins-values. Pour Wallonia : (406,750 − 220,745)/750,000 = 186,005/750,000 = **24,8 %** ; avec un NOI de 382 600 → 161,855/750,000 = 21,6 %.
+L’EDR est le taux de dividende des fonds propres ; le numérateur est le flux avant impôt, le dénominateur les fonds propres investis. C’est une mesure de première année, en trésorerie seulement, avant impôt, qui ignore plus et moins-values.
 
 $$
 \text{After-tax CF}=\text{Pretax CF}-\text{Taxes}
@@ -92,7 +143,45 @@ $$
 \end{aligned}
 $$
 
-La base amortissable est le coût (plus les améliorations) moins le **terrain** : le terrain n’est pas amorti. Pour Wallonia, avec un terrain de 750 000 et une durée de vie de 30 ans : amortissement = 3,000,000/30 = 100 000 ; impôt = 0.25 × (406,750 − 120,000 − 100,000) = 46 688 ; flux après impôt = 186,005 − 46,688 = **139 317**.
+La base amortissable est le coût (plus les améliorations) moins le **terrain** : le terrain n’est pas amorti.
+
+#### Exemple : rendements des fonds propres de Wallonia
+
+Le prêt ci-dessus ; le terrain vaut 750 000, le bâtiment a une durée de vie de 30 ans, et le taux d’imposition est de 25 %.
+
+**Étape 1. EDR.** Fonds propres investis = 3 750 000 − 3 000 000 = 750 000.
+
+$$
+\begin{aligned}
+EDR&=\frac{406{,}750-220{,}745}{750{,}000}\\
+&=\frac{186{,}005}{750{,}000}=24.8\%
+\end{aligned}
+$$
+
+Avec un NOI de 382 600 : 161,855/750,000 = 21,6 %.
+
+**Étape 2. Impôts.**
+
+$$
+\begin{aligned}
+\text{Dep.}&=\frac{3{,}750{,}000-750{,}000}{30}\\
+&=100{,}000\\
+\text{Taxable}&=406{,}750-120{,}000\\
+&\quad-100{,}000=186{,}750\\
+\text{Taxes}&=0.25\times 186{,}750=46{,}688
+\end{aligned}
+$$
+
+**Étape 3. Flux après impôt.**
+
+$$
+\begin{aligned}
+\text{After-tax CF}&=186{,}005-46{,}688\\
+&=139{,}317
+\end{aligned}
+$$
+
+L’EDR est de **24,8 %**, et le flux après impôt de **139 317 EUR**.
 
 > [!IMPORTANT]
 > Même prix et même NOI, mais une **valeur du terrain plus faible** → une base amortissable plus grande → plus d’amortissement → moins d’impôt → un flux après impôt **plus élevé**.
@@ -180,7 +269,38 @@ L’immobilier offre un revenu courant, une plus-value en capital, une couvertur
 * **Diversification** : faible corrélation avec les actions, les obligations et la trésorerie ; mais l’immobilier **coté** (REIT, MBS) est plus corrélé aux actions et aux obligations à court et moyen terme.
 * **Avantages fiscaux** : amortissement fiscal plus rapide que la durée de vie utile (p. ex. aux États-Unis) ; les REIT évitent la double imposition.
 
-**Exemple (Chandra Shops, loyer variable).** Un magasin de 500 ft² ; loyer de base réduit de 10 %, de 300 à 270 INR/ft² par mois, plus 8 % des ventes mensuelles au-delà de 1 000 000 INR. Avec des ventes de 1 250 000 INR : base 270 × 500 = 135 000 + loyer variable 0.08 × 250,000 = 20 000 = **155 000 INR**, contre 150 000 INR avec l’ancien bail. (Une baisse de 9,6 % avec 5,6 % de loyer variable donne 149 600 INR, que Chandra préférerait.)
+$$
+\begin{aligned}
+\text{Rent}={}&\text{Base rent}\times\text{Area}\\
+&+\text{Overage rate}\\
+&\times(\text{Sales}-\text{Breakeven})
+\end{aligned}
+$$
+
+#### Exemple : loyer variable de Chandra Shops
+
+Un magasin de 500 ft² avec des ventes mensuelles de 1 250 000 INR.
+
+| | Ancien bail | Nouveau bail |
+| --- | --- | --- |
+| Loyer de base au ft² par mois | 300 INR | 270 INR (−10 %) |
+| Loyer variable | Aucun | 8 % des ventes au-delà de 1 000 000 INR |
+
+**Étape 1. Loyer avec le nouveau bail.**
+
+$$
+\begin{aligned}
+\text{Base}&=270\times 500=135{,}000\\
+\text{Overage}&=0.08\times 250{,}000\\
+&=20{,}000\\
+\text{Rent}&=135{,}000+20{,}000\\
+&=155{,}000
+\end{aligned}
+$$
+
+**Étape 2. Comparer.** L’ancien bail coûte 300 × 500 = 150 000.
+
+Le nouveau bail coûte **155 000 INR** par mois, soit 5 000 de plus. Une baisse de 9,6 % avec 5,6 % de loyer variable coûterait 135 600 + 14 000 = 149 600, ce que Chandra préférerait.
 
 ## Types d’immobilier commercial
 
@@ -210,11 +330,24 @@ $$
 * Revenu total (brut effectif) = revenu locatif net + autres revenus + récupération de charges.
 * NOI = revenu total − charges d’exploitation et de location − provision pour entretien.
 
-**Exemple (Pinebranch Estates).** 240 logements de 1 200 ft² ; loyer de marché 2,00 AUD/ft² par mois ; le propriétaire paie taxes et assurance.
+#### Exemple : NOI de Pinebranch Estates
+
+240 logements de 1 200 ft² ; le loyer de marché est de 2,00 AUD/ft² par mois ; le propriétaire paie taxes et assurance.
+
+**Étape 1. Revenu locatif brut potentiel.**
+
+$$
+\begin{aligned}
+GPRI&=240\times 1{,}200\times 2.00\times 12\\
+&=6{,}912{,}000
+\end{aligned}
+$$
+
+**Étape 2. Du GPRI au NOI.**
 
 | Pinebranch Estates | AUD |
-| --- | --- |
-| Revenu locatif brut potentiel (240 × 1,200 × 2.00 × 12) | 6,912,000 |
+| --- | ---: |
+| Revenu locatif brut potentiel | 6,912,000 |
 | Moins : perte sur baux | (128,200) |
 | **Revenu locatif brut** | 6,783,800 |
 | Moins : vacance et impayés | (791,236) |
@@ -227,11 +360,45 @@ $$
 | Moins : provision pour entretien | (655,000) |
 | **NOI** | **2,919,651** |
 
-Contrairement à Wallonia, les nombreux locataires et les baux courts rendent les déductions locatives bien plus importantes.
+Le NOI est de **2 919 651 AUD**. Contrairement à Wallonia, les nombreux locataires et les baux courts rendent les déductions locatives bien plus importantes.
 
-**Exemple (Eastmain Plaza, usage mixte).** 350 000 ft² : 90 % de bureaux à 100 MYR/ft², 10 % de commerces à 250 MYR/ft² → loyer brut = 0.9 × 100 × 350,000 + 0.1 × 250 × 350,000 = **40 250 000 MYR** ; NOI actuel 13 085 217. Dans un scénario défavorable (nouveaux commerces à proximité), il perd 450 800 de loyer variable et la moitié de ses loyers commerciaux, 4 375 000 → le NOI baisse de 4 825 800 (37 %) à **8 259 417**.
+#### Exemple : scénario défavorable d’Eastmain Plaza
 
-**Tableau d’entraînement** (GBP ; tiré de notes antérieures, pas du manuel 2026) :
+Un bien à usage mixte de 350 000 ft² ; le NOI actuel est de 13 085 217 MYR.
+
+| Surface | Part | Loyer par ft² |
+| --- | ---: | ---: |
+| Bureaux | 90 % | 100 MYR |
+| Commerces | 10 % | 250 MYR |
+
+**Étape 1. Loyer brut.**
+
+$$
+\begin{aligned}
+\text{Office}&=0.9\times 100\times 350{,}000\\
+&=31{,}500{,}000\\
+\text{Retail}&=0.1\times 250\times 350{,}000\\
+&=8{,}750{,}000\\
+\text{Total}&=40{,}250{,}000
+\end{aligned}
+$$
+
+**Étape 2. Scénario défavorable.** De nouveaux commerces à proximité font perdre le loyer variable (450 800) et la moitié des loyers commerciaux (4 375 000).
+
+$$
+\begin{aligned}
+\text{Loss}&=450{,}800+4{,}375{,}000\\
+&=4{,}825{,}800\\
+NOI&=13{,}085{,}217-4{,}825{,}800\\
+&=8{,}259{,}417
+\end{aligned}
+$$
+
+Le NOI baisse de 37 %, à **8 259 417 MYR**.
+
+#### Entraînement : du GPRI au NOI
+
+En GBP ; tiré de notes antérieures, pas du manuel 2026.
 
 | Poste | GBP |
 | --- | --- |
@@ -276,7 +443,19 @@ $$
 * Les taux de capitalisation viennent en général de ventes comparables ; ils se comparent au rendement courant d’une obligation, ou à l’inverse de EV/EBITDA.
 * Idéal quand le NOI est **stable** ; sinon utiliser le **NOI stabilisé**.
 
-**Exemple (Wallonia).** $r$ = 12,5 %, $g$ = 2 % : valeur = 406,750/0.105 = **3 873 810 EUR** ; avec un NOI de 382 600 → 3 643 810 EUR (−6 %). N’intégrer les coûts plus élevés que s’ils doivent se répéter.
+#### Exemple : capitalisation directe de Wallonia
+
+$r$ = 12,5 % et $g$ = 2 % ; le NOI est de 406 750 (382 600 avec le dépassement de coûts).
+
+$$
+\begin{aligned}
+\text{Cap rate}&=12.5\%-2\%=10.5\%\\
+V&=\frac{406{,}750}{0.105}=3{,}873{,}810\\
+V_{\text{low}}&=\frac{382{,}600}{0.105}=3{,}643{,}810
+\end{aligned}
+$$
+
+La valeur est de **3 873 810 EUR**. Le dépassement de coûts la réduirait de 6 % : ne l’intégrer que s’il doit se répéter.
 
 ### Approche par le revenu : DCF
 
@@ -290,12 +469,50 @@ $$
 
 Préférable quand l’analyste peut voir comment le NOI va évoluer. La valeur terminale peut aussi venir de la capitalisation du NOI de biens comparables.
 
-**Exemple (Eastmain, détention de 5 ans, $r$ = 14 %, $g$ = 3 % après l’année 5).** NOI 8 259 417 ; 6 092 385 ; 13 539 114 ; 14 020 153 ; 14 515 622.
+#### Exemple : DCF d’Eastmain
 
-* VA du NOI = **36 911 526 MYR**.
-* Valeur terminale = 14,515,622 × 1.03/0.11 = **135 919 006 MYR**.
-* Valeur = 36,911,526 + 135,919,006/1.14⁵ = **107 503 599 MYR**.
-* Le taux de capitalisation d’entrée, 8,259,417/107,503,599 = 7,68 %, est inférieur au taux de sortie de 14 % − 3 % = 11 %, car le NOI des années 1–2 est déprimé par le scénario défavorable (le risque, $r$, est le même chaque année).
+Détention de 5 ans ; $r$ = 14 %, et le NOI croît à $g$ = 3 % après l’année 5 (MYR).
+
+**Étape 1. VA du NOI.**
+
+| Année | NOI | VA à 14 % |
+| ---: | ---: | ---: |
+| 1 | 8,259,417 | 7,245,103 |
+| 2 | 6,092,385 | 4,687,892 |
+| 3 | 13,539,114 | 9,138,516 |
+| 4 | 14,020,153 | 8,301,056 |
+| 5 | 14,515,622 | 7,538,959 |
+| **Total** | | **36,911,526** |
+
+**Étape 2. Valeur terminale.**
+
+$$
+\begin{aligned}
+TV&=\frac{14{,}515{,}622\times 1.03}{0.14-0.03}\\
+&=135{,}919{,}006
+\end{aligned}
+$$
+
+**Étape 3. Valeur.**
+
+$$
+\begin{aligned}
+V&=36{,}911{,}526+\frac{135{,}919{,}006}{1.14^5}\\
+&=36{,}911{,}526+70{,}592{,}073\\
+&=107{,}503{,}599
+\end{aligned}
+$$
+
+**Étape 4. Taux de capitalisation.**
+
+$$
+\begin{aligned}
+\text{Going-in}&=\frac{8{,}259{,}417}{107{,}503{,}599}=7.68\%\\
+\text{Terminal}&=14\%-3\%=11\%
+\end{aligned}
+$$
+
+La valeur est de **107 503 599 MYR**. Le taux de capitalisation d’entrée est inférieur au taux de sortie car le NOI des années 1–2 est déprimé par le scénario défavorable (le risque, $r$, est le même chaque année).
 
 ### Approche par le coût
 
@@ -311,7 +528,42 @@ $$
 * Ajuster à la baisse pour l’âge, un emplacement moins idéal ou l’impossibilité de le construire aujourd’hui (normes, protection patrimoniale) ; les ajustements peuvent être supérieurs ou inférieurs à l’amortissement comptable.
 * Un investisseur ne devrait pas payer plus que le coût de construction d’un bien comparable ; le coût de remplacement dépasse les prix de marché en **suroffre**.
 
-**Exemple (Wallonia).** Estimation du coût 4 350 000 (coûts de construction 2 675 000 + coûts annexes, intérêts et marge 925 000 + terrain 750 000) ; base amortissable 4,350,000 − 750,000 = 3 600 000 ; durée de vie 30 ans → 120 000 par an ; 4 ans d’âge → valeur 4,350,000 − 480,000 = **3 870 000 EUR**.
+#### Exemple : approche par le coût de Wallonia
+
+| Donnée | EUR |
+| --- | ---: |
+| Coûts de construction (hard costs) | 2,675,000 |
+| Coûts annexes (soft costs), intérêts et marge du promoteur | 925,000 |
+| Terrain | 750,000 |
+| Durée de vie utile | 30 ans |
+| Âge | 4 ans |
+
+**Étape 1. Coût de remplacement.**
+
+$$
+\begin{aligned}
+RC&=2{,}675{,}000+925{,}000\\
+&\quad+750{,}000=4{,}350{,}000
+\end{aligned}
+$$
+
+**Étape 2. Amortissement** (le terrain n’est pas amorti).
+
+$$
+\begin{aligned}
+\text{Annual}&=\frac{4{,}350{,}000-750{,}000}{30}\\
+&=120{,}000\\
+\text{4 years}&=4\times 120{,}000=480{,}000
+\end{aligned}
+$$
+
+**Étape 3. Valeur.**
+
+$$
+V=4{,}350{,}000-480{,}000=3{,}870{,}000
+$$
+
+La valeur est de **3 870 000 EUR**.
 
 ### Approche par comparaison des ventes
 
@@ -319,7 +571,20 @@ $$
 * Ajuster pour la date de vente (une vente plus ancienne sur un marché en hausse → ajuster **à la hausse**), la taille (plus grand → décote), l’emplacement (un comparable plus éloigné du centre vaut moins → ajuster à la hausse) et l’âge (un comparable plus récent → ajuster le bien évalué **à la baisse**).
 * Faire la moyenne des prix unitaires ajustés × la surface du bien évalué ; les ventes plus récentes pèsent davantage.
 
-**Exemple (Pinebranch, 288 000 ft²).** Prix ajustés au ft² 89,27, 104,23, 103,60 → moyenne **99,03 AUD** → valeur ≈ **28,52 millions AUD** (28 520 640 avec 99,03 ; 28 521 036 avec la moyenne non arrondie).
+#### Exemple : comparaison des ventes de Pinebranch
+
+Le bien évalué fait 288 000 ft² ; les prix ajustés des trois comparables sont de 89,27, 104,23 et 103,60 AUD par ft².
+
+$$
+\begin{aligned}
+\text{Average}&=\frac{89.27+104.23+103.60}{3}\\
+&=99.03\\
+V&=99.03\times 288{,}000\\
+&=28{,}520{,}640
+\end{aligned}
+$$
+
+La valeur est d’environ **28,52 millions AUD** (28 521 036 avec les prix ajustés non arrondis).
 
 | Approche | Surtout utilisée pour |
 | --- | --- |
@@ -341,14 +606,40 @@ $$
 
 où $\Delta MV=MV_{\text{end}}-MV_{\text{begin}}$, la variation de la valeur de marché expertisée. Cela équivaut à un TRI sur une période calculé avec les valeurs d’expertise.
 
-**Exemple (Wallonia).** Acheté 3 750 000 il y a deux ans ; rendements INREV de +5,6 % puis +3,2 % → $MV_{\text{begin}}$ = 3 960 000, $MV_{\text{end}}$ = 4 086 720 ; NOI 406 750 ; dépenses d’investissement 100 000 :
+#### Exemple : rendement fondé sur les expertises de Wallonia
+
+| Donnée | EUR |
+| --- | ---: |
+| Prix d’achat il y a deux ans | 3,750,000 |
+| Rendement INREV, année 1 / année 2 | +5,6 % / +3,2 % |
+| NOI | 406,750 |
+| Capex | 100,000 |
+
+**Étape 1. Valeurs d’expertise** au début et à la fin de l’année 2.
 
 $$
 \begin{aligned}
+MV_{\text{begin}}&=3{,}750{,}000\times 1.056\\
+&=3{,}960{,}000\\
+MV_{\text{end}}&=3{,}960{,}000\times 1.032\\
+&=4{,}086{,}720
+\end{aligned}
+$$
+
+**Étape 2. HPR.**
+
+$$
+\begin{aligned}
+\text{Income}&=406{,}750-100{,}000\\
+&=306{,}750\\
+\Delta MV&=4{,}086{,}720-3{,}960{,}000\\
+&=126{,}720\\
 HPR&=\frac{306{,}750+126{,}720}{3{,}960{,}000}\\
 &=10.95\%
 \end{aligned}
 $$
+
+Le rendement sur la période de détention est de **10,95 %**.
 
 Un inconvénient : la composante de revenu (NOI − dépenses d’investissement) n’est **pas** ce que les investisseurs de fonds ou de REIT reçoivent en distributions.
 
@@ -366,10 +657,30 @@ R_t^*=aR_t+(1-a)R_{t-1}^*
 $$
 
 $$
-R_t=\frac{R_t^*}{a}+\frac{1-a}{a}\,R_{t-1}^*
+R_t=\frac{R_t^*-(1-a)\,R_{t-1}^*}{a}
 $$
 
-avec $0\le a\le 1$ ; un $a$ plus élevé signifie un ajustement plus rapide. P. ex. $a$ = 0,6, $R_1^*$ = 0,50 %, $R_0^*$ = 2,70 % → $R_1$ = 0.50/0.6 + (0.4/0.6) × 2.70 = **2,63 %** ; en période 6 : −8.70/0.6 + (0.4/0.6) × 1.00 = **−13,83 %**. Les rendements délissés sont plus volatils.
+avec $0\le a\le 1$ ; un $a$ plus élevé signifie un ajustement plus rapide.
+
+#### Exemple : délissage des rendements d’expertise
+
+$a$ = 0,6.
+
+| Période | Expertise $R_t^*$ | Précédent $R_{t-1}^*$ |
+| ---: | ---: | ---: |
+| 1 | 0.50% | 2.70% |
+| 6 | −8.70% | 1.00% |
+
+$$
+\begin{aligned}
+R_1&=\frac{0.50-0.4\times 2.70}{0.6}\\
+&=\frac{-0.58}{0.6}=-0.97\%\\
+R_6&=\frac{-8.70-0.4\times 1.00}{0.6}\\
+&=\frac{-9.10}{0.6}=-15.17\%
+\end{aligned}
+$$
+
+Les vrais rendements, **−0,97 %** et **−15,17 %**, sont plus extrêmes que les rendements d’expertise : les rendements délissés sont plus volatils.
 
 ### Indices fondés sur les transactions
 
@@ -385,4 +696,8 @@ avec $0\le a\le 1$ ; un $a$ plus élevé signifie un ajustement plus rapide. P. 
 
 > [!NOTE]
 >
-> **Problème du manuel.** Le tableau prévisionnel de Wallonia indique un loyer brut de 525 500, mais le calcul (et le total de 680 000) utilise 525 000.
+> **Problèmes du manuel et des notes.**
+>
+> * Le tableau prévisionnel de Wallonia indique un loyer brut de 525 500, mais le calcul (et le total de 680 000) utilise 525 000.
+> * Pinebranch : 5 507 440 + 295 211 + 525 800 = 6 328 451, et non 6 327 651 comme imprimé (des récupérations de charges de 525 000 correspondraient) ; le NOI de 2 919 651 suit le total imprimé.
+> * Délissage : les versions antérieures de ces notes **ajoutaient** le terme retardé ($R_t^*/a+\frac{1-a}{a}R_{t-1}^*$), donnant 2,63 % et −13,83 %. Résoudre $R_t^*=aR_t+(1-a)R_{t-1}^*$ pour $R_t$ le **soustrait**.

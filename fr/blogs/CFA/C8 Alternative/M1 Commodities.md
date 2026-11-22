@@ -171,12 +171,74 @@ $$
 
 * **Rendement du collatéral** : les intérêts sur la trésorerie ou les obligations adossées à la position. Pour les indices, collatéral = notionnel (pas de levier), en général en bons du Trésor ; pour des prévisions à long terme, utiliser une obligation d’État de même durée.
 
-**Exemples.**
+#### Exemple : roulement du WTI dans le S&P GSCI
 
-* **Roulement du WTI** (le S&P GSCI roule sur cinq jours, 20 % par jour) : mars 52,64 USD, avril 53,00 USD → rendement de roulement brut (52.64 − 53.00)/52.64 = −0,68 % ; × 20 % = **−0,13 %** net (contango).
-* **Rendement total** : rendement de prix 5 %, rendement de roulement 2,5 %, collatéral à 100 % rémunéré à 2 % → 5 % + 2,5 % + 2 % = **9,5 %**.
-* **Rouler en gardant la même exposition** : position acheteuse de 10 000 USD, contrat proche à 4,00 USD, éloigné à 2,50 USD → vendre 10 000/4,00 = 2 500 contrats proches et acheter 10 000/2,50 = 4 000 contrats éloignés.
-* **Backwardation** : proche 80,00 USD, éloigné 78,40 USD, roulé à 100 % ; rendement de prix +4 % sur l’année ; bons du Trésor à 3 % sur collatéral complet → rendement de roulement (80.00 − 78.40)/80.00 = **+2,0 %** ; rendement total 4 % + 2 % + 3 % = **9 %**.
+Le S&P GSCI roule sur cinq jours, en déplaçant 20 % de la position chaque jour.
+
+| Contrat | Prix |
+| --- | ---: |
+| Proche (mars) | 52,64 USD |
+| Éloigné (avril) | 53,00 USD |
+
+**Étape 1. Rendement de roulement brut.**
+
+$$
+\begin{aligned}
+\text{Gross}&=\frac{52.64-53.00}{52.64}\\
+&=-0.68\%
+\end{aligned}
+$$
+
+**Étape 2. Pondérer par la part roulée.**
+
+$$
+\text{Net}=-0.68\%\times 20\%=-0.13\%
+$$
+
+Le contrat éloigné est plus cher (contango) ; le roulement de chaque jour **coûte donc 0,13 %**.
+
+#### Exemple : rendement total en backwardation
+
+| Donnée | Valeur |
+| --- | ---: |
+| Contrat proche | 80,00 USD |
+| Contrat éloigné | 78,40 USD |
+| Part roulée | 100 % |
+| Rendement de prix sur l’année | +4 % |
+| Collatéral (complet, en bons du Trésor) | 3 % |
+
+**Étape 1. Rendement de roulement.**
+
+$$
+\begin{aligned}
+\text{Roll}&=\frac{80.00-78.40}{80.00}\times 100\%\\
+&=2.0\%
+\end{aligned}
+$$
+
+**Étape 2. Rendement total.**
+
+$$
+\begin{aligned}
+\text{Total}&=4\%+2\%+3\%\\
+&=9\%
+\end{aligned}
+$$
+
+Le contrat éloigné est moins cher (backwardation) ; le roulement **ajoute donc 2 %**, et le rendement total est de **9 %**.
+
+#### Exemple : rouler pour garder la même exposition
+
+Une position acheteuse de 10 000 USD ; le contrat proche est à 4,00 USD et le contrat éloigné à 2,50 USD.
+
+$$
+\begin{aligned}
+\text{Near sold}&=\frac{10{,}000}{4.00}=2{,}500\\
+\text{Far bought}&=\frac{10{,}000}{2.50}=4{,}000
+\end{aligned}
+$$
+
+Le contrat éloigné est moins cher (backwardation) ; il faut donc **plus** de contrats (4 000 contre 2 500) pour garder une exposition de 10 000 USD.
 
 | Courbe | Éloigné vs proche | Pour garder la même exposition | Rendement de roulement |
 | --- | --- | --- | --- |
@@ -216,10 +278,53 @@ Un **swap sur matières premières** échange des paiements à plusieurs dates, 
 | **Swap de variance** | Variance réalisée contre variance fixée ; l’acheteur reçoit si la réalisée dépasse la fixée (souvent plafonné) | Négociateurs de volatilité |
 | **Swap de volatilité** | Volatilité réalisée contre volatilité attendue ; le vendeur gagne si la réalisée est inférieure à l’attendue | Négociateurs de volatilité |
 
-**Exemples.**
+$$
+\begin{aligned}
+\text{TRS payment}&=\text{Notional}\\
+&\quad\times\text{Index return}\\
+\text{Call-style ERS}&=\max(0,\ P-\text{Strike})
+\end{aligned}
+$$
 
-* **Swap de rendement excédentaire** : un raffineur achète un swap qui lui verse le montant au-dessus de 70 USD le baril à chaque fin de mois, de janvier à septembre, pour une prime de 25 USD (en fait une série de calls). Prix mensuels 70, 75, 71, 66, 65, 63, 66, 72, 78 → gains 5 + 1 + 2 + 8 = 16 USD → net −9 USD (environ 1 USD par baril et par mois), mais le raffineur était protégé contre une flambée des prix et connaissait son coût à l’avance.
-* **Swap de rendement total** : notionnel de 100 millions USD, refixation mensuelle. L’indice monte de 3 % → l’intermédiaire verse au gérant **3 millions USD** ; il baisse de 2 % → le gérant verse à l’intermédiaire **2 millions USD**. Les paiements sont périodiques, pas reportés à l’échéance.
+où TRS désigne un swap de rendement total et ERS un swap de rendement excédentaire structuré comme une série de calls (gain par unité à chaque date de règlement).
+
+#### Exemple : swap de rendement excédentaire d’un raffineur
+
+Un raffineur prend une position acheteuse sur un swap qui verse le montant dont le pétrole dépasse 70 USD le baril à chaque fin de mois, de janvier à septembre, pour une prime de 25 USD le baril.
+
+| Mois | Prix | Gain |
+| --- | ---: | ---: |
+| Janv. | 70 | 0 |
+| Fév. | 75 | 5 |
+| Mars | 71 | 1 |
+| Avr. | 66 | 0 |
+| Mai | 65 | 0 |
+| Juin | 63 | 0 |
+| Juil. | 66 | 0 |
+| Août | 72 | 2 |
+| Sept. | 78 | 8 |
+
+**Étape 1. Résultat net.**
+
+$$
+\begin{aligned}
+\text{Payoffs}&=5+1+2+8=16\\
+\text{Net}&=16-25=-9
+\end{aligned}
+$$
+
+Le raffineur a perdu **9 USD par baril** (environ 1 USD par mois), mais il était protégé contre une flambée des prix et connaissait son coût à l’avance.
+
+#### Exemple : swap de rendement total
+
+Notionnel de 100 millions USD, refixation mensuelle.
+
+| Variation de l’indice | Paiement |
+| --- | --- |
+| +3 % | L’intermédiaire verse au gérant $0.03\times 100\text{m}=$ **3 millions USD** |
+| −2 % | Le gérant verse à l’intermédiaire $0.02\times 100\text{m}=$ **2 millions USD** |
+
+Les paiements ont lieu chaque mois et ne sont pas reportés à l’échéance.
 
 ## Indices de matières premières
 

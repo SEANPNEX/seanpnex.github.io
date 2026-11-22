@@ -26,16 +26,47 @@ $$
 
 où $t$ est le taux d’imposition **marginal** et les pondérations (positives, de somme 1) correspondent à la structure du capital **cible**.
 
-* $r_d=r_f+\text{credit spread}$ (avant impôt).
-* $r_e=r_f+\beta\times ERP$ (MEDAF, le modèle le plus utilisé en pratique) : $\beta$ est la sensibilité de l’action au marché ; l’ERP est ce que les investisseurs exigent pour détenir des actions plutôt que l’actif sans risque.
+$$
+\begin{aligned}
+r_d&=r_f+\text{Credit spread}\quad\text{(pretax)}\\
+r_e&=r_f+\beta\times ERP\quad\text{(CAPM)}
+\end{aligned}
+$$
+
+* Le MEDAF (CAPM) est le modèle le plus utilisé en pratique : $\beta$ est la sensibilité de l’action au marché ; l’ERP est ce que les investisseurs exigent pour détenir des actions plutôt que l’actif sans risque.
 * Les actions de préférence ont un dividende fixé et une priorité sur les actions ordinaires, donc en général $r_d < r_p < r_e$.
 
 Le WACC est difficile à estimer, car chaque composante peut l’être de nombreuses façons, sans méthode unique ; la structure du capital **cible à long terme** peut différer de l’actuelle ; et le taux d’imposition **marginal** peut différer du taux moyen ou effectif.
 
-**Exemple (WACC avec actions de préférence et plafonnement de la déduction des intérêts).** Pondérations cibles : dette 30 %, préférence 10 %, ordinaires 60 %. $r_d$ avant impôt 6 %, $r_p$ 7 %, $r_e$ 11 % ; taux marginal 25 %.
+#### Exemple : WACC avec actions de préférence et plafonnement de la déduction des intérêts
 
-* Intérêts déductibles : 0.30 × 6% × 0.75 + 0.10 × 7% + 0.60 × 11% = 1.35% + 0.70% + 6.60% = **8,65 %**.
-* Déjà au plafond de déduction des intérêts (aucun avantage fiscal sur la dette nouvelle) : 0.30 × 6% + 0.70% + 6.60% = **9,10 %**.
+| Composante | Pondération cible | Coût avant impôt |
+| --- | ---: | ---: |
+| Dette | 30 % | 6 % |
+| Actions de préférence | 10 % | 7 % |
+| Actions ordinaires | 60 % | 11 % |
+
+Le taux d’imposition marginal est de 25 %.
+
+**Cas 1. Les intérêts sont déductibles.**
+
+$$
+\begin{aligned}
+WACC&=0.30\times 6\%\times 0.75\\
+&\quad+0.10\times 7\%+0.60\times 11\%\\
+&=1.35\%+0.70\%+6.60\%\\
+&=8.65\%
+\end{aligned}
+$$
+
+**Cas 2. L’entreprise est déjà au plafond de déduction des intérêts,** de sorte que la dette nouvelle n’obtient aucun avantage fiscal :
+
+$$
+\begin{aligned}
+WACC&=0.30\times 6\%+0.70\%\\
+&\quad+6.60\%=9.10\%
+\end{aligned}
+$$
 
 ## Ce qui détermine le coût du capital
 
@@ -86,10 +117,6 @@ Les facteurs descendants sont systématiques et apparaissent dans le **taux sans
 * Une **option de vente** ou de **conversion** profite à l’investisseur ; le rendement à l’émission est donc plus faible, mais le coût peut augmenter plus tard (refinancement à des taux plus élevés après un put ; dilution après conversion).
 * Actions de préférence **cumulatives** : les dividendes non versés doivent être payés avant tout dividende ordinaire ; les investisseurs acceptent donc un rendement plus faible que pour des actions non cumulatives.
 
-**Exemple (deux pays).** Pays A : spreads larges, forte volatilité des taux et forte inflation, faible disponibilité des capitaux, impôt de 15 %. Pays B : spreads étroits, faible volatilité et faible inflation, forte disponibilité, impôt de 25 % → le **pays B** a le coût du capital le plus faible. Porter le taux de A de 15 % à 25 % abaisse le coût de la dette après impôt, **si** les intérêts sont déductibles et que l’entreprise a un revenu imposable.
-
-**Exemple (deux entreprises).** Entreprise 1 contre entreprise 2 : trésorerie et titres 20 % contre 17 % ; incorporels 10 % contre 24 % ; immobilisations corporelles 46 % contre 29 % ; dette nette/EBITDA 2,1 contre 2,5 ; couverture des intérêts 12,6 contre 7,9 ; faible levier opérationnel ; 5 premiers clients 15 % contre 27 % ; dette **avec option de vente** (celle de l’entreprise 2 est remboursable par anticipation) → l’**entreprise 1** a le coût du capital le plus faible sur tous les points.
-
 #### Pièges d’examen
 
 * Un taux d’imposition plus élevé **abaisse** le WACC seulement via le bouclier fiscal de la dette ; sans déductibilité ou sans revenu imposable, aucun effet.
@@ -121,7 +148,9 @@ La méthode dépend du type de dette (négociée, non négociée, bancaire, loca
 | C | 0.3 < IC < 0.6 | 80% < D/E < 100% |
 | D | IC < 0.3 | D/E > 100% |
 
-**Exemple (Gamma Company).** IC 1,5 → **B** ; D/E 43 % → **BBB**. Les ratios se contredisent ; il faut donc exercer son jugement et regarder leur **tendance** (p. ex. une IC en hausse pourrait justifier BB).
+$$IC=\frac{EBIT}{\text{Interest}}\qquad D/E=\frac{\text{Debt}}{\text{Equity}}$$
+
+Si les deux ratios impliquent des notations différentes (p. ex. IC 1,5 → B mais D/E 43 % → BBB), exercez votre jugement et regardez leur **tendance**.
 
 * **Prêts bancaires** : utiliser le taux de l’emprunt le plus récent, si les conditions de marché et le risque de l’entreprise n’ont pas sensiblement changé depuis. Les prêts peuvent être à taux fixe ou variable, et amortissables totalement, partiellement ou in fine. Les prêts **amortissables** coûtent en général moins que les prêts in fine, car le capital est remboursé au fil de la durée (risque de défaut plus faible).
 * **Contrats de location** : un **contrat de location-financement** ressemble à un prêt garanti amortissable ; il coûte donc en général moins qu’un emprunt non garanti (les locations simples sont passées en charges). Selon IFRS 16 / ASC 842, le **taux implicite du contrat de location** (RIIL) résout :
@@ -138,14 +167,45 @@ $$
   * Si la valeur résiduelle et les coûts du bailleur sont inconnus, utiliser le **taux d’emprunt marginal** (IBR) ; si l’IBR est aussi inconnu, utiliser les méthodes de la dette non négociée. La plupart des preneurs cotés publient leurs taux de location.
   * Lorsqu’un contrat de location-financement vaut achat sur le plan fiscal, les intérêts sont déductibles → utiliser le taux après impôt.
 
-**Exemple (location de G&S Airlines).** 15 ans, loyer de €9.0m par an, juste valeur de l’avion €100m, coûts directs du bailleur €5m, valeur résiduelle €10m. Flux nets : −105 en $t=0$, +9 par an, +19 la 15e année.
+#### Exemple : contrat de location de G&S Airlines
 
-* N = 15, PV = −105, PMT = 9, FV = 10 → **RIIL = 4,08 %**.
-* Moins cher que l’IBR non garanti (6 %) et que les capitaux propres (11 %, et dilutifs) ; évite les risques de propriété, mais **augmente le levier**.
+| Donnée | Valeur |
+| --- | --- |
+| Durée | 15 ans |
+| Loyer | €9.0m par an |
+| Juste valeur de l’avion | €100m |
+| Coûts initiaux directs du bailleur | €5m |
+| Valeur résiduelle pour le bailleur | €10m |
 
-* **International** : le coût de la dette doit être exprimé dans la **devise des flux de trésorerie**. Pour les marchés moins matures, ajouter une prime de risque pays fondée sur une **notation du risque pays (CRR)** qui reflète la situation économique, le risque politique, le risque de change, ainsi que le développement et la réglementation des marchés de titres : CRP = le taux médian de la classe de notation du pays − le taux du pays de référence. Le risque souverain (défaut sur la dette publique) n’est qu’**une partie** du risque pays, qui couvre aussi la stabilité politique, la compétitivité économique et le développement humain.
+**Étape 1. Poser l’équation du RIIL.**
 
-**Exemple (primes de risque pays).** Pays de référence A (notation 1), taux médian 4,0 % → CRP 0 %. Pays C (notation 2), 4,5 % → CRP **0,5 %**. Pays D (notation 8), 15,5 % → CRP **11,5 %**.
+$$
+\begin{aligned}
+&\sum_{t=1}^{15}\frac{9}{(1+RIIL)^t}+\frac{10}{(1+RIIL)^{15}}\\
+&=100+5
+\end{aligned}
+$$
+
+**Étape 2. Résoudre.** N = 15, PV = −105, PMT = 9, FV = 10 → **RIIL = 4,08 %**.
+
+**Étape 3. Comparer.** La location est moins chère que l’emprunt non garanti (IBR 6 %) et les capitaux propres (11 %, et dilutifs), et évite les risques de propriété, mais elle **augmente le levier**.
+
+* **International** : le coût de la dette doit être exprimé dans la **devise des flux de trésorerie**. Pour les marchés moins matures, ajouter une prime de risque pays fondée sur une **notation du risque pays (CRR)** qui reflète la situation économique, le risque politique, le risque de change, ainsi que le développement et la réglementation des marchés de titres. Le risque souverain (défaut sur la dette publique) n’est qu’**une partie** du risque pays, qui couvre aussi la stabilité politique, la compétitivité économique et le développement humain.
+
+$$
+\begin{aligned}
+CRP={}&\text{Median rate of the class}\\
+&-\text{Benchmark's rate}
+\end{aligned}
+$$
+
+#### Exemple : primes de risque pays
+
+| Pays | CRR | Taux médian | CRP |
+| --- | ---: | ---: | ---: |
+| A (référence) | 1 | 4,0 % | 0 % |
+| C | 2 | 4,5 % | $4.5-4.0=$ **0,5 %** |
+| D | 8 | 15,5 % | $15.5-4.0=$ **11,5 %** |
 
 * **Plafonds de déduction des intérêts** : si l’entreprise a déjà atteint le plafond, **ne pas** ajuster le coût de la dette nouvelle pour l’impôt (il n’y a plus d’avantage fiscal).
 
@@ -200,8 +260,6 @@ Avec une courbe des taux normalement croissante, une ERP fondée sur les bons es
 
 **Limites.** L’ERP peut varier dans le temps (un changement permanent rend les longues séries peu représentatives), et le **biais du survivant** gonfle les estimations historiques (les entreprises défaillantes sortent de l’indice, et les historiques d’indices reconstitués a posteriori font de même).
 
-**Exemple (Smith contre Müller).** Smith : Russell 3000, 35 ans, obligation du Trésor à 30 ans, moyenne arithmétique : 12,96 % − 6,25 % = **6,71 %**. Müller : S&P 500, 65 ans, bon du Trésor à 3 mois, moyenne géométrique : 11,23 % − 3,11 % = **8,12 %**. Les deux peuvent être valables : ils ont fait des choix différents.
-
 ### Approche prospective
 
 Les estimations prospectives n’utilisent que des anticipations sur les variables qui déterminent les flux futurs ; elles souffrent donc moins de la non-stationnarité et des biais de données.
@@ -218,7 +276,23 @@ $$
 * Certains analystes ajoutent les **rachats** de l’indice au rendement (distribution totale), puis examinent comment les rachats modifient la croissance.
 * Pour les économies à croissance rapide, utiliser **trois phases** (croissance rapide, transition, maturité) et trouver le taux qui égalise la valeur actuelle de toutes les phases au niveau de l’indice, puis soustraire $r_f$.
 
-**Exemple (FTSE 100).** Rendement 1,94 %, croissance 5,0 %, rendement des gilts 1,63 % → ERP = 1,94 + 5,0 − 1,63 = **5,31 %**. Les prévisions vont de 1,5 + 4 − 2,5 = **3 %** à 3,5 + 6 − 1,5 = **8 %** (utile pour une simulation).
+#### Exemple : FTSE 100
+
+Le rendement du dividende est de 1,94 %, la croissance attendue de 5,0 % et le rendement des gilts de 1,63 %.
+
+$$
+\begin{aligned}
+ERP&=1.94\%+5.0\%-1.63\%\\
+&=5.31\%
+\end{aligned}
+$$
+
+Fourchette de prévisions (utile pour la simulation) :
+
+| | Rendement | Croissance | $r_f$ | ERP |
+| --- | ---: | ---: | ---: | ---: |
+| Basse | 1,5 % | 4 % | 2,5 % | **3 %** |
+| Haute | 3,5 % | 6 % | 1,5 % | **8 %** |
 
 **Modèle macroéconomique (Grinold–Kroner, 2001).**
 
@@ -249,21 +323,32 @@ $$
 
 * Plus fiable là où les actions cotées représentent une **grande part de l’économie** (marchés développés) ; inadapté là où le marché boursier est petit (beaucoup de pays en développement).
 
-**Exemples.**
+#### Exemple : scénarios Grinold–Kroner
 
-* Trésor à 10 ans 2,3 %, TIPS 0,66 % → $i$ = 1.023/1.0066 − 1 = **1,6 %**.
-* Scénario 1 : $r_f$ 2,5, $i$ 1,6, $g$ 3, $\Delta(P/E)$ 0, DY 2,2, $\Delta S$ −0,7 → {2.2 + 0 + [1.6 + 3.0 − (−0.7)]} − 2.5 = **5,0 %**.
-* Scénario 2 : $r_f$ 3, $i$ 3, $g$ 2, $\Delta(P/E)$ 1, DY 2, $\Delta S$ 0 → {2.0 + 1.0 + [3.0 + 2.0 − 0]} − 3.0 = **5,0 %**.
-* Inflation attendue plus forte : **aucun effet** sur l’ERP ($i$ et $r_f$ augmentent ensemble). Revenu attendu plus faible : l’ERP **baisse**.
-* Même marché, deux méthodes : historique 9,96 − 3,15 = **6,81 %** ; Grinold–Kroner {1.8 − 1.2 + (1.9 + 2.7 − 0)} − 0.96 = **4,24 %**.
+**Étape 1. Inflation attendue.** Le Trésor à 10 ans rapporte 2,3 % et les TIPS 0,66 % :
+
+$$i=\frac{1.023}{1.0066}-1=1.6\%$$
+
+**Étape 2. ERP dans deux scénarios** (tout en %) :
+
+| Donnée | Scénario 1 | Scénario 2 |
+| --- | ---: | ---: |
+| DY | 2.2 | 2.0 |
+| $\Delta(P/E)$ | 0 | 1.0 |
+| $i$ | 1.6 | 3.0 |
+| $g$ | 3.0 | 2.0 |
+| $\Delta S$ | −0.7 | 0 |
+| $r_f$ | 2.5 | 3.0 |
+| **ERP** | $2.2+0+(1.6+3.0+0.7)-2.5=$ **5.0** | $2.0+1.0+(3.0+2.0-0)-3.0=$ **5.0** |
+
+* Une inflation attendue plus forte n’a **aucun effet** sur l’ERP ($i$ et $r_f$ augmentent ensemble).
+* Un revenu attendu plus faible (DY) fait **baisser** l’ERP.
 
 **Limites des estimations prospectives :**
 
 * **Enquêtes** : biais d’échantillonnage et de réponse ; biais comportementaux (**récence**, **confirmation**).
 * **DDM** : suppose un P/E constant ; doit être ajusté lorsque bénéfices, dividendes et cours progressent à des rythmes différents.
 * **Modèles macroéconomiques** : erreurs dans les données macroéconomiques ; biais comportementaux dans les prévisions.
-
-**Exemple (un marché récent avec 20 ans d’historique).** Rendements de l’indice reconstitués sur 4 ans avant son lancement à partir des membres survivants → biais du survivant **à la hausse**. Un conflit frontalier de 5 ans qui a déprimé les rendements et ne se reproduira pas → ERP historique biaisée **à la baisse**. Courbe inversée (taux court 9 %, 10 ans 7 %) : un rendement exigé bâti sur le taux court est biaisé **à la hausse**. Grinold–Kroner avec $i$ = 4 % (long terme), $g$ = 4 %, $\Delta(P/E)$ = 1 %, DY 1 %, $r_f$ = 7 % (10 ans) → {1 + 1 + [4 + 4 + 0]} − 7 = **3,0 %** ; les actions de risque moyen exigent donc au moins 7 % + 2 % à 3 % = **9 % ou plus**.
 
 #### Pièges d’examen
 
@@ -283,15 +368,28 @@ $$
 
 Pour une entreprise cotée aux dividendes stables et prévisibles :
 
-* **Croissance de Gordon** : $r_e=\dfrac{D_1}{P_0}+g$
-* **Prévision pluriannuelle** : trouver le TRI, $P_0 = \sum_{t=1}^n \dfrac{D_t}{(1+r_e)^t}+\dfrac{P_n}{(1+r_e)^n}$
+$$
+\text{Gordon growth: }r_e=\frac{D_1}{P_0}+g
+$$
 
-**Exemples.**
+Prévision pluriannuelle (résoudre pour le TRI $r_e$), et actions de préférence ($g$ = 0) :
 
-* Entreprise X : $P_0$ €40, $D_1$ €1.04, $g$ 4 % → 1.04/40 + 0.04 = **6,6 %**.
-* Pluriannuel : $P_0$ USD40 ; dividendes 1.00, 1.25, 1.35, 1.50 ; $P_4$ USD45 → flux −40, 1, 1.25, 1.35, 46.5 → TRI = **6,015 %**.
-* $D_0$ USD2.50, $P_0$ USD50, $g$ 5 % → 2.625/50 + 0.05 = **10,25 %**. Un $g$ plus élevé augmente $r_e$ ($D_1$ et $g$ augmentent tous deux) ; un cours plus bas augmente $r_e$.
-* Actions de préférence (rente perpétuelle, $g$ = 0) : $r_p = D/P$.
+$$
+\begin{aligned}
+P_0&=\sum_{t=1}^n \frac{D_t}{(1+r_e)^t}+\frac{P_n}{(1+r_e)^n}\\
+r_p&=\frac{D}{P}
+\end{aligned}
+$$
+
+#### Exemple : coût des capitaux propres par le DDM
+
+| Cas | Données | $r_e$ |
+| --- | --- | --- |
+| Entreprise X (Gordon) | $P_0$ €40, $D_1$ €1.04, $g$ 4 % | $1.04/40+4\%=$ **6,6 %** |
+| Gordon à partir de $D_0$ | $P_0$ USD50, $D_0$ USD2.50, $g$ 5 % | $2.50\times 1.05/50+5\%=$ **10,25 %** |
+| Pluriannuel | $P_0$ USD40 ; dividendes 1.00, 1.25, 1.35, 1.50 ; $P_4$ USD45 | TRI de −40, 1, 1.25, 1.35, 46.5 = **6,015 %** |
+
+Un $g$ plus élevé augmente $r_e$ ($D_1$ et $g$ augmentent tous deux) ; un cours plus bas l’augmente aussi.
 
 ### Rendement obligataire plus prime de risque (BYPRP)
 
@@ -304,8 +402,6 @@ où $r_d$ est en général le YTM de la dette **à long terme** de l’entrepris
 * Le coût de la dette est un point de départ naturel : les actionnaires exigent plus que les créanciers de l’entreprise.
 * La prime est assez arbitraire et peut ne pas être stable dans le temps.
 * Elle suppose une dette négociée ; s’il existe plusieurs obligations aux caractéristiques différentes, aucune règle ne dit quel rendement utiliser (pratique courante : l’obligation à long terme).
-
-**Exemple.** Rendement obligataire 4,3 % + prime historique 6,1 % = **10,40 %**.
 
 ### MEDAF (CAPM)
 
@@ -340,11 +436,32 @@ Le modèle à trois facteurs n’utilise que les trois premiers facteurs.
 
 Les bêtas proviennent de la régression des rendements excédentaires de l’entreprise sur les facteurs. Le bêta de marché d’un modèle multifactoriel **diffère** du bêta du MEDAF, et des modèles différents donnent des réponses différentes. Un $r_f$ de court terme dans la régression peut sous-estimer $r_f$ quand la courbe est croissante.
 
-**Exemples.**
+#### Exemple : modèle à cinq facteurs
 
-* Cinq facteurs : 3.82% + 1.2(6.5%) + 0.10(1.8%) − 0.20(4.0%) + 0.5(2.0%) + 0.2(1.0%) = **12,2 %**.
-* Trois facteurs avec constante : $r_e - r_f$ = 0.003 + 1.2(0.05) − 0.4(0.01) + 0.2(0.04) = 0.067 → $r_e$ = **8,7 %** (avec $r_f$ de 2 %).
-* MEDAF contre trois facteurs ($r_f$ 6 %, marché 10 %) : MEDAF 6% + 0.8(4%) = **9,2 %** ; trois facteurs 6% + 0.01 + 0.75(4%) + 0.15(5%) + 0.05(2%) = **10,85 %**. SMB et HML ajoutent 0,85 %.
+| Facteur | Prime | Bêta | Contribution |
+| --- | ---: | ---: | ---: |
+| $r_f$ | | | 3,82 % |
+| ERP | 6,5 % | 1,2 | 7,80 % |
+| SMB | 1,8 % | 0,10 | 0,18 % |
+| HML | 4,0 % | −0,20 | −0,80 % |
+| RMW | 2,0 % | 0,5 | 1,00 % |
+| CMA | 1,0 % | 0,2 | 0,20 % |
+| **$r_e$** | | | **12,2 %** |
+
+#### Exemple : MEDAF contre trois facteurs
+
+$r_f$ = 6 % et le rendement attendu du marché est de 10 % (ERP 4 %).
+
+$$
+\begin{aligned}
+r_e^{\text{CAPM}}={}&6\%+0.8\times 4\%=9.2\%\\
+r_e^{\text{3F}}={}&6\%+1\%+0.75\times 4\%\\
+&+0.15\times 5\%+0.05\times 2\%\\
+={}&10.85\%
+\end{aligned}
+$$
+
+Le 1 % est la constante ; SMB et HML ajoutent 0,85 %.
 
 ### Entreprises non cotées
 
@@ -392,7 +509,23 @@ $$
 
 où $\sigma_{\text{equity}}$ et $\sigma_{\text{bond}}$ sont les volatilités des marchés locaux des actions et des obligations. Cela suppose des historiques de rendements pour les deux.
 
-**Exemple (Makinassi).** Siège dans le pays X (spread 1,5 %) ; le pays Y (40 % des ventes) a un spread de 3,2 %, $\sigma_E$ 4,0 % et $\sigma_B$ 2,5 %. Le spread pertinent est 3,2 − 1,5 = 1,7 % ; CRP = 1,7 % × 4,0/2,5 = 2,72 % ; multiplié par l’exposition de 40 % = **1,088 %** ajoutés à $r_e$.
+#### Exemple : Makinassi
+
+Makinassi a son siège dans le pays X (spread souverain 1,5 %). Le pays Y, qui représente 40 % de ses ventes, a un spread de 3,2 %, une volatilité des actions de 4,0 % et une volatilité des obligations de 2,5 %.
+
+**Étape 1. Le spread pertinent** est celui de Y par rapport à X :
+
+$$3.2\%-1.5\%=1.7\%$$
+
+**Étape 2. Mettre à l’échelle des actions.**
+
+$$CRP=1.7\%\times\frac{4.0}{2.5}=2.72\%$$
+
+**Étape 3. Appliquer l’exposition.**
+
+$$\lambda\times CRP=0.40\times 2.72\%=1.088\%$$
+
+Ajouter **1,088 %** à $r_e$.
 
 **MEDAF mondial.** Un seul facteur : un indice de marché mondial comme $r_m$, en supposant qu’il n’existe pas de différences de risque notables entre pays. Problème : les rendements émergents et développés sont peu corrélés, ce qui donne des bêtas faibles voire **négatifs**. Ajouter un facteur d’indice national aide, si les données locales sont fiables.
 
@@ -420,10 +553,17 @@ $$
 
 ## Mini-cas 1 : Gretna Engines
 
-Un fabricant de moteurs coté de petite capitalisation : cyclique, coûts fixes élevés, actifs surtout composés de stocks et d’immobilisations. Capital : dette 20 % (coupon 7 %, 7 ans, BBB, peu négociée), actions de préférence 15 % (dividende 7 %, nominal 1 000, cours 980, remboursables au pair), actions ordinaires 65 %. Elle prévoit d’émettre de la dette non garantie pour rembourser les actions de préférence.
+Un fabricant de moteurs coté de petite capitalisation : cyclique, coûts fixes élevés, actifs surtout composés de stocks et d’immobilisations. Elle prévoit d’émettre de la dette non garantie pour rembourser les actions de préférence.
 
-* **Pourquoi son coût du capital est élevé** : chiffre d’affaires et bénéfices cycliques et volatils ; actifs illiquides ; fort levier opérationnel.
-* **Coût de la dette par évaluation matricielle** (quatre obligations BBB liquides, semestrielles) :
+| Capital | Pondération | Modalités |
+| --- | ---: | --- |
+| Dette | 20 % | Coupon 7 %, 7 ans, BBB, peu négociée |
+| Actions de préférence | 15 % | Dividende 7 %, nominal 1 000, cours 980, remboursables au pair |
+| Actions ordinaires | 65 % | Bêta 0,91 ; $r_f$ 2,1 % ; ERP 5,5 % |
+
+**Pourquoi son coût du capital est élevé** : chiffre d’affaires et bénéfices cycliques et volatils ; actifs illiquides ; fort levier opérationnel.
+
+**Étape 1. Coût de la dette par évaluation matricielle** (quatre obligations BBB liquides, semestrielles) :
 
 | Obligation | Coupon | Échéance | Cours | YTM |
 | --- | --- | --- | --- | --- |
@@ -432,10 +572,41 @@ Un fabricant de moteurs coté de petite capitalisation : cyclique, coûts fixes 
 | 3 | 6% | 8 | 100.00 | 6.000% |
 | 4 | 8% | 8 | 112.42 | 6.021% |
 
-  La moyenne à 4 ans est de **5,166 %** et celle à 8 ans de **6,011 %**, soit un pas de (6,011 − 5,166)/4 = 0,211 % par an → 5 ans 5,377 %, 6 ans 5,588 %, 7 ans **5,799 % ≈ 5,8 %**. La faible négociation de Gretna signifie que son vrai rendement est un peu plus élevé.
-* **Coût des actions de préférence** : 70/980 = **7,14 %**.
-* Après le remplacement des actions de préférence par de la dette (35 % de dette, 65 % de capitaux propres), la nouvelle dette coûtera plus de 5,8 % mais moins de 7,14 %. Rembourser au pair quand le cours est de 980 implique un $r_f$ bas et/ou des spreads serrés, donc un bon moment. Pour réduire encore le coût, émettre de la dette **garantie**, **avec option de vente** ou **convertible**.
-* **Coût des capitaux propres** : MEDAF 2,1 % + 0,91 × 5,5 % = **7,11 %** ; cinq facteurs 2.1% + 0.95(5.5) + 0.45(1.8) + 0.14(3.9) − 0.19(3.1) + 0.30(3.7) = **9,20 %** ; BYPRP 5,8 % + 6,2 % = **12,0 %**.
+Interpoler linéairement entre les moyennes à 4 ans et à 8 ans pour l’obligation à 7 ans de Gretna :
+
+$$
+\begin{aligned}
+\bar y_4&=\frac{5.140+5.191}{2}=5.166\%\\
+\bar y_8&=\frac{6.000+6.021}{2}=6.011\%\\
+\text{Step}&=\frac{6.011-5.166}{4}=0.211\%\\
+y_7&=5.166+3\times 0.211\\
+&=5.799\%\approx 5.8\%
+\end{aligned}
+$$
+
+La faible négociation de Gretna signifie que son vrai rendement est un peu plus élevé.
+
+**Étape 2. Coût des actions de préférence.**
+
+$$r_p=\frac{0.07\times 1{,}000}{980}=7.14\%$$
+
+Après le remplacement des actions de préférence par de la dette (35 % de dette, 65 % de capitaux propres), la nouvelle dette coûtera plus de 5,8 % mais moins de 7,14 %. Rembourser au pair quand le cours est de 980 implique un $r_f$ bas et/ou des spreads serrés, donc un bon moment. Pour réduire encore le coût, émettre de la dette **garantie**, **avec option de vente** ou **convertible**.
+
+**Étape 3. Coût des capitaux propres, trois méthodes.**
+
+$$
+\begin{aligned}
+r_e^{\text{CAPM}}={}&2.1\%+0.91\times 5.5\%\\
+={}&7.11\%\\
+r_e^{\text{5F}}={}&2.1+0.95(5.5)+0.45(1.8)\\
+&+0.14(3.9)-0.19(3.1)\\
+&+0.30(3.7)=9.20\%\\
+r_e^{\text{BYPRP}}={}&5.8\%+6.2\%=12.0\%
+\end{aligned}
+$$
+
+**Étape 4. Contrôles de cohérence.**
+
 * Les 7,11 % du MEDAF sont **inférieurs** aux 7,14 % du coût des actions de préférence ; ce n’est donc pas crédible : les actions ordinaires sont subordonnées aux actions de préférence.
 * L’ERP a été estimée avec un **taux des bons** et la moyenne **arithmétique**, deux choix qui la poussent **à la hausse**.
 
@@ -454,10 +625,32 @@ Une entreprise de logiciels non cotée dans un marché émergent plus risqué, c
 
 $r_f$ local à 10 ans 5,41 % ; ERP 6 %, SP 5 %, IP 1 %, SCRP 6 %, CRP 2 %.
 
-* **Coût de la dette** : IC = 12.2/1.6 = **7,63** ; D/E = 18.4/(105.2 − 18.4) = **0,2120** → notation synthétique **A**, spread 1,46 %. $r_d$ = 5.41 + 1.46 + 2.00 (CRP) = **8,87 %** ; après impôt, 8,87 % × 0,8 = **7,096 %**.
+**Étape 1. Coût de la dette à partir d’une notation synthétique.**
+
+$$
+\begin{aligned}
+IC&=\frac{12.2}{1.6}=7.63\\
+D/E&=\frac{18.4}{105.2-18.4}=0.2120
+\end{aligned}
+$$
+
+Cela correspond à une notation synthétique **A**, avec un spread de 1,46 %. Le risque pays s’applique aussi à la dette :
+
+$$
+\begin{aligned}
+r_d&=5.41\%+1.46\%+\underbrace{2.00\%}_{CRP}\\
+&=8.87\%\\
+r_d(1-t)&=8.87\%\times 0.8=7.096\%
+\end{aligned}
+$$
+
+**Étape 2. Primes.**
+
 * **Prime de taille proche du haut de la fourchette de 3 à 6 %** : les actifs de Precision représentent moins d’un dixième de la moyenne du secteur.
-* **SCRP** : **plus élevée** en raison de davantage d’incorporels (47 % contre 32 %) et de moins de trésorerie (9 % contre 14 %) ; 70 % du chiffre d’affaires provient de cinq clients proches (concentration des clients et géographique) ; un fondateur-PDG sans plan de succession (personne clé). **Plus faible** grâce à 60 % de revenus d’abonnement et à un levier plus faible (D/E 0,2120 contre 0,3025 ; IC 7,63 contre 7,55).
-* **Bêta** : désendetter le bêta du secteur avec le taux d’imposition et le D/E **du secteur**, puis le réendetter avec ceux de Precision :
+* **SCRP plus élevée** en raison de davantage d’incorporels (47 % contre 32 %) et de moins de trésorerie (9 % contre 14 %) ; 70 % du chiffre d’affaires provient de cinq clients proches (concentration des clients et géographique) ; un fondateur-PDG sans plan de succession (personne clé).
+* **SCRP plus faible** grâce à 60 % de revenus d’abonnement et à un levier plus faible (D/E 0,2120 contre 296,4/979,8 = 0,3025 pour le secteur ; IC 7,63 contre 7,55).
+
+**Étape 3. Bêta.** Désendetter le bêta du secteur avec le taux d’imposition et le D/E **du secteur**, puis le réendetter avec ceux de Precision :
 
 $$
 \begin{aligned}
@@ -474,9 +667,27 @@ $$
 \end{aligned}
 $$
 
-* **MEDAF étendu** (IP et CRP compris) : 5.41 + 1.19(6) + 5 + 1 + 6 + 2 = **26,55 %**.
-* **Méthode par addition** (calculée comme dans la solution, sans IP) : 5.41 + 6 + 5 + 6 + 2 = **24,41 %**.
-* **WACC** avec $w_d$ = 18.4/105.2 = 0.1749 et $w_e$ = 0.8251 : 0.1749 × 8.87% × 0.8 + 0.8251 × 24.41% = **21,38 %**.
+**Étape 4. Coût des capitaux propres** (en %). Le MEDAF étendu inclut IP et CRP ; la méthode par addition suit la solution, sans IP.
+
+$$
+\begin{aligned}
+r_e^{\text{expanded}}&=5.41+1.19(6)+5\\
+&\quad+1+6+2\\
+&=26.55\%\\
+r_e^{\text{build-up}}&=5.41+6+5+6+2\\
+&=24.41\%
+\end{aligned}
+$$
+
+**Étape 5. WACC**, avec $w_d=18.4/105.2=0.1749$ et $w_e=0.8251$ :
+
+$$
+\begin{aligned}
+WACC&=0.1749\times 7.096\%\\
+&\quad+0.8251\times 24.41\%\\
+&=21.38\%
+\end{aligned}
+$$
 
 #### Pièges d’examen
 

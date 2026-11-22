@@ -141,15 +141,15 @@ $$
 
 ##### Exemple
 
-Il y a un mois, BM a pris une position vendeuse sur **cinq** contrats forward sur euro-obligations, à 2 mois de l’échéance, d’un notionnel de $\euro 100,000$ chacun, au prix de $145$. Le contrat forward cote maintenant 148. Le taux sans risque est de $0.1\%$. Calculez la valeur de la position de BM.
+Il y a un mois, BM a pris une position vendeuse sur **cinq** contrats forward sur euro-obligations, à 2 mois de l’échéance, d’un notionnel de €100,000 chacun, au prix de $145$. Le contrat forward cote maintenant 148. Le taux sans risque est de $0.1\%$. Calculez la valeur de la position de BM.
 
 * Jugez d’abord : position vendeuse et prix en hausse $\to$ valeur négative
 
 <div class="reveal" tabindex="0">
 
 
-* $V_{s,t}=\frac{(F_0(T)-F_t(T))}{(1+r_f)^{T-r}}=\frac{145-148}{1.001^{\frac{1}{12} }}=-2.9997$
-* $V_{BM}=V_{s,t}\times 100,100\times 5=-14998.5$.
+* $V_{s,t}=\frac{(F_0(T)-F_t(T))}{(1+r_f)^{T-t}}=\frac{145-148}{1.001^{\frac{1}{12} }}=-2.9997$
+* $V_{BM}=V_{s,t}\times \frac{100{,}000}{100}\times 5=-14{,}998.5$.
 
 
 </div>

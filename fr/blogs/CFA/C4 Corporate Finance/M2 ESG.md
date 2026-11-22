@@ -54,8 +54,6 @@ L’actionnariat concentré est bien plus courant : **38 des 47** juridictions �
 > [!IMPORTANT]
 > Les actionnaires de contrôle **réduisent** le problème principal–agent (ils contrôlent le conseil, nomment les dirigeants et ont intérêt à surveiller), mais ils **créent** le problème principal–principal.
 
-**Exemple (entreprise A).** Les dirigeants détiennent environ 30 %, aucun autre actionnaire plus de 1 %, une action une voix. C’est un actionnariat dispersé et un pouvoir de vote dispersé → actionnaires faibles, dirigeants forts → risque **principal–agent**.
-
 ### Actionnaires influents
 
 | Actionnaire | Rôle et préoccupations |
@@ -107,33 +105,8 @@ La gouvernance est difficile à quantifier. Commencez par les politiques publié
 
 **Droits de vote.** **Vote simple** (une action, une voix) contre actions **à droits de vote multiples**, où les fondateurs ou dirigeants détiennent des actions à vote plus élevé que le public : un conflit potentiel avec les minoritaires.
 
-**Exemple (Style, distributeur de vêtements italien).** Conseil de 11 membres ; la présidente (Leila Donato) n’est pas la directrice générale ; 2 administrateurs indépendants ; 4 des 6 administrateurs non indépendants sont membres de la famille Donato, chacun siégeant depuis plus de 20 ans ; 5 femmes, âgées de 35 à 75 ans.
-
-| Points positifs | Points négatifs |
-| --- | --- |
-| Pas de cumul des fonctions | Seulement 2 administrateurs indépendants ; la famille comprend la présidente |
-| Diversité d’âge et de genre | L’ancienneté de la famille dépasse largement les 10 ans habituels |
-
-**Exemple (Sumiyoshi Banking Group, Japon, face à ses pairs nationaux).**
-
-| Facteur | Pairs | Sumiyoshi |
-| --- | --- | --- |
-| Type / taille du conseil | Dualiste / 13 | Dualiste / 14 |
-| Cumul des fonctions de PDG | Oui | Oui |
-| Président indépendant | Oui | **Non** |
-| Indépendance du conseil | 47 % | **36 %** |
-| Administratrices | 17 % | **7 %** |
-| Longue ancienneté (> 10 ans) | 0 % | **14 %** |
-| Comités | 5 (dont gouvernance) | 4 (pas de comité de gouvernance) |
-| Administrateurs indépendants ayant une expérience de dirigeant dans le secteur | 67 % | **20 %** |
-| Indicateurs d’incitation publiés | Non | Non |
-| Say on pay | Oui | **Non** |
-| Actionnariat / vote | Pas de gros actionnaire unique ; vote simple | Idem |
-
-Sumiyoshi est en retard sur la composition de son conseil. L’analyste utilise aussi le risque de crédit comme indicateur indirect de gouvernance : son ratio prêts non performants / total des prêts est **supérieur de 50 pb à celui des pairs**, ce qui peut justifier une **prime de risque actions** plus élevée et un **spread de crédit** plus large que ceux des pairs.
-
 > [!IMPORTANT]
-> Séparer les fonctions de directeur général et de président est positif, mais ce n’est pas tout : une faible indépendance, une longue ancienneté et la domination d’une famille ou d’initiés peuvent encore rendre un conseil faible (Style).
+> Séparer les fonctions de directeur général et de président est positif, mais ce n’est pas tout : une faible indépendance, une longue ancienneté et la domination d’une famille ou d’initiés peuvent encore rendre un conseil faible.
 
 ## Identifier les facteurs ESG
 
@@ -153,17 +126,9 @@ La principale difficulté est d’obtenir une information **pertinente, comparab
 
 | Approche | Ce que c’est | Exemples |
 | --- | --- | --- |
-| **Méthodes propriétaires** | Le jugement et les outils propres de l’analyste ou de la société, à partir des entreprises, de la presse, des groupes sectoriels et environnementaux, des syndicats, des experts et de l’État | Rapports annuels, de durabilité et de procuration, 10-K ; la publication de scénarios climatiques de CDL |
+| **Méthodes propriétaires** | Le jugement et les outils propres de l’analyste ou de la société, à partir des entreprises, de la presse, des groupes sectoriels et environnementaux, des syndicats, des experts et de l’État | Rapports annuels, de durabilité et de procuration, 10-K ; publications de scénarios climatiques alignées sur la TCFD (risques de transition et risques physiques) |
 | **Fournisseurs de données ESG** | Des prestataires transforment les informations publiques en scores et classements ESG (souvent relatifs au secteur), avec une part d’évaluation subjective par des analystes | MSCI, Sustainalytics |
 | **Initiatives à but non lucratif et cadres de reporting** | Données, analyses et outils sur les questions ESG | IIRC (cadre de reporting standardisé), GRI (normes de reporting de durabilité par secteur), SASB (normes comptables de durabilité uniformes ; **cartes de matérialité**), 2DII, Access to Nutrition Index |
-
-**Exemple (City Developments Limited, CDL).** Planification de scénarios climatiques alignée sur la TCFD et le GIEC, avec des scénarios à 2030 pour un réchauffement de 2 °C et de 1,5 °C :
-
-| Type | Éléments |
-| --- | --- |
-| Risques de transition | Risque réglementaire (taxes carbone, normes de construction plus strictes ; haute priorité), sécurité de l’eau, responsabilité des déchets, primes d’assurance plus élevées ou actifs non assurables |
-| Risque physique | Inondations et canicules plus fréquentes et plus graves → actifs échoués |
-| Opportunités | Activisme des consommateurs, basculement mondial vers une croissance bas carbone (haute priorité), finance verte à Singapour |
 
 Les informations publiées vont du minimum à de nombreuses pages, ce qui rend les comparaisons difficiles. Par exemple, les thèmes de la GRI pour les biens de consommation durables et les produits ménagers et d’hygiène comprennent des thèmes environnementaux (approvisionnement en matières, emballages, plastiques et produits chimiques, efficacité énergétique des produits), sociaux (travailleurs migrants, sécurité des produits, étiquetage, déchets électroniques) et autres (rémunération des dirigeants, genre dans les organes de gouvernance, sélection des fournisseurs).
 

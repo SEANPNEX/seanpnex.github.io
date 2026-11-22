@@ -84,9 +84,8 @@ Les classifications combinent (1) les instruments, (2) la philosophie de négoci
 * Cibles : modèles économiques défaillants, comptabilité frauduleuse, mauvaise gestion, gouvernance faible, levier excessif, produits uniques non éprouvés. Outils : CDS et spreads obligataires, volatilité implicite des puts, analyse technique, le **Z-score d’Altman** (faillite) et le **M-score de Beneish** (manipulation des résultats).
 * Difficultés : coûts d’emprunt de titres et risque de rappel ; les positions perdantes **grossissent** (l’inverse des positions acheteuses) ; la direction peut bloquer l’accès ; réglementation (la règle alternative d’uptick aux États-Unis après une baisse de 10 % ; interdictions de vente à découvert pendant la crise financière mondiale).
 * Un objectif de rendement plus bas que les autres stratégies, mais une **corrélation négative** avec les marchés ; plus volatile que le long/short actions ; rendements historiquement irréguliers et décevants.
+* Quand les positions vendeuses et les coûts d’emprunt sont élevés, un squeeze est un risque : exprimer la vue baissière avec des puts ou un risk reversal vendeur plutôt qu’une vente à découvert.
 * Levier : **faible** (la volatilité naturelle suffit). Véhicule : de préférence une **société en commandite** (opérationnellement complexe). Indice de référence : peu de gérants ; comparer avec l’inverse des rendements d’un indice actions.
-
-**Exemple (Generic Inc.).** Surévaluée (PER et P/B 50 % et 40 % au-dessus du secteur ; croissance du BPA de 3 % contre 18 % pour le secteur), mais avec 60 % de positions vendeuses et un coût d’emprunt de 20 %, il y a un risque de **short squeeze** avant les résultats des essais. Donc ne pas vendre l’action à découvert. À la place : acheter des puts ; un calendar spread acheteur de puts ; acheter des actions et les prêter à 20 %, avec des puts de protection ; ou un risk reversal vendeur (vendre des calls hors de la monnaie chers, acheter des puts hors de la monnaie).
 
 ### Actions market neutral
 
@@ -97,13 +96,22 @@ Les classifications combinent (1) les instruments, (2) la philosophie de négoci
 * Levier : **élevé** (jusqu’à 300 % à l’achat contre 300 % à la vente avec une marge de portefeuille). Risque clé : le prime broker impose une **réduction** après une forte baisse ; risque extrême en période de tension (les paires quantitatives peuvent être en fait vendeuses de volatilité).
 * Véhicule : **société en commandite** (le levier dépasse les limites des fonds communs).
 
-**Exemple (pairs trade).** Acheter 1 000 000 USD de Coca-Cola (bêta 0,55), vendre PepsiCo (bêta 0,65) pour une exposition égale pondérée par le bêta :
-
 $$
-\text{Short PEP}=\frac{1{,}000{,}000}{0.65/0.55}=846{,}154
+\text{Short}=\text{Long}\times\frac{\beta_{\text{long}}}{\beta_{\text{short}}}
 $$
 
-Les pondérations dans les indices n’ont pas d’importance.
+#### Exemple : pairs trade Coca-Cola / PepsiCo
+
+Achat de 1 000 000 USD de Coca-Cola (bêta 0,55) ; vente de PepsiCo (bêta 0,65) pour que les expositions pondérées par le bêta soient égales.
+
+$$
+\begin{aligned}
+\text{Short}&=\frac{1{,}000{,}000\times 0.55}{0.65}\\
+&=846{,}154
+\end{aligned}
+$$
+
+Vendre **846 154 USD** de PepsiCo : chaque jambe porte alors 550 000 d’exposition bêta, si bien que le bêta net est nul. Les pondérations dans les indices n’ont pas d’importance.
 
 ## Stratégies événementielles
 
@@ -121,11 +129,43 @@ Elles tirent profit d’événements d’entreprise (fusions-acquisitions, faill
 * Levier : **modéré à élevé, 3–5×**. Véhicule : surtout des sociétés en commandite ; il existe quelques alternatifs liquides à faible levier.
 * Atout : un ratio de Sharpe élevé (rendement à deux chiffres bas, volatilité à un chiffre moyen), avec un risque de queue gauche.
 
-**Exemple.** L’acquéreur A, qui cote 45 USD, offre 1 action A pour 2 actions de la cible T ; T bondit de 15 à 19 USD, et A tombe à 42 USD. Acheter 20 000 T (380 000 USD) et vendre 10 000 A (+420 000 USD).
+#### Exemple : arbitrage de fusion par échange d’actions
 
-* L’opération aboutit : écart net **+40 000 USD**.
-* L’opération échoue (les prix reviennent) : la vente de A perd 420,000 − 450,000 = −30 000 ; l’achat de T perd 300,000 − 380,000 = −80 000 → **−110 000 USD**.
-* La position = donc une obligation sans risque payant 40 000 USD + un put binaire vendu versant 110 000 USD si l’opération échoue.
+L’acquéreur A offre 1 action A pour 2 actions de la cible (T).
+
+| | Avant | Après l’annonce |
+| --- | ---: | ---: |
+| Cours de l’action A | 45 USD | 42 USD |
+| Cours de l’action T | 15 USD | 19 USD |
+
+**Étape 1. Monter la position** selon la parité d’échange : acheter 20 000 T et vendre 10 000 A.
+
+$$
+\begin{aligned}
+\text{Long T}&=20{,}000\times 19=380{,}000\\
+\text{Short A}&=10{,}000\times 42=420{,}000
+\end{aligned}
+$$
+
+**Étape 2. L’opération aboutit.** Les 20 000 actions T deviennent les 10 000 actions A qui clôturent la position vendeuse :
+
+$$
+\text{Profit}=420{,}000-380{,}000=40{,}000
+$$
+
+**Étape 3. L’opération échoue**, et les cours reviennent à 45 USD et 15 USD :
+
+$$
+\begin{aligned}
+\text{A short}&=420{,}000-450{,}000\\
+&=-30{,}000\\
+\text{T long}&=300{,}000-380{,}000\\
+&=-80{,}000\\
+\text{Total}&=-110{,}000
+\end{aligned}
+$$
+
+La position est une obligation sans risque payant **40 000 USD** plus un put binaire vendu qui perd **110 000 USD** si l’opération échoue.
 
 ### Titres en difficulté
 
@@ -150,7 +190,23 @@ Elles exploitent les écarts de prix relatifs dus à la qualité de crédit, à 
 * Levier : **élevé**, en général **4–5×** (jusqu’à 12–15× dans certains fonds multistratégies), via des pensions avec **décotes** ; le levier disponible baisse à mesure que la complexité des produits augmente.
 * Liquidité : les opérations sur la courbe des emprunts d’État américains sont très liquides mais offrent le moins d’écarts de prix ; la liquidité diminue pour les autres souverains, les prêts hypothécaires et surtout les entreprises.
 
-**Exemple (TIPS contre bons du Trésor en période de tension).** Acheter des TIPS à 5 ans (recevoir 3,74 % + inflation), vendre des bons du Trésor à 5 ans (payer 2,56 %), et conclure un swap d’inflation (recevoir 1,36 % fixe, payer l’inflation) → **recevoir 2,54 %** net, pour un coût net nul. Quasiment sans risque, mais cela demande un accès aux pensions pour emprunter les bons du Trésor et des lignes de crédit bancaires pour le swap (les deux se contractent en crise), et les obligations empruntées peuvent être rappelées.
+#### Exemple : TIPS contre bons du Trésor en période de tension
+
+| Jambe (5 ans) | Recevoir | Payer |
+| --- | --- | --- |
+| Acheter des TIPS | 3,74 % + inflation | |
+| Vendre des bons du Trésor | | 2,56 % |
+| Swap d’inflation | 1,36 % fixe | Inflation |
+
+$$
+\begin{aligned}
+\text{Net}={}&(3.74\%+i)-2.56\%\\
+&+(1.36\%-i)\\
+={}&2.54\%
+\end{aligned}
+$$
+
+L’inflation s’annule ; l’opération **reçoit donc 2,54 %** pour un coût net nul. Elle est quasiment sans risque, mais demande un accès aux pensions pour emprunter les bons du Trésor et des lignes de crédit bancaires pour le swap (les deux se contractent en crise), et les obligations empruntées peuvent être rappelées.
 
 ### Arbitrage d’obligations convertibles
 
@@ -162,7 +218,32 @@ Elles exploitent les écarts de prix relatifs dus à la qualité de crédit, à 
 * Fonctionne au mieux avec des **émissions abondantes, une volatilité modérée et une liquidité ample** ; souffre en cas de tension sur le crédit et d’illiquidité (les hedge funds sont les teneurs de marché naturels, et font face à des rachats → risque de queue gauche).
 * Levier : **élevé**, en général **300 % à l’achat contre 200 % à la vente** (la vente est ajustée du delta).
 
-**Exemple (QXR).** La convertible cote 120 % du nominal = 1 200 €, avec un ratio de conversion de 50 → prix de conversion **24 €**, contre un cours de 30 € (l’action est aussi 50 % trop chère sur le PER, le P/BV et le P/CF) → acheter la convertible, vendre les actions.
+$$
+\text{Conversion price}=\frac{\text{Bond price}}{\text{Conv. ratio}}
+$$
+
+#### Exemple : arbitrage de convertible QXR
+
+| Donnée | Valeur |
+| --- | ---: |
+| Prix de la convertible | 120 % du nominal de 1 000 € = 1 200 € |
+| Ratio de conversion | 50 actions |
+| Cours de l’action | 30 € |
+| Coupon | 50 € par an |
+| Dividende | 1 € par action |
+| Coût d’emprunt des actions | 2 € par action |
+
+L’action est aussi environ 50 % trop chère sur le PER, le P/BV et le P/CF.
+
+**Étape 1. Prix de conversion.**
+
+$$
+\frac{1{,}200}{50}=24<30
+$$
+
+La convertible permet d’acheter l’action à 24 € ; donc acheter la convertible et vendre les actions à découvert.
+
+**Étape 2. Gain couvert** par action, quel que soit le cours de l’action :
 
 | Cours de QXR | Action détenue via la convertible | Action vendue | Total |
 | --- | --- | --- | --- |
@@ -170,7 +251,13 @@ Elles exploitent les écarts de prix relatifs dus à la qualité de crédit, à 
 | 30 | +6 | 0 | **+6** |
 | 36 | +12 | −6 | **+6** |
 
-En ajoutant le portage : coût d’emprunt 2 € + dividende versé 1 € = −3 € par action ; coupon 50 € ÷ 50 actions = +1 € → gain de **4 € par action**.
+**Étape 3. Ajouter le portage.** Le coupon est de 50 € ÷ 50 actions = 1 € par action ; l’emprunt coûte 2 € et le dividende dû sur la vente à découvert 1 €.
+
+$$
+\text{Profit}=6+1-2-1=4
+$$
+
+L’opération rapporte environ **4 € par action**.
 
 ## Stratégies opportunistes
 
@@ -183,8 +270,6 @@ Descendantes et multi-actifs. Classées selon l’analyse (fondamentale ou techn
 * Vues directionnelles, ou thématiques et de valeur relative.
 * Les rendements viennent d’une bonne anticipation des **tendances** ; les marchés peu volatils et **à retour à la moyenne** sont son fléau (l’ère du QE). Rendements irréguliers, volatilité plus élevée.
 * Levier : élevé, via les dérivés : un ratio marge/fonds propres de **15 %–25 %** contrôle **6–7×** les actifs du fonds. Beaucoup de positions diversifient moins qu’en long/short actions, car le « risk-on/risk-off » fait bouger les actifs ensemble.
-
-**Exemple (risque de dévaluation dans les pays émergents).** Acheter des puts sur des devises émergentes, des futures sur emprunts d’État émergents et des indices actions émergents (dans la monnaie pour une forte conviction, hors de la monnaie pour une plus faible ; la perte est plafonnée aux primes), plus des calls sur les devises de réserve des pays développés et des futures sur obligations développées bien notées (fuite vers la sécurité).
 
 ### Managed futures
 
@@ -204,8 +289,6 @@ Descendantes et multi-actifs. Classées selon l’analyse (fondamentale ou techn
 | Volatilité | Haut de la fourchette des hedge funds ; cyclique | Haut de la fourchette ; augmente avec l’horizon |
 | Levier | Élevé ; les options ajoutent de la convexité | Élevé ; 6–7× le notionnel avec 10 %–20 % de marge sur fonds propres |
 
-**Exemple (métaux précieux, signaux à 6 mois).** Le CSM achète les deux meilleurs et vend les deux moins bons des quatre métaux (à peu près couvert, moins volatil). Le TSM achète ceux aux rendements passés positifs et vend ceux aux rendements négatifs (éventuellement tous à l’achat ou tous à la vente) → plus volatil, plus sensible aux tendances du secteur.
-
 ## Stratégies spécialisées
 
 ### Négociation de volatilité
@@ -220,14 +303,10 @@ Descendantes et multi-actifs. Classées selon l’analyse (fondamentale ou techn
 * L’achat de volatilité est **convexe** (un gain asymétrique à droite : une petite prime pour des multiples potentiels), mais subit le roll-down et l’érosion de la prime.
 * Levier : notionnel, mais asymétrique. Difficile à comparer à un indice (indices de volatilité CBOE Eurekahedge long, short, valeur relative et risque extrême).
 
-**Exemple (puts hors de la monnaie achetés).** Des puts achetés 100 USD (volatilité implicite 12 %) tombent à 50 USD trois mois plus tard quand l’indice progresse de 20 %. Après une crise (l’indice 10 % sous son niveau de départ, les puts désormais à la monnaie, volatilité implicite 30 %), ils affichent un gain important. Si le marché évolue ensuite sans tendance, l’érosion temporelle ramène la prime à zéro, sauf si le gérant couvre activement en delta.
-
 ### Réassurance et life settlements
 
 * **Life settlements** : racheter des polices d’assurance vie à leurs détenteurs (via des courtiers) pour plus que la valeur de rachat ; le fonds paie les primes à venir et perçoit le capital décès. Rechercher (1) une faible valeur de rachat proposée, (2) de faibles primes à venir et (3) une forte probabilité que l’assuré décède plus tôt que les estimations actuarielles standard. L’opération réussit quand VA(capital décès) > VA(somme forfaitaire + primes). Il faut une expertise biométrique et actuarielle, et les rendements sont **non corrélés** aux marchés financiers.
 * **Réassurance catastrophe** : apporter du capital aux réassureurs contre les inondations, ouragans et séismes. Exige une diversité géographique et de polices, une réserve tampon pour pertes et des primes suffisantes ; utilise des obligations catastrophe et des futures catastrophe (émis de façon saisonnière avant la saison des ouragans).
-
-**Exemple (SingStar).** Un pool de polices NextLife (primes faibles, souscription laxiste) sur des personnes atteintes d’Alzheimer précoce (espérance de vie inférieure d’environ 10 ans) → prévoir les sorties de primes et le calendrier des capitaux décès, actualiser à un taux ajusté du risque, et proposer un prix inférieur à la VA.
 
 ## Stratégies multigérants
 
@@ -241,31 +320,63 @@ Il y a trois façons de combiner des stratégies : construire son propre assorti
 * Processus : trouver des gérants (bases de données, événements de capital introduction) → allocation stratégique → filtrage des groupes de pairs, entretiens, questionnaires de due diligence AIMA, visites sur site → due diligence opérationnelle (mémorandum d’offre, LPA, prestataires) → suivi de la dérive de style, du personnel et des questions réglementaires.
 * Inconvénients : une **double couche de frais** (historiquement 1 %/10 % en plus de 1 %–2 %/10 %–20 % ; aujourd’hui souvent 50 pb/5 % ou 1 % forfaitaire) ; moins de transparence ; **risque de compensation** ; une couche principal–agent supplémentaire ; un décalage de liquidité (le fonds de fonds offre une liquidité mensuelle ou trimestrielle après un blocage d’un an, alors que les fonds sous-jacents peuvent activer des gates) → échelonner les investissements, et garder une ligne de crédit en filet de sécurité.
 
-**Exemple (fonds de fonds Squaw Valley, 1 %/10 % sur deux fonds prenant 2 %/20 % ; frais en fin d’année ; sans capitalisation).** Les deux fonds gagnent 20 % brut :
-
 $$
 \begin{aligned}
-\text{Underlying net}&=20\%-2\%\\
-&\quad-20\%(20\%-2\%)\\
-&=14.4\%
+\text{Net}={}&\text{Gross}-\text{MF}\\
+&-\text{IF}\times(\text{Gross}-\text{MF})
 \end{aligned}
 $$
 
+où MF est la commission de gestion et IF le taux de commission de performance (aucune commission de performance sur une perte).
+
+#### Exemple : frais du fonds de fonds Squaw Valley
+
+Squaw Valley facture 1 %/10 % et investit à parts égales dans deux fonds qui facturent chacun 2 %/20 %. Les frais sont prélevés en fin d’année, sans capitalisation.
+
+**Étape 1. Les deux fonds gagnent 20 % brut.**
+
 $$
 \begin{aligned}
+\text{Fund net}&=20\%-2\%\\
+&\quad-20\%(20\%-2\%)\\
+&=14.4\%\\
 \text{FoF net}&=14.4\%-1\%\\
 &\quad-10\%(14.4\%-1\%)\\
 &=12.06\%
 \end{aligned}
 $$
 
-Les frais prennent (2 + 3.6 + 1 + 1.34)/20 = **39,7 %** du rendement brut.
+$$
+\begin{aligned}
+\text{Fees}&=2+3.6+1+1.34=7.94\\
+\text{Share}&=\frac{7.94}{20}=39.7\%
+\end{aligned}
+$$
 
-Si un fonds gagne 20 % et l’autre perd 5 % :
+**Étape 2. Un fonds gagne 20 %, l’autre perd 5 %.** Le perdant ne paie pas de commission de performance.
 
-* Le gagnant obtient 14,4 % net ; le perdant −5 % − 2 % − 0 = −7,0 % net ; le rendement brut du fonds de fonds = 0.5 × 14.4% + 0.5 × (−7.0%) = 3,7 %.
-* Rendement net du fonds de fonds = 3.7% − 1% − 10% × (3.7% − 1%) = **2,43 %**.
-* Les frais prennent {0.5 × (2 + 3.6 + 2 + 0) + (1 + 0.27)}/7.5 = **67,6 %** du rendement brut de 7,5 % → **risque de compensation**.
+$$
+\begin{aligned}
+\text{Loser net}&=-5\%-2\%=-7\%\\
+\text{FoF gross}&=0.5(14.4\%)+0.5(-7\%)\\
+&=3.7\%\\
+\text{FoF net}&=3.7\%-1\%\\
+&\quad-10\%(3.7\%-1\%)\\
+&=2.43\%
+\end{aligned}
+$$
+
+**Étape 3. Part des frais.** Le rendement brut des fonds est de 0,5 × 20 % + 0,5 × (−5 %) = 7,5 % :
+
+$$
+\begin{aligned}
+\text{Fees}&=0.5(2+3.6)+0.5(2)\\
+&\quad+1+0.27=5.07\\
+\text{Share}&=\frac{5.07}{7.5}=67.6\%
+\end{aligned}
+$$
+
+Les frais prennent **39,7 %** des rendements bruts quand les deux fonds gagnent, mais **67,6 %** quand l’un perd : ce bond est le **risque de compensation**.
 
 > [!IMPORTANT]
 > Les commissions de performance portent sur les gains **après** la commission de gestion. Un fonds perdant ne paie pas de commission de performance, mais celle du fonds gagnant est quand même payée ; l’investisseur du fonds de fonds paie donc des frais sur des gains compensés ailleurs.
@@ -341,9 +452,29 @@ $$
 * Les fonds multistratégies ont fait mieux que les fonds de fonds (moyenne 7,85 % TASS, 8,52 % CISDM), mais un Rho supérieur à 20 % signale des actifs moins liquides → gates.
 * Les fonds de fonds (sauf macro ou systématiques) ont des bêtas actions positifs (0,14–0,33), et les fonds multigérants dans leur ensemble ne montrent **aucune couverture de crise** (pas de DSNP500 significativement négatif) : diversifier entre stratégies de hedge funds n’a pas réduit le risque en 2007–09. Beaucoup de fonds de fonds actions sont devenus significativement négatifs sur le VIX (60 %) et l’USD en crise.
 
-**Exemple (fonds à biais vendeur BAM).** SNP500 −0,572 (significatif) ; VIX −0,164 (significatif → **vendeur de volatilité**, peut-être par la vente de puts) ; DSNP500 +0,236 → bêta actions en crise = −0.572 + 0.236 = **−0,336** : toujours vendeur, mais **moins** vendeur en crise (prise de bénéfices sur les ventes pendant la baisse).
+#### Exemple : fonds à biais vendeur BAM
 
-**Exemple (lire les expositions de crise).** Un fonds a un bêta SNP500 de 0,45, DSNP500 −0,30, VIX −0,10, DVIX +0,15. En temps normal, il est acheteur d’actions et vendeur de volatilité. En crise, son bêta actions est de 0.45 − 0.30 = 0,15 (risque réduit) et son exposition au VIX de −0.10 + 0.15 = +0,05 (désormais acheteur de volatilité) : le profil de crise souhaité.
+| Facteur | Coefficient | Significatif ? |
+| --- | ---: | --- |
+| SNP500 (normal) | −0,572 | Oui |
+| VIX (normal) | −0,164 | Oui |
+| DSNP500 (supplémentaire en crise) | +0,236 | |
+
+**Étape 1. Bêta actions en crise.**
+
+$$
+\begin{aligned}
+\beta_{\text{crisis}}&=-0.572+0.236\\
+&=-0.336
+\end{aligned}
+$$
+
+**Étape 2. Lire les expositions.**
+
+* Le coefficient négatif sur le VIX signifie que le fonds est **vendeur de volatilité** en temps normal, peut-être par la vente de puts.
+* En crise, il reste vendeur d’actions, mais **moins** vendeur (prise de bénéfices sur les positions vendeuses pendant la baisse).
+
+Le bêta actions en crise est de **−0,336**. Le profil de crise souhaité est l’inverse : le bêta actions baisse (DSNP500 négatif) et l’exposition à la volatilité devient positive (DVIX positif).
 
 ## Ajouter des hedge funds à un portefeuille
 
@@ -360,19 +491,6 @@ Ajouter une allocation de **20 %** (fonds équipondérés d’une même catégor
 
 > [!IMPORTANT]
 > Le ratio de Sharpe utilise la volatilité totale (il pénalise hausse et baisse de la même façon) ; le ratio de **Sortino** utilise l’écart à la baisse ; il convient donc mieux aux stratégies sujettes à de fortes pertes. La perte maximale est la plus forte baisse depuis un plus haut historique jusqu’à un creux ultérieur.
-
-**Exemple (fondation Evergreen : maximiser le rendement ajusté du risque, limiter la baisse, garder de la liquidité, éviter l’empilement des frais).**
-
-| 48/32/20 avec | Moyenne | Volatilité | Sharpe | Sortino | Perte maximale |
-| --- | --- | --- | --- | --- | --- |
-| 60/40 seul | 6.96 | 8.66 | 0.62 | 1.13 | 14.42 |
-| Long/short petites capitalisations US | 7.53 | 8.75 | 0.68 | 1.23 | 27.02 |
-| Événementiel | 7.19 | 7.83 | 0.71 | 1.31 | 20.57 |
-| Arbitrage de taux sur dette souveraine | 7.50 | 7.82 | **0.75** | **1.39** | **12.68** |
-| Fonds de fonds actions | 6.39 | 7.76 | 0.62 | 1.11 | 21.63 |
-
-* **Le moins adapté : le fonds de fonds actions** (aucun gain de Sharpe ni de Sortino, une perte maximale 50 % plus forte, deux couches de blocages et de frais, risque de compensation).
-* **Le plus adapté : l’arbitrage de taux sur dette souveraine** (les meilleurs ratios de Sharpe et de Sortino, la plus faible perte maximale, des souverains liquides, une seule couche de frais).
 
 > [!NOTE]
 >

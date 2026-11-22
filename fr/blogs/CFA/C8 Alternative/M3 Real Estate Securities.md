@@ -73,24 +73,75 @@ avec actifs et passifs à leur valeur de marché.
 
 L’ANR est une valeur **avant impôt** : les impôts à la liquidation sont ignorés, car on ne sait pas comment la société ou ses actifs seraient vendus.
 
-**Exemple (milliers d’USD).**
+#### Exemple : NAVPS à partir du NOI en trésorerie
 
-| Étape | Montant |
-| --- | --- |
+En milliers d’USD ; le taux de capitalisation est de 7,00 %, et il y a 55 689 actions.
+
+**Étape 1. NOI en trésorerie des 12 prochains mois.**
+
+| | Montant |
+| --- | ---: |
 | NOI des 12 derniers mois | 270,432 |
 | Moins : loyers non monétaires | (7,667) |
 | Plus : effet en année pleine des acquisitions | 4,534 |
 | NOI en trésorerie pro forma (12 derniers mois) | 267,299 |
 | Plus : croissance des 12 prochains mois (1,5 %) | 4,009 |
 | **NOI en trésorerie des 12 prochains mois** | **271,308** |
-| ÷ taux de capitalisation de 7,00 % → immobilier en exploitation | 3,875,829 |
-| + Trésorerie 65 554, terrains pour développement 34 566, créances 45 667, charges d’avance et autres 23 456 | 169,243 |
-| **Valeur brute des actifs** | **4,045,072** |
-| − Dette totale 1 010 988, autres passifs 119 886 | (1,130,874) |
-| **ANR** | **2,914,198** |
-| ÷ 55 689 actions → **NAVPS** | **52,33 USD** |
 
-**Exemple.** NOI 115 M USD, valeur comptable 1 005 M USD, valeur de marché de la dette 505 M USD, taux de capitalisation 7 %, 100 M d’actions → valeur des biens 115/0.07 = 1 642,9 M USD ; ANR = 1,642.9 − 505 = 1 137,9 M USD → **NAVPS 11,38 USD** (pas 10,05 USD, la valeur comptable par action, ni 16,42 USD, avant la dette).
+**Étape 2. Évaluer l’immobilier en exploitation.**
+
+$$
+\begin{aligned}
+\text{Real estate}&=\frac{271{,}308}{0.07}\\
+&=3{,}875{,}829
+\end{aligned}
+$$
+
+**Étape 3. Valeur brute des actifs.** Ajouter trésorerie 65 554, terrains pour développement 34 566, créances 45 667, et charges constatées d’avance et autres actifs 23 456 (169 243 au total) :
+
+$$
+\begin{aligned}
+GAV&=3{,}875{,}829+169{,}243\\
+&=4{,}045{,}072
+\end{aligned}
+$$
+
+**Étape 4. ANR.** Soustraire la dette totale 1 010 988 et les autres passifs 119 886 (1 130 874) :
+
+$$
+\begin{aligned}
+NAV&=4{,}045{,}072-1{,}130{,}874\\
+&=2{,}914{,}198
+\end{aligned}
+$$
+
+**Étape 5. NAVPS.**
+
+$$
+NAVPS=\frac{2{,}914{,}198}{55{,}689}=52.33
+$$
+
+Le NAVPS est de **52,33 USD**.
+
+#### Exemple : NAVPS et valeur comptable
+
+| Donnée | Valeur |
+| --- | ---: |
+| NOI | 115 M USD |
+| Taux de capitalisation | 7 % |
+| Valeur comptable des capitaux propres | 1 005 M USD |
+| Valeur de marché de la dette | 505 M USD |
+| Actions | 100 M |
+
+$$
+\begin{aligned}
+\text{Property}&=\frac{115}{0.07}=1{,}642.9\\
+NAV&=1{,}642.9-505=1{,}137.9\\
+NAVPS&=\frac{1{,}137.9}{100}=11.38
+\end{aligned}
+$$
+
+Le NAVPS est de **11,38 USD**, et non 10,05 USD (valeur comptable par action) ni 16,43 USD (avant soustraction de la dette).
 
 > [!IMPORTANT]
 > Un taux de capitalisation plus élevé → une valeur des biens plus faible → un **ANR plus faible**. Une croissance plus rapide du NOI → un ANR plus élevé. Les passifs d’impôt différé ne réduisent **pas** l’ANR. Un terrain ancien inscrit à sa valeur comptable peut être réévalué à sa valeur actuelle.
@@ -143,17 +194,69 @@ $$
 * Soustraire les dépenses d’entretien récurrentes et les coûts de location (commissions de location, participations aux aménagements).
 * L’AFFO (aussi appelé fonds disponibles pour distribution, **FAD**, ou trésorerie disponible pour distribution, **CAD**) mesure mieux que le FFO le **revenu économique** et la **capacité à verser des dividendes**. Mais il est plus subjectif (les dépenses d’investissement sont irrégulières), les méthodes varient, et les fournisseurs de données **ne compilent** en général pas d’estimations d’AFFO.
 
-**Exemple (Office Equity REIT, milliers de SGD, 55 689 actions).**
+#### Exemple : FFO et AFFO d’Office Equity REIT
 
-| FFO | | AFFO | |
-| --- | --- | --- | --- |
-| Résultat net | 160,638 | FFO | 261,738 |
-| + Amortissements et dépréciations | 76,100 | − Loyers non monétaires (linéarisés) | (21,103) |
-| + Moins-values de cession d’immobilier amortissable | 25,000 | − Dépenses d’entretien récurrentes et commissions de location | (55,765) |
-| **FFO** | **261,738** | **AFFO** | **184,870** |
-| FFO par action | 4.70 | AFFO par action | 3.32 |
+En milliers de SGD ; 55 689 actions.
 
-**Exemple (en partant de l’AFFO).** AFFO 4 000 000 USD ; AFFO par action 5,00 USD ; loyers non monétaires 215 000 USD ; dépenses d’investissement récurrentes 700 000 USD ; cours 80 USD → 800 000 actions ; FFO = 4,000,000 + 215,000 + 700,000 = 4 915 000 → FFO par action 6,14 USD → **P/FFO 13,0×**. (Ne pas réintégrer l’amortissement dans l’AFFO.)
+| Donnée | Montant |
+| --- | ---: |
+| Résultat net | 160,638 |
+| Amortissements et dépréciations | 76,100 |
+| Moins-values de cession d’immobilier amortissable | 25,000 |
+| Loyers non monétaires (linéarisés) | 21,103 |
+| Dépenses d’entretien récurrentes et commissions de location | 55,765 |
+
+**Étape 1. FFO.** Réintégrer la moins-value de cession (elle n’est pas récurrente) :
+
+$$
+\begin{aligned}
+FFO&=160{,}638+76{,}100\\
+&\quad+25{,}000=261{,}738\\
+\text{Per share}&=\frac{261{,}738}{55{,}689}=4.70
+\end{aligned}
+$$
+
+**Étape 2. AFFO.**
+
+$$
+\begin{aligned}
+AFFO&=261{,}738-21{,}103\\
+&\quad-55{,}765=184{,}870\\
+\text{Per share}&=\frac{184{,}870}{55{,}689}=3.32
+\end{aligned}
+$$
+
+Le FFO est de **4,70 SGD** par action et l’AFFO de **3,32 SGD**.
+
+#### Exemple : P/FFO à partir de l’AFFO
+
+| Donnée | USD |
+| --- | ---: |
+| AFFO | 4,000,000 |
+| AFFO par action | 5.00 |
+| Loyers non monétaires | 215,000 |
+| Dépenses d’investissement récurrentes | 700,000 |
+| Cours de l’action | 80 |
+
+**Étape 1. Actions.** $4{,}000{,}000/5.00=800{,}000$.
+
+**Étape 2. FFO.** Annuler les ajustements de l’AFFO (ne pas réintégrer l’amortissement : il est déjà dans le FFO) :
+
+$$
+\begin{aligned}
+FFO&=4{,}000{,}000+215{,}000\\
+&\quad+700{,}000=4{,}915{,}000\\
+\text{Per share}&=\frac{4{,}915{,}000}{800{,}000}=6.14
+\end{aligned}
+$$
+
+**Étape 3. Multiple.**
+
+$$
+P/FFO=\frac{80}{6.14}=13.0\times
+$$
+
+Le P/FFO est de **13,0×**.
 
 **Ce qui explique les écarts de P/FFO, P/AFFO et EV/EBITDA :**
 
@@ -174,34 +277,114 @@ $$
 
 Les REIT distribuent l’essentiel de leur revenu ; les modèles d’actualisation des dividendes et DCF leur conviennent donc. Utiliser des DDM à **deux ou trois étapes** (croissance à court, moyen et long terme) ; un DCF utilise des projections de flux à moyen terme et une valeur terminale tirée des multiples historiques de flux.
 
-**Exemple (Baldwin REIT, DDM à deux étapes).** MEDAF : $r$ = 4 % + 0,9 × 5 % = 8,5 % ; $D_1$ = 1,00, $D_2$ = 1,06, puis croissance de 5 % à partir de l’année 3.
-
-$$
-D_3=1.06\times1.05\approx1.11
-$$
-
-$$
-P_2=\frac{1.11}{0.085-0.05}=31.71
-$$
-
-$$
-V_0=\frac{1.00}{1.085}+\frac{1.06+31.71}{1.085^2}=28.76
-$$
-
-**Exemple (REIT C).** $r$ = 8 % ; $D_1$ = 4,00 ; croissance de 4,5 % les années 2–3, puis 4 % → $D_2$ = 4,18, $D_3$ = 4,37, $D_4$ = 4,54 ; $P_3$ = 4.54/(0.08 − 0.04) = 113,57.
-
 $$
 \begin{aligned}
-V_0&=\frac{4.00}{1.08}+\frac{4.18}{1.08^2}+\frac{4.37+113.57}{1.08^3}\\
-&=100.91
+V_0={}&\sum_{t=1}^{n}\frac{D_t}{(1+r)^t}+\frac{P_n}{(1+r)^n}\\
+P_n={}&\frac{D_{n+1}}{r-g}
 \end{aligned}
 $$
 
-**Exemples (autres méthodes).**
+#### Exemple : DDM à deux étapes de Baldwin REIT
 
-* ANR (REIT A) : NOI en trésorerie 350 000 ÷ 0,07 = 5 000 000, + trésorerie et créances 514 500, − dette et passifs 2 014 000 = 3 500 500, ÷ 56 100 actions = **62,40 USD**.
-* P/FFO (REIT B) : FFO par action 290,612/67,900 = 4,28 × le 13,5× du sous-secteur = **57,78 USD**.
-* P/AFFO (REIT A) : AFFO = 316,965 − 25,991 − 63,769 = 227 205 → 4,05 USD par action × 18,3× = **74,12 USD**.
+| Donnée | Valeur |
+| --- | ---: |
+| Taux sans risque | 4 % |
+| Bêta | 0.9 |
+| Prime de risque actions | 5 % |
+| $D_1$ / $D_2$ | 1.00 / 1.06 |
+| Croissance à partir de l’année 3 | 5 % |
+
+**Étape 1. Rendement exigé (MEDAF).**
+
+$$
+r=4\%+0.9\times 5\%=8.5\%
+$$
+
+**Étape 2. Cours à la fin de l’année 2.**
+
+$$
+\begin{aligned}
+D_3&=1.06\times 1.05\approx 1.11\\
+P_2&=\frac{1.11}{0.085-0.05}=31.71
+\end{aligned}
+$$
+
+**Étape 3. Valeur aujourd’hui.**
+
+$$
+\begin{aligned}
+V_0&=\frac{1.00}{1.085}+\frac{1.06+31.71}{1.085^2}\\
+&=0.92+27.84=28.76
+\end{aligned}
+$$
+
+La valeur est de **28,76 USD** par action.
+
+#### Exemple : DDM à trois étapes de REIT C
+
+$r$ = 8 % ; $D_1$ = 4,00 ; croissance de 4,5 % les années 2–3, puis 4 %.
+
+**Étape 1. Dividendes.**
+
+$$
+\begin{aligned}
+D_2&=4.00\times 1.045=4.18\\
+D_3&=4.18\times 1.045=4.37\\
+D_4&=4.37\times 1.04=4.54
+\end{aligned}
+$$
+
+**Étape 2. Cours à la fin de l’année 3.**
+
+$$
+P_3=\frac{4.54}{0.08-0.04}=113.57
+$$
+
+(113,57 utilise le $D_4$ non arrondi de 4,543.)
+
+**Étape 3. Valeur aujourd’hui.**
+
+$$
+\begin{aligned}
+V_0={}&\frac{4.00}{1.08}+\frac{4.18}{1.08^2}\\
+&+\frac{4.37+113.57}{1.08^3}\\
+={}&3.704+3.584+93.625\\
+={}&100.91
+\end{aligned}
+$$
+
+La valeur est de **100,91 USD** par action.
+
+#### Exemple : valeurs par le P/FFO et le P/AFFO
+
+$$
+\begin{aligned}
+V&=\frac{FFO}{\text{Shares}}\times\text{Peer }P/FFO\\
+V&=\frac{AFFO}{\text{Shares}}\times\text{Peer }P/AFFO
+\end{aligned}
+$$
+
+**REIT B (P/FFO).** Le FFO est de 290 612 pour 67 900 actions ; le sous-secteur se négocie à 13,5×.
+
+$$
+\begin{aligned}
+FFO/\text{share}&=\frac{290{,}612}{67{,}900}=4.28\\
+V&=4.28\times 13.5=57.78
+\end{aligned}
+$$
+
+**REIT A (P/AFFO).** Le FFO est de 316 965, les loyers non monétaires de 25 991 et les dépenses d’investissement récurrentes de 63 769, pour 56 100 actions ; le multiple est de 18,3×.
+
+$$
+\begin{aligned}
+AFFO&=316{,}965-25{,}991\\
+&\quad-63{,}769=227{,}205\\
+AFFO/\text{share}&=\frac{227{,}205}{56{,}100}=4.05\\
+V&=4.05\times 18.3=74.12
+\end{aligned}
+$$
+
+REIT B vaut **57,78 USD** par action et REIT A **74,12 USD**.
 
 ## Mini-cas : Capitol Shopping Center REIT
 

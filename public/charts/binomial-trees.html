@@ -16,9 +16,80 @@
     <div class="grid" id="panels"></div>
     <div class="src">BINOMIAL TREES · LIEFLAT TREE NODES · RATES 3% → 8% / 5% · S₀ = 50, U = 1.356, D = 0.744, r = 5%</div>
   </main>
+  <script src="i18n.js"></script>
+  <script>
+chartI18n.use({
+  zh: {
+    'Binomial trees · rates, bond, stock, option': '二叉树 · 利率、债券、股票、期权',
+    'Every binomial tree branches forward, then values backward.': '每棵二叉树都向前分叉，再向后估值。',
+    'Two-period trees · top: the interest rate tree and the 2-year 7% bond it values (50/50 up and down, as in CFA Fixed Income) · bottom: the stock tree and a call struck at 50, using risk-neutral probabilities (Derivatives) · ink = the value today · hover a node for how it is computed': '两期二叉树 · 上排：利率树及其所估值的 2 年期 7% 债券（上升与下降各 50%，如 CFA 固定收益）· 下排：股票树及行权价 50 的看涨期权，使用风险中性概率（衍生品）· 墨色 = 今日价值 · 悬停节点查看计算过程',
+    'BINOMIAL TREES · LIEFLAT TREE NODES · RATES 3% → 8% / 5% · S₀ = 50, U = 1.356, D = 0.744, r = 5%': '二叉树 · LIEFLAT 树节点 · 利率 3% → 8% / 5% · S₀ = 50, U = 1.356, D = 0.744, r = 5%',
+    'Interest rate tree': '利率二叉树',
+    'One-year rates · 8% / 5% = 1.6 = e^(2σ), so σ ≈ 23.5%': '一年期利率 · 8% / 5% = 1.6 = e^(2σ)，故 σ ≈ 23.5%',
+    'Today’s one-year rate: 3.00%': '今日一年期利率：3.00%',
+    'Year-1 rate, up node: 8.00%\n= 5.00% × e^(2σ)': '第 1 年利率，上行节点：8.00%\n= 5.00% × e^(2σ)',
+    'Year-1 rate, down node: 5.00%': '第 1 年利率，下行节点：5.00%',
+    'Bond value tree': '债券价值二叉树',
+    '2-year 7% annual coupon, par 100 · values exclude the coupon paid at that node': '2 年期 7% 年付息债券，面值 100 · 节点价值不含该节点支付的票息',
+    'V₀ = ½[(99.07 + 7) + (101.90 + 7)] / 1.03\n= 104.36': 'V₀ = ½[(99.07 + 7) + (101.90 + 7)] / 1.03\n= 104.36',
+    'V(1, up) = 107 / 1.08 = 99.07': 'V(1, 上) = 107 / 1.08 = 99.07',
+    'V(1, down) = 107 / 1.05 = 101.90': 'V(1, 下) = 107 / 1.05 = 101.90',
+    'Maturity: 100 + 7 coupon': '到期：100 + 7 票息',
+    'Every path ends at par': '每条路径都以面值结束',
+    'Stock price tree': '股票价格二叉树',
+    'S₀ = 50 · up × 1.356, down × 0.744 each year': 'S₀ = 50 · 每年上行 × 1.356，下行 × 0.744',
+    'Call value tree': '看涨期权价值二叉树',
+    'European call, X = 50 · π = (1.05 − 0.744) / (1.356 − 0.744) = 0.5': '欧式看涨期权，X = 50 · π = (1.05 − 0.744) / (1.356 − 0.744) = 0.5',
+  },
+  ja: {
+    'Binomial trees · rates, bond, stock, option': '二項ツリー · 金利、債券、株式、オプション',
+    'Every binomial tree branches forward, then values backward.': 'すべての二項ツリーは前向きに枝分かれし、後ろ向きに評価する。',
+    'Two-period trees · top: the interest rate tree and the 2-year 7% bond it values (50/50 up and down, as in CFA Fixed Income) · bottom: the stock tree and a call struck at 50, using risk-neutral probabilities (Derivatives) · ink = the value today · hover a node for how it is computed': '2 期間のツリー · 上段：金利ツリーとそれで評価する 2 年 7% 債（上昇・下降各 50%、CFA 債券）· 下段：株価ツリーと行使価格 50 のコール、リスク中立確率を使用（デリバティブ）· 墨 = 今日の価値 · ノードにカーソルを合わせると計算方法を表示',
+    'BINOMIAL TREES · LIEFLAT TREE NODES · RATES 3% → 8% / 5% · S₀ = 50, U = 1.356, D = 0.744, r = 5%': '二項ツリー · LIEFLAT ツリー・ノード · 金利 3% → 8% / 5% · S₀ = 50, U = 1.356, D = 0.744, r = 5%',
+    'Interest rate tree': '金利ツリー',
+    'One-year rates · 8% / 5% = 1.6 = e^(2σ), so σ ≈ 23.5%': '1 年金利 · 8% / 5% = 1.6 = e^(2σ)、ゆえに σ ≈ 23.5%',
+    'Today’s one-year rate: 3.00%': '今日の 1 年金利：3.00%',
+    'Year-1 rate, up node: 8.00%\n= 5.00% × e^(2σ)': '1 年目の金利（上昇ノード）：8.00%\n= 5.00% × e^(2σ)',
+    'Year-1 rate, down node: 5.00%': '1 年目の金利（下降ノード）：5.00%',
+    'Bond value tree': '債券価値ツリー',
+    '2-year 7% annual coupon, par 100 · values exclude the coupon paid at that node': '2 年 7% 年利払い債、額面 100 · 各ノードの価値はそのノードで支払われるクーポンを含まない',
+    'V₀ = ½[(99.07 + 7) + (101.90 + 7)] / 1.03\n= 104.36': 'V₀ = ½[(99.07 + 7) + (101.90 + 7)] / 1.03\n= 104.36',
+    'V(1, up) = 107 / 1.08 = 99.07': 'V(1, 上昇) = 107 / 1.08 = 99.07',
+    'V(1, down) = 107 / 1.05 = 101.90': 'V(1, 下降) = 107 / 1.05 = 101.90',
+    'Maturity: 100 + 7 coupon': '満期：100 + クーポン 7',
+    'Every path ends at par': 'すべてのパスが額面で終わる',
+    'Stock price tree': '株価ツリー',
+    'S₀ = 50 · up × 1.356, down × 0.744 each year': 'S₀ = 50 · 毎年 上昇 × 1.356、下降 × 0.744',
+    'Call value tree': 'コール価値ツリー',
+    'European call, X = 50 · π = (1.05 − 0.744) / (1.356 − 0.744) = 0.5': 'ヨーロピアン・コール、X = 50 · π = (1.05 − 0.744) / (1.356 − 0.744) = 0.5',
+  },
+  fr: {
+    'Binomial trees · rates, bond, stock, option': 'Arbres binomiaux · taux, obligation, action, option',
+    'Every binomial tree branches forward, then values backward.': 'Chaque arbre binomial se ramifie vers l’avant, puis s’évalue à rebours.',
+    'Two-period trees · top: the interest rate tree and the 2-year 7% bond it values (50/50 up and down, as in CFA Fixed Income) · bottom: the stock tree and a call struck at 50, using risk-neutral probabilities (Derivatives) · ink = the value today · hover a node for how it is computed': 'Arbres à deux périodes · en haut : l’arbre des taux et l’obligation à 2 ans à 7 % qu’il évalue (50/50 hausse et baisse, comme en Obligations CFA) · en bas : l’arbre de l’action et un call de strike 50, avec probabilités risque-neutres (Produits dérivés) · encre = valeur aujourd’hui · survolez un nœud pour voir le calcul',
+    'BINOMIAL TREES · LIEFLAT TREE NODES · RATES 3% → 8% / 5% · S₀ = 50, U = 1.356, D = 0.744, r = 5%': 'ARBRES BINOMIAUX · NŒUDS D’ARBRE LIEFLAT · TAUX 3 % → 8 % / 5 % · S₀ = 50, U = 1,356, D = 0,744, r = 5 %',
+    'Interest rate tree': 'Arbre de taux',
+    'One-year rates · 8% / 5% = 1.6 = e^(2σ), so σ ≈ 23.5%': 'Taux à un an · 8 % / 5 % = 1,6 = e^(2σ), donc σ ≈ 23,5 %',
+    'Today’s one-year rate: 3.00%': 'Taux à un an aujourd’hui : 3,00 %',
+    'Year-1 rate, up node: 8.00%\n= 5.00% × e^(2σ)': 'Taux en année 1, nœud haut : 8,00 %\n= 5,00 % × e^(2σ)',
+    'Year-1 rate, down node: 5.00%': 'Taux en année 1, nœud bas : 5,00 %',
+    'Bond value tree': 'Arbre de valeur de l’obligation',
+    '2-year 7% annual coupon, par 100 · values exclude the coupon paid at that node': 'Obligation 2 ans, coupon annuel 7 %, pair 100 · valeurs hors coupon versé à ce nœud',
+    'V₀ = ½[(99.07 + 7) + (101.90 + 7)] / 1.03\n= 104.36': 'V₀ = ½[(99,07 + 7) + (101,90 + 7)] / 1,03\n= 104,36',
+    'V(1, up) = 107 / 1.08 = 99.07': 'V(1, haut) = 107 / 1,08 = 99,07',
+    'V(1, down) = 107 / 1.05 = 101.90': 'V(1, bas) = 107 / 1,05 = 101,90',
+    'Maturity: 100 + 7 coupon': 'Échéance : 100 + coupon de 7',
+    'Every path ends at par': 'Chaque trajectoire finit au pair',
+    'Stock price tree': 'Arbre du cours de l’action',
+    'S₀ = 50 · up × 1.356, down × 0.744 each year': 'S₀ = 50 · hausse × 1,356, baisse × 0,744 chaque année',
+    'Call value tree': 'Arbre de valeur du call',
+    'European call, X = 50 · π = (1.05 − 0.744) / (1.356 − 0.744) = 0.5': 'Call européen, X = 50 · π = (1,05 − 0,744) / (1,356 − 0,744) = 0,5',
+  },
+});
+  </script>
   <script>
 (() => {
-  const { C, el, label, mount } = curveKit;
+  const { C, T: tr, el, label, mount } = curveKit;
 
   // ── Data: nodes[t][j], j = 0 is the highest (up) node at step t ──
   const f2 = (v) => v.toFixed(2);
@@ -90,11 +161,11 @@
     const sec = document.createElement('section');
     sec.className = 'panel';
     sec.innerHTML = '<h3></h3><div class="hint"></div>';
-    sec.querySelector('h3').textContent = tree.h3;
-    sec.querySelector('.hint').textContent = tree.hint;
+    sec.querySelector('h3').textContent = tr(tree.h3);
+    sec.querySelector('.hint').textContent = tr(tree.hint);
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     svg.setAttribute('role', 'img');
-    svg.setAttribute('aria-label', tree.h3 + ': ' + tree.nodes.map((r) => r.map((n) => n.v).join(' / ')).join(' → '));
+    svg.setAttribute('aria-label', tr(tree.h3) + ': ' + tree.nodes.map((r) => r.map((n) => n.v).join(' / ')).join(' → '));
     sec.appendChild(svg);
     host.appendChild(sec);
     mount(svg, (s, W, H) => draw(s, W, H, tree), (W) => Math.max(150, Math.min(190, W * 0.5)));

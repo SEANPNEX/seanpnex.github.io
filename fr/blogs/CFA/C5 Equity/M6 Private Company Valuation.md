@@ -18,12 +18,6 @@ title: Évaluation des entreprises non cotées
 * Les facteurs propres aux actions **réduisent** en général la valeur ; les facteurs propres à l’entreprise peuvent jouer dans les deux sens (une start-up dirigée par son fondateur peut croître plus vite que ses pairs cotés).
 * Le risque et le rendement varient davantage qu’entre entreprises cotées ; les entreprises familiales (p. ex. le *Mittelstand* allemand) dominent de nombreuses économies.
 
-**Exemples.**
-
-* **Thunder Corp.** appartient à des actionnaires non salariés et est dirigée par des managers recrutés ; les **problèmes principal–agent** sont donc la différence *la moins* probable avec une entreprise cotée.
-* **Sun and Moon** (deux associés à 35 %, trois à 10 %) : les écarts de valeur par action viennent du **contrôle concentré** (les deux détenteurs de 35 % contrôlent ensemble 70 %).
-* **Privacy Group contre PT Corp.** (identiques sauf la cotation) : la différence vient de l’**illiquidité des actions**.
-
 ## Usages et points d’attention
 
 | Transactions | Conformité | Contentieux |
@@ -47,23 +41,83 @@ Trois points d’attention :
 * Méfiez-vous d’une rémunération du propriétaire supérieure au marché (qui réduit le revenu imposable) ; de dépenses personnelles, logements, avions et véhicules passés par l’entreprise ; d’assurances vie ; de prêts d’actionnaires. Les propriétaires d’entreprises déficitaires peuvent se **sous**-rémunérer, sous-estimant les charges.
 * **Immobilier** : retirer les produits et charges du bien, imputer un loyer de marché, et traiter le bien comme un actif hors exploitation (au risque et à la croissance différents).
 
-**Exemple (Fyt for Life, FLI).** Publié : chiffre d’affaires SGD50m, coût des ventes 30m, SG&A 5m, D&A 1m, EBIT 14m, impôt 17 % → résultat d’exploitation après impôt **11,62m**.
+$$
+\begin{aligned}
+EBIT_{\text{norm}}={}&\text{Reported EBIT}\\
+&+\text{Excess owner pay}\\
+&+\text{Non-operating costs}\\
+&-\text{Market rent owed}
+\end{aligned}
+$$
+
+#### Exemple : Fyt for Life (FLI)
+
+La dette est inférieure à l’optimum ; normalisez donc le **résultat d’exploitation après impôt** (ignorez les intérêts). Le taux d’imposition est de 17 %.
+
+**Étape 1. Ajustements.**
 
 * La rémunération du DG est de 1,5m contre un niveau de marché de 0,5m → SG&A −1,0m.
 * Un ranch et un appartement hors exploitation → SG&A −0,3m, D&A −0,1m.
-* La dette est inférieure à l’optimum → utiliser le résultat d’exploitation après impôt (ignorer les intérêts).
-* Ajusté : SG&A 3,7m, EBITDA 16,3m, D&A 0,9m, EBIT **15,4m**, impôt 2,618m → **12,782m**.
-* Si le propriétaire (Xin) avait perçu les 1,5m en dividende plutôt qu’en salaire, il faudrait normaliser les bénéfices **à la baisse** (déduire un salaire de marché de 0,5m). Usage gratuit d’un immeuble familial → déduire un loyer de marché.
 
-**Exemple (Chandra Consolidated).** Les boutiques occupent gratuitement le rez-de-chaussée de la holding. Ajoutez un loyer de marché comme charge de Chandra Shops (réduisant ses bénéfices et sa valeur) et comme produit locatif de Chandra Holdings (les augmentant).
+**Étape 2. Compte de résultat normalisé.**
+
+| SGD m | Publié | Ajustement | Normalisé |
+| --- | ---: | ---: | ---: |
+| Chiffre d’affaires | 50.0 | | 50.0 |
+| Coût des ventes | (30.0) | | (30.0) |
+| SG&A | (5.0) | +1.3 | (3.7) |
+| EBITDA | 15.0 | | 16.3 |
+| D&A | (1.0) | +0.1 | (0.9) |
+| **EBIT** | **14.0** | | **15.4** |
+| Impôt à 17 % | (2.38) | | (2.618) |
+| **Résultat d’exploitation après impôt** | **11.62** | | **12.782** |
+
+**Et si les faits diffèrent ?**
+
+* Si le propriétaire (Xin) avait perçu les 1,5m en **dividende** plutôt qu’en salaire, normalisez les bénéfices **à la baisse** : déduisez un salaire de marché de 0,5m.
+* Usage gratuit d’un immeuble familial → déduisez un loyer de marché.
 
 **Questions de flux de trésorerie.** La participation évaluée (une part minoritaire ou la totalité des capitaux propres) modifie les hypothèses. Les issues peuvent être très incertaines (introduction en bourse, vente, faillite, étapes d’autorisation) ; utilisez donc une **analyse de scénarios**. Les prévisions de la direction peuvent être biaisées : **surestimées** pour les tests de dépréciation du goodwill, **sous-estimées** pour l’attribution d’options. Vérifiez que les projections incluent les besoins futurs en capitaux.
 
-**Exemple (Nano Beta, scénarios).** WACC 15 % ; 80 % de chances d’autorisation préliminaire, puis 40 % d’autorisation large, 40 % limitée, 20 % d’échec (valeur nulle).
+$$V_0=\frac{\sum_i p_i\,V_{i,T}}{(1+r)^T}$$
 
-* Large : 200(1.05)/(0.15 − 0.05) = **€2.1bn** ; limitée : 50(1.02)/0.13 = **€392.3m** (les deux valeurs en $t$ = 2).
-* Valeur attendue en $t$ = 2 : 0,32 × 2 100 + 0,32 × 392,3 = €797.5m → aujourd’hui 797.5/1.15² = **€603.1m**.
-* Avec 60 % d’autorisation préliminaire, 60 % large et 20 % limitée : 0,36 × 2 100 + 0,12 × 392,3 = 803,1 → **€607.2m** (+€4.2m).
+#### Exemple : Nano Beta (scénarios)
+
+Le WACC est de 15 %. L’autorisation préliminaire a 80 % de chances d’aboutir ; ensuite, l’autorisation finale est large (40 %), limitée (40 %) ou échoue (20 %, valeur nulle). Les valeurs sont en $t$ = 2, lorsque l’issue est connue.
+
+**Étape 1. Évaluer chaque scénario en $t$ = 2** (€m ; les flux croissent à 5 % et 2 %) :
+
+$$
+\begin{aligned}
+V_{\text{broad}}&=\frac{200\times 1.05}{0.15-0.05}=2{,}100\\
+V_{\text{limited}}&=\frac{50\times 1.02}{0.15-0.02}=392.3
+\end{aligned}
+$$
+
+**Étape 2. Pondérer par les probabilités et actualiser.**
+
+$$
+\begin{aligned}
+E(V_2)&=\underbrace{0.8\times 0.4}_{0.32}\times 2{,}100\\
+&\quad+0.32\times 392.3\\
+&=797.5\\
+V_0&=\frac{797.5}{1.15^2}=603.1
+\end{aligned}
+$$
+
+**€603.1m.**
+
+**Sensibilité.** Avec 60 % d’autorisation préliminaire, 60 % large et 20 % limitée :
+
+$$
+\begin{aligned}
+E(V_2)&=0.36\times 2{,}100+0.12\times 392.3\\
+&=803.1\\
+V_0&=\frac{803.1}{1.15^2}=607.2
+\end{aligned}
+$$
+
+C’est seulement €4.2m de plus.
 
 ## Taux d’actualisation
 
@@ -74,18 +128,31 @@ Ajustements à envisager :
 * **Acquisitions** : utiliser le risque et la structure du capital de la **cible**. Utiliser le WACC plus faible de l’acheteur revient à payer le vendeur pour la valeur que l’acheteur apporte.
 * **Risque de projection** : moins d’information, ou des prévisions d’une direction inexpérimentée → une prime plus élevée, fondée sur le jugement.
 
-| Modèle | Rendement exigé des capitaux propres |
-| --- | --- |
-| MEDAF | $r_f+\beta(r_m-r_f)$ |
-| MEDAF étendu | MEDAF + prime des petites capitalisations + prime spécifique |
-| Méthode par addition | $r_f$ + ERP + prime des petites capitalisations + prime sectorielle (±) + prime spécifique (**β implicite = 1**) |
+$$
+\begin{aligned}
+\text{CAPM: }r_e={}&r_f+\beta\times ERP\\
+\text{Expanded: }r_e={}&r_f+\beta\times ERP\\
+&+SP+SCRP\\
+\text{Build-up: }r_e={}&r_f+ERP+SP\\
+&\pm IP+SCRP
+\end{aligned}
+$$
+
+où SP est la prime des petites capitalisations, SCRP la prime de risque spécifique à l’entreprise et IP la prime sectorielle. La méthode par addition a un **β implicite = 1**.
 
 * Le MEDAF peut ne pas convenir : les propriétaires d’entreprises non cotées sont souvent peu diversifiés, et les petites entreprises ne sont pas comparables à des pairs cotés dotés de bêtas.
 * La méthode par addition s’utilise lorsqu’il n’existe pas de bonnes sociétés cotées de référence.
 
-**Exemple (le taux d’actualisation de FLI).** $r_f$ 3,8 %, ERP 5 %, bêta 1,1, prime des petites capitalisations 3 %, prime spécifique 1 %, prime sectorielle 0 %, coût de la dette avant impôt 7,5 %, impôt 17 % (6,225 % après impôt) ; dette/capital : pairs 20 %, optimum 10 %, réel 2 %.
+#### Exemple : Le taux d’actualisation de FLI
 
-| Mesure | Calcul | Résultat |
+| Donnée | Valeur |
+| --- | --- |
+| $r_f$ / ERP / bêta | 3,8 % / 5 % / 1,1 |
+| Prime petites capitalisations / spécifique / sectorielle | 3 % / 1 % / 0 % |
+| Coût de la dette | 7,5 % avant impôt ; $7.5\%\times 0.83=6.225\%$ après 17 % d’impôt |
+| Dette/capital | Pairs 20 %, optimum 10 %, réel 2 % |
+
+| Mesure | Calcul (%) | Résultat |
 | --- | --- | --- |
 | MEDAF | 3.8 + 1.1 × 5 | **9,3 %** |
 | MEDAF étendu | 3.8 + 5.5 + 3 + 1 | **13,3 %** |
@@ -125,10 +192,40 @@ $$
 * Autres décotes : personne clé, portefeuille (actifs non homogènes), actions sans droit de vote.
 * Appliquez les décotes de façon **multiplicative**, dans l’ordre : contrôle d’abord, puis négociabilité.
 
-**Exemples.**
+#### Exemple : Everfloat (DLOC et DLOM) {#example-everfloat-dloc-and-dlom}
 
-* **Everfloat** : valeur GBP1.65bn, prime de contrôle 15 % → DLOC = 1 − 1/1,15 = **13,0 %** → GBP1.4355bn. DLOM à partir du put à 6 mois à la monnaie de Shipline (terme 50e^0.025 = 51,27, σ 60 %) = 8,40 → 8,40/50 = **16,8 %**. Total = 1 − 0,87 × 0,832 = **27,6 %**.
-* **Starbeam**, évaluée comme détenue à 100 % par la direction (contrôle, non négociable) : vendre une participation sans contrôle → appliquer seulement la **DLOC** ; un acheteur financier qui prend le contrôle → une **prime de contrôle financier**. Avec une prime de contrôle de 30 % et une DLOM de 20 % : DLOC 23,1 % ; total 1 − 0,769 × 0,8 = **38,5 %**.
+La valeur de contrôle d’Everfloat est de GBP1.65bn, et la prime de contrôle est de 15 %. La DLOM est estimée à partir d’un put à 6 mois à la monnaie sur Shipline (cours 50, σ 60 %, terme $50e^{0.025}=51.27$), qui coûte 8,40.
+
+**Étape 1. DLOC.**
+
+$$
+\begin{aligned}
+DLOC&=1-\frac{1}{1.15}=13.0\%\\
+\text{Minority}&=1.65\times(1-0.13)\\
+&=1.4355
+\end{aligned}
+$$
+
+**Étape 2. DLOM.**
+
+$$
+\begin{aligned}
+DLOM&=\frac{\text{Put premium}}{\text{Share price}}\\
+&=\frac{8.40}{50}=16.8\%
+\end{aligned}
+$$
+
+**Étape 3. Combiner de façon multiplicative.**
+
+$$
+\begin{aligned}
+\text{Total}&=1-(1-0.13)(1-0.168)\\
+&=1-0.87\times 0.832\\
+&=27.6\%
+\end{aligned}
+$$
+
+**27,6 %**, et non $13\%+16.8\%=29.8\%$.
 
 #### Pièges d’examen
 
@@ -166,7 +263,48 @@ $$
 
 où RIR est le taux de réinvestissement et $r_e-g$ le **taux de capitalisation**. Capitaux propres = valeur de l’entreprise − valeur de marché de la dette (la valeur nominale est acceptable si la dette est faible et l’exploitation stable).
 
-**Exemple (Vinuvia).** FCFF BRL15m ; $r_e$ 15 % ; $r_d$ 10 % ; impôt 34 % ; 10 % de dette (BRL5m) ; $g$ 5 %. WACC = 0,1 × 0,66 × 10 % + 0,9 × 15 % = **14,2 %** (14,16 %). Valeur de l’entreprise = 15.75/0.0916 = BRL171.9m → capitaux propres **BRL166.9m**. À $g$ = 2 % : **BRL120.8m**, plus de 25 % de moins : très sensible à la croissance.
+#### Exemple : Vinuvia
+
+| Donnée | Valeur |
+| --- | --- |
+| $FCFF_0$ | BRL15m |
+| $r_e$ / $r_d$ avant impôt | 15 % / 10 % |
+| Taux d’imposition | 34% |
+| Dette | 10 % du capital (BRL5m) |
+| $g$ | 5% |
+
+**Étape 1. WACC.**
+
+$$
+\begin{aligned}
+WACC&=0.1\times 10\%\times 0.66\\
+&\quad+0.9\times 15\%\\
+&=14.16\%
+\end{aligned}
+$$
+
+**Étape 2. Valeur de l’entreprise et des capitaux propres.**
+
+$$
+\begin{aligned}
+V_{\text{firm}}&=\frac{15\times 1.05}{0.1416-0.05}\\
+&=\frac{15.75}{0.0916}=171.9\\
+V_{\text{equity}}&=171.9-5=166.9
+\end{aligned}
+$$
+
+**BRL166.9m.**
+
+**Sensibilité.** À $g$ = 2 % :
+
+$$
+\begin{aligned}
+V_{\text{equity}}&=\frac{15\times 1.02}{0.1416-0.02}-5\\
+&=125.8-5=120.8
+\end{aligned}
+$$
+
+**BRL120.8m**, plus de 25 % de moins : la méthode est très sensible à la croissance.
 
 ### Méthode des bénéfices excédentaires
 
@@ -182,7 +320,36 @@ $$
 
 où $NI_{\text{norm}}$ est le résultat normalisé, et WC et FA le fonds de roulement et les immobilisations. Valeur de l’entreprise = juste valeur des actifs corporels + RV (la valeur des incorporels). Les rendements exigés croissent du fonds de roulement (le plus bas) aux immobilisations puis aux incorporels (le plus élevé). Elle est rarement utilisée pour des entreprises entières (seulement de très petites), mais largement acceptée pour évaluer les **actifs incorporels** en information financière.
 
-**Exemple (Digigraf).** Fonds de roulement €200k à 5 % ; immobilisations €800k à 11 % ; résultat normalisé €120k → RI = 120 − 10 − 88 = **€22k** ; RV = 22 × 1.03/(0.12 − 0.03) = **€251,778** ; entreprise **€1,251,778**. À 4 % et 10 % : RI €32k, RV €412k → **€1,412,000**.
+#### Exemple : Digigraf
+
+| Donnée | Valeur | Rendement exigé |
+| --- | ---: | ---: |
+| Fonds de roulement | €200k | 5% |
+| Immobilisations | €800k | 11% |
+| Incorporels (revenu résiduel) | | 12% |
+| Résultat normalisé | €120k | |
+| Croissance du RI | 3% | |
+
+**Étape 1. Revenu résiduel.**
+
+$$
+\begin{aligned}
+RI&=120-\underbrace{0.05\times 200}_{10}-\underbrace{0.11\times 800}_{88}\\
+&=22
+\end{aligned}
+$$
+
+**Étape 2. Valeur des incorporels.**
+
+$$RV=\frac{22\times 1.03}{0.12-0.03}=251.778$$
+
+**Étape 3. Valeur de l’entreprise.**
+
+$$V=\underbrace{200+800}_{\text{tangible}}+251.778=1{,}251.778$$
+
+**€1,251,778.**
+
+**Sensibilité.** Avec des rendements exigés de 4 %, 10 % et 11 % : RI = 120 − 8 − 80 = €32k et RV = 32 × 1.03/0.08 = €412k, l’entreprise vaut donc **€1,412,000**.
 
 La méthode de capitalisation des flux exige **un seul** taux d’actualisation (le WACC) ; celle des bénéfices excédentaires en exige plusieurs. Aucune n’a besoin de comparables cotés.
 
@@ -198,7 +365,37 @@ $$
 \beta_L^*=\beta_U\left[1+(1-t^*)(D/E)^*\right]
 $$
 
-**Exemple (Quik Chip).** Bêta moyen des pairs 1,21, D/E 50 %, impôt 21,6 % → $\beta_U$ = 1.21/1.392 = **0,8693**. Quik Chip : D/E 25 %, impôt 18 % → β* = 0,8693 × 1,205 = **1,0475**. EV : 17,3 × EBIT de €35m = **€605.5m** ; 2,0 × ventes de €250m = **€500m** (sa marge d’EBIT est de 14 % contre 11,6 % pour les pairs).
+#### Exemple : Quik Chip
+
+Le bêta moyen des pairs est de 1,21, avec D/E de 50 % et impôt de 21,6 %. Quik Chip a un D/E de 25 % et un impôt de 18 % ; son EBIT est de €35m sur un chiffre d’affaires de €250m.
+
+**Étape 1. Désendetter le bêta des pairs.**
+
+$$
+\begin{aligned}
+\beta_U&=\frac{1.21}{1+(1-0.216)\times 0.50}\\
+&=\frac{1.21}{1.392}=0.8693
+\end{aligned}
+$$
+
+**Étape 2. Réendetter à la structure de Quik Chip.**
+
+$$
+\begin{aligned}
+\beta^*&=0.8693\times\left[1+(1-0.18)\times 0.25\right]\\
+&=0.8693\times 1.205\\
+&=1.0475
+\end{aligned}
+$$
+
+**Étape 3. EV à partir des multiples des pairs.**
+
+| Multiple | Pairs | × Quik Chip | EV |
+| --- | ---: | ---: | ---: |
+| EV/EBIT | 17.3 | €35m | **€605.5m** |
+| EV/ventes | 2.0 | €250m | **€500m** |
+
+EV/ventes donne moins, car la marge d’EBIT de Quik Chip (14 %) dépasse celle des pairs (11,6 %).
 
 * Pour les entreprises multisectorielles, utilisez un multiple **composite**, pondéré par la part de chaque secteur dans les ventes ou l’EBITDA (ou des pairs au même mix d’activités).
 * Avantages : un large vivier d’entreprises et des données abondantes. Inconvénients : la comparabilité ; des ajustements subjectifs pour le risque et la croissance.
@@ -224,9 +421,23 @@ $$
 
 Du point de vue d’un minoritaire :
 
-* WACC **12,55 %** ($r_e$ = 13 %, la moyenne de 13,3 % et 12,8 % ; et la moyenne des hypothèses d’endettement).
-* FCFF de base = 16,3m × 0,83 + 0,9m × 0,17 − 1,2m − 0,5m = **SGD11.982m** (soit EBIT 15,4m × 0,83 + D&A 0,9m − 1,7m).
-* Croissance sur cinq ans de 2 % (défavorable), 5 % (central) ou 8 % (favorable) ; croissance terminale 3 % → TV = FCFF₅ × 1,03/(0,1255 − 0,03).
+**Étape 1. WACC = 12,55 %.** $r_e$ = 13 % (la moyenne de 13,3 % et 12,8 %), et le WACC fait la moyenne des hypothèses d’endettement.
+
+**Étape 2. FCFF de l’année de base** (SGD m ; Δactifs à long terme 1,2, ΔWC 0,5) :
+
+$$
+\begin{aligned}
+FCFF&=16.3\times 0.83+0.9\times 0.17\\
+&\quad-1.2-0.5\\
+&=11.982
+\end{aligned}
+$$
+
+De façon équivalente, $15.4\times 0.83+0.9-1.7=11.982$.
+
+**Étape 3. EV et capitaux propres.** Le FCFF croît de 2 % (défavorable), 5 % (central) ou 8 % (favorable) pendant cinq ans, puis de 3 % :
+
+$$TV_5=\frac{FCFF_5\times 1.03}{0.1255-0.03}$$
 
 | SGD m | Défavorable | Central | Favorable |
 | --- | --- | --- | --- |
@@ -236,17 +447,59 @@ Du point de vue d’un minoritaire :
 | Capitaux propres (− dette 2,5) | 121.527 | 137.702 | 155.661 |
 | Après DLOM de 18 % (sans DLOC) | **99.653** | **112.916** | **127.642** |
 
-**Exemple (Macro Associates).** La rémunération supérieure au marché d’un associé vendeur → normaliser les coûts **à la baisse**, l’EBIT **à la hausse**. Sans comparables cotés → la méthode par addition (ERP sans bêta, β implicite = 1). L’avantage de la capitalisation des flux sur les bénéfices excédentaires : un seul taux d’actualisation.
+**Étape 4.** Appliquez la DLOM de 18 % (sans DLOC : les flux sont déjà sur une base sans contrôle), comme à la dernière ligne du tableau.
 
 ### Approche par le marché (Everfloat)
 
 Étapes : (1) des comparables pour chaque ligne d’activité ; (2) rassembler et pondérer les multiples ; (3) l’EV à partir des multiples (une valeur équivalente cotée) ; (4) appliquer la DLOC et la DLOM.
 
-**Exemple (Everfloat, GBP m).** Chiffre d’affaires 700 / 250 / 50 (maritime / logistique / énergie) ; EBITDA 187,5 / 75 / −12,5 (total 250). EV/chiffre d’affaires des pairs 2,8 / 1,1 / 8,0 ; EV/EBITDA 8,2 / 8,1 / 20,0.
+$$
+\text{Composite}=\sum_i w_i\times\text{Multiple}_i
+$$
 
-* EV/chiffre d’affaires composite = 0.7(2.8) + 0.25(1.1) + 0.05(8.0) = **2,635** → EV **2 635** (secteurs 1 960 / 275 / 400 ; la logistique vaut le moins).
-* EV/EBITDA composite = 0.75(8.2) + 0.30(8.1) − 0.05(20) = **7,58** → EV **1 895**. Un secteur à EBITDA négatif implique une valeur négative ; évaluez donc l’énergie sur ses ventes.
-* Après la décote totale de 27,6 % : **1 907,74** (EV/chiffre d’affaires) et **1 371,98** (EV/EBITDA) ; moyenne **1 639,86**.
+#### Exemple : Everfloat (multiples composites)
+
+| GBP m | Maritime | Logistique | Énergie | Total |
+| --- | ---: | ---: | ---: | ---: |
+| Chiffre d’affaires | 700 | 250 | 50 | 1,000 |
+| EBITDA | 187.5 | 75 | −12.5 | 250 |
+| EV/ventes des pairs | 2.8 | 1.1 | 8.0 | |
+| EV/EBITDA des pairs | 8.2 | 8.1 | 20.0 | |
+
+**Étape 1. EV/ventes,** pondéré par le chiffre d’affaires :
+
+$$
+\begin{aligned}
+\text{Composite}&=0.70\times 2.8+0.25\times 1.1\\
+&\quad+0.05\times 8.0\\
+&=2.635\\
+EV&=2.635\times 1{,}000=2{,}635
+\end{aligned}
+$$
+
+Par secteur : 1 960 / 275 / 400 (la logistique vaut le moins).
+
+**Étape 2. EV/EBITDA,** pondéré par l’EBITDA :
+
+$$
+\begin{aligned}
+\text{Composite}&=0.75\times 8.2+0.30\times 8.1\\
+&\quad-0.05\times 20.0\\
+&=7.58\\
+EV&=7.58\times 250=1{,}895
+\end{aligned}
+$$
+
+L’EBITDA négatif de l’énergie implique une valeur négative ; évaluez donc l’énergie sur ses ventes.
+
+**Étape 3. Appliquer la décote totale de 27,6 %** ([ci-dessus](#example-everfloat-dloc-and-dlom)) :
+
+| | EV/ventes | EV/EBITDA |
+| --- | ---: | ---: |
+| EV équivalente cotée | 2,635 | 1,895 |
+| × (1 − 0,276) | **1 907,74** | **1 371,98** |
+
+La moyenne est de **GBP1,639.86m**.
 
 > [!NOTE]
 >

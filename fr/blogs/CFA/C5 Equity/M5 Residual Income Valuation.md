@@ -14,13 +14,66 @@ $$
 RI=NI-r_e\times\text{Equity capital}
 $$
 
-Du point de vue de tous les apporteurs de capitaux : RI = NOPAT − charge totale du capital (le WACC en montant) = (ROIC − taux de charge effectif du capital) × capital d’ouverture. Les deux points de vue coïncident lorsque le coût marginal de la dette est égal à son coût actuel, et que les pondérations du capital sont des pondérations **comptables**.
+Du point de vue de tous les apporteurs de capitaux (la charge totale du capital est le WACC en montant) :
 
-**Exemple (Axis Manufacturing).** Actifs de €2m, financés à 50 % par dette (7 % avant impôt) et à 50 % par capitaux propres (12 %) ; EBIT €200,000 ; impôt 30 %.
+$$
+\begin{aligned}
+RI={}&NOPAT-\text{Total capital charge}\\
+={}&(ROIC-\text{Effective charge})\\
+&\times\text{Beginning capital}
+\end{aligned}
+$$
 
-* RN = (200 000 − 70 000) × 0,7 = €91,000 ; charge des capitaux propres 0,12 × 1 000 000 = €120,000 → **RI = −€29,000**.
-* Point de vue du capital : NOPAT €140,000 − (120 000 + 0,07 × 0,7 × 1 000 000 = 169 000) = **−€29,000** ; le ROIC est de 7 %, pour un taux de charge du capital de 8,45 %.
-* Évaluation : 100 000 actions d’une valeur comptable de €10 ; valeur détruite de €0.29 par action et par an → PV 0.29/0.12 = €2.42 → cours ≈ **€7.58** (E/P = 0.91/7.5833 = 12 %), P/B 0,7583. RI négatif → P/B inférieur à 1.
+Les deux points de vue coïncident lorsque le coût marginal de la dette est égal à son coût actuel, et que les pondérations du capital sont des pondérations **comptables**.
+
+#### Exemple : Axis Manufacturing
+
+| Donnée | Valeur |
+| --- | --- |
+| Total de l’actif | €2,000,000 |
+| Financement | 50 % dette à 7 % avant impôt, 50 % capitaux propres à 12 % |
+| EBIT | €200,000 |
+| Taux d’imposition | 30% |
+| Actions | 100 000 (valeur comptable €10 chacune) |
+
+**Étape 1. Point de vue des capitaux propres.**
+
+$$
+\begin{aligned}
+NI&=(200{,}000-\underbrace{70{,}000}_{\text{Int}})\times 0.7\\
+&=91{,}000\\
+\text{Charge}&=0.12\times 1{,}000{,}000\\
+&=120{,}000\\
+RI&=91{,}000-120{,}000\\
+&=-29{,}000
+\end{aligned}
+$$
+
+**Étape 2. Le point de vue du capital donne la même réponse.**
+
+$$
+\begin{aligned}
+NOPAT&=200{,}000\times 0.7=140{,}000\\
+\text{Charge}&=120{,}000\\
+&\quad+0.07\times 0.7\times 1{,}000{,}000\\
+&=169{,}000\\
+RI&=140{,}000-169{,}000\\
+&=-29{,}000
+\end{aligned}
+$$
+
+Le ROIC est de $140{,}000/2{,}000{,}000=7\%$, pour une charge effective du capital de $169{,}000/2{,}000{,}000=8.45\%$.
+
+**Étape 3. Valeur.** L’entreprise détruit €0.29 par action chaque année, pour toujours :
+
+$$
+\begin{aligned}
+V_0&=10-\frac{0.29}{0.12}=10-2.42=7.58\\
+P/B&=\frac{7.58}{10}=0.758
+\end{aligned}
+$$
+
+**€7.58 par action** (E/P = 0.91/7.58 = 12 % = $r$). RI négatif → P/B inférieur à 1.
 
 **Valeur économique ajoutée** (la version commerciale de Stern Stewart) :
 
@@ -34,8 +87,8 @@ où $C\%$ est le coût du capital et TC le capital total. Ajustements typiques :
 
 $$
 \begin{aligned}
-MVA={}&\text{Market value of the company}\\
-&-\text{Book value of total capital}
+MVA={}&\text{Market value of company}\\
+&-\text{Book value of capital}
 \end{aligned}
 $$
 
@@ -60,9 +113,39 @@ $$
 * Le modèle se déduit du DDM grâce à la **relation de surplus propre** : $B_t=B_{t-1}+E_t-D_t$.
 * Si la PV des RI futurs est positive, la valeur dépasse la valeur comptable.
 
-**Exemple (Canadien National).** $r$ = 1,75 % + 1,02 × 7,5 % = **9,40 %** ; BVPS CAD24.32 ; BPA 6,23 (2019) et 6,96 (2020) ; DPA 2,15 et 2,32. RI 2019 = 6.23 − 0.094 × 24.32 = **3,94** ; $B_{2019}$ = 24.32 + 6.23 − 2.15 = 28,40 ; RI 2020 = 6.96 − 0.094 × 28.40 = **4,29**.
+#### Exemple : Canadien National
 
-**Exemple (Bugg Properties, en liquidation).** BPA 2,00, 2,50, 4,00 ; DPA 1,00, 1,25, 12,25 (de liquidation) ; $B_0$ \$6.00 ; $r$ 10 %.
+La BVPS d’ouverture est de CAD24.32 ; le taux sans risque est de 1,75 %, le bêta de 1,02 et l’ERP de 7,5 %.
+
+| | 2019 | 2020 |
+| --- | ---: | ---: |
+| BPA | 6.23 | 6.96 |
+| DPA | 2.15 | 2.32 |
+
+**Étape 1. Rendement exigé.**
+
+$$r=1.75\%+1.02\times 7.5\%=9.40\%$$
+
+**Étape 2. RI, en faisant avancer la valeur comptable par le surplus propre.**
+
+$$
+\begin{aligned}
+RI_{2019}&=6.23-0.094\times 24.32=3.94\\
+B_{2019}&=24.32+6.23-2.15=28.40\\
+RI_{2020}&=6.96-0.094\times 28.40=4.29
+\end{aligned}
+$$
+
+#### Exemple : Bugg Properties (en liquidation)
+
+$B_0$ = \$6.00 et $r$ = 10 %. Bugg liquide après l’année 3.
+
+| Année | 1 | 2 | 3 |
+| --- | ---: | ---: | ---: |
+| BPA | 2.00 | 2.50 | 4.00 |
+| DPA | 1.00 | 1.25 | 12.25 (de liquidation) |
+
+**Étape 1. RI de chaque année.** $RI_t=E_t-0.10\times B_{t-1}$, avec $B_t=B_{t-1}+E_t-D_t$ :
 
 | Année | 1 | 2 | 3 |
 | --- | --- | --- | --- |
@@ -72,10 +155,48 @@ $$
 | RI | 1.40 | 1.80 | 3.175 |
 | Valeur comptable de clôture | 7.00 | 8.25 | 0.00 |
 
-* Modèle RI : 6.00 + 1.2727 + 1.4876 + 2.3854 = **\$11.15**. DDM : 0.9091 + 1.0331 + 9.2036 = **\$11.15**.
-* Même valeur, mais le modèle RI reconnaît \$6.00 en $t$ = 0, tandis que le DDM tire \$9.20 de la dernière année : **le RI reconnaît la valeur plus tôt**.
+**Étape 2. Évaluer des deux façons.**
 
-**Exemple (Alphabet, ROE déclinant).** $r$ 8,2 % ; $B_0$ \$255.40 ; ROE de 20,2 % en 2019, en baisse de 0,5 point par an jusqu’à 8,2 % en 2043 (RI = 0 à partir de là) ; pas de dividendes. En 2019 : BPA = 0,202 × 255,40 = \$51.59 ; charge \$20.94 ; RI \$30.65 ; PV \$28.33. La somme jusqu’en 2042 donne **\$972.25**, pour un cours de \$1,037.39.
+$$
+\begin{aligned}
+V_{RI}&=6.00+\frac{1.40}{1.10}+\frac{1.80}{1.10^2}\\
+&\quad+\frac{3.175}{1.10^3}\\
+&=6.00+1.2727\\
+&\quad+1.4876+2.3854\\
+&=11.15\\
+V_{DDM}&=\frac{1.00}{1.10}+\frac{1.25}{1.10^2}+\frac{12.25}{1.10^3}\\
+&=0.9091+1.0331+9.2036\\
+&=11.15
+\end{aligned}
+$$
+
+La valeur est la même, **\$11.15**. Mais le modèle RI reconnaît \$6.00 en $t$ = 0, tandis que le DDM tire \$9.20 de la dernière année : **le RI reconnaît la valeur plus tôt**.
+
+#### Exemple : Alphabet (ROE déclinant)
+
+$B_0$ = \$255.40 et $r$ = 8,2 % ; Alphabet ne verse pas de dividendes, et le cours est de \$1,037.39. Le ROE est de 20,2 % en 2019, en baisse de 0,5 point par an jusqu’à 8,2 % en 2043, après quoi le RI est nul.
+
+**Étape 1. La première année.**
+
+$$
+\begin{aligned}
+EPS_{2019}&=0.202\times 255.40=51.59\\
+RI_{2019}&=51.59-\underbrace{0.082\times 255.40}_{20.94}\\
+&=30.65\\
+\text{PV}&=\frac{30.65}{1.082}=28.33
+\end{aligned}
+$$
+
+**Étape 2. Répéter jusqu’en 2042 et ajouter $B_0$.** La valeur comptable augmente chaque année du BPA (pas de dividendes) :
+
+$$
+\begin{aligned}
+V_0&=255.40+\sum_{t=2019}^{2042}\text{PV}(RI_t)\\
+&=\$972.25
+\end{aligned}
+$$
+
+C’est inférieur au cours de \$1,037.39.
 
 ## P/B justifié et moteurs du RI
 
@@ -92,22 +213,42 @@ $$
 * Le RI est déterminé par le **ROE par rapport à $r$**, et par la valeur comptable.
 * ROE = $r$ → valeur = valeur comptable (P/B = 1) ; ROE < $r$ → P/B inférieur à 1.
 * Le modèle RI est le plus étroitement lié au **P/B** : le P/B justifié dépasse 1 exactement quand la PV des RI attendus est positive.
-* Le **q de Tobin** = valeur de marché de la dette et des capitaux propres ÷ **coût de remplacement** du total de l’actif. Contrairement au P/B, il rapporte le capital total au total de l’actif, au coût de remplacement (qui reflète l’inflation) plutôt qu’au coût historique. Une productivité des actifs plus forte → un q plus élevé (Tobin s’attendait à un q moyen de 1). Le coût de remplacement est difficile à mesurer.
+* **q de Tobin** : contrairement au P/B, il rapporte le capital total au total de l’actif, au coût de remplacement (qui reflète l’inflation) plutôt qu’au coût historique. Une productivité des actifs plus forte → un q plus élevé (Tobin s’attendait à un q moyen de 1). Le coût de remplacement est difficile à mesurer.
+
+$$
+\text{Tobin's }q=\frac{\text{MV of debt and equity}}{\text{Replacement cost}}
+$$
 
 ## Modèle RI à une phase
 
 Le modèle à une phase suppose que le ROE et $g$ sont constants **pour toujours**, si bien que les rendements excédentaires persistent indéfiniment. En pratique, le ROE revient vers la moyenne : des concurrents entrent dans les secteurs à ROE élevé, et des sorties relèvent celui des secteurs à ROE faible.
 
-**Exemple (Philips).** $B_0$ €13.22, cours €35.40, ROE 12 %, $g$ 6,75 %, $r$ 8,5 % (valeurs en €) :
+#### Exemple : Philips
+
+$B_0$ = €13.22, cours €35.40, ROE 12 %, $g$ 6,75 %, $r$ 8,5 %.
+
+**Étape 1. Valeur.**
 
 $$
 \begin{aligned}
 V_0&=13.22+\frac{0.12-0.085}{0.085-0.0675}\times13.22\\
-&=39.66
+&=13.22+2\times 13.22=39.66
 \end{aligned}
 $$
 
-**Croissance implicite** : résoudre $35.40=13.22+\frac{0.12-0.085}{0.085-g}\times13.22$ → **$g$ = 6,41 %**. Le cours vaut environ 2,7 fois la valeur comptable, car le ROE dépasse $r$.
+**Étape 2. Croissance implicite dans le cours.**
+
+$$
+\begin{aligned}
+35.40&=13.22\\
+&\quad+\frac{0.12-0.085}{0.085-g}\times13.22\\
+0.085-g&=\frac{0.035\times 13.22}{22.18}\\
+&=0.0209\\
+g&=6.41\%
+\end{aligned}
+$$
+
+Le marché intègre **6,41 %** de croissance. Le cours vaut environ $35.40/13.22=2.7$ fois la valeur comptable, car le ROE dépasse $r$.
 
 ## RI à plusieurs phases et revenu résiduel continu
 
@@ -145,27 +286,103 @@ Le facteur de persistance ω est compris entre 0 et 1 : ω = 1 → le RI se pour
 | Éléments spéciaux (non récurrents) extrêmes | Forte persistance historique dans le secteur |
 | Accruals comptables extrêmes | |
 
-**Exemple (Zenlandia Chemical, trois hypothèses terminales).** Cours ZL\$95.6 ; $r$ 12 % ; $B_{2019}$ ZL\$28.8517 ; BPA 7,162 et 8,356, DPA 2,9995 et 3,2995 ; puis ROE de 25 % (2022–26) et de 20 % (2027–39), avec une rétention de 60 %.
+#### Exemple : Zenlandia Chemical (trois hypothèses terminales)
 
-| Hypothèse de RI continu | Valeur | Conclusion |
-| --- | --- | --- |
-| RI = 0 après 2039 | **ZL\$86.41** | Surévaluée |
-| Le RI de 2039 se poursuit pour toujours : TV = 23.8664/0.12 = 198,8867, PV = 198.8867/1.12²⁰ = 20,6179 | 86,41 + 20,62 = **ZL\$107.03** | Sous-évaluée |
-| Persistance ω = 0,60 : 23.8664/[(1 + 0.12 − 0.60)(1.12)¹⁹] = 5,33 | 83,93 + 5,33 = **ZL\$86.26** | Légèrement surévaluée |
+| Donnée | Valeur |
+| --- | --- |
+| Cours | ZL\$95.6 |
+| $r$ | 12% |
+| $B_{2019}$ | ZL\$28.8517 |
+| BPA / DPA, 2020 | 7.162 / 2.9995 |
+| BPA / DPA, 2021 | 8.356 / 3.2995 |
+| ROE après 2021 | 25 % (2022–26), 20 % (2027–39), avec 60 % de rétention |
 
-**Exemple (URS Holdings, P/B terminal).** $B_0$ €15.00 ; $r$ 7,95 % ; BPA = 25 % de la valeur comptable d’ouverture ; distribution 30 % ; $P_6$ = 1,80 × $B_6$.
+Le RI en 2039 est de 23,8664. Les trois hypothèses sur le RI après 2039 :
 
-* RI des années 1–6 : 2,558, 3,005, 3,531, 4,149, 4,875, 5,728 ; PV **17,755** ; $B_6$ = 39,475.
-* Prime terminale = 0,8 × 39,475 = 31,580, d’une PV de **19,956**.
-* $V_0$ = 15,000 + 17,755 + 19,956 = **€52.711**.
-* Vérification par le DDM : PV des dividendes 7,810 + PV de $P_6$ (71,054) 44,901 = **€52.711**.
+**(1) Le RI est nul après 2039.** En additionnant la PV des RI jusqu’en 2039 : **$V_0$ = ZL\$86.41** : surévaluée.
+
+**(2) Le RI de 2039 se poursuit pour toujours.**
+
+$$
+\begin{aligned}
+TV_{2039}&=\frac{23.8664}{0.12}=198.8867\\
+\text{PV}&=\frac{198.8867}{1.12^{20}}=20.62\\
+V_0&=86.41+20.62=107.03
+\end{aligned}
+$$
+
+**ZL\$107.03** : sous-évaluée.
+
+**(3) Le RI s’estompe avec une persistance ω = 0,60.** Appliquez le terme de persistance au RI de 2039, la somme des RI jusqu’en 2038 étant de 83,93 :
+
+$$
+\begin{aligned}
+\text{PV}&=\frac{23.8664}{(1+0.12-0.60)\times 1.12^{19}}\\
+&=5.33\\
+V_0&=83.93+5.33=86.26
+\end{aligned}
+$$
+
+**ZL\$86.26** : légèrement surévaluée.
+
+#### Exemple : URS Holdings (P/B terminal)
+
+$B_0$ = €15.00 et $r$ = 7,95 %. Le BPA est égal à 25 % de la valeur comptable d’ouverture (ROE 25 %), le taux de distribution est de 30 %, et l’action devrait se vendre à 1,80 × la valeur comptable à la fin de l’année 6.
+
+**Étape 1. RI pour les années 1–6.** La valeur comptable croît de $0.70\times 25\%=17.5\%$ par an :
+
+$$
+\begin{aligned}
+RI_1&=(0.25-0.0795)\times 15.00\\
+&=2.558
+\end{aligned}
+$$
+
+| Année | 1 | 2 | 3 | 4 | 5 | 6 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| RI | 2.558 | 3.005 | 3.531 | 4.149 | 4.875 | 5.728 |
+
+Leur PV est de **17,755**, et $B_6=15.00\times 1.175^6=39.475$.
+
+**Étape 2. Prime terminale au-dessus de la valeur comptable.**
+
+$$
+\begin{aligned}
+P_6-B_6&=(1.80-1)\times 39.475\\
+&=31.580\\
+\text{PV}&=\frac{31.580}{1.0795^6}=19.956
+\end{aligned}
+$$
+
+**Étape 3. Additionner.**
+
+$$
+\begin{aligned}
+V_0&=15.000+17.755+19.956\\
+&=52.711
+\end{aligned}
+$$
+
+**€52.711.** Le DDM confirme : PV des dividendes 7,810 + PV de $P_6$ (71,054) 44,901 = €52.711.
 
 ## RI face aux modèles de dividendes et de flux de trésorerie disponibles
 
 * Les trois sont théoriquement cohérents : avec des prévisions cohérentes et le même taux d’actualisation ($r$ pour le DDM, le FCFE et le RI ; le WACC pour le FCFF), ils donnent la même valeur.
 * Les modèles DDM et FCF actualisent des flux futurs ; le modèle RI part de la valeur comptable et ajoute la PV des RI : **la valeur est donc reconnue plus tôt**, et le RI est moins sensible à des valeurs terminales incertaines.
 
-**Exemple (une rente perpétuelle).** BPA de \$1.00 pour toujours, distribution de 100 %, valeur comptable \$6.00, $r$ 10 %. DDM : 1.00/0.10 = **\$10.00**. RI = 1,00 − 0,60 = \$0.40 par an → 6.00 + 0.40/0.10 = **\$10.00**. La valeur comptable représente 60 % de la valeur dans le modèle RI ; les dividendes des cinq premières années ne valent que \$3.79 (environ 38 %) dans le DDM.
+#### Exemple : Une rente perpétuelle
+
+Le BPA est de \$1.00 pour toujours, entièrement distribué ; la valeur comptable est de \$6.00 et $r$ = 10 %.
+
+$$
+\begin{aligned}
+V_{DDM}&=\frac{1.00}{0.10}=\$10.00\\
+RI&=1.00-0.10\times 6.00=\$0.40\\
+V_{RI}&=6.00+\frac{0.40}{0.10}=\$10.00
+\end{aligned}
+$$
+
+Les deux donnent **\$10.00**. Dans le modèle RI, la valeur comptable représente déjà 60 % de la valeur ; dans le DDM, les dividendes des cinq premières années ne valent que \$3.79 (environ 38 %).
 
 Les modèles RI peuvent aussi donner des multiples justifiés (valeur RI ÷ BPA = P/E justifié) et servir de contrôle croisé d’autres modèles : s’ils divergent fortement, vérifiez la cohérence des hypothèses.
 
@@ -193,7 +410,16 @@ Une entreprise au FCF positif et prévisible qui ne verse pas de dividende se pr
 
 ## Questions comptables
 
-**L’effet d’équilibrage** (Bauman) : une comptabilité agressive augmente la valeur comptable mais réduit les bénéfices futurs, et les deux se compensent **si le surplus propre tient**. En pratique, ce n’est souvent pas le cas, et les analystes extrapolent les bénéfices passés. P. ex. valeur comptable \$1,000,000 et bénéfice avant impôt de \$200,000 après passage en charges de \$50,000 → ROE 20 %. Immobiliser plutôt ces \$50,000 donne \$250,000/\$1,050,000 = **23,81 %** ; extrapoler naïvement ce ROE surestime la valeur.
+**L’effet d’équilibrage** (Bauman) : une comptabilité agressive augmente la valeur comptable mais réduit les bénéfices futurs, et les deux se compensent **si le surplus propre tient**. En pratique, ce n’est souvent pas le cas, et les analystes extrapolent les bénéfices passés. P. ex., la valeur comptable est de \$1,000,000 et le bénéfice avant impôt de \$200,000 après passage en charges de \$50,000 :
+
+$$
+\begin{aligned}
+\text{Expensed}&=\frac{200{,}000}{1{,}000{,}000}=20\%\\
+\text{Capitalized}&=\frac{250{,}000}{1{,}050{,}000}=23.81\%
+\end{aligned}
+$$
+
+Extrapoler naïvement ce ROE plus élevé surestime la valeur.
 
 ### 1. Violations du surplus propre (dirty surplus, OCI)
 
@@ -208,11 +434,51 @@ Les éléments qui contournent le compte de résultat :
 
 La valeur comptable est juste (elle inclut les OCI cumulés), mais **le résultat net et le ROE sont faussés** pour le RI. Il n’y a de biais que si la PV des violations ne s’annule pas. Calculez le ROE historique en agrégé (RN ÷ capitaux propres), car rachats et émissions faussent le ROE par action.
 
-**Exemples.**
+#### Exemple : Prévoir avec les OCI
 
-* **Nokia et SAP (2018)** : les écarts de conversion contournant le résultat ont été de +€341m (Nokia) et +€887m (SAP, « autres composantes des capitaux propres »). Les deux auraient augmenté le résultat ; un ajustement à la hausse du ROE peut donc se justifier si la tendance se poursuit (mais les devises peuvent se retourner).
-* **Prévoir avec les OCI** : RN \$120 pour des capitaux propres de \$1,000 (12 %), OCI −\$100, $r$ 10 %. Croissance du RI l’an prochain : **12 %** s’il n’y a pas d’OCI futurs (cohérent avec le ROE) ; **2,2 %** si les OCI se répètent ; **21,8 %** s’ils s’inversent. En utilisant le résultat global quand ils se répètent : 22.40 − 102 = **−\$79.60** de RI, au lieu de +\$20.40.
-* **Mannistore** : $r$ 10 % ; DDM avec $P_5$ = \$68.40 → **\$43.59**. RI à partir du seul RN → **\$44.42** (faux : il ignore les −\$1.00 d’OCI de l’année 2) ; RI à partir du RN + OCI (RI de l’année 2 de 0,45 au lieu de 1,45) → **\$43.59**, égal au DDM. Année 6 : RN 4,56 × 1,08 = 4,92 ; RI 4,92 − 2,204 = 2,72 → croissance du RI d’environ **−2 %**, alors que le RN croît de 8 %.
+Cette année, le RN est de \$120 pour des capitaux propres d’ouverture de \$1,000 (ROE 12 %), les OCI sont de −\$100, et tous les bénéfices sont mis en réserve ; $r$ = 10 %.
+
+**Étape 1. RI de l’an prochain.** Les capitaux propres de clôture sont de $1{,}000+120-100=1{,}020$ ; à un ROE de 12 % :
+
+$$
+\begin{aligned}
+NI_1&=0.12\times 1{,}020=122.40\\
+RI_1&=122.40-0.10\times 1{,}020=20.40
+\end{aligned}
+$$
+
+**Étape 2. La croissance de la valeur comptable l’an prochain** dépend des OCI futurs :
+
+| OCI futurs | Variation de la valeur comptable l’an prochain | Croissance |
+| --- | --- | ---: |
+| Aucun | Cohérente avec un ROE de 12 % | **12 %** |
+| Se répètent (−100) | $(122.40-100)/1{,}020$ | **2,2 %** |
+| S’inversent (+100) | $(122.40+100)/1{,}020$ | **21,8 %** |
+
+Si les OCI se répètent et que l’analyste utilise le résultat global, le RI est de $22.40-102=$ **−\$79.60**, et non +\$20.40.
+
+#### Exemple : Mannistore
+
+$r$ = 10 %. L’année 2 comporte −\$1.00 d’OCI qui contourne le résultat net.
+
+| Méthode | Valeur |
+| --- | ---: |
+| DDM, avec $P_5$ = \$68.40 | **\$43.59** |
+| RI à partir du seul résultat net | \$44.42 (faux : ignore les OCI) |
+| RI à partir de RN + OCI (RI année 2 à 0,45 au lieu de 1,45) | **\$43.59** |
+
+Seul le RI respectant le surplus propre coïncide avec le DDM.
+
+**Croissance du RI ≠ croissance du RN.** En année 6 :
+
+$$
+\begin{aligned}
+NI_6&=4.56\times 1.08=4.92\\
+RI_6&=4.92-2.204=2.72
+\end{aligned}
+$$
+
+Le RI baisse d’environ **2 %**, bien que le RN croisse de 8 % : la charge des capitaux propres croît plus vite que les bénéfices.
 
 ### 2. Ajustements de juste valeur au bilan
 
@@ -222,11 +488,32 @@ Examinez les stocks (LIFO, interdit en IFRS), les impôts différés, les locati
 
 Les incorporels générés en interne (p. ex. des marques construites par la publicité) ne sont pas comptabilisés, sauf s’ils sont acquis.
 
-**Exemple (Alpha rachète Beta).** Alpha : valeur comptable 5 000, ROE 12 % → valeur = 5,000 + (0.02/0.10)5,000 = **6 000**. Beta : valeur comptable 1 000, ROE 15 % → **1 500**. Total 7 500. Alpha paie €1,500 en espèces ; l’excédent de €500 est une licence de 10 ans.
+#### Exemple : Alpha rachète Beta
 
-* Avec €50 d’amortissement : RN 700, ROE 14 % → valeur **7 000** (sous-estimée).
-* En réintégrant l’amortissement : RN 750, ROE 15 % → **7 500**, correct.
-* Paiement en actions : valeur comptable 6 500, ROE 11,538 % → **7 500** (la forme de paiement ne change pas la valeur).
+$r$ = 10 %, sans croissance, donc $V=B+\dfrac{ROE-r}{r}B$.
+
+**Étape 1. Évaluer chaque entreprise avant l’opération.**
+
+$$
+\begin{aligned}
+V_{\text{Alpha}}&=5{,}000+\frac{0.12-0.10}{0.10}\times 5{,}000\\
+&=6{,}000\\
+V_{\text{Beta}}&=1{,}000+\frac{0.15-0.10}{0.10}\times 1{,}000\\
+&=1{,}500
+\end{aligned}
+$$
+
+Ensemble, elles valent **7 500**.
+
+**Étape 2. Alpha paie €1,500 en espèces.** Les €500 au-dessus de la valeur comptable de Beta correspondent à une licence de 10 ans, amortie de €50 par an. La valeur comptable combinée reste à 5 000.
+
+| Cas | Valeur comptable | RN | ROE | Valeur |
+| --- | ---: | ---: | ---: | ---: |
+| Espèces, après amortissement | 5 000 | $600+150-50=700$ | 14 % | 7 000 (sous-estimée) |
+| Espèces, amortissement réintégré | 5 000 | 750 | 15 % | **7 500** |
+| Payée en actions | 6 500 | 750 | 11,538 % | **7 500** |
+
+La forme du paiement ne change pas la valeur.
 
 Comptabiliser un actif omis puis l’amortir n’a **aucun effet** sur la valeur RI (un $B_0$ plus élevé est compensé par l’amortissement plus la charge du capital). Passer la R&D en charges réduit le ROE aujourd’hui mais augmente légèrement le ROE futur, par rapport à son immobilisation ; pour une entreprise mature, le ROE reflète la productivité de la R&D sans ajustement.
 

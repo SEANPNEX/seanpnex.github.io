@@ -39,9 +39,9 @@
 
 ## Basic Corporate Investment Categories
 
-### Catagories
+### Categories
 
-The following graph describes the catagories of investment in terms of accounting.
+The following graph describes the categories of investment in terms of accounting.
 
 <iframe
   class="fx-concept-chart fsa-tree-chart"
@@ -274,7 +274,7 @@ The Equity method is often referred as "one-line consolidation": The investees p
 
 Under equity method, the equity investment is initially recorded on B/S at the value of the **cost**. In subsequent periods, the carrying amount of the investment is adjusted to recognize investors' proportionate share of the investee's earnings or losses, and these earnings or losses are reported in its income sheet.
 
-**Example.** A buys 30% of B for $100. After one year B earns net income $80. A recognizes $24 (= 30% × 80) as equity income on the I/S (into RE) and increases the associate investment on the B/S from 100 to 124. Dividends or other distributions received from investees are treated as return of capital and reduce the carrying amount of the investment and are not reported in the investor's profit. If B then distributes $20, A’s 30% share is $6: Cash +6, Inv. 124 → 118 (−6); RE and I/S are unchanged — the dividend is not income under the equity method.
+**Example.** A buys 30% of B for \$100. After one year B earns net income \$80. A recognizes \$24 (= 30% × 80) as equity income on the I/S (into RE) and increases the associate investment on the B/S from 100 to 124. Dividends or other distributions received from investees are treated as return of capital and reduce the carrying amount of the investment and are not reported in the investor's profit. If B then distributes \$20, A’s 30% share is \$6: Cash +6, Inv. 124 → 118 (−6); RE and I/S are unchanged — the dividend is not income under the equity method.
 
 <iframe
   class="fx-concept-chart fsa-equity-ex-chart"
@@ -308,7 +308,7 @@ In all accounting standards, long-term equity investment purchase price (PP) sho
 ></iframe>
 
 
-##### Good will
+##### Goodwill
 
 > [!note]
 >
@@ -641,11 +641,11 @@ No, for two reasons. Under IFRS the option is limited to venture capital organiz
 
 
 
-# Business Combinations
+## Business Combinations
 
-## Basic Concepts
+### Basic Concepts
 
-### Controls
+#### Controls
 
 **Control** is what makes an investment a business combination: the investor (the **parent**) consolidates the investee (the **subsidiary**) line by line instead of carrying it as one investment. The two standards define control differently.
 
@@ -670,7 +670,7 @@ No, for two reasons. Under IFRS the option is limited to venture capital organiz
 >
 > *Example.* A company moves its receivables into an SPE. Outside investors hold a thin slice of equity, and the SPE is funded mostly by debt that the company guarantees, while the company keeps collecting the receivables. The equity holders do not control the SPE. The company directs its main activity and bears its losses through the guarantee, so it consolidates the SPE and the debt comes back onto its balance sheet.
 
-### Business Combinations
+#### Business Combinations
 
 A **business combination** brings two separate businesses under one control: two entities become one economic unit. What changes from one form to the next is which legal entities survive. US GAAP names three forms; IFRS does not distinguish between them, and all three are accounted for the same way (the acquisition method below).
 
@@ -702,7 +702,7 @@ Only the **acquisition** form leaves a parent and a subsidiary side by side, so 
 - **no new goodwill** arises; any difference between the price paid and the book value goes to **equity**;
 - US GAAP presents the combined entities **as if they had always been combined**. IFRS has no specific standard, and in practice this book-value ("predecessor") approach is common.
 
-### Acquisition Method
+#### Acquisition Method
 
 **From pooling to purchase to acquisition.** Combinations used to be accounted for in one of two ways:
 
@@ -738,7 +738,7 @@ $$
 
 Under the acquisition method the combined balance sheet shows what A actually paid: 800 of identifiable net assets plus 200 of goodwill, or 1,000 in total. Pooling would have recorded both B's net assets and A's new shares at 600, so the other 400 of the price would never have appeared.
 
-## Consolidation Process
+### Consolidation Process
 
 Once A controls B, A still keeps one line on its own books, *Investment in B*. The group's **consolidated statements**, however, show B line by line, as if A owned B's assets and owed B's liabilities directly. Consolidation is the process of replacing that one investment line with everything behind it.
 
@@ -766,7 +766,7 @@ All the cases below use the same two companies. **Before the deal:**
 
 B's identifiable net assets are 600 at book value and 800 at fair value: a **step-up of 200** on B's other assets.
 
-### Case 1: buy 100% for cash
+#### Case 1: buy 100% for cash
 
 A pays **1,000 cash** for all of B.
 
@@ -789,7 +789,7 @@ A pays **1,000 cash** for all of B.
 - **Consolidated equity is A's equity only**, 3,000. B's equity of 800 is eliminated against the investment.
 - **A's own assets stay at book value.** Only B's are restated to fair value.
 
-### Case 1b: buy 100% with new shares
+#### Case 1b: buy 100% with new shares
 
 Same deal, but A **issues shares** worth 1,000 (par 100) instead of paying cash.
 
@@ -807,7 +807,7 @@ Same deal, but A **issues shares** worth 1,000 (par 100) instead of paying cash.
 
 Compared with Case 1, the group has 1,000 more cash and 1,000 more equity. Paying in shares grows the balance sheet; paying in cash only reshuffles it.
 
-### Case 2: buy less than 100% (noncontrolling interest)
+#### Case 2: buy less than 100% (noncontrolling interest)
 
 When A buys less than all of B, consolidation still adds **100%** of B's assets and liabilities, because A controls all of them. The part of B's equity that belongs to the other owners is shown as **noncontrolling interest (NCI)**, a separate line **within equity**, not a liability.
 
@@ -834,7 +834,7 @@ The goodwill figure depends on how NCI is measured:
 
 The only difference is the 20 of goodwill that belongs to the NCI: full goodwill recognizes it, partial goodwill does not. Total assets, equity and therefore ROA and ROE all differ slightly between the two methods.
 
-### Income Statement
+#### Income Statement
 
 1. **Add 100% of A's and B's revenues and expenses**, even when A owns less than 100%.
 2. **Eliminate intercompany transactions.** A sale from A to B is not a sale for the group, so both the revenue and the matching cost are removed, along with any profit still unrealized in the buyer's inventory.
@@ -860,7 +860,7 @@ The only difference is the 20 of goodwill that belongs to the NCI: full goodwill
 - The NCI's share is based on B's NI **after** the step-up depreciation, $200-20=180$: the step-up belongs to all of B's owners.
 - At year end, NCI on the balance sheet is $100+18=118$ (full goodwill, no dividends).
 
-### Contingent Consideration
+#### Contingent Consideration
 
 Part of the price is often **contingent**: an **earn-out** paid only if the target hits a target, such as a revenue or profit level, after the deal.
 
@@ -873,11 +873,11 @@ Part of the price is often **contingent**: an **earn-out** paid only if the targ
 
 **Example.** In Case 1, A also agrees to pay 100 more in cash if B's revenue exceeds 1,000 within two years. At acquisition the earn-out's fair value is 40, so the consideration is $1{,}000+40=1{,}040$ and goodwill is $1{,}040-800=240$. A year later B is doing better than expected and the earn-out's fair value rises to 70: A recognizes a **loss of 30** in profit or loss and the liability rises to 70, while goodwill stays at 240.
 
-## Accounting Treatment of Goodwill
+### Accounting Treatment of Goodwill
 
 Goodwill is the part of the purchase price that cannot be attached to any identifiable asset or liability: synergies, an assembled workforce, market position. It is recognized only in an acquisition. A company never records goodwill it builds up itself.
 
-### Full vs Partial Goodwill
+#### Full vs Partial Goodwill
 
 When the parent buys **less than 100%**, goodwill can be measured two ways. The difference is whether goodwill is recognized for the **whole** subsidiary or only for the **parent's share**.
 
@@ -912,7 +912,7 @@ $$
 
 **Effect on the ratios.** Full goodwill adds the NCI's 20 of goodwill to **assets** and to **equity** (via NCI). Net income is the same under both methods, so full goodwill gives slightly **lower ROA and ROE**. A later goodwill impairment is also **larger** under full goodwill, because there is more goodwill to write off. Keep this in mind when comparing an IFRS company that chose partial goodwill with a US GAAP company.
 
-### Impairment of Goodwill
+#### Impairment of Goodwill
 
 Goodwill is **not amortized**. Instead it is **tested for impairment at least once a year**, and whenever events suggest its value has fallen. At acquisition, goodwill is assigned to the units that are expected to benefit from it: **cash-generating units (CGUs)** under IFRS, **reporting units** under US GAAP.
 
@@ -944,21 +944,21 @@ The IFRS loss is larger here because it compares the whole unit, not just goodwi
 
 If B's recoverable amount had fallen to **700** under IFRS, the loss of 300 would wipe out all 200 of goodwill, and the remaining 100 would reduce B's other assets in proportion to their carrying amounts.
 
-### Negative Goodwill (Bargain Purchase)
+#### Negative Goodwill (Bargain Purchase)
 
 If the price paid is **less** than the fair value of the identifiable net assets, the acquirer first **rechecks** that every asset and liability was identified and measured correctly. Any excess that remains is a **gain on bargain purchase**, recognized **immediately in profit or loss** under both IFRS and US GAAP. It is not recorded as an asset, and it is not deferred.
 
-### Analyst Notes
+#### Analyst Notes
 
 - **Goodwill impairments are non-cash**, and companies often exclude them from "adjusted" earnings. They still show that the company **overpaid**, or that the acquisition is doing worse than planned.
 - **Impairments can be timed.** Management judgment drives the cash-flow forecasts and discount rates behind the test, so impairments often arrive late, after the bad news is already in the share price.
 - **When comparing companies**, consider removing goodwill from assets and equity, or at least use the same method on both sides (full vs partial goodwill), before comparing ROA, ROE or leverage. Acquisitive companies and companies that grew organically can otherwise look very different for reasons that have nothing to do with operations.
 
-# Joint Venture and SPEs/VIEs
+## Joint Venture and SPEs/VIEs
 
 Business combinations are about **control by one party**. This chapter covers two other ways a company can be tied to another entity: **joint control** shared with partners, and **control through contracts** rather than votes.
 
-## Joint Ventures
+### Joint Ventures
 
 A **joint venture** is an entity that is **controlled jointly by two or more parties** (the *venturers*), typically to share the cost and risk of a large project: an oil field, a new market, a factory.
 
@@ -1006,7 +1006,7 @@ A's own business, excluding JV: assets 2,000, liabilities 1,000, revenue 3,000, 
 
 Under the equity method, A's share of JV's **debt stays off A's balance sheet**, and JV's revenue is invisible. A looks less leveraged and more profitable per unit of sales and assets. Analysts often restate a company's joint ventures on a proportionate basis to see the real scale of its operations and debt.
 
-## Special Purpose Entities
+### Special Purpose Entities
 
 A **special purpose entity (SPE)** is a legal entity, often a trust, partnership or company, set up by a **sponsor** for one **narrow, specific purpose**, for example:
 
@@ -1022,7 +1022,7 @@ Because the sponsor often owns little or none of the SPE's equity, SPEs were his
 - **IFRS** has no separate SPE rule. The same control test as for any subsidiary applies (power, exposure to variable returns, and the link between them; see [Controls](#controls)). IFRS calls these entities **structured entities** and requires extra disclosure about them.
 - **US GAAP** handles them through the **variable interest entity** model below.
 
-## Variable Interest Entities
+### Variable Interest Entities
 
 A **variable interest entity (VIE)** is US GAAP's term for an entity whose control **cannot be judged by voting shares**. An entity is a VIE if either:
 
@@ -1054,7 +1054,7 @@ S directs the SPE's key activity (collecting the receivables) and absorbs its lo
 
 Consolidation shows the deal for what it is: **borrowing secured on receivables**, not a sale. S's assets and liabilities are both higher, so its leverage ratios rise. On the cash flow statement, the 1,000 is mainly **financing** (borrowing) rather than an operating inflow from collecting receivables.
 
-# Intercorporate Investment
+## Comparison of Accounting Methods
 
 <iframe
   class="fx-concept-chart fsa-methods-chart"
@@ -1064,12 +1064,12 @@ Consolidation shows the deal for what it is: **borrowing secured on receivables*
 ></iframe>
 
 
-## Net Income and Sharholder's Equity
+### Net Income and Shareholders' Equity
 
 Net income is the same for the methods used to account for investment in investee:
 
 * Equity method
-* Proportionated Consolidation
+* Proportionate Consolidation
 * Acquisition Method
 
 **Example (illustrative).** Take the 50% joint venture from *Joint Ventures* above. A and its partner each put in 300; JV earns NI of 200 (revenue 1,000, expenses 800) and ends the year with assets 1,600, liabilities 800 and equity 800. A's own business has assets of 2,000, liabilities of 1,000, revenue of 3,000 and expenses of 2,700. For comparison, the acquisition column shows what A's statements would look like if A controlled JV and consolidated it in full, with the partner's 50% as NCI.
@@ -1088,9 +1088,9 @@ Net income is the same for the methods used to account for investment in investe
 | NCI | – | – | 400 |
 | Total equity | 1,400 | 1,400 | 1,800 |
 
-The total shareholder's equity of the investor is the smae under equity method and proportionate consolidation
+The total shareholders' equity of the investor is the same under the equity method and proportionate consolidation.
 
-* Acquisition NE = NE of other methods + NCI
+* Acquisition total equity = shareholders' equity of other methods + NCI
 
 <iframe
   class="fx-concept-chart fsa-ni-eq-chart"
@@ -1103,7 +1103,7 @@ The methods differ only in **how much of JV they bring onto A's statements**: no
 
 
 
-## One-line Consolidation vs. line-by-line consolidation 
+### One-line Consolidation vs. line-by-line consolidation 
 
 <iframe
   class="fx-concept-chart fsa-ratio-chart"
@@ -1120,7 +1120,7 @@ The methods differ only in **how much of JV they bring onto A's statements**: no
 
 **What it means for analysis.** The equity method keeps the investee's revenue, assets and **debt** off the investor's statements, so the investor looks more profitable per unit of sales and assets and less leveraged than it really is. When comparing a company that uses the equity method with one that consolidates, restate one of them (often onto a proportionate basis) before comparing margins, ROA or leverage.
 
-## Full and Partial Goodwill
+### Full and Partial Goodwill
 
 The choice between full and partial goodwill (see *Full vs Partial Goodwill* above) **does not change net income**, as long as there is no impairment: goodwill is not amortized, so neither method puts an expense through the income statement. What changes is the **balance sheet**. Full goodwill adds the NCI's share of goodwill to assets, and the same amount to equity through NCI, so every ratio that divides by assets or equity comes out slightly **lower** under full goodwill.
 
@@ -1147,7 +1147,7 @@ The choice between full and partial goodwill (see *Full vs Partial Goodwill* abo
 
 The gap here is small because the NCI holds only 10%. It grows with the size of the NCI and with how much of the price is goodwill. **Impairment is where the choice reaches NI**: if all of B's goodwill were later written off, the loss would be 200 under full goodwill but only 180 under partial goodwill.
 
-## Issues for Equity Method
+### Issues for Equity Method
 
 The equity method is simple to apply, but it leaves the analyst with less information than consolidation and more room for management judgment.
 

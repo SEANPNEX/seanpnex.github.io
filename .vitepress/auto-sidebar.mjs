@@ -9,6 +9,7 @@ const ROOT = path.resolve();
 export const GROUP_LABELS = {
   "C0 Ethics": "Ethical & Professional Standards",
   "C1 Quantity": "Quantitative Methods",
+  "C1 Quant": "Quantitative Methods",
   "C2 Economics": "Economics",
   "C3 Financial Statements": "Financial Statement Analysis",
   "C4 Corporate Finance": "Corporate Issuers",

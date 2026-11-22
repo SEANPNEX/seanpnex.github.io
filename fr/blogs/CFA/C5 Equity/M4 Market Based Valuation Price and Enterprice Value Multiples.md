@@ -15,9 +15,30 @@ title: "Évaluation par le marché : multiples de cours et de valeur d’entrepr
 | Conclusion | Valeur **relative** (les comparables peuvent eux-mêmes être mal évalués) | Valeur absolue (intrinsèque) |
 
 * Un **multiple justifié** est la juste valeur du multiple, par l’une ou l’autre méthode. Justifié > effectif → sous-évalué.
-* Utilisez la **médiane** des pairs pour limiter les valeurs aberrantes. P. ex. P/B médian des pairs 2,2 × BVPS \$23 = \$50.60 ; une valeur par le revenu résiduel de \$46 implique un P/B justifié de 46/23 = **2,0**.
+* Utilisez la **médiane** des pairs pour limiter les valeurs aberrantes.
 
-**Exemple (la comparaison la plus simple).** Le BPA de A est de \$1.50 ; le P/E du concurrent B est de 22. À \$37.50, le P/E de A est de 25 > 22 → A est **surévaluée** par rapport à B ; au P/E de B, A vaut 1,50 × 22 = **\$33**.
+$$
+\begin{aligned}
+\text{Value}={}&\text{Benchmark multiple}\\
+&\times\text{Fundamental}\\
+\text{Justified}={}&\frac{\text{Intrinsic value}}{\text{Fundamental}}
+\end{aligned}
+$$
+
+P. ex., avec une BVPS de \$23 : un P/B médian des pairs de 2,2 donne $2.2\times 23=\$50.60$ ; une valeur par le revenu résiduel de \$46 implique un P/B justifié de $46/23=$ **2,0**.
+
+#### Exemple : La comparaison la plus simple
+
+Le BPA de l’entreprise A est de \$1.50 et son cours de \$37.50 ; le P/E du concurrent B est de 22.
+
+$$
+\begin{aligned}
+P/E_A&=\frac{37.50}{1.50}=25>22\\
+\text{Value at B's P/E}&=22\times 1.50=\$33
+\end{aligned}
+$$
+
+A est **surévaluée** par rapport à B.
 
 ## Cours sur bénéfice (P/E)
 
@@ -29,15 +50,28 @@ title: "Évaluation par le marché : multiples de cours et de valeur d’entrepr
 
 ### P/E historique et prospectif
 
-* **P/E historique** = cours ÷ BPA des quatre derniers trimestres (TTM).
-* **P/E prospectif** = cours ÷ BPA attendu de l’an prochain : les quatre prochains trimestres, les douze prochains mois (NTM), ou le prochain exercice (FY1, FY2). Utilisez la **même définition** pour toutes les entreprises. Quand les bénéfices augmentent, le P/E prospectif est inférieur au P/E historique.
+$$
+\begin{aligned}
+\text{Trailing P/E}&=\frac{P_0}{EPS_{\text{last 4 quarters}}}\\
+\text{Forward P/E}&=\frac{P_0}{E(EPS_{\text{next year}})}\\
+EPS_{NTM}&=\tfrac{m}{12}\,FY1+\tfrac{12-m}{12}\,FY2
+\end{aligned}
+$$
+
+où $m$ est le nombre de mois restant dans l’exercice en cours.
+
+* Le **P/E prospectif** peut utiliser les quatre prochains trimestres, les douze prochains mois (NTM), ou le prochain exercice (FY1, FY2). Utilisez la **même définition** pour toutes les entreprises. Quand les bénéfices augmentent, le P/E prospectif est inférieur au P/E historique.
 * Le P/E prospectif est préféré lorsqu’il existe des prévisions, ou après une grosse acquisition ou un changement de levier ; l’historique lorsque les bénéfices ne sont pas prévisibles.
-* Le **BPA NTM** est un mélange pondéré dans le temps des estimations d’exercice, p. ex. (10/12) × FY1 + (2/12) × FY2.
 
-**Exemples.**
+#### Exemple : IBM
 
-* **IBM** à \$137.90 : BPA FY1 \$13.91 → **9,9** ; BPA FY2 \$14.17 → **9,7**.
-* **Selene Gaming** (BPA volatil), cours de \$12.20 le 9 août 2020 :
+À \$137.90, avec un BPA FY1 de \$13.91 et un BPA FY2 de \$14.17 :
+
+$$\frac{137.90}{13.91}=9.9\qquad\frac{137.90}{14.17}=9.7$$
+
+#### Exemple : Selene Gaming (BPA volatil)
+
+Le cours est de \$12.20 le 9 août 2020 ; l’exercice se termine en décembre, il reste donc 5 mois de FY2020.
 
 | Définition | BPA | P/E |
 | --- | --- | --- |
@@ -50,12 +84,30 @@ Avec des bénéfices aussi volatils et procycliques, normalisez-les.
 
 ### Ajuster le BPA
 
-1. **Dilution** : préférez le BPA dilué pour les comparaisons. P. ex. Siemens : de base €7.12, dilué €7.01, cours €95.94 → P/E 13,47 contre **13,69**.
+1. **Dilution** : préférez le BPA dilué pour les comparaisons. P. ex. Siemens à €95.94 : $95.94/7.12=13.47$ sur le BPA de base contre $95.94/7.01=$ **13,69** sur le BPA dilué.
 2. **Éléments non récurrents** → bénéfices **sous-jacents** (récurrents, persistants). Le « BPA courant » publié par l’entreprise est un indicateur non IFRS/non GAAP sans règles : exercez votre propre jugement. Le classement au compte de résultat ne suffit pas.
 3. **Cycle économique** → BPA **normalisé** (de milieu de cycle). Les P/E des valeurs cycliques sont élevés au creux du cycle et bas au sommet (l’**effet Molodovsky**).
 4. **Comparabilité** : ajustez les différences comptables (p. ex. LIFO contre FIFO).
 
-**Exemple (Evergreen, éléments non récurrents).** Cours £50.11. BPA TTM publié £4.52 → P/E **11,1** ; BPA courant de l’entreprise £6.01 → **8,3** ; l’avis de l’analyste (seule la provision pour litige est non récurrente ; l’amortissement et les restructurations répétées sont permanents) donne un BPA de £4.60 → **10,9**.
+#### Exemple : Evergreen (éléments non récurrents)
+
+Le cours est de £50.11. L’analyste ne considère que la provision pour litige comme non récurrente ; l’amortissement et les charges de restructuration répétées sont permanents.
+
+| Définition du BPA | BPA | P/E |
+| --- | ---: | ---: |
+| TTM publié | £4.52 | $50.11/4.52=$ **11,1** |
+| « BPA courant » de l’entreprise | £6.01 | **8,3** |
+| BPA sous-jacent de l’analyste | £4.60 | **10,9** |
+
+Le BPA courant de l’entreprise flatte l’action ; le P/E de l’analyste est proche du P/E publié.
+
+$$
+\begin{aligned}
+\text{Historical: }EPS_N&=\overline{EPS}_{\text{cycle}}\\
+\text{ROE: }EPS_N&=\overline{ROE}_{\text{cycle}}\\
+&\quad\times BVPS_{\text{current}}
+\end{aligned}
+$$
 
 | Méthode de normalisation | BPA normalisé | Remarque |
 | --- | --- | --- |
@@ -64,10 +116,20 @@ Avec des bénéfices aussi volatils et procycliques, normalisez-les.
 
 Le ROA de long terme × total de l’actif, ou le ROE de long terme × capitaux propres, fonctionnent aussi (utile si l’entreprise a publié une perte).
 
-**Exemple (Zenlandia Chemical).** Cours \$18.21 ; BPA 2014–20 : 0,74, 0,63, 0,61, 0,54, 1,07, 0,88, 1,08 ; ROE moyen 22,6 % ; BVPS actuelle \$4.82.
+#### Exemple : Zenlandia Chemical
 
-* BPA moyen = \$0.79 → P/E = **23,1**.
-* ROE moyen : 0,226 × 4,82 = \$1.09 → P/E = **16,7**. La BVPS a augmenté de 61 % ; la méthode du ROE reflète donc une entreprise plus grande, qui paraît moins chère.
+Le cours est de \$18.21, le ROE moyen sur le cycle de 22,6 %, et la BVPS actuelle de \$4.82.
+
+| Année | 2014 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| BPA (\$) | 0.74 | 0.63 | 0.61 | 0.54 | 1.07 | 0.88 | 1.08 |
+
+| Méthode | BPA normalisé | P/E |
+| --- | --- | ---: |
+| Moyenne historique | $5.55/7=\$0.79$ | $18.21/0.79=$ **23,1** |
+| ROE moyen | $0.226\times 4.82=\$1.09$ | $18.21/1.09=$ **16,7** |
+
+La BVPS a augmenté de 61 % sur le cycle ; la méthode du ROE reflète donc une entreprise plus grande, qui paraît **moins chère**.
 
 **Bénéfices négatifs ou minuscules.** Publiez le P/E comme sans signification (NM). Utilisez un BPA normalisé ou prospectif, ou classez par **rendement des bénéfices** (E/P) : le cours n’est jamais négatif, si bien que le classement reste cohérent, et E/P est moins faussé par les valeurs aberrantes. P. ex. le BPA de −7,72 de Tesla donne un P/E NM et un E/P de −2,51 %.
 
@@ -93,12 +155,34 @@ $$
 
 Le P/E justifié baisse avec $r$ (le risque) et augmente avec $g$, dans tout modèle DCF. Pour des modèles plus complexes, P/E justifié = valeur DCF ÷ BPA.
 
-**Exemples.**
+#### Exemple : BP et Toyota
 
-* **BP** : rétention 40 %, $g$ 3,5 %, $r$ 7,6 % → $P_0/E_1$ = 0.60/0.041 = **14,6**.
-* **Toyota** : valeur FCFE ¥6,980, BPA FY2020 ¥720 → P/E prospectif justifié **9,7** contre 6 688/720 = 9,3 pour le marché → environ 4 % de sous-évaluation.
+**BP** (GGM) : rétention 40 %, $g$ 3,5 %, $r$ 7,6 %.
 
-Le **P/E prédit** provient d’une régression transversale sur des fondamentaux (distribution, bêta, croissance). P. ex. P/E prédit = 12.12 + 2.25(0.45) − 0.20(0.9) + 14.43(0.08) = **14,1**, sous le P/E effectif de 18 → **surévaluée**. Limites : la régression n’est valable que pour son échantillon et sa période ; coefficients et pouvoir explicatif changent dans le temps ; et la **multicolinéarité** rend les coefficients individuels difficiles à interpréter.
+$$\frac{P_0}{E_1}=\frac{1-0.40}{0.076-0.035}=\frac{0.60}{0.041}=14.6$$
+
+**Toyota** (modèle FCFE) : valeur ¥6,980, cours ¥6,688, BPA FY2020 ¥720.
+
+$$
+\begin{aligned}
+\text{Justified}&=\frac{6{,}980}{720}=9.7\\
+\text{Actual}&=\frac{6{,}688}{720}=9.3
+\end{aligned}
+$$
+
+Toyota s’échange environ **4 % en dessous** de son P/E justifié : sous-évaluée.
+
+Le **P/E prédit** provient d’une régression transversale sur des fondamentaux (distribution, bêta, croissance) :
+
+$$
+\begin{aligned}
+\widehat{P/E}={}&12.12+2.25\times\underbrace{0.45}_{\text{payout}}\\
+&-0.20\times\underbrace{0.9}_{\beta}+14.43\times\underbrace{0.08}_{g}\\
+={}&14.1
+\end{aligned}
+$$
+
+C’est inférieur au P/E effectif de 18 ; l’action est donc **surévaluée**. Limites : la régression n’est valable que pour son échantillon et sa période ; coefficients et pouvoir explicatif changent dans le temps ; et la **multicolinéarité** rend les coefficients individuels difficiles à interpréter.
 
 ### Comparer des P/E
 
@@ -108,19 +192,45 @@ Les étapes pour tout multiple : (1) choisir et calculer le multiple ; (2) chois
 * Les comparables partent du groupe GICS (sous-secteur) ou ICB (sous-secteur) le plus étroit, puis sont filtrés par taille et marchés servis.
 * Toutes choses égales par ailleurs : **croissance plus forte → P/E justifié plus élevé ; risque plus élevé → P/E justifié plus bas**.
 
-**Exemple (Verizon contre ses pairs).** P/E historiques : AT&T 13,20, Comcast 16,23, CenturyLink NM, China Telecom 13,14, Charter 70,67, Verizon 15,03, Windstream 19,01. La moyenne (hors CenturyLink), 24,55, est faussée par Charter ; utilisez donc la **médiane, 15,03**. Verizon est à la médiane → correctement évaluée ; AT&T, China Telecom et CenturyLink semblent sous-évaluées. Vérifiez aussi les flux de trésorerie : les télécoms ont d’importantes charges non monétaires.
+$$
+PEG=\frac{P/E}{\text{EPS growth (in percent)}}
+$$
 
-**Ratio PEG** = P/E ÷ croissance attendue du BPA (en pourcentage). Plus bas est plus attrayant ; certains jugent attrayant un PEG inférieur à 1. Limites : il suppose une relation **linéaire** entre P/E et croissance, et ignore le **risque** et la durée de la croissance.
+Plus bas est plus attrayant ; certains jugent attrayant un PEG inférieur à 1. Limites : il suppose une relation **linéaire** entre P/E et croissance, et ignore le **risque** et la durée de la croissance.
 
-**Exemple (télécoms, avec les fondamentaux).** CenturyLink : P/E prospectif 8,89, croissance 8,52 %, PEG 1,04 (le plus bas parmi les P/E faibles) → relativement sous-évaluée. AT&T : BPA prospectif \$3.63 × médiane des pairs 11,99, relevée à 13,0 (rentabilité supérieure, risque inférieur à la moyenne) = **\$47.19** contre un cours de \$33.98 → sous-évaluée.
+#### Exemple : Télécoms avec les fondamentaux
+
+**CenturyLink.** Son PEG est le plus bas parmi les titres à faible P/E ; elle est donc relativement sous-évaluée :
+
+$$PEG=\frac{8.89}{8.52}=1.04$$
+
+**AT&T.** Partez du P/E prospectif médian des pairs de 11,99, et relevez-le à 13,0 pour une rentabilité supérieure et un risque inférieur à la moyenne :
+
+$$\text{Value}=13.0\times 3.63=\$47.19$$
+
+C’est bien au-dessus du cours de \$33.98 : **sous-évaluée**.
 
 **Comparaisons sectorielles et de marché.** Des groupes plus larges compensent les erreurs de valorisation individuelles mais sont moins semblables. Les P/E d’indices pondérés par la capitalisation sont dominés par les plus grosses valeurs ; utilisez donc la **médiane** pour les moyennes capitalisations.
 
-**Exemple (par rapport au S&P 500).** P/E de l’indice 21,8. Action A : P/E 15,2, historiquement 80 % de l’indice (→ 17,4). Action C : P/E 15,2, historiquement 105 % (→ 22,9) → **C est sous-évaluée**. Action B : P/E 30 contre 120 % historiquement (26,2) → chère. Cela suppose que les relations historiques tiennent toujours.
+#### Exemple : Actions face au S&P 500
+
+Le P/E de l’indice est de 21,8. Le P/E de référence de chaque action est son ratio historique à l’indice × 21,8.
+
+| Action | P/E effectif | Ratio historique à l’indice | P/E de référence | Verdict |
+| --- | ---: | ---: | ---: | --- |
+| A | 15.2 | 80 % | 17.4 | Assez bon marché |
+| B | 30.0 | 120 % | 26.2 | Chère |
+| C | 15.2 | 105 % | 22.9 | **La plus sous-évaluée** |
+
+Cela suppose que les relations historiques tiennent toujours.
 
 **Modèles au niveau du marché.**
 
-* **Modèle de la Fed** : le marché est surévalué quand son E/P prospectif est inférieur au rendement des Treasuries à 10 ans ; le P/E justifié = 1 ÷ le rendement des Treasuries. P. ex. un rendement de 2,72 % → P/E justifié 36,8 contre un P/E historique de 18,9. Critiques : il ignore l’ERP et la croissance, traite mal l’inflation, n’est pas linéaire à taux bas, et est très sensible à de petites variations de taux.
+* **Modèle de la Fed** : le marché est surévalué quand son E/P prospectif est inférieur au rendement des Treasuries à 10 ans :
+
+$$\text{Justified P/E}=\frac{1}{y_{\text{10-year Treasury}}}$$
+
+  P. ex., un rendement de 2,72 % donne $1/0.0272=36.8$, contre un P/E historique de 18,9. Critiques : il ignore l’ERP et la croissance, traite mal l’inflation, n’est pas linéaire à taux bas, et est très sensible à de petites variations de taux.
 * **Modèle de Yardeni** : le rendement des bénéfices = CBY − b × LTEG + résidu, donc
 
 $$
@@ -129,9 +239,25 @@ $$
 
   où CBY est le rendement des obligations d’entreprise notées A, LTEG la croissance des bénéfices à 5 ans selon le consensus, et $b$ historiquement 0,10 (puis 0,10, 0,20, 0,25). CBY plus élevé → P/E plus bas ; croissance plus forte → P/E plus élevé.
 
-**L’historique propre de l’action.** Prix justifié = P/E de référence historique propre × BPA le plus récent (ou normalisé). La méthode échoue si le mix d’activités, le levier, les taux ou l’inflation ont changé.
+**L’historique propre de l’action.** La méthode échoue si le mix d’activités, le levier, les taux ou l’inflation ont changé.
 
-**Exemple (Honda).** P/E sur cinq ans 6,9, 10,0, 10,9, 10,8, 9,7 : médiane **10,0**, moyenne 9,7. BPA ¥381.93 → justifié ¥3,819 (médiane) ou ¥3,704 (moyenne). Le cours récent, environ ¥2,817–2,837, est inférieur d’environ 24 à 26 % → peut-être sous-évaluée.
+$$
+\begin{aligned}
+\text{Price}={}&\overline{P/E}_{\text{own history}}\\
+&\times EPS_{\text{recent or normalized}}
+\end{aligned}
+$$
+
+#### Exemple : Honda
+
+Les P/E de Honda sur cinq ans étaient 6,9, 10,0, 10,9, 10,8 et 9,7 ; le BPA est de ¥381.93 et le cours d’environ ¥2,837.
+
+| Référence | P/E | Prix justifié | Cours vs justifié |
+| --- | ---: | ---: | ---: |
+| Médiane | 10.0 | $10.0\times 381.93=$ ¥3,819 | −26 % |
+| Moyenne | 9.7 | $9.7\times 381.93=$ ¥3,704 | −23 % |
+
+Le cours est inférieur d’environ 23 à 26 % à l’une comme à l’autre valeur : **peut-être sous-évaluée**.
 
 **Inflation et P/E.** Sans croissance réelle, avec distribution totale, un taux de répercussion λ de l’inflation des coûts $I$, et un rendement exigé réel $\rho=r-I$ :
 
@@ -139,7 +265,14 @@ $$
 \frac{P_0}{E_1}=\frac{1}{\rho+(1-\lambda)I}
 $$
 
-Avec une répercussion totale (λ = 1), P/E = 1/ρ ; sans aucune (λ = 0), 1/$r$. Avec une répercussion incomplète, **inflation plus forte → P/E plus bas** ; à inflation égale, **plus de répercussion → P/E plus élevé**. P. ex. ρ = 3 % : à λ = 75 %, $I$ = 6 % → **22,2** et $I$ = 2 % → **28,6** ; à $I$ = 6 %, λ = 90 % → **27,8** et λ = 70 % → **20,8**.
+Avec une répercussion totale (λ = 1), P/E = 1/ρ ; sans aucune (λ = 0), 1/$r$. Avec une répercussion incomplète, **inflation plus forte → P/E plus bas** ; à inflation égale, **plus de répercussion → P/E plus élevé**. Avec ρ = 3 % :
+
+| λ | $I$ | $1/[\rho+(1-\lambda)I]$ | P/E |
+| ---: | ---: | --- | ---: |
+| 75 % | 6 % | $1/(0.03+0.25\times 0.06)$ | **22,2** |
+| 75 % | 2 % | $1/(0.03+0.25\times 0.02)$ | **28,6** |
+| 90 % | 6 % | $1/(0.03+0.10\times 0.06)$ | **27,8** |
+| 70 % | 6 % | $1/(0.03+0.30\times 0.06)$ | **20,8** |
 
 ### Valeur terminale par les multiples
 
@@ -154,10 +287,25 @@ $$
 * Un multiple terminal **fondé sur les fondamentaux** est le GGM réécrit sous forme de multiple (sensible à $r$, à la distribution et à $g$).
 * Un multiple **fondé sur les comparables** (P/E médian ou moyen du secteur, P/E passé de l’action) repose sur des données de marché, mais transporte toute erreur de valorisation du marché dans la valeur terminale.
 
-**Exemple (entreprise d’exploration pétrolière).** $r$ 10 %, distribution de maturité 45 %, ROE du secteur 13 %, $E_3$ \$3.00, P/E du secteur 14,3.
+#### Exemple : Entreprise d’exploration pétrolière
 
-* Comparables : 14,3 × 3,00 = **\$42.90**.
-* GGM : $D_3$ = 1,35, $g$ = 0,55 × 13 % = 7,15 % → $V_3$ = 1.35(1.0715)/(0.10 − 0.0715) = **\$50.76** (18,3 % de plus).
+Trouver la valeur terminale à l’année 3. $E_3$ = \$3.00, $r$ = 10 %, distribution de maturité 45 %, ROE du secteur 13 %, P/E du secteur 14,3.
+
+**Fondée sur les comparables.**
+
+$$V_3=14.3\times 3.00=\$42.90$$
+
+**Fondée sur les fondamentaux (GGM).**
+
+$$
+\begin{aligned}
+D_3&=0.45\times 3.00=\$1.35\\
+g&=(1-0.45)\times 13\%=7.15\%\\
+V_3&=\frac{1.35\times 1.0715}{0.10-0.0715}=\$50.76
+\end{aligned}
+$$
+
+La valeur fondée sur les fondamentaux est **18,3 % plus élevée**.
 
 ## Cours sur valeur comptable (P/B)
 
@@ -178,14 +326,39 @@ $$
 
 Les actions de préférence incluent les éventuels dividendes préférentiels arriérés.
 
-**Exemple (TD Bank).** BVPS 2018 = (80,040 − 5,000)/1,830.4 = **CAD41.00** (2017 : 38,23 ; 2016 : 37,58) ; cours CAD73.03 → **P/B 1,78**.
+#### Exemple : TD Bank
+
+En 2018, les capitaux propres de TD étaient de CAD80,040m, dont CAD5,000m d’actions de préférence, avec 1 830,4m d’actions ordinaires ; le cours est de CAD73.03.
+
+$$
+\begin{aligned}
+BVPS&=\frac{80{,}040-5{,}000}{1{,}830.4}=41.00\\
+P/B&=\frac{73.03}{41.00}=1.78
+\end{aligned}
+$$
+
+**P/B = 1,78** (la BVPS était de 38,23 en 2017 et 37,58 en 2016).
 
 **Ajustements** : utiliser la **valeur comptable tangible** (au moins retirer le goodwill ; des incorporels séparables comme les brevets peuvent rester) ; convertir le LIFO en FIFO ; inclure les éléments hors bilan ; retraiter à la juste valeur.
 
-**Exemple (Barclays, 2012).** Cours £2.4239 ; 12 614m d’actions diluées ; capitaux propres £62,957m ; goodwill et incorporels £7,915m ; la juste valeur des actifs financiers est inférieure de £17,333m à leur valeur comptable, et celle des passifs de £399m.
+#### Exemple : Barclays (2012)
 
-* BVPS £4.9910 → P/B **0,49** ; BVPS tangible £4.3636 → **0,56**.
-* BVPS ajustée = (62,957 − 7,915 − 17,333 + 399)/12,614 = £3.0211 → **0,80**.
+| Donnée | £m |
+| --- | ---: |
+| Capitaux propres | 62,957 |
+| Goodwill et incorporels | 7,915 |
+| Juste valeur des actifs financiers inférieure à la valeur comptable | 17,333 |
+| Juste valeur des passifs inférieure à la valeur comptable | 399 |
+| Actions diluées | 12,614m |
+| Cours | £2.4239 |
+
+Une juste valeur plus faible des actifs réduit la valeur comptable ; une juste valeur plus faible des passifs l’augmente.
+
+| Valeur comptable | Par action | P/B |
+| --- | ---: | ---: |
+| Publiée : $62{,}957/12{,}614$ | £4.9910 | **0,49** |
+| Tangible : $(62{,}957-7{,}915)/12{,}614$ | £4.3636 | **0,56** |
+| Ajustée : $(62{,}957-7{,}915-17{,}333+399)/12{,}614$ | £3.0211 | **0,80** |
 
 **P/B justifié** (GGM avec $g$ = $b$ × ROE, sur la base de $B_0$) :
 
@@ -199,10 +372,11 @@ $$
 
 où $PV(RI)$ est la valeur actuelle des revenus résiduels attendus.
 
-* P. ex. ROE 12 %, $r$ 10 %, $g$ 7 % → (0.12 − 0.07)/(0.10 − 0.07) = **1,67**.
-* Le P/B est déterminé par le **ROE par rapport à $r$** : si ROE = $r$, P/B = 1 ; avec $g$ = 0, P/B = ROE/$r$. À P/B égal, l’action au ROE le plus élevé est la moins chère.
+* P. ex., ROE 12 %, $r$ 10 %, $g$ 7 % :
 
-**Exemple (courtiers).** Le P/B de 0,65 d’E\*TRADE est inférieur à 30 % de celui de Schwab (2,31) ou de TD Ameritrade (2,53), et à 60 % de sa propre moyenne (1,14). Mais sa croissance prévue plus faible de la valeur comptable et du chiffre d’affaires (1,5 %, −1,0 %) et son bêta plus élevé (1,65) l’expliquent.
+$$\frac{P_0}{B_0}=\frac{0.12-0.07}{0.10-0.07}=1.67$$
+
+* Le P/B est déterminé par le **ROE par rapport à $r$** : si ROE = $r$, P/B = 1 ; avec $g$ = 0, P/B = ROE/$r$. À P/B égal, l’action au ROE le plus élevé est la moins chère.
 
 ## Cours sur chiffre d’affaires (P/S)
 
@@ -214,9 +388,23 @@ où $PV(RI)$ est la valeur actuelle des revenus résiduels attendus.
 | Convient aux entreprises matures, cycliques et déficitaires | La comptabilisation des produits peut encore le fausser |
 | Les écarts de P/S sont liés aux rendements de long terme | |
 
-P/S = P/E × marge nette.
+$$
+\begin{aligned}
+\frac{P}{S}&=\frac{P}{E}\times\frac{E}{S}\\
+&=P/E\times\text{Net margin}
+\end{aligned}
+$$
 
-**Exemple (Stora Enso).** Chiffre d’affaires €10,486m, environ 788,5m d’actions → chiffre d’affaires par action €13.30 ; cours €10.34 → **P/S 0,778**.
+#### Exemple : Stora Enso {#example-stora-enso}
+
+Le chiffre d’affaires est de €10,486m, avec environ 788,5m d’actions ; le cours est de €10.34.
+
+$$
+\begin{aligned}
+\text{Sales per share}&=\frac{10{,}486}{788.5}=13.30\\
+P/S&=\frac{10.34}{13.30}=0.778
+\end{aligned}
+$$
 
 Signaux d’alerte sur la comptabilisation des produits : **troc** publicitaire entre entreprises internet (1998–2000), ventes **bill-and-hold** (Diebold : transaction de \$25m avec la SEC), produits **bruts ou nets** (le retraitement de Groupon a réduit son chiffre d’affaires de plus de moitié). En cas de soupçon de manipulation, utilisez une prime de risque plus élevée (un P/S justifié plus faible), ou évitez l’action.
 
@@ -232,10 +420,18 @@ $$
 
 Il augmente avec la marge, directement et via la croissance : $g=b\times PM\times\frac{Sales}{TA}\times\frac{TA}{Equity}$.
 
-**Exemples.**
+#### Exemple : Getinge
 
-* **Getinge** : $r$ 9 %, marge prévue 9 %, distribution 35 %, $g$ 7 % → $P_0/S_1$ = 0.09 × 0.35/0.02 = **1,575**. Avec un chiffre d’affaires 2019 par action de SEK94.3, la valeur est de **SEK148.52**, au-dessus du cours de SEK133.70 → sous-évaluée.
-* **Comparables** : le P/S de 1,54 de Getinge est le plus bas (CMD 3,96, NEO 8,79) ; elle semble donc la moins chère. Mais sa marge (−2,49 %), son levier et son EV/chiffre d’affaires (1,88) sont plus proches de ceux de CMD que de NEO (marge 14,53 %) ; CMD est donc le meilleur comparable.
+**P/S justifié.** $r$ = 9 %, marge prévue 9 %, distribution 35 %, $g$ = 7 % ; chiffre d’affaires 2019 par action SEK94.3 ; cours SEK133.70.
+
+$$
+\begin{aligned}
+\frac{P_0}{S_1}&=\frac{0.09\times 0.35}{0.09-0.07}=1.575\\
+V_0&=1.575\times 94.3=148.52
+\end{aligned}
+$$
+
+**SEK148.52** dépasse le cours de SEK133.70 : **sous-évaluée**.
 
 ## Cours sur flux de trésorerie
 
@@ -253,20 +449,60 @@ Il augmente avec la marge, directement et via la croissance : $g=b\times PM\time
 | **FCFE** | Lien le plus fort avec la théorie ; volatil (calendrier des investissements), d’où l’usage d’une moyenne ou de la valeur DCF |
 | **EBITDA** | Avant intérêts → à associer à l’**EV**, pas au cours |
 
-**Exemples.**
+$$
+\begin{aligned}
+CF={}&EPS+\text{Depreciation}\\
+&+\text{Amortization}+\text{Depletion}
+\end{aligned}
+$$
 
-* **Méthodes d’amortissement** : mêmes flux, mais A utilise l’amortissement linéaire (BPA stable de \$10) et B l’amortissement accéléré (BPA en hausse de 29 % par an, 7,50 → 12,50) ; le CF est de \$15 par action pour les deux. La croissance du BPA peut être un artefact comptable.
-* **Philips** : BPA €1.41 + D&A par action €1.17 = CF €2.58 ; cours €36.31 → **P/CF 14,1**.
-* **Colgate, multiples justifiés** : FCFE₀ \$2.66, CF \$3.26, $r$ 7,4 %, $g$ 3,2 % → $V_0$ = 1.032(2.66)/0.042 = **\$65.36** ; P/CF justifié = 65.36/3.26 = **20,05** ; P/FCFE = **24,57**.
-* **Deux entreprises** : le P/CF de A est de 9,8 contre 11,4 pour B, mais la prévision de croissance de A est supérieure de 280 pb et son FCFE est positif (celui de B est négatif) → A est relativement sous-évaluée.
+Le CF n’est pas affecté par la méthode d’amortissement ; le P/CF voit donc au-delà d’une croissance du BPA qui n’est qu’un artefact comptable (p. ex. amortissement accéléré).
+
+#### Exemple : Philips
+
+$$
+\begin{aligned}
+CF&=\underbrace{1.41}_{EPS}+\underbrace{1.17}_{\mathrm{D\&A}}=2.58\\
+P/CF&=\frac{36.31}{2.58}=14.1
+\end{aligned}
+$$
+
+#### Exemple : Colgate (multiples justifiés)
+
+$FCFE_0$ = \$2.66, CF = \$3.26, $r$ = 7,4 %, $g$ = 3,2 %.
+
+$$
+\begin{aligned}
+V_0&=\frac{2.66\times 1.032}{0.074-0.032}\\
+&=\$65.36\\
+\text{P/CF}&=\frac{65.36}{3.26}=20.05\\
+\text{P/FCFE}&=\frac{65.36}{2.66}=24.57
+\end{aligned}
+$$
 
 ## Rendement du dividende
 
 * **Justifications** : une composante du rendement total, et une composante moins risquée.
 * **Inconvénients** : seulement une partie du rendement ; **substitution du dividende aux bénéfices** (distribuer maintenant réduit la croissance future, même si la distribution peut être corrélée à la rentabilité future) ; l’argument de « sécurité » suppose que les marchés évaluent mal le risque.
-* **Rendement historique** = taux de dividende (4 × le dernier dividende trimestriel, ou le dernier total annuel pour les payeurs semestriels irréguliers) ÷ cours. **Rendement prospectif** = dividendes prévus de l’an prochain ÷ cours.
 
-**Exemple (BCE, BT).** BCE : 4 × 0,58 = \$2.32 ÷ \$39.53 = **5,87 %**. BT (semestriel irrégulier) : \$0.976/\$15.20 = **6,42 %**.
+$$
+\begin{aligned}
+\text{Trailing yield}&=\frac{\text{Dividend rate}}{P_0}\\
+\text{Leading yield}&=\frac{\text{Next year's }E(D)}{P_0}
+\end{aligned}
+$$
+
+Le **taux de dividende** est égal à 4 × le dernier dividende trimestriel, ou au dernier total annuel pour les payeurs semestriels irréguliers.
+
+#### Exemple : BCE et BT
+
+$$
+\begin{aligned}
+\text{BCE}&=\frac{4\times 0.58}{39.53}=\frac{2.32}{39.53}\\
+&=5.87\%\\
+\text{BT}&=\frac{0.976}{15.20}=6.42\%
+\end{aligned}
+$$
 
 **Rendement du dividende justifié** (GGM) :
 
@@ -274,9 +510,7 @@ $$
 \frac{D_0}{P_0}=\frac{r-g}{1+g}
 $$
 
-Croissance plus forte → rendement plus bas (les filtres de haut rendement sont orientés « value ») ; $r$ plus élevé → rendement plus élevé. Vérifiez la **sécurité** du dividende : taux de distribution, couverture des intérêts, dette nette/EBITDA.
-
-**Exemple (services publics).** Duke rapporte 4,24 %, mais distribue 89 % (le dividende est menacé) ; PPL rapporte 5,37 %, mais ne croît que de 0,60 % ; Portland General rapporte 2,76 % plus 5,20 % de croissance ≈ **7,96 %** de rendement attendu, sans point faible marqué → se concentrer sur elle.
+Croissance plus forte → rendement plus bas (les filtres de haut rendement sont orientés « value ») ; $r$ plus élevé → rendement plus élevé. Vérifiez la **sécurité** du dividende : taux de distribution, couverture des intérêts, dette nette/EBITDA. Le rendement le plus élevé n’est pas forcément le meilleur choix : comparez rendement attendu ≈ rendement du dividende + $g$.
 
 ## Multiples de valeur d’entreprise
 
@@ -298,13 +532,41 @@ $$
 
 Les multiples d’EV adoptent un point de vue de **contrôle** et sont moins sensibles au levier que les multiples de cours.
 
-**Exemple (EV/EBITDA de Colgate-Palmolive, \$m).** Capitalisation 863 × \$66.48 = 57 372 ; dette (dette à long terme 6 354 + partie courante 0 + autres passifs non courants 2 269) = 8 623 ; participations ne donnant pas le contrôle 299 ; trésorerie 726 → **EV 65 034**. EBITDA = RN 2 400 + intérêts 143 + impôt 906 + D&A 511 = **3 960** → **EV/EBITDA 16,6**.
+#### Exemple : EV/EBITDA de Colgate-Palmolive
+
+Montants en \$m ; 863m d’actions à \$66.48.
+
+**Étape 1. Valeur d’entreprise.** La dette comprend la dette à long terme, sa partie courante et les autres passifs non courants (NCL) ; NCI désigne les participations ne donnant pas le contrôle.
+
+$$
+\begin{aligned}
+\text{Market cap}&=863\times 66.48\\
+&=57{,}372\\
+\text{Debt}&=\underbrace{6{,}354}_{\text{LT}}+\underbrace{0}_{\text{current}}+\underbrace{2{,}269}_{\text{other}}\\
+&=8{,}623\\
+EV&=57{,}372+8{,}623\\
+&\quad+\underbrace{299}_{\text{NCI}}-\underbrace{726}_{\text{cash}}\\
+&=65{,}568
+\end{aligned}
+$$
+
+**Étape 2. EBITDA.**
+
+$$
+\begin{aligned}
+EBITDA&=\underbrace{2{,}400}_{NI}+\underbrace{143}_{\text{Int}}\\
+&\quad+\underbrace{906}_{\text{Tax}}+\underbrace{511}_{\mathrm{D\&A}}\\
+&=3{,}960
+\end{aligned}
+$$
+
+**Étape 3. Multiple.**
+
+$$\frac{EV}{EBITDA}=\frac{65{,}568}{3{,}960}=16.6$$
 
 * Avec des actions de préférence, partez de l’EBITDA à partir du résultat net revenant **à la fois** aux actionnaires de préférence et ordinaires.
 * L’EV/EBITDA justifié augmente avec la **croissance attendue du FCFF** et le **ROIC** (résultat d’exploitation après impôt ÷ capital investi), et baisse avec le **WACC**.
-* Un EV/EBITDA inférieur à celui des pairs → relativement sous-évalué (un indicateur parmi d’autres).
-
-**Exemple (produits ménagers).** EV/EBITDA : Colgate 16,9, Kimberly-Clark 14,7, Clorox 17,6, Church & Dwight 22,5 (le TIC/EBITDA les classe de même ; les classements ne pourraient différer que si les trésoreries variaient beaucoup). Colgate est moins chère que Clorox et Church & Dwight (elle croît moins vite que Church & Dwight), et plus chère que Kimberly-Clark (marge 14,8 % contre 9,8 %).
+* Un EV/EBITDA inférieur à celui des pairs → relativement sous-évalué (un indicateur parmi d’autres). Le TIC/EBITDA classe en général les pairs de la même façon ; les classements ne diffèrent que si les trésoreries varient beaucoup.
 
 **Autres dénominateurs de l’EV**, construits à partir du résultat net :
 
@@ -315,7 +577,15 @@ Les multiples d’EV adoptent un point de vue de **contrôle** et sont moins sen
 | EBITA | + | + | | + | Quand l’amortissement des incorporels est important, mais pas celui des corporels |
 | EBIT | + | + | | | Quand aucun des deux n’est important |
 
-Les mesures sectorielles comprennent l’EV/EBITDAR (compagnies aériennes), l’EV/abonnés et l’EV/réserves. L’**EV/chiffre d’affaires** corrige l’incohérence du P/S pour des entreprises aux structures du capital différentes : p. ex. Stora Enso, capitaux propres €8,154m + dette €2,970m − trésorerie €1,130m = **€9,994m** → EV/chiffre d’affaires = **0,953**.
+Les mesures sectorielles comprennent l’EV/EBITDAR (compagnies aériennes), l’EV/abonnés et l’EV/réserves. L’**EV/chiffre d’affaires** corrige l’incohérence du P/S pour des entreprises aux structures du capital différentes. P. ex., [Stora Enso](#example-stora-enso) :
+
+$$
+\begin{aligned}
+EV&=8{,}154+2{,}970-1{,}130\\
+&=9{,}994\\
+EV/\text{Sales}&=\frac{9{,}994}{10{,}486}=0.953
+\end{aligned}
+$$
 
 ## Multiples justifiés : synthèse
 
@@ -352,18 +622,37 @@ L’ajustement le plus fréquent concerne les retraites ; le plus important en v
 
 | Indicateur | Définition |
 | --- | --- |
-| Bénéfice inattendu (surprise) | $UE_t=EPS_t-E(EPS_t)$ ; surprise en % = UE ÷ BPA attendu |
+| Bénéfice inattendu (surprise) | BPA effectif moins BPA attendu |
 | Surprise de bénéfice normalisée | UE ÷ écart type des **prévisions des analystes** (leur dispersion) |
-| Bénéfice inattendu standardisé | $SUE_t=\dfrac{EPS_t-E(EPS_t)}{\sigma[EPS_t-E(EPS_t)]}$, avec l’écart type des **surprises passées** (p. ex. 20 trimestres) |
+| Bénéfice inattendu standardisé | UE ÷ écart type des **surprises passées** (p. ex. 20 trimestres) |
 | Force relative | Le rendement composé de l’action sur une période (momentum de cours), ou action ÷ indice, souvent ramené à 1,0 au départ |
+
+$$
+\begin{aligned}
+UE_t&=EPS_t-E(EPS_t)\\
+\text{Scaled}&=\frac{UE_t}{\sigma_{\text{forecasts}}}\\
+SUE_t&=\frac{EPS_t-E(EPS_t)}{\sigma\left[EPS_t-E(EPS_t)\right]}\\
+RS_t&=\frac{P_{\text{stock},t}/P_{\text{stock},0}}{P_{\text{index},t}/P_{\text{index},0}}
+\end{aligned}
+$$
 
 La justification : des surprises positives peuvent être suivies de rendements anormaux persistants, et les rendements peuvent montrer de la persistance ou un retournement. Mises en garde : sur-exploitation des données et biais rétrospectif, et les règles techniques tendent à cesser de fonctionner une fois largement utilisées. Le momentum peut indiquer **quand** un cours convergera vers la valeur intrinsèque.
 
-**Exemples.**
+#### Exemple : Surprise normalisée de BP
 
-* **Surprise normalisée de BP** : consensus \$3.26, estimation haute \$3.74, écart type des prévisions \$0.29 → (3.74 − 3.26)/0.29 = **1,66**.
-* **SUE** : une surprise de \$0.05 avec un écart type des surprises passées de \$0.20 → SUE 0,25 ; avec un écart type de \$0.07 → 0,71. Exxon, septembre 2013 : (1.79 − 1.77)/0.1250 = **0,16**. VW avait des surprises plus fortes en %, mais le SUE d’Exxon variait davantage (écart type plus faible) ; la « précision » dépend donc de la mesure.
-* **Force relative face au S&P 500** (mars 2018 = 1,0) : en août 2019, TLT **1,067** (+6,7 % par rapport à l’indice), FEU **0,847** (−15,3 %), EEM **0,743** (−25,7 %). En décembre 2018, la force relative d’EEM est passée de 0,852 à 0,872 tandis que celle de FEU baissait de 0,909 à 0,885.
+Le consensus est de \$3.26, l’estimation haute de \$3.74, et l’écart type des prévisions de \$0.29. Si le BPA ressort à l’estimation haute :
+
+$$\text{Scaled surprise}=\frac{3.74-3.26}{0.29}=1.66$$
+
+#### Exemple : SUE
+
+| Cas | Surprise | σ des surprises passées | SUE |
+| --- | ---: | ---: | ---: |
+| Historique volatil | \$0.05 | \$0.20 | 0.25 |
+| Même surprise, historique plus régulier | \$0.05 | \$0.07 | **0,71** |
+| Exxon, sept. 2013 | $1.79-1.77=0.02$ | \$0.1250 | **0,16** |
+
+La même surprise compte davantage pour une entreprise dont les bénéfices sont habituellement prévisibles. VW avait des surprises plus fortes en %, mais le SUE d’Exxon variait davantage (son σ est plus petit) ; la « précision » dépend donc de la mesure.
 
 ## Faire la moyenne des multiples
 
@@ -379,22 +668,26 @@ $$
 * La moyenne harmonique est inférieure à la moyenne arithmétique (sauf si toutes les valeurs sont égales). Elle donne moins de poids aux multiples élevés ; elle réduit donc l’effet des **grandes** valeurs aberrantes, mais peut amplifier les **petites** (elle est bornée par zéro).
 * La **médiane** limite les valeurs aberrantes dans les deux sens.
 
-**Exemple (un portefeuille de deux actions).** €715m de capitalisation pour €71.5m de bénéfices (P/E 10), et €585m pour €29.25m (P/E 20). P/E du portefeuille = 1,300/100.75 = **12,90**.
+#### Exemple : Un portefeuille de deux actions
+
+| Action | Capitalisation (€m) | Bénéfices (€m) | P/E | Pondération |
+| --- | ---: | ---: | ---: | ---: |
+| 1 | 715 | 71.50 | 10 | 55 % |
+| 2 | 585 | 29.25 | 20 | 45 % |
+| **Portefeuille** | **1 300** | **100.75** | $1{,}300/100.75=$ **12,90** | |
+
+Seule la moyenne harmonique pondérée reproduit le vrai P/E du portefeuille :
 
 | Mesure | Calcul | P/E |
 | --- | --- | --- |
 | Moyenne arithmétique | (10 + 20)/2 | 15.00 |
 | Moyenne pondérée | 0.55(10) + 0.45(20) | 14.50 |
 | Moyenne harmonique | 1/[0.5(0.1) + 0.5(0.05)] | 13.33 |
-| **Harmonique pondérée** | 1/[0.55(0.1) + 0.45(0.05)] | **12.90** |
-
-**Exemple (P/E des télécoms).** En incluant les 70,67 de Charter : moyenne arithmétique 25,30, médiane 15,23, moyenne harmonique 17,70 (plus proche de la médiane). Sans les valeurs aberrantes : 16,43, 15,03, 15,39.
+| **Harmonique pondérée** | 1/[0.55(0.1) + 0.45(0.05)] | **12,90** |
 
 **Utiliser plusieurs indicateurs.** Les analystes combinent valeurs DCF et multiples (P/E, EV/EBITDA, rendement du dividende). Dans les tests rétrospectifs, méfiez-vous du **biais d’anticipation** (utiliser des données qui n’étaient pas encore publiées à l’époque).
 
-Le **filtrage** réduit l’univers selon des critères. Limites : aucun contrôle sur le calcul des données comme le BPA, et pas de facteurs qualitatifs.
-
-**Exemple (le filtre de Larsen).** P/E < 20, P/B < 2, PEG < 1, rendement ≥ 3 %, capitalisation > \$10bn → 10 actions. C’est une investisseuse **grandes capitalisations value**, qui n’utilise aucun indicateur de momentum. Limites : pas de critère de rentabilité ni de risque (un P/E faible peut refléter une faible rentabilité ou un risque élevé), des données de base non ajustées, pas de facteurs qualitatifs.
+Le **filtrage** réduit l’univers selon des critères. Limites : aucun contrôle sur le calcul des données comme le BPA, et pas de facteurs qualitatifs. Un filtre ne comportant que des critères de multiples faibles et de rendement élevé (p. ex., P/E < 20, P/B < 2, rendement ≥ 3 %) n’a aucun filtre de rentabilité ni de risque ; un P/E faible peut donc simplement refléter une faible rentabilité ou un risque élevé.
 
 > [!NOTE]
 >
@@ -403,7 +696,6 @@ Le **filtrage** réduit l’univers selon des critères. Limites : aucun contrô
 > * Honda : le cours est donné à ¥2,837, mais la solution calcule avec ¥2,817 (2 817/3 819 − 1 = −26,2 %). Avec ¥2,837, les écarts sont de −25,7 % et −23,4 % ; la conclusion est la même.
 > * Barclays utilise des capitaux propres totaux incluant £9,371m de participations ne donnant pas le contrôle. En toute rigueur, la valeur comptable ordinaire devrait les exclure (£53,586m) ; suivez les chiffres du manuel pour cet exemple.
 > * BT : la solution imprime « 0,0642, soit 6,52 % » ; 0.976/15.20 = 6,42 %.
-> * L’EV de Colgate compte les « autres passifs non courants » (\$2,269m) comme dette ; normalement, seule la dette portant intérêt est incluse.
+> * L’EV de Colgate compte les « autres passifs non courants » (\$2,269m) comme dette ; normalement, seule la dette portant intérêt est incluse. Ses composantes totalisent \$65,568m, ce qui donne le multiple de 16,6.
 > * Stora Enso : le nombre d’actions est donné à 788,4m à un endroit et 788,6m à un autre, et la ligne d’EV imprime des capitaux propres de €8,145m, alors que €8,154m donne €9,994m.
-> * SUE : la solution dit que le SUE de VW allait « de −3,57 à +1,13 », mais le maximum du tableau est 1,97. La solution sur la force relative dit « décembre 2019 » pour décembre 2018.
-> * L’annexe 28 indique pour Windstream 24,55 (la moyenne antérieure du groupe) au lieu de son P/E de 19,01, et ses statistiques ne se retrouvent exactement à partir d’aucune des deux données. Le concept : la moyenne harmonique rapproche la moyenne de la médiane en présence d’une forte valeur aberrante.
+> * SUE : la solution dit que le SUE de VW allait « de −3,57 à +1,13 », mais le maximum du tableau est 1,97.

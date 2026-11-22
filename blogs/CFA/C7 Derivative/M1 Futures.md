@@ -137,15 +137,15 @@ $$
 
 ##### Example
 
-One month ago, BM had a short position for **five** euro-bond forward contracts with 2 months to expiration and a contract notional of $\euro 100,000$ each at price $145$. The euro-bond forward contract now is 148. The risk-free rate is $0.1\%$. Calculate the value of BM's position. 
+One month ago, BM had a short position for **five** euro-bond forward contracts with 2 months to expiration and a contract notional of €100,000 each at price $145$. The euro-bond forward contract now is 148. The risk-free rate is $0.1\%$. Calculate the value of BM's position. 
 
 * Judge first: Short position and price rise $\to$ negative value
 
 <div class="reveal" tabindex="0">
 
 
-* $V_{s,t}=\frac{(F_0(T)-F_t(T))}{(1+r_f)^{T-r}}=\frac{145-148}{1.001^{\frac{1}{12} }}=-2.9997$
-* $V_{BM}=V_{s,t}\times 100,100\times 5=-14998.5$.
+* $V_{s,t}=\frac{(F_0(T)-F_t(T))}{(1+r_f)^{T-t}}=\frac{145-148}{1.001^{\frac{1}{12} }}=-2.9997$
+* $V_{BM}=V_{s,t}\times \frac{100{,}000}{100}\times 5=-14{,}998.5$.
 
 
 </div>

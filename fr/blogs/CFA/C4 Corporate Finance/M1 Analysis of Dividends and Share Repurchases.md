@@ -28,14 +28,41 @@ Les dividendes représentent une grande part du rendement total : le S&P 500 a r
 * **Dividende en actions** (attribution gratuite) : des actions supplémentaires au lieu d’espèces, en général 2 à 10 % des actions en circulation.
 * **Division d’actions** : p. ex. 2 pour 1. **Regroupement** : p. ex. 1 pour 20.
 
-**Exemple (AfriSage, dividende exceptionnel).** La politique est un dividende ordinaire d’au moins 35 % du résultat net. En 2018, le BPA est de ZAR14.23 et le DPA de ZAR7.61, soit un taux de distribution de 7.61/14.23 = **53,5 %** (2017 : 10.68/12.65 = **84,4 %**). Le dividende ordinaire minimal est de 14.23 × 0.35 = **ZAR4.98** ; le dividende exceptionnel est donc de 7.61 − 4.98 = **ZAR2.63**.
+$$
+\begin{aligned}
+\text{Payout ratio}&=\frac{DPS}{EPS}\\
+\text{Extra}&=DPS\\
+&\quad-\text{Min. payout}\times EPS
+\end{aligned}
+$$
+
+#### Exemple : AfriSage (dividende exceptionnel)
+
+La politique d’AfriSage est un dividende ordinaire d’au moins 35 % du résultat net.
+
+| | 2017 | 2018 |
+| --- | ---: | ---: |
+| BPA (ZAR) | 12.65 | 14.23 |
+| DPA (ZAR) | 10.68 | 7.61 |
+| Distribution | $10.68/12.65=$ **84,4 %** | $7.61/14.23=$ **53,5 %** |
+
+**Dividende exceptionnel en 2018.**
+
+$$
+\begin{aligned}
+\text{Minimum}&=0.35\times 14.23=4.98\\
+\text{Extra}&=7.61-4.98=2.63
+\end{aligned}
+$$
+
+**ZAR2.63** du dividende de 2018 est exceptionnel.
 
 ### Effet sur la richesse des actionnaires
 
 * **Dividende en espèces** : le cours baisse du dividende, mais la richesse de l’actionnaire (action + espèces) est inchangée, toutes choses égales par ailleurs.
-* **Dividende en actions** : plus d’actions, même richesse. Le prix de revient total ne change pas ; le prix de revient **par action** baisse donc : 100 actions à US\$10 deviennent 105 actions après un dividende en actions de 5 %, à US\$1,000/105 = **US\$9.52** chacune. En général non imposable. Avantages invoqués : un flottant plus large, une meilleure liquidité, et un cours dans une fourchette de négociation « optimale » (souvent US\$20–80 aux États-Unis).
+* **Dividende en actions** : plus d’actions, même richesse. Le prix de revient total ne change pas ; le prix de revient **par action** baisse donc : 100 actions à US\$10 deviennent 105 actions après un dividende en actions de 5 %, à $1{,}000/105=$ **US\$9.52** chacune. En général non imposable. Avantages invoqués : un flottant plus large, une meilleure liquidité, et un cours dans une fourchette de négociation « optimale » (souvent US\$20–80 aux États-Unis).
 * **Division** : tous les chiffres par action baissent proportionnellement ; le P/E, le rendement du dividende et la capitalisation sont inchangés. Une division 2 pour 1 équivaut économiquement à un dividende en actions de 100 % ; seule la comptabilisation diffère.
-* **Regroupement** : moins d’actions à un cours plus élevé, capitalisation inchangée. Sert à ramener le cours dans une zone négociable (cours minimaux de cotation ; les institutionnels évitent les actions sous US\$5) ; plus fréquent pendant ou après des difficultés financières.
+* **Regroupement** : moins d’actions à un cours plus élevé, capitalisation inchangée. Sert à ramener le cours dans une zone négociable (cours minimaux de cotation ; les institutionnels évitent les actions sous US\$5) ; plus fréquent pendant ou après des difficultés financières. P. ex., le regroupement 1 pour 10 de Globus Maritime a fait passer le cours de US\$4.25 à US\$42.50.
 
 | | Dividende en actions | Division d’actions |
 | --- | --- | --- |
@@ -43,11 +70,37 @@ Les dividendes représentent une grande part du rendement total : le S&P 500 a r
 | Comptes de capitaux propres | Résultats non distribués → capital apporté (actions nouvelles × cours) | Aucun changement |
 | Taille typique | 2–10 % | 2 pour 1, 3 pour 1 |
 
-**Exemples.**
+Avec un dividende en actions de $d$ (p. ex. 3 %), ou une division de $k$ pour 1 :
 
-* **Dividende en actions de 3 %**, pour un détenteur de 10 % : actions 1,000,000 → 1,030,000 ; BPA US\$1.00 → US\$0.97 ; cours (P/E 20) US\$20 → US\$19.42. Les 100 000 actions du détenteur deviennent 103 000, valant **US\$2,000,000** avant comme après.
-* **Division 2 pour 1** : actions 4m → 8m ; cours €40 → €20 ; BPA €1.50 → €0.75 ; DPA €0.50 → €0.25. Rendement de **1,25 %** et P/E de **26,7** avant comme après.
-* **Regroupement 1 pour 10 de Globus Maritime** : US\$4.25 → **US\$42.50**. Le regroupement ne détruit pas de richesse en soi : la capitalisation est inchangée.
+$$
+\begin{aligned}
+N_{\text{after}}&=N(1+d)&P_{\text{after}}&=\frac{P}{1+d}\\
+N_{\text{after}}&=kN&P_{\text{after}}&=\frac{P}{k}
+\end{aligned}
+$$
+
+#### Exemple : dividende en actions de 3 %
+
+Un actionnaire détient 10 % d’une entreprise comptant 1 000 000 d’actions, un BPA de US\$1.00 et un P/E de 20 (cours US\$20).
+
+| | Avant | Après un dividende en actions de 3 % |
+| --- | ---: | ---: |
+| Actions en circulation | 1,000,000 | 1,030,000 |
+| BPA | US\$1.00 | $1.00/1.03=$ US\$0.97 |
+| Cours (P/E 20) | US\$20.00 | $20/1.03=$ US\$19.42 |
+| Actions du détenteur | 100,000 | 103,000 |
+| **Richesse du détenteur** | **US\$2,000,000** | **US\$2,000,000** |
+
+#### Exemple : division 2 pour 1
+
+| | Avant | Après |
+| --- | ---: | ---: |
+| Actions | 4m | 8m |
+| Cours | €40 | €20 |
+| BPA | €1.50 | €0.75 |
+| DPA | €0.50 | €0.25 |
+| Rendement du dividende | $0.50/40=$ **1,25 %** | $0.25/20=$ **1,25 %** |
+| P/E | $40/1.50=$ **26,7** | $20/0.75=$ **26,7** |
 
 ### Effet sur les ratios financiers
 
@@ -63,7 +116,9 @@ Un dividende **en espèces** fait sortir de la trésorerie : actifs et capitaux 
 | Ratios de liquidité | Plus bas | Identiques |
 | Ratios de levier | Plus élevés | Identiques |
 
-**Exemple (dividende en espèces ou en actions).** Trésorerie 200, autres actifs courants 300, passifs courants 250, total de l’actif 1 000, dette 400, capitaux propres 600 (millions USD) ; 100m d’actions à US\$20.
+#### Exemple : dividende en espèces ou en actions
+
+En millions USD : trésorerie 200, autres actifs courants 300, passifs courants 250, total de l’actif 1 000, dette 400, capitaux propres 600 ; 100m d’actions à US\$20.
 
 | Ratio | Avant | Après un dividende en espèces de US\$100m | Après un dividende en actions de 5 % |
 | --- | --- | --- | --- |
@@ -97,9 +152,17 @@ Une théorie affirme que la politique de dividende n’a pas d’importance (Mil
 
 MM supposent **ni impôts, ni coûts de transaction, une information symétrique**, ainsi qu’un budget d’investissement et une structure du capital donnés. La décision de dividende est alors indépendante des décisions d’investissement et de financement :
 
-* Une action à A\$20 avant un dividende de A\$1 se négocie à A\$19 après détachement : le détenteur a A\$20 dans les deux cas.
-* Un dividende équivaut à un rachat. 10 000 actions ; FCF A\$10,000 ; valeur actuelle des flux futurs A\$190,000 → cours **A\$20**. Racheter 10,000/20 = **500** actions laisse 190,000/9,500 = **A\$20** par action.
-* **Dividende maison** : si aucun dividende n’est versé, un détenteur de 1 000 actions qui veut A\$1,000 vend **50** actions à A\$20.
+#### Exemple : neutralité de MM
+
+Une entreprise compte 10 000 actions, un flux de trésorerie disponible de A\$10,000 cette année, et des flux futurs d’une valeur de A\$190,000.
+
+$$P_0=\frac{10{,}000+190{,}000}{10{,}000}=\text{A\$}20$$
+
+| Choix de distribution | Calcul | Richesse du détenteur par action |
+| --- | --- | ---: |
+| Dividende de A\$1 | Cours après détachement $=190{,}000/10{,}000=$ A\$19, plus A\$1 en espèces | A\$20 |
+| Rachat | Rachète $10{,}000/20=500$ actions ; cours $=190{,}000/9{,}500=$ A\$20 | A\$20 |
+| **Dividende maison** (aucun versé) | Un détenteur de 1 000 actions voulant A\$1,000 vend $1{,}000/20=50$ actions | A\$20 |
 
 MM disent que la **politique** de dividende est neutre, pas les dividendes eux-mêmes. Les frictions du monde réel cassent l’argument : coûts d’émission (souvent 4 à 10 % des capitaux levés), coûts de transaction des investisseurs et impôts.
 
@@ -117,14 +180,10 @@ Les dirigeants en savent plus que les investisseurs ; les dividendes transmetten
 * Exceptions : une baisse peut être positive si la trésorerie est réinvestie ou si la baisse paraît prudente (Telstra 2017 ; BT 2018, action +6,9 %). Un premier dividende peut signaler la confiance ou la maturité (eBay 2019).
 * Les entreprises qui relèvent régulièrement leur dividende ont souvent des positions de niche, des bénéfices moins volatils, un ROA élevé et peu de dette.
 
-**Exemples.** Le premier dividende d’Oracle en 2009 (environ US\$1 milliard par an pour US\$8 milliards de flux d’exploitation) a été lu comme le signe qu’elle traverserait la récession. Une entreprise aux perspectives médiocres qui relève son dividende pour faire bonne figure devra plus tard le réduire ou lever des capitaux coûteux.
-
 ### Coûts d’agence
 
-* **Dirigeants contre actionnaires** : les dividendes retirent le flux de trésorerie disponible aux dirigeants, qui pourraient surinvestir dans des projets à VAN négative (construction d’empire) : c’est l’**hypothèse du flux de trésorerie disponible** de Jensen. Le marché réagit davantage aux variations de dividende là où le risque de surinvestissement est plus grand.
+* **Dirigeants contre actionnaires** : les dividendes retirent le flux de trésorerie disponible aux dirigeants, qui pourraient surinvestir dans des projets à VAN négative (construction d’empire) : c’est l’**hypothèse du flux de trésorerie disponible** de Jensen. Le marché réagit davantage aux variations de dividende là où le risque de surinvestissement est plus grand. Les services publics qui versent de gros dividendes puis émettent des actions acceptent les coûts d’émission en échange d’une surveillance par le marché des actions.
 * **Actionnaires contre créanciers** : de gros dividendes transfèrent de la richesse aux actionnaires et augmentent le risque de défaut, ce qui peut conduire à un sous-investissement. Les covenants obligataires plafonnent les distributions cumulées et fixent des limites de couverture ou de levier.
-
-**Exemples.** De deux concurrents sans dette distribuant environ 35 %, celui dont la gouvernance est plus faible (PDG = président) et qui a moins de bons projets est poussé à distribuer davantage, pour freiner le **surinvestissement**. Les services publics versent de gros dividendes puis émettent des actions : c’est coûteux, mais le marché des actions surveille alors les dirigeants et les régulateurs.
 
 > [!IMPORTANT]
 > Les dividendes **réduisent** le coût d’agence entre dirigeants et actionnaires (surinvestissement) mais **aggravent** le conflit entre actionnaires et créanciers (sous-investissement, risque de défaut). Ne les inversez pas.
@@ -152,11 +211,6 @@ Dès que les marchés sont imparfaits, les décisions d’investissement, de fin
 
 Les enquêtes montrent que les dirigeants fixent un taux de distribution cible sur les **bénéfices durables à long terme**, s’intéressent aux **variations** plutôt qu’aux niveaux, et évitent les hausses qu’ils pourraient devoir annuler : c’est le **lissage du dividende**. Skanska a procédé en 2019 à une baisse « de précaution » de 30 % pour garder de la flexibilité ; son action a chuté de 9 %, puis est remontée à 7 % au-dessus de son niveau d’avant l’annonce en deux mois.
 
-**Exemples.**
-
-* **Boar’s Head** : flux d’exploitation de £500m pour £800m de projets à VAN positive, et une dette déjà supérieure à la moyenne → **pas de premier dividende** : elle n’émettra pas d’actions juste pour verser des dividendes.
-* **Makinasi Appliances** réduit son dividende trimestriel de US\$1.60 à US\$0.70, face à des pertes attendues, des ventes en baisse, une émission obligataire de US\$50m et une dégradation de note. Principaux facteurs : **volatilité des bénéfices** et **flexibilité financière**, plus les coûts d’émission.
-
 ## Considérations fiscales {#tax-considerations}
 
 ### Double imposition
@@ -174,17 +228,33 @@ $$
 t_{\text{eff}} = 1-(1-t_{c})(1-t_{i})
 $$
 
-où $t_c$ est le taux de l’impôt sur les sociétés, $t_i$ le taux d’imposition des dividendes de l’investisseur et $t_{\text{eff}}$ le taux effectif. Par exemple, US\$100 avant impôt imposés à 35 % laissent 65 à distribuer ; l’impôt personnel à 15 % est de 9,75, laissant 55,25. Le taux effectif est de (35 + 9.75)/100 = **44,75 %**.
+où $t_c$ est le taux de l’impôt sur les sociétés, $t_i$ le taux d’imposition des dividendes de l’investisseur et $t_{\text{eff}}$ le taux effectif. Par exemple, US\$100 avant impôt, entièrement distribués, à 35 % d’impôt sur les sociétés et 15 % d’impôt personnel :
+
+$$
+\begin{aligned}
+Div_{net}&=100\times(1-0.35)(1-0.15)\\
+&=55.25\\
+t_{\text{eff}}&=1-0.65\times 0.85=44.75\%
+\end{aligned}
+$$
 
 ### Avoir fiscal (imputation)
 
 Les bénéfices distribués ne sont imposés qu’une fois, au taux de l’**actionnaire** (Australie, Nouvelle-Zélande). L’actionnaire reçoit un **crédit d’impôt (franking credit)** pour l’impôt sur les sociétés déjà payé ; le taux effectif est donc simplement $t_i$ :
 
 $$
-Div_{net} = EBT\times \text{payout}\times(1-t_{i})
+\begin{aligned}
+Div_{net}&=EBT\times \text{payout}\times(1-t_{i})\\
+\text{Tax due}&=t_i\times EBT-\text{Credit}
+\end{aligned}
 $$
 
-Par exemple, A\$100 avant impôt, impôt sur les sociétés de 30 %, 70 distribués : un actionnaire imposé à 15 % doit 15 − 30 = **(15)**, un remboursement ; un actionnaire à 47 % doit 47 − 30 = **17**. Taux effectifs de **15 %** et **47 %**.
+Par exemple, A\$100 avant impôt à 30 % d’impôt sur les sociétés, avec les 70 distribués et un crédit d’impôt de 30 :
+
+| Taux de l’actionnaire | Impôt dû | Taux effectif |
+| ---: | --- | ---: |
+| 15 % | $15-30=$ **(15)**, un remboursement | **15 %** |
+| 47 % | $47-30=$ **17** | **47 %** |
 
 ### Taux différenciés
 
@@ -194,9 +264,19 @@ $$
 t_{\text{eff}} = t_{c,\text{dist}}+(1-t_{c,\text{dist}})\,t_{i}
 $$
 
-Par exemple, les bénéfices distribués sont imposés à 20 % (ceux mis en réserve à 35 %), laissant un dividende de 80 pour 100 ; au taux de 35 % de l’actionnaire, il reste 0.65 × 80 = **€52**. Taux effectif = 20 % + 0.35 × 80 % = **48 %**.
+Par exemple, les bénéfices distribués sont imposés à 20 % (ceux mis en réserve à 35 %), et le taux de l’actionnaire est de 35 % :
 
-**Exemple (les trois systèmes avec les mêmes données).** €100 avant impôt, tout distribué ; taux de l’impôt sur les sociétés 30 % ; taux d’imposition des dividendes de l’actionnaire 40 %.
+$$
+\begin{aligned}
+Div&=100\times(1-0.20)=80\\
+Div_{net}&=80\times(1-0.35)=52\\
+t_{\text{eff}}&=0.20+0.80\times 0.35=48\%
+\end{aligned}
+$$
+
+#### Exemple : les trois systèmes avec les mêmes données
+
+€100 avant impôt, tout distribué ; le taux de l’impôt sur les sociétés est de 30 % (20 % sur les bénéfices distribués en taux différenciés), et le taux d’imposition des dividendes de l’actionnaire est de 40 %.
 
 | Système | Impôt sur les sociétés | Dividende | Impôt personnel | Ce que garde l’investisseur | Taux effectif |
 | --- | --- | --- | --- | --- | --- |
@@ -233,18 +313,29 @@ $$
 
 où Target est le taux de distribution cible, et $N$ le nombre d’années sur lequel le dividende rejoint sa cible ; le facteur d’ajustement est donc $1/N$.
 
-**Exemples.**
+#### Exemple : Luna Inc.
 
-* $Div_{t-1}$ = US\$0.40, cible 50 %, facteur 0,2, le BPA monte à US\$1.50 : hausse = (0.75 − 0.40) × 0.2 = **US\$0.07** → US\$0.47. L’année suivante le BPA recule à US\$1.34 : (0.67 − 0.47) × 0.2 = **US\$0.04** → US\$0.51. Le dividende augmente encore, car il est sous sa cible.
-* **Luna Inc.** : $Div_{t-1}$ = US\$0.40, BPA attendu US\$2.80, cible 30 %, 4 ans : 0.40 + (0.84 − 0.40)/4 = **US\$0.51**. Le taux de distribution passe de 20 % à 0.51/2.80 = **18,2 %**.
+Le dividende de l’an dernier était de US\$0.40 (un taux de distribution de 20 %). Le BPA attendu est de US\$2.80, la cible de distribution de 30 % et la période d’ajustement de 4 ans.
+
+$$
+\begin{aligned}
+E(Div)&=0.40+\frac{0.30\times 2.80-0.40}{4}\\
+&=0.40+\frac{0.44}{4}=0.51\\
+\text{Payout}&=\frac{0.51}{2.80}=18.2\%
+\end{aligned}
+$$
+
+Le dividende passe à **US\$0.51**, mais le taux de distribution **baisse** à 18,2 % : les bénéfices ont crû plus vite que le dividende.
 
 ### Politique de taux de distribution constant
 
-Verser une part fixe des bénéfices : $Div = \text{Payout ratio}\times NI$. Elle est peu utilisée, car le dividende fluctue alors avec les bénéfices.
+Verser une part fixe des bénéfices. Elle est peu utilisée, car le dividende fluctue alors avec les bénéfices.
 
-**Exemple (Pampas Fertilizer).** Elle est passée d’un montant fixe de ARS1.50 par trimestre à 25 % du bénéfice trimestriel : p. ex. BPA de 9.32 au T4 2019 → 9.32 × 0.25 = ARS2.33.
+$$Div=\text{Payout ratio}\times NI$$
 
-**Exemple (mêmes bénéfices, deux politiques).** BPA de l’an dernier US\$2.00, DPA US\$0.80 ; BPA des trois années suivantes US\$3.00, US\$2.60, US\$3.40 ; taux de distribution ou cible 40 % ; facteur d’ajustement 0,5.
+#### Exemple : mêmes bénéfices, deux politiques
+
+L’an dernier, le BPA était de US\$2.00 et le DPA de US\$0.80. Le taux de distribution (ou cible) est de 40 %, et le facteur d’ajustement de 0,5.
 
 | Année | BPA | Taux constant | Stable (ajustement à la cible) | Taux de distribution stable |
 | --- | --- | --- | --- | --- |
@@ -299,7 +390,16 @@ Beaucoup de marchés encadrent davantage les rachats que les États-Unis (approb
 | **Enchère hollandaise** | En général **plus faible** qu’une offre à prix fixe | Faible | Rapide, en général un peu moins qu’une offre à prix fixe |
 | **Négociation directe** (écarter un gros actionnaire, bloquer un activiste, greenmail) | Une prime **transfère de la richesse** des actionnaires restants | n.a. | n.a. |
 
-**Exemple (BCII, 5m d’actions à C\$37).** Une offre à prix fixe à C\$40 coûte 5m × 40 = **C\$200m** ; une enchère hollandaise dont le prix d’équilibre est C\$38 coûte **C\$190m**, soit une économie de **C\$10m**.
+#### Exemple : BCII
+
+BCII veut racheter 5m d’actions ; le cours est de C\$37.
+
+| Méthode | Prix payé | Coût |
+| --- | ---: | ---: |
+| Offre à prix fixe | C\$40 | $5\text{m}\times 40=$ **C\$200m** |
+| Enchère hollandaise | C\$38 (prix d’équilibre) | $5\text{m}\times 38=$ **C\$190m** |
+
+L’enchère hollandaise économise **C\$10m**.
 
 ### Effet sur le BPA
 
@@ -309,14 +409,31 @@ $$
 
 où $E$ est le bénéfice avant le rachat, $C$ le coût après impôt des fonds utilisés (intérêts de la nouvelle dette, ou produits d’intérêts perdus sur la trésorerie), et $N_{\text{after}}$ le nombre d’actions en circulation après le rachat.
 
-* **Financé par la trésorerie excédentaire** : actifs et capitaux propres baissent, si bien que le levier augmente. Le BPA n’augmente que si la trésorerie n’aurait pas rapporté son coût du capital (p. ex. trésorerie oisive).
+* **Financé par la trésorerie excédentaire** : actifs et capitaux propres baissent, si bien que le levier augmente. Le même test s’applique : le BPA augmente si le rendement après impôt abandonné sur la trésorerie est **inférieur à E/P** (p. ex. trésorerie oisive), et baisse s’il est supérieur.
 * **Financé par la dette** : la dette augmente et les capitaux propres baissent, si bien que le levier augmente davantage. Le BPA **augmente si le rendement des bénéfices (E/P) dépasse le coût de la dette après impôt**, et baisse dans le cas contraire. Notez que $E/P = 1/(P/E)$.
 
-**Exemples.**
+#### Exemple : Takemiya (trésorerie excédentaire)
 
-* **Takemiya** (trésorerie excédentaire rapportant environ 0) : 10m d’actions, RN ¥100m, cours ¥120 ; utilise ¥240m de trésorerie pour racheter à ¥140 → environ 1,7m d’actions, il en reste 8,3m. Le BPA passe de ¥10.00 à 100/8.3 ≈ **¥12.00** (+20 % ; ¥12.07 sans arrondi).
-* **Selamat** (dette) : emprunte MYR12m pour racheter à MYR60 → 200 000 actions. Bénéfice MYR6.6m ; actions 2,2m → 2,0m ; BPA MYR3 ; E/P 5 %. À un coût après impôt de 5 % : (6.6 − 0.6)/2 = **MYR3.00**, inchangé. À 6 % : (6.6 − 0.72)/2 = **MYR2.94**, en baisse.
-* **Trésorerie excédentaire rémunérée** : RN US\$50m, 10m d’actions, BPA US\$5.00, cours US\$50 → E/P 10 %. Dépenser US\$100m de trésorerie rapportant 4 % après impôt pour racheter 2m d’actions fait perdre 4 d’intérêts : RN 46, BPA 46/8 = **US\$5.75** (en hausse). Si la trésorerie rapportait 10 % : 40/8 = **US\$5.00** (inchangé) ; à 12 % : 38/8 = **US\$4.75** (en baisse). Le test E/P vaut donc aussi pour la trésorerie : le BPA augmente quand le rendement après impôt abandonné est inférieur à E/P.
+Takemiya compte 10m d’actions, un RN de ¥100m et un cours de ¥120. Elle utilise ¥240m de trésorerie excédentaire, rapportant environ 0, pour racheter des actions à ¥140.
+
+$$
+\begin{aligned}
+N_{\text{bought}}&=\frac{240}{140}=1.714\text{m}\\
+EPS_{\text{after}}&=\frac{100-0}{10-1.714}\\
+&=\frac{100}{8.286}=12.07
+\end{aligned}
+$$
+
+Le BPA passe de ¥10.00 à environ **¥12.07** (+20 %).
+
+#### Exemple : Selamat (financé par dette)
+
+Selamat compte 2,2m d’actions à MYR60 et un bénéfice de MYR6.6m (BPA MYR3, E/P = 3/60 = 5 %). Elle emprunte MYR12m pour racheter $12/60=0.2$m d’actions, en laissant 2,0m.
+
+| Coût de la dette après impôt | Calcul | BPA après | vs E/P |
+| ---: | --- | ---: | --- |
+| 5 % | $(6.6-0.05\times 12)/2.0$ | **MYR3.00** (inchangé) | Égal |
+| 6 % | $(6.6-0.06\times 12)/2.0$ | **MYR2.94** (en baisse) | Supérieur à E/P |
 
 > [!IMPORTANT]
 > **Un BPA plus élevé ≠ une richesse plus élevée pour l’actionnaire.** La même trésorerie pourrait être versée en dividende, et toute plus-value peut simplement remplacer le dividende abandonné. Un levier plus élevé augmente aussi le rendement exigé.
@@ -329,7 +446,14 @@ $$
 
 La BVPS **baisse** si le prix de rachat est supérieur à la BVPS actuelle, est inchangée s’il est égal, et **augmente** s’il est inférieur.
 
-**Exemple (rachat de US\$5m à US\$20, 10m d’actions chacune).** 250 000 actions rachetées, il en reste 9,75m. Entreprise A (capitaux propres comptables US\$100m, BVPS 10) : (100 − 5)/9.75 = **US\$9.74**, en baisse. Entreprise B (capitaux propres comptables US\$300m, BVPS 30) : (300 − 5)/9.75 = **US\$30.26**, en hausse.
+#### Exemple : rachat au-dessus et en dessous de la valeur comptable
+
+Les entreprises A et B ont chacune 10m d’actions à US\$20 et consacrent US\$5m à un rachat : $5\text{m}/20=250{,}000$ actions, en laissant 9,75m.
+
+| | Capitaux propres comptables | BVPS avant | BVPS après | Cours vs BVPS |
+| --- | ---: | ---: | --- | --- |
+| A | US\$100m | 10 | $(100-5)/9.75=$ **US\$9.74** (en baisse) | Au-dessus |
+| B | US\$300m | 30 | $(300-5)/9.75=$ **US\$30.26** (en hausse) | En dessous |
 
 #### Pièges d’examen
 
@@ -342,12 +466,28 @@ La BVPS **baisse** si le prix de rachat est supérieur à la BVPS actuelle, est 
 
 Un rachat équivaut à un dividende en espèces du **même montant** quant à son effet sur la richesse des actionnaires, toutes choses égales par ailleurs (même **fiscalité** et même **contenu informationnel**).
 
-**Exemple (Rohit Chemical, 10m d’actions à Rs200, distribution de Rs500m).**
+#### Exemple : Rohit Chemical
 
-* Dividende exceptionnel de Rs50 : cours après détachement = (2,000m − 500m)/10m = **Rs150** ; richesse = 50 + 150 = **Rs200**.
-* Rachat : 500m/200 = 2,5m d’actions ; cours = 1,500m/7.5m = **Rs200** ; richesse **Rs200**, que vous vendiez ou non.
+Rohit compte 10m d’actions à Rs200 (capitalisation Rs2,000m) et distribue Rs500m.
 
-**Exemple (AfriCitrus, rachat avec prime).** 10m d’actions à ZAR200 ; rachète pour ZAR500m d’actions à un seul détenteur à ZAR250 → 2m d’actions. Nouveau cours = 1,500m/8m = **ZAR187.50** : les autres détenteurs perdent **ZAR12.50** par action, transférés au vendeur.
+| | Dividende exceptionnel de Rs50 | Rachat à Rs200 |
+| --- | --- | --- |
+| Actions après | 10m | $10-500/200=7.5$m |
+| Cours après | $(2{,}000-500)/10=$ **Rs150** | $1{,}500/7.5=$ **Rs200** |
+| Richesse par action | $150+50=$ **Rs200** | **Rs200**, que vous vendiez ou non |
+
+#### Exemple : AfriCitrus (rachat avec prime)
+
+AfriCitrus compte 10m d’actions à ZAR200. Elle rachète pour ZAR500m d’actions à un seul détenteur à ZAR250 : $500/250=2$m d’actions.
+
+$$
+\begin{aligned}
+P_{\text{after}}&=\frac{2{,}000-500}{10-2}\\
+&=\frac{1{,}500}{8}=187.50
+\end{aligned}
+$$
+
+Les autres détenteurs perdent $200-187.50=$ **ZAR12.50** par action, transférés au vendeur.
 
 ## Dividendes ou rachats d’actions
 
@@ -363,21 +503,7 @@ Les annonces de rachat sont suivies de rendements anormaux positifs, à l’anno
 
 Augmenter le BPA est une raison faible : le rendement exigé augmente avec le levier, et moins d’actions ne changent pas le flux de trésorerie disponible total.
 
-**Exemple (Deira Oasis, millions AED).** Dette 30, capitaux propres 70 ; rachète pour AED7m.
-
-| | Avant | Tout en trésorerie | Tout en dette |
-| --- | --- | --- | --- |
-| Dette | 30 (30 %) | 30 (32 %) | 37 (37 %) |
-| Capitaux propres | 70 (70 %) | 63 (68 %) | 63 (63 %) |
-| Total | 100 | 93 | 100 |
-
-Financé par la trésorerie, le BPA augmente ; les capitaux propres valent donc probablement plus de AED63m. Financé par une dette dont le coût après impôt dépasse E/P, le BPA baisse ; les capitaux propres valent donc moins de AED63m ; avec une dégradation de note, la valeur de la dette tombe aussi sous 37, si bien que les nouvelles pondérations sont incertaines.
-
-**Autres exemples.**
-
-* **ITOCHU** (2018–19) a racheté 34 121 400 actions à ¥1,993 en moyenne (¥68 milliards) pour atteindre un ROE d’au moins 13 %.
-* Les rachats sont **procycliques** et se substituent aux dividendes exceptionnels. Russell 1000 : en 2007, dividendes US\$286 milliards contre rachats US\$680 milliards ; du T4 2008 au T3 2009, US\$262 milliards contre US\$223 milliards : les rachats ont été bien plus réduits.
-* **Shenzhen Medical Devices** verse un premier dividende de ¥0.40 (taux de distribution 0.40/3.20 = **12,5 %**, cible 25 %) après trois ans de rachats. Les premiers dividendes sont liés à une croissance future **plus forte** ; y lire « nous ne sommes plus une entreprise de croissance » est donc une erreur, et un dividende en actions de 2 % ne changerait pas la richesse. La politique est un **dividende stable** avec ajustement au taux de distribution cible.
+Les rachats sont **procycliques** : les rachats du Russell 1000 sont tombés de US\$680 milliards (2007) à US\$223 milliards (T4 2008–T3 2009) alors que les dividendes ont à peine bougé (US\$286 milliards à US\$262 milliards). Les rachats se substituent aux dividendes exceptionnels, pas aux dividendes ordinaires.
 
 #### Pièges d’examen
 
@@ -387,16 +513,13 @@ Financé par la trésorerie, le BPA augmente ; les capitaux propres valent donc 
 
 ## Sécurité du dividende
 
-| Ratio | Formule |
-| --- | --- |
-| Taux de distribution | Dividendes ÷ résultat net |
-| Couverture du dividende | Résultat net ÷ dividendes |
-| Couverture par le FCFE | FCFE ÷ (dividendes + rachats d’actions) |
-
 $$
 \begin{aligned}
-FCFE ={}& CFO - FCInv\\
-&+ \text{Net borrowing}
+\text{Payout}&=\frac{\text{Dividends}}{\text{Net income}}\\
+\text{Coverage}&=\frac{\text{Net income}}{\text{Dividends}}\\
+\text{FCFE cov.}&=\frac{FCFE}{\text{Dividends}+\text{Buybacks}}\\
+FCFE&=CFO-FCInv\\
+&\quad+\text{Net borrowing}
 \end{aligned}
 $$
 
@@ -409,9 +532,9 @@ $$
 | ≫ 1 | Constitution de liquidités |
 | ≪ 1 | **Non durable** : la trésorerie s’épuise ; il faudra des capitaux propres ou réduire les investissements |
 
-**Exemple (Mature European SA).** RN €100m, dividendes €40m → taux de distribution **40 %**, couverture **2,5×**.
+#### Exemple : Lygon Resources
 
-**Exemple (Lygon Resources, millions A\$).**
+En millions A\$. P. ex. 2015 : FCFE = 837 − 554 − 120 = 163, et couverture par le FCFE = 163/(121 + 0) = 1,35×.
 
 | | 2015 | 2016 | 2017 | 2018 |
 | --- | --- | --- | --- | --- |
@@ -444,4 +567,4 @@ La couverture est tombée à 1,06×, et la couverture par le FCFE était inféri
 
 > [!NOTE]
 >
-> **Coquilles du manuel.** La solution Rohit Chemical appelle une fois l’entreprise « WCII » (il faut lire RCII). Le tableau ITOCHU imprime le cours moyen « 1.997 » pour ¥1,997. Le tableau des taux différenciés est intitulé « pour €100 » mais part de €200 avant impôt (€100 mis en réserve, €100 distribués) ; les 48 % s’entendent pour €100 affectés aux dividendes.
+> **Coquilles du manuel.** La solution Rohit Chemical appelle une fois l’entreprise « WCII » (il faut lire RCII). Le tableau des taux différenciés est intitulé « pour €100 » mais part de €200 avant impôt (€100 mis en réserve, €100 distribués) ; les 48 % s’entendent pour €100 affectés aux dividendes.

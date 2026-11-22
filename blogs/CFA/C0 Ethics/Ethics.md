@@ -270,6 +270,8 @@ Supports the Code duties to act with competence and diligence and to **maintain 
 
 ---
 
+## Standard II Integrity of Capital Markets
+
 ### Standard II(A) Material Nonpublic Information
 
 > Members and Candidates who possess material nonpublic information that could affect the value of an investment must not act or cause others to act on the information.
@@ -556,7 +558,7 @@ Strict pro rata would push the small accounts below the minimum lot, so the text
 **Example 6 — Additional Services for Select Clients (Jenpin Weng).** Weng emails a new recommendation to all clients, then calls his three largest institutional clients to discuss it in detail.  
 **Takeaway:** **No violation** — dissemination to everyone came first; the extra service (they presumably pay higher fees or have more assets with him) followed. Calling them first would have violated III(B).
 
-**Example 7 — Minimum Lot Allocations (Lynn Hampton).** Five clients want a new oversubscribed bond (three × US$10,000, two × US$50,000; minimum lot US$5,000). She receives US$55,000 and allocates US$5,000 to each small account and US$20,000 to each large one.  
+**Example 7 — Minimum Lot Allocations (Lynn Hampton).** Five clients want a new oversubscribed bond (three × US\$10,000, two × US\$50,000; minimum lot US\$5,000). She receives US\$55,000 and allocates US\$5,000 to each small account and US\$20,000 to each large one.  
 **Takeaway:** **No violation** — not strictly pro rata because of the minimum lot, but every client gets at least the minimum, so each can sell efficiently later.
 
 ---
@@ -729,7 +731,7 @@ Applies when you receive information (1) because of your **special ability** to 
 **Example 1 — Possessing Confidential Information (Sarah Connor).** The City Medical Center trustees give Connor internal reports on renovation and expansion needs. Local businessman Thomas Kasey asks her about the building plans before deciding where to donate.  
 **Takeaway:** The information is confidential and within the scope of the relationship — she must refuse.
 
-**Example 2 — Disclosing Confidential Information (Lynn Moody).** A client tells Moody she plans to give about US$50,000 to charity for tax reasons; Moody, treasurer of the Home for Indigent Widows, tells HIW to ask the client for that amount.  
+**Example 2 — Disclosing Confidential Information (Lynn Moody).** A client tells Moody she plans to give about US\$50,000 to charity for tax reasons; Moody, treasurer of the Home for Indigent Widows, tells HIW to ask the client for that amount.  
 **Takeaway:** Violates III(E), however well intended.
 
 **Example 3 — Disclosing Possible Illegal Activity (Casey Samuel).** Government officials ask to see Garcia’s pension records; Samuel already knows of possibly excessive, improper charges to the plan, and counsel says Garcia probably broke tax and fiduciary laws.  
@@ -1041,10 +1043,10 @@ Clear, frequent and thorough communication lets clients understand how you act f
 **Example 5 — Providing Opinions as Facts (Richard Dox).** From core samples, Dox estimates over 500,000 ounces of gold at Boisy Bay Minerals and writes, “Based on the fact that the company has 500,000 ounces of gold to be mined, I recommend a strong buy.”  
 **Takeaway:** Violates V(B) — the reserve estimate is a quantitative **opinion**, not a fact.
 
-**Example 7 — Notification of Fund Mandate Change (May & Associates).** The small-cap manager’s CIO raises the market-cap ceiling from US$250 million to US$500 million and updates only marketing literature for prospects.  
+**Example 7 — Notification of Fund Mandate Change (May & Associates).** The small-cap manager’s CIO raises the market-cap ceiling from US\$250 million to US\$500 million and updates only marketing literature for prospects.  
 **Takeaway:** Must also notify **existing** clients — some use May as their small-cap specialist in a multi-manager mix.
 
-**Example 15 — Notification of Risks and Limitations (Yuri Yakovlev).** His illiquid small-cap strategy may struggle above about US$100 million; marketing head Alan Wellard leaves the capacity limit out of the offering materials, and Yakovlev doesn’t object because the fund holds only US$12 million.  
+**Example 15 — Notification of Risks and Limitations (Yuri Yakovlev).** His illiquid small-cap strategy may struggle above about US\$100 million; marketing head Alan Wellard leaves the capacity limit out of the offering materials, and Yakovlev doesn’t object because the fund holds only US\$12 million.  
 **Takeaway:** Both failed to disclose a significant limitation; they must educate clients or check suitability.
 
 ---
@@ -1130,7 +1132,7 @@ A conflict of interest is anything that could reasonably be expected to impair i
 **Example 1 — Conflict of Interest and Business Relationships (Henry Weiss).** Williamsburg has handled all of Jimco’s acquisitions for 20 years and its officers sit on Jimco subsidiaries’ boards; Weiss is writing a report on Jimco.  
 **Takeaway:** He must disclose Williamsburg’s special relationship in the report.
 
-**Example 3 — Conflict of Interest and Personal Stock Ownership (Karl Fargmon).** After his buy report on Kincaid Printing, his wife inherits US$3 million of Kincaid stock; he is asked for a follow-up.  
+**Example 3 — Conflict of Interest and Personal Stock Ownership (Karl Fargmon).** After his buy report on Kincaid Printing, his wife inherits US\$3 million of Kincaid stock; he is asked for a follow-up.  
 **Takeaway:** At minimum disclose to his employer and in the report; best practice is to have another analyst write it.
 
 **Example 5 — Conflict of Interest and Compensation Arrangements (Sarah Snead).** Her firm introduces quarterly peer-relative bonuses; she buys high-beta stocks for long-term pension accounts, seemingly contrary to their IPSs.  

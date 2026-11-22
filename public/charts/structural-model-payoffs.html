@@ -20,9 +20,77 @@
     </section>
     <div class="src">MERTON STRUCTURAL MODEL · F2 HAIRLINE LINE · EQUITY = MAX(A − K, 0) · DEBT = MIN(A, K) = K − MAX(K − A, 0)</div>
   </main>
+  <script src="i18n.js"></script>
+  <script>
+chartI18n.use({
+  zh: {
+    'Structural model · equity and debt payoffs': '结构模型 · 股权与债务收益',
+    'Shareholders hold a call on the assets; debtholders are short a put.': '股东持有资产的看涨期权；债权人空头资产的看跌期权。',
+    "Payoffs at maturity T against the company's asset value · face value of debt K = 100 · ink = equity, mid gray = debt · equity + debt = assets · hover for the payoffs at any asset value": '到期日 T 时随公司资产价值变化的收益 · 债务面值 K = 100 · 墨色 = 股权，中灰 = 债务 · 股权 + 债务 = 资产 · 悬停查看任意资产价值下的收益',
+    'Payoff at maturity': '到期收益',
+    'Below K the company defaults: equity is worth 0 and debtholders take the assets · above K debt is paid in full and equity keeps the rest': '低于 K 时公司违约：股权价值为 0，债权人接管资产 · 高于 K 时债务全额偿付，股权保留剩余部分',
+    'Equity payoff max(A minus K, 0) and debt payoff min(A, K) against the asset value at maturity, with K = 100': '到期时股权收益 max(A − K, 0) 和债务收益 min(A, K) 与公司资产价值的关系，K = 100',
+    'MERTON STRUCTURAL MODEL · F2 HAIRLINE LINE · EQUITY = MAX(A − K, 0) · DEBT = MIN(A, K) = K − MAX(K − A, 0)': '默顿结构模型 · F2 发丝折线 · 股权 = MAX(A − K, 0) · 债务 = MIN(A, K) = K − MAX(K − A, 0)',
+    'asset value at T →': 'T 时资产价值 →',
+    'payoff': '收益',
+    'Debt = min(A, K)': '债务 = min(A, K)',
+    '= risk-free bond K − put on the assets (strike K)': '= 无风险债券 K − 资产看跌期权（行权价 K）',
+    'Equity = max(A − K, 0)': '股权 = max(A − K, 0)',
+    '= call on the assets (strike K)': '= 资产看涨期权（行权价 K）',
+    'debt = K': '债务 = K',
+    'equity': '股权',
+    'debt': '债务',
+    'default': '违约',
+    'no default': '未违约',
+    'assets': '资产价值',
+  },
+  ja: {
+    'Structural model · equity and debt payoffs': '構造モデル · 株主資本と負債のペイオフ',
+    'Shareholders hold a call on the assets; debtholders are short a put.': '株主は資産のコールを保有し、債権者はプットをショートしている。',
+    "Payoffs at maturity T against the company's asset value · face value of debt K = 100 · ink = equity, mid gray = debt · equity + debt = assets · hover for the payoffs at any asset value": '満期 T における会社の資産価値に対するペイオフ · 負債額面 K = 100 · 墨 = 株主資本、中灰 = 負債 · 株主資本 + 負債 = 資産 · ホバーで任意の資産価値のペイオフを表示',
+    'Payoff at maturity': '満期時のペイオフ',
+    'Below K the company defaults: equity is worth 0 and debtholders take the assets · above K debt is paid in full and equity keeps the rest': 'K を下回ると会社はデフォルトし、株主資本は 0 で債権者が資産を取得 · K を上回ると負債は全額返済され、残りを株主が受け取る',
+    'Equity payoff max(A minus K, 0) and debt payoff min(A, K) against the asset value at maturity, with K = 100': '満期時の資産価値に対する株主資本のペイオフ max(A − K, 0) と負債のペイオフ min(A, K)（K = 100）',
+    'MERTON STRUCTURAL MODEL · F2 HAIRLINE LINE · EQUITY = MAX(A − K, 0) · DEBT = MIN(A, K) = K − MAX(K − A, 0)': 'マートン構造モデル · F2 ヘアライン · 株主資本 = MAX(A − K, 0) · 負債 = MIN(A, K) = K − MAX(K − A, 0)',
+    'asset value at T →': 'T 時の資産価値 →',
+    'payoff': 'ペイオフ',
+    'Debt = min(A, K)': '負債 = min(A, K)',
+    '= risk-free bond K − put on the assets (strike K)': '= 無リスク債 K − 資産のプット（行使価格 K）',
+    'Equity = max(A − K, 0)': '株主資本 = max(A − K, 0)',
+    '= call on the assets (strike K)': '= 資産のコール（行使価格 K）',
+    'debt = K': '負債 = K',
+    'equity': '株主資本',
+    'debt': '負債',
+    'default': 'デフォルト',
+    'no default': 'デフォルトなし',
+    'assets': '資産価値',
+  },
+  fr: {
+    'Structural model · equity and debt payoffs': 'Modèle structurel · gains des capitaux propres et de la dette',
+    'Shareholders hold a call on the assets; debtholders are short a put.': 'Les actionnaires détiennent un call sur les actifs ; les créanciers sont vendeurs d’un put.',
+    "Payoffs at maturity T against the company's asset value · face value of debt K = 100 · ink = equity, mid gray = debt · equity + debt = assets · hover for the payoffs at any asset value": 'Gains à l’échéance T selon la valeur des actifs · nominal de la dette K = 100 · encre = capitaux propres, gris moyen = dette · capitaux propres + dette = actifs · survoler pour voir les gains',
+    'Payoff at maturity': 'Gain à l’échéance',
+    'Below K the company defaults: equity is worth 0 and debtholders take the assets · above K debt is paid in full and equity keeps the rest': 'Sous K l’entreprise fait défaut : les capitaux propres valent 0 et les créanciers prennent les actifs · au-dessus de K la dette est remboursée et les actionnaires gardent le reste',
+    'Equity payoff max(A minus K, 0) and debt payoff min(A, K) against the asset value at maturity, with K = 100': 'Gain des capitaux propres max(A − K, 0) et gain de la dette min(A, K) selon la valeur des actifs à l’échéance, avec K = 100',
+    'MERTON STRUCTURAL MODEL · F2 HAIRLINE LINE · EQUITY = MAX(A − K, 0) · DEBT = MIN(A, K) = K − MAX(K − A, 0)': 'MODÈLE STRUCTUREL DE MERTON · LIGNE F2 · CAPITAUX PROPRES = MAX(A − K, 0) · DETTE = MIN(A, K) = K − MAX(K − A, 0)',
+    'asset value at T →': 'valeur des actifs en T →',
+    'payoff': 'gain',
+    'Debt = min(A, K)': 'Dette = min(A, K)',
+    '= risk-free bond K − put on the assets (strike K)': '= obligation sans risque K − put sur les actifs (exercice K)',
+    'Equity = max(A − K, 0)': 'Capitaux propres = max(A − K, 0)',
+    '= call on the assets (strike K)': '= call sur les actifs (exercice K)',
+    'debt = K': 'dette = K',
+    'equity': 'capitaux propres',
+    'debt': 'dette',
+    'default': 'défaut',
+    'no default': 'sans défaut',
+    'assets': 'actifs',
+  },
+});
+  </script>
   <script>
 (() => {
-  const { C, el, label, frame, axes, curve, guide, probe, mount } = curveKit;
+  const { C, T, el, label, frame, axes, curve, guide, probe, mount } = curveKit;
 
   // ── Data: face value of debt K; asset value at maturity A from 0 to A1 ──
   const K = 100, A1 = 200, MID = '#6A6963';
@@ -57,7 +125,7 @@
     probe(s, F, [
       { name: 'equity', f: equity },
       { name: 'debt', f: debt, stroke: MID },
-    ], { xName: 'assets', fmt: (v) => v.toFixed(1) });
+    ], { xName: T('assets'), fmt: (v) => v.toFixed(1) });
   }, (W) => Math.max(250, Math.min(320, W * 0.6)));
 })();
   </script>

@@ -20,9 +20,95 @@
     </section>
     <div class="src">ETF TOTAL COST OF OWNERSHIP · F2 HAIRLINE LINE · ROUND TRIP = 2 × (COMMISSION + ½ SPREAD) · ILLUSTRATIVE</div>
   </main>
+  <script src="i18n.js"></script>
+  <script>
+chartI18n.use({
+  zh: {
+    'ETF cost · trading vs holding': 'ETF 成本 · 交易与持有',
+    'Trading costs matter for short holds; the expense ratio wins over long ones.': '短期持有看交易成本；长期持有看费用率。',
+    'Total cost = round-trip trading cost + expense ratio × holding period · ink = ETF A (tight spread, 0.20% fee), mid gray = ETF B (wide spread, 0.09% fee) · hover for both costs at any holding period': '总成本 = 往返交易成本 + 费用率 × 持有期 · 墨色 = ETF A（窄价差，0.20% 费用率），中灰 = ETF B（宽价差，0.09% 费用率）· 悬停查看任意持有期下的两项成本',
+    'Total cost against holding period': '总成本与持有期的关系',
+    'A: round trip 0.20% + 0.20% a year · B: round trip 0.40% + 0.09% a year · they cross at about 1.8 years': 'A：往返 0.20% + 每年 0.20% · B：往返 0.40% + 每年 0.09% · 约在 1.8 年处交叉',
+    'Total cost of two ETFs against holding period; ETF A is cheaper below about 1.8 years and ETF B above': '两只 ETF 的总成本与持有期的关系；约 1.8 年以下 ETF A 更便宜，以上 ETF B 更便宜',
+    'ETF TOTAL COST OF OWNERSHIP · F2 HAIRLINE LINE · ROUND TRIP = 2 × (COMMISSION + ½ SPREAD) · ILLUSTRATIVE': 'ETF 总持有成本 · F2 发丝折线 · 往返成本 = 2 × (佣金 + ½ 价差) · 示意数据',
+    '1 yr': '1 年',
+    '2 yrs': '2 年',
+    '3 yrs': '3 年',
+    '4 yrs': '4 年',
+    'holding period →': '持有期 →',
+    'total cost': '总成本',
+    'ETF A: 0.20% round trip + 0.20% a year': 'ETF A：往返 0.20% + 每年 0.20%',
+    'cheaper for short holding periods': '短期持有更便宜',
+    'ETF B: 0.40% round trip + 0.09% a year': 'ETF B：往返 0.40% + 每年 0.09%',
+    'cheaper for long holding periods': '长期持有更便宜',
+    'ETF A cost (%)': 'ETF A 成本 (%)',
+    'ETF B cost (%)': 'ETF B 成本 (%)',
+    'years held': '持有年数',
+  },
+  ja: {
+    'ETF cost · trading vs holding': 'ETF コスト · 取引と保有',
+    'Trading costs matter for short holds; the expense ratio wins over long ones.': '短期保有では取引コストが効き、長期保有では経費率が勝る。',
+    'Total cost = round-trip trading cost + expense ratio × holding period · ink = ETF A (tight spread, 0.20% fee), mid gray = ETF B (wide spread, 0.09% fee) · hover for both costs at any holding period': '総コスト = 往復取引コスト + 経費率 × 保有期間 · 墨 = ETF A（狭いスプレッド、経費率 0.20%）、中灰 = ETF B（広いスプレッド、経費率 0.09%）· ホバーで任意の保有期間の両コストを表示',
+    'Total cost against holding period': '保有期間に対する総コスト',
+    'A: round trip 0.20% + 0.20% a year · B: round trip 0.40% + 0.09% a year · they cross at about 1.8 years': 'A：往復 0.20% + 年 0.20% · B：往復 0.40% + 年 0.09% · 約 1.8 年で交差',
+    'Total cost of two ETFs against holding period; ETF A is cheaper below about 1.8 years and ETF B above': '保有期間に対する 2 つの ETF の総コスト。約 1.8 年未満では ETF A、それ以上では ETF B が安い',
+    'ETF TOTAL COST OF OWNERSHIP · F2 HAIRLINE LINE · ROUND TRIP = 2 × (COMMISSION + ½ SPREAD) · ILLUSTRATIVE': 'ETF 総保有コスト · F2 ヘアライン · 往復 = 2 × (委託手数料 + ½ スプレッド) · 例示',
+    '1 yr': '1 年',
+    '2 yrs': '2 年',
+    '3 yrs': '3 年',
+    '4 yrs': '4 年',
+    'holding period →': '保有期間 →',
+    'total cost': '総コスト',
+    'ETF A: 0.20% round trip + 0.20% a year': 'ETF A：往復 0.20% + 年 0.20%',
+    'cheaper for short holding periods': '短期保有ではこちらが安い',
+    'ETF B: 0.40% round trip + 0.09% a year': 'ETF B：往復 0.40% + 年 0.09%',
+    'cheaper for long holding periods': '長期保有ではこちらが安い',
+    'ETF A cost (%)': 'ETF A コスト (%)',
+    'ETF B cost (%)': 'ETF B コスト (%)',
+    'years held': '保有年数',
+  },
+  fr: {
+    'ETF cost · trading vs holding': 'Coût d’un ETF · négociation vs détention',
+    'Trading costs matter for short holds; the expense ratio wins over long ones.': 'Les coûts de transaction comptent à court terme ; le ratio de frais l’emporte à long terme.',
+    'Total cost = round-trip trading cost + expense ratio × holding period · ink = ETF A (tight spread, 0.20% fee), mid gray = ETF B (wide spread, 0.09% fee) · hover for both costs at any holding period': 'Coût total = coût aller-retour + ratio de frais × durée de détention · encre = ETF A (fourchette étroite, frais 0,20 %), gris moyen = ETF B (fourchette large, frais 0,09 %) · survoler pour voir les deux coûts',
+    'Total cost against holding period': 'Coût total selon la durée de détention',
+    'A: round trip 0.20% + 0.20% a year · B: round trip 0.40% + 0.09% a year · they cross at about 1.8 years': 'A : aller-retour 0,20 % + 0,20 % par an · B : aller-retour 0,40 % + 0,09 % par an · ils se croisent vers 1,8 an',
+    'Total cost of two ETFs against holding period; ETF A is cheaper below about 1.8 years and ETF B above': 'Coût total de deux ETF selon la durée de détention ; l’ETF A est moins cher sous environ 1,8 an et l’ETF B au-delà',
+    'ETF TOTAL COST OF OWNERSHIP · F2 HAIRLINE LINE · ROUND TRIP = 2 × (COMMISSION + ½ SPREAD) · ILLUSTRATIVE': 'COÛT TOTAL DE DÉTENTION ETF · LIGNE F2 · ALLER-RETOUR = 2 × (COMMISSION + ½ FOURCHETTE) · ILLUSTRATIF',
+    '1 yr': '1 an',
+    '2 yrs': '2 ans',
+    '3 yrs': '3 ans',
+    '4 yrs': '4 ans',
+    'holding period →': 'durée de détention →',
+    'total cost': 'coût total',
+    'ETF A: 0.20% round trip + 0.20% a year': 'ETF A : 0,20 % aller-retour + 0,20 % par an',
+    'cheaper for short holding periods': 'moins cher pour les détentions courtes',
+    'ETF B: 0.40% round trip + 0.09% a year': 'ETF B : 0,40 % aller-retour + 0,09 % par an',
+    'cheaper for long holding periods': 'moins cher pour les détentions longues',
+    'ETF A cost (%)': 'Coût ETF A (%)',
+    'ETF B cost (%)': 'Coût ETF B (%)',
+    'years held': 'années de détention',
+  },
+}, {
+  patterns: {
+    zh: [
+      [/^Break-even: ([\d.]+) years, total cost ([\d.]+)% for both$/, '盈亏平衡点：$1 年，两者总成本均为 $2%'],
+      [/^≈ ([\d.]+) yrs$/, '≈ $1 年'],
+    ],
+    ja: [
+      [/^Break-even: ([\d.]+) years, total cost ([\d.]+)% for both$/, '損益分岐：$1 年、総コストはともに $2%'],
+      [/^≈ ([\d.]+) yrs$/, '≈ $1 年'],
+    ],
+    fr: [
+      [/^Break-even: ([\d.]+) years, total cost ([\d.]+)% for both$/, 'Point mort : $1 ans, coût total $2 % pour les deux'],
+      [/^≈ ([\d.]+) yrs$/, '≈ $1 ans'],
+    ],
+  },
+});
+  </script>
   <script>
 (() => {
-  const { C, el, label, frame, axes, curve, guide, dot, probe, mount } = curveKit;
+  const { C, T, el, label, frame, axes, curve, guide, dot, probe, mount } = curveKit;
 
   // ── Data: round-trip trading cost and annual expense ratio, both in % ──
   const A = { rt: 0.20, fee: 0.20 }, B = { rt: 0.40, fee: 0.09 }, T1 = 4, MID = '#6A6963';
@@ -57,7 +143,7 @@
     probe(s, F, [
       { name: 'ETF A cost (%)', f: costA },
       { name: 'ETF B cost (%)', f: costB, stroke: MID },
-    ], { xName: 'years held', fmt: (v) => v.toFixed(2) });
+    ], { xName: T('years held'), fmt: (v) => v.toFixed(2) });
   }, (W) => Math.max(250, Math.min(320, W * 0.6)));
 })();
   </script>
