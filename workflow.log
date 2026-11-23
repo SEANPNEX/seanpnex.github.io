@@ -68,3 +68,4 @@ are added under public/flashcards/i18n.
 Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
 2026-11-22 10:55:32-SEANPNEX-CFA: fix note structure/math issues and complete zh/jp/fr translations
 2026-11-23 15:08:39-SEANPNEX-chore(ci): add PR verification, shared build action, and harden deploy/log workflows
+2026-11-23 15:21:20-SEANPNEX-Add Musico project case study and zh/jp/fr translations
