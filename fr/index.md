@@ -27,6 +27,7 @@ const projects = [
     link: '/fr/projects/wilson_cowan_equation',
     mark: '02',
     image: '/images/wilson_cowan/Nullclines.png',
+    fit: 'contain',
     meta: 'Modélisation mathématique · 2022'
   },
   {
@@ -37,6 +38,16 @@ const projects = [
     mark: '03',
     image: '/images/chatbot/mel_s.png',
     meta: 'Apprentissage automatique · 2023'
+  },
+  {
+    eyebrow: 'Neurosciences computationnelles',
+    title: 'Réseaux de rivalité',
+    copy: 'Un réseau de Wilson–Cowan généralisé pour étudier l’alternance de la perception visuelle et les rythmes de la marche quadrupède.',
+    link: '/fr/projects/rivalry_network',
+    mark: '04',
+    image: '/images/rivalry_network/wilson_network.png',
+    fit: 'contain',
+    meta: 'Dynamique des réseaux · 2022'
   }
 ]
 
@@ -87,7 +98,7 @@ const learning = [
     </div>
     <div class="project-grid">
       <a v-for="project in projects" :key="project.title" :href="project.link" class="project-card">
-        <div class="project-image"><img :src="project.image" :alt="''" /></div>
+        <div class="project-image" :class="project.fit"><img :src="project.image" :alt="''" /></div>
         <div class="project-top"><span>{{ project.eyebrow }}</span><b>{{ project.mark }}</b></div>
         <div class="project-body"><h3>{{ project.title }}</h3><p>{{ project.copy }}</p></div>
         <div class="project-link"><span>{{ project.meta }}</span><span>Voir l’étude de cas ↗</span></div>

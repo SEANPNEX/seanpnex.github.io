@@ -27,6 +27,7 @@ const projects = [
     link: '/jp/projects/wilson_cowan_equation',
     mark: '02',
     image: '/images/wilson_cowan/Nullclines.png',
+    fit: 'contain',
     meta: '数理モデリング · 2022'
   },
   {
@@ -37,6 +38,16 @@ const projects = [
     mark: '03',
     image: '/images/chatbot/mel_s.png',
     meta: '機械学習 · 2023'
+  },
+  {
+    eyebrow: '計算論的神経科学',
+    title: 'ライバルリー・ネットワーク',
+    copy: '一般化 Wilson–Cowan ネットワークを用いて、視知覚の交替と四足歩行のリズムパターンを調べた研究。',
+    link: '/jp/projects/rivalry_network',
+    mark: '04',
+    image: '/images/rivalry_network/wilson_network.png',
+    fit: 'contain',
+    meta: 'ネットワーク・ダイナミクス · 2022'
   }
 ]
 
@@ -87,7 +98,7 @@ const learning = [
     </div>
     <div class="project-grid">
       <a v-for="project in projects" :key="project.title" :href="project.link" class="project-card">
-        <div class="project-image"><img :src="project.image" :alt="''" /></div>
+        <div class="project-image" :class="project.fit"><img :src="project.image" :alt="''" /></div>
         <div class="project-top"><span>{{ project.eyebrow }}</span><b>{{ project.mark }}</b></div>
         <div class="project-body"><h3>{{ project.title }}</h3><p>{{ project.copy }}</p></div>
         <div class="project-link"><span>{{ project.meta }}</span><span>ケーススタディを見る ↗</span></div>
