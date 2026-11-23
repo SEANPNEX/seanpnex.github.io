@@ -9,7 +9,7 @@ It hosts research projects plus evolving study notes for CFA Level II, JLPT N2, 
 | Path | Contents |
 | --- | --- |
 | `index.md` | Home page |
-| `projects/` | Research and project write-ups (NCCP, TTS chatbot, rivalry network, Wilson–Cowan equation) |
+| `projects/` | Research and project write-ups (NCCP, TTS chatbot, rivalry network, Wilson–Cowan equation, Musico) |
 | `blogs/` | Learning base: `CFA/`, `JLPT-N2/`, `German/`, `coding_notes/` |
 | `zh/`, `jp/`, `fr/` | Translated pages, mirroring the English layout |
 | `public/charts/` | Standalone interactive HTML charts embedded in notes via `<iframe>` |

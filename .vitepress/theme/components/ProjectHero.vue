@@ -13,7 +13,9 @@ defineProps({
   methods: String,
   image: String,
   imageAlt: String,
-  report: String
+  imageFit: String,
+  report: String,
+  repo: String
 })
 </script>
 
@@ -23,14 +25,17 @@ defineProps({
       <p class="case-hero__eyebrow"><span>{{ index }}</span>{{ eyebrow }}</p>
       <h1>{{ title }}</h1>
       <p class="case-hero__summary">{{ summary }}</p>
-      <a v-if="report" class="case-hero__report" :href="report">{{ t.report }} <span aria-hidden="true">↗</span></a>
+      <div v-if="report || repo" class="case-hero__links">
+        <a v-if="report" class="case-hero__report" :href="report">{{ t.report }} <span aria-hidden="true">↗</span></a>
+        <a v-if="repo" class="case-hero__report" :href="repo" target="_blank" rel="noopener noreferrer">{{ t.repo }} <span aria-hidden="true">↗</span></a>
+      </div>
     </div>
     <dl class="case-hero__meta">
       <div><dt>{{ t.year }}</dt><dd>{{ year }}</dd></div>
       <div><dt>{{ t.role }}</dt><dd>{{ role }}</dd></div>
       <div><dt>{{ t.methods }}</dt><dd>{{ methods }}</dd></div>
     </dl>
-    <figure v-if="image" class="case-hero__visual">
+    <figure v-if="image" class="case-hero__visual" :class="imageFit">
       <img :src="image" :alt="imageAlt" />
       <figcaption>{{ eyebrow }} · {{ t.view }}</figcaption>
     </figure>

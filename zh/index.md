@@ -48,6 +48,17 @@ const projects = [
     image: '/images/rivalry_network/wilson_network.png',
     fit: 'contain',
     meta: '网络动力学 · 2022'
+  },
+  {
+    eyebrow: '原生音频 · 跨平台',
+    title: 'Musico',
+    copy: '面向 Apple、Android 与 Windows 的离线、文件夹优先、多队列本地音乐播放器，内置跨平台 JS 扩展运行时。',
+    link: '/zh/projects/musico',
+    mark: '05',
+    image: '/images/musico/architecture.svg',
+    fit: 'contain',
+    wide: true,
+    meta: '软件工程 · 2025–2026'
   }
 ]
 
@@ -97,7 +108,7 @@ const learning = [
       <p>每个项目都始于一个难题，最终给出一种更清晰地看待系统的方式。</p>
     </div>
     <div class="project-grid">
-      <a v-for="project in projects" :key="project.title" :href="project.link" class="project-card">
+      <a v-for="project in projects" :key="project.title" :href="project.link" class="project-card" :class="{ 'project-card--wide': project.wide }">
         <div class="project-image" :class="project.fit"><img :src="project.image" :alt="''" /></div>
         <div class="project-top"><span>{{ project.eyebrow }}</span><b>{{ project.mark }}</b></div>
         <div class="project-body"><h3>{{ project.title }}</h3><p>{{ project.copy }}</p></div>

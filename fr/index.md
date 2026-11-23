@@ -48,6 +48,17 @@ const projects = [
     image: '/images/rivalry_network/wilson_network.png',
     fit: 'contain',
     meta: 'Dynamique des réseaux · 2022'
+  },
+  {
+    eyebrow: 'Audio natif · Multiplateforme',
+    title: 'Musico',
+    copy: 'Un lecteur audio hors ligne centré sur les dossiers et multi-files, développé nativement pour Apple, Android et Windows avec extensions JS.',
+    link: '/fr/projects/musico',
+    mark: '05',
+    image: '/images/musico/architecture.svg',
+    fit: 'contain',
+    wide: true,
+    meta: 'Logiciel · 2025–2026'
   }
 ]
 
@@ -97,7 +108,7 @@ const learning = [
       <p>Chaque projet part d’une question difficile et aboutit à une façon plus claire de voir le système.</p>
     </div>
     <div class="project-grid">
-      <a v-for="project in projects" :key="project.title" :href="project.link" class="project-card">
+      <a v-for="project in projects" :key="project.title" :href="project.link" class="project-card" :class="{ 'project-card--wide': project.wide }">
         <div class="project-image" :class="project.fit"><img :src="project.image" :alt="''" /></div>
         <div class="project-top"><span>{{ project.eyebrow }}</span><b>{{ project.mark }}</b></div>
         <div class="project-body"><h3>{{ project.title }}</h3><p>{{ project.copy }}</p></div>

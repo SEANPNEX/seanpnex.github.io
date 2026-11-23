@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" role="img" aria-labelledby="musico-arch-title musico-arch-desc">
+  <title id="musico-arch-title">Musico Native Cross-Platform Architecture</title>
+  <desc id="musico-arch-desc">Three native clients for Apple, Android, and Windows sharing a core library, multi-queue playback, 10-band EQ, lyrics, and JavaScript extension runtime across local and cloud audio sources.</desc>
+  <style>
+    text { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  </style>
+
+  <!-- Canvas -->
+  <rect width="960" height="520" rx="20" fill="#F0EFEB" />
+
+  <!-- Top Header -->
+  <text x="36" y="64" font-size="28" font-weight="800" fill="#1C1C1A" letter-spacing="-0.8">MUSICO</text>
+  <text x="924" y="62" text-anchor="end" font-size="13" font-weight="700" fill="#6A6963" letter-spacing="1.2">NATIVE OFFLINE MUSIC PLAYER · ZERO WEB WRAPPERS</text>
+  <line x1="36" y1="84" x2="924" y2="84" stroke="#DEDDD6" stroke-width="1.5" />
+
+  <!-- Native Client Cards (3 x 280px, gap 24px) -->
+  <!-- Apple -->
+  <rect x="36" y="106" width="280" height="164" rx="16" fill="#E7E6E0" stroke="#DEDDD6" stroke-width="1.5" />
+  <text x="54" y="132" font-size="12" font-weight="700" fill="#6A6963" letter-spacing="1.2">01 · APPLE</text>
+  <text x="54" y="160" font-size="17" font-weight="800" fill="#1C1C1A" letter-spacing="-0.3">iOS 17+ · iPadOS · macOS</text>
+  <line x1="54" y1="176" x2="298" y2="176" stroke="#DEDDD6" stroke-width="1" />
+  <text x="54" y="200" font-size="13.5" font-weight="600" fill="#4A4944">Swift · SwiftUI (@Observable)</text>
+  <text x="54" y="224" font-size="13.5" font-weight="500" fill="#6A6963">AVAudioEngine + AVAudioUnitEQ</text>
+  <text x="54" y="248" font-size="13.5" font-weight="500" fill="#6A6963">MPNowPlaying · JavaScriptCore</text>
+
+  <!-- Android -->
+  <rect x="340" y="106" width="280" height="164" rx="16" fill="#E7E6E0" stroke="#DEDDD6" stroke-width="1.5" />
+  <text x="358" y="132" font-size="12" font-weight="700" fill="#6A6963" letter-spacing="1.2">02 · ANDROID</text>
+  <text x="358" y="160" font-size="17" font-weight="800" fill="#1C1C1A" letter-spacing="-0.3">Android 8.0+ (API 26+)</text>
+  <line x1="358" y1="176" x2="602" y2="176" stroke="#DEDDD6" stroke-width="1" />
+  <text x="358" y="200" font-size="13.5" font-weight="600" fill="#4A4944">Kotlin · Jetpack Compose M3</text>
+  <text x="358" y="224" font-size="13.5" font-weight="500" fill="#6A6963">Media3 ExoPlayer · SAF</text>
+  <text x="358" y="248" font-size="13.5" font-weight="500" fill="#6A6963">DynamicsProcessing · QuickJS</text>
+
+  <!-- Windows -->
+  <rect x="644" y="106" width="280" height="164" rx="16" fill="#E7E6E0" stroke="#DEDDD6" stroke-width="1.5" />
+  <text x="662" y="132" font-size="12" font-weight="700" fill="#6A6963" letter-spacing="1.2">03 · WINDOWS</text>
+  <text x="662" y="160" font-size="17" font-weight="800" fill="#1C1C1A" letter-spacing="-0.3">Windows 10 / 11 (.NET 8)</text>
+  <line x1="662" y1="176" x2="906" y2="176" stroke="#DEDDD6" stroke-width="1" />
+  <text x="662" y="200" font-size="13.5" font-weight="600" fill="#4A4944">C# · WPF Fluent Design</text>
+  <text x="662" y="224" font-size="13.5" font-weight="500" fill="#6A6963">NAudio BiQuad EQ · TagLib#</text>
+  <text x="662" y="248" font-size="13.5" font-weight="500" fill="#6A6963">Windows SMTC · Jint</text>
+
+  <!-- Connector hairlines: Clients -> Shared Core -->
+  <line x1="176" y1="270" x2="176" y2="286" stroke="#B0AFA9" stroke-width="1.5" />
+  <line x1="480" y1="270" x2="480" y2="302" stroke="#B0AFA9" stroke-width="1.5" />
+  <line x1="784" y1="270" x2="784" y2="286" stroke="#B0AFA9" stroke-width="1.5" />
+  <line x1="176" y1="286" x2="784" y2="286" stroke="#B0AFA9" stroke-width="1.5" />
+  <circle cx="176" cy="270" r="3" fill="#1C1C1A" />
+  <circle cx="480" cy="270" r="3" fill="#1C1C1A" />
+  <circle cx="784" cy="270" r="3" fill="#1C1C1A" />
+
+  <!-- Shared Architecture Bar -->
+  <rect x="36" y="302" width="888" height="90" rx="16" fill="#1C1C1A" />
+  <text x="54" y="328" font-size="12" font-weight="700" fill="#B0AFA9" letter-spacing="1.2">SHARED CORE &amp; EXTENSIONS</text>
+
+  <rect x="54" y="340" width="198" height="36" rx="10" fill="#2E2D29" />
+  <text x="153" y="363" text-anchor="middle" font-size="13.5" font-weight="700" fill="#F0EFEB">Folder-First Library</text>
+
+  <rect x="264" y="340" width="198" height="36" rx="10" fill="#2E2D29" />
+  <text x="363" y="363" text-anchor="middle" font-size="13.5" font-weight="700" fill="#F0EFEB">Multi-Queue Engine</text>
+
+  <rect x="474" y="340" width="222" height="36" rx="10" fill="#2E2D29" />
+  <text x="585" y="363" text-anchor="middle" font-size="13.5" font-weight="700" fill="#F0EFEB">10-Band EQ &amp; .LRC Lyrics</text>
+
+  <rect x="708" y="340" width="198" height="36" rx="10" fill="#2E2D29" />
+  <text x="807" y="363" text-anchor="middle" font-size="13.5" font-weight="700" fill="#F0EFEB">.musicoext JS Runtime</text>
+
+  <!-- Connector hairline: Shared Core -> Sources -->
+  <line x1="480" y1="392" x2="480" y2="414" stroke="#B0AFA9" stroke-width="1.5" />
+
+  <!-- Bottom Source Strip -->
+  <rect x="36" y="414" width="888" height="76" rx="16" fill="#E7E6E0" stroke="#DEDDD6" stroke-width="1.5" />
+  <text x="54" y="438" font-size="11.5" font-weight="700" fill="#6A6963" letter-spacing="1.2">LOCAL &amp; CLOUD SOURCES</text>
+
+  <rect x="54" y="448" width="352" height="30" rx="8" fill="#F0EFEB" stroke="#DEDDD6" stroke-width="1" />
+  <text x="230" y="468" text-anchor="middle" font-size="13" font-weight="600" fill="#1C1C1A">Local Folders (FLAC / ALAC / MP3 / OGG / OPUS)</text>
+
+  <rect x="418" y="448" width="248" height="30" rx="8" fill="#F0EFEB" stroke="#DEDDD6" stroke-width="1" />
+  <text x="542" y="468" text-anchor="middle" font-size="13" font-weight="600" fill="#1C1C1A">YouTube · Bilibili · Google Drive</text>
+
+  <rect x="678" y="448" width="228" height="30" rx="8" fill="#F0EFEB" stroke="#DEDDD6" stroke-width="1" />
+  <text x="792" y="468" text-anchor="middle" font-size="13" font-weight="600" fill="#1C1C1A">Custom .musico.js Extensions</text>
+</svg>

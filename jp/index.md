@@ -48,6 +48,17 @@ const projects = [
     image: '/images/rivalry_network/wilson_network.png',
     fit: 'contain',
     meta: 'ネットワーク・ダイナミクス · 2022'
+  },
+  {
+    eyebrow: 'ネイティブ音声 · クロスプラットフォーム',
+    title: 'Musico',
+    copy: 'Apple・Android・Windows 向けにネイティブ開発したフォルダ指向・マルチキュー音楽プレーヤー。共通の JS 拡張ランタイムを搭載。',
+    link: '/jp/projects/musico',
+    mark: '05',
+    image: '/images/musico/architecture.svg',
+    fit: 'contain',
+    wide: true,
+    meta: 'ソフトウェア · 2025–2026'
   }
 ]
 
@@ -97,7 +108,7 @@ const learning = [
       <p>どのプロジェクトも難しい問いから始まり、システムをより明快に見る方法にたどり着きます。</p>
     </div>
     <div class="project-grid">
-      <a v-for="project in projects" :key="project.title" :href="project.link" class="project-card">
+      <a v-for="project in projects" :key="project.title" :href="project.link" class="project-card" :class="{ 'project-card--wide': project.wide }">
         <div class="project-image" :class="project.fit"><img :src="project.image" :alt="''" /></div>
         <div class="project-top"><span>{{ project.eyebrow }}</span><b>{{ project.mark }}</b></div>
         <div class="project-body"><h3>{{ project.title }}</h3><p>{{ project.copy }}</p></div>
