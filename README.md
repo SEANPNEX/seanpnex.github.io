@@ -19,7 +19,7 @@ It hosts research projects plus evolving study notes for CFA Level II, JLPT N2, 
 
 ## Run locally
 
-Requires Node.js 18+ (CI uses Node 20).
+Requires Node.js 22+ (CI uses Node 22).
 
 ```bash
 npm install
@@ -55,7 +55,7 @@ Locales are configured in [`.vitepress/config.mjs`](.vitepress/config.mjs) (`LOC
 
 ## Deployment
 
-Pushing to `main` triggers [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which builds the site and publishes `.vitepress/dist` to the `gh-pages` branch. A second workflow, [`commit_log.yml`](.github/workflows/commit_log.yml), appends each push to `workflow.log` and commits it back, so pull before pushing.
+Pull requests targeting `main` trigger [`.github/workflows/ci.yml`](.github/workflows/ci.yml) to syntax-check, build, and verify the site. Pushing to `main` triggers [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which builds and verifies `.vitepress/dist` using the shared composite action [`.github/actions/build-site/action.yml`](.github/actions/build-site/action.yml) and publishes it to the `gh-pages` branch. A separate workflow, [`commit_log.yml`](.github/workflows/commit_log.yml), appends each push to `workflow.log` and commits it back, so pull before pushing.
 
 ## Fork it and make it your own
 

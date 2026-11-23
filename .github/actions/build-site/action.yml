@@ -1,0 +1,56 @@
+name: Build and Verify VitePress Site
+description: Install dependencies, cache VitePress build artifacts, syntax-check config, build, and verify output.
+
+runs:
+  using: composite
+  steps:
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 22
+        cache: npm
+
+    - name: Cache VitePress build cache
+      uses: actions/cache@v4
+      with:
+        path: .vitepress/cache
+        key: vitepress-cache-${{ runner.os }}-node22-${{ hashFiles('package-lock.json', '.vitepress/config.mjs') }}
+        restore-keys: |
+          vitepress-cache-${{ runner.os }}-node22-
+
+    - name: Install dependencies
+      shell: bash
+      run: npm ci
+
+    - name: Syntax-check VitePress scripts
+      shell: bash
+      run: node --check .vitepress/config.mjs .vitepress/auto-sidebar.mjs .vitepress/topics.mjs
+
+    - name: Build VitePress site
+      shell: bash
+      run: npm run docs:build
+
+    - name: Verify build output and exclusions
+      shell: bash
+      run: |
+        set -euo pipefail
+        for required in \
+          .vitepress/dist/index.html \
+          .vitepress/dist/zh/index.html \
+          .vitepress/dist/jp/index.html \
+          .vitepress/dist/fr/index.html; do
+          if [ ! -f "$required" ]; then
+            echo "Missing expected build artifact: $required" >&2
+            exit 1
+          fi
+        done
+
+        for excluded in \
+          .vitepress/dist/coverletters \
+          .vitepress/dist/examples \
+          .vitepress/dist/README.html; do
+          if [ -e "$excluded" ]; then
+            echo "Excluded path leaked into build output: $excluded" >&2
+            exit 1
+          fi
+        done

@@ -4,53 +4,49 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - 'workflow.log'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: commit-log
+  cancel-in-progress: false
 
 jobs:
   log_commit:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
+    if: github.actor != 'github-actions[bot]'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
 
-      - name: Set up Git user
+      - name: Configure Git user
         run: |
-          git config --global user.name "${{ github.actor }}"
-          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
       - name: Log commit information
         env:
           TZ: "America/New_York"
+          COMMIT_ACTOR: ${{ github.actor }}
         run: |
+          set -euo pipefail
           TIMESTAMP=$(date +"%Y-%m-%d %H:%M:%S")
-          USER="${{ github.actor }}"
-          MESSAGE=$(git log -1 --pretty=%B)
-          LOG_ENTRY="${TIMESTAMP}-${USER}-${MESSAGE}"
-          
-          # Append to workflow.log
-          echo "$LOG_ENTRY" >> workflow.log
-          
-          if [ -f "workflow.md" ]; then
-            {
-              echo "---"
-              echo "prev:"
-              echo "  text: \"MarkdownExample\""
-              echo "  link: \"examples/markdown-examples.md\""
-              echo "---"
-              echo "# Workflow"
-              echo ""
-              
-              # Add blank line between each line in workflow.log
-              awk '{print $0 "\n"}' workflow.log
-            } > workflow.md
-          fi
+          MESSAGE=$(git log -1 --pretty=%s)
+          printf '%s-%s-%s\n' "$TIMESTAMP" "$COMMIT_ACTOR" "$MESSAGE" >> workflow.log
 
-      - name: Commit and push log files
+      - name: Commit and push log file
         run: |
+          set -euo pipefail
           git add workflow.log
-          if [ -f "docpage/docs/workflow.md" ]; then
-            git add docpage/docs/workflow.md
+          if git diff --cached --quiet; then
+            exit 0
           fi
-          git commit -m "Update log files with latest commit details"
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          git commit -m "chore(log): record latest commit [skip ci]"
+          git pull --rebase origin main
+          git push origin HEAD:main
