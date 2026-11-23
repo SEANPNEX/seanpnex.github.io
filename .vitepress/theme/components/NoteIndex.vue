@@ -8,6 +8,12 @@ const { t, topic: topicName } = useText()
 const { localeIndex } = useData()
 // Show the current language's version of a note when it has one.
 const localized = (note) => data.translated[localeIndex.value]?.[note.link] ?? note
+const quizLabel = (item) => {
+  const entry = localized(item)
+  if (entry === item && item.text === 'flashcards') return t.value.flashcards
+  if (entry === item && item.text === 'misses') return t.value.misses
+  return entry.text
+}
 const topics = data.cfa
 const isOpen = (note) => note.status !== 'planned'
 const total = topics.reduce((n, topic) => n + topic.notes.length, 0)
@@ -50,6 +56,10 @@ const title = computed(() => t.value.progress(opened, total)
           <p v-if="topic.flashcards.length" class="note-index__cards">
             <span class="note-index__cards-label">{{ t.flashcards }}</span>
             <a v-for="card in topic.flashcards" :key="card.link" :href="withBase(localized(card).link)">{{ localized(card).text }}</a>
+          </p>
+          <p v-if="topic.quiz?.length" class="note-index__cards">
+            <span class="note-index__cards-label">{{ t.quiz }}</span>
+            <a v-for="item in topic.quiz" :key="item.link" :href="withBase(localized(item).link)">{{ quizLabel(item) }}</a>
           </p>
         </div>
       </li>

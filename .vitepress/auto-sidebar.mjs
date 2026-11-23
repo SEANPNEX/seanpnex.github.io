@@ -74,6 +74,7 @@ function scan(dir, link) {
     if (fs.lstatSync(full).isDirectory()) {
       groups.push({
         type: "group",
+        name,
         text: GROUP_LABELS[name] ?? stripPrefix(name),
         items: scan(full, `${link}/${name}`),
       });
@@ -118,18 +119,31 @@ export function unpublishedNotes(pathname) {
 
 /**
  * Every curriculum note including planned (empty) ones, grouped by top-level folder — for directory pages.
- * A topic's `Flashcards` subfolder is listed separately, so review decks don't count as modules.
+ * A topic's `Flashcards` subfolder and the top-level `Quiz` folder are listed separately,
+ * so review decks and quiz logs don't count as curriculum modules.
  */
 export function noteIndex(pathname) {
   const flatten = (items) => items.flatMap((item) => (item.type === "group" ? flatten(item.items) : [item]));
   const isDeck = (item) => item.type === "group" && item.text === "Flashcards";
+  const isQuiz = (item) => item.type === "group" && item.name === "Quiz";
   const tree = scan(path.join(ROOT, pathname), pathname);
+  const quizByTopic = new Map(
+    tree
+      .filter(isQuiz)
+      .flatMap((quiz) => quiz.items)
+      .filter((item) => item.type === "group")
+      .map((group) => [
+        group.text,
+        flatten(group.items).filter(isPublished).map(({ text, link }) => ({ text, link })),
+      ])
+  );
   return tree
-    .filter((item) => item.type === "group")
+    .filter((item) => item.type === "group" && !isQuiz(item))
     .map((group) => ({
       text: group.text,
       notes: flatten(group.items.filter((item) => !isDeck(item)))
         .filter((note) => note.status !== "draft").map(({ text, link, status }) => ({ text, link, status })),
       flashcards: flatten(group.items.filter(isDeck)).filter(isPublished).map(({ text, link }) => ({ text, link })),
+      quiz: quizByTopic.get(group.text) ?? [],
     }));
 }

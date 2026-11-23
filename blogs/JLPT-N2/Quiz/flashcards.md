@@ -2,6 +2,8 @@
 
 Flip cards from JLPT grammar quiz misses. Source log: [misses](./misses.md).
 
+## 2026-10-13 quiz misses
+
 <iframe
   class="flash-deck"
   src="/flashcards/jlpt-n2-quiz-2026-10-13.html"
@@ -9,6 +11,8 @@ Flip cards from JLPT grammar quiz misses. Source log: [misses](./misses.md).
   loading="lazy"
   style="display:block;width:100%;height:440px;margin:20px 0 28px;border:0;background:#F0EFEB"
 ></iframe>
+
+## 2026-10-14 quiz misses
 
 <iframe
   class="flash-deck"
@@ -18,6 +22,8 @@ Flip cards from JLPT grammar quiz misses. Source log: [misses](./misses.md).
   style="display:block;width:100%;height:440px;margin:20px 0 28px;border:0;background:#F0EFEB"
 ></iframe>
 
+## 2026-10-16 quiz misses
+
 <iframe
   class="flash-deck"
   src="/flashcards/jlpt-n2-quiz-2026-10-16.html"
@@ -25,6 +31,8 @@ Flip cards from JLPT grammar quiz misses. Source log: [misses](./misses.md).
   loading="lazy"
   style="display:block;width:100%;height:440px;margin:20px 0 28px;border:0;background:#F0EFEB"
 ></iframe>
+
+## 2026-10-17 quiz misses
 
 <iframe
   class="flash-deck"
@@ -34,6 +42,8 @@ Flip cards from JLPT grammar quiz misses. Source log: [misses](./misses.md).
   style="display:block;width:100%;height:440px;margin:20px 0 28px;border:0;background:#F0EFEB"
 ></iframe>
 
+## 2026-10-18 quiz misses
+
 <iframe
   class="flash-deck"
   src="/flashcards/jlpt-n2-quiz-2026-10-18.html"
@@ -42,6 +52,8 @@ Flip cards from JLPT grammar quiz misses. Source log: [misses](./misses.md).
   style="display:block;width:100%;height:440px;margin:20px 0 28px;border:0;background:#F0EFEB"
 ></iframe>
 
+## 2026-10-19 quiz misses
+
 <iframe
   class="flash-deck"
   src="/flashcards/jlpt-n2-quiz-2026-10-19.html"
@@ -49,6 +61,9 @@ Flip cards from JLPT grammar quiz misses. Source log: [misses](./misses.md).
   loading="lazy"
   style="display:block;width:100%;height:440px;margin:20px 0 28px;border:0;background:#F0EFEB"
 ></iframe>
+
+## 2026-10-20 quiz misses
+
 <iframe
   class="flash-deck"
   src="/flashcards/jlpt-n2-quiz-2026-10-20.html"
@@ -56,6 +71,9 @@ Flip cards from JLPT grammar quiz misses. Source log: [misses](./misses.md).
   loading="lazy"
   style="display:block;width:100%;height:440px;margin:20px 0 28px;border:0;background:#F0EFEB"
 ></iframe>
+
+## 2026-10-22 quiz misses
+
 <iframe
   class="flash-deck"
   src="/flashcards/jlpt-n2-quiz-2026-10-22.html"
@@ -63,6 +81,9 @@ Flip cards from JLPT grammar quiz misses. Source log: [misses](./misses.md).
   loading="lazy"
   style="display:block;width:100%;height:440px;margin:20px 0 28px;border:0;background:#F0EFEB"
 ></iframe>
+
+## 2026-10-23 quiz misses
+
 <iframe
   class="flash-deck"
   src="/flashcards/jlpt-n2-quiz-2026-10-23.html"
@@ -71,6 +92,8 @@ Flip cards from JLPT grammar quiz misses. Source log: [misses](./misses.md).
   style="display:block;width:100%;height:440px;margin:20px 0 28px;border:0;background:#F0EFEB"
 ></iframe>
 
+## 2026-10-24 quiz misses
+
 <iframe
   class="flash-deck"
   src="/flashcards/jlpt-n2-quiz-2026-10-24.html"
@@ -78,6 +101,8 @@ Flip cards from JLPT grammar quiz misses. Source log: [misses](./misses.md).
   loading="lazy"
   style="display:block;width:100%;height:440px;margin:20px 0 28px;border:0;background:#F0EFEB"
 ></iframe>
+
+## 2026-10-25 quiz misses
 
 <iframe
   class="flash-deck"

@@ -10,6 +10,7 @@ const TEXT = {
     pending: (topics) => ` — ${topics} still to come`,
     legend: 'One mark = one curriculum module', written: 'full note', outline: 'outline', planned: 'not started',
     empty: 'Not started yet', source: 'CFA Level II · counted from the notes folder at build time', flashcards: 'Flashcards',
+    quiz: 'Quiz', misses: 'Misses',
     list: ', ',
   },
   zh: {
@@ -18,6 +19,7 @@ const TEXT = {
     pending: (topics) => `——${topics}尚未开始`,
     legend: '一道刻度 = 一个课程模块', written: '完整笔记', outline: '提纲', planned: '未开始',
     empty: '尚未开始', source: 'CFA 二级 · 构建时根据笔记文件夹统计', flashcards: '闪卡',
+    quiz: '测验', misses: '错题',
     list: '、',
   },
   ja: {
@@ -26,6 +28,7 @@ const TEXT = {
     pending: (topics) => `——${topics}はこれから`,
     legend: '目盛り 1 本 = カリキュラムの 1 モジュール', written: '完成ノート', outline: 'アウトライン', planned: '未着手',
     empty: 'まだ始めていません', source: 'CFA レベル II · ビルド時にノートフォルダから集計', flashcards: 'フラッシュカード',
+    quiz: 'クイズ', misses: '間違い',
     list: '、',
   },
   fr: {
@@ -34,6 +37,7 @@ const TEXT = {
     pending: (topics) => ` — ${topics} restent à venir`,
     legend: 'Un trait = un module du programme', written: 'note complète', outline: 'plan', planned: 'pas commencé',
     empty: 'Pas encore commencé', source: 'CFA niveau II · compté à partir du dossier de notes lors du build', flashcards: 'Fiches',
+    quiz: 'Quiz', misses: 'Erreurs',
     list: ', ',
   },
 }

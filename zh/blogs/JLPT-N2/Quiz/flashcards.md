@@ -6,6 +6,8 @@ title: 闪卡
 
 根据测验错题制作的翻转卡片。来源记录：[错题](/blogs/JLPT-N2/Quiz/misses)（英文）。
 
+## 2026-10-13 测验错题
+
 <iframe
   class="flash-deck"
   src="/flashcards/jlpt-n2-quiz-2026-10-13.html"
@@ -13,6 +15,8 @@ title: 闪卡
   loading="lazy"
   style="display:block;width:100%;height:440px;margin:20px 0 28px;border:0;background:#F0EFEB"
 ></iframe>
+
+## 2026-10-14 测验错题
 
 <iframe
   class="flash-deck"
@@ -22,6 +26,8 @@ title: 闪卡
   style="display:block;width:100%;height:440px;margin:20px 0 28px;border:0;background:#F0EFEB"
 ></iframe>
 
+## 2026-10-16 测验错题
+
 <iframe
   class="flash-deck"
   src="/flashcards/jlpt-n2-quiz-2026-10-16.html"
@@ -29,6 +35,8 @@ title: 闪卡
   loading="lazy"
   style="display:block;width:100%;height:440px;margin:20px 0 28px;border:0;background:#F0EFEB"
 ></iframe>
+
+## 2026-10-17 测验错题
 
 <iframe
   class="flash-deck"
@@ -38,10 +46,82 @@ title: 闪卡
   style="display:block;width:100%;height:440px;margin:20px 0 28px;border:0;background:#F0EFEB"
 ></iframe>
 
+## 2026-10-18 测验错题
+
 <iframe
   class="flash-deck"
   src="/flashcards/jlpt-n2-quiz-2026-10-18.html"
   title="JLPT N2 · 测验 2026-10-18 闪卡"
+  loading="lazy"
+  style="display:block;width:100%;height:440px;margin:20px 0 28px;border:0;background:#F0EFEB"
+></iframe>
+
+## 2026-10-19 测验错题
+
+<iframe
+  class="flash-deck"
+  src="/flashcards/jlpt-n2-quiz-2026-10-19.html"
+  title="JLPT N2 · 测验 2026-10-19 闪卡"
+  loading="lazy"
+  style="display:block;width:100%;height:440px;margin:20px 0 28px;border:0;background:#F0EFEB"
+></iframe>
+
+## 2026-10-20 测验错题
+
+<iframe
+  class="flash-deck"
+  src="/flashcards/jlpt-n2-quiz-2026-10-20.html"
+  title="JLPT N2 · 测验 2026-10-20 闪卡"
+  loading="lazy"
+  style="display:block;width:100%;height:440px;margin:20px 0 28px;border:0;background:#F0EFEB"
+></iframe>
+
+## 2026-10-22 测验错题
+
+<iframe
+  class="flash-deck"
+  src="/flashcards/jlpt-n2-quiz-2026-10-22.html"
+  title="JLPT N2 · 测验 2026-10-22 闪卡"
+  loading="lazy"
+  style="display:block;width:100%;height:440px;margin:20px 0 28px;border:0;background:#F0EFEB"
+></iframe>
+
+## 2026-10-23 测验错题
+
+<iframe
+  class="flash-deck"
+  src="/flashcards/jlpt-n2-quiz-2026-10-23.html"
+  title="JLPT N2 · 测验 2026-10-23 闪卡"
+  loading="lazy"
+  style="display:block;width:100%;height:440px;margin:20px 0 28px;border:0;background:#F0EFEB"
+></iframe>
+
+## 2026-10-24 测验错题
+
+<iframe
+  class="flash-deck"
+  src="/flashcards/jlpt-n2-quiz-2026-10-24.html"
+  title="JLPT N2 · 测验 2026-10-24 闪卡"
+  loading="lazy"
+  style="display:block;width:100%;height:440px;margin:20px 0 28px;border:0;background:#F0EFEB"
+></iframe>
+
+## 2026-10-25 测验错题
+
+<iframe
+  class="flash-deck"
+  src="/flashcards/jlpt-n2-quiz-2026-10-25.html"
+  title="JLPT N2 · 测验 2026-10-25 闪卡"
+  loading="lazy"
+  style="display:block;width:100%;height:440px;margin:20px 0 28px;border:0;background:#F0EFEB"
+></iframe>
+
+## 2026-10-23 课程复习（全部规则）
+
+<iframe
+  class="flash-deck"
+  src="/flashcards/jlpt-n2-review-2026-10-23.html"
+  title="JLPT N2 · 课程复习 2026-10-23 闪卡"
   loading="lazy"
   style="display:block;width:100%;height:440px;margin:20px 0 28px;border:0;background:#F0EFEB"
 ></iframe>
