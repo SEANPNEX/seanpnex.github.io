@@ -20,14 +20,8 @@ jobs:
           node-version: 20
           cache: npm
 
-      - name: Clean npm cache
-        run: npm cache clean --force
-        
-      - name: Remove old dependencies
-        run: rm -rf node_modules package-lock.json
-
       - name: Install Dependencies
-        run: npm install  # Ensures consistent dependency installation
+        run: npm ci
 
       - name: Build VitePress Site
         run: npm run docs:build  # Or `npm run docs:build` if your script is named that way

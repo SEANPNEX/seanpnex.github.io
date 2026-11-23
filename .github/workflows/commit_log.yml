@@ -1,6 +1,9 @@
 name: Log Commit Details
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   log_commit:

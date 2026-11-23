@@ -8,7 +8,7 @@ cache
 *.docx
 dist
 tree.txt
-coverletter
+coverletters/
 Transcript_DUKEU_2646992.pdf
 System Design Interview An Insider’s Guide by Alex Xu (z-lib.org).pdf
 .obsidian/

@@ -110,7 +110,12 @@ export default withMermaid(
   defineConfig({
     base:"/",
     // Empty or `draft: true` notes stay in the vault but are not published.
-    srcExclude: ["/blogs", "/zh/blogs", "/jp/blogs", "/fr/blogs"].flatMap(unpublishedNotes),
+    srcExclude: [
+      "coverletters/**",
+      "examples/**",
+      "README.md",
+      ...["/blogs", "/zh/blogs", "/jp/blogs", "/fr/blogs"].flatMap(unpublishedNotes),
+    ],
     head: [
       ["link", { rel: "icon", href: "/favicon.ico" }],
       ["meta", { name: "theme-color", content: "#F0EFEB" }],
@@ -140,7 +145,6 @@ export default withMermaid(
         ]},
       ],
       sidebar: {
-        "/examples/": set_sidebar("/examples"),
         ...learningSidebar,
         "/projects/": set_sidebar("/projects"),
       },
