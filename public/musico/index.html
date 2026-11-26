@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>♪ Musico ♪ · Cozy Native Offline Music Player</title>
+  <meta name="description" content="An offline, folder-loving, multi-queue local music player built 100% natively for Apple, Android, and Windows, plus cross-platform JavaScript extensions.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23FF8A7A'/><text x='50' y='67' font-size='56' text-anchor='middle'>♪</text></svg>">
+  <link rel="stylesheet" href="./assets/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="common.skip">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a class="brand" href="./" data-internal-link>
+        <span class="brand-badge" aria-hidden="true">♪</span>
+        <span>Musico</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a href="./" aria-current="page" data-internal-link data-i18n="nav.home">Overview</a>
+        <a href="./guide/" data-internal-link data-i18n="nav.guide">User Guide</a>
+        <a href="./developers/" data-internal-link data-i18n="nav.devs">Developer Docs</a>
+      </nav>
+
+      <div class="nav-actions">
+        <label class="sr-only" for="lang-select">Language</label>
+        <select id="lang-select" class="lang-select" aria-label="Language">
+          <option value="en">EN</option>
+          <option value="zh">简体中文</option>
+          <option value="ja">日本語</option>
+          <option value="fr">Français</option>
+        </select>
+
+        <button id="theme-toggle" class="ctrl-pill" type="button" aria-pressed="false" aria-label="Toggle night shift">
+          <span class="theme-icon" aria-hidden="true">🌙</span>
+          <span class="hide-xs" data-i18n="nav.night">Night Shift</span>
+        </button>
+
+        <a class="ctrl-pill hide-xs" href="https://github.com/SEANPNEX/Musico" target="_blank" rel="noopener noreferrer">
+          <span>GitHub ↗</span>
+        </a>
+
+        <button id="mobile-menu-btn" class="ctrl-pill mobile-menu-btn" type="button" aria-expanded="false" aria-controls="mobile-drawer">
+          <span data-i18n="nav.menu">Menu</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div id="mobile-drawer" class="mobile-drawer">
+    <a href="./" data-internal-link><span data-i18n="nav.home">Overview</span> <span>♪</span></a>
+    <a href="./guide/" data-internal-link><span data-i18n="nav.guide">User Guide &amp; Plugins</span> <span>→</span></a>
+    <a href="./developers/" data-internal-link><span data-i18n="nav.devs">Developer Docs (API v1)</span> <span>→</span></a>
+    <a href="https://github.com/SEANPNEX/Musico/releases/latest" target="_blank" rel="noopener noreferrer"><span data-i18n="home.cta">Download Latest Build</span> <span>↗</span></a>
+  </div>
+
+  <main id="main">
+    <section class="hero-bleed">
+      <div class="container hero-stack">
+        <div class="hero-title-row">
+          <h1 class="hero-display">♪ Musico ♪</h1>
+          <div class="mascot-wrap" data-mascot="happy" title="Click Mimi for kaomoji!">
+            <span class="mascot-bubble">(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧</span>
+          </div>
+        </div>
+
+        <p class="hero-tagline" data-i18n="home.tagline">
+          An offline, folder-loving, multi-queue local music player built 100% natively for Apple, Android, and Windows, zero web wrappers allowed!
+        </p>
+
+        <div class="hero-cta-wrap">
+          <a class="btn-primary" href="https://github.com/SEANPNEX/Musico/releases/latest" target="_blank" rel="noopener noreferrer" data-i18n="home.cta">
+            Grab Latest Release (｡・ω・｡)ﾉ♡
+          </a>
+          <p class="hero-tribute" data-i18n-html="home.tribute">
+            Inspired by <a href="https://krosbits.in/musicolet/" target="_blank" rel="noopener noreferrer">Musicolet</a> &amp; warm tribute to <a href="https://github.com/YRRLYB/Aria" target="_blank" rel="noopener noreferrer">YRRLYB/Aria</a> ♪(´▽｀)
+          </p>
+        </div>
+
+        <!-- Signature Interactive Cassette Mini-Player + 10-Band EQ Toy -->
+        <div id="cassette-player" class="cassette-stage" aria-label="Interactive Musico cassette and equalizer preview">
+          <div class="cassette-shell">
+            <div class="cassette-top">
+              <span class="cassette-label" data-player-title>01 · Rainy Folder Waltz (FLAC 24-bit)</span>
+              <span class="cassette-kaomoji" data-player-kaomoji>♪(´▽｀)</span>
+            </div>
+
+            <div class="cassette-window">
+              <span class="tape-reel" aria-hidden="true"></span>
+              <div class="tape-bars" data-player-bars aria-hidden="true"></div>
+              <span class="tape-reel" aria-hidden="true"></span>
+            </div>
+
+            <div class="track-tabs" role="group" aria-label="Sample tracks">
+              <button class="track-tab" type="button" aria-pressed="true">Rainy Folder</button>
+              <button class="track-tab" type="button" aria-pressed="false">Aria Hangout</button>
+              <button class="track-tab" type="button" aria-pressed="false">Ext Mix</button>
+            </div>
+
+            <div class="player-controls">
+              <button class="play-btn" type="button" data-player-toggle aria-label="Play demo tape">▶</button>
+              <div class="progress-wrap">
+                <div class="progress-track" data-player-progress role="slider" aria-label="Playback progress" tabindex="0">
+                  <div class="progress-fill" data-player-fill></div>
+                </div>
+                <div class="progress-times">
+                  <span data-player-cur>0:48</span>
+                  <span data-player-dur>3:04</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="lyrics-strip" data-player-lyrics aria-label="Synced lyrics preview"></div>
+          </div>
+
+          <div class="eq-panel">
+            <div class="eq-head">
+              <h3 data-i18n="home.eqTitle">10-Band ISO Equalizer (31 Hz to 16 kHz)</h3>
+              <div class="eq-presets" data-eq-presets role="group" aria-label="EQ presets"></div>
+            </div>
+
+            <div class="eq-sliders" data-eq-sliders></div>
+
+            <div class="eq-preamp-row">
+              <label for="eq-preamp" data-i18n="home.preamp">Preamp</label>
+              <input id="eq-preamp" type="range" min="-12" max="12" step="1" value="2" data-eq-preamp>
+              <span data-eq-preamp-val style="font-family:var(--font-mono);">+2 dB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Native Platforms Interactive Switcher -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2 data-i18n="home.platformsTitle">Three native clients, zero web wrappers</h2>
+            <p class="section-sub" data-i18n="home.platformsSub">Each OS gets its real native UI toolkit, hardware-friendly audio engine, media controls, and a tiny embedded JS engine for extensions.</p>
+          </div>
+          <div class="segmented" role="tablist" aria-label="Select native platform" data-platform-tabs>
+            <button type="button" role="tab" aria-selected="true" data-platform-tab="apple">Apple (iOS / macOS)</button>
+            <button type="button" role="tab" aria-selected="false" data-platform-tab="android">Android</button>
+            <button type="button" role="tab" aria-selected="false" data-platform-tab="windows">Windows 10/11</button>
+          </div>
+        </div>
+
+        <div id="platform-switcher" class="platform-stage">
+          <div class="os-mockup">
+            <div class="os-mockup-bar">
+              <span data-os-title>Musico · Apple HIG</span>
+              <div class="os-mockup-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+            </div>
+            <div class="os-mockup-body">
+              <div class="os-sidebar" data-os-sidebar></div>
+              <div class="os-rows" data-os-rows></div>
+            </div>
+          </div>
+
+          <div class="platform-specs">
+            <ul class="spec-list" data-os-specs></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cozy Feature Showcase -->
+    <section class="section section--pastel-mint">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2 data-i18n="home.featuresTitle">Everything your local library wishes streaming apps kept</h2>
+            <p class="section-sub" data-i18n="home.featuresSub">Built to keep your folder hierarchy intact while letting you mount cloud playlists and write lightweight extensions when you want them.</p>
+          </div>
+        </div>
+
+        <div class="zine-grid">
+          <article class="zine-card zine-card--butter">
+            <div class="zine-icon" aria-hidden="true">📁</div>
+            <h3 data-i18n="feat.folders.t">Folder-First &amp; Safe Relocate</h3>
+            <p data-i18n="feat.folders.d">Mount local folders without flattening your tree. Move a folder or swap drives and Relocate reconnects tracks while keeping playlists and stats.</p>
+          </article>
+
+          <article class="zine-card zine-card--sakura">
+            <div class="zine-icon" aria-hidden="true">☁️</div>
+            <h3 data-i18n="feat.cloud.t">Cloud Hangouts &amp; Offline Sync</h3>
+            <p data-i18n="feat.cloud.d">Mount YouTube, Bilibili, and Google Drive inside Folders with isolated cookies, Save to Local Folder, and incremental Update from Cloud.</p>
+          </article>
+
+          <article class="zine-card zine-card--lavender">
+            <div class="zine-icon" aria-hidden="true">🎶</div>
+            <h3 data-i18n="feat.queues.t">Multiple Independent Queues</h3>
+            <p data-i18n="feat.queues.d">Spin up parallel queues for work, commute, or midnight lo-fi. Each queue keeps its own active track, timestamp, shuffle order, and repeat mode.</p>
+          </article>
+
+          <article class="zine-card zine-card--white">
+            <div class="zine-icon" aria-hidden="true">🎤</div>
+            <h3 data-i18n="feat.lyrics.t">Local-First &amp; Cloud Lyrics</h3>
+            <p data-i18n="feat.lyrics.d">Playback checks Imported, Sidecar, Same-Folder Fuzzy Match, and Embedded tags offline. Tap Search Online for LRCLIB, NetEase, or extensions.</p>
+          </article>
+
+          <article class="zine-card zine-card--coral">
+            <div class="zine-icon" aria-hidden="true">🧩</div>
+            <h3 data-i18n="feat.ext.t">Sandboxed JS Extensions</h3>
+            <p data-i18n="feat.ext.d">One CommonJS .musico.js script or .musicoext bundle runs in JavaScriptCore, QuickJS, and Jint with strict permissions.hosts allowlists.</p>
+          </article>
+
+          <article class="zine-card zine-card--white">
+            <div class="zine-icon" aria-hidden="true">⏱️</div>
+            <h3 data-i18n="feat.craft.t">Sleep Timer, Stats &amp; Tag Editor</h3>
+            <p data-i18n="feat.craft.d">Drift off with 5 to 90 min timers or end-of-track stop, inspect Recent and Never-played stats, edit tags and covers, and switch languages live.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Choose Your Path: Listeners vs Plugin Developers -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2 data-i18n="home.pathsTitle">Pick your side of the cassette</h2>
+            <p class="section-sub" data-i18n="home.pathsSub">Whether you just want to load your folders and plugins in two minutes or build a cross-platform extension from scratch.</p>
+          </div>
+        </div>
+
+        <div class="portal-grid">
+          <article class="portal-card" style="background: var(--butter);">
+            <div>
+              <h2 data-i18n="home.guideCard.t">For Listeners: User UX Guide</h2>
+              <p style="margin-top:10px; color:var(--ink-muted);" data-i18n="home.guideCard.d">Learn folder mounting, Relocate, Cloud Folders, multi-queue gestures, lyrics export, keyboard shortcuts, and grab the official plugins pack.</p>
+            </div>
+            <ul>
+              <li data-i18n="home.guideCard.b1">One-click copy URLs for YouTube, Bilibili, NetEase &amp; Apple Music plugins</li>
+              <li data-i18n="home.guideCard.b2">OS-specific setup for Windows Portable, Android APK, macOS &amp; iOS</li>
+              <li data-i18n="home.guideCard.b3">Cookie privacy, proxy tips, and audio format compatibility</li>
+            </ul>
+            <div>
+              <a class="btn-primary" href="./guide/" data-internal-link data-i18n="home.guideCard.cta">Open User Guide →</a>
+            </div>
+          </article>
+
+          <article class="portal-card" style="background: var(--lavender);">
+            <div>
+              <h2 data-i18n="home.devCard.t">For Developers: Extension API v1</h2>
+              <p style="margin-top:10px; color:var(--ink-muted);" data-i18n="home.devCard.d">Build a single CommonJS plugin powering cloud folders, opt-in search, or online lyrics across Apple, Android, and Windows.</p>
+            </div>
+            <ul>
+              <li data-i18n="home.devCard.b1">Interactive .musico.js Starter Generator with live download</li>
+              <li data-i18n="home.devCard.b2">All 8 hook contracts, manifest.json fields &amp; ctx.* host bridge</li>
+              <li data-i18n="home.devCard.b3">Detailed UX design rules, QuickJS/Jint portability &amp; mock-runner CLI</li>
+            </ul>
+            <div>
+              <a class="btn-primary" href="./developers/" data-internal-link data-i18n="home.devCard.cta">Open Developer Docs →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Downloads Strip -->
+    <section class="section section--pastel-lavender">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2 data-i18n="home.dlTitle">Ready to listen? Grab your platform build</h2>
+            <p class="section-sub" data-i18n="home.dlSub">Every desktop &amp; Android release ships with SHA256SUMS.txt verification and an in-app updater (personal-team iOS uses sideloading).</p>
+          </div>
+          <a class="btn-soft" href="https://github.com/SEANPNEX/Musico/releases/latest" target="_blank" rel="noopener noreferrer" data-i18n="home.dlAll">All GitHub Releases ↗</a>
+        </div>
+
+        <div class="download-grid">
+          <div class="dl-tile">
+            <h3>Windows 10 / 11</h3>
+            <p style="font-size:var(--text-sm);color:var(--ink-muted);" data-i18n="dl.win">Self-contained .NET 8 installer or Portable .zip (portable.txt keeps state in .\Data\).</p>
+            <code>Setup.exe / portable.zip</code>
+          </div>
+          <div class="dl-tile">
+            <h3>Android 8.0+</h3>
+            <p style="font-size:var(--text-sm);color:var(--ink-muted);" data-i18n="dl.and">Persistently signed release.apk enables seamless in-app FileProvider updates.</p>
+            <code>MusicoAndroid-release.apk</code>
+          </div>
+          <div class="dl-tile">
+            <h3>macOS Catalyst</h3>
+            <p style="font-size:var(--text-sm);color:var(--ink-muted);" data-i18n="dl.mac">Drag Musico.app into Applications (right-click then Open on first Gatekeeper launch).</p>
+            <code>Musico-macOS.dmg</code>
+          </div>
+          <div class="dl-tile">
+            <h3>iOS 17+ / iPadOS</h3>
+            <p style="font-size:var(--text-sm);color:var(--ink-muted);" data-i18n="dl.ios">Sideload or re-sign via AltStore, SideStore, Sideloadly, or Xcode.</p>
+            <code>Musico-iOS-unsigned.ipa</code>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p data-i18n="footer.copy">♪ Musico ♪ · MIT License · Built natively by Sean Guo (*^▽^*)</p>
+      <div class="footer-links">
+        <a href="https://seanpnex.win/projects/musico" target="_blank" rel="noopener noreferrer" data-i18n="footer.case">Architecture Case Study ↗</a>
+        <a href="https://github.com/SEANPNEX/Musico" target="_blank" rel="noopener noreferrer">SEANPNEX/Musico ↗</a>
+        <a href="https://github.com/SEANPNEX/musico_plugins" target="_blank" rel="noopener noreferrer">musico_plugins ↗</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="musico-toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="./assets/app.js"></script>
+</body>
+</html>

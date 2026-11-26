@@ -5,7 +5,7 @@ import { TOPIC_LABELS } from '../topics.mjs'
 // Component labels by page language (the locale's `lang` in config.mjs).
 const TEXT = {
   en: {
-    report: 'Read the full report', repo: 'View on GitHub', year: 'Year', role: 'Role', methods: 'Methods', view: 'Selected project view',
+    report: 'Read the full report', docs: 'Docs & plugin guide', repo: 'View on GitHub', year: 'Year', role: 'Role', methods: 'Methods', view: 'Selected project view',
     progress: (opened, total) => `${opened} of ${total} modules have notes`,
     pending: (topics) => ` — ${topics} still to come`,
     legend: 'One mark = one curriculum module', written: 'full note', outline: 'outline', planned: 'not started',
@@ -14,7 +14,7 @@ const TEXT = {
     list: ', ',
   },
   zh: {
-    report: '阅读完整报告', repo: '在 GitHub 上查看', year: '年份', role: '角色', methods: '方法', view: '项目精选视图',
+    report: '阅读完整报告', docs: '文档与插件指南', repo: '在 GitHub 上查看', year: '年份', role: '角色', methods: '方法', view: '项目精选视图',
     progress: (opened, total) => `${total} 个模块中已有 ${opened} 个写了笔记`,
     pending: (topics) => `——${topics}尚未开始`,
     legend: '一道刻度 = 一个课程模块', written: '完整笔记', outline: '提纲', planned: '未开始',
@@ -23,7 +23,7 @@ const TEXT = {
     list: '、',
   },
   ja: {
-    report: 'レポート全文を読む', repo: 'GitHub で見る', year: '年', role: '担当', methods: '手法', view: 'プロジェクトの一場面',
+    report: 'レポート全文を読む', docs: 'ドキュメント・ガイド', repo: 'GitHub で見る', year: '年', role: '担当', methods: '手法', view: 'プロジェクトの一場面',
     progress: (opened, total) => `${total} モジュール中 ${opened} 件にノートあり`,
     pending: (topics) => `——${topics}はこれから`,
     legend: '目盛り 1 本 = カリキュラムの 1 モジュール', written: '完成ノート', outline: 'アウトライン', planned: '未着手',
@@ -32,7 +32,7 @@ const TEXT = {
     list: '、',
   },
   fr: {
-    report: 'Lire le rapport complet', repo: 'Voir sur GitHub', year: 'Année', role: 'Rôle', methods: 'Méthodes', view: 'Vue choisie du projet',
+    report: 'Lire le rapport complet', docs: 'Docs et guides', repo: 'Voir sur GitHub', year: 'Année', role: 'Rôle', methods: 'Méthodes', view: 'Vue choisie du projet',
     progress: (opened, total) => `${opened} modules sur ${total} ont des notes`,
     pending: (topics) => ` — ${topics} restent à venir`,
     legend: 'Un trait = un module du programme', written: 'note complète', outline: 'plan', planned: 'pas commencé',

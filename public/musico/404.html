@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>404 · Tape Rewinding · ♪ Musico ♪</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    (function () {
+      var base = location.pathname.indexOf('/musico') === 0 ? '/musico/' : '/';
+      var l = document.createElement('link');
+      l.rel = 'stylesheet';
+      l.href = base + 'assets/styles.css';
+      document.head.appendChild(l);
+    })();
+  </script>
+</head>
+<body>
+  <main style="min-height:100vh;display:grid;place-items:center;padding:32px 16px;">
+    <section class="portal-card" style="max-width:560px;width:100%;text-align:center;align-items:center;background:var(--butter);">
+      <div class="mascot-wrap" data-mascot="lost">
+        <span class="mascot-bubble">(;´・ω・)</span>
+      </div>
+      <h1 style="font-size:clamp(2.4rem,6vw,3.8rem);line-height:1;">404 · Side B Not Found</h1>
+      <p style="color:var(--ink-muted);" data-i18n="err404.desc">Oops! This cassette track isn't in the folder anymore. Let's rewind back to the main docs! (;´・ω・)</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:6px;">
+        <a id="err-home" class="btn-primary" href="/" data-i18n="err404.home">Back to Home ♪</a>
+        <a id="err-guide" class="btn-soft" href="/guide/" data-i18n="nav.guide">User Guide</a>
+        <a id="err-dev" class="btn-soft" href="/developers/" data-i18n="nav.devs">Developer Docs</a>
+      </div>
+    </section>
+  </main>
+  <div id="musico-toast" class="toast" role="status" aria-live="polite"></div>
+  <script>
+    (function () {
+      var base = location.pathname.indexOf('/musico') === 0 ? '/musico/' : '/';
+      document.getElementById('err-home').href = base;
+      document.getElementById('err-guide').href = base + 'guide/';
+      document.getElementById('err-dev').href = base + 'developers/';
+      var s = document.createElement('script');
+      s.src = base + 'assets/app.js';
+      document.body.appendChild(s);
+    })();
+  </script>
+</body>
+</html>

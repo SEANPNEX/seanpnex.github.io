@@ -12,9 +12,9 @@ order: 5
   year="2025–2026"
   role="Architecture, native UI & audio engineering"
   methods="SwiftUI · Jetpack Compose · .NET 8 WPF · JavaScriptCore / QuickJS / Jint"
-  image="/images/musico/architecture.svg"
-  image-alt="Architecture diagram of Musico across Apple, Android, and Windows native clients"
-  image-fit="contain"
+  chart="/charts/musico-architecture.html"
+  image-alt="Interactive architecture diagram of Musico across Apple, Android, and Windows native clients"
+  docs="https://musico.seanpnex.win"
   repo="https://github.com/SEANPNEX/Musico"
 />
 
@@ -57,6 +57,7 @@ Multi-platform GitHub Actions workflows build, test, and publish tagged releases
 
 ## Repository & downloads
 
+- **Documentation & plugin hub:** [musico.seanpnex.win](https://musico.seanpnex.win) (User Guide, Official Plugins & Extension API v1 Docs)
 - **Source code:** [github.com/SEANPNEX/Musico](https://github.com/SEANPNEX/Musico) (MIT License)
 - **Releases:** [Latest desktop & mobile builds](https://github.com/SEANPNEX/Musico/releases/latest)
-- **Extension docs:** [Extension Developer Guide](https://github.com/SEANPNEX/Musico/blob/main/docs/extensions/README.md)
+- **Extension developer docs:** [musico.seanpnex.win/developers/](https://musico.seanpnex.win/developers/) · [GitHub README](https://github.com/SEANPNEX/Musico/blob/main/docs/extensions/README.md)

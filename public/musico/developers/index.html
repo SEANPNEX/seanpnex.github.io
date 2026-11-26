@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Plugin Developer Docs (API v1) · ♪ Musico ♪</title>
+  <meta name="description" content="Musico JavaScript Extension Developer Guide (API v1): starter generator, manifest.json reference, 8 hooks, ctx bridge, UX & portability guidelines, and mock-runner CLI.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23FF8A7A'/><text x='50' y='67' font-size='56' text-anchor='middle'>♪</text></svg>">
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="common.skip">Skip to content</a>
+
+  <header class="site-header site-header--solid">
+    <div class="container nav-inner">
+      <a class="brand" href="../" data-internal-link>
+        <span class="brand-badge" aria-hidden="true">♪</span>
+        <span>Musico</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a href="../" data-internal-link data-i18n="nav.home">Overview</a>
+        <a href="../guide/" data-internal-link data-i18n="nav.guide">User Guide</a>
+        <a href="./" aria-current="page" data-internal-link data-i18n="nav.devs">Developer Docs</a>
+      </nav>
+
+      <div class="nav-actions">
+        <label class="sr-only" for="lang-select">Language</label>
+        <select id="lang-select" class="lang-select" aria-label="Language">
+          <option value="en">EN</option>
+          <option value="zh">简体中文</option>
+          <option value="ja">日本語</option>
+          <option value="fr">Français</option>
+        </select>
+
+        <button id="theme-toggle" class="ctrl-pill" type="button" aria-pressed="false" aria-label="Toggle night shift">
+          <span class="theme-icon" aria-hidden="true">🌙</span>
+          <span class="hide-xs" data-i18n="nav.night">Night Shift</span>
+        </button>
+
+        <a class="ctrl-pill hide-xs" href="https://github.com/SEANPNEX/Musico/tree/main/docs/extensions" target="_blank" rel="noopener noreferrer">
+          <span>Templates ↗</span>
+        </a>
+
+        <button id="mobile-menu-btn" class="ctrl-pill mobile-menu-btn" type="button" aria-expanded="false" aria-controls="mobile-drawer">
+          <span data-i18n="nav.menu">Menu</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div id="mobile-drawer" class="mobile-drawer">
+    <a href="../" data-internal-link><span data-i18n="nav.home">Overview</span> <span>♪</span></a>
+    <a href="../guide/" data-internal-link><span data-i18n="nav.guide">User Guide &amp; Plugins</span> <span>→</span></a>
+    <a href="./" data-internal-link><span data-i18n="nav.devs">Developer Docs (API v1)</span> <span>→</span></a>
+  </div>
+
+  <div class="container docs-shell">
+    <aside class="docs-sidebar" aria-label="Developer Docs navigation">
+      <div class="sidebar-group">
+        <div class="sidebar-title" data-i18n="dev.sb.start">Build &amp; Package</div>
+        <ul class="sidebar-nav">
+          <li><a href="#overview" class="active" data-i18n="dev.sb.overview">Architecture &amp; Workflows</a></li>
+          <li><a href="#generator" data-i18n="dev.sb.generator">Starter Generator (.musico.js)</a></li>
+          <li><a href="#packaging" data-i18n="dev.sb.packaging">Packaging &amp; Auto-Update</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <div class="sidebar-title" data-i18n="dev.sb.api">API v1 Specification</div>
+        <ul class="sidebar-nav">
+          <li><a href="#manifest" data-i18n="dev.sb.manifest">manifest.json Reference</a></li>
+          <li><a href="#hooks" data-i18n="dev.sb.hooks">8 Hook Contracts &amp; Schemas</a></li>
+          <li><a href="#ctx" data-i18n="dev.sb.ctx">ctx Bridge &amp; Security</a></li>
+          <li><a href="#errors" data-i18n="dev.sb.errors">Standard Error Codes</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <div class="sidebar-title" data-i18n="dev.sb.craft">Craft &amp; Tooling</div>
+        <ul class="sidebar-nav">
+          <li><a href="#ux-rules" data-i18n="dev.sb.ux">UX &amp; Engineering Guidance</a></li>
+          <li><a href="#testing" data-i18n="dev.sb.testing">mock-runner &amp; CI Testing</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main id="main" class="docs-main">
+      <header class="docs-header-card docs-header-card--dev">
+        <div>
+          <h1 data-i18n="dev.hero.t">Musico JS Extension Developer Guide (API v1)</h1>
+          <p data-i18n="dev.hero.d">Write one CommonJS script and run it natively on Apple (JavaScriptCore), Android (QuickJS), and Windows (Jint) with zero WebViews (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧</p>
+        </div>
+        <div class="mascot-wrap" data-mascot="happy" title="Click Mimi!">
+          <span class="mascot-bubble">(*^▽^*)</span>
+        </div>
+      </header>
+
+      <!-- 1. Overview -->
+      <section id="overview" class="doc-section">
+        <h2 data-i18n="dev.overview.t">One Extension Model, Three Native Workflows</h2>
+        <p data-i18n="dev.overview.p">Every Musico extension exports a <code>manifest</code> plus async/sync CommonJS hooks on <code>module.exports</code>. Depending on the capabilities you declare, your plugin plugs directly into one or more native workflows:</p>
+        <ol>
+          <li><strong>Custom Cloud Sources (<code>"playlist"</code>, <code>"tree"</code>, <code>"stream"</code>):</strong> Joins the same <code>CloudSourceProvider</code> pipeline as YouTube, Bilibili, and Google Drive, automatically getting <strong>Save to Local Folder</strong>, <strong>Update from Cloud</strong>, Playlists, and custom <code>badgeLabel</code> pills.</li>
+          <li><strong>Extension-Only Cloud Search (<code>"search"</code>):</strong> Unlocks the opt-in Search Source Switcher in <strong>Songs</strong> (hidden when no search extensions are enabled), ephemeral playback excluded from Library &amp; Stats, and playlist/album preview sheets.</li>
+          <li><strong>Custom Cloud Lyrics (<code>"lyrics"</code>):</strong> Appears inside <strong>Lyrics → Search Online…</strong> alongside LRCLIB and NetEase, never running automatically during playback.</li>
+        </ol>
+      </section>
+
+      <!-- 2. Interactive Starter Generator -->
+      <section id="generator" class="doc-section">
+        <h2 data-i18n="dev.gen.t">Interactive .musico.js Starter Generator</h2>
+        <p data-i18n="dev.gen.p">Toggle the capabilities your source needs and immediately copy or download a working API v1 CommonJS starter script plus its CLI test command.</p>
+
+        <div id="starter-generator" class="gen-box">
+          <div class="gen-grid">
+            <div class="gen-field">
+              <label for="gen-id">Extension ID (reverse-DNS)</label>
+              <input id="gen-id" type="text" value="com.example.musico.starter">
+            </div>
+            <div class="gen-field">
+              <label for="gen-name">Display Name</label>
+              <input id="gen-name" type="text" value="My Cozy Source">
+            </div>
+            <div class="gen-field">
+              <label for="gen-badge">Badge Label (max 16 chars)</label>
+              <input id="gen-badge" type="text" maxlength="16" value="CozyExt">
+            </div>
+            <div class="gen-field">
+              <label for="gen-hosts">permissions.hosts (comma-separated)</label>
+              <input id="gen-hosts" type="text" value="api.music.example.com, *.cdn.music.example.com">
+            </div>
+          </div>
+
+          <div>
+            <div style="font-size:var(--text-sm);font-weight:700;margin-bottom:8px;">Capabilities</div>
+            <div class="cap-checks">
+              <label class="cap-check"><input type="checkbox" name="gen-cap" value="playlist" checked> playlist</label>
+              <label class="cap-check"><input type="checkbox" name="gen-cap" value="tree"> tree</label>
+              <label class="cap-check"><input type="checkbox" name="gen-cap" value="stream" checked> stream</label>
+              <label class="cap-check"><input type="checkbox" name="gen-cap" value="search" checked> search</label>
+              <label class="cap-check"><input type="checkbox" name="gen-cap" value="lyrics"> lyrics</label>
+              <label class="cap-check"><input type="checkbox" name="gen-cap" value="cookie" checked> cookie</label>
+              <label class="cap-check"><input type="checkbox" name="gen-cap" value="qr_login"> qr_login</label>
+              <label class="cap-check"><input type="checkbox" name="gen-cap" value="proxy"> proxy</label>
+            </div>
+          </div>
+
+          <div class="code-card">
+            <div class="code-head">
+              <span><span class="code-dots"><i></i><i></i><i></i></span>Generated CommonJS Starter</span>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                <button type="button" class="copy-btn" data-copy-target="#gen-code">Copy .musico.js</button>
+                <button id="gen-download" type="button" class="copy-btn">Download File</button>
+              </div>
+            </div>
+            <pre><code id="gen-code"></code></pre>
+          </div>
+
+          <div class="code-card">
+            <div class="code-head">
+              <span><span class="code-dots"><i></i><i></i><i></i></span>Local CLI Test Command</span>
+              <button type="button" class="copy-btn" data-copy-target="#gen-cmd">Copy Command</button>
+            </div>
+            <pre><code id="gen-cmd"></code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Packaging -->
+      <section id="packaging" class="doc-section">
+        <h2 data-i18n="dev.pack.t">Packaging Formats &amp; Auto-Update</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Format</th>
+                <th>Structure</th>
+                <th>Best For</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Single-File (<code>.musico.js</code>)</strong></td>
+                <td>One JS file exporting <code>{ manifest, ...hooks }</code> on <code>module.exports</code>.</td>
+                <td>Quick scripts, simple sources, easy sharing.</td>
+              </tr>
+              <tr>
+                <td><strong>Bundle Archive (<code>.musicoext</code>)</strong></td>
+                <td>Standard <code>.zip</code> with <code>manifest.json</code>, <code>index.js</code> (or <code>manifest.entry</code>), and optional <code>icon.png</code>.</td>
+                <td>Extensions with icons, assets, or multi-file packaging.</td>
+              </tr>
+              <tr>
+                <td><strong>Multi-Plugin Pack (<code>.zip</code>)</strong></td>
+                <td>ZIP containing multiple <code>*.musicoext</code> bundles (such as <code>musico-plugins-all.zip</code>).</td>
+                <td>One-URL community plugin suites with per-plugin <code>updateUrl</code>.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Inside Musico, packages extract to <code>&lt;AppData&gt;/Extensions/&lt;id&gt;/</code> (or <code>.\Data\Extensions\&lt;id&gt;\</code> in Windows Portable mode). ZIP importers enforce path traversal rejection (no <code>../</code> or absolute paths), max <strong>256 entries</strong>, and max <strong>16 MB</strong> uncompressed size.</p>
+      </section>
+
+      <!-- 4. manifest.json Reference -->
+      <section id="manifest" class="doc-section">
+        <h2 data-i18n="dev.manifest.t">manifest.json Reference</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Field</th>
+                <th>Type</th>
+                <th>Required</th>
+                <th>Constraints &amp; Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><code>apiVersion</code></td><td><code>integer</code></td><td>Yes</td><td>Must be <code>1</code>.</td></tr>
+              <tr><td><code>id</code></td><td><code>string</code></td><td>Yes</td><td>Reverse-DNS matching <code>^[a-z0-9._-]{3,64}$</code>. Stored on roots as <code>providerID = "ext.&lt;id&gt;"</code>.</td></tr>
+              <tr><td><code>name</code></td><td><code>string</code></td><td>Yes</td><td>Display name in Extension Manager, Cloud Folder picker, and Search/Lyrics switchers.</td></tr>
+              <tr><td><code>version</code></td><td><code>string</code></td><td>Yes</td><td>SemVer (<code>MAJOR.MINOR.PATCH</code>).</td></tr>
+              <tr><td><code>author</code> / <code>description</code></td><td><code>string</code></td><td>No</td><td>Shown in Extension Manager detail sheet.</td></tr>
+              <tr><td><code>badgeLabel</code></td><td><code>string</code></td><td>No</td><td>Short pill badge in Folders, Search chips &amp; Lyrics (defaults to <code>name</code>, max 16 chars).</td></tr>
+              <tr><td><code>entry</code></td><td><code>string</code></td><td>No</td><td>Relative script path inside <code>.musicoext</code> (defaults to <code>"index.js"</code>).</td></tr>
+              <tr><td><code>updateUrl</code></td><td><code>string</code></td><td>No</td><td>HTTPS URL to a <code>.musicoext</code> package for automatic and manual updates (falls back to import URL).</td></tr>
+              <tr><td><code>capabilities</code></td><td><code>string[]</code></td><td>Yes</td><td>Non-empty subset of <code>"playlist"</code>, <code>"tree"</code>, <code>"stream"</code>, <code>"cookie"</code>, <code>"proxy"</code>, <code>"lyrics"</code>, <code>"search"</code>, <code>"qr_login"</code>.</td></tr>
+              <tr><td><code>urlPatterns</code></td><td><code>string[]</code></td><td>Conditional</td><td>Native regex strings tested before starting a JS VM. Required when <code>"playlist"</code> or <code>"tree"</code> is declared.</td></tr>
+              <tr><td><code>searchKinds</code></td><td><code>string[]</code></td><td>No</td><td>Subset of <code>"track"</code>, <code>"playlist"</code>, <code>"album"</code> (defaults to all three when <code>"search"</code> is declared).</td></tr>
+              <tr><td><code>permissions.hosts</code></td><td><code>string[]</code></td><td>Conditional</td><td>Exact domain (<code>example.com</code>) or <code>*.sub.domain</code> (≥ 2 labels after <code>*.</code>; bare <code>*</code> &amp; <code>*.tld</code> rejected). May be empty if <code>settings</code> has <code>"server_url"</code>.</td></tr>
+              <tr><td><code>qualities</code></td><td><code>array</code></td><td>No</td><td>Up to 16 audio quality objects <code>{ id, label, badge?, lossless? }</code>; paired with <code>defaultStreamQuality</code> &amp; <code>defaultDownloadQuality</code>.</td></tr>
+              <tr><td><code>settings</code></td><td><code>array</code></td><td>No</td><td><code>{ key, label, type, default, options? }</code> where <code>type</code> is <code>"boolean"</code>, <code>"string"</code>, <code>"select"</code>, or <code>"server_url"</code> (dynamically allows that user host).</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 5. Hook Contracts & Schemas -->
+      <section id="hooks" class="doc-section">
+        <h2 data-i18n="dev.hooks.t">8 Hook Contracts &amp; Cross-Platform Schemas</h2>
+        <ul>
+          <li><code>canHandle(input)</code> <em>(sync, required for <code>"playlist"</code> / <code>"tree"</code>)</em>: input <code>{ rawText, extractedUrl }</code> → returns <code>{ matched, normalizedUrl?, remoteId?, kind?: "playlist" | "folder" | "track" }</code>.</li>
+          <li><code>fetchCollection(ctx, req)</code> <em>(async, required for <code>"playlist"</code> / <code>"tree"</code> &amp; search previews)</em>: input <code>{ url, cookie?, cursor? }</code> → returns <code>{ remoteId, title, tracks: ExtTrack[], subfolders?: ExtSubfolder[], nextCursor? }</code>.</li>
+          <li><code>fetchFolder(ctx, req)</code> <em>(async, required for <code>"tree"</code>)</em>: input <code>{ folderId, pathSegments, depth, cookie?, cursor?, extra? }</code> → returns <code>{ folderId, tracks: ExtTrack[], subfolders?: ExtSubfolder[], nextCursor? }</code>.</li>
+          <li><code>resolveStream(ctx, req)</code> <em>(async, required for <code>"stream"</code>)</em>: input <code>{ remoteTrackId, relativePath?, cookie?, forceRefresh, quality?, purpose?: "stream" | "download" }</code> → returns <code>{ url, headers?, fileExtension, mimeType?, expiresAtMs?, fallbackUrls?, contentLength?, actualQuality?, qualityLabel?, bitrateKbps? }</code>.</li>
+          <li><code>search(ctx, req)</code> <em>(async, required for <code>"search"</code>)</em>: input <code>{ query, kind: "all" | "track" | "playlist" | "album", limit, cursor?, cookie? }</code> → returns <code>{ items: ExtSearchResult[], nextCursor?: string | null }</code> (or <code>null</code>).</li>
+          <li><code>searchLyrics(ctx, req)</code> <em>(async, required for <code>"lyrics"</code>)</em>: input <code>{ title, artist, album?, durationSec? }</code> → returns <code>ExtLyricsCandidate[]</code> | <code>{ candidates: [...] }</code> | <code>{ results: [...] }</code> | <code>null</code>.</li>
+          <li><code>startQrLogin(ctx, req)</code> <em>(async, required for <code>"qr_login"</code>)</em>: input <code>{}</code> → returns <code>{ sessionId, qrContent, expiresAtMs?, pollIntervalMs?, message? }</code> (<code>qrContent</code> ≤ 512 UTF-8 bytes; <code>pollIntervalMs</code> clamped to <code>1000</code>–<code>10000</code> ms).</li>
+          <li><code>pollQrLogin(ctx, req)</code> <em>(async, required for <code>"qr_login"</code>)</em>: input <code>{ sessionId }</code> → returns <code>{ status: "pending" | "scanned" | "confirmed" | "expired" | "error", cookie?, accountName?, message? }</code>.</li>
+        </ul>
+
+        <div class="callout callout--sakura">
+          <strong>Cross-Platform Gotcha: Always emit string <code>remoteTrackId</code>!</strong>
+          <p>In <code>ExtSearchResult</code> (when <code>kind === "track"</code>), Apple strictly requires string <code>remoteTrackId</code>, whereas Android/Windows also fall back to <code>id</code>. Emitting <code>remoteTrackId: String(item.id)</code> keeps your extension 100% portable across all three clients.</p>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Extension Field (<code>ExtTrack</code>)</th>
+                <th>Apple (<code>CloudTrackInfo</code>)</th>
+                <th>Android (<code>CloudTrackMetadata</code>)</th>
+                <th>Windows (<code>CloudPlaylistItem</code>)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><code>remoteTrackId</code></td><td><code>remoteTrackID</code></td><td><code>remoteTrackId</code></td><td><code>RemoteTrackId</code></td></tr>
+              <tr><td><code>relativePath</code></td><td><code>relativePath</code></td><td><code>relativePath</code></td><td><code>RelativePath</code></td></tr>
+              <tr><td><code>title</code> / <code>artist</code> / <code>album</code></td><td><code>title</code> / <code>artist</code> / <code>album</code></td><td><code>title</code> / <code>artist</code> / <code>album</code></td><td><code>Title</code> / <code>Artist</code> / <code>Album</code></td></tr>
+              <tr><td><code>trackNumber</code> / <code>durationSec</code></td><td><code>trackNumber</code> / <code>duration</code></td><td><code>trackNumber</code> / <code>durationSec</code></td><td><code>TrackNumber</code> / <code>DurationSeconds</code></td></tr>
+              <tr><td><code>artworkUrl</code></td><td><code>artworkURL</code></td><td><code>artworkUrl</code></td><td><code>ArtworkUrl</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 6. Host Bridge & Security -->
+      <section id="ctx" class="doc-section">
+        <h2 data-i18n="dev.ctx.t">Host Bridge (<code>ctx</code>), Cookies &amp; Runtime Guardrails</h2>
+        <ul>
+          <li><strong><code>await ctx.http.request({ method?, url, headers?, body?, followRedirects?, timeoutMs?, returnBytes? })</code>:</strong> Routes through native HTTP stacks (honoring Windows HTTP Proxy when <code>"proxy"</code> is declared). Enforces <code>permissions.hosts</code> on the initial URL <em>and every redirect hop</em> (up to 10 hops), strips <code>Cookie</code> and <code>Authorization</code> across host changes, caps responses at <strong>8 MB</strong>, and exposes lowercase <code>headers</code> plus raw <code>setCookies</code> array and optional <code>bytesBase64</code>.</li>
+          <li><strong><code>ctx.crypto</code>:</strong> <code>md5</code>, <code>sha1</code>, <code>sha256</code>, <code>hmacSha256(key, msg)</code> (lowercase hex), plus <code>base64Encode</code> / <code>base64Decode</code>.</li>
+          <li><strong><code>ctx.kv</code>:</strong> Persistent per-extension store: <code>get(key)</code>, <code>set(key, val, ttlSeconds?)</code>, <code>remove(key)</code>. Because every hook runs in a <strong>fresh isolated JS VM</strong>, global variables never persist across calls; always store short-lived tokens in <code>ctx.kv</code>.</li>
+          <li><strong><code>ctx.settings.get(key)</code> &amp; <code>ctx.env</code>:</strong> Read user settings and inspect <code>{ platform: "ios" | "macos" | "android" | "windows", appVersion, apiVersion: 1 }</code>.</li>
+          <li><strong><code>ctx.log</code> (<code>info</code> / <code>warn</code> / <code>error</code>):</strong> Writes to the 200-entry ring buffer in Extension Manager. <strong>Never pass <code>req.cookie</code> into <code>ctx.log</code></strong> (Android and Windows also auto-redact raw/URL-encoded cookies as defense-in-depth).</li>
+          <li><strong>Limits &amp; Portable JS Subset:</strong> <code>15s</code> timeout on <code>canHandle</code>, <code>resolveStream</code>, <code>search</code>, and <code>searchLyrics</code>; <code>60s</code> on <code>fetchCollection</code>/<code>fetchFolder</code>; <strong>32 MB</strong> heap limit on QuickJS &amp; Jint. Use <strong>ES2020 + CommonJS <code>module.exports</code> + <code>ctx.*</code></strong> only (no Node <code>require</code>/<code>fs</code>/<code>Buffer</code>, no <code>window</code>/<code>document</code>).</li>
+        </ul>
+      </section>
+
+      <!-- 7. Error Codes -->
+      <section id="errors" class="doc-section">
+        <h2 data-i18n="dev.errors.t">Standard Error Codes</h2>
+        <p>Attach <code>err.code</code> to thrown errors so Musico displays localized guidance and triggers auth/retry UX appropriately:</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Code</th><th>When to Throw</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>INVALID_URL</code></td><td>Input URL does not match a valid collection or resource ID.</td></tr>
+              <tr><td><code>AUTH_REQUIRED</code></td><td>Missing, private, or expired session <code>req.cookie</code>.</td></tr>
+              <tr><td><code>EMPTY_COLLECTION</code></td><td>Collection loaded cleanly but contains zero tracks or subfolders.</td></tr>
+              <tr><td><code>NO_PLAYABLE_STREAM</code></td><td>Track has no playable stream or upstream rejected stream lookup.</td></tr>
+              <tr><td><code>RATE_LIMITED</code></td><td>Upstream returned HTTP <code>429</code> or rate-limit payload.</td></tr>
+              <tr><td><code>NETWORK_ERROR</code></td><td>Upstream HTTP <code>4xx</code>/<code>5xx</code>, invalid JSON, or connectivity failure.</td></tr>
+              <tr><td><code>PERMISSION_DENIED</code></td><td>Host or URL scheme blocked by <code>permissions.hosts</code>.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 8. UX & Engineering Best Practices -->
+      <section id="ux-rules" class="doc-section">
+        <h2 data-i18n="dev.ux.t">Detailed UX &amp; Engineering Guidance</h2>
+        <div class="zine-grid" style="grid-template-columns:repeat(2,minmax(0,1fr));">
+          <article class="zine-card zine-card--butter">
+            <h3>1. Minimal Host Permissions</h3>
+            <p>Declare only the exact domains your API and CDN use inside <code>permissions.hosts</code>. Every user sees this list during Permission Review before enabling your extension.</p>
+          </article>
+          <article class="zine-card zine-card--mint">
+            <h3>2. Clear Auth &amp; Cookie UX</h3>
+            <p>Fail loudly with <code>AUTH_REQUIRED</code> and a plain-language message (or implement <code>qr_login</code>). Never require cookies for public endpoints, and never log secrets.</p>
+          </article>
+          <article class="zine-card zine-card--sakura">
+            <h3>3. Pagination &amp; Preview Respect</h3>
+            <p>Respect <code>req.limit</code> and <code>req.cursor</code>, return <code>nextCursor: null</code> when done (never echo the same cursor), and include <code>sourceUrl</code> on search playlists/albums so users can preview before adding.</p>
+          </article>
+          <article class="zine-card zine-card--lavender">
+            <h3>4. Quality, Purpose &amp; Memory Safety</h3>
+            <p>Honor <code>req.quality</code> and <code>req.purpose</code> (<code>"stream"</code> vs <code>"download"</code>), set accurate <code>fileExtension</code>/<code>mimeType</code>, use <code>https://</code> artwork URLs, and keep JSON payloads small for QuickJS/Jint's 32 MB heap.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 9. Local Testing & CI -->
+      <section id="testing" class="doc-section">
+        <h2 data-i18n="dev.testing.t">Local Testing with mock-runner.mjs &amp; CI</h2>
+        <p>Verify every hook and strict portability check without rebuilding native apps using Node.js 18+:</p>
+
+        <div class="code-card">
+          <div class="code-head">
+            <span><span class="code-dots"><i></i><i></i><i></i></span>Musico &amp; musico_plugins CLI Commands</span>
+            <button type="button" class="copy-btn" data-copy-target="#cli-test-code">Copy Commands</button>
+          </div>
+          <pre><code id="cli-test-code"><span class="tok-cm"># Run built-in conformance suite across all fixtures &amp; starters</span>
+node docs/extensions/tools/mock-runner.mjs --self-test
+
+<span class="tok-cm"># Test individual hooks locally</span>
+node docs/extensions/tools/mock-runner.mjs path/to/ext.musico.js can-handle "https://example.com/playlist/demo_1"
+node docs/extensions/tools/mock-runner.mjs path/to/ext.musico.js fetch-collection "https://example.com/playlist/demo_1" --cookie "sid=..."
+node docs/extensions/tools/mock-runner.mjs path/to/ext.musico.js search "Yoasobi" --kind track --limit 20
+node docs/extensions/tools/mock-runner.mjs path/to/ext.musico.js search-lyrics "Idol" --artist "YOASOBI" --duration 213
+node docs/extensions/tools/mock-runner.mjs path/to/ext.musico.js resolve-stream "track_1" --setting preferHighBitrate=true
+
+<span class="tok-cm"># In SEANPNEX/musico_plugins: run all offline tests &amp; build .musicoext bundles</span>
+npm test
+npm run check:release &amp;&amp; npm run build:release</code></pre>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p data-i18n="footer.copy">♪ Musico ♪ · MIT License · Built natively by Sean Guo (*^▽^*)</p>
+      <div class="footer-links">
+        <a href="../" data-internal-link data-i18n="nav.home">Overview</a>
+        <a href="../guide/" data-internal-link data-i18n="nav.guide">User Guide</a>
+        <a href="https://github.com/SEANPNEX/Musico/blob/main/docs/extensions/README.md" target="_blank" rel="noopener noreferrer">Markdown Spec on GitHub ↗</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="musico-toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="../assets/app.js"></script>
+</body>
+</html>

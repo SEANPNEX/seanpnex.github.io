@@ -12,9 +12,9 @@ order: 5
   year="2025–2026"
   role="架构设计、原生界面与音频工程"
   methods="SwiftUI · Jetpack Compose · .NET 8 WPF · JavaScriptCore / QuickJS / Jint"
-  image="/images/musico/architecture.svg"
-  image-alt="Musico 在 Apple、Android 与 Windows 原生客户端之间的架构图"
-  image-fit="contain"
+  chart="/charts/musico-architecture.html?lang=zh"
+  image-alt="Musico 在 Apple、Android 与 Windows 原生客户端之间的交互式架构图"
+  docs="https://musico.seanpnex.win/?lang=zh"
   repo="https://github.com/SEANPNEX/Musico"
 />
 
@@ -57,6 +57,7 @@ Musico 没有为了扩展生态而引入庞大的 WebView，而是让同一份 C
 
 ## 仓库与下载
 
+- **文档与扩展中心：** [musico.seanpnex.win/?lang=zh](https://musico.seanpnex.win/?lang=zh)（使用指南、官方插件与扩展 API v1 文档）
 - **源码仓库：** [github.com/SEANPNEX/Musico](https://github.com/SEANPNEX/Musico)（MIT License）
 - **版本下载：** [最新桌面与移动端发行版](https://github.com/SEANPNEX/Musico/releases/latest)
-- **扩展文档：** [中文扩展开发指南](https://github.com/SEANPNEX/Musico/blob/main/docs/extensions/README.zh-CN.md) / [Extension Developer Guide](https://github.com/SEANPNEX/Musico/blob/main/docs/extensions/README.md)
+- **扩展开发文档：** [musico.seanpnex.win/developers/?lang=zh](https://musico.seanpnex.win/developers/?lang=zh) · [GitHub 中文扩展指南](https://github.com/SEANPNEX/Musico/blob/main/docs/extensions/README.zh-CN.md)
