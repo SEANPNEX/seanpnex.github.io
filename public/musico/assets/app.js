@@ -2,6 +2,7 @@
   'use strict';
 
   var BASE = location.pathname.indexOf('/musico') === 0 ? '/musico/' : '/';
+  var ASSET_V = '20261127b';
   var KAOMOJI_POOL = [
     '(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧',
     '♪(´▽｀)',
@@ -16,6 +17,22 @@
   /* ── Floating Pastel Atmosphere ──────────────────────────────────────── */
   function initFloatingBackground() {
     if (document.querySelector('.floating-bg')) return;
+    var miniCassette =
+      '<svg viewBox="0 0 36 26" width="34" height="24" aria-hidden="true">' +
+      '<rect x="1.5" y="1.5" width="33" height="23" rx="4" fill="#FFF0B3" stroke="#1F1B24" stroke-width="2"/>' +
+      '<rect x="7" y="6" width="22" height="9" rx="2.5" fill="#241F2E"/>' +
+      '<circle cx="13" cy="10.5" r="2.6" fill="#FF8A7A"/>' +
+      '<circle cx="23" cy="10.5" r="2.6" fill="#87DFC1"/>' +
+      '<path d="M9 23.5 L12 19 H24 L27 23.5" fill="none" stroke="#1F1B24" stroke-width="1.8"/>' +
+      '</svg>';
+    var miniVinyl =
+      '<svg viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">' +
+      '<circle cx="16" cy="16" r="14" fill="#241F2E" stroke="#1F1B24" stroke-width="2"/>' +
+      '<circle cx="16" cy="16" r="9.5" fill="none" stroke="#574B73" stroke-width="1.2" stroke-dasharray="6 3"/>' +
+      '<circle cx="16" cy="16" r="5.5" fill="#FFAAD0" stroke="#1F1B24" stroke-width="1.5"/>' +
+      '<circle cx="16" cy="16" r="1.8" fill="#FFFDF7"/>' +
+      '</svg>';
+
     var layer = document.createElement('div');
     layer.className = 'floating-bg';
     layer.setAttribute('aria-hidden', 'true');
@@ -24,13 +41,17 @@
       '<div class="float-orb float-orb--2"></div>' +
       '<div class="float-orb float-orb--3"></div>' +
       '<div class="float-orb float-orb--4"></div>' +
+      '<div class="float-orb float-orb--5"></div>' +
       '<span class="float-note float-note--1">♪</span>' +
-      '<span class="float-note float-note--2">♫</span>' +
-      '<span class="float-note float-note--3">✦</span>' +
-      '<span class="float-note float-note--4">♩</span>' +
-      '<span class="float-note float-note--5">✧</span>' +
-      '<span class="float-note float-note--6">♪</span>' +
-      '<span class="float-note float-note--7">♫</span>';
+      '<span class="float-note float-note--2 float-note--svg">' + miniCassette + '</span>' +
+      '<span class="float-note float-note--3">♫</span>' +
+      '<span class="float-note float-note--4 float-note--svg">' + miniVinyl + '</span>' +
+      '<span class="float-note float-note--5">✦</span>' +
+      '<span class="float-note float-note--6">♩</span>' +
+      '<span class="float-note float-note--7 float-note--svg">' + miniCassette + '</span>' +
+      '<span class="float-note float-note--8">♫</span>' +
+      '<span class="float-note float-note--9 float-note--svg">' + miniVinyl + '</span>' +
+      '<span class="float-note float-note--10">♪</span>';
     document.body.insertBefore(layer, document.body.firstChild);
   }
 
@@ -105,7 +126,7 @@
         var bubble = slot.querySelector('.mascot-bubble');
         var pick = KAOMOJI_POOL[Math.floor(Math.random() * KAOMOJI_POOL.length)];
         if (bubble) bubble.textContent = pick;
-        showToast('Mimi says ' + pick);
+        showToast(t('toast.mimi', 'Mimi says {k}').replace('{k}', pick));
       });
     });
   }
@@ -133,15 +154,38 @@
       btn.addEventListener('click', function () {
         var next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
         applyTheme(next);
-        showToast(next === 'dark' ? 'Night Shift on (-.-)Zzz' : 'Daylight zine mode (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧');
+        showToast(
+          next === 'dark'
+            ? t('toast.nightOn', 'Night Shift on (-.-)Zzz')
+            : t('toast.dayOn', 'Daylight zine mode (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧')
+        );
       });
     }
   }
 
   /* ── 4-Language i18n Loader ──────────────────────────────────────────── */
   var currentLang = 'en';
+  var origTitle = '';
+  var langChangeCallbacks = [];
+
+  function t(key, fallback) {
+    var pack = window.MUSICO_I18N && window.MUSICO_I18N[currentLang];
+    if (pack && Object.prototype.hasOwnProperty.call(pack, key) && pack[key] != null) {
+      return pack[key];
+    }
+    var enPack = window.MUSICO_I18N && window.MUSICO_I18N.en;
+    if (enPack && Object.prototype.hasOwnProperty.call(enPack, key) && enPack[key] != null) {
+      return enPack[key];
+    }
+    return fallback !== undefined ? fallback : key;
+  }
+
+  function onLangChange(fn) {
+    if (typeof fn === 'function') langChangeCallbacks.push(fn);
+  }
 
   function saveOriginals() {
+    if (!origTitle) origTitle = document.title;
     document.querySelectorAll('[data-i18n]').forEach(function (el) {
       if (!el.hasAttribute('data-i18n-en')) el.setAttribute('data-i18n-en', el.textContent);
     });
@@ -151,10 +195,21 @@
     document.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
       if (!el.hasAttribute('data-i18n-ph-en')) el.setAttribute('data-i18n-ph-en', el.getAttribute('placeholder') || '');
     });
+    document.querySelectorAll('[data-i18n-aria]').forEach(function (el) {
+      if (!el.hasAttribute('data-i18n-aria-en')) el.setAttribute('data-i18n-aria-en', el.getAttribute('aria-label') || '');
+    });
+    document.querySelectorAll('[data-i18n-title-attr]').forEach(function (el) {
+      if (!el.hasAttribute('data-i18n-title-en')) el.setAttribute('data-i18n-title-en', el.getAttribute('title') || '');
+    });
   }
 
   function applyPack(lang, dict) {
     document.documentElement.lang = lang === 'ja' ? 'ja' : lang;
+    var titleMeta = document.querySelector('meta[name="i18n-title"]');
+    if (titleMeta) {
+      var tKey = titleMeta.getAttribute('content');
+      document.title = (dict && dict[tKey]) || origTitle;
+    }
     document.querySelectorAll('[data-i18n]').forEach(function (el) {
       var key = el.getAttribute('data-i18n');
       var fallback = el.getAttribute('data-i18n-en') || el.textContent;
@@ -170,6 +225,16 @@
       var fallback = el.getAttribute('data-i18n-ph-en') || '';
       el.setAttribute('placeholder', (dict && dict[key]) || fallback);
     });
+    document.querySelectorAll('[data-i18n-aria]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-aria');
+      var fallback = el.getAttribute('data-i18n-aria-en') || '';
+      el.setAttribute('aria-label', (dict && dict[key]) || fallback);
+    });
+    document.querySelectorAll('[data-i18n-title-attr]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-title-attr');
+      var fallback = el.getAttribute('data-i18n-title-en') || '';
+      el.setAttribute('title', (dict && dict[key]) || fallback);
+    });
 
     // Update internal navigation links so ?lang= stays sticky across pages
     document.querySelectorAll('a[data-internal-link]').forEach(function (a) {
@@ -179,6 +244,10 @@
       var path = parts[0];
       var hash = parts[1] ? '#' + parts[1] : '';
       a.setAttribute('href', lang === 'en' ? path + hash : path + '?lang=' + lang + hash);
+    });
+
+    langChangeCallbacks.forEach(function (fn) {
+      try { fn(lang); } catch (e) {}
     });
   }
 
@@ -198,9 +267,11 @@
       return;
     }
     var script = document.createElement('script');
-    script.src = BASE + 'assets/i18n/' + lang + '.js';
+    script.src = BASE + 'assets/i18n/' + lang + '.js?v=' + ASSET_V;
     script.onload = function () {
-      applyPack(lang, window.MUSICO_I18N[lang] || {});
+      if (currentLang === lang) {
+        applyPack(lang, window.MUSICO_I18N[lang] || {});
+      }
     };
     document.head.appendChild(script);
   }
@@ -231,11 +302,14 @@
   function copyText(text, btn) {
     if (!text) return;
     var done = function () {
-      showToast('Copied! (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧');
+      showToast(t('toast.copied', 'Copied! (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧'));
       if (btn) {
         var prev = btn.textContent;
-        btn.textContent = 'Copied! ♪';
-        setTimeout(function () { btn.textContent = prev; }, 1600);
+        var key = btn.getAttribute('data-i18n');
+        btn.textContent = t('btn.copied', 'Copied! ♪');
+        setTimeout(function () {
+          btn.textContent = key ? t(key, prev) : prev;
+        }, 1600);
       }
     };
     if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -277,36 +351,51 @@
 
     var TRACKS = [
       {
-        title: '01 · Rainy Folder Waltz (FLAC 24-bit)',
+        titleKey: 'cassette.t1.title',
+        titleFallback: '01 · Rainy Folder Waltz (FLAC 24-bit)',
         duration: 184,
         lyrics: [
-          { t: 0, text: '[00:00] Mounted ~/Music/RainyAfternoon · hierarchy intact' },
-          { t: 45, text: '[00:45] Imported .lrc matched locally (zero web lookups!)' },
-          { t: 92, text: '[01:32] Multi-Queue #2 holds your midnight queue safely' },
-          { t: 138, text: '[02:18] Native AVAudioEngine / Media3 / NAudio pipeline ♪' }
+          { t: 0,   key: 'cassette.t1.l1', fallback: '[00:00] Mounted ~/Music/RainyAfternoon · hierarchy intact' },
+          { t: 45,  key: 'cassette.t1.l2', fallback: '[00:45] Imported .lrc matched locally (zero web lookups!)' },
+          { t: 92,  key: 'cassette.t1.l3', fallback: '[01:32] Multi-Queue #2 holds your midnight queue safely' },
+          { t: 138, key: 'cassette.t1.l4', fallback: '[02:18] Native AVAudioEngine / Media3 / NAudio pipeline ♪' }
         ]
       },
       {
-        title: '02 · Aria\'s Cozy Hangout (ALAC)',
+        titleKey: 'cassette.t2.title',
+        titleFallback: "02 · Aria's Cozy Hangout (ALAC)",
         duration: 210,
         lyrics: [
-          { t: 0, text: '[00:00] Open Musico and pick up right where yesterday left off' },
-          { t: 52, text: '[00:52] YouTube, Bilibili & Google Drive inside Folders' },
-          { t: 108, text: '[01:48] Save to Local Folder creates .musico-cloud.json' },
-          { t: 160, text: '[02:40] Cozy tribute to Musicolet & YRRLYB/Aria (・ω・)ﾉ' }
+          { t: 0,   key: 'cassette.t2.l1', fallback: '[00:00] Open Musico and pick up right where yesterday left off' },
+          { t: 52,  key: 'cassette.t2.l2', fallback: '[00:52] YouTube, Bilibili & Google Drive inside Folders' },
+          { t: 108, key: 'cassette.t2.l3', fallback: '[01:48] Save to Local Folder creates .musico-cloud.json' },
+          { t: 160, key: 'cassette.t2.l4', fallback: '[02:40] Cozy tribute to Musicolet & YRRLYB/Aria (・ω・)ﾉ' }
         ]
       },
       {
-        title: '03 · Extension Tape Mix (.musicoext)',
+        titleKey: 'cassette.t3.title',
+        titleFallback: '03 · Extension Tape Mix (.musicoext)',
         duration: 162,
         lyrics: [
-          { t: 0, text: '[00:00] One CommonJS script on JavaScriptCore, QuickJS & Jint' },
-          { t: 40, text: '[00:40] Strict permissions.hosts allowlist checked per hop' },
-          { t: 86, text: '[01:26] Ephemeral Search (<Ext>) stays out of Library & Stats' },
-          { t: 125, text: '[02:05] 10-Band ISO EQ tuned just right (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧' }
+          { t: 0,   key: 'cassette.t3.l1', fallback: '[00:00] One CommonJS script on JavaScriptCore, QuickJS & Jint' },
+          { t: 40,  key: 'cassette.t3.l2', fallback: '[00:40] Strict permissions.hosts allowlist checked per hop' },
+          { t: 86,  key: 'cassette.t3.l3', fallback: '[01:26] Ephemeral Search (<Ext>) stays out of Library & Stats' },
+          { t: 125, key: 'cassette.t3.l4', fallback: '[02:05] 10-Band ISO EQ tuned just right (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧' }
         ]
       }
     ];
+
+    var PRESET_KEYS = {
+      'Flat':         'eq.preset.flat',
+      'Bass Boost':   'eq.preset.bass',
+      'Treble Boost': 'eq.preset.treble',
+      'Rock':         'eq.preset.rock',
+      'Pop':          'eq.preset.pop',
+      'Jazz':         'eq.preset.jazz',
+      'Classical':    'eq.preset.classical',
+      'Vocal':        'eq.preset.vocal',
+      'Custom':       'eq.preset.custom'
+    };
 
     var PRESETS = {
       'Flat':          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -342,6 +431,7 @@
     var timer = null;
     var bands = PRESETS['Pop'].slice();
     var preamp = 2;
+    var activePreset = 'Pop';
 
     function fmtTime(s) {
       var m = Math.floor(s / 60);
@@ -408,29 +498,33 @@
     }
 
     function markPreset(name) {
+      activePreset = name;
       presetsBox.querySelectorAll('button').forEach(function (btn) {
         btn.setAttribute('aria-pressed', String(btn.dataset.preset === name));
       });
     }
 
-    presetsBox.innerHTML = '';
-    Object.keys(PRESETS).concat(['Custom']).forEach(function (name) {
-      var btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'eq-preset-btn';
-      btn.dataset.preset = name;
-      btn.textContent = name;
-      btn.setAttribute('aria-pressed', String(name === 'Pop'));
-      btn.addEventListener('click', function () {
-        if (PRESETS[name]) {
-          bands = PRESETS[name].slice();
-          syncSliders();
-          paintBars();
-        }
-        markPreset(name);
+    function renderPresets() {
+      presetsBox.innerHTML = '';
+      Object.keys(PRESETS).concat(['Custom']).forEach(function (name) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'eq-preset-btn';
+        btn.dataset.preset = name;
+        btn.textContent = t(PRESET_KEYS[name], name);
+        btn.setAttribute('aria-pressed', String(name === activePreset));
+        btn.addEventListener('click', function () {
+          if (PRESETS[name]) {
+            bands = PRESETS[name].slice();
+            syncSliders();
+            paintBars();
+          }
+          markPreset(name);
+        });
+        presetsBox.appendChild(btn);
       });
-      presetsBox.appendChild(btn);
-    });
+    }
+    renderPresets();
 
     if (preampInput && preampOut) {
       preampInput.addEventListener('input', function () {
@@ -442,7 +536,7 @@
 
     function renderTrack() {
       var tr = TRACKS[trackIdx];
-      titleEl.textContent = tr.title;
+      titleEl.textContent = t(tr.titleKey, tr.titleFallback);
       durEl.textContent = fmtTime(tr.duration);
       curEl.textContent = fmtTime(elapsed);
       fillEl.style.width = ((elapsed / tr.duration) * 100).toFixed(1) + '%';
@@ -456,7 +550,7 @@
         var btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'lyric-line' + (i === activeIdx ? ' active' : '');
-        btn.textContent = line.text;
+        btn.textContent = t(line.key, line.fallback);
         btn.addEventListener('click', function () {
           elapsed = line.t;
           renderTrack();
@@ -464,8 +558,8 @@
         lyricsBox.appendChild(btn);
       });
 
-      root.querySelectorAll('.track-tab').forEach(function (t, i) {
-        t.setAttribute('aria-pressed', String(i === trackIdx));
+      root.querySelectorAll('.track-tab').forEach(function (tab, i) {
+        tab.setAttribute('aria-pressed', String(i === trackIdx));
       });
     }
 
@@ -481,7 +575,7 @@
       playing = next;
       shell.classList.toggle('playing', playing);
       playBtn.textContent = playing ? '❚❚' : '▶';
-      playBtn.setAttribute('aria-label', playing ? 'Pause demo tape' : 'Play demo tape');
+      playBtn.setAttribute('aria-label', playing ? t('cassette.pauseAria', 'Pause demo tape') : t('cassette.playAria', 'Play demo tape'));
       kaoEl.textContent = playing ? '(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧' : '♪(´▽｀)';
       updateMascots(playing ? 'jamming' : null);
       clearInterval(timer);
@@ -508,6 +602,12 @@
 
     renderTrack();
     paintBars();
+
+    onLangChange(function () {
+      renderPresets();
+      renderTrack();
+      playBtn.setAttribute('aria-label', playing ? t('cassette.pauseAria', 'Pause demo tape') : t('cassette.playAria', 'Play demo tape'));
+    });
   }
 
   /* ── Native Platform UI Switcher (Home /) ────────────────────────────── */
@@ -515,124 +615,124 @@
     var box = document.getElementById('platform-switcher');
     if (!box) return;
 
-    var DATA = {
-      apple: {
-        windowTitle: 'Musico · Apple HIG (iOS 17+ / iPadOS / macOS)',
-        sidebar: ['Folders', 'Songs', 'Albums', 'Queues', 'Extensions'],
-        views: {
-          Folders: [
-            ['~/Music/CityPop', 'FLAC · ALAC · 18 tracks'],
-            ['Cloud · YouTube Mix', 'JavaScriptCore sandbox'],
-            ['Queue #2 · Midnight', 'AVAudioEngine 10-band EQ']
-          ],
-          Songs: [
-            ['Plastic Love (24-bit)', 'FLAC · 4.8 MB/s · 07:53'],
-            ['Midnight Pretenders', 'ALAC · Sidecar .lrc'],
-            ['Search (YouTube): City Pop', 'Ephemeral preview queue']
-          ],
-          Albums: [
-            ['Variety (1984)', 'Disc 1 · 11 tracks'],
-            ['For You', 'Disc 1 · 8 tracks'],
-            ['Timely!!', 'Disc 1 · 10 tracks']
-          ],
-          Queues: [
-            ['Queue #1 · Workday', '14 tracks · Shuffle Off'],
-            ['Queue #2 · Midnight', '9 tracks · Repeat All'],
-            ['Search (NetEase): OST', 'Ephemeral · Excluded from Stats']
-          ],
-          Extensions: [
-            ['YouTube Search v1.1.0', 'Enabled · search, playlist, stream'],
-            ['NetEase Cloud v1.2.0', 'Enabled · qr_login, search'],
-            ['Apple Music v1.0.0', 'Enabled · lyrics, stream, search']
-          ]
-        },
-        specs: [
-          'UI Toolkit: Swift & SwiftUI (@Observable): Tabs & Sheets on iOS, Sidebar + Inspector on macOS/iPadOS',
-          'Audio & Media: AVAudioEngine + AVAudioUnitEQ, MPNowPlayingInfoCenter lock-screen controls',
-          'JS Runtime: Embedded JavaScriptCore with Compression + CryptoKit bridge',
-          'Formats: mp3, m4a, aac, flac, wav, aif, aiff, caf, alac',
-          'Shortcuts: Cmd+1 to Cmd+8 tabs, Cmd+F search, Cmd+R rescan, Cmd+P play/pause'
-        ]
-      },
-      android: {
-        windowTitle: 'MusicoAndroid · Material 3 / Material You (API 26+)',
-        sidebar: ['Folders', 'Songs', 'Albums', 'Queues', 'Extensions'],
-        views: {
-          Folders: [
-            ['SAF Music Folder', 'OPUS · FLAC · 24 tracks'],
-            ['Cloud · Bilibili Fav', 'QuickJS isolated VM'],
-            ['Queue #1 · Commute', 'DynamicsProcessing 10-band EQ']
-          ],
-          Songs: [
-            ['Rainy Waltz (Hi-Res)', 'FLAC · 96 kHz · Imported .lrc'],
-            ['Aria Hangout Mix', 'OPUS · Cloud Cached'],
-            ['Night Drive BGM', 'M4A · Embedded cover art']
-          ],
-          Albums: [
-            ['Summer Cassette Tape', '12 tracks · Track-ordered'],
-            ['Bilibili OST Favlist', '19 tracks · .musico-cloud.json'],
-            ['Lo-Fi Study Beats', '28 tracks · Local SAF']
-          ],
-          Queues: [
-            ['Queue #1 · Commute', '24 tracks · Repeat One'],
-            ['Queue #2 · Sleep 30m', '6 tracks · Fade stop'],
-            ['Queue #3 · Workout', '15 tracks · Shuffle On']
-          ],
-          Extensions: [
-            ['Bilibili Search v1.1.0', 'QuickJS · 32 MB heap cap'],
-            ['YouTube Search v1.1.0', 'Opus/M4A auto format'],
-            ['Cookie Redaction', 'Active in 200-entry log viewer']
-          ]
-        },
-        specs: [
-          'UI Toolkit: Kotlin & Jetpack Compose Material 3 with Dynamic Color & ModalBottomSheet',
-          'Audio & Media: AndroidX Media3 (ExoPlayer + MediaSessionService) & SAF DocumentFile',
-          'JS Runtime: Embedded QuickJS (quickjs-kt) with 32 MB heap guardrail & cookie redaction',
-          'Formats: mp3, m4a, aac, flac, wav, aif, aiff, caf, alac, ogg, opus, webm',
-          'Updates: Persistently signed release.apk with in-app FileProvider installer'
-        ]
-      },
-      windows: {
-        windowTitle: 'MusicoWindows · Fluent Design (.NET 8 WPF)',
-        sidebar: ['Folders', 'Songs', 'Albums', 'Queues', 'Extensions'],
-        views: {
-          Folders: [
-            ['D:\\MyMusic\\OST', 'FLAC · WMA · 42 tracks'],
-            ['Portable .\\Data\\', 'Jint + Windows HTTP Proxy'],
-            ['Queue #3 · Focus', 'NAudio BiQuadFilter EQ']
-          ],
-          Songs: [
-            ['Soundtrack Disc 1 - 01', 'FLAC · 24-bit · Same-folder .lrc'],
-            ['Studio Session Take 2', 'WAV · 1411 kbps'],
-            ['Search (Bilibili): OST', 'Proxy 127.0.0.1:7890']
-          ],
-          Albums: [
-            ['Chrono Acoustics', '2 Discs · 34 tracks'],
-            ['Google Drive Archive', 'Recursive folder · Synced'],
-            ['Midnight Jazz Trio', '8 tracks · TagLib# edited']
-          ],
-          Queues: [
-            ['Queue #3 · Focus', '42 tracks · BiQuad Pop EQ'],
-            ['Queue #4 · Late Night', '11 tracks · Stop after song'],
-            ['Queue #5 · Saved Cloud', '18 tracks · .musico-cloud.json']
-          ],
-          Extensions: [
-            ['Apple Music v1.0.0', 'Jint · serverUrl allowlisted'],
-            ['YouTube Search v1.1.0', 'HTTP Proxy supported'],
-            ['Portable Mode', '.\\Data\\Extensions\\ isolated']
-          ]
-        },
-        specs: [
-          'UI Toolkit: C# / .NET 8 WPF Fluent Design: Acrylic NavigationView, Reveal hover & Light/Dark sync',
-          'Audio & Media: NAudio (BiQuadFilter 10-band EQ), TagLibSharp & Windows 10 SMTC',
-          'JS Runtime: Embedded Jint engine with proxy-aware HttpClient & automatic cookie redaction',
-          'Formats: mp3, m4a, aac, flac, wav, aif, aiff, wma, ogg, opus',
-          'Shortcuts: Space play/pause, Ctrl+Left/Right skip, Ctrl+F search, Esc close'
-        ]
-      }
-    };
+    var SIDEBAR_KEYS = ['Folders', 'Songs', 'Albums', 'Queues', 'Extensions'];
 
-    var tabs = document.querySelectorAll('[data-platform-tab]');
+    function buildPlatformData() {
+      return {
+        apple: {
+          windowTitle: t('platform.apple.windowTitle', 'Musico · Apple HIG (iOS 17+ / iPadOS / macOS)'),
+          views: {
+            Folders: [
+              [t('platform.apple.folders.r1t', '~/Music/CityPop'), t('platform.apple.folders.r1s', 'FLAC · ALAC · 18 tracks')],
+              [t('platform.apple.folders.r2t', 'Cloud · YouTube Mix'), t('platform.apple.folders.r2s', 'JavaScriptCore sandbox')],
+              [t('platform.apple.folders.r3t', 'Queue #2 · Midnight'), t('platform.apple.folders.r3s', 'AVAudioEngine 10-band EQ')]
+            ],
+            Songs: [
+              [t('platform.apple.songs.r1t', 'Plastic Love (24-bit)'), t('platform.apple.songs.r1s', 'FLAC · 4.8 MB/s · 07:53')],
+              [t('platform.apple.songs.r2t', 'Midnight Pretenders'), t('platform.apple.songs.r2s', 'ALAC · Sidecar .lrc')],
+              [t('platform.apple.songs.r3t', 'Search (YouTube): City Pop'), t('platform.apple.songs.r3s', 'Ephemeral preview queue')]
+            ],
+            Albums: [
+              [t('platform.apple.albums.r1t', 'Variety (1984)'), t('platform.apple.albums.r1s', 'Disc 1 · 11 tracks')],
+              [t('platform.apple.albums.r2t', 'For You'), t('platform.apple.albums.r2s', 'Disc 1 · 8 tracks')],
+              [t('platform.apple.albums.r3t', 'Timely!!'), t('platform.apple.albums.r3s', 'Disc 1 · 10 tracks')]
+            ],
+            Queues: [
+              [t('platform.apple.queues.r1t', 'Queue #1 · Workday'), t('platform.apple.queues.r1s', '14 tracks · Shuffle Off')],
+              [t('platform.apple.queues.r2t', 'Queue #2 · Midnight'), t('platform.apple.queues.r2s', '9 tracks · Repeat All')],
+              [t('platform.apple.queues.r3t', 'Search (NetEase): OST'), t('platform.apple.queues.r3s', 'Ephemeral · Excluded from Stats')]
+            ],
+            Extensions: [
+              [t('platform.apple.extensions.r1t', 'YouTube Search v1.1.0'), t('platform.apple.extensions.r1s', 'Enabled · search, playlist, stream')],
+              [t('platform.apple.extensions.r2t', 'NetEase Cloud v1.2.0'), t('platform.apple.extensions.r2s', 'Enabled · qr_login, search')],
+              [t('platform.apple.extensions.r3t', 'Apple Music v1.0.0'), t('platform.apple.extensions.r3s', 'Enabled · lyrics, stream, search')]
+            ]
+          },
+          specs: [
+            t('platform.apple.spec1', 'UI Toolkit: Swift & SwiftUI (@Observable): Tabs & Sheets on iOS, Sidebar + Inspector on macOS/iPadOS'),
+            t('platform.apple.spec2', 'Audio & Media: AVAudioEngine + AVAudioUnitEQ, MPNowPlayingInfoCenter lock-screen controls'),
+            t('platform.apple.spec3', 'JS Runtime: Embedded JavaScriptCore with Compression + CryptoKit bridge'),
+            t('platform.apple.spec4', 'Formats: mp3, m4a, aac, flac, wav, aif, aiff, caf, alac'),
+            t('platform.apple.spec5', 'Shortcuts: Cmd+1 to Cmd+8 tabs, Cmd+F search, Cmd+R rescan, Cmd+P play/pause')
+          ]
+        },
+        android: {
+          windowTitle: t('platform.android.windowTitle', 'MusicoAndroid · Material 3 / Material You (API 26+)'),
+          views: {
+            Folders: [
+              [t('platform.android.folders.r1t', 'SAF Music Folder'), t('platform.android.folders.r1s', 'OPUS · FLAC · 24 tracks')],
+              [t('platform.android.folders.r2t', 'Cloud · Bilibili Fav'), t('platform.android.folders.r2s', 'QuickJS isolated VM')],
+              [t('platform.android.folders.r3t', 'Queue #1 · Commute'), t('platform.android.folders.r3s', 'DynamicsProcessing 10-band EQ')]
+            ],
+            Songs: [
+              [t('platform.android.songs.r1t', 'Rainy Waltz (Hi-Res)'), t('platform.android.songs.r1s', 'FLAC · 96 kHz · Imported .lrc')],
+              [t('platform.android.songs.r2t', 'Aria Hangout Mix'), t('platform.android.songs.r2s', 'OPUS · Cloud Cached')],
+              [t('platform.android.songs.r3t', 'Night Drive BGM'), t('platform.android.songs.r3s', 'M4A · Embedded cover art')]
+            ],
+            Albums: [
+              [t('platform.android.albums.r1t', 'Summer Cassette Tape'), t('platform.android.albums.r1s', '12 tracks · Track-ordered')],
+              [t('platform.android.albums.r2t', 'Bilibili OST Favlist'), t('platform.android.albums.r2s', '19 tracks · .musico-cloud.json')],
+              [t('platform.android.albums.r3t', 'Lo-Fi Study Beats'), t('platform.android.albums.r3s', '28 tracks · Local SAF')]
+            ],
+            Queues: [
+              [t('platform.android.queues.r1t', 'Queue #1 · Commute'), t('platform.android.queues.r1s', '24 tracks · Repeat One')],
+              [t('platform.android.queues.r2t', 'Queue #2 · Sleep 30m'), t('platform.android.queues.r2s', '6 tracks · Fade stop')],
+              [t('platform.android.queues.r3t', 'Queue #3 · Workout'), t('platform.android.queues.r3s', '15 tracks · Shuffle On')]
+            ],
+            Extensions: [
+              [t('platform.android.extensions.r1t', 'Bilibili Search v1.1.0'), t('platform.android.extensions.r1s', 'QuickJS · 32 MB heap cap')],
+              [t('platform.android.extensions.r2t', 'YouTube Search v1.1.0'), t('platform.android.extensions.r2s', 'Opus/M4A auto format')],
+              [t('platform.android.extensions.r3t', 'Cookie Redaction'), t('platform.android.extensions.r3s', 'Active in 200-entry log viewer')]
+            ]
+          },
+          specs: [
+            t('platform.android.spec1', 'UI Toolkit: Kotlin & Jetpack Compose Material 3 with Dynamic Color & ModalBottomSheet'),
+            t('platform.android.spec2', 'Audio & Media: AndroidX Media3 (ExoPlayer + MediaSessionService) & SAF DocumentFile'),
+            t('platform.android.spec3', 'JS Runtime: Embedded QuickJS (quickjs-kt) with 32 MB heap guardrail & cookie redaction'),
+            t('platform.android.spec4', 'Formats: mp3, m4a, aac, flac, wav, aif, aiff, caf, alac, ogg, opus, webm'),
+            t('platform.android.spec5', 'Updates: Persistently signed release.apk with in-app FileProvider installer')
+          ]
+        },
+        windows: {
+          windowTitle: t('platform.windows.windowTitle', 'MusicoWindows · Fluent Design (.NET 8 WPF)'),
+          views: {
+            Folders: [
+              [t('platform.windows.folders.r1t', 'D:\\MyMusic\\OST'), t('platform.windows.folders.r1s', 'FLAC · WMA · 42 tracks')],
+              [t('platform.windows.folders.r2t', 'Portable .\\Data\\'), t('platform.windows.folders.r2s', 'Jint + Windows HTTP Proxy')],
+              [t('platform.windows.folders.r3t', 'Queue #3 · Focus'), t('platform.windows.folders.r3s', 'NAudio BiQuadFilter EQ')]
+            ],
+            Songs: [
+              [t('platform.windows.songs.r1t', 'Soundtrack Disc 1 - 01'), t('platform.windows.songs.r1s', 'FLAC · 24-bit · Same-folder .lrc')],
+              [t('platform.windows.songs.r2t', 'Studio Session Take 2'), t('platform.windows.songs.r2s', 'WAV · 1411 kbps')],
+              [t('platform.windows.songs.r3t', 'Search (Bilibili): OST'), t('platform.windows.songs.r3s', 'Proxy 127.0.0.1:7890')]
+            ],
+            Albums: [
+              [t('platform.windows.albums.r1t', 'Chrono Acoustics'), t('platform.windows.albums.r1s', '2 Discs · 34 tracks')],
+              [t('platform.windows.albums.r2t', 'Google Drive Archive'), t('platform.windows.albums.r2s', 'Recursive folder · Synced')],
+              [t('platform.windows.albums.r3t', 'Midnight Jazz Trio'), t('platform.windows.albums.r3s', '8 tracks · TagLib# edited')]
+            ],
+            Queues: [
+              [t('platform.windows.queues.r1t', 'Queue #3 · Focus'), t('platform.windows.queues.r1s', '42 tracks · BiQuad Pop EQ')],
+              [t('platform.windows.queues.r2t', 'Queue #4 · Late Night'), t('platform.windows.queues.r2s', '11 tracks · Stop after song')],
+              [t('platform.windows.queues.r3t', 'Queue #5 · Saved Cloud'), t('platform.windows.queues.r3s', '18 tracks · .musico-cloud.json')]
+            ],
+            Extensions: [
+              [t('platform.windows.extensions.r1t', 'Apple Music v1.0.0'), t('platform.windows.extensions.r1s', 'Jint · serverUrl allowlisted')],
+              [t('platform.windows.extensions.r2t', 'YouTube Search v1.1.0'), t('platform.windows.extensions.r2s', 'HTTP Proxy supported')],
+              [t('platform.windows.extensions.r3t', 'Portable Mode'), t('platform.windows.extensions.r3s', '.\\Data\\Extensions\\ isolated')]
+            ]
+          },
+          specs: [
+            t('platform.windows.spec1', 'UI Toolkit: C# / .NET 8 WPF Fluent Design: Acrylic NavigationView, Reveal hover & Light/Dark sync'),
+            t('platform.windows.spec2', 'Audio & Media: NAudio (BiQuadFilter 10-band EQ), TagLibSharp & Windows 10 SMTC'),
+            t('platform.windows.spec3', 'JS Runtime: Embedded Jint engine with proxy-aware HttpClient & automatic cookie redaction'),
+            t('platform.windows.spec4', 'Formats: mp3, m4a, aac, flac, wav, aif, aiff, wma, ogg, opus'),
+            t('platform.windows.spec5', 'Shortcuts: Space play/pause, Ctrl+Left/Right skip, Ctrl+F search, Esc close')
+          ]
+        }
+      };
+    }
+
     var mockup = box.querySelector('.os-mockup');
     var titleEl = box.querySelector('[data-os-title]');
     var sideEl = box.querySelector('[data-os-sidebar]');
@@ -649,41 +749,51 @@
     }
 
     function render(key) {
+      var DATA = buildPlatformData();
       var d = DATA[key];
       if (!d) return;
       currentOs = key;
       if (mockup) mockup.dataset.osTheme = key;
-      tabs.forEach(function (t) {
-        t.setAttribute('aria-selected', String(t.dataset.platformTab === key));
+      document.querySelectorAll('[data-platform-tab]').forEach(function (tab) {
+        tab.setAttribute('aria-selected', String(tab.getAttribute('data-platform-tab') === key));
       });
       titleEl.textContent = d.windowTitle;
       sideEl.innerHTML = '';
-      d.sidebar.forEach(function (item) {
+      SIDEBAR_KEYS.forEach(function (viewKey) {
         var b = document.createElement('button');
         b.type = 'button';
-        b.textContent = item;
-        b.className = item === currentView ? 'active' : '';
+        b.dataset.viewKey = viewKey;
+        b.textContent = t('platform.nav.' + viewKey.toLowerCase(), viewKey);
+        b.className = viewKey === currentView ? 'active' : '';
         b.addEventListener('click', function () {
-          currentView = item;
+          currentView = viewKey;
           sideEl.querySelectorAll('button').forEach(function (x) {
-            x.classList.toggle('active', x.textContent === currentView);
+            x.classList.toggle('active', x.dataset.viewKey === currentView);
           });
-          renderRows(DATA[currentOs], currentView);
+          renderRows(buildPlatformData()[currentOs], currentView);
         });
         sideEl.appendChild(b);
       });
       renderRows(d, currentView);
       specsEl.innerHTML = d.specs.map(function (s) {
-        var idx = s.indexOf(':');
+        var idx = s.search(/[:：]/);
         if (idx > 0) return '<li><strong>' + s.slice(0, idx + 1) + '</strong>' + s.slice(idx + 1) + '</li>';
         return '<li>' + s + '</li>';
       }).join('');
     }
 
-    tabs.forEach(function (t) {
-      t.addEventListener('click', function () { render(t.dataset.platformTab); });
+    document.addEventListener('click', function (e) {
+      var target = e.target && e.target.nodeType === 1 ? e.target : (e.target && e.target.parentElement);
+      var btn = target && target.closest ? target.closest('[data-platform-tab]') : null;
+      if (!btn) return;
+      var key = btn.getAttribute('data-platform-tab');
+      if (key) render(key);
     });
+
     render('apple');
+    onLangChange(function () {
+      render(currentOs);
+    });
   }
 
   /* ── Latest GitHub Release Direct Downloads ──────────────────────────── */
@@ -788,6 +898,7 @@
       var primaryHost = hosts[0].replace(/^\*\./, '');
 
       var lines = [];
+      lines.push('// ' + t('gen.code.header', 'Musico Extension API v1 Starter ({name})').replace('{name}', name));
       lines.push("'use strict';");
       lines.push('');
       lines.push('var manifest = {');
@@ -810,6 +921,7 @@
       lines.push('  }');
       lines.push('};');
       lines.push('');
+      lines.push('// ' + t('gen.code.errHelper', 'Standard error helper with err.code for localized host UX'));
       lines.push('function extError(code, message) {');
       lines.push('  var err = new Error(message);');
       lines.push('  err.code = code;');
@@ -820,6 +932,7 @@
 
       if (has('playlist') || has('tree')) {
         lines.push('');
+        lines.push('// ' + t('gen.code.collectionHooks', 'URL matching & cloud collection fetcher'));
         lines.push('function canHandle(input) {');
         lines.push("  var raw = String((input && (input.extractedUrl || input.rawText)) || '');");
         lines.push("  var m = raw.match(/\\/(playlist|folder)\\/([a-zA-Z0-9_-]+)/i);");
@@ -863,6 +976,7 @@
 
       if (has('tree')) {
         lines.push('');
+        lines.push('// ' + t('gen.code.treeHook', 'Nested subfolder tree fetcher'));
         lines.push('async function fetchFolder(ctx, req) {');
         lines.push("  var res = await ctx.http.request({ method: 'GET', url: 'https://" + primaryHost + "/v1/folders/' + encodeURIComponent(req.folderId) });");
         lines.push("  var data = JSON.parse(res.text || '{}');");
@@ -883,6 +997,7 @@
 
       if (has('stream')) {
         lines.push('');
+        lines.push('// ' + t('gen.code.streamHook', 'Audio stream URL resolver'));
         lines.push('async function resolveStream(ctx, req) {');
         lines.push("  var headers = { Accept: 'application/json' };");
         if (has('cookie') || has('qr_login')) {
@@ -898,6 +1013,7 @@
 
       if (has('search')) {
         lines.push('');
+        lines.push('// ' + t('gen.code.searchHook', 'Opt-in cloud search hook'));
         lines.push('async function search(ctx, req) {');
         lines.push("  var headers = { Accept: 'application/json' };");
         if (has('cookie') || has('qr_login')) {
@@ -918,6 +1034,7 @@
 
       if (has('lyrics')) {
         lines.push('');
+        lines.push('// ' + t('gen.code.lyricsHook', 'On-demand cloud lyrics search hook'));
         lines.push('async function searchLyrics(ctx, req) {');
         lines.push("  var q = encodeURIComponent((req.title || '') + ' ' + (req.artist || ''));");
         lines.push("  var res = await ctx.http.request({ method: 'GET', url: 'https://" + primaryHost + "/v1/lyrics?q=' + q });");
@@ -931,6 +1048,7 @@
 
       if (has('qr_login')) {
         lines.push('');
+        lines.push('// ' + t('gen.code.qrHooks', 'QR code login session start & polling hooks'));
         lines.push('async function startQrLogin(ctx) {');
         lines.push("  var res = await ctx.http.request({ method: 'POST', url: 'https://" + primaryHost + "/v1/auth/qr/start' });");
         lines.push("  var d = JSON.parse(res.text || '{}');");
@@ -959,7 +1077,7 @@
       else if (has('lyrics')) cmd += 'search-lyrics "Idol" --artist "YOASOBI"';
       else if (has('playlist') || has('tree')) cmd += 'can-handle "https://' + primaryHost + '/playlist/demo_1"';
       else cmd += 'resolve-stream "track_1"';
-      outCmd.textContent = cmd;
+      outCmd.textContent = '# ' + t('gen.cli.header', 'Run locally with mock-runner.mjs (Node 18+)') + '\n' + cmd;
       dlBtn.dataset.filename = file;
     }
 
@@ -975,15 +1093,17 @@
       var url = URL.createObjectURL(blob);
       var a = document.createElement('a');
       a.href = url;
-      a.download = dlBtn.dataset.filename || 'extension.musico.js';
+      var fname = dlBtn.dataset.filename || 'extension.musico.js';
+      a.download = fname;
       document.body.appendChild(a);
       a.click();
       a.remove();
       URL.revokeObjectURL(url);
-      showToast('Downloaded ' + (dlBtn.dataset.filename || 'extension.musico.js') + ' ♪');
+      showToast(t('toast.downloaded', 'Downloaded {file} ♪').replace('{file}', fname));
     });
 
     buildCode();
+    onLangChange(buildCode);
   }
 
   /* ── Header Scroll & Mobile Drawer & Scroll Spy ──────────────────────── */

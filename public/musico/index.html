@@ -4,12 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>♪ Musico ♪ · Cozy Native Offline Music Player</title>
+  <meta name="i18n-title" content="page.title.home">
   <meta name="description" content="An offline, folder-loving, multi-queue local music player built 100% natively for Apple, Android, and Windows, plus cross-platform JavaScript extensions.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23FF8A7A'/><text x='50' y='67' font-size='56' text-anchor='middle'>♪</text></svg>">
-  <link rel="stylesheet" href="./assets/styles.css">
+  <link rel="stylesheet" href="./assets/styles.css?v=20261127b">
 </head>
 <body>
   <a class="skip-link" href="#main" data-i18n="common.skip">Skip to content</a>
@@ -28,15 +29,15 @@
       </nav>
 
       <div class="nav-actions">
-        <label class="sr-only" for="lang-select">Language</label>
-        <select id="lang-select" class="lang-select" aria-label="Language">
+        <label class="sr-only" for="lang-select" data-i18n="nav.lang">Language</label>
+        <select id="lang-select" class="lang-select" aria-label="Language" data-i18n-aria="nav.lang">
           <option value="en">EN</option>
           <option value="zh">简体中文</option>
           <option value="ja">日本語</option>
           <option value="fr">Français</option>
         </select>
 
-        <button id="theme-toggle" class="ctrl-pill" type="button" aria-pressed="false" aria-label="Toggle night shift">
+        <button id="theme-toggle" class="ctrl-pill" type="button" aria-pressed="false" aria-label="Toggle night shift" data-i18n-aria="nav.nightAria">
           <span class="theme-icon" aria-hidden="true">🌙</span>
           <span class="hide-xs" data-i18n="nav.night">Night Shift</span>
         </button>
@@ -64,7 +65,7 @@
       <div class="container hero-stack">
         <div class="hero-title-row">
           <h1 class="hero-display">♪ Musico ♪</h1>
-          <div class="mascot-wrap" data-mascot="happy" title="Click Mimi for kaomoji!">
+          <div class="mascot-wrap" data-mascot="happy" title="Click Mimi for kaomoji!" data-i18n-title-attr="mimi.tip">
             <span class="mascot-bubble">(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧</span>
           </div>
         </div>
@@ -84,7 +85,7 @@
         </div>
 
         <!-- Signature Interactive Cassette Mini-Player + 10-Band EQ Toy -->
-        <div id="cassette-player" class="cassette-stage" aria-label="Interactive Musico cassette and equalizer preview">
+        <div id="cassette-player" class="cassette-stage" aria-label="Interactive Musico cassette and equalizer preview" data-i18n-aria="cassette.aria">
           <div class="cassette-shell">
             <div class="cassette-top">
               <span class="cassette-label" data-player-title>01 · Rainy Folder Waltz (FLAC 24-bit)</span>
@@ -97,16 +98,16 @@
               <span class="tape-reel" aria-hidden="true"></span>
             </div>
 
-            <div class="track-tabs" role="group" aria-label="Sample tracks">
-              <button class="track-tab" type="button" aria-pressed="true">Rainy Folder</button>
-              <button class="track-tab" type="button" aria-pressed="false">Aria Hangout</button>
-              <button class="track-tab" type="button" aria-pressed="false">Ext Mix</button>
+            <div class="track-tabs" role="group" aria-label="Sample tracks" data-i18n-aria="cassette.tracksAria">
+              <button class="track-tab" type="button" aria-pressed="true" data-i18n="cassette.tab1">Rainy Folder</button>
+              <button class="track-tab" type="button" aria-pressed="false" data-i18n="cassette.tab2">Aria Hangout</button>
+              <button class="track-tab" type="button" aria-pressed="false" data-i18n="cassette.tab3">Ext Mix</button>
             </div>
 
             <div class="player-controls">
               <button class="play-btn" type="button" data-player-toggle aria-label="Play demo tape">▶</button>
               <div class="progress-wrap">
-                <div class="progress-track" data-player-progress role="slider" aria-label="Playback progress" tabindex="0">
+                <div class="progress-track" data-player-progress role="slider" aria-label="Playback progress" data-i18n-aria="cassette.progressAria" tabindex="0">
                   <div class="progress-fill" data-player-fill></div>
                 </div>
                 <div class="progress-times">
@@ -116,13 +117,13 @@
               </div>
             </div>
 
-            <div class="lyrics-strip" data-player-lyrics aria-label="Synced lyrics preview"></div>
+            <div class="lyrics-strip" data-player-lyrics aria-label="Synced lyrics preview" data-i18n-aria="cassette.lyricsAria"></div>
           </div>
 
           <div class="eq-panel">
             <div class="eq-head">
               <h3 data-i18n="home.eqTitle">10-Band ISO Equalizer (31 Hz to 16 kHz)</h3>
-              <div class="eq-presets" data-eq-presets role="group" aria-label="EQ presets"></div>
+              <div class="eq-presets" data-eq-presets role="group" aria-label="EQ presets" data-i18n-aria="cassette.eqPresetsAria"></div>
             </div>
 
             <div class="eq-sliders" data-eq-sliders></div>
@@ -145,10 +146,10 @@
             <h2 data-i18n="home.platformsTitle">Three native clients, zero web wrappers</h2>
             <p class="section-sub" data-i18n="home.platformsSub">Each OS gets its real native UI toolkit, hardware-friendly audio engine, media controls, and a tiny embedded JS engine for extensions.</p>
           </div>
-          <div class="segmented" role="tablist" aria-label="Select native platform" data-platform-tabs>
-            <button type="button" role="tab" aria-selected="true" data-platform-tab="apple">Apple (iOS / macOS)</button>
-            <button type="button" role="tab" aria-selected="false" data-platform-tab="android">Android</button>
-            <button type="button" role="tab" aria-selected="false" data-platform-tab="windows">Windows 10/11</button>
+          <div class="segmented" role="tablist" aria-label="Select native platform" data-i18n-aria="home.platformsAria" data-platform-tabs>
+            <button type="button" role="tab" aria-selected="true" data-platform-tab="apple" data-i18n="platform.tab.apple">Apple (iOS / macOS)</button>
+            <button type="button" role="tab" aria-selected="false" data-platform-tab="android" data-i18n="platform.tab.android">Android</button>
+            <button type="button" role="tab" aria-selected="false" data-platform-tab="windows" data-i18n="platform.tab.windows">Windows 10/11</button>
           </div>
         </div>
 
@@ -281,7 +282,7 @@
 
         <div class="download-grid">
           <div class="dl-tile">
-            <h3>Windows 10 / 11</h3>
+            <h3 data-i18n="dl.os.win">Windows 10 / 11</h3>
             <p style="font-size:var(--text-sm);color:var(--ink-muted);" data-i18n="dl.win">Self-contained .NET 8 installer or Portable .zip (portable.txt keeps state in .\Data\).</p>
             <div class="dl-actions">
               <a class="dl-btn" href="https://github.com/SEANPNEX/Musico/releases/download/v1.2.11/MusicoWindows-1.2.11-win-x64-Setup.exe" data-dl-asset="-Setup.exe">
@@ -295,7 +296,7 @@
             </div>
           </div>
           <div class="dl-tile">
-            <h3>Android 8.0+</h3>
+            <h3 data-i18n="dl.os.and">Android 8.0+</h3>
             <p style="font-size:var(--text-sm);color:var(--ink-muted);" data-i18n="dl.and">Persistently signed release.apk enables seamless in-app FileProvider updates.</p>
             <div class="dl-actions">
               <a class="dl-btn" href="https://github.com/SEANPNEX/Musico/releases/download/v1.2.11/MusicoAndroid-1.2.11-release.apk" data-dl-asset="-release.apk">
@@ -309,7 +310,7 @@
             </div>
           </div>
           <div class="dl-tile">
-            <h3>macOS Catalyst</h3>
+            <h3 data-i18n="dl.os.mac">macOS Catalyst</h3>
             <p style="font-size:var(--text-sm);color:var(--ink-muted);" data-i18n="dl.mac">Drag Musico.app into Applications (right-click then Open on first Gatekeeper launch).</p>
             <div class="dl-actions">
               <a class="dl-btn" href="https://github.com/SEANPNEX/Musico/releases/download/v1.2.11/Musico-1.2.11-macOS.dmg" data-dl-asset="-macOS.dmg">
@@ -319,7 +320,7 @@
             </div>
           </div>
           <div class="dl-tile">
-            <h3>iOS 17+ / iPadOS</h3>
+            <h3 data-i18n="dl.os.ios">iOS 17+ / iPadOS</h3>
             <p style="font-size:var(--text-sm);color:var(--ink-muted);" data-i18n="dl.ios">Sideload or re-sign via AltStore, SideStore, Sideloadly, or Xcode.</p>
             <div class="dl-actions">
               <a class="dl-btn" href="https://github.com/SEANPNEX/Musico/releases/download/v1.2.11/Musico-1.2.11-iOS-unsigned.ipa" data-dl-asset="-iOS-unsigned.ipa">
@@ -345,6 +346,7 @@
   </footer>
 
   <div id="musico-toast" class="toast" role="status" aria-live="polite"></div>
-  <script src="./assets/app.js"></script>
+  <script src="./assets/i18n/en.js?v=20261127b"></script>
+  <script src="./assets/app.js?v=20261127b"></script>
 </body>
 </html>
