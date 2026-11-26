@@ -2,7 +2,7 @@
   'use strict';
 
   var BASE = location.pathname.indexOf('/musico') === 0 ? '/musico/' : '/';
-  var ASSET_V = '20261127b';
+  var ASSET_V = '20261127c';
   var KAOMOJI_POOL = [
     '(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧',
     '♪(´▽｀)',
@@ -14,7 +14,22 @@
 
   window.MUSICO_I18N = window.MUSICO_I18N || {};
 
-  /* ── Floating Pastel Atmosphere ──────────────────────────────────────── */
+  var REDUCED_MOTION = function () {
+    return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  };
+
+  function animateSwap(el) {
+    if (!el || REDUCED_MOTION() || typeof el.animate !== 'function') return;
+    el.animate(
+      [
+        { opacity: 0, transform: 'translate3d(0, 6px, 0)' },
+        { opacity: 1, transform: 'translate3d(0, 0, 0)' }
+      ],
+      { duration: 180, easing: 'cubic-bezier(0.23, 1, 0.32, 1)' }
+    );
+  }
+
+  /* ── Frosted Moving Color Blocks + Crisp Zine Motifs ─────────────────── */
   function initFloatingBackground() {
     if (document.querySelector('.floating-bg')) return;
     var miniCassette =
@@ -37,22 +52,93 @@
     layer.className = 'floating-bg';
     layer.setAttribute('aria-hidden', 'true');
     layer.innerHTML =
-      '<div class="float-orb float-orb--1"></div>' +
-      '<div class="float-orb float-orb--2"></div>' +
-      '<div class="float-orb float-orb--3"></div>' +
-      '<div class="float-orb float-orb--4"></div>' +
-      '<div class="float-orb float-orb--5"></div>' +
+      '<div class="bg-mesh">' +
+      '<div class="color-block color-block--1"></div>' +
+      '<div class="color-block color-block--2"></div>' +
+      '<div class="color-block color-block--3"></div>' +
+      '<div class="color-block color-block--4"></div>' +
+      '<div class="color-block color-block--5"></div>' +
+      '</div>' +
+      '<div class="bg-motifs">' +
       '<span class="float-note float-note--1">♪</span>' +
       '<span class="float-note float-note--2 float-note--svg">' + miniCassette + '</span>' +
       '<span class="float-note float-note--3">♫</span>' +
       '<span class="float-note float-note--4 float-note--svg">' + miniVinyl + '</span>' +
       '<span class="float-note float-note--5">✦</span>' +
-      '<span class="float-note float-note--6">♩</span>' +
-      '<span class="float-note float-note--7 float-note--svg">' + miniCassette + '</span>' +
-      '<span class="float-note float-note--8">♫</span>' +
-      '<span class="float-note float-note--9 float-note--svg">' + miniVinyl + '</span>' +
-      '<span class="float-note float-note--10">♪</span>';
+      '<span class="float-note float-note--6 float-note--svg">' + miniCassette + '</span>' +
+      '<span class="float-note float-note--7">♫</span>' +
+      '<span class="float-note float-note--8">♪</span>' +
+      '</div>';
     document.body.insertBefore(layer, document.body.firstChild);
+  }
+
+  /* ── Mouse Click Note-Sparkle Pop (Desktop Fine Pointer) ─────────────── */
+  function initClickSparkles() {
+    if (!window.matchMedia || !window.matchMedia('(pointer: fine)').matches) return;
+    if (REDUCED_MOTION() || typeof Element.prototype.animate !== 'function') return;
+
+    var layer = document.createElement('div');
+    layer.className = 'click-sparkle-layer';
+    layer.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(layer);
+
+    var GLYPHS = ['♪', '♫', '✦', '♡', '✧'];
+    var COLORS = ['#FF715E', '#54C7A2', '#F5B800', '#FF7CB6', '#9D82F7'];
+    var active = 0;
+    var MAX_BURSTS = 12;
+
+    document.addEventListener('pointerdown', function (e) {
+      if (e.button !== 0 || e.pointerType === 'touch') return;
+      if (REDUCED_MOTION() || active >= MAX_BURSTS) return;
+      var el = e.target && e.target.nodeType === 1 ? e.target : (e.target && e.target.parentElement);
+      if (!el || (el.closest && el.closest('pre, code, input, textarea, select, [contenteditable="true"]'))) return;
+
+      active += 1;
+      var x = e.clientX;
+      var y = e.clientY;
+
+      var glyph = document.createElement('span');
+      glyph.className = 'click-glyph';
+      glyph.textContent = GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
+      glyph.style.color = COLORS[Math.floor(Math.random() * COLORS.length)];
+      var dx = Math.round((Math.random() - 0.5) * 28);
+      var rot = Math.round((Math.random() - 0.5) * 28);
+      layer.appendChild(glyph);
+
+      var gAnim = glyph.animate(
+        [
+          { opacity: 1, transform: 'translate3d(' + (x - 8) + 'px, ' + (y - 12) + 'px, 0) scale(0.85) rotate(0deg)' },
+          { opacity: 0, transform: 'translate3d(' + (x - 8 + dx) + 'px, ' + (y - 54) + 'px, 0) scale(1.12) rotate(' + rot + 'deg)' }
+        ],
+        { duration: 600, easing: 'cubic-bezier(0.23, 1, 0.32, 1)' }
+      );
+      gAnim.onfinish = function () {
+        glyph.remove();
+        active = Math.max(0, active - 1);
+      };
+
+      for (var i = 0; i < 4; i++) {
+        (function (idx) {
+          var dot = document.createElement('span');
+          dot.className = 'click-dot';
+          dot.style.background = COLORS[(idx + Math.floor(Math.random() * COLORS.length)) % COLORS.length];
+          var angle = (Math.PI * 2 * idx) / 4 + (Math.random() - 0.5) * 0.6;
+          var dist = 20 + Math.random() * 14;
+          var tx = Math.round(Math.cos(angle) * dist);
+          var ty = Math.round(Math.sin(angle) * dist - 6);
+          layer.appendChild(dot);
+
+          var dAnim = dot.animate(
+            [
+              { opacity: 1, transform: 'translate3d(' + (x - 3) + 'px, ' + (y - 3) + 'px, 0) scale(1)' },
+              { opacity: 0, transform: 'translate3d(' + (x - 3 + tx) + 'px, ' + (y - 3 + ty) + 'px, 0) scale(0.55)' }
+            ],
+            { duration: 420, easing: 'cubic-bezier(0.23, 1, 0.32, 1)' }
+          );
+          dAnim.onfinish = function () { dot.remove(); };
+        })(i);
+      }
+    }, { passive: true });
   }
 
   /* ── Toast Helper ────────────────────────────────────────────────────── */
@@ -153,12 +239,48 @@
     if (btn) {
       btn.addEventListener('click', function () {
         var next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-        applyTheme(next);
-        showToast(
-          next === 'dark'
-            ? t('toast.nightOn', 'Night Shift on (-.-)Zzz')
-            : t('toast.dayOn', 'Daylight zine mode (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧')
+        var notify = function () {
+          showToast(
+            next === 'dark'
+              ? t('toast.nightOn', 'Night Shift on (-.-)Zzz')
+              : t('toast.dayOn', 'Daylight zine mode (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧')
+          );
+        };
+        if (typeof document.startViewTransition !== 'function' || REDUCED_MOTION()) {
+          applyTheme(next);
+          notify();
+          return;
+        }
+        var rect = btn.getBoundingClientRect();
+        var x = rect.left + rect.width / 2;
+        var y = rect.top + rect.height / 2;
+        var endRadius = Math.hypot(
+          Math.max(x, window.innerWidth - x),
+          Math.max(y, window.innerHeight - y)
         );
+        document.documentElement.classList.add('theme-transitioning');
+        var transition = document.startViewTransition(function () {
+          applyTheme(next);
+        });
+        transition.ready.then(function () {
+          document.documentElement.animate(
+            {
+              clipPath: [
+                'circle(0px at ' + x + 'px ' + y + 'px)',
+                'circle(' + endRadius + 'px at ' + x + 'px ' + y + 'px)'
+              ]
+            },
+            {
+              duration: 420,
+              easing: 'cubic-bezier(0.23, 1, 0.32, 1)',
+              pseudoElement: '::view-transition-new(root)'
+            }
+          );
+        }).catch(function () {});
+        transition.finished.finally(function () {
+          document.documentElement.classList.remove('theme-transitioning');
+          notify();
+        });
       });
     }
   }
@@ -568,12 +690,14 @@
         trackIdx = idx;
         elapsed = 0;
         renderTrack();
+        animateSwap(lyricsBox);
       });
     });
 
     function setPlaying(next) {
       playing = next;
       shell.classList.toggle('playing', playing);
+      document.body.classList.toggle('is-tape-playing', playing);
       playBtn.textContent = playing ? '❚❚' : '▶';
       playBtn.setAttribute('aria-label', playing ? t('cassette.pauseAria', 'Pause demo tape') : t('cassette.playAria', 'Play demo tape'));
       kaoEl.textContent = playing ? '(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧' : '♪(´▽｀)';
@@ -771,6 +895,7 @@
             x.classList.toggle('active', x.dataset.viewKey === currentView);
           });
           renderRows(buildPlatformData()[currentOs], currentView);
+          animateSwap(rowsEl);
         });
         sideEl.appendChild(b);
       });
@@ -780,6 +905,9 @@
         if (idx > 0) return '<li><strong>' + s.slice(0, idx + 1) + '</strong>' + s.slice(idx + 1) + '</li>';
         return '<li>' + s + '</li>';
       }).join('');
+      animateSwap(rowsEl);
+      animateSwap(specsEl);
+      if (window.__syncPills) window.__syncPills();
     }
 
     document.addEventListener('click', function (e) {
@@ -857,7 +985,12 @@
     var panels = box.querySelectorAll('[data-install-panel]');
     function select(key) {
       tabs.forEach(function (t) { t.setAttribute('aria-selected', String(t.dataset.installTab === key)); });
-      panels.forEach(function (p) { p.hidden = p.getAttribute('data-install-panel') !== key; });
+      panels.forEach(function (p) {
+        var show = p.getAttribute('data-install-panel') === key;
+        p.hidden = !show;
+        if (show) animateSwap(p);
+      });
+      if (window.__syncPills) window.__syncPills();
     }
     tabs.forEach(function (t) {
       t.addEventListener('click', function () { select(t.dataset.installTab); });
@@ -1154,8 +1287,76 @@
     }
   }
 
+  /* ── Sliding Active Pill for .segmented Controls ─────────────────────── */
+  function initSlidingPills() {
+    var groups = document.querySelectorAll('.segmented');
+    if (!groups.length) return;
+
+    var pills = [];
+    groups.forEach(function (group) {
+      var pill = document.createElement('span');
+      pill.className = 'segmented-pill';
+      pill.setAttribute('aria-hidden', 'true');
+      group.insertBefore(pill, group.firstChild);
+      group.classList.add('has-pill');
+      pills.push({ group: group, pill: pill });
+    });
+
+    function syncAll() {
+      pills.forEach(function (entry) {
+        var active = entry.group.querySelector('button[aria-selected="true"]');
+        if (!active) return;
+        entry.pill.style.width = active.offsetWidth + 'px';
+        entry.pill.style.height = active.offsetHeight + 'px';
+        entry.pill.style.top = active.offsetTop + 'px';
+        entry.pill.style.transform = 'translate3d(' + active.offsetLeft + 'px, 0, 0)';
+      });
+    }
+
+    window.__syncPills = syncAll;
+    window.addEventListener('resize', syncAll, { passive: true });
+    onLangChange(function () {
+      requestAnimationFrame(syncAll);
+    });
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(syncAll);
+    }
+    requestAnimationFrame(syncAll);
+  }
+
+  /* ── Scroll-Triggered Staggered Reveals ──────────────────────────────── */
+  function initScrollReveals() {
+    if (REDUCED_MOTION() || !('IntersectionObserver' in window)) return;
+    var groups = document.querySelectorAll('.zine-grid, .portal-grid, .download-grid, .plugin-cards, .guide-dl-grid');
+    if (!groups.length) return;
+
+    var targets = [];
+    groups.forEach(function (g) {
+      var children = Array.prototype.slice.call(g.children);
+      children.forEach(function (el, idx) {
+        var rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.92) return;
+        el.style.setProperty('--reveal-delay', (idx * 45) + 'ms');
+        el.classList.add('reveal-ready');
+        targets.push(el);
+      });
+    });
+
+    if (!targets.length) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
+
+    targets.forEach(function (el) { io.observe(el); });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     initFloatingBackground();
+    initClickSparkles();
     initTheme();
     initMascots();
     initChrome();
@@ -1165,6 +1366,8 @@
     initLatestDownloads();
     initInstallTabs();
     initStarterGenerator();
+    initSlidingPills();
+    initScrollReveals();
     initI18n();
   });
 })();
