@@ -91,8 +91,35 @@
 
       <!-- 1. Installation -->
       <section id="install" class="doc-section">
-        <h2 data-i18n="guide.install.t">Downloads, Portable Mode &amp; Updates</h2>
-        <p data-i18n="guide.install.p">Grab the latest builds from GitHub Releases. Desktop and Android clients include an in-app updater that checks <code>releases/latest</code>, verifies <code>SHA256SUMS.txt</code>, and supports <strong>Skip Version</strong>.</p>
+        <h2><span data-i18n="guide.install.t">Downloads, Portable Mode &amp; Updates</span> <span class="release-pill" data-release-tag>v1.2.11</span></h2>
+        <p data-i18n="guide.install.p">Grab the latest builds directly below or from GitHub Releases. Desktop and Android clients include an in-app updater that checks <code>releases/latest</code>, verifies <code>SHA256SUMS.txt</code>, and supports <strong>Skip Version</strong>.</p>
+
+        <div class="guide-dl-grid">
+          <a class="dl-btn" href="https://github.com/SEANPNEX/Musico/releases/download/v1.2.11/MusicoWindows-1.2.11-win-x64-Setup.exe" data-dl-asset="-Setup.exe">
+            <span data-i18n="dl.btn.winSetup">Windows Installer (.exe) ↓</span>
+            <span class="dl-size" data-dl-size>52.5 MB</span>
+          </a>
+          <a class="dl-btn dl-btn--secondary" href="https://github.com/SEANPNEX/Musico/releases/download/v1.2.11/MusicoWindows-1.2.11-win-x64-portable.zip" data-dl-asset="-portable.zip">
+            <span data-i18n="dl.btn.winPortable">Windows Portable (.zip) ↓</span>
+            <span class="dl-size" data-dl-size>71.1 MB</span>
+          </a>
+          <a class="dl-btn" href="https://github.com/SEANPNEX/Musico/releases/download/v1.2.11/MusicoAndroid-1.2.11-release.apk" data-dl-asset="-release.apk">
+            <span data-i18n="dl.btn.andRelease">Android Release (.apk) ↓</span>
+            <span class="dl-size" data-dl-size>20.0 MB</span>
+          </a>
+          <a class="dl-btn" href="https://github.com/SEANPNEX/Musico/releases/download/v1.2.11/Musico-1.2.11-macOS.dmg" data-dl-asset="-macOS.dmg">
+            <span data-i18n="dl.btn.macDmg">macOS Catalyst (.dmg) ↓</span>
+            <span class="dl-size" data-dl-size>8.6 MB</span>
+          </a>
+          <a class="dl-btn dl-btn--secondary" href="https://github.com/SEANPNEX/Musico/releases/download/v1.2.11/Musico-1.2.11-iOS-unsigned.ipa" data-dl-asset="-iOS-unsigned.ipa">
+            <span data-i18n="dl.btn.iosIpa">iOS Unsigned (.ipa) ↓</span>
+            <span class="dl-size" data-dl-size>3.5 MB</span>
+          </a>
+          <a class="dl-btn dl-btn--secondary" href="https://github.com/SEANPNEX/Musico/releases/download/v1.2.11/SHA256SUMS.txt" target="_blank" rel="noopener noreferrer" data-dl-asset="SHA256SUMS.txt">
+            <span data-i18n="dl.btn.sha">SHA256SUMS.txt ↗</span>
+            <span class="dl-size">SHA-256</span>
+          </a>
+        </div>
 
         <ul>
           <li><strong>Windows 10 / 11 (x64, self-contained .NET 8):</strong> Use <code>MusicoWindows-&lt;ver&gt;-win-x64-Setup.exe</code> for per-user install, or unzip <code>MusicoWindows-&lt;ver&gt;-win-x64-portable.zip</code> anywhere and keep <code>portable.txt</code> beside <code>MusicoWindows.exe</code> so your library, queues, extensions, and settings live neatly inside <code>.\Data\</code> instead of <code>%LOCALAPPDATA%\Musico</code>.</li>

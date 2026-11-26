@@ -54,6 +54,13 @@ window.MUSICO_I18N.fr = {
   'dl.and': 'APK signé de façon persistante permettant les mises à jour intégrées via FileProvider.',
   'dl.mac': 'Glissez Musico.app dans Applications (clic droit puis Ouvrir au premier lancement).',
   'dl.ios': 'Installez ou re-signez via AltStore, SideStore, Sideloadly ou Xcode.',
+  'dl.btn.winSetup': 'Installateur (.exe) ↓',
+  'dl.btn.winPortable': 'Portable (.zip) ↓',
+  'dl.btn.andRelease': 'Release (.apk) ↓',
+  'dl.btn.andDebug': 'Debug (.apk) ↓',
+  'dl.btn.macDmg': 'Image disque (.dmg) ↓',
+  'dl.btn.iosIpa': 'Non signé (.ipa) ↓',
+  'dl.btn.sha': 'SHA256SUMS.txt ↗',
 
   'footer.copy': '♪ Musico ♪ · Licence MIT · Conçu nativement par Sean Guo (*^▽^*)',
   'footer.case': 'Étude d’architecture ↗',

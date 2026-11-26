@@ -54,6 +54,13 @@ window.MUSICO_I18N.zh = {
   'dl.and': '持续统一签名的 release.apk，支持丝滑的应用内 FileProvider 升级。',
   'dl.mac': '拖入 Applications 即可使用（首次启动遇 Gatekeeper 提示请右键选“打开”）。',
   'dl.ios': '可通过 AltStore、SideStore、Sideloadly 或 Xcode 签名侧载。',
+  'dl.btn.winSetup': '安装版 (.exe) ↓',
+  'dl.btn.winPortable': '便携版 (.zip) ↓',
+  'dl.btn.andRelease': '正式签名 (.apk) ↓',
+  'dl.btn.andDebug': '调试版 (.apk) ↓',
+  'dl.btn.macDmg': 'macOS 镜像 (.dmg) ↓',
+  'dl.btn.iosIpa': '未签名 (.ipa) ↓',
+  'dl.btn.sha': 'SHA256SUMS.txt 校验 ↗',
 
   'footer.copy': '♪ Musico ♪ · MIT 开源协议 · Sean Guo 用心打造 (*^▽^*)',
   'footer.case': '架构设计案例 ↗',

@@ -55,6 +55,13 @@ window.MUSICO_I18N.ja = {
   'dl.and': '継続署名済みの release.apk によりアプリ内 FileProvider 更新がスムーズに行えます。',
   'dl.mac': 'Applications へドラッグして起動（初回のみ右クリック → 開く）。',
   'dl.ios': 'AltStore・SideStore・Sideloadly・Xcode で署名してインストール。',
+  'dl.btn.winSetup': 'インストーラ (.exe) ↓',
+  'dl.btn.winPortable': 'ポータブル (.zip) ↓',
+  'dl.btn.andRelease': '正式署名版 (.apk) ↓',
+  'dl.btn.andDebug': 'デバッグ版 (.apk) ↓',
+  'dl.btn.macDmg': 'ディスクイメージ (.dmg) ↓',
+  'dl.btn.iosIpa': '未署名 (.ipa) ↓',
+  'dl.btn.sha': 'SHA256SUMS.txt ↗',
 
   'footer.copy': '♪ Musico ♪ · MIT License · Sean Guo によるネイティブ開発 (*^▽^*)',
   'footer.case': 'アーキテクチャ解説 ↗',
