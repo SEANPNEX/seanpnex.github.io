@@ -30,15 +30,15 @@ order: 5
 
 | クライアント | 対象プラットフォーム | 技術スタック | ネイティブデザインと OS 連携 |
 | --- | --- | --- | --- |
-| `Musico/` | iOS 17+、iPadOS、macOS (Catalyst) | Swift、SwiftUI（`@Observable`）、`AVAudioEngine` + `AVAudioUnitEQ`、`MPNowPlayingInfoCenter`、`JavaScriptCore`（`Compression` + `CryptoKit`） | Apple HIG — iOS のタブ／シート構成；macOS の `NSVisualEffectView` すりガラス半透明、独立したサイドバー色、`Cmd+K` コマンドパレット、フローティング・ミニプレーヤー、ドラッグ＆ドロップ対応 |
-| `MusicoAndroid/` | Android 8.0+ (API 26+) | Kotlin、Jetpack Compose、AndroidX Media3（ExoPlayer + `MediaSessionService`）、SAF `DocumentFile`、`DynamicsProcessing` EQ、`QuickJS`（`quickjs-kt`） | Material 3 / Material You — Dynamic Color、可変 `NavigationBar` / `NavigationRail`、`ModalBottomSheet`、カスタム外観テーマ、端末／`Musico` フォルダ削除対応 |
+| `Musico/` | iOS 17+、iPadOS、macOS (Catalyst) | Swift、SwiftUI（`@Observable`）、`AVAudioEngine` + `AVAudioUnitEQ`、`MPNowPlayingInfoCenter`、`JavaScriptCore`（`Compression` + `CryptoKit`） | Apple HIG — iOS のタブ／シート構成、スワイプ操作（フォルダ誤削除を防ぐ `allowsFullSwipe: false` およびキュー／プレイリストのスワイプ削除 **元に戻す（Undo）**）；macOS の `NSVisualEffectView` すりガラス半透明、独立したサイドバー色、`Cmd+K` コマンドパレット、フローティング・ミニプレーヤー、ドラッグ＆ドロップ対応 |
+| `MusicoAndroid/` | Android 8.0+ (API 26+) | Kotlin、Jetpack Compose、AndroidX Media3（ExoPlayer + `MediaSessionService`）、SAF `DocumentFile`、`DynamicsProcessing` EQ、`QuickJS`（`quickjs-kt`） | Material 3 / Material You — Dynamic Color、可変 `NavigationBar` / `NavigationRail`、`ModalBottomSheet`、Outlook × Material You の 2 段階 `MusicoSwipeActionRow` スワイプ操作（きれいにクリップされた背面レール、触覚ディテント、`≡` ハンドルが引っかからない `DragReorder` ハンドルのスワイプ排他ロック）、選択チェックマークが窮屈にならない 1 行セグメントピッカー、キュー **Undo** 付きのダークテーマ `MusicoSnackbarHost` スナックバー、カスタム外観テーマ、端末／`Musico` フォルダ削除対応 |
 | `MusicoWindows/` | Windows 10 (2004+)・Windows 11 | C# / .NET 8 WPF、NAudio（`BiQuadFilter` 10 バンド EQ）、TagLibSharp、Windows 10 SMTC、`Jint` | Fluent Design — Windows 11 DWM 角丸／背景＆Acrylic、独立したサイドバー色と不透明度、`Ctrl+K` コマンドパレット、フローティング・ミニプレーヤー、ドラッグ＆ドロップ対応 |
 
 ## 主な機能
 
 - **フォルダ指向ライブラリ・ドラッグ＆ドロップ・安全な削除：** 元のディレクトリ階層を保ったままローカルフォルダ（`Music`、`Documents`、または任意のフォルダ）をマウントできるほか、macOS/Windows ではフォルダや音声ファイルをウィンドウへ直接ドラッグ＆ドロップできます（ドロップしたフォルダは **フォルダ** にマウントされ、曲は即座に再生し、ライブラリ外のファイルは既定の音楽フォルダへコピー）。ドライブを取り外したりフォルダを移動しても、**再配置（Relocate）** でプレイリストや再生履歴を失わずに再接続できます。削除操作は **ライブラリから削除** とディスク上の削除（macOS の **ゴミ箱に入れる**、Windows の **ごみ箱に移動**、iOS/Android の Android `Musico` フォルダを含む **端末から削除**）を明確に分離。FLAC、ALAC、WAV、AIFF、MP3、AAC/M4A（プラットフォームにより OGG、Opus、WMA、WebM）のロスレス／ロッシー再生に幅広く対応します。
 - **クラウドフォルダ・任意の Drive OAuth 2.0・オフライン同期：** 公開または Cookie 認証ソースを **フォルダ** 内に直接マウント可能――**YouTube / YouTube Music**（プレイリスト、`RD` ミックス、アルバム、単曲）、**Bilibili**（`BV`/`av` マルチパート動画、`favlist`、コレクション）、**Google Drive**（再帰的フォルダ探索と単一ファイル）に対応します。公開／共有 Drive リンクはログイン不要で利用でき、非公開フォルダや大容量ファイルのダウンロード回避には、任意の **設定 → Google Drive アカウント** にユーザー自身の無料デスクトップアプリ用 OAuth 2.0 クライアント ID（`drive.readonly` + `userinfo.email`、テストモード、自動 `http://127.0.0.1:<port>/oauth2callback`、**Google Drive に再接続** 付き 7 日間テストトークン）を設定できます。トラックは `.musico-cloud.json` マニフェストとともにローカルへ保存し、**クラウドから更新** で差分取得できます。
-- **複数の独立した再生キュー：** 気分や聴くシーンに合わせて並列キューを立ち上げ、いつでもリネーム・並び替え・クリア・切り替えが可能。各キューが現在のトラック、再生位置、シャッフル順、リピートモード（`Off` / `All` / `One`）を個別に保持します。
+- **複数の独立した再生キュー・重複排除 `Play Next`・モバイルスワイプ操作：** 気分や聴くシーンに合わせて並列キューを立ち上げ、いつでもリネーム・並び替え・クリア・切り替えが可能。各キューが現在のトラック、再生位置、シャッフル順、リピートモード（`Off` / `All` / `One`）を個別に保持します。Apple・Android・Windows 共通の **重複排除 `Play Next`**（`insertNext`）は、曲を複製する代わりにキュー内の再生中以外の既存エントリをきれいに移動し、再生中の曲には影響を与えません。プラットフォーム間で統一されたモバイルスワイプ操作では、右スワイプで **次に再生（Play Next）**、**ライブラリ曲** の左スワイプで **ライブラリから削除**／**端末から削除** の確認ダイアログ（一時的なクラウド検索プレビューでは無効）を開き、**キュー**・**プレイリスト**・**お気に入り** の左スワイプでは即時削除と **元に戻す（Undo）**（キュー位置・アクティブトラックインデックス・再生再開タイムスタンプを正確に復元）に対応。さらに Android ではフォルダのスワイプ削除しきい値を引き上げ（`~44%` / `min 140dp`）誤削除を防ぎます。
 - **統合設定の外観カスタマイズ＆デスクトップ向け機能：** 統合された **設定**（`Cmd+,` / `Ctrl+,`）では、システム／ライト／ダークモード、厳選された背景＆アクセントプリセット、カスタム HEX/RGB/システムカラーピッカー、ライブの **再生中プレビュー**、ワンクリック **コントラスト自動修正（Auto-fix Contrast）** 付き内蔵 **WCAG 2.1 コントラストチェック**、および **画像の可視性**（不透明度）と **背景のぼかし** を調整できるカスタム背景画像を提供します。デスクトップ版ではさらにグローバルな **コマンドパレット／クイックジャンプ**（`Cmd+K` / `Ctrl+K`）、**フローティング・ミニプレーヤー** ウィンドウ（`Cmd+Shift+N` / `Ctrl+Shift+N`）、拡充されたキーボードショートカット（歌詞 `Cmd+Shift+L` / `Ctrl+Shift+L` / `L`、キュー `Cmd+Shift+Q` / `Ctrl+Shift+Q` / `Q`、シーク `±10秒`、音量 `±5%`、ミュート、シャッフル／リピート、再生中画面）を備えます。
 - **再生体験とライブラリ管理の細部：**
   - **10 バンド ISO イコライザ**（`31 Hz`–`16 kHz`、プリアンプ `-12 dB`〜`+12 dB`、8 プリセット + `Custom`）。
@@ -55,7 +55,7 @@ order: 5
 
 ## 配布とリリースエンジニアリング
 
-マルチプラットフォーム対応の GitHub Actions ワークフローにより、すべてのターゲット向けにタグ付きリリース（最新 `v1.3.2`）を自動ビルド・テスト・公開しており、macOS Catalyst `.dmg`、iOS 未署名 `.ipa`、Android リリース／デバッグ `.apk`、Windows NSIS インストーラ（`Setup.exe`）および自己完結型ポータブル `.zip`（`portable.txt` 配置時は `.\Data\` に状態を保持）を生成します。Windows・Android・macOS には `SHA256SUMS.txt` 検証と **バージョンをスキップ（Skip Version）** に対応したアプリ内アップデータも組み込まれています。
+マルチプラットフォーム対応の GitHub Actions ワークフローにより、すべてのターゲット向けにタグ付きリリース（最新 `v1.3.4`）を自動ビルド・テスト・公開しており、macOS Catalyst `.dmg`、iOS 未署名 `.ipa`、Android リリース／デバッグ `.apk`、Windows NSIS インストーラ（`Setup.exe`）および自己完結型ポータブル `.zip`（`portable.txt` 配置時は `.\Data\` に状態を保持）を生成します。Windows・Android・macOS には `SHA256SUMS.txt` 検証と **バージョンをスキップ（Skip Version）** に対応したアプリ内アップデータも組み込まれています。
 
 ## リポジトリとダウンロード
 

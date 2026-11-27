@@ -13,7 +13,7 @@
       var base = location.pathname.indexOf('/musico') === 0 ? '/musico/' : '/';
       var l = document.createElement('link');
       l.rel = 'stylesheet';
-      l.href = base + 'assets/styles.css?v=20261127e';
+      l.href = base + 'assets/styles.css?v=20261128a';
       document.head.appendChild(l);
     })();
   </script>
@@ -41,15 +41,15 @@
       document.getElementById('err-guide').href = base + 'guide/';
       document.getElementById('err-dev').href = base + 'developers/';
       var en = document.createElement('script');
-      en.src = base + 'assets/i18n/en.js?v=20261127e';
+      en.src = base + 'assets/i18n/en.js?v=20261128a';
       en.onload = function () {
         var s = document.createElement('script');
-        s.src = base + 'assets/app.js?v=20261127e';
+        s.src = base + 'assets/app.js?v=20261128a';
         document.body.appendChild(s);
       };
       en.onerror = function () {
         var s = document.createElement('script');
-        s.src = base + 'assets/app.js?v=20261127e';
+        s.src = base + 'assets/app.js?v=20261128a';
         document.body.appendChild(s);
       };
       document.body.appendChild(en);

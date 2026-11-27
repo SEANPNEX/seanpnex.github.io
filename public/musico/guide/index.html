@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>User Guide &amp; Official Plugins · ♪ Musico ♪</title>
   <meta name="i18n-title" content="page.title.guide">
-  <meta name="description" content="Complete Musico listener guide: local folders, Relocate, cloud folders, multi-queue playback, lyrics, shortcuts, and one-click official plugins.">
+  <meta name="description" content="Complete Musico listener walkthrough: installation, local folders, Relocate, library views, tag editor, multi-queues, mobile swipes with Undo, EQ, lyrics, custom themes, Cloud Hangouts, and official plugins.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23FF8A7A'/><text x='50' y='67' font-size='56' text-anchor='middle'>♪</text></svg>">
-  <link rel="stylesheet" href="../assets/styles.css?v=20261127e">
+  <link rel="stylesheet" href="../assets/styles.css?v=20261128a">
 </head>
 <body>
   <a class="skip-link" href="#main" data-i18n="common.skip">Skip to content</a>
@@ -55,27 +55,34 @@
 
   <div id="mobile-drawer" class="mobile-drawer">
     <a href="../" data-internal-link><span data-i18n="nav.home">Overview</span> <span>♪</span></a>
-    <a href="./" data-internal-link><span data-i18n="nav.guide">User Guide &amp; Plugins</span> <span>→</span></a>
-    <a href="../developers/" data-internal-link><span data-i18n="nav.devs">Developer Docs (API v1)</span> <span>→</span></a>
+    <a href="./" data-internal-link><span data-i18n="nav.guide">User Guide</span> <span>→</span></a>
+    <a href="../developers/" data-internal-link><span data-i18n="nav.devs">Developer Docs</span> <span>→</span></a>
   </div>
 
   <div class="container docs-shell">
     <aside class="docs-sidebar" aria-label="User Guide navigation">
       <div class="sidebar-group">
-        <div class="sidebar-title" data-i18n="guide.sb.start">Getting Started</div>
+        <div class="sidebar-title" data-i18n="guide.sb.start">Setup &amp; Library</div>
         <ul class="sidebar-nav">
-          <li><a href="#install" class="active" data-i18n="guide.sb.install">Downloads &amp; Installation</a></li>
-          <li><a href="#folders" data-i18n="guide.sb.folders">Folders, Relocate &amp; Formats</a></li>
-          <li><a href="#cloud" data-i18n="guide.sb.cloud">Cloud Hangouts &amp; Offline Sync</a></li>
+          <li><a href="#install" class="active" data-i18n="guide.sb.install">Downloads &amp; Updates</a></li>
+          <li><a href="#folders" data-i18n="guide.sb.folders">Folders &amp; Relocate</a></li>
+          <li><a href="#browsing" data-i18n="guide.sb.browsing">Library Views &amp; Tags</a></li>
         </ul>
       </div>
       <div class="sidebar-group">
-        <div class="sidebar-title" data-i18n="guide.sb.playback">Listening &amp; Craft</div>
+        <div class="sidebar-title" data-i18n="guide.sb.playback">Daily Listening</div>
         <ul class="sidebar-nav">
-          <li><a href="#queues" data-i18n="guide.sb.queues">Queues, EQ &amp; Synced Lyrics</a></li>
-          <li><a href="#appearance" data-i18n="guide.sb.appearance">Appearance, Palette &amp; Mini-Player</a></li>
+          <li><a href="#queues" data-i18n="guide.sb.queues">Queues &amp; Mobile Swipes</a></li>
+          <li><a href="#audio" data-i18n="guide.sb.audio">EQ, Lyrics, Timer &amp; Stats</a></li>
+          <li><a href="#appearance" data-i18n="guide.sb.appearance">Settings &amp; Appearance</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-group">
+        <div class="sidebar-title" data-i18n="guide.sb.power">Cloud &amp; Power Use</div>
+        <ul class="sidebar-nav">
+          <li><a href="#cloud" data-i18n="guide.sb.cloud">Cloud Hangouts &amp; Sync</a></li>
           <li><a href="#plugins" data-i18n="guide.sb.plugins">Official Plugins Hub</a></li>
-          <li><a href="#shortcuts" data-i18n="guide.sb.shortcuts">Shortcuts, Tags &amp; UX Tips</a></li>
+          <li><a href="#shortcuts" data-i18n="guide.sb.shortcuts">Keyboard Shortcuts</a></li>
         </ul>
       </div>
     </aside>
@@ -83,66 +90,79 @@
     <main id="main" class="docs-main">
       <header class="docs-header-card docs-header-card--guide">
         <div>
-          <h1 data-i18n="guide.hero.t">Listener UX Guide &amp; Plugin Hub</h1>
-          <p data-i18n="guide.hero.d">Everything you need to organize local folders, sync cloud playlists offline, tune your 10-band EQ, and install community plugins cleanly (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧</p>
+          <h1 data-i18n="guide.hero.t">Complete Listener Walkthrough &amp; Plugin Hub</h1>
+          <p data-i18n="guide.hero.d">An end-to-end guide to Musico — from first install, folders, and multi-queues to swipe gestures, synced lyrics, custom themes, Cloud Hangouts, and official plugins (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧</p>
         </div>
         <div class="mascot-wrap" data-mascot="happy" title="Click Mimi!" data-i18n-title-attr="mimi.tip">
           <span class="mascot-bubble">♪(´▽｀)</span>
         </div>
       </header>
 
-      <!-- 1. Installation -->
+      <!-- 1. Downloads, First-Run Setup & In-App Updates -->
       <section id="install" class="doc-section">
-        <h2><span data-i18n="guide.install.t">Downloads, Portable Mode &amp; Updates</span> <span class="release-pill" data-release-tag>v1.3.2</span></h2>
-        <p data-i18n="guide.install.p">Grab the latest builds directly below or from GitHub Releases. Desktop and Android clients include an in-app updater that checks <code>releases/latest</code>, verifies <code>SHA256SUMS.txt</code>, and supports <strong>Skip Version</strong>.</p>
+        <h2><span data-i18n="guide.install.t">Downloads, First-Run Setup &amp; In-App Updates</span> <span class="release-pill" data-release-tag>v1.3.4</span></h2>
+        <p data-i18n-html="guide.install.p">Grab the latest builds directly below or from GitHub Releases. Every release includes <code>SHA256SUMS.txt</code> and an in-app updater on desktop &amp; Android.</p>
 
         <div class="guide-dl-grid">
-          <a class="dl-btn" href="https://github.com/SEANPNEX/Musico/releases/download/v1.3.2/MusicoWindows-1.3.2-win-x64-Setup.exe" data-dl-asset="-Setup.exe">
-            <span data-i18n="dl.btn.winSetup">Windows Installer (.exe) ↓</span>
+          <a class="dl-btn" href="https://github.com/SEANPNEX/Musico/releases/download/v1.3.4/MusicoWindows-1.3.4-win-x64-Setup.exe" data-dl-asset="-Setup.exe">
+            <span data-i18n="dl.btn.winSetup">Installer (.exe) ↓</span>
             <span class="dl-size" data-dl-size>52.8 MB</span>
           </a>
-          <a class="dl-btn dl-btn--secondary" href="https://github.com/SEANPNEX/Musico/releases/download/v1.3.2/MusicoWindows-1.3.2-win-x64-portable.zip" data-dl-asset="-portable.zip">
-            <span data-i18n="dl.btn.winPortable">Windows Portable (.zip) ↓</span>
+          <a class="dl-btn dl-btn--secondary" href="https://github.com/SEANPNEX/Musico/releases/download/v1.3.4/MusicoWindows-1.3.4-win-x64-portable.zip" data-dl-asset="-portable.zip">
+            <span data-i18n="dl.btn.winPortable">Portable (.zip) ↓</span>
             <span class="dl-size" data-dl-size>71.6 MB</span>
           </a>
-          <a class="dl-btn" href="https://github.com/SEANPNEX/Musico/releases/download/v1.3.2/MusicoAndroid-1.3.2-release.apk" data-dl-asset="-release.apk">
-            <span data-i18n="dl.btn.andRelease">Android Release (.apk) ↓</span>
+          <a class="dl-btn" href="https://github.com/SEANPNEX/Musico/releases/download/v1.3.4/MusicoAndroid-1.3.4-release.apk" data-dl-asset="-release.apk">
+            <span data-i18n="dl.btn.andRelease">Release (.apk) ↓</span>
             <span class="dl-size" data-dl-size>20.2 MB</span>
           </a>
-          <a class="dl-btn" href="https://github.com/SEANPNEX/Musico/releases/download/v1.3.2/Musico-1.3.2-macOS.dmg" data-dl-asset="-macOS.dmg">
-            <span data-i18n="dl.btn.macDmg">macOS Catalyst (.dmg) ↓</span>
+          <a class="dl-btn dl-btn--secondary" href="https://github.com/SEANPNEX/Musico/releases/download/v1.3.4/MusicoAndroid-1.3.4-debug.apk" data-dl-asset="-debug.apk">
+            <span data-i18n="dl.btn.andDebug">Debug (.apk) ↓</span>
+            <span class="dl-size" data-dl-size>28.0 MB</span>
+          </a>
+          <a class="dl-btn" href="https://github.com/SEANPNEX/Musico/releases/download/v1.3.4/Musico-1.3.4-macOS.dmg" data-dl-asset="-macOS.dmg">
+            <span data-i18n="dl.btn.macDmg">Disk Image (.dmg) ↓</span>
             <span class="dl-size" data-dl-size>10.8 MB</span>
           </a>
-          <a class="dl-btn dl-btn--secondary" href="https://github.com/SEANPNEX/Musico/releases/download/v1.3.2/Musico-1.3.2-iOS-unsigned.ipa" data-dl-asset="-iOS-unsigned.ipa">
-            <span data-i18n="dl.btn.iosIpa">iOS Unsigned (.ipa) ↓</span>
+          <a class="dl-btn dl-btn--secondary" href="https://github.com/SEANPNEX/Musico/releases/download/v1.3.4/Musico-1.3.4-iOS-unsigned.ipa" data-dl-asset="-iOS-unsigned.ipa">
+            <span data-i18n="dl.btn.iosIpa">Unsigned (.ipa) ↓</span>
             <span class="dl-size" data-dl-size>4.4 MB</span>
           </a>
-          <a class="dl-btn dl-btn--secondary" href="https://github.com/SEANPNEX/Musico/releases/download/v1.3.2/SHA256SUMS.txt" target="_blank" rel="noopener noreferrer" data-dl-asset="SHA256SUMS.txt">
+          <a class="dl-btn dl-btn--secondary" href="https://github.com/SEANPNEX/Musico/releases/download/v1.3.4/SHA256SUMS.txt" target="_blank" rel="noopener noreferrer" data-dl-asset="SHA256SUMS.txt">
             <span data-i18n="dl.btn.sha">SHA256SUMS.txt ↗</span>
             <span class="dl-size">SHA-256</span>
           </a>
         </div>
 
         <ul>
-          <li data-i18n-html="guide.install.li1"><strong>Windows 10 / 11 (x64, self-contained .NET 8):</strong> Use <code>MusicoWindows-&lt;ver&gt;-win-x64-Setup.exe</code> for per-user install, or unzip <code>MusicoWindows-&lt;ver&gt;-win-x64-portable.zip</code> anywhere and keep <code>portable.txt</code> beside <code>MusicoWindows.exe</code> so your library, queues, extensions, and settings live neatly inside <code>.\Data\</code> instead of <code>%LOCALAPPDATA%\Musico</code>.</li>
-          <li data-i18n-html="guide.install.li2"><strong>Android 8.0+ (API 26+):</strong> Install the persistently signed <code>MusicoAndroid-&lt;ver&gt;-release.apk</code> so in-app <code>FileProvider</code> upgrades install smoothly without losing data.</li>
+          <li data-i18n-html="guide.install.li1"><strong>Windows 10 / 11 (x64, self-contained .NET 8):</strong> Run <code>MusicoWindows-&lt;ver&gt;-win-x64-Setup.exe</code> for per-user install with Start Menu / Desktop shortcuts, system tray, and single-instance focus — or unzip <code>MusicoWindows-&lt;ver&gt;-win-x64-portable.zip</code> anywhere and keep <code>portable.txt</code> beside <code>MusicoWindows.exe</code> so your library, queues, extensions, and settings live inside <code>.\Data\</code> instead of <code>%LOCALAPPDATA%\Musico</code>.</li>
+          <li data-i18n-html="guide.install.li2"><strong>Android 8.0+ (API 26+):</strong> Install the persistently signed <code>MusicoAndroid-&lt;ver&gt;-release.apk</code> so in-app <code>FileProvider</code> upgrades install smoothly without losing data (or grab <code>debug.apk</code> for local testing).</li>
           <li data-i18n-html="guide.install.li3"><strong>macOS (Catalyst):</strong> Open <code>Musico-&lt;ver&gt;-macOS.dmg</code> and drag <code>Musico.app</code> into <code>Applications</code>. Because builds are ad-hoc signed, right-click then choose <strong>Open</strong> on first launch if Gatekeeper asks.</li>
           <li data-i18n-html="guide.install.li4"><strong>iOS 17+ / iPadOS:</strong> Sideload or re-sign <code>Musico-&lt;ver&gt;-iOS-unsigned.ipa</code> using AltStore, SideStore, Sideloadly, or Xcode.</li>
         </ul>
+
+        <h3 class="guide-subhead" data-i18n="guide.install.upT">In-App Updater &amp; Checksum Verification</h3>
+        <ol class="walkthrough-steps">
+          <li data-i18n-html="guide.install.up1"><strong>Check for Updates:</strong> Desktop (Windows Setup/Portable &amp; macOS) and Android clients automatically poll GitHub <code>releases/latest</code>, or you can trigger a check manually from Settings.</li>
+          <li data-i18n-html="guide.install.up2"><strong>Skip Version or Upgrade:</strong> Choose <strong>Skip Version</strong> to silence a specific release banner, or proceed to download — Windows and Android verify <code>SHA256SUMS.txt</code> before launching the self-replacing Portable zip, Setup installer, or Android <code>FileProvider</code> installer (macOS downloads and opens the new <code>.dmg</code>).</li>
+          <li data-i18n-html="guide.install.up3"><strong>iOS Note:</strong> Because personal-team sideloaded IPAs cannot self-update in place, re-sign and install new <code>.ipa</code> releases via AltStore, SideStore, Sideloadly, or Xcode.</li>
+        </ol>
       </section>
 
-      <!-- 2. Local Folders & Relocate -->
+      <!-- 2. Folders, Scanning, Relocate & Safe Deletion -->
       <section id="folders" class="doc-section">
-        <h2 data-i18n="guide.folders.t">Folder-First Library, Relocate &amp; Formats</h2>
-        <p data-i18n="guide.folders.p">Musico respects your directory tree as the source of truth. Head to <strong>Folders</strong> then <strong>Add Folder</strong> to mount directories, and tap <strong>Rescan</strong> (or pull to refresh on mobile) when adding new files.</p>
+        <h2 data-i18n="guide.folders.t">Folders, Scanning, Relocate &amp; Safe Deletion</h2>
+        <p data-i18n="guide.folders.p">Musico treats your directory tree as the source of truth — never flattening folders into a black-box database.</p>
+        <p data-i18n-html="guide.folders.roots"><strong>OS Default Roots:</strong> macOS starts with <code>Music</code>; iOS/iPadOS watches <code>Files › On My iPhone/iPad › Musico</code>; Android uses <code>Musico Folder</code> plus any Storage Access Framework (SAF) directory; Windows starts with <code>MyMusic</code> (or <code>.\Data\</code> in Portable mode).</p>
 
-        <ul>
-          <li data-i18n-html="guide.folders.li1"><strong>Default root locations:</strong> macOS starts with <code>Music</code>; iOS/iPadOS watches <code>Files › On My iPhone/iPad › Musico</code>; Android uses <code>Musico Folder</code> plus any Storage Access Framework (SAF) directory; Windows starts with <code>MyMusic</code>.</li>
-          <li data-i18n-html="guide.folders.li2"><strong>Locate Again… (Relocate):</strong> Unplugged an external SSD or renamed a parent folder? Use <strong>Relocate</strong> to reconnect the root path without losing playlists, queue history, or play counts.</li>
-          <li data-i18n-html="guide.folders.li3"><strong>Restore Removed Subfolders:</strong> Accidentally hid a folder from your library view? Restore hidden subfolders anytime from folder options.</li>
-          <li data-i18n-html="guide.folders.li4"><strong>Drag-and-Drop Import (Desktop):</strong> Drop folders onto Musico to mount them in <strong>Folders</strong>, or drop audio files to play immediately (files outside your library are copied neatly into your default music folder).</li>
-          <li data-i18n-html="guide.folders.li5"><strong>Remove vs Delete on Disk:</strong> Removing a track or folder lets you choose between <strong>Remove from Library</strong> (database only) or deleting the actual files (<strong>Move to Trash</strong> on macOS, <strong>Move to Recycle Bin</strong> on Windows, or <strong>Delete from Device</strong> on iOS/Android including Android's Musico folder).</li>
-        </ul>
+        <h3 class="guide-subhead" data-i18n="guide.folders.stepsT">Day-to-Day Folder Workflow</h3>
+        <ol class="walkthrough-steps">
+          <li data-i18n-html="guide.folders.s1"><strong>Mount Local Folders:</strong> Open <strong>Folders → Add Folder</strong> to pick any local or SAF directory without copying or altering your subfolders.</li>
+          <li data-i18n-html="guide.folders.s2"><strong>Rescan for New Tracks:</strong> Tap <strong>Rescan</strong> (or pull to refresh on iOS/Android) whenever you add new audio files to a mounted folder.</li>
+          <li data-i18n-html="guide.folders.s3"><strong>Desktop Drag-and-Drop:</strong> Drop folders onto the macOS or Windows window to mount them directly in <strong>Folders</strong>, or drop audio files to play immediately (tracks outside your library copy neatly into your default music folder).</li>
+          <li data-i18n-html="guide.folders.s4"><strong>Relocate &amp; Restore Subfolders:</strong> Moved a folder or unplugged an external drive? Pick <strong>Locate Again… (Relocate)</strong> to reconnect the path while keeping playlists, queue history, and play stats intact. Hidden a subfolder by mistake? Use <strong>Restore Removed Subfolders</strong> anytime.</li>
+          <li data-i18n-html="guide.folders.s5"><strong>Remove vs. Delete on Disk:</strong> Removing a track or folder gives an explicit choice — <strong>Remove from Library</strong> (hides it from Musico only) or disk deletion (<strong>Move to Trash</strong> on macOS, <strong>Move to Recycle Bin</strong> on Windows, or <strong>Delete from Device</strong> on iOS/Android, including Android's <code>Musico</code> folder).</li>
+        </ol>
 
         <div class="table-wrap">
           <table>
@@ -174,51 +194,137 @@
         </div>
       </section>
 
-      <!-- 3. Cloud Folders -->
-      <section id="cloud" class="doc-section">
-        <h2 data-i18n="guide.cloud.t">Cloud Hangouts &amp; Offline Sync</h2>
-        <p data-i18n="guide.cloud.p">In <strong>Folders → Add Cloud Folder</strong>, paste any URL, share-sheet snippet, or ID. Musico automatically strips surrounding share text! Leave provider on <strong>Auto-Detect</strong> or pick a built-in source or enabled JS extension.</p>
+      <!-- 3. Library Views, Context Menu & Song Info / Tag Editor -->
+      <section id="browsing" class="doc-section">
+        <h2 data-i18n="guide.browsing.t">Library Views, Context Menu &amp; Song Info / Tag Editor</h2>
 
+        <h3 class="guide-subhead" data-i18n="guide.browsing.viewsT">5 Core Library Views</h3>
         <ul>
-          <li data-i18n-html="guide.cloud.li1"><strong>YouTube / YouTube Music:</strong> Playlists, <code>RD</code> mixes, album browse URLs, single videos, and Shorts. Public playlists and tracks stream with zero login.</li>
-          <li data-i18n-html="guide.cloud.li2"><strong>Bilibili:</strong> Single or multi-part <code>BV</code>/<code>av</code> videos, <code>favlist</code>, collections/series, and <code>b23.tv</code> short links.</li>
-          <li data-i18n-html="guide.cloud.li3"><strong>Google Drive (Zero-Login or Optional OAuth 2.0):</strong> Shared folders (including <code>resourcekey</code> links with recursive nested audio discovery) and single audio URLs work with zero login. For private Drive files, optionally connect your own free Desktop app OAuth 2.0 Client ID in <strong>Settings → Google Drive Account</strong> (<code>drive.readonly</code> + <code>userinfo.email</code>, automatic <code>http://127.0.0.1:&lt;port&gt;/oauth2callback</code>; Testing mode tokens expire every 7 days — tap <strong>Reconnect Google Drive</strong> to refresh).</li>
-          <li data-i18n-html="guide.cloud.li4"><strong>Save to Local Folder &amp; Incremental Sync:</strong> Open a cloud folder or track menu and pick <strong>Save to Local Folder…</strong>. Synced directories store a <code>.musico-cloud.json</code> manifest so clicking <strong>Update from Cloud</strong> pulls only newly added tracks.</li>
+          <li data-i18n-html="guide.browsing.v1"><strong>Folders:</strong> Browse your exact directory hierarchy, mount local or cloud roots, and drag tracks via the <code>≡</code> handle.</li>
+          <li data-i18n-html="guide.browsing.v2"><strong>Songs:</strong> Sort by Title, Artist, Album, or Date Added, filter with instant diacritic-insensitive search, or switch to an enabled search extension.</li>
+          <li data-i18n-html="guide.browsing.v3"><strong>Albums:</strong> Automatically grouped and sorted cleanly by disc number and track number.</li>
+          <li data-i18n-html="guide.browsing.v4"><strong>Artists:</strong> Jump straight to every track and album belonging to an artist.</li>
+          <li data-i18n-html="guide.browsing.v5"><strong>Playlists &amp; Favourites:</strong> Manage custom playlists alongside the built-in <strong>Favourites</strong> collection.</li>
         </ul>
+
+        <h3 class="guide-subhead" data-i18n="guide.browsing.menuT">Track Context Menu Actions</h3>
+        <p data-i18n-html="guide.browsing.menuP">Tap the ellipsis (<code>···</code>) or right-click any track for 8 quick actions: <strong>Play Next</strong> (deduplicated), <strong>Add to Queue</strong>, <strong>Add to Another Queue</strong>, <strong>Play in New Queue</strong>, <strong>Add to Playlist</strong>, <strong>Add/Remove Favourites</strong>, <strong>Song Info</strong>, and <strong>Remove / Delete</strong>.</p>
+
+        <h3 class="guide-subhead" data-i18n="guide.browsing.tagsT">Song Info &amp; Inline Tag Editor</h3>
+        <p data-i18n-html="guide.browsing.tagsP">Open <strong>Song Info</strong> on any track to inspect audio precision, sample rate, bit rate, file size, channels, and play count, quick-search by Artist/Album/Genre, or edit <code>Title</code>, <code>Artist</code>, <code>Album</code>, <code>Genre</code>, and cover art inline (plus folder/track sidecar covers).</p>
+      </section>
+
+      <!-- 4. Multiple Independent Queues, Deduplicated Play Next & Mobile Swipes -->
+      <section id="queues" class="doc-section">
+        <h2 data-i18n="guide.queues.t">Multiple Independent Queues, Deduplicated Play Next &amp; Mobile Swipes</h2>
+        <p data-i18n="guide.queues.p">Keep separate listening moods running side by side — each queue saves its own track list, playback timestamp, shuffle order, and repeat mode.</p>
+
+        <ol class="walkthrough-steps">
+          <li data-i18n-html="guide.queues.s1"><strong>Create &amp; Switch Parallel Queues:</strong> Spin up, rename, reorder, clear, or delete queues anytime in <strong>Queues</strong> (or the desktop Queue side panel). Every queue persists its exact track, position, shuffle state, and repeat mode (<code>Off</code> / <code>All</code> / <code>One</code>).</li>
+          <li data-i18n-html="guide.queues.s2"><strong>Deduplicated Play Next (v1.3.3+):</strong> Triggering <strong>Play Next</strong> moves an existing non-current occurrence of that song right after the active track instead of creating a duplicate, leaving the currently playing song untouched.</li>
+          <li data-i18n-html="guide.queues.s3"><strong>Isolated Drag Reorder (v1.3.4):</strong> Grab the <code>≡</code> handle in <strong>Folders</strong> or <strong>Queues</strong> to reorder songs smoothly — horizontal swipe gestures stay strictly isolated from the drag handle.</li>
+        </ol>
+
+        <h3 class="guide-subhead" data-i18n="guide.queues.swipeT">Mobile Swipe Gestures &amp; Undo (iOS &amp; Android)</h3>
+        <p data-i18n="guide.queues.swipeP">Android (v1.3.3–v1.3.4) uses Outlook × Material You 2-stage swipe actions paired with aligned iOS swipe behavior:</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th data-i18n="guide.tbl.screen">Screen / List</th>
+                <th data-i18n="guide.tbl.swipeRight">Swipe Right</th>
+                <th data-i18n="guide.tbl.swipeLeft">Swipe Left</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-i18n-html="guide.queues.sw1.scr"><strong>Folders</strong></td>
+                <td data-i18n="guide.queues.sw1.r">—</td>
+                <td data-i18n-html="guide.queues.sw1.l">Safe threshold (~44% / min 140dp on Android; <code>allowsFullSwipe: false</code> on iOS) → confirm remove</td>
+              </tr>
+              <tr>
+                <td data-i18n-html="guide.queues.sw2.scr"><strong>Library Songs</strong></td>
+                <td data-i18n-html="guide.queues.sw2.r"><strong>Play Next</strong></td>
+                <td data-i18n-html="guide.queues.sw2.l"><strong>Remove / Delete</strong> dialog (disabled on ephemeral cloud search previews)</td>
+              </tr>
+              <tr>
+                <td data-i18n-html="guide.queues.sw3.scr"><strong>Queues, Playlists &amp; Favourites</strong></td>
+                <td data-i18n-html="guide.queues.sw3.r"><strong>Play Next</strong></td>
+                <td data-i18n-html="guide.queues.sw3.l">Instant removal + dark-themed <strong>Undo</strong> snackbar/toast restoring exact queue order, active index, and playback timestamp</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 5. Equalizer, Synced Lyrics, Sleep Timer, Stats & OS Media Controls -->
+      <section id="audio" class="doc-section">
+        <h2 data-i18n="guide.audio.t">Equalizer, Synced Lyrics, Sleep Timer, Stats &amp; OS Media Controls</h2>
+
+        <h3 class="guide-subhead" data-i18n="guide.audio.eqT">10-Band ISO Equalizer</h3>
+        <p data-i18n-html="guide.audio.eqP">Flip the master EQ switch, dial preamp from <code>-12 dB</code> to <code>+12 dB</code>, and sculpt 10 ISO bands (<code>31 Hz</code>–<code>16 kHz</code>) backed by native <code>AVAudioUnitEQ</code>, Android <code>DynamicsProcessing</code>, and Windows <code>NAudio BiQuadFilter</code>. Pick from 8 presets (<code>Flat</code>, <code>Bass Boost</code>, <code>Treble Boost</code>, <code>Rock</code>, <code>Pop</code>, <code>Jazz</code>, <code>Classical</code>, <code>Vocal</code>) or save your own <code>Custom</code> curve.</p>
+
+        <h3 class="guide-subhead" data-i18n="guide.audio.lyrT">Offline-First &amp; On-Demand Online Lyrics</h3>
+        <ol class="walkthrough-steps">
+          <li data-i18n-html="guide.audio.l1"><strong>4-Tier Offline Playback Lookup:</strong> During playback, Musico never hits the network automatically — it checks <strong>Imported</strong> <code>.lrc</code>/<code>.txt</code> → exact <strong>Sidecar</strong> <code>.lrc</code>/<code>.txt</code> → non-recursive <strong>Same-Folder Fuzzy Match</strong> → <strong>Embedded</strong> tags, decoding UTF-8, UTF-16 BOM, and GB18030 (including multi-timestamp <code>.lrc</code>).</li>
+          <li data-i18n-html="guide.audio.l2"><strong>Live Lyrics Controls:</strong> Tap any timed line to seek, customize <strong>font size &amp; alignment</strong>, and hit <strong>Sync to current line</strong> after scrolling ahead.</li>
+          <li data-i18n-html="guide.audio.l3"><strong>On-Demand Search Online…:</strong> Query <strong>Auto</strong>, built-in <strong>LRCLIB</strong> &amp; <strong>NetEase</strong>, or enabled <code>"lyrics"</code> extensions, preview candidates live, toggle bilingual translations, and confirm to save (optionally exporting a sibling <code>.lrc</code> file).</li>
+        </ol>
+
+        <h3 class="guide-subhead" data-i18n="guide.audio.extraT">Sleep Timer, Listening Stats &amp; System Media Controls</h3>
+        <p data-i18n-html="guide.audio.extraP">Set a <strong>Sleep Timer</strong> for <code>5</code>–<code>90</code> minutes, a custom duration, or <strong>End of current song</strong>. Inspect <strong>Stats</strong> across <strong>Recent</strong>, <strong>Plays</strong>, <strong>Top Artists</strong>, <strong>Top Albums</strong>, <strong>Not Lately</strong>, and <strong>Never</strong>. Playback hooks natively into Apple Lock Screen / Control Center (<code>MPNowPlayingInfoCenter</code>), Android <code>MediaSessionService</code>, and Windows 10 SMTC.</p>
+      </section>
+
+      <!-- 6. Unified Settings, Custom Appearance & Desktop Power Tools -->
+      <section id="appearance" class="doc-section">
+        <h2 data-i18n="guide.appearance.t">Unified Settings, Custom Appearance &amp; Desktop Power Tools</h2>
+        <p data-i18n-html="guide.appearance.p">Press <code>Cmd+,</code> (macOS), <code>Ctrl+,</code> (Windows), or open <strong>Settings</strong> to tune language, themes, contrast, and desktop windows:</p>
+        <ol class="walkthrough-steps">
+          <li data-i18n-html="guide.appearance.s1"><strong>Language &amp; Theme Mode:</strong> Switch live between <code>English</code> and <code>简体中文</code> (or <code>Follow System</code>), and choose <code>System</code>, <code>Light</code>, or <code>Dark</code> mode.</li>
+          <li data-i18n-html="guide.appearance.s2"><strong>Colors, Live Preview &amp; WCAG 2.1 Check:</strong> Pick curated presets or custom hex/RGB/system colors while watching the live <strong>Now Playing Preview</strong>. Built-in WCAG 2.1 contrast warnings include one-click <strong>Auto-fix Contrast</strong>.</li>
+          <li data-i18n-html="guide.appearance.s3"><strong>Background Image &amp; Desktop Glass:</strong> Add a custom background with adjustable <strong>Image Visibility</strong> and <strong>Background Blur</strong>. macOS uses <code>NSVisualEffectView</code> translucency + independent sidebar color (no sidebar opacity on macOS); Windows 11 adds DWM rounded corners/backdrop, <strong>Acrylic</strong>, and independent sidebar color &amp; opacity.</li>
+          <li data-i18n-html="guide.appearance.s4"><strong>Command Palette &amp; Floating Mini-Player:</strong> Press <code>Cmd+K</code> / <code>Ctrl+K</code> to jump anywhere via the Global Command Palette, or press <code>Cmd+Shift+N</code> / <code>Ctrl+Shift+N</code> to pop out the Floating Mini-Player.</li>
+        </ol>
+      </section>
+
+      <!-- 7. Cloud Hangouts, Offline Sync & Google Drive OAuth 2.0 -->
+      <section id="cloud" class="doc-section">
+        <h2 data-i18n="guide.cloud.t">Cloud Hangouts, Offline Sync &amp; Google Drive OAuth 2.0</h2>
+        <p data-i18n-html="guide.cloud.p">Mount remote playlists and cloud folders directly alongside local directories in <strong>Folders</strong>:</p>
+
+        <ol class="walkthrough-steps">
+          <li data-i18n-html="guide.cloud.s1"><strong>Paste URL or Share Text:</strong> Open <strong>Folders → Add Cloud Folder</strong> and paste a URL, share-sheet snippet, or ID (surrounding text is stripped automatically). Leave <strong>Auto-Detect</strong> on or pick a provider.</li>
+          <li data-i18n-html="guide.cloud.s2"><strong>Built-In Providers &amp; Extensions:</strong> Mount <strong>YouTube / YouTube Music</strong> (playlists, <code>RD</code> mixes, album browse URLs, single videos, Shorts), <strong>Bilibili</strong> (single/multi-part <code>BV</code>/<code>av</code>, <code>favlist</code>, collections, <code>b23.tv</code>), <strong>Google Drive</strong> (public/shared folders with <code>resourcekey</code> recursive audio discovery &amp; single audio URLs with zero login), or any enabled JS extension.</li>
+          <li data-i18n-html="guide.cloud.s3"><strong>Save Offline &amp; Incremental Sync:</strong> Open a cloud folder or track menu and click <strong>Save to Local Folder…</strong> (with download quality picker). Synced directories write a <code>.musico-cloud.json</code> manifest so <strong>Update from Cloud</strong> pulls only newly added tracks.</li>
+          <li data-i18n-html="guide.cloud.s4"><strong>Per-Folder Cookies &amp; Proxy:</strong> Add a cookie only for private items or higher quality — each Cloud Folder isolates its own cookie. On Windows, configure an HTTP Proxy (e.g. <code>7890</code> or <code>http://127.0.0.1:7890</code>) for YouTube, Drive, and proxy-capable extensions.</li>
+        </ol>
 
         <div class="callout callout--mint">
           <strong data-i18n="guide.cloud.calloutT">Cookie Isolation, Drive OAuth 2.0 &amp; Windows HTTP Proxy (・ω・)ﾉ</strong>
           <p data-i18n-html="guide.cloud.calloutP">Each mounted Cloud Folder keeps its own strictly isolated Cookie (needed only for private playlists or higher quality). Google Drive public/shared links stay zero-login, while optional OAuth 2.0 lives in <strong>Settings → Google Drive Account</strong>. On Windows, you can also configure an HTTP proxy (e.g. <code>7890</code> or <code>http://127.0.0.1:7890</code>) for YouTube, Google Drive, and proxy-capable extensions.</p>
         </div>
+
+        <details class="guide-accordion">
+          <summary data-i18n="guide.cloud.oauthSummary">Optional: Google Drive OAuth 2.0 Client ID Setup Guide (6 Steps)</summary>
+          <div class="guide-accordion-body">
+            <p data-i18n-html="guide.cloud.oauthWhy"><strong>Why bring your own Client ID?</strong> Public/shared Google Drive links work with zero login. Google classifies <code>drive.readonly</code> as a restricted scope, so personal free <strong>Desktop app</strong> OAuth credentials let you access private Drive folders and bypass large-file confirmation prompts with zero Google app review.</p>
+            <ol class="walkthrough-steps">
+              <li data-i18n-html="guide.cloud.oauth1">Open <a href="https://console.cloud.google.com/" target="_blank" rel="noopener noreferrer">Google Cloud Console</a> and create or select a project.</li>
+              <li data-i18n-html="guide.cloud.oauth2">Go to <strong>APIs &amp; Services → Library</strong>, search for <strong>Google Drive API</strong>, and click <strong>Enable</strong>.</li>
+              <li data-i18n-html="guide.cloud.oauth3">Open <strong>Google Auth Platform</strong> (or <strong>OAuth consent screen</strong>): set User Type to <strong>External</strong>, keep publishing status in <strong>Testing</strong>, add your own Gmail under <strong>Test users</strong>, and add scopes <code>https://www.googleapis.com/auth/drive.readonly</code> and <code>https://www.googleapis.com/auth/userinfo.email</code>.</li>
+              <li data-i18n-html="guide.cloud.oauth4">Open <strong>Clients → + Create Client</strong> (or <strong>Credentials → OAuth client ID</strong>), select <strong>Desktop app</strong> (Musico uses automatic <code>http://127.0.0.1:&lt;port&gt;/oauth2callback</code> loopback across macOS, Windows, Android, and iOS with zero manual redirect URI setup), and copy your <strong>Client ID</strong> and <strong>Client Secret</strong>.</li>
+              <li data-i18n-html="guide.cloud.oauth5">In Musico, open <strong>Settings → Google Drive Account</strong>, paste your Client ID &amp; Secret, and tap <strong>Sign In with Google</strong>.</li>
+              <li data-i18n-html="guide.cloud.oauth6"><strong>7-Day Testing Mode Expiry:</strong> Testing refresh tokens expire after 7 days — just tap <strong>Reconnect Google Drive</strong> in Settings whenever prompted.</li>
+            </ol>
+          </div>
+        </details>
       </section>
 
-      <!-- 4. Queues, EQ & Lyrics -->
-      <section id="queues" class="doc-section">
-        <h2 data-i18n="guide.queues.t">Multiple Queues, 10-Band EQ &amp; Lyrics</h2>
-        <ul>
-          <li data-i18n-html="guide.queues.li1"><strong>Parallel Queues:</strong> Create, rename, reorder, clear, or delete independent queues anytime. Every queue remembers its current track, exact playback position, shuffle order, and repeat mode (<code>Off</code> / <code>All</code> / <code>One</code>). Grab the drag handle (<code>≡</code>) in <strong>Folders</strong> or <strong>Queues</strong> to reorder tracks.</li>
-          <li data-i18n-html="guide.queues.li2"><strong>Track Context Menu:</strong> Tap or right-click any track for <strong>Play Next</strong>, <strong>Add to Queue</strong>, <strong>Add to Another Queue</strong>, <strong>Play in New Queue</strong>, <strong>Add to Playlist</strong>, <strong>Favourites</strong>, and <strong>Song Info</strong>.</li>
-          <li data-i18n-html="guide.queues.li3"><strong>10-Band ISO Equalizer:</strong> Tune <code>31 Hz</code> to <code>16 kHz</code> plus <code>-12 dB</code> to <code>+12 dB</code> preamp, or pick from 8 presets (<code>Flat</code>, <code>Bass Boost</code>, <code>Treble Boost</code>, <code>Rock</code>, <code>Pop</code>, <code>Jazz</code>, <code>Classical</code>, <code>Vocal</code>) and <code>Custom</code>.</li>
-          <li data-i18n-html="guide.queues.li4"><strong>Local-First Lyrics &amp; On-Demand Online Search:</strong> During playback, Musico stays strictly offline and checks <strong>Imported</strong> → <strong>Sidecar</strong> (<code>.lrc</code>/<code>.txt</code>) → <strong>Same-Folder Fuzzy Match</strong> → <strong>Embedded tags</strong>, decoding UTF-8, UTF-16 BOM, and GB18030 with tap-to-seek, customizable <strong>font size &amp; alignment</strong>, and one-tap <strong>Sync to current line</strong>. Tap <strong>Search Online…</strong> to query <strong>Auto</strong>, built-in <strong>LRCLIB</strong> &amp; <strong>NetEase</strong>, or enabled <code>"lyrics"</code> extensions, preview candidates, toggle bilingual lines, and optionally export a sibling <code>.lrc</code> file on confirm.</li>
-        </ul>
-      </section>
-
-      <!-- 5. Unified Settings, Appearance & Desktop Power Tools -->
-      <section id="appearance" class="doc-section">
-        <h2 data-i18n="guide.appearance.t">Unified Settings, Custom Appearance &amp; Desktop Power Tools</h2>
-        <p data-i18n-html="guide.appearance.p">Press <code>Cmd+,</code> (macOS) or <code>Ctrl+,</code> (Windows) to open Unified Settings and customize your player without sacrificing readability:</p>
-        <ul>
-          <li data-i18n-html="guide.appearance.li1"><strong>Theme Modes, Presets &amp; Color Pickers:</strong> Switch between <code>System</code>, <code>Light</code>, and <code>Dark</code> modes, pick curated background &amp; accent presets, or dial in custom hex/RGB/system colors while watching the live <strong>Now Playing Preview</strong>.</li>
-          <li data-i18n-html="guide.appearance.li2"><strong>WCAG 2.1 Contrast Checker &amp; Auto-fix:</strong> Built-in contrast validation warns when colors drop below WCAG 2.1 legibility thresholds, with one-click <strong>Auto-fix Contrast</strong>.</li>
-          <li data-i18n-html="guide.appearance.li3"><strong>Custom Background Image &amp; Native Desktop Glass:</strong> Set a background image with adjustable <strong>Image Visibility</strong> (opacity) and <strong>Background Blur</strong>. macOS uses <code>NSVisualEffectView</code> frosted translucency plus an independent sidebar background color (no sidebar opacity on macOS); Windows 11 adds DWM rounded corners/backdrop, <strong>Acrylic</strong>, and independent sidebar background color &amp; opacity.</li>
-          <li data-i18n-html="guide.appearance.li4"><strong>Command Palette &amp; Floating Mini-Player:</strong> Press <code>Cmd+K</code> / <code>Ctrl+K</code> to jump anywhere via the Command Palette, or press <code>Cmd+Shift+N</code> / <code>Ctrl+Shift+N</code> to pop out the Floating Mini-Player window.</li>
-        </ul>
-      </section>
-
-      <!-- 5. Official Plugins Hub -->
+      <!-- 8. Official Plugins Hub, Sign-In & Ephemeral Cloud Search -->
       <section id="plugins" class="doc-section">
         <h2 data-i18n="guide.plugins.t">Official Plugins Hub (One-Click Import)</h2>
-        <p data-i18n="guide.plugins.p">Install all 4 official community plugins at once by pasting this unified pack URL into Musico's <strong>Import from HTTPS URL</strong>. Each bundled plugin sets <code>updateUrl</code> so Musico upgrades them automatically on future releases!</p>
+        <p data-i18n-html="guide.plugins.p">Install all 4 official community plugins at once by pasting this unified pack URL into Musico's <strong>Import from HTTPS URL</strong>. Each bundled plugin sets <code>updateUrl</code> so Musico upgrades them automatically on future releases!</p>
 
         <div class="hub-banner">
           <strong data-i18n="guide.plugins.packT">Unified All-Plugins Pack (YouTube, Bilibili, NetEase &amp; Apple Music)</strong>
@@ -277,7 +383,7 @@
         <!-- Per-Platform Install Switcher -->
         <div id="install-switcher" style="display:flex;flex-direction:column;gap:12px;">
           <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
-            <h3 data-i18n="guide.installTabs.t">How to import on your device</h3>
+            <h3 class="guide-subhead" style="margin-top:0;" data-i18n="guide.installTabs.t">How to import on your device</h3>
             <div class="segmented" role="tablist" aria-label="Choose OS for plugin install steps" data-i18n-aria="guide.installTabs.aria">
               <button type="button" role="tab" aria-selected="true" data-install-tab="apple" data-i18n="guide.installTabs.apple">iOS / iPadOS / macOS</button>
               <button type="button" role="tab" aria-selected="false" data-install-tab="android" data-i18n="guide.installTabs.android">Android</button>
@@ -301,15 +407,34 @@
           </div>
         </div>
 
+        <h3 class="guide-subhead" data-i18n="guide.plugins.flowT">Permission Review, Sign-In &amp; Ephemeral Search</h3>
+        <ol class="walkthrough-steps">
+          <li data-i18n-html="guide.plugins.f1"><strong>Permission Review:</strong> Newly imported plugins stay disabled until you inspect their declared <code>permissions.hosts</code> and <code>capabilities</code> and tap <strong>Approve &amp; Enable</strong>. Every bundled plugin sets <code>updateUrl</code> for automatic updates.</li>
+          <li data-i18n-html="guide.plugins.f2"><strong>Signing In &amp; Diagnostics:</strong> Authenticate via native <strong>QR Code Login</strong> (<code>qr_login</code>), isolated ephemeral <strong>Web Login</strong> (<code>web_login</code>), or masked <strong>Extension Cookie</strong> / <code>cookies.txt</code> import. Mounted Cloud Folders always prioritize their own folder cookie over the extension cookie, and the 200-entry log viewer automatically redacts cookies.</li>
+          <li data-i18n-html="guide.plugins.f3"><strong>Ephemeral Cloud Search:</strong> Enabling a <code>"search"</code> plugin reveals the <strong>Search Source Switcher</strong> in <strong>Songs</strong> (defaulting to <strong>Local</strong>). Submit queries explicitly, filter by kind pills, play in an ephemeral <code>Search (&lt;Ext&gt;): &lt;query&gt;</code> queue excluded from Library &amp; Stats, or save/preview via <strong>Save to Local Folder…</strong> and <strong>Add as Cloud Folder</strong>.</li>
+        </ol>
+
         <div class="callout callout--sakura">
           <strong data-i18n="guide.plugins.calloutT">How Ephemeral Search &amp; Extension Cookies Stay Clean (｡・ω・｡)ﾉ♡</strong>
           <p data-i18n-html="guide.plugins.calloutP">When a <code>"search"</code> plugin is enabled, <strong>Songs</strong> shows a <strong>Search Source Switcher</strong> (defaulting to <strong>Local</strong>, and completely hidden when zero search plugins are enabled). Results play in an ephemeral <code>Search (&lt;Ext&gt;): &lt;query&gt;</code> queue excluded from Library tabs &amp; <strong>Stats</strong> unless you choose <strong>Save to Local Folder…</strong> or <strong>Add as Cloud Folder</strong>. Sign in cleanly via <strong>QR Login</strong> (<code>qr_login</code>), isolated <strong>Web Login</strong> (<code>web_login</code>), or masked <code>cookies.txt</code> file import — mounted Cloud Folders always prefer their own folder cookie over the extension-level cookie.</p>
         </div>
+
+        <details class="guide-accordion">
+          <summary data-i18n="guide.plugins.refSummary">Per-Plugin Settings &amp; Audio Quality Reference</summary>
+          <div class="guide-accordion-body">
+            <ul>
+              <li data-i18n-html="guide.plugins.refYt"><strong>YouTube Search (<code>youtube-search</code>):</strong> <code>youtubeMode</code> (<code>music</code> / <code>youtube</code>), <code>youtubeAudioFormat</code> (<code>auto</code> / <code>m4a</code> / <code>opus</code>; Apple enforces M4A/AAC), and 4 quality tiers (<code>highest</code>, <code>high</code>, <code>standard</code>, <code>low</code>).</li>
+              <li data-i18n-html="guide.plugins.refBili"><strong>Bilibili Search (<code>bilibili-search</code>):</strong> <code>biliSearchOrder</code> (<code>totalrank</code> / <code>click</code> / <code>pubdate</code> / <code>stow</code>) and 4 quality tiers including <strong>Hi-Res/FLAC</strong> (<code>30251</code> → <code>30280</code> → <code>30232</code> → <code>30216</code>).</li>
+              <li data-i18n-html="guide.plugins.refNcm"><strong>NetEase Cloud Music (<code>com.seanpnex.musico.netease</code>):</strong> <code>quality</code> across 9 tiers (<code>highest</code> cascading <code>jymaster</code> → <code>hires</code> → <code>lossless</code> → <code>exhigh</code> → <code>standard</code>, plus <code>sky</code>, <code>jyeffect</code>, <code>higher</code>), <code>allowTrialPreview</code> (30s VIP preview toggle), and <code>customApiHeaderOs</code> (<code>pc</code> / <code>android</code> / <code>ios</code>).</li>
+              <li data-i18n-html="guide.plugins.refAm"><strong>Apple Music (<code>com.seanpnex.musico.applemusic</code>):</strong> <code>serverUrl</code> (your self-hosted companion server URL), <code>codec</code> (<code>aac-web</code> / <code>aac-he-web</code> / <code>alac</code> / <code>atmos</code>), and optional Bearer token pasted into the extension <strong>Cookie</strong> field.</li>
+            </ul>
+          </div>
+        </details>
       </section>
 
-      <!-- 6. Keyboard Shortcuts & Daily UX -->
+      <!-- 9. Keyboard Shortcuts Reference -->
       <section id="shortcuts" class="doc-section">
-        <h2 data-i18n="guide.shortcuts.t">Keyboard Shortcuts, Stats &amp; Tag Editor</h2>
+        <h2 data-i18n="guide.shortcuts.t">Keyboard Shortcuts Reference</h2>
         <div class="table-wrap">
           <table>
             <thead>
@@ -333,7 +458,7 @@
             </tbody>
           </table>
         </div>
-        <p data-i18n-html="guide.shortcuts.p">Explore <strong>Stats</strong> across Recent, Plays, <strong>Top Artists</strong>, <strong>Top Albums</strong>, Not Lately, and Never-played views, or open <strong>Song Info</strong> on any track to inspect precision, sample rate, bit rate, file size, channels, and edit <code>Title</code>, <code>Artist</code>, <code>Album</code>, <code>Genre</code>, and cover art inline. Switch between <code>English</code> and <code>简体中文</code> live in Settings anytime!</p>
+        <p data-i18n="guide.shortcuts.p">System media keys and headphone inline buttons also work automatically across macOS, iPadOS, and Windows ♪(´▽｀)</p>
       </section>
     </main>
   </div>
@@ -350,7 +475,7 @@
   </footer>
 
   <div id="musico-toast" class="toast" role="status" aria-live="polite"></div>
-  <script src="../assets/i18n/en.js?v=20261127e"></script>
-  <script src="../assets/app.js?v=20261127e"></script>
+  <script src="../assets/i18n/en.js?v=20261128a"></script>
+  <script src="../assets/app.js?v=20261128a"></script>
 </body>
 </html>

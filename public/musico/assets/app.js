@@ -2,7 +2,7 @@
   'use strict';
 
   var BASE = location.pathname.indexOf('/musico') === 0 ? '/musico/' : '/';
-  var ASSET_V = '20261127e';
+  var ASSET_V = '20261128a';
   var KAOMOJI_POOL = [
     '(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧',
     '♪(´▽｀)',
@@ -749,11 +749,11 @@
             Folders: [
               [t('platform.apple.folders.r1t', '~/Music/CityPop'), t('platform.apple.folders.r1s', 'FLAC · ALAC · 18 tracks')],
               [t('platform.apple.folders.r2t', 'Cloud · YouTube Mix'), t('platform.apple.folders.r2s', 'JavaScriptCore sandbox')],
-              [t('platform.apple.folders.r3t', 'Queue #2 · Midnight'), t('platform.apple.folders.r3s', 'AVAudioEngine 10-band EQ')]
+              [t('platform.apple.folders.r3t', 'Safe Folder Swipes'), t('platform.apple.folders.r3s', 'allowsFullSwipe: false · DragReorder ≡')]
             ],
             Songs: [
               [t('platform.apple.songs.r1t', 'Plastic Love (24-bit)'), t('platform.apple.songs.r1s', 'FLAC · 4.8 MB/s · 07:53')],
-              [t('platform.apple.songs.r2t', 'Midnight Pretenders'), t('platform.apple.songs.r2s', 'ALAC · Sidecar .lrc')],
+              [t('platform.apple.songs.r2t', 'Midnight Pretenders'), t('platform.apple.songs.r2s', 'Swipe → Play Next · Swipe ← Delete')],
               [t('platform.apple.songs.r3t', 'Search (YouTube): City Pop'), t('platform.apple.songs.r3s', 'Ephemeral preview queue')]
             ],
             Albums: [
@@ -762,8 +762,8 @@
               [t('platform.apple.albums.r3t', 'Timely!!'), t('platform.apple.albums.r3s', 'Disc 1 · 10 tracks')]
             ],
             Queues: [
-              [t('platform.apple.queues.r1t', 'Queue #1 · Workday'), t('platform.apple.queues.r1s', '14 tracks · Shuffle Off')],
-              [t('platform.apple.queues.r2t', 'Queue #2 · Midnight'), t('platform.apple.queues.r2s', '9 tracks · Repeat All')],
+              [t('platform.apple.queues.r1t', 'Queue #1 · Workday'), t('platform.apple.queues.r1s', '14 tracks · Deduplicated Play Next')],
+              [t('platform.apple.queues.r2t', 'Queue #2 · Midnight'), t('platform.apple.queues.r2s', 'Swipe ← Remove + Undo toast')],
               [t('platform.apple.queues.r3t', 'Search (NetEase): OST'), t('platform.apple.queues.r3s', 'Ephemeral · Excluded from Stats')]
             ],
             Extensions: [
@@ -773,8 +773,8 @@
             ]
           },
           specs: [
-            t('platform.apple.spec1', 'UI Toolkit: Swift & SwiftUI (@Observable): NSVisualEffectView frosted translucency, Custom Appearance + WCAG 2.1 Auto-fix'),
-            t('platform.apple.spec2', 'Audio & Media: AVAudioEngine + AVAudioUnitEQ, MPNowPlayingInfoCenter & Floating Mini-Player'),
+            t('platform.apple.spec1', 'UI Toolkit: Swift & SwiftUI (@Observable): NSVisualEffectView translucency, safe Folder swipes (allowsFullSwipe: false) & WCAG 2.1 Auto-fix'),
+            t('platform.apple.spec2', 'Audio & Media: AVAudioEngine + AVAudioUnitEQ, deduplicated Play Next, Queue Undo & Floating Mini-Player'),
             t('platform.apple.spec3', 'JS Runtime: Embedded JavaScriptCore + ephemeral WKWebView for web_login capture only'),
             t('platform.apple.spec4', 'Formats: mp3, m4a, aac, flac, wav, aif, aiff, caf, alac (plus Drag-and-Drop import)'),
             t('platform.apple.spec5', 'Shortcuts: Cmd+K palette, Cmd+, settings, Cmd+Shift+N mini-player, Cmd+1–8 tabs')
@@ -786,11 +786,11 @@
             Folders: [
               [t('platform.android.folders.r1t', 'SAF Music Folder'), t('platform.android.folders.r1s', 'OPUS · FLAC · 24 tracks')],
               [t('platform.android.folders.r2t', 'Cloud · Bilibili Fav'), t('platform.android.folders.r2s', 'QuickJS isolated VM')],
-              [t('platform.android.folders.r3t', 'Queue #1 · Commute'), t('platform.android.folders.r3s', 'DynamicsProcessing 10-band EQ')]
+              [t('platform.android.folders.r3t', 'Safe Folder Swipes'), t('platform.android.folders.r3s', '~44% / 140dp threshold · DragReorder ≡')]
             ],
             Songs: [
               [t('platform.android.songs.r1t', 'Rainy Waltz (Hi-Res)'), t('platform.android.songs.r1s', 'FLAC · 96 kHz · Imported .lrc')],
-              [t('platform.android.songs.r2t', 'Aria Hangout Mix'), t('platform.android.songs.r2s', 'OPUS · Cloud Cached')],
+              [t('platform.android.songs.r2t', 'Aria Hangout Mix'), t('platform.android.songs.r2s', 'Swipe → Play Next · Swipe ← Delete')],
               [t('platform.android.songs.r3t', 'Night Drive BGM'), t('platform.android.songs.r3s', 'M4A · Embedded cover art')]
             ],
             Albums: [
@@ -799,8 +799,8 @@
               [t('platform.android.albums.r3t', 'Lo-Fi Study Beats'), t('platform.android.albums.r3s', '28 tracks · Local SAF')]
             ],
             Queues: [
-              [t('platform.android.queues.r1t', 'Queue #1 · Commute'), t('platform.android.queues.r1s', '24 tracks · Repeat One')],
-              [t('platform.android.queues.r2t', 'Queue #2 · Sleep 30m'), t('platform.android.queues.r2s', '6 tracks · Fade stop')],
+              [t('platform.android.queues.r1t', 'Queue #1 · Commute'), t('platform.android.queues.r1s', '24 tracks · Deduplicated Play Next')],
+              [t('platform.android.queues.r2t', 'Queue #2 · Sleep 30m'), t('platform.android.queues.r2s', '2-stage swipe ← Remove + Undo snackbar')],
               [t('platform.android.queues.r3t', 'Queue #3 · Workout'), t('platform.android.queues.r3s', '15 tracks · Shuffle On')]
             ],
             Extensions: [
@@ -810,8 +810,8 @@
             ]
           },
           specs: [
-            t('platform.android.spec1', 'UI Toolkit: Kotlin & Jetpack Compose Material 3 with Custom Appearance, WCAG 2.1 checker & live Preview'),
-            t('platform.android.spec2', 'Audio & Media: AndroidX Media3 (ExoPlayer + MediaSessionService) & SAF + Device delete'),
+            t('platform.android.spec1', 'UI Toolkit: Kotlin & Jetpack Compose Material 3: Outlook × Material You 2-stage swipes, Queue Undo & WCAG 2.1 Auto-fix'),
+            t('platform.android.spec2', 'Audio & Media: Media3 (ExoPlayer + MediaSessionService), DragReorder handle isolation & ~44% Folder swipe'),
             t('platform.android.spec3', 'JS Runtime: Embedded QuickJS (32 MB cap), ephemeral WebView web_login & cookies.txt import'),
             t('platform.android.spec4', 'Formats: mp3, m4a, aac, flac, wav, aif, aiff, caf, alac, ogg, opus, webm'),
             t('platform.android.spec5', 'Updates: Persistently signed release.apk with FileProvider installer & Drive OAuth 2.0')
