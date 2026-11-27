@@ -73,3 +73,4 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
 2026-11-26 11:14:55-SEANPNEX-feat(musico): add floating background, direct latest release downloads, and fix platform simulator switcher
 2026-11-26 12:12:38-SEANPNEX-feat(musico): complete 4-lang i18n, animated floating background & Chrome cache-busting
 2026-11-26 13:37:01-SEANPNEX-feat(musico): add frosted moving color blocks, click note sparkles, and view transitions
+2026-11-26 23:26:52-SEANPNEX-fix(musico): polish mobile navbar, segmented pill grid, simulator bar & motifs
