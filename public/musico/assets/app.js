@@ -2,7 +2,7 @@
   'use strict';
 
   var BASE = location.pathname.indexOf('/musico') === 0 ? '/musico/' : '/';
-  var ASSET_V = '20261128a';
+  var ASSET_V = '20261128b';
   var KAOMOJI_POOL = [
     '(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧',
     '♪(´▽｀)',
@@ -218,14 +218,20 @@
   }
 
   /* ── Theme Toggle (Night Shift) ──────────────────────────────────────── */
-  function applyTheme(theme) {
+  function applyTheme(theme, persist) {
     document.documentElement.dataset.theme = theme;
-    localStorage.setItem('musico-theme', theme);
+    document.documentElement.style.colorScheme = theme;
+    if (persist !== false) {
+      localStorage.setItem('musico-theme', theme);
+    }
     var btn = document.getElementById('theme-toggle');
     if (btn) {
       btn.setAttribute('aria-pressed', String(theme === 'dark'));
-      var icon = btn.querySelector('.theme-icon');
-      if (icon) icon.textContent = theme === 'dark' ? '☀️' : '🌙';
+      var hasDual = btn.querySelector('.theme-icon--moon') || btn.querySelector('.theme-icon--sun');
+      if (!hasDual) {
+        var icon = btn.querySelector('.theme-icon');
+        if (icon) icon.textContent = theme === 'dark' ? '☀️' : '🌙';
+      }
     }
     var stage = document.querySelector('.cassette-shell.playing');
     updateMascots(stage ? 'jamming' : null);
@@ -234,7 +240,7 @@
   function initTheme() {
     var saved = localStorage.getItem('musico-theme');
     var sysDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    applyTheme(saved || (sysDark ? 'dark' : 'light'));
+    applyTheme(saved || (sysDark ? 'dark' : 'light'), false);
     var btn = document.getElementById('theme-toggle');
     if (btn) {
       btn.addEventListener('click', function () {
@@ -247,7 +253,7 @@
           );
         };
         if (typeof document.startViewTransition !== 'function' || REDUCED_MOTION()) {
-          applyTheme(next);
+          applyTheme(next, true);
           notify();
           return;
         }
@@ -260,7 +266,7 @@
         );
         document.documentElement.classList.add('theme-transitioning');
         var transition = document.startViewTransition(function () {
-          applyTheme(next);
+          applyTheme(next, true);
         });
         transition.ready.then(function () {
           document.documentElement.animate(
@@ -388,9 +394,23 @@
       applyPack(lang, window.MUSICO_I18N[lang]);
       return;
     }
+    var cacheKey = 'musico-i18n:' + ASSET_V + ':' + lang;
+    try {
+      var cachedRaw = sessionStorage.getItem(cacheKey);
+      if (cachedRaw) {
+        window.MUSICO_I18N[lang] = JSON.parse(cachedRaw);
+        applyPack(lang, window.MUSICO_I18N[lang]);
+        return;
+      }
+    } catch (e) {}
     var script = document.createElement('script');
     script.src = BASE + 'assets/i18n/' + lang + '.js?v=' + ASSET_V;
     script.onload = function () {
+      try {
+        if (window.MUSICO_I18N[lang]) {
+          sessionStorage.setItem(cacheKey, JSON.stringify(window.MUSICO_I18N[lang]));
+        }
+      } catch (e) {}
       if (currentLang === lang) {
         applyPack(lang, window.MUSICO_I18N[lang] || {});
       }
@@ -1365,7 +1385,54 @@
     targets.forEach(function (el) { io.observe(el); });
   }
 
-  document.addEventListener('DOMContentLoaded', function () {
+  /* ── Smooth Cross-Page Fallback & bfcache State Sync ─────────────────── */
+  function initPageTransitions() {
+    var root = document.documentElement;
+    var hasNativeMpaVT = 'onpagereveal' in window;
+
+    if (!hasNativeMpaVT && !REDUCED_MOTION()) {
+      try {
+        if (sessionStorage.getItem('musico-nav-enter') === '1') {
+          sessionStorage.removeItem('musico-nav-enter');
+          root.classList.add('page-entering');
+          setTimeout(function () { root.classList.remove('page-entering'); }, 300);
+        }
+      } catch (e) {}
+
+      document.addEventListener('click', function (e) {
+        if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        var a = e.target && e.target.closest ? e.target.closest('a[data-internal-link]') : null;
+        if (!a || a.target === '_blank' || a.hasAttribute('download')) return;
+        var dest;
+        try { dest = new URL(a.href, location.href); } catch (err) { return; }
+        if (dest.origin !== location.origin || dest.pathname === location.pathname) return;
+        e.preventDefault();
+        root.classList.add('page-leaving');
+        try { sessionStorage.setItem('musico-nav-enter', '1'); } catch (err) {}
+        setTimeout(function () { location.href = dest.href; }, 130);
+      });
+    }
+
+    window.addEventListener('pageshow', function (e) {
+      root.classList.remove('page-leaving');
+      root.classList.remove('is-booting');
+      if (e.persisted) {
+        var savedTheme = localStorage.getItem('musico-theme');
+        var sysDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        applyTheme(savedTheme || (sysDark ? 'dark' : 'light'), false);
+        var params = new URLSearchParams(location.search);
+        var qLang = params.get('lang');
+        if (qLang === 'jp') qLang = 'ja';
+        var desiredLang = qLang || localStorage.getItem('musico-lang') || 'en';
+        if (desiredLang !== currentLang) setLanguage(desiredLang);
+      }
+    });
+  }
+
+  var booted = false;
+  function boot() {
+    if (booted) return;
+    booted = true;
     initFloatingBackground();
     initClickSparkles();
     initTheme();
@@ -1380,5 +1447,20 @@
     initSlidingPills();
     initScrollReveals();
     initI18n();
-  });
+    initPageTransitions();
+    if (typeof requestAnimationFrame === 'function') {
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          document.documentElement.classList.remove('is-booting');
+        });
+      });
+    } else {
+      document.documentElement.classList.remove('is-booting');
+    }
+  }
+
+  if (document.readyState !== 'loading' || document.querySelector('main, .docs-shell')) {
+    boot();
+  }
+  document.addEventListener('DOMContentLoaded', boot);
 })();

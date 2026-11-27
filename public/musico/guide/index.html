@@ -3,6 +3,46 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <style>
+    html { background-color: #FFFDF7; color: #1F1B24; }
+    html[data-theme="dark"] { background-color: #14111D; color: #FAF6EE; }
+    html.is-booting, html.is-booting *, html.is-booting *::before, html.is-booting *::after { transition: none !important; }
+  </style>
+  <script>
+    (function () {
+      try {
+        var root = document.documentElement;
+        root.classList.add('is-booting');
+        var saved = localStorage.getItem('musico-theme');
+        var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        root.dataset.theme = theme;
+        root.style.colorScheme = theme;
+        var epoch = Number(sessionStorage.getItem('musico-bg-epoch') || '0');
+        if (!epoch) {
+          epoch = Date.now();
+          sessionStorage.setItem('musico-bg-epoch', String(epoch));
+        }
+        var elapsed = Math.max(0, (Date.now() - epoch) / 1000) % 86400;
+        root.style.setProperty('--bg-elapsed', elapsed.toFixed(3) + 's');
+        var p = new URLSearchParams(location.search).get('lang');
+        if (p === 'jp') p = 'ja';
+        var lang = p || localStorage.getItem('musico-lang') || 'en';
+        if (lang === 'zh' || lang === 'ja' || lang === 'fr') {
+          root.lang = lang;
+          var cached = sessionStorage.getItem('musico-i18n:20261128b:' + lang);
+          if (!cached) {
+            var base = location.pathname.indexOf('/musico') === 0 ? '/musico/' : '/';
+            var pre = document.createElement('link');
+            pre.rel = 'preload';
+            pre.as = 'script';
+            pre.href = base + 'assets/i18n/' + lang + '.js?v=20261128b';
+            document.head.appendChild(pre);
+          }
+        }
+      } catch (e) {}
+    })();
+  </script>
   <title>User Guide &amp; Official Plugins · ♪ Musico ♪</title>
   <meta name="i18n-title" content="page.title.guide">
   <meta name="description" content="Complete Musico listener walkthrough: installation, local folders, Relocate, library views, tag editor, multi-queues, mobile swipes with Undo, EQ, lyrics, custom themes, Cloud Hangouts, and official plugins.">
@@ -10,7 +50,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23FF8A7A'/><text x='50' y='67' font-size='56' text-anchor='middle'>♪</text></svg>">
-  <link rel="stylesheet" href="../assets/styles.css?v=20261128a">
+  <link rel="stylesheet" href="../assets/styles.css?v=20261128b">
 </head>
 <body>
   <a class="skip-link" href="#main" data-i18n="common.skip">Skip to content</a>
@@ -38,7 +78,8 @@
         </select>
 
         <button id="theme-toggle" class="ctrl-pill" type="button" aria-pressed="false" aria-label="Toggle night shift" data-i18n-aria="nav.nightAria">
-          <span class="theme-icon" aria-hidden="true">🌙</span>
+          <span class="theme-icon theme-icon--moon" aria-hidden="true">🌙</span>
+          <span class="theme-icon theme-icon--sun" aria-hidden="true">☀️</span>
           <span class="hide-xs" data-i18n="nav.night">Night Shift</span>
         </button>
 
@@ -475,7 +516,7 @@
   </footer>
 
   <div id="musico-toast" class="toast" role="status" aria-live="polite"></div>
-  <script src="../assets/i18n/en.js?v=20261128a"></script>
-  <script src="../assets/app.js?v=20261128a"></script>
+  <script src="../assets/i18n/en.js?v=20261128b"></script>
+  <script src="../assets/app.js?v=20261128b"></script>
 </body>
 </html>
