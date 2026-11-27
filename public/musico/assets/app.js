@@ -2,7 +2,7 @@
   'use strict';
 
   var BASE = location.pathname.indexOf('/musico') === 0 ? '/musico/' : '/';
-  var ASSET_V = '20261127c';
+  var ASSET_V = '20261127d';
   var KAOMOJI_POOL = [
     '(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧',
     '♪(´▽｀)',
@@ -1315,6 +1315,10 @@
 
     window.__syncPills = syncAll;
     window.addEventListener('resize', syncAll, { passive: true });
+    if (typeof ResizeObserver === 'function') {
+      var ro = new ResizeObserver(syncAll);
+      pills.forEach(function (entry) { ro.observe(entry.group); });
+    }
     onLangChange(function () {
       requestAnimationFrame(syncAll);
     });
