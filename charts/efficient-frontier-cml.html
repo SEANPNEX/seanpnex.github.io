@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Efficient frontier · capital allocation lines</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <script src="chart-fx.js"></script>
+</head>
+<body>
+  <main class="card" id="card" data-fx-scope>
+    <h2>The steepest line from the risk-free rate touches the frontier once.</h2>
+    <div class="sub">Efficient frontier of risky portfolios · rf = 3% · ink = the CML through the tangency portfolio M, mid gray = a CAL through a frontier portfolio P · the slope of each line is its Sharpe ratio · hover for the return on either line</div>
+    <section class="panel">
+      <h3>Expected return against risk</h3>
+      <div class="hint">Lending or borrowing at rf moves along a line without changing its slope · M’s line is the steepest possible: Sharpe ratio 0.39 against 0.36 for P</div>
+      <svg id="chart" role="img" aria-label="Efficient frontier with a capital market line from 3% tangent at portfolio M and a flatter capital allocation line through portfolio P"></svg>
+    </section>
+    <div class="src">MEAN–VARIANCE · F2 HAIRLINE LINE · ILLUSTRATIVE FRONTIER σ² = 100 + 16(μ − 6)², MINIMUM-VARIANCE POINT (10%, 6%)</div>
+  </main>
+  <script src="i18n.js"></script>
+  <script>
+chartI18n.use({
+  zh: {
+    'Efficient frontier · capital allocation lines': '有效前沿 · 资本配置线',
+    'The steepest line from the risk-free rate touches the frontier once.': '从无风险利率出发的最陡直线仅与有效前沿相切一次。',
+    'Efficient frontier of risky portfolios · rf = 3% · ink = the CML through the tangency portfolio M, mid gray = a CAL through a frontier portfolio P · the slope of each line is its Sharpe ratio · hover for the return on either line': '风险组合的有效前沿 · rf = 3% · 墨色 = 经过切点组合 M 的 CML，中灰 = 经过前沿组合 P 的 CAL · 每条线的斜率即为其夏普比率 · 悬停查看两条线上的回报',
+    'Expected return against risk': '预期回报与风险',
+    'Lending or borrowing at rf moves along a line without changing its slope · M’s line is the steepest possible: Sharpe ratio 0.39 against 0.36 for P': '按 rf 贷出或借入只是沿直线移动而不改变斜率 · M 所在的直线最陡：夏普比率为 0.39，高于 P 的 0.36',
+    'Efficient frontier with a capital market line from 3% tangent at portfolio M and a flatter capital allocation line through portfolio P': '有效前沿、从 3% 出发在组合 M 处相切的资本市场线，以及经过组合 P 的较平资本配置线',
+    'MEAN–VARIANCE · F2 HAIRLINE LINE · ILLUSTRATIVE FRONTIER σ² = 100 + 16(μ − 6)², MINIMUM-VARIANCE POINT (10%, 6%)': '均值–方差 · F2 发丝折线 · 示意前沿 σ² = 100 + 16(μ − 6)²，最小方差组合点 (10%, 6%)',
+    'risk (σ) →': '风险 (σ) →',
+    'expected return': '预期回报',
+    'Risk-free asset: σ = 0, return 3%': '无风险资产：σ = 0，回报 3%',
+    'Tangency (market) portfolio M': '切点（市场）组合 M',
+    'Frontier portfolio P': '前沿组合 P',
+    'lend': '贷出',
+    'borrow · CML': '借入 · CML',
+    'inefficient': '非有效前沿',
+    'frontier': '有效前沿',
+    'CML (%)': 'CML (%)',
+    'CAL via P (%)': '经 P 的 CAL (%)',
+    'σ (%)': 'σ (%)',
+  },
+  ja: {
+    'Efficient frontier · capital allocation lines': '効率的フロンティア · 資本配分線',
+    'The steepest line from the risk-free rate touches the frontier once.': '無リスク金利から引いた最も傾きの大きい直線は、フロンティアに 1 点だけで接する。',
+    'Efficient frontier of risky portfolios · rf = 3% · ink = the CML through the tangency portfolio M, mid gray = a CAL through a frontier portfolio P · the slope of each line is its Sharpe ratio · hover for the return on either line': 'リスク・ポートフォリオの効率的フロンティア · rf = 3% · 墨 = 接点ポートフォリオ M を通る CML、中灰 = フロンティア上のポートフォリオ P を通る CAL · 各直線の傾きはそのシャープ・レシオ · カーソルを合わせると各直線上のリターンを表示',
+    'Expected return against risk': 'リスクに対する期待リターン',
+    'Lending or borrowing at rf moves along a line without changing its slope · M’s line is the steepest possible: Sharpe ratio 0.39 against 0.36 for P': 'rf での貸し借りは傾きを変えずに直線上を動くだけ · M の直線が最も急：シャープ・レシオは P の 0.36 に対して 0.39',
+    'Efficient frontier with a capital market line from 3% tangent at portfolio M and a flatter capital allocation line through portfolio P': '効率的フロンティアと、3% からポートフォリオ M で接する資本市場線、およびポートフォリオ P を通る傾きの小さい資本配分線',
+    'MEAN–VARIANCE · F2 HAIRLINE LINE · ILLUSTRATIVE FRONTIER σ² = 100 + 16(μ − 6)², MINIMUM-VARIANCE POINT (10%, 6%)': '平均・分散 · F2 ヘアライン · 例示フロンティア σ² = 100 + 16(μ − 6)²、最小分散点 (10%, 6%)',
+    'risk (σ) →': 'リスク (σ) →',
+    'expected return': '期待リターン',
+    'Risk-free asset: σ = 0, return 3%': '無リスク資産：σ = 0、リターン 3%',
+    'Tangency (market) portfolio M': '接点（市場）ポートフォリオ M',
+    'Frontier portfolio P': 'フロンティア上のポートフォリオ P',
+    'lend': '貸付',
+    'borrow · CML': '借入 · CML',
+    'inefficient': '非効率',
+    'frontier': 'フロンティア',
+    'CML (%)': 'CML (%)',
+    'CAL via P (%)': 'P を通る CAL (%)',
+    'σ (%)': 'σ (%)',
+  },
+  fr: {
+    'Efficient frontier · capital allocation lines': 'Frontière efficiente · droites d’allocation du capital',
+    'The steepest line from the risk-free rate touches the frontier once.': 'La droite la plus pentue issue du taux sans risque ne touche la frontière qu’une fois.',
+    'Efficient frontier of risky portfolios · rf = 3% · ink = the CML through the tangency portfolio M, mid gray = a CAL through a frontier portfolio P · the slope of each line is its Sharpe ratio · hover for the return on either line': 'Frontière efficiente des portefeuilles risqués · rf = 3 % · encre = la CML passant par le portefeuille de tangence M, gris moyen = une CAL passant par un portefeuille P de la frontière · la pente de chaque droite est son ratio de Sharpe · survolez pour le rendement sur chaque droite',
+    'Expected return against risk': 'Rendement attendu en fonction du risque',
+    'Lending or borrowing at rf moves along a line without changing its slope · M’s line is the steepest possible: Sharpe ratio 0.39 against 0.36 for P': 'Prêter ou emprunter à rf déplace le long d’une droite sans changer sa pente · la droite de M est la plus pentue possible : ratio de Sharpe de 0,39 contre 0,36 pour P',
+    'Efficient frontier with a capital market line from 3% tangent at portfolio M and a flatter capital allocation line through portfolio P': 'Frontière efficiente avec une droite de marché des capitaux issue de 3 % et tangente au portefeuille M, et une droite d’allocation du capital plus plate passant par le portefeuille P',
+    'MEAN–VARIANCE · F2 HAIRLINE LINE · ILLUSTRATIVE FRONTIER σ² = 100 + 16(μ − 6)², MINIMUM-VARIANCE POINT (10%, 6%)': 'MOYENNE–VARIANCE · LIGNE F2 · FRONTIÈRE ILLUSTRATIVE σ² = 100 + 16(μ − 6)², POINT DE VARIANCE MINIMALE (10 %, 6 %)',
+    'risk (σ) →': 'risque (σ) →',
+    'expected return': 'rendement attendu',
+    'Risk-free asset: σ = 0, return 3%': 'Actif sans risque : σ = 0, rendement 3 %',
+    'Tangency (market) portfolio M': 'Portefeuille de tangence (de marché) M',
+    'Frontier portfolio P': 'Portefeuille de la frontière P',
+    'lend': 'prêter',
+    'borrow · CML': 'emprunter · CML',
+    'inefficient': 'inefficiente',
+    'frontier': 'frontière',
+    'CML (%)': 'CML (%)',
+    'CAL via P (%)': 'CAL via P (%)',
+    'σ (%)': 'σ (%)',
+  },
+}, {
+  patterns: {
+    zh: [
+      [/^Sharpe ratio ([\d.]+): the highest$/, '夏普比率 $1：最高'],
+      [/^Sharpe ratio ([\d.]+)$/, '夏普比率 $1'],
+    ],
+    ja: [
+      [/^Sharpe ratio ([\d.]+): the highest$/, 'シャープ・レシオ $1：最高'],
+      [/^Sharpe ratio ([\d.]+)$/, 'シャープ・レシオ $1'],
+    ],
+    fr: [
+      [/^Sharpe ratio ([\d.]+): the highest$/, 'Ratio de Sharpe $1 : le plus élevé'],
+      [/^Sharpe ratio ([\d.]+)$/, 'Ratio de Sharpe $1'],
+    ],
+  },
+});
+  </script>
+  <script>
+(() => {
+  const { C, T, el, label, frame, axes, curve, guide, dot, probe, mount } = curveKit;
+
+  // ── Data: frontier σ(μ) = sqrt(100 + 16(μ − 6)²), risk-free rate, tangency and one other point (all %) ──
+  const RF = 3, S0 = 10, M0 = 6, K = 16, X1 = 28, MID = '#6A6963';
+  const upper = (s) => (s < S0 ? NaN : M0 + Math.sqrt((s * s - S0 * S0) / K));
+  const lower = (s) => (s < S0 ? NaN : M0 - Math.sqrt((s * s - S0 * S0) / K));
+  const muM = M0 + (S0 * S0) / (K * (M0 - RF)); // tangency: 100 = 48(μ − 6)
+  const sM = Math.sqrt(S0 * S0 + K * (muM - M0) ** 2), SRM = (muM - RF) / sM;
+  const sP = 22, muP = upper(sP), SRP = (muP - RF) / sP;
+  const cml = (s) => RF + SRM * s, cal = (s) => RF + SRP * s;
+
+  mount(document.getElementById('chart'), (s, W, H) => {
+    const F = frame(s, W, H, { l: W < 420 ? 32 : 36, r: 12, t: 22, b: 40, noTicks: true }, X1, 14);
+    [3, 6, 9, 12].forEach((v) => {
+      el(s, 'line', { x1: F.X0, y1: F.y(v), x2: F.X1, y2: F.y(v), stroke: C.GRID, 'stroke-width': 0.6, 'stroke-dasharray': '2 4', class: 'fade' });
+      label(s, F.X0 - 6, F.y(v) + 3.5, v + '%', { size: 9.5, weight: 600, fill: C.MUTED, anchor: 'end', halo: 0 });
+    });
+    [0, 10, 20].forEach((v) => label(s, F.x(v), F.BASE + 14, v + '%', { size: 9.5, weight: 600, fill: C.MUTED, anchor: 'middle', halo: 0 }));
+    axes(s, F, 'risk (σ) →', 'expected return');
+
+    // The frontier: efficient upper branch in ink, inefficient lower branch faint.
+    curve(s, F, lower, S0, X1, { stroke: C.FAINT, width: 1.2, delay: 0.1 });
+    curve(s, F, upper, S0, X1, { stroke: C.INK, width: 1.4, delay: 0 }).setAttribute('data-hl', 'f');
+    curve(s, F, cal, 0, X1, { stroke: MID, width: 1.3, delay: 0.4 }).setAttribute('data-hl', 'p');
+    curve(s, F, cml, 0, X1, { stroke: C.INK, width: 1.6, delay: 0.3 }).setAttribute('data-hl', 'm');
+
+    dot(s, F.x(0), F.y(RF), 3.4, C.INK, 0.8, 'Risk-free asset: σ = 0, return 3%');
+    dot(s, F.x(sM), F.y(muM), 3.8, C.INK, 0.9, `Tangency (market) portfolio M\nσ = ${sM.toFixed(1)}%, E(R) = ${muM.toFixed(1)}%\nSharpe ratio ${SRM.toFixed(2)}: the highest`);
+    dot(s, F.x(sP), F.y(muP), 3.6, MID, 1, `Frontier portfolio P\nσ = ${sP}%, E(R) = ${muP.toFixed(1)}%\nSharpe ratio ${SRP.toFixed(2)}`);
+    guide(s, F.x(sM), F.BASE, F.x(sM), F.y(muM), 1);
+
+    label(s, F.x(sM) - 6, F.y(muM) - 9, 'M', { size: 11, anchor: 'end', delay: 1.05 });
+    label(s, F.x(sP) + 6, F.y(muP) + 16, 'P', { size: 11, fill: MID, delay: 1.1 });
+    label(s, F.x(4), F.y(cal(4)) + 16, 'lend', { size: 10, weight: 700, fill: C.MUTED, delay: 1.1 });
+    label(s, F.x(24), F.y(cml(24)) - 9, 'borrow · CML', { size: 10.5, anchor: 'end', delay: 1.15 });
+    label(s, F.x(18), F.y(lower(18)) - 7, 'inefficient', { size: 10, weight: 700, fill: C.SOFT, delay: 1.2 });
+    label(s, F.x(S0) + 6, F.y(M0) + 4, 'frontier', { size: 10, weight: 700, fill: C.MUTED, delay: 1.2 });
+
+    probe(s, F, [
+      { name: 'CML (%)', f: cml },
+      { name: 'CAL via P (%)', f: cal, stroke: MID },
+    ], { xName: T('σ (%)'), fmt: (v) => v.toFixed(2) });
+  }, (W) => Math.max(250, Math.min(320, W * 0.6)));
+})();
+  </script>
+</body>
+</html>

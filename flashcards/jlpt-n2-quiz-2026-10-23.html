@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>JLPT N2 — quiz misses 2026-10-23</title>
+<link rel="stylesheet" href="/flashcards/deck.css" />
+</head>
+<body>
+<script src="/flashcards/deck.js"></script>
+<script>
+const CARDS = [
+  {
+    id: "jlpt-indirect-quote-ne-2026-10-23",
+    topic: "と言う · indirect quotation",
+    front: `Turn <span class="jp">鈴木さんは「それはいいですね」と答えました。</span> into indirect quotation.`,
+    back: `<div class="ans">
+      <p><span class="jp">鈴木さんは<strong>それはいいね</strong>と答えました。</span></p><ul><li>Indirect quotation puts the quoted part in <strong>plain form</strong>: です drops out, and <strong>ね stays</strong>.</li><li><span class="jp">ですか → か</span> applies only when the original is a <strong>question</strong> (<span class="jp">いかがですか → いかがか</span>).</li></ul>
+    </div>`,
+    gap: "Wrote それはいいか: applied the question rule to a statement."
+  },
+  {
+    id: "jlpt-to-omou-plain-2026-10-23",
+    topic: "と思う · plain form before と",
+    front: `Say: “I think George has his part-time job on Thursday too.”`,
+    back: `<div class="ans">
+      <p><span class="jp">ジョージさんは木曜日にもアルバイト<strong>がある</strong>と思います。</span></p><ul><li>The part before <span class="jp">と思う</span> is always in <strong>plain form</strong>; politeness goes on 思います only.</li><li>Not <span class="jp">～します<s>と</s>思います</span>.</li></ul>
+    </div>`,
+    gap: "Used the polite form (バイトします) before と."
+  },
+  {
+    id: "jlpt-ato-de-order-2026-10-23",
+    topic: "後で · order of actions",
+    front: `Say: “I'll take a bath after watching anime.”`,
+    back: `<div class="ans">
+      <p><span class="jp">アニメを<strong>見た後で</strong>、お風呂に入ります。</span></p><ul><li>The <strong>first</strong> action goes before <span class="jp">後で</span>, in the <strong>た-form</strong> (or N の後で).</li><li><span class="jp">お風呂の後でアニメを見ます</span> means the opposite: anime after the bath.</li></ul>
+    </div>`,
+    gap: "Reversed the order of the two actions."
+  },
+  {
+    id: "jlpt-shika-nai-2026-10-23",
+    topic: "しか～ない · only",
+    front: `Say, with しか: “This company has only two employees.”`,
+    back: `<div class="ans">
+      <p><span class="jp">この会社は社員が<strong>2人しかいません</strong>。</span></p><ul><li><span class="jp">しか</span> needs a <strong>negative</strong> verb; the meaning is affirmative (only two).</li><li><span class="jp">だけ</span> takes an affirmative verb: <span class="jp">2人だけいます</span>. しか～ない stresses “not enough”.</li><li>社員 (employee) is the word in the note.</li></ul>
+    </div>`,
+    gap: "Wrote 職員二人だけがいます: used だけ instead of しか～ない."
+  }
+];
+
+flashDeck({
+  key: "jlpt-n2-2026-10-23",
+  source: "JLPT N2 · quiz misses 2026-10-23",
+  gapLabel: "Gap",
+  cards: CARDS
+});
+</script>
+</body>
+</html>

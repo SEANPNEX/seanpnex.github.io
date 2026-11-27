@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <style>
+    html { background-color: #FFFDF7; color: #1F1B24; }
+    html[data-theme="dark"] { background-color: #14111D; color: #FAF6EE; }
+    html.is-booting, html.is-booting *, html.is-booting *::before, html.is-booting *::after { transition: none !important; }
+  </style>
+  <script>
+    (function () {
+      try {
+        var root = document.documentElement;
+        root.classList.add('is-booting');
+        var saved = localStorage.getItem('musico-theme');
+        var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        root.dataset.theme = theme;
+        root.style.colorScheme = theme;
+        var epoch = Number(sessionStorage.getItem('musico-bg-epoch') || '0');
+        if (!epoch) {
+          epoch = Date.now();
+          sessionStorage.setItem('musico-bg-epoch', String(epoch));
+        }
+        var elapsed = Math.max(0, (Date.now() - epoch) / 1000) % 86400;
+        root.style.setProperty('--bg-elapsed', elapsed.toFixed(3) + 's');
+        var p = new URLSearchParams(location.search).get('lang');
+        if (p === 'jp') p = 'ja';
+        var lang = p || localStorage.getItem('musico-lang') || 'en';
+        if (lang === 'zh' || lang === 'ja' || lang === 'fr') {
+          root.lang = lang;
+          var cached = sessionStorage.getItem('musico-i18n:20261128b:' + lang);
+          if (!cached) {
+            var base = location.pathname.indexOf('/musico') === 0 ? '/musico/' : '/';
+            var pre = document.createElement('link');
+            pre.rel = 'preload';
+            pre.as = 'script';
+            pre.href = base + 'assets/i18n/' + lang + '.js?v=20261128b';
+            document.head.appendChild(pre);
+          }
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <title>404 · Tape Rewinding · ♪ Musico ♪</title>
+  <meta name="i18n-title" content="page.title.404">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    (function () {
+      var base = location.pathname.indexOf('/musico') === 0 ? '/musico/' : '/';
+      var l = document.createElement('link');
+      l.rel = 'stylesheet';
+      l.href = base + 'assets/styles.css?v=20261128b';
+      document.head.appendChild(l);
+    })();
+  </script>
+</head>
+<body>
+  <main style="min-height:100vh;display:grid;place-items:center;padding:32px 16px;">
+    <section class="portal-card" style="max-width:560px;width:100%;text-align:center;align-items:center;background:var(--butter);">
+      <div class="mascot-wrap" data-mascot="lost">
+        <span class="mascot-bubble">(;´・ω・)</span>
+      </div>
+      <h1 data-i18n="err404.title" style="font-size:clamp(2.4rem,6vw,3.8rem);line-height:1;">404 · Side B Not Found</h1>
+      <p style="color:var(--ink-muted);" data-i18n="err404.desc">Oops! This cassette track isn't in the folder anymore. Let's rewind back to the main docs! (;´・ω・)</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:6px;">
+        <a id="err-home" class="btn-primary" href="/" data-i18n="err404.home">Back to Home ♪</a>
+        <a id="err-guide" class="btn-soft" href="/guide/" data-i18n="nav.guide">User Guide</a>
+        <a id="err-dev" class="btn-soft" href="/developers/" data-i18n="nav.devs">Developer Docs</a>
+      </div>
+    </section>
+  </main>
+  <div id="musico-toast" class="toast" role="status" aria-live="polite"></div>
+  <script>
+    (function () {
+      var base = location.pathname.indexOf('/musico') === 0 ? '/musico/' : '/';
+      document.getElementById('err-home').href = base;
+      document.getElementById('err-guide').href = base + 'guide/';
+      document.getElementById('err-dev').href = base + 'developers/';
+      var en = document.createElement('script');
+      en.src = base + 'assets/i18n/en.js?v=20261128b';
+      en.onload = function () {
+        var s = document.createElement('script');
+        s.src = base + 'assets/app.js?v=20261128b';
+        document.body.appendChild(s);
+      };
+      en.onerror = function () {
+        var s = document.createElement('script');
+        s.src = base + 'assets/app.js?v=20261128b';
+        document.body.appendChild(s);
+      };
+      document.body.appendChild(en);
+    })();
+  </script>
+</body>
+</html>

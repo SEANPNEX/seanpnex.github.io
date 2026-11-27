@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Ownership · power of control</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <style>
+    /* Segment widths are the ownership ranges themselves: 20, 30, 50 points. */
+    .scale{display:grid;grid-template-columns:20fr 30fr 50fr;column-gap:4px}
+    .bar{height:26px;border-radius:999px;transform-origin:left;animation:grow .7s cubic-bezier(.2,.7,.3,1) both}
+    @keyframes grow{from{transform:scaleX(0)}}
+    .s1{background:#A8A7A0}.s2{background:#6A6963}.s3{background:#1C1C1A}
+    .ticks{position:relative;height:18px;margin-top:5px;font-size:10.5px;font-weight:700;color:var(--muted)}
+    .ticks span{position:absolute;top:0;transform:translateX(-50%)}
+    .ticks span:first-child{transform:none}
+    .ticks span:last-of-type{left:auto!important;right:0;transform:none}
+    .ticks em{position:absolute;right:0;top:18px;font-style:normal;font-size:9.5px;letter-spacing:.1em;color:#8A8983}
+    .labels{margin-top:16px}
+    .lab{padding:9px 6px 0 0;border-top:2px solid;animation:fade .6s ease both}
+    .lab b{display:block;font-size:12.5px;font-weight:800;line-height:1.25}
+    .lab .pct{display:block;margin-top:3px;font-size:11px;font-weight:700;color:var(--ink)}
+    .lab small{display:block;margin-top:2px;font-size:10.5px;color:var(--muted);line-height:1.35}
+    .l1{border-color:#A8A7A0}.l2{border-color:#6A6963}.l3{border-color:#1C1C1A}
+    .bar{cursor:default;transition:transform .2s ease}
+    .bar.fx-hot{transform:scaleY(1.25)}
+    .jv{
+      display:flex;align-items:center;gap:10px;margin-top:18px;padding:9px 12px;
+      border:1.2px dashed #8F8E88;border-radius:10px;font-size:11.5px;color:var(--muted)
+    }
+    .jv b{color:var(--ink);font-size:12.5px}
+    /* On a phone the three labels stack, each tagged with its segment's shade. */
+    @media(max-width:439px){
+      .labels.scale{grid-template-columns:1fr;row-gap:10px}
+      .lab{border-top:0;border-left:4px solid;padding:0 0 0 10px}
+    }
+  </style>
+  <script src="chart-fx.js"></script>
+</head>
+<body>
+  <main class="card" id="card">
+    <h2>Ownership percentage maps power of control.</h2>
+    <div class="sub">Share of voting rights held · darker = more control · the actual level of control decides the category</div>
+    <div class="scale">
+      <div class="bar s1" data-hl="s1" data-tip="0–20% · lack of influence&#10;Financial assets: FVPL or FVOCI"></div>
+      <div class="bar s2" data-hl="s2" data-tip="20–50% · significant influence&#10;Associates: equity method" style="animation-delay:.12s"></div>
+      <div class="bar s3" data-hl="s3" data-tip="Over 50% · control&#10;Business combinations: acquisition method" style="animation-delay:.24s"></div>
+    </div>
+    <div class="ticks" aria-hidden="true">
+      <span style="left:0">0</span><span style="left:20%">20</span><span style="left:50%">50</span><span style="left:100%">100</span>
+      <em>% OWNERSHIP</em>
+    </div>
+    <div class="labels scale">
+      <div class="lab l1" data-hl="s1" style="animation-delay:.3s"><b>Lack of influence</b><span class="pct">&lt; 20%</span><small>Financial assets</small></div>
+      <div class="lab l2" data-hl="s2" style="animation-delay:.38s"><b>Significant influence</b><span class="pct">20–50%</span><small>Associates · equity method</small></div>
+      <div class="lab l3" data-hl="s3" style="animation-delay:.46s"><b>Control</b><span class="pct">&gt; 50%</span><small>Business combinations · acquisition method</small></div>
+    </div>
+    <div class="jv"><b>Joint ventures</b><span>shared control · percentage varies · equity method</span></div>
+    <div class="src">SEPARATED AXIS · LIEFLAT L7 · INTERCORPORATE INVESTMENTS</div>
+  </main>
+  <script src="i18n.js"></script>
+  <script>
+chartI18n.use({
+  zh: {
+    "Ownership · power of control": "持股 · 控制力",
+    "Ownership percentage maps power of control.": "持股比例对应控制力。",
+    "Share of voting rights held · darker = more control · the actual level of control decides the category": "持有的表决权比例 · 颜色越深 = 控制越强 · 实际控制程度决定类别",
+    "0–20% · lack of influence": "0–20% · 缺乏影响",
+    "Financial assets: FVPL or FVOCI": "金融资产：FVPL 或 FVOCI",
+    "20–50% · significant influence": "20–50% · 重大影响",
+    "Associates: equity method": "联营企业：权益法",
+    "Over 50% · control": "50% 以上 · 控制",
+    "Business combinations: acquisition method": "企业合并：购买法",
+    "% OWNERSHIP": "持股 %",
+    "Lack of influence": "缺乏影响",
+    "Financial assets": "金融资产",
+    "Significant influence": "重大影响",
+    "Associates · equity method": "联营企业 · 权益法",
+    "Control": "控制",
+    "Business combinations · acquisition method": "企业合并 · 购买法",
+    "Joint ventures": "合营企业",
+    "shared control · percentage varies · equity method": "共同控制 · 比例不定 · 权益法",
+    "SEPARATED AXIS · LIEFLAT L7 · INTERCORPORATE INVESTMENTS": "分隔轴 · LIEFLAT L7 · 公司间投资",
+  },
+  ja: {
+    "Ownership · power of control": "保有比率 · 支配力",
+    "Ownership percentage maps power of control.": "持株比率が支配力に対応する。",
+    "Share of voting rights held · darker = more control · the actual level of control decides the category": "保有する議決権の割合 · 濃いほど支配が強い · 区分を決めるのは実際の支配の程度",
+    "0–20% · lack of influence": "0〜20% · 影響力なし",
+    "Financial assets: FVPL or FVOCI": "金融資産：FVPL または FVOCI",
+    "20–50% · significant influence": "20〜50% · 重要な影響力",
+    "Associates: equity method": "関連会社：持分法",
+    "Over 50% · control": "50% 超 · 支配",
+    "Business combinations: acquisition method": "企業結合：取得法",
+    "% OWNERSHIP": "持株比率 %",
+    "Lack of influence": "影響力なし",
+    "Financial assets": "金融資産",
+    "Significant influence": "重要な影響力",
+    "Associates · equity method": "関連会社 · 持分法",
+    "Control": "支配",
+    "Business combinations · acquisition method": "企業結合 · 取得法",
+    "Joint ventures": "共同支配企業",
+    "shared control · percentage varies · equity method": "共同支配 · 比率はさまざま · 持分法",
+    "SEPARATED AXIS · LIEFLAT L7 · INTERCORPORATE INVESTMENTS": "分離軸 · LIEFLAT L7 · 企業間投資",
+  },
+  fr: {
+    "Ownership · power of control": "Détention · pouvoir de contrôle",
+    "Ownership percentage maps power of control.": "Le pourcentage de détention reflète le pouvoir de contrôle.",
+    "Share of voting rights held · darker = more control · the actual level of control decides the category": "Part des droits de vote détenus · plus foncé = plus de contrôle · le niveau réel de contrôle décide de la catégorie",
+    "0–20% · lack of influence": "0–20 % · absence d’influence",
+    "Financial assets: FVPL or FVOCI": "Actifs financiers : FVPL ou FVOCI",
+    "20–50% · significant influence": "20–50 % · influence notable",
+    "Associates: equity method": "Entreprises associées : mise en équivalence",
+    "Over 50% · control": "Plus de 50 % · contrôle",
+    "Business combinations: acquisition method": "Regroupements d’entreprises : méthode de l’acquisition",
+    "% OWNERSHIP": "% DE DÉTENTION",
+    "Lack of influence": "Absence d’influence",
+    "Financial assets": "Actifs financiers",
+    "Significant influence": "Influence notable",
+    "Associates · equity method": "Entreprises associées · mise en équivalence",
+    "Control": "Contrôle",
+    "Business combinations · acquisition method": "Regroupements d’entreprises · acquisition",
+    "Joint ventures": "Coentreprises",
+    "shared control · percentage varies · equity method": "contrôle partagé · pourcentage variable · mise en équivalence",
+    "SEPARATED AXIS · LIEFLAT L7 · INTERCORPORATE INVESTMENTS": "AXE SÉPARÉ · LIEFLAT L7 · INVESTISSEMENTS INTERSOCIÉTÉS",
+  },
+}, {
+  patterns: {
+  zh: [
+
+  ],
+  ja: [
+
+  ],
+  fr: [
+
+  ],
+  },
+  html: {
+  zh: {
+
+  },
+  ja: {
+
+  },
+  fr: {
+
+  },
+  },
+});
+  </script>
+  <script>curveKit.fit();</script>
+</body>
+</html>

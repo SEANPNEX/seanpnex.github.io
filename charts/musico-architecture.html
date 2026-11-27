@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Musico Native Cross-Platform Architecture</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <script src="chart-fx.js"></script>
+</head>
+<body>
+  <main class="card" id="card">
+    <h2>Three native clients, one shared audio &amp; extension core.</h2>
+    <div class="sub">Zero web wrappers · hover any platform, module, or source to trace connections · adapts to night shift</div>
+    <svg id="arch" role="img" aria-label="Musico native cross-platform architecture diagram"></svg>
+    <div class="src">ARCHITECTURE · MUSICO NATIVE AUDIO · SWIFTUI · COMPOSE · WPF</div>
+  </main>
+  <script src="i18n.js"></script>
+  <script>
+chartI18n.use({
+  zh: {
+    "Musico Native Cross-Platform Architecture": "Musico 原生跨平台架构",
+    "Three native clients, one shared audio & extension core.": "三端 100% 原生客户端，一套共享的音频与扩展核心。",
+    "Zero web wrappers · hover any platform, module, or source to trace connections · adapts to night shift": "零 Web 套壳 · 悬停任意平台、核心模块或音源可追踪连接 · 自动适配夜间模式",
+    "Musico native cross-platform architecture diagram": "Musico 原生跨平台架构图",
+    "01 · APPLE": "01 · APPLE",
+    "02 · ANDROID": "02 · ANDROID",
+    "03 · WINDOWS": "03 · WINDOWS",
+    "iOS 17+ · iPadOS · macOS": "iOS 17+ · iPadOS · macOS",
+    "Android 8.0+ (API 26+)": "Android 8.0+ (API 26+)",
+    "Windows 10 / 11 (.NET 8)": "Windows 10 / 11 (.NET 8)",
+    "SwiftUI · Frosted Glass · Cmd+K": "SwiftUI · 毛玻璃透叠 · Cmd+K",
+    "AVAudioEngine · AVAudioUnitEQ": "AVAudioEngine · AVAudioUnitEQ",
+    "Mini-Player · JavaScriptCore": "悬浮迷你播 · JavaScriptCore",
+    "Kotlin · Compose M3 · Appearance": "Kotlin · Compose M3 · 自定义外观",
+    "Media3 ExoPlayer · SAF": "Media3 ExoPlayer · SAF",
+    "DynamicsProcessing · QuickJS": "DynamicsProcessing · QuickJS",
+    "C# · WPF · DWM Acrylic": "C# · WPF · DWM 亚克力材质",
+    "NAudio BiQuad EQ · Drag & Drop": "NAudio BiQuad EQ · 拖拽导入",
+    "Ctrl+K · Mini-Player · Jint": "Ctrl+K · 迷你播 · Jint",
+    "SHARED CORE & EXTENSIONS": "共享核心模型与扩展机制",
+    "Folder-First Library": "文件夹优先曲库",
+    "Multi-Queue Engine": "多队列播放引擎",
+    "10-Band EQ & .LRC Lyrics": "10 段 EQ 与 .LRC 歌词",
+    ".musicoext JS Runtime": ".musicoext JS 运行时",
+    "LOCAL & CLOUD SOURCES": "本地与云端音源",
+    "Local Folders (FLAC / ALAC / MP3 / OGG / OPUS)": "本地文件夹 (FLAC / ALAC / MP3 / OGG / OPUS)",
+    "YouTube · Bilibili · Google Drive": "YouTube · Bilibili · Google Drive",
+    "Official & .musico.js Plugins": "官方与自定义 .musico.js 插件",
+    "Apple Client\nSwiftUI + NSVisualEffectView + AVAudioEngine + JSC · Appearance, Cmd+K, Mini-Player & Drag & Drop": "Apple 客户端\nSwiftUI + NSVisualEffectView + AVAudioEngine + JSC · 外观定制、Cmd+K、迷你播与拖拽导入",
+    "Android Client\nJetpack Compose M3 + Media3 ExoPlayer + QuickJS · WCAG 2.1 Appearance, Top Stats & Device Delete": "Android 客户端\nJetpack Compose M3 + Media3 ExoPlayer + QuickJS · WCAG 2.1 外观、Top 统计与设备删除",
+    "Windows Client\n.NET 8 WPF + DWM Acrylic + NAudio + Jint · Ctrl+K Palette, Mini-Player & Drag & Drop": "Windows 客户端\n.NET 8 WPF + DWM 亚克力 + NAudio + Jint · Ctrl+K 命令面板、迷你播与拖拽导入",
+    "Shared Core Contract\nUnified library semantics, WCAG 2.1 Appearance, multi-queue persistence, EQ & JS API v1": "共享核心规范\n统一曲库语义、WCAG 2.1 外观校验、多队列持久化、均衡器与 JS API v1",
+    "Folder-First Library\nPreserves folder trees with Drag & Drop, Relocate, safe disk delete & .musico-cloud.json sync": "文件夹优先曲库\n保留目录层级，支持拖拽导入、无损重定位、安全删除与 .musico-cloud.json 同步",
+    "Multi-Queue Engine\nParallel independent queues with per-queue position, shuffle, repeat & Top Artists / Albums stats": "多队列播放引擎\n独立多队列分别记忆位置、随机与循环，并支持 Top 艺人 / 专辑统计",
+    "10-Band EQ & .LRC Lyrics\n31 Hz–16 kHz ISO bands + Imported / Sidecar / Embedded lyrics with font, alignment & line sync": "10 段均衡器与歌词\n31 Hz–16 kHz ISO 频段 + 导入/同名/内嵌歌词，支持字号、对齐与同步当前行",
+    "JS Extension Runtime\nCommonJS API v1 (JavaScriptCore / QuickJS / Jint) with web_login ephemeral WebView, qr_login & cookies.txt": "JS 扩展运行时\nCommonJS API v1（JSC / QuickJS / Jint），支持 web_login 临时 WebView、qr_login 与 cookies.txt",
+    "Local Folders\nDirect filesystem, SAF & Drag & Drop playback with Move to Trash / Recycle Bin / Device Delete": "本地文件夹\n本地文件系统、SAF 与拖拽直放，支持移入废纸篓 / 回收站 / 从设备删除",
+    "Built-In Cloud Hangouts\nYouTube, Bilibili & Google Drive (zero-login public or optional OAuth 2.0) with offline save": "内置云端文件夹\n支持 YouTube、Bilibili 与 Google Drive（公开免登或可选 OAuth 2.0）并可离线保存",
+    "Official & Community Extensions\nYouTube v1.2.0 (web_login), Bilibili v1.2.0 (qr_login), NetEase v1.2.0, Apple Music v1.0.1 & cookies.txt": "官方与社区扩展生态\nYouTube v1.2.0（web_login）、Bilibili v1.2.0（qr_login）、网易云 v1.2.0、Apple Music v1.0.1 及 cookies.txt",
+    "ARCHITECTURE · MUSICO NATIVE AUDIO · SWIFTUI · COMPOSE · WPF": "系统架构 · MUSICO 原生音频 · SWIFTUI · COMPOSE · WPF",
+  },
+  ja: {
+    "Musico Native Cross-Platform Architecture": "Musico ネイティブ・クロスプラットフォーム構成",
+    "Three native clients, one shared audio & extension core.": "3 つの 100% ネイティブクライアントと、統一されたオーディオ／拡張コア。",
+    "Zero web wrappers · hover any platform, module, or source to trace connections · adapts to night shift": "Web ラッパーなし · プラットフォームやモジュールにカーソルを合わせて接続を確認 · ダークモード対応",
+    "Musico native cross-platform architecture diagram": "Musico ネイティブ構成図",
+    "01 · APPLE": "01 · APPLE",
+    "02 · ANDROID": "02 · ANDROID",
+    "03 · WINDOWS": "03 · WINDOWS",
+    "iOS 17+ · iPadOS · macOS": "iOS 17+ · iPadOS · macOS",
+    "Android 8.0+ (API 26+)": "Android 8.0+ (API 26+)",
+    "Windows 10 / 11 (.NET 8)": "Windows 10 / 11 (.NET 8)",
+    "SwiftUI · Frosted Glass · Cmd+K": "SwiftUI · フロストガラス · Cmd+K",
+    "AVAudioEngine · AVAudioUnitEQ": "AVAudioEngine · AVAudioUnitEQ",
+    "Mini-Player · JavaScriptCore": "ミニプレイヤー · JavaScriptCore",
+    "Kotlin · Compose M3 · Appearance": "Kotlin · Compose M3 · 外観カスタム",
+    "Media3 ExoPlayer · SAF": "Media3 ExoPlayer · SAF",
+    "DynamicsProcessing · QuickJS": "DynamicsProcessing · QuickJS",
+    "C# · WPF · DWM Acrylic": "C# · WPF · DWM アクリル",
+    "NAudio BiQuad EQ · Drag & Drop": "NAudio BiQuad EQ · D&D 取込",
+    "Ctrl+K · Mini-Player · Jint": "Ctrl+K · ミニプレイヤー · Jint",
+    "SHARED CORE & EXTENSIONS": "共通コアモデル・拡張機構",
+    "Folder-First Library": "フォルダ指向ライブラリ",
+    "Multi-Queue Engine": "マルチキュー再生エンジン",
+    "10-Band EQ & .LRC Lyrics": "10 バンド EQ・.LRC 歌詞",
+    ".musicoext JS Runtime": ".musicoext JS ランタイム",
+    "LOCAL & CLOUD SOURCES": "ローカル＆クラウド音源",
+    "Local Folders (FLAC / ALAC / MP3 / OGG / OPUS)": "ローカルフォルダ (FLAC / ALAC / MP3 / OGG / OPUS)",
+    "YouTube · Bilibili · Google Drive": "YouTube · Bilibili · Google Drive",
+    "Official & .musico.js Plugins": "公式・カスタム .musico.js プラグイン",
+    "Apple Client\nSwiftUI + NSVisualEffectView + AVAudioEngine + JSC · Appearance, Cmd+K, Mini-Player & Drag & Drop": "Apple クライアント\nSwiftUI + NSVisualEffectView + AVAudioEngine + JSC · 外観設定、Cmd+K、ミニプレイヤー、D&D 対応",
+    "Android Client\nJetpack Compose M3 + Media3 ExoPlayer + QuickJS · WCAG 2.1 Appearance, Top Stats & Device Delete": "Android クライアント\nJetpack Compose M3 + Media3 ExoPlayer + QuickJS · WCAG 2.1 外観、Top 統計、端末内削除",
+    "Windows Client\n.NET 8 WPF + DWM Acrylic + NAudio + Jint · Ctrl+K Palette, Mini-Player & Drag & Drop": "Windows クライアント\n.NET 8 WPF + DWM アクリル + NAudio + Jint · Ctrl+K パレット、ミニプレイヤー、D&D 対応",
+    "Shared Core Contract\nUnified library semantics, WCAG 2.1 Appearance, multi-queue persistence, EQ & JS API v1": "共通コア仕様\n統一ライブラリ構造、WCAG 2.1 外観検証、キュー永続化、EQ、JS API v1",
+    "Folder-First Library\nPreserves folder trees with Drag & Drop, Relocate, safe disk delete & .musico-cloud.json sync": "フォルダ指向ライブラリ\n階層構造を保ちつつ D&D・再配置・安全削除・.musico-cloud.json 同期に対応",
+    "Multi-Queue Engine\nParallel independent queues with per-queue position, shuffle, repeat & Top Artists / Albums stats": "マルチキュー再生\n独立キューごとに位置・シャッフル・リピートを記憶し Top アーティスト/アルバムを集計",
+    "10-Band EQ & .LRC Lyrics\n31 Hz–16 kHz ISO bands + Imported / Sidecar / Embedded lyrics with font, alignment & line sync": "10 バンド EQ と歌詞\n31 Hz–16 kHz ISO バンド + 多層歌詞フォールバック、文字サイズ・配置・現在行同期対応",
+    "JS Extension Runtime\nCommonJS API v1 (JavaScriptCore / QuickJS / Jint) with web_login ephemeral WebView, qr_login & cookies.txt": "JS 拡張ランタイム\nCommonJS API v1（JSC / QuickJS / Jint）で web_login 一時 WebView・qr_login・cookies.txt に対応",
+    "Local Folders\nDirect filesystem, SAF & Drag & Drop playback with Move to Trash / Recycle Bin / Device Delete": "ローカルフォルダ\nファイルシステム・SAF・D&D 再生に加え、ゴミ箱移動／端末から削除に対応",
+    "Built-In Cloud Hangouts\nYouTube, Bilibili & Google Drive (zero-login public or optional OAuth 2.0) with offline save": "組み込みクラウド連携\nYouTube・Bilibili・Google Drive（公開リンクはログイン不要／任意 OAuth 2.0 対応）＆オフライン保存",
+    "Official & Community Extensions\nYouTube v1.2.0 (web_login), Bilibili v1.2.0 (qr_login), NetEase v1.2.0, Apple Music v1.0.1 & cookies.txt": "公式＆コミュニティ拡張\nYouTube v1.2.0 (web_login)、Bilibili v1.2.0 (qr_login)、NetEase v1.2.0、Apple Music v1.0.1、cookies.txt",
+    "ARCHITECTURE · MUSICO NATIVE AUDIO · SWIFTUI · COMPOSE · WPF": "アーキテクチャ · MUSICO ネイティブオーディオ · SWIFTUI · COMPOSE · WPF",
+  },
+  fr: {
+    "Musico Native Cross-Platform Architecture": "Architecture native multiplateforme de Musico",
+    "Three native clients, one shared audio & extension core.": "Trois clients natifs, un même cœur audio et moteur d’extensions.",
+    "Zero web wrappers · hover any platform, module, or source to trace connections · adapts to night shift": "Zéro wrapper web · survolez une plateforme, un module ou une source pour tracer les flux · adapté au mode sombre",
+    "Musico native cross-platform architecture diagram": "Schéma d’architecture native de Musico",
+    "01 · APPLE": "01 · APPLE",
+    "02 · ANDROID": "02 · ANDROID",
+    "03 · WINDOWS": "03 · WINDOWS",
+    "iOS 17+ · iPadOS · macOS": "iOS 17+ · iPadOS · macOS",
+    "Android 8.0+ (API 26+)": "Android 8.0+ (API 26+)",
+    "Windows 10 / 11 (.NET 8)": "Windows 10 / 11 (.NET 8)",
+    "SwiftUI · Frosted Glass · Cmd+K": "SwiftUI · Verre dépoli · Cmd+K",
+    "AVAudioEngine · AVAudioUnitEQ": "AVAudioEngine · AVAudioUnitEQ",
+    "Mini-Player · JavaScriptCore": "Mini-lecteur · JavaScriptCore",
+    "Kotlin · Compose M3 · Appearance": "Kotlin · Compose M3 · Apparence",
+    "Media3 ExoPlayer · SAF": "Media3 ExoPlayer · SAF",
+    "DynamicsProcessing · QuickJS": "DynamicsProcessing · QuickJS",
+    "C# · WPF · DWM Acrylic": "C# · WPF · Acrylique DWM",
+    "NAudio BiQuad EQ · Drag & Drop": "NAudio BiQuad EQ · Glisser-déposer",
+    "Ctrl+K · Mini-Player · Jint": "Ctrl+K · Mini-lecteur · Jint",
+    "SHARED CORE & EXTENSIONS": "CŒUR PARTAGÉ ET EXTENSIONS",
+    "Folder-First Library": "Bibliothèque par dossiers",
+    "Multi-Queue Engine": "Moteur multi-files",
+    "10-Band EQ & .LRC Lyrics": "Égaliseur 10 bandes & .LRC",
+    ".musicoext JS Runtime": "Runtime JS .musicoext",
+    "LOCAL & CLOUD SOURCES": "SOURCES LOCALES ET CLOUD",
+    "Local Folders (FLAC / ALAC / MP3 / OGG / OPUS)": "Dossiers locaux (FLAC / ALAC / MP3 / OGG / OPUS)",
+    "YouTube · Bilibili · Google Drive": "YouTube · Bilibili · Google Drive",
+    "Official & .musico.js Plugins": "Plugins officiels & .musico.js",
+    "Apple Client\nSwiftUI + NSVisualEffectView + AVAudioEngine + JSC · Appearance, Cmd+K, Mini-Player & Drag & Drop": "Client Apple\nSwiftUI + NSVisualEffectView + AVAudioEngine + JSC · Apparence, Cmd+K, mini-lecteur et glisser-déposer",
+    "Android Client\nJetpack Compose M3 + Media3 ExoPlayer + QuickJS · WCAG 2.1 Appearance, Top Stats & Device Delete": "Client Android\nJetpack Compose M3 + Media3 ExoPlayer + QuickJS · Apparence WCAG 2.1, Top stats et suppression appareil",
+    "Windows Client\n.NET 8 WPF + DWM Acrylic + NAudio + Jint · Ctrl+K Palette, Mini-Player & Drag & Drop": "Client Windows\n.NET 8 WPF + Acrylique DWM + NAudio + Jint · Palette Ctrl+K, mini-lecteur et glisser-déposer",
+    "Shared Core Contract\nUnified library semantics, WCAG 2.1 Appearance, multi-queue persistence, EQ & JS API v1": "Contrat du cœur partagé\nModèle unifié, apparence WCAG 2.1, persistance des files, EQ et API JS v1",
+    "Folder-First Library\nPreserves folder trees with Drag & Drop, Relocate, safe disk delete & .musico-cloud.json sync": "Bibliothèque par dossiers\nPréserve l’arborescence avec glisser-déposer, Relocate, suppression sûre et synchro .musico-cloud.json",
+    "Multi-Queue Engine\nParallel independent queues with per-queue position, shuffle, repeat & Top Artists / Albums stats": "Moteur multi-files\nFiles parallèles mémorisant position, aléatoire, répétition et stats Top artistes / albums",
+    "10-Band EQ & .LRC Lyrics\n31 Hz–16 kHz ISO bands + Imported / Sidecar / Embedded lyrics with font, alignment & line sync": "Égaliseur 10 bandes & paroles\nBandes ISO 31 Hz–16 kHz + paroles multi-niveaux avec taille, alignement et synchro ligne",
+    "JS Extension Runtime\nCommonJS API v1 (JavaScriptCore / QuickJS / Jint) with web_login ephemeral WebView, qr_login & cookies.txt": "Runtime d’extensions JS\nCommonJS API v1 (JSC / QuickJS / Jint) avec WebView éphémère web_login, qr_login et cookies.txt",
+    "Local Folders\nDirect filesystem, SAF & Drag & Drop playback with Move to Trash / Recycle Bin / Device Delete": "Dossiers locaux\nLecture directe, SAF et glisser-déposer avec Corbeille / Suppression sur l’appareil",
+    "Built-In Cloud Hangouts\nYouTube, Bilibili & Google Drive (zero-login public or optional OAuth 2.0) with offline save": "Sources cloud intégrées\nYouTube, Bilibili et Google Drive (liens publics sans connexion ou OAuth 2.0 optionnel) hors ligne",
+    "Official & Community Extensions\nYouTube v1.2.0 (web_login), Bilibili v1.2.0 (qr_login), NetEase v1.2.0, Apple Music v1.0.1 & cookies.txt": "Extensions officielles & communautaires\nYouTube v1.2.0 (web_login), Bilibili v1.2.0 (qr_login), NetEase v1.2.0, Apple Music v1.0.1 & cookies.txt",
+    "ARCHITECTURE · MUSICO NATIVE AUDIO · SWIFTUI · COMPOSE · WPF": "ARCHITECTURE · AUDIO NATIF MUSICO · SWIFTUI · COMPOSE · WPF",
+  },
+});
+  </script>
+  <script>
+(() => {
+  const { C, T, el, mount } = curveKit;
+
+  const CLIENTS = [
+    {
+      id: 'apple',
+      eyebrow: '01 · APPLE',
+      title: 'iOS 17+ · iPadOS · macOS',
+      lines: [
+        'SwiftUI · Frosted Glass · Cmd+K',
+        'AVAudioEngine · AVAudioUnitEQ',
+        'Mini-Player · JavaScriptCore',
+      ],
+      tip: 'Apple Client\nSwiftUI + NSVisualEffectView + AVAudioEngine + JSC · Appearance, Cmd+K, Mini-Player & Drag & Drop',
+    },
+    {
+      id: 'android',
+      eyebrow: '02 · ANDROID',
+      title: 'Android 8.0+ (API 26+)',
+      lines: [
+        'Kotlin · Compose M3 · Appearance',
+        'Media3 ExoPlayer · SAF',
+        'DynamicsProcessing · QuickJS',
+      ],
+      tip: 'Android Client\nJetpack Compose M3 + Media3 ExoPlayer + QuickJS · WCAG 2.1 Appearance, Top Stats & Device Delete',
+    },
+    {
+      id: 'windows',
+      eyebrow: '03 · WINDOWS',
+      title: 'Windows 10 / 11 (.NET 8)',
+      lines: [
+        'C# · WPF · DWM Acrylic',
+        'NAudio BiQuad EQ · Drag & Drop',
+        'Ctrl+K · Mini-Player · Jint',
+      ],
+      tip: 'Windows Client\n.NET 8 WPF + DWM Acrylic + NAudio + Jint · Ctrl+K Palette, Mini-Player & Drag & Drop',
+    },
+  ];
+
+  const MODULES = [
+    {
+      id: 'library',
+      label: 'Folder-First Library',
+      tip: 'Folder-First Library\nPreserves folder trees with Drag & Drop, Relocate, safe disk delete & .musico-cloud.json sync',
+    },
+    {
+      id: 'queues',
+      label: 'Multi-Queue Engine',
+      tip: 'Multi-Queue Engine\nParallel independent queues with per-queue position, shuffle, repeat & Top Artists / Albums stats',
+    },
+    {
+      id: 'eq',
+      label: '10-Band EQ & .LRC Lyrics',
+      tip: '10-Band EQ & .LRC Lyrics\n31 Hz–16 kHz ISO bands + Imported / Sidecar / Embedded lyrics with font, alignment & line sync',
+    },
+    {
+      id: 'runtime',
+      label: '.musicoext JS Runtime',
+      tip: 'JS Extension Runtime\nCommonJS API v1 (JavaScriptCore / QuickJS / Jint) with web_login ephemeral WebView, qr_login & cookies.txt',
+    },
+  ];
+
+  const SOURCES = [
+    {
+      id: 'local',
+      label: 'Local Folders (FLAC / ALAC / MP3 / OGG / OPUS)',
+      parent: 'core',
+      tip: 'Local Folders\nDirect filesystem, SAF & Drag & Drop playback with Move to Trash / Recycle Bin / Device Delete',
+    },
+    {
+      id: 'cloud',
+      label: 'YouTube · Bilibili · Google Drive',
+      parent: 'core',
+      tip: 'Built-In Cloud Hangouts\nYouTube, Bilibili & Google Drive (zero-login public or optional OAuth 2.0) with offline save',
+    },
+    {
+      id: 'ext',
+      label: 'Official & .musico.js Plugins',
+      parent: 'runtime',
+      tip: 'Official & Community Extensions\nYouTube v1.2.0 (web_login), Bilibili v1.2.0 (qr_login), NetEase v1.2.0, Apple Music v1.0.1 & cookies.txt',
+    },
+  ];
+
+  const isStacked = (w) => w < 620;
+  const height = (w) => (isStacked(w) ? 810 : 418);
+
+  function addFittedText(svg, x, y, str, opts) {
+    const t = el(svg, 'text', {
+      x,
+      y,
+      'font-size': opts.size || 12,
+      'font-weight': opts.weight || 600,
+      fill: opts.fill || C.INK,
+      'text-anchor': opts.anchor || 'start',
+      'letter-spacing': opts.tracking || null,
+    }, T(str));
+    if (opts.maxWidth) {
+      const len = t.getComputedTextLength();
+      if (len > opts.maxWidth && len > 0) {
+        const nextSize = Math.max(9.2, (opts.size || 12) * (opts.maxWidth / len));
+        t.setAttribute('font-size', nextSize.toFixed(1));
+      }
+    }
+    return t;
+  }
+
+  mount(document.getElementById('arch'), (svg, W) => {
+    const narrow = isStacked(W);
+
+    if (narrow) {
+      let y = 6;
+      const cardH = 122;
+      const cardGap = 12;
+
+      CLIENTS.forEach((client, idx) => {
+        const g = el(svg, 'g', {
+          class: 'fade',
+          style: `animation-delay:${idx * 0.06}s`,
+          'data-node': client.id,
+          'data-tip': T(client.tip),
+        });
+        el(g, 'rect', {
+          x: 0, y, width: W, height: cardH, rx: 14,
+          fill: '#E7E6E0', stroke: '#DEDDD6', 'stroke-width': 1.4,
+        });
+        addFittedText(g, 16, y + 24, client.eyebrow, { size: 10.5, weight: 700, fill: '#6A6963', tracking: '1.1' });
+        addFittedText(g, 16, y + 46, client.title, { size: 15, weight: 800, fill: '#1C1C1A', maxWidth: W - 32 });
+        el(g, 'line', { x1: 16, y1: y + 58, x2: W - 16, y2: y + 58, stroke: '#DEDDD6', 'stroke-width': 1 });
+        client.lines.forEach((line, i) => {
+          addFittedText(g, 16, y + 77 + i * 18, line, {
+            size: 12,
+            weight: i === 0 ? 600 : 500,
+            fill: i === 0 ? '#4A4944' : '#6A6963',
+            maxWidth: W - 32,
+          });
+        });
+        y += cardH + cardGap;
+      });
+
+      // Connector down to shared core
+      const connTop = y - cardGap;
+      const connBot = connTop + 20;
+      el(svg, 'line', {
+        x1: W / 2, y1: connTop, x2: W / 2, y2: connBot,
+        stroke: '#B0AFA9', 'stroke-width': 1.5, pathLength: 1, class: 'draw',
+        'data-edge': 'apple>core',
+      });
+      el(svg, 'line', {
+        x1: W / 2, y1: connTop, x2: W / 2, y2: connBot,
+        stroke: 'transparent', 'stroke-width': 8, 'data-edge': 'android>core',
+      });
+      el(svg, 'line', {
+        x1: W / 2, y1: connTop, x2: W / 2, y2: connBot,
+        stroke: 'transparent', 'stroke-width': 8, 'data-edge': 'windows>core',
+      });
+      el(svg, 'circle', { cx: W / 2, cy: connTop, r: 3, fill: '#1C1C1A', class: 'pop' });
+
+      y = connBot;
+      const coreH = 212;
+      const coreG = el(svg, 'g', {
+        class: 'fade',
+        style: 'animation-delay:0.22s',
+        'data-node': 'core',
+        'data-tip': T('Shared Core Contract\nUnified library semantics, WCAG 2.1 Appearance, multi-queue persistence, EQ & JS API v1'),
+      });
+      el(coreG, 'rect', { x: 0, y, width: W, height: coreH, rx: 16, fill: '#1C1C1A' });
+      addFittedText(coreG, 16, y + 25, 'SHARED CORE & EXTENSIONS', { size: 10.5, weight: 700, fill: '#B0AFA9', tracking: '1.1' });
+
+      MODULES.forEach((mod, i) => {
+        const my = y + 38 + i * 41;
+        const mg = el(svg, 'g', {
+          class: 'fade',
+          style: `animation-delay:${0.26 + i * 0.04}s`,
+          'data-node': mod.id,
+          'data-tip': T(mod.tip),
+        });
+        el(mg, 'rect', { x: 14, y: my, width: W - 28, height: 33, rx: 9, fill: '#2E2D29' });
+        addFittedText(mg, W / 2, my + 21, mod.label, {
+          size: 12.5, weight: 700, fill: '#F0EFEB', anchor: 'middle', maxWidth: W - 48,
+        });
+      });
+
+      const srcTop = y + coreH;
+      const srcY = srcTop + 20;
+      el(svg, 'line', {
+        x1: W / 2, y1: srcTop, x2: W / 2, y2: srcY,
+        stroke: '#B0AFA9', 'stroke-width': 1.5, pathLength: 1, class: 'draw',
+        'data-edge': 'core>local',
+      });
+
+      const srcH = 158;
+      const srcOuter = el(svg, 'g', { class: 'fade', style: 'animation-delay:0.38s' });
+      el(srcOuter, 'rect', {
+        x: 0, y: srcY, width: W, height: srcH, rx: 16,
+        fill: '#E7E6E0', stroke: '#DEDDD6', 'stroke-width': 1.4,
+      });
+      addFittedText(srcOuter, 16, srcY + 24, 'LOCAL & CLOUD SOURCES', { size: 10.5, weight: 700, fill: '#6A6963', tracking: '1.1' });
+
+      SOURCES.forEach((src, i) => {
+        const sy = srcY + 36 + i * 38;
+        const sg = el(svg, 'g', {
+          'data-node': src.id,
+          'data-tip': T(src.tip),
+        });
+        el(sg, 'rect', {
+          x: 14, y: sy, width: W - 28, height: 30, rx: 8,
+          fill: '#F0EFEB', stroke: '#DEDDD6', 'stroke-width': 1,
+        });
+        addFittedText(sg, W / 2, sy + 19.5, src.label, {
+          size: 12, weight: 600, fill: '#1C1C1A', anchor: 'middle', maxWidth: W - 44,
+        });
+      });
+      return;
+    }
+
+    // Desktop / wide layout (3 columns)
+    const gap = 16;
+    const cardW = (W - gap * 2) / 3;
+    const cardY = 6;
+    const cardH = 162;
+
+    const clientCenters = [];
+    CLIENTS.forEach((client, idx) => {
+      const x = idx * (cardW + gap);
+      const cx = x + cardW / 2;
+      clientCenters.push(cx);
+
+      const g = el(svg, 'g', {
+        class: 'fade',
+        style: `animation-delay:${idx * 0.06}s`,
+        'data-node': client.id,
+        'data-tip': T(client.tip),
+      });
+      el(g, 'rect', {
+        x, y: cardY, width: cardW, height: cardH, rx: 16,
+        fill: '#E7E6E0', stroke: '#DEDDD6', 'stroke-width': 1.4,
+      });
+      addFittedText(g, x + 18, cardY + 27, client.eyebrow, { size: 11, weight: 700, fill: '#6A6963', tracking: '1.1' });
+      addFittedText(g, x + 18, cardY + 53, client.title, { size: 15.5, weight: 800, fill: '#1C1C1A', maxWidth: cardW - 36 });
+      el(g, 'line', { x1: x + 18, y1: cardY + 68, x2: x + cardW - 18, y2: cardY + 68, stroke: '#DEDDD6', 'stroke-width': 1 });
+
+      client.lines.forEach((line, i) => {
+        addFittedText(g, x + 18, cardY + 92 + i * 24, line, {
+          size: 12.5,
+          weight: i === 0 ? 600 : 500,
+          fill: i === 0 ? '#4A4944' : '#6A6963',
+          maxWidth: cardW - 36,
+        });
+      });
+    });
+
+    // Connectors from 3 clients down to Shared Core bar
+    const connY0 = cardY + cardH;
+    const busY = connY0 + 18;
+    const coreY = connY0 + 34;
+
+    el(svg, 'path', {
+      d: `M${clientCenters[0]} ${connY0} V${busY} H${clientCenters[1]} V${coreY}`,
+      fill: 'none', stroke: '#B0AFA9', 'stroke-width': 1.5, pathLength: 1, class: 'draw',
+      style: 'animation-delay:0.18s', 'data-edge': 'apple>core',
+    });
+    el(svg, 'path', {
+      d: `M${clientCenters[1]} ${connY0} V${coreY}`,
+      fill: 'none', stroke: '#B0AFA9', 'stroke-width': 1.5, pathLength: 1, class: 'draw',
+      style: 'animation-delay:0.2s', 'data-edge': 'android>core',
+    });
+    el(svg, 'path', {
+      d: `M${clientCenters[2]} ${connY0} V${busY} H${clientCenters[1]} V${coreY}`,
+      fill: 'none', stroke: '#B0AFA9', 'stroke-width': 1.5, pathLength: 1, class: 'draw',
+      style: 'animation-delay:0.22s', 'data-edge': 'windows>core',
+    });
+    clientCenters.forEach((cx, idx) => {
+      el(svg, 'circle', {
+        cx, cy: connY0, r: 3, fill: '#1C1C1A', class: 'pop',
+        style: `animation-delay:${0.18 + idx * 0.03}s`,
+        'data-node': CLIENTS[idx].id,
+      });
+    });
+
+    // Shared Core bar
+    const coreH = 92;
+    const coreGroup = el(svg, 'g', {
+      class: 'fade',
+      style: 'animation-delay:0.24s',
+      'data-node': 'core',
+      'data-tip': T('Shared Core Contract\nUnified library semantics, WCAG 2.1 Appearance, multi-queue persistence, EQ & JS API v1'),
+    });
+    el(coreGroup, 'rect', { x: 0, y: coreY, width: W, height: coreH, rx: 16, fill: '#1C1C1A' });
+    addFittedText(coreGroup, 18, coreY + 26, 'SHARED CORE & EXTENSIONS', { size: 11, weight: 700, fill: '#B0AFA9', tracking: '1.1' });
+
+    const modPad = 18;
+    const modGap = 12;
+    const modW = (W - modPad * 2 - modGap * 3) / 4;
+    const modCenters = [];
+    MODULES.forEach((mod, i) => {
+      const mx = modPad + i * (modW + modGap);
+      modCenters.push(mx + modW / 2);
+      const mg = el(svg, 'g', {
+        class: 'fade',
+        style: `animation-delay:${0.28 + i * 0.04}s`,
+        'data-node': mod.id,
+        'data-tip': T(mod.tip),
+      });
+      el(mg, 'rect', { x: mx, y: coreY + 39, width: modW, height: 37, rx: 10, fill: '#2E2D29' });
+      addFittedText(mg, mx + modW / 2, coreY + 62, mod.label, {
+        size: 12.5, weight: 700, fill: '#F0EFEB', anchor: 'middle', maxWidth: modW - 18,
+      });
+    });
+
+    // Connectors from Shared Core -> Sources
+    const srcConnY0 = coreY + coreH;
+    const srcY = srcConnY0 + 24;
+    const srcH = 82;
+
+    const srcPad = 18;
+    const srcGap = 12;
+    const availSrc = W - srcPad * 2 - srcGap * 2;
+    const srcWidths = [availSrc * 0.42, availSrc * 0.30, availSrc * 0.28];
+    const srcXs = [srcPad, srcPad + srcWidths[0] + srcGap, srcPad + srcWidths[0] + srcGap + srcWidths[1] + srcGap];
+
+    el(svg, 'path', {
+      d: `M${srcXs[0] + srcWidths[0] / 2} ${srcConnY0} V${srcY}`,
+      fill: 'none', stroke: '#B0AFA9', 'stroke-width': 1.5, pathLength: 1, class: 'draw',
+      style: 'animation-delay:0.38s', 'data-edge': 'core>local',
+    });
+    el(svg, 'path', {
+      d: `M${srcXs[1] + srcWidths[1] / 2} ${srcConnY0} V${srcY}`,
+      fill: 'none', stroke: '#B0AFA9', 'stroke-width': 1.5, pathLength: 1, class: 'draw',
+      style: 'animation-delay:0.4s', 'data-edge': 'core>cloud',
+    });
+    el(svg, 'path', {
+      d: `M${modCenters[3]} ${srcConnY0} V${srcY}`,
+      fill: 'none', stroke: '#B0AFA9', 'stroke-width': 1.5, pathLength: 1, class: 'draw',
+      style: 'animation-delay:0.42s', 'data-edge': 'runtime>ext',
+    });
+
+    // Bottom Sources strip
+    const srcOuter = el(svg, 'g', { class: 'fade', style: 'animation-delay:0.36s' });
+    el(srcOuter, 'rect', {
+      x: 0, y: srcY, width: W, height: srcH, rx: 16,
+      fill: '#E7E6E0', stroke: '#DEDDD6', 'stroke-width': 1.4,
+    });
+    addFittedText(srcOuter, 18, srcY + 25, 'LOCAL & CLOUD SOURCES', { size: 11, weight: 700, fill: '#6A6963', tracking: '1.1' });
+
+    SOURCES.forEach((src, i) => {
+      const sx = srcXs[i];
+      const sw = srcWidths[i];
+      const sg = el(svg, 'g', {
+        class: 'fade',
+        style: `animation-delay:${0.4 + i * 0.05}s`,
+        'data-node': src.id,
+        'data-tip': T(src.tip),
+      });
+      el(sg, 'rect', {
+        x: sx, y: srcY + 37, width: sw, height: 32, rx: 8,
+        fill: '#F0EFEB', stroke: '#DEDDD6', 'stroke-width': 1,
+      });
+      addFittedText(sg, sx + sw / 2, srcY + 57.5, src.label, {
+        size: 12.5, weight: 600, fill: '#1C1C1A', anchor: 'middle', maxWidth: sw - 16,
+      });
+    });
+  }, height);
+})();
+  </script>
+</body>
+</html>

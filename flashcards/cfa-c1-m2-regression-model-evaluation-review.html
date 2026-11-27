@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Quant M2 — Regression Model Evaluation review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    id: "q2-three-questions",
+    topic: "Evaluation · three questions",
+    front: "Model evaluation asks three different questions. What are they?",
+    back: "<div class=\"ans\"><ul><li><strong>Fit</strong>: how much sample variation does the model explain?</li><li><strong>Parsimony</strong>: is the extra fit worth the added complexity?</li><li><strong>Inference</strong>: are individual, all, or a selected group of variables significant?</li></ul><p>None of them alone proves the model is correctly specified or economically useful.</p></div>"
+  },
+  {
+    id: "q2-high-r2",
+    topic: "Fit · R²",
+    front: "A model has a high \\(R^2\\). Name three things this does not establish.",
+    back: "<div class=\"ans\"><ul><li><strong>Causality</strong></li><li><strong>Good out-of-sample forecasts</strong></li><li>That the regression <strong>assumptions are satisfied</strong></li></ul></div>",
+    gap: "Ordinary R² never falls when a predictor is added, even a useless one."
+  },
+  {
+    id: "q2-adj-r2",
+    topic: "Fit · adjusted R²",
+    front: "Give the formula for adjusted \\(R^2\\). How does it differ from \\(R^2\\)?",
+    back: "<div class=\"ans\"><div class=\"eq-block\">$$\\bar R^2=1-\\left(\\frac{n-1}{n-k-1}\\right)(1-R^2)$$</div><ul><li>Penalizes extra predictors: it <strong>can fall</strong> when an unhelpful variable is added</li><li>It <strong>can be negative</strong></li><li>Compare only models with the <strong>same dependent variable and sample</strong>; higher is preferred</li></ul></div>"
+  },
+  {
+    id: "q2-aic",
+    topic: "Parsimony · AIC",
+    front: "Write the AIC for an OLS model. Is higher or lower better?",
+    back: "<div class=\"ans\"><div class=\"eq-block\">$$AIC=n\\ln\\!\\left(\\frac{SSE}{n}\\right)+2(k+1)$$</div><p>The first term rewards fit (smaller SSE); the second penalizes the \\(k\\) slopes plus the intercept. <strong>Lower AIC is preferred.</strong></p></div>"
+  },
+  {
+    id: "q2-bic",
+    topic: "Parsimony · BIC",
+    front: "Write the BIC. Why does it usually pick smaller models than AIC?",
+    back: "<div class=\"ans\"><div class=\"eq-block\">$$BIC=n\\ln\\!\\left(\\frac{SSE}{n}\\right)+\\ln(n)(k+1)$$</div><p>Its penalty per parameter is \\(\\ln(n)\\), which exceeds AIC's 2 once \\(n>e^2\\approx7.39\\). BIC therefore penalizes extra variables more heavily and favors <strong>more parsimonious</strong> models. Lower is preferred.</p></div>",
+    gap: "CFA usage: AIC is preferred when the goal is prediction, BIC when the goal is the best goodness of fit."
+  },
+  {
+    id: "q2-ic-level",
+    topic: "Parsimony · reading AIC and BIC",
+    front: "An AIC of −312 on its own: good or bad?",
+    back: "<div class=\"ans\"><p><strong>Neither.</strong> The absolute value has little standalone meaning. AIC and BIC only <strong>rank models</strong> fitted to the <strong>same observations and dependent variable</strong>.</p></div>"
+  },
+  {
+    id: "q2-restricted-f",
+    topic: "Inference · restricted F-test",
+    front: "How do you test whether a subset of coefficients, e.g. \\(\\beta_2=\\beta_3=0\\), is jointly zero?",
+    back: "<div class=\"ans\"><p>Estimate the <strong>unrestricted</strong> model (all \\(k\\) predictors) and the <strong>restricted</strong> model (drops the tested variables), then</p><div class=\"eq-block\">$$F=\\frac{(SSE_R-SSE_U)/q}{SSE_U/(n-k-1)}$$</div><div class=\"eq-block\">$$df=(q,\\;n-k-1)$$</div><p>\\(q\\) = number of restrictions. Reject for a large \\(F\\).</p></div>",
+    gap: "SSE_U ≤ SSE_R always: the unrestricted model is more flexible. Use k of the unrestricted model in the denominator."
+  },
+  {
+    id: "q2-restricted-example",
+    topic: "Inference · worked example",
+    front: "\\(n=100\\), \\(k=4\\), test \\(\\beta_3=\\beta_4=0\\). \\(SSE_R=480\\), \\(SSE_U=400\\). Compute \\(F\\) and conclude at 5% (critical value ≈ 3.09).",
+    back: "<div class=\"ans\"><div class=\"eq-block\">$$F=\\frac{(480-400)/2}{400/95}=\\frac{40}{4.21}\\approx9.50$$</div><p>\\(9.50>3.09\\) → <strong>reject</strong> \\(H_0\\): \\(X_3\\) and \\(X_4\\) are <strong>jointly significant</strong>.</p></div>",
+    gap: "Joint significance does not mean each of the two coefficients is individually significant."
+  },
+  {
+    id: "q2-f-t",
+    topic: "Inference · one restriction",
+    front: "With a single restriction (\\(q=1\\)), how does the restricted F-test relate to the t-test?",
+    back: "<div class=\"ans\"><p>They are equivalent: \\(F=t^2\\) for the corresponding two-sided coefficient test.</p></div>"
+  },
+  {
+    id: "q2-fail-reject",
+    topic: "Inference · interpretation",
+    front: "You fail to reject H₀ that a coefficient is zero. Have you shown the coefficient is zero?",
+    back: "<div class=\"ans\"><p><strong>No.</strong> Failing to reject is not proof that the null is true; the data are simply not strong enough evidence against it.</p></div>"
+  },
+  {
+    id: "q2-checklist",
+    topic: "Model comparison",
+    front: "Before preferring a more complex model, what should you check?",
+    back: "<div class=\"ans\"><ul><li>Same dependent variable and observations?</li><li>Better adjusted R², AIC or BIC?</li><li>Added coefficients individually or jointly significant?</li><li>Signs and magnitudes economically plausible?</li><li>Residual diagnostics support the assumptions?</li><li>Good performance on data not used for estimation?</li></ul></div>"
+  }
+];
+
+flashDeck({
+  key: "cfa-c1-m2-review",
+  source: "CFA L2 Quantitative Methods \u00b7 M2 Regression Model Evaluation \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

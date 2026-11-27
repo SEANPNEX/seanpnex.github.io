@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Option Greeks · delta and gamma</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <script src="chart-fx.js"></script>
+</head>
+<body>
+  <main class="card" id="card" data-fx-scope>
+    <h2>Delta swings fastest, and gamma peaks, at the money near expiry.</h2>
+    <div class="sub">Black–Scholes–Merton, non-dividend stock · X = 50, σ = 30%, r = 5% · left: delta of a call (ink) and a put (mid gray), 6 months to expiry · right: gamma with 1 year (ink) and 1 month (mid gray) to expiry · hover for values</div>
+    <div class="grid">
+      <section class="panel">
+        <h3>Delta</h3>
+        <div class="hint">Call: N(d₁), from 0 to 1 · put: N(d₁) − 1, from −1 to 0 · the gap is always 1</div>
+        <svg id="delta" role="img" aria-label="Call delta rising from 0 to 1 and put delta rising from minus 1 to 0 as the stock price rises"></svg>
+      </section>
+      <section class="panel">
+        <h3>Gamma</h3>
+        <div class="hint">Same for calls and puts · highest at the money · near expiry it spikes at the money and falls away from it</div>
+        <svg id="gamma" role="img" aria-label="Gamma against stock price: a low wide hump with one year to expiry and a tall narrow spike at the strike with one month"></svg>
+      </section>
+    </div>
+    <div class="src">OPTION GREEKS · F2 HAIRLINE LINE · δ = ∂C/∂S, γ = ∂²C/∂S² = N′(d₁) / (Sσ√T)</div>
+  </main>
+  <script src="i18n.js"></script>
+  <script>
+chartI18n.use({
+  zh: {
+    'Option Greeks · delta and gamma': '期权希腊字母 · Delta 与 Gamma',
+    'Delta swings fastest, and gamma peaks, at the money near expiry.': '越临近到期，平价处的 Delta 变化越快、Gamma 峰值越高。',
+    'Black–Scholes–Merton, non-dividend stock · X = 50, σ = 30%, r = 5% · left: delta of a call (ink) and a put (mid gray), 6 months to expiry · right: gamma with 1 year (ink) and 1 month (mid gray) to expiry · hover for values': 'Black–Scholes–Merton 模型，无股息股票 · X = 50，σ = 30%，r = 5% · 左图：距到期 6 个月时看涨（墨色）与看跌（中灰）期权的 Delta · 右图：距到期 1 年（墨色）与 1 个月（中灰）时的 Gamma · 悬停查看数值',
+    'Delta': 'Delta',
+    'Call: N(d₁), from 0 to 1 · put: N(d₁) − 1, from −1 to 0 · the gap is always 1': '看涨：N(d₁)，范围 0 到 1 · 看跌：N(d₁) − 1，范围 −1 到 0 · 两者之差恒为 1',
+    'Call delta rising from 0 to 1 and put delta rising from minus 1 to 0 as the stock price rises': '随股价上升，看涨期权 Delta 从 0 升至 1，看跌期权 Delta 从 −1 升至 0',
+    'Gamma': 'Gamma',
+    'Same for calls and puts · highest at the money · near expiry it spikes at the money and falls away from it': '看涨与看跌相同 · 平价时最高 · 临近到期时在平价处急剧尖峰并在两侧回落',
+    'Gamma against stock price: a low wide hump with one year to expiry and a tall narrow spike at the strike with one month': 'Gamma 与股价的关系：距到期一年时呈低矮宽峰，距到期一个月时在行权价处呈高窄尖峰',
+    'OPTION GREEKS · F2 HAIRLINE LINE · δ = ∂C/∂S, γ = ∂²C/∂S² = N′(d₁) / (Sσ√T)': '期权希腊字母 · F2 发丝折线 · δ = ∂C/∂S，γ = ∂²C/∂S² = N′(d₁) / (Sσ√T)',
+    'stock price →': '股价 →',
+    'delta': 'Delta',
+    'gamma': 'Gamma',
+    'call': '看涨',
+    'put': '看跌',
+    'call δ': '看涨 δ',
+    'put δ': '看跌 δ',
+    '1 month': '1 个月',
+    '1 year': '1 年',
+    'γ, 1 year': 'γ，1 年',
+    'γ, 1 month': 'γ，1 个月',
+  },
+  ja: {
+    'Option Greeks · delta and gamma': 'オプション・グリークス · デルタとガンマ',
+    'Delta swings fastest, and gamma peaks, at the money near expiry.': '満期近くのアット・ザ・マネーで、デルタは最も急に動きガンマは頂点に達する。',
+    'Black–Scholes–Merton, non-dividend stock · X = 50, σ = 30%, r = 5% · left: delta of a call (ink) and a put (mid gray), 6 months to expiry · right: gamma with 1 year (ink) and 1 month (mid gray) to expiry · hover for values': 'ブラック・ショールズ・マートン、無配当株式 · X = 50、σ = 30%、r = 5% · 左：残存 6 か月のコール（墨）とプット（中灰）のデルタ · 右：残存 1 年（墨）と 1 か月（中灰）のガンマ · ホバーで値を表示',
+    'Delta': 'デルタ',
+    'Call: N(d₁), from 0 to 1 · put: N(d₁) − 1, from −1 to 0 · the gap is always 1': 'コール：N(d₁)、0 から 1 · プット：N(d₁) − 1、−1 から 0 · 差は常に 1',
+    'Call delta rising from 0 to 1 and put delta rising from minus 1 to 0 as the stock price rises': '株価の上昇に伴い、コールのデルタは 0 から 1 へ、プットのデルタは −1 から 0 へ上昇',
+    'Gamma': 'ガンマ',
+    'Same for calls and puts · highest at the money · near expiry it spikes at the money and falls away from it': 'コールとプットで同じ · アット・ザ・マネーで最大 · 満期が近づくとそこで鋭く尖り、離れると急減する',
+    'Gamma against stock price: a low wide hump with one year to expiry and a tall narrow spike at the strike with one month': '株価に対するガンマ：残存 1 年では低く広い山、残存 1 か月では行使価格で高く細い尖峰',
+    'OPTION GREEKS · F2 HAIRLINE LINE · δ = ∂C/∂S, γ = ∂²C/∂S² = N′(d₁) / (Sσ√T)': 'オプション・グリークス · F2 ヘアライン · δ = ∂C/∂S、γ = ∂²C/∂S² = N′(d₁) / (Sσ√T)',
+    'stock price →': '株価 →',
+    'delta': 'デルタ',
+    'gamma': 'ガンマ',
+    'call': 'コール',
+    'put': 'プット',
+    'call δ': 'コール δ',
+    'put δ': 'プット δ',
+    '1 month': '1 か月',
+    '1 year': '1 年',
+    'γ, 1 year': 'γ、1 年',
+    'γ, 1 month': 'γ、1 か月',
+  },
+  fr: {
+    'Option Greeks · delta and gamma': 'Grecques des options · delta et gamma',
+    'Delta swings fastest, and gamma peaks, at the money near expiry.': 'Le delta bascule le plus vite, et le gamma culmine, à la monnaie près de l’échéance.',
+    'Black–Scholes–Merton, non-dividend stock · X = 50, σ = 30%, r = 5% · left: delta of a call (ink) and a put (mid gray), 6 months to expiry · right: gamma with 1 year (ink) and 1 month (mid gray) to expiry · hover for values': 'Black–Scholes–Merton, action sans dividende · X = 50, σ = 30 %, r = 5 % · à gauche : delta d’un call (encre) et d’un put (gris moyen), échéance 6 mois · à droite : gamma à 1 an (encre) et 1 mois (gris moyen) · survoler pour voir les valeurs',
+    'Delta': 'Delta',
+    'Call: N(d₁), from 0 to 1 · put: N(d₁) − 1, from −1 to 0 · the gap is always 1': 'Call : N(d₁), de 0 à 1 · put : N(d₁) − 1, de −1 à 0 · l’écart vaut toujours 1',
+    'Call delta rising from 0 to 1 and put delta rising from minus 1 to 0 as the stock price rises': 'Delta d’un call montant de 0 à 1 et delta d’un put montant de −1 à 0 lorsque le cours augmente',
+    'Gamma': 'Gamma',
+    'Same for calls and puts · highest at the money · near expiry it spikes at the money and falls away from it': 'Identique pour calls et puts · maximal à la monnaie · près de l’échéance, il forme un pic à la monnaie et retombe ailleurs',
+    'Gamma against stock price: a low wide hump with one year to expiry and a tall narrow spike at the strike with one month': 'Gamma selon le cours : bosse basse et large à un an de l’échéance, et pic étroit et élevé au prix d’exercice à un mois',
+    'OPTION GREEKS · F2 HAIRLINE LINE · δ = ∂C/∂S, γ = ∂²C/∂S² = N′(d₁) / (Sσ√T)': 'GRECQUES DES OPTIONS · LIGNE F2 · δ = ∂C/∂S, γ = ∂²C/∂S² = N′(d₁) / (Sσ√T)',
+    'stock price →': 'cours de l’action →',
+    'delta': 'delta',
+    'gamma': 'gamma',
+    'call': 'call',
+    'put': 'put',
+    'call δ': 'call δ',
+    'put δ': 'put δ',
+    '1 month': '1 mois',
+    '1 year': '1 an',
+    'γ, 1 year': 'γ, 1 an',
+    'γ, 1 month': 'γ, 1 mois',
+  },
+});
+  </script>
+  <script>
+(() => {
+  const { C, el, label, frame, axes, curve, guide, probe, mount } = curveKit;
+
+  // ── Data: BSM inputs ──
+  const X = 50, SIG = 0.3, R = 0.05, S0 = 20, S1 = 80, MID = '#6A6963';
+  const pdf = (z) => Math.exp(-z * z / 2) / Math.sqrt(2 * Math.PI);
+  // Normal CDF, Abramowitz–Stegun 26.2.17 (error < 1e-7).
+  const cdf = (z) => { const t = 1 / (1 + 0.2316419 * Math.abs(z)); const p = pdf(z) * t * (0.31938153 + t * (-0.356563782 + t * (1.781477937 + t * (-1.821255978 + t * 1.330274429)))); return z >= 0 ? 1 - p : p; };
+  const d1 = (S, T) => (Math.log(S / X) + (R + SIG * SIG / 2) * T) / (SIG * Math.sqrt(T));
+  const callDelta = (S) => cdf(d1(S, 0.5));
+  const putDelta = (S) => callDelta(S) - 1;
+  const gamma = (T) => (S) => pdf(d1(S, T)) / (S * SIG * Math.sqrt(T));
+  const g1 = gamma(1), gM = gamma(1 / 12);
+
+  const xLabels = (s, F) => [20, 35, 50, 65, 80].forEach((v) => label(s, F.x(v), F.BASE + 14, v === X ? 'X = 50' : String(v), { size: 9.5, weight: v === X ? 800 : 600, fill: v === X ? C.INK : C.MUTED, anchor: 'middle', halo: 0 }));
+  const grid = (s, F, vals, fmt) => vals.forEach((v) => {
+    el(s, 'line', { x1: F.X0, y1: F.y(v), x2: F.X1, y2: F.y(v), stroke: C.GRID, 'stroke-width': 0.6, 'stroke-dasharray': '2 4', class: 'fade' });
+    label(s, F.X0 - 6, F.y(v) + 3.5, fmt(v), { size: 9.5, weight: 600, fill: C.MUTED, anchor: 'end', halo: 0 });
+  });
+  const height = (W) => Math.max(220, Math.min(260, W * 0.75));
+
+  mount(document.getElementById('delta'), (s, W, H) => {
+    const F = frame(s, W, H, { l: 34, r: 10, t: 22, b: 38, xMin: S0, yMin: -1.05, noTicks: true }, S1, 1.05);
+    grid(s, F, [-1, -0.5, 0, 0.5, 1], (v) => (v > 0 ? '+' : v < 0 ? '−' : '') + Math.abs(v));
+    xLabels(s, F);
+    axes(s, F, 'stock price →', 'delta');
+    guide(s, F.x(X), F.y(-1), F.x(X), F.y(1), 0.3);
+    curve(s, F, putDelta, S0, S1, { stroke: MID, width: 1.5, delay: 0.1 }).setAttribute('data-hl', 'p');
+    curve(s, F, callDelta, S0, S1, { stroke: C.INK, width: 1.6 }).setAttribute('data-hl', 'c');
+    label(s, F.x(70), F.y(callDelta(70)) - 9, 'call', { size: 10.5, anchor: 'middle', delay: 0.8 });
+    label(s, F.x(30), F.y(putDelta(30)) - 9, 'put', { size: 10.5, fill: MID, anchor: 'middle', delay: 0.85 });
+    probe(s, F, [{ name: 'call δ', f: callDelta }, { name: 'put δ', f: putDelta, stroke: MID }], { xName: 'S', fmt: (v) => v.toFixed(2) });
+  }, height);
+
+  mount(document.getElementById('gamma'), (s, W, H) => {
+    const F = frame(s, W, H, { l: 38, r: 10, t: 22, b: 38, xMin: S0, noTicks: true }, S1, 0.1);
+    grid(s, F, [0.025, 0.05, 0.075], (v) => v.toFixed(3));
+    xLabels(s, F);
+    axes(s, F, 'stock price →', 'gamma');
+    curve(s, F, gM, S0, S1, { stroke: MID, width: 1.5, delay: 0.1 }).setAttribute('data-hl', 'm');
+    curve(s, F, g1, S0, S1, { stroke: C.INK, width: 1.6 }).setAttribute('data-hl', 'y');
+    label(s, F.x(53), F.y(gM(50)) + 4, '1 month', { size: 10.5, fill: MID, delay: 0.85 });
+    label(s, F.x(64), F.y(g1(64)) - 10, '1 year', { size: 10.5, delay: 0.8 });
+    probe(s, F, [{ name: 'γ, 1 year', f: g1 }, { name: 'γ, 1 month', f: gM, stroke: MID }], { xName: 'S', fmt: (v) => v.toFixed(3) });
+  }, height);
+})();
+  </script>
+</body>
+</html>

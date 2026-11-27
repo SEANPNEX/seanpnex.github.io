@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>JLPT N2 — quiz misses 2026-10-17</title>
+<link rel="stylesheet" href="/flashcards/deck.css" />
+</head>
+<body>
+<script src="/flashcards/deck.js"></script>
+<script>
+const CARDS = [
+  {
+    id: "jlpt-ni-recipient-2026-10-17",
+    topic: "Particles · に vs が",
+    front: "In <span class=\"jp\">中村さんに資料をメールで送りました</span>, is 中村さん the sender or the receiver?",
+    back: `<div class="ans">
+      <p><span class="jp"><strong>Nに</strong></span> marks the <strong>recipient</strong>: “I sent the documents <strong>to</strong> Nakamura-san by email.”</p>
+      <p>The sender takes <span class="jp"><strong>が</strong></span> (or <span class="jp">は</span>): <span class="jp">中村さんが資料を送りました</span> = “Nakamura-san sent the documents.”</p>
+    </div>`,
+    gap: "Read the に-person as the sender; に marks who receives."
+  },
+  {
+    id: "jlpt-nara-topic-advice-2026-10-17",
+    topic: "Advice · Nなら vs について",
+    front: "Someone says they want a computer. How do you reply “If it’s a computer, this one is good”? <span class=\"jp\">なら</span> or <span class=\"jp\">について</span>?",
+    back: `<div class="ans">
+      <p><span class="jp"><strong>Nなら</strong></span> picks up a topic the listener raised, then gives advice:</p>
+      <p><span class="jp"><strong>パソコンなら</strong>、こちらがいいですよ。</span> “If it’s a computer, this one is good.”</p>
+      <p><span class="jp">日本料理なら、駅前の店がいいですよ。</span> “For Japanese food, the place by the station is good.”</p>
+      <p><span class="jp">について</span> = “about / concerning” (the subject of talk, asking, writing); it does <strong>not</strong> set up advice.</p>
+    </div>`,
+    gap: "Used について where the reply needs なら to take up the listener’s topic."
+  },
+  {
+    id: "jlpt-hoshii-nara-vs-nagara-2026-10-17",
+    topic: "Form · ほしいなら vs ながら",
+    front: "“If you want one, …”: <span class=\"jp\">ほしいなら</span> or <span class=\"jp\">ほしながら</span>?",
+    back: `<div class="ans">
+      <p><span class="jp"><strong>ほしいなら</strong></span>: the い-adjective stays whole, then <span class="jp">なら</span> (“if”).</p>
+      <p><span class="jp">ながら</span> = “<strong>while</strong>” and attaches to a verb stem: <span class="jp">音楽を聞きながら勉強します</span> “I study while listening to music.”</p>
+    </div>`,
+    gap: "Wrote ほしながら (“while”) instead of ほしいなら (“if you want”)."
+  },
+  {
+    id: "jlpt-kiku-ask-past-2026-10-17",
+    topic: "Verb · 聞く (ask)",
+    front: "Write “I asked my friend about the plans.” Which kanji for “ask”, and what are its past and te-forms?",
+    back: `<div class="ans">
+      <p><span class="jp"><strong>友達に予定について聞きました。</strong></span></p>
+      <ul>
+        <li><span class="jp"><strong>聞く</strong></span> = ask / hear; <span class="jp">聴く</span> = listen attentively (music, a lecture).</li>
+        <li>Past polite: <span class="jp"><strong>聞きました</strong></span>; te-form: <span class="jp"><strong>聞いて</strong></span> (く → いて, not いで).</li>
+      </ul>
+      <p><span class="jp">について</span> marks what you asked about; <span class="jp">に</span> marks who you asked.</p>
+    </div>`,
+    gap: "Wrote 聴いでました: wrong kanji (聴く) and a mixed-up past form."
+  },
+  {
+    id: "jlpt-sukejuuru-spelling-2026-10-17",
+    topic: "Katakana · schedule",
+    front: "How is “schedule” spelled in katakana?",
+    back: `<div class="ans">
+      <p><span class="jp"><strong>スケジュール</strong></span>: plain <span class="jp"><strong>ケ</strong></span>, not voiced <span class="jp">ゲ</span>.</p>
+      <p>Native synonym: <span class="jp">予定</span>.</p>
+    </div>`,
+    gap: "Wrote スゲジュール with a voiced ゲ."
+  },
+  {
+    id: "jlpt-mo-after-de-2026-10-17",
+    topic: "Particles · でも vs もで",
+    front: "“I also eat with chopsticks.” Is it <span class=\"jp\">お箸でも</span> or <span class=\"jp\">お箸もで</span>? When does も replace a particle?",
+    back: `<div class="ans">
+      <p><span class="jp"><strong>お箸でも食べます。</strong></span> も goes <strong>after</strong> で.</p>
+      <ul>
+        <li><span class="jp">を / が</span> + も → も <strong>replaces</strong> them: <span class="jp">コーヒーもください</span>.</li>
+        <li><span class="jp">で / に / と</span> + も → も is <strong>added after</strong>: <span class="jp">でも・にも・とも</span>.</li>
+      </ul>
+    </div>`,
+    gap: "Put も before で (もで); with で/に/と, も comes after."
+  }
+];
+
+flashDeck({
+  key: "jlpt-n2-2026-10-17",
+  source: "JLPT N2 · quiz misses 2026-10-17",
+  gapLabel: "Gap",
+  cards: CARDS
+});
+</script>
+</body>
+</html>

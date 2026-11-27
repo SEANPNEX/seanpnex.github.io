@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Alternative Investments M1 — Commodities review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    "id": "ai1-sectors",
+    "topic": "Commodity sectors",
+    "front": "Name the six commodity sectors. Which is driven by industrial activity, and which is least affected by weather?",
+    "back": "<div class=\"ans\"><p>Energy, industrial metals, precious metals, grains, softs, livestock.</p><p><strong>Copper</strong> (industrial metals) follows industrial activity; <strong>precious metals</strong> are least affected by weather (they store easily).</p></div>"
+  },
+  {
+    "id": "ai1-lifecycle",
+    "topic": "Life cycles",
+    "front": "How do commodity life cycles differ by sector? Which is most flexible?",
+    "back": "<div class=\"ans\"><ul><li><strong>Metals</strong>: most flexible; store for years; smelting scale makes output hard to cut</li><li><strong>Energy</strong>: extracted all year; crude must be refined</li><li><strong>Grains, softs, livestock</strong>: seasonal; spoilage risk</li></ul></div>",
+    "gap": "A short life cycle adjusts quickly; a long one limits how fast supply can react."
+  },
+  {
+    "id": "ai1-valuation",
+    "topic": "Valuing commodities",
+    "front": "How does commodity valuation differ from stocks and bonds?",
+    "back": "<div class=\"ans\"><ul><li>Physical assets with <strong>no cash flows</strong>; holding them costs storage and transport</li><li>Valued on <strong>supply and demand</strong> forecasts and volatility, not PV of cash flows</li><li>Accessed mostly through <strong>derivatives</strong></li></ul></div>"
+  },
+  {
+    "id": "ai1-participants",
+    "topic": "Market participants",
+    "front": "Describe hedgers, liquidity providers and arbitrageurs in commodity futures.",
+    "back": "<div class=\"ans\"><ul><li><strong>Hedgers</strong>: can be long (snack maker buys corn) or short (gold miner sells gold)</li><li><strong>Liquidity providers</strong>: insure hedgers for an expected profit</li><li><strong>Arbitrageurs</strong>: with storage, exploit physical vs futures mispricing</li></ul></div>",
+    "gap": "Futures markets are net zero: longs equal shorts."
+  },
+  {
+    "id": "ai1-basis",
+    "topic": "Basis and calendar spread",
+    "front": "Define basis and calendar spread. WTI July USD65.50, December USD64.00: what state is the curve in?",
+    "back": "<div class=\"ans\"><p>Basis = spot − futures; calendar spread = near − far futures.</p><p>Spread +USD1.50 → <strong>backwardation</strong> (positive). Contango gives negative values.</p></div>"
+  },
+  {
+    "id": "ai1-insurance",
+    "topic": "Insurance theory",
+    "front": "Explain Keynes’s normal backwardation. What does the evidence say?",
+    "back": "<div class=\"ans\"><p>Producers sell futures to hedge, pushing futures below spot; the discount pays speculators for insurance, so long speculators earn as futures rise to spot.</p><p>Kolb: “normal backwardation is not normal”.</p></div>"
+  },
+  {
+    "id": "ai1-hedging-pressure",
+    "topic": "Hedging pressure",
+    "front": "What curve does the hedging pressure hypothesis predict when producers and consumers hedge in different amounts?",
+    "back": "<div class=\"ans\"><ul><li>Equal: <strong>flat</strong></li><li>Producers dominate: <strong>backwardation</strong></li><li>Consumers dominate: <strong>contango</strong></li></ul></div>",
+    "gap": "Hedging pressure is very hard to measure, and both sides sometimes speculate."
+  },
+  {
+    "id": "ai1-storage",
+    "topic": "Theory of storage",
+    "front": "Write the theory of storage. When does it predict contango and backwardation?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}F={}&S+\\text{Storage}\\\\&-\\text{Convenience yield}\\end{aligned}$$</div><ul><li>Abundant inventory → storage costs dominate → <strong>contango</strong></li><li>Scarce inventory → convenience yield high → <strong>backwardation</strong></li></ul></div>"
+  },
+  {
+    "id": "ai1-components",
+    "topic": "Components of return",
+    "front": "Name the components of a fully collateralized futures return. Price 5%, roll 2.5%, collateral 2%: total?",
+    "back": "<div class=\"ans\"><p>Price return + roll return + collateral return (+ rebalance return for an index).</p><p>\\(5\\%+2.5\\%+2\\%=\\) <strong>9.5%</strong>.</p></div>",
+    "gap": "Volatility comes almost entirely from the price return."
+  },
+  {
+    "id": "ai1-roll",
+    "topic": "Roll return",
+    "front": "Write the roll return. Near USD52.64, far USD53.00, 20% rolled: find it.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\text{Roll}=\\frac{F_{\\text{near}}-F_{\\text{far}}}{F_{\\text{near}}}\\times\\%\\text{ rolled}$$</div><p>\\(-0.68\\%\\times20\\%=\\) <strong>−0.13%</strong> (contango).</p></div>"
+  },
+  {
+    "id": "ai1-roll-exposure",
+    "topic": "Rolling to keep exposure",
+    "front": "In backwardation, do you buy more or fewer far contracts to keep exposure, and what is the roll return?",
+    "back": "<div class=\"ans\"><p>Far contracts are cheaper, so buy <strong>more</strong>: positive roll return. In contango, buy fewer: negative roll.</p></div>"
+  },
+  {
+    "id": "ai1-gsci",
+    "topic": "Long-run GSCI returns",
+    "front": "What drove S&P GSCI returns from 1970 to 2019?",
+    "back": "<div class=\"ans\"><ul><li>Total 6.8%: spot 3.0%, roll −1.3%, collateral 5.0%</li><li>Collateral contributed most; roll was a drag</li><li>Volatility came from the spot return (correlation 0.97)</li></ul></div>"
+  },
+  {
+    "id": "ai1-roll-evidence",
+    "topic": "Roll return by sector",
+    "front": "What does the evidence say about roll returns by sector?",
+    "back": "<div class=\"ans\"><ul><li>Average roll was negative for every sector</li><li>Stored commodities tend to contango</li><li>Only energy had a chance of positive roll, faded since 2010</li></ul><p>Roll matters in single periods but is modest over time; correlation with price return about 3%.</p></div>"
+  },
+  {
+    "id": "ai1-swaps",
+    "topic": "Commodity swaps",
+    "front": "Distinguish excess return, total return and basis swaps.",
+    "back": "<div class=\"ans\"><ul><li><strong>Excess return</strong>: pays the price change (often above a fixed level); used by hedgers</li><li><strong>Total return</strong>: pays index change incl. collateral interest; for long exposure</li><li><strong>Basis</strong>: pays the difference between two related prices (liquid vs illiquid grade)</li></ul></div>"
+  },
+  {
+    "id": "ai1-vol-swaps",
+    "topic": "Variance and volatility swaps",
+    "front": "How do variance and volatility swaps pay?",
+    "back": "<div class=\"ans\"><ul><li><strong>Variance swap</strong>: realized vs fixed variance; buyer gains if realized is higher</li><li><strong>Volatility swap</strong>: realized vs expected volatility; seller gains if realized is lower</li></ul></div>"
+  },
+  {
+    "id": "ai1-trs-example",
+    "topic": "Total return swap example",
+    "front": "USD100m notional total return swap, monthly reset. The index rises 3%, then falls 2%. Who pays what?",
+    "back": "<div class=\"ans\"><p>Rise: the dealer pays the manager <strong>USD3m</strong>. Fall: the manager pays the dealer <strong>USD2m</strong>. Payments are periodic.</p></div>"
+  },
+  {
+    "id": "ai1-indexes",
+    "topic": "Index construction",
+    "front": "Which features drive differences between commodity index returns?",
+    "back": "<div class=\"ans\"><ul><li>Breadth</li><li>Weighting (production, liquidity, fixed)</li><li>Roll method (DBLCI optimizes for roll)</li><li>Rebalancing frequency (CRB, RICI monthly)</li><li>Governance</li></ul></div>"
+  },
+  {
+    "id": "ai1-rebalance",
+    "topic": "Rebalancing and weighting",
+    "front": "When does frequent rebalancing help? Which index is most sensitive to energy?",
+    "back": "<div class=\"ans\"><p>Frequent rebalancing helps in <strong>mean-reverting</strong> markets, hurts in trending ones.</p><p>Production-weighted <strong>S&P GSCI</strong> (energy up to about 80%).</p></div>",
+    "gap": "Major indexes correlate above 70% with each other and about 0% with stocks and bonds."
+  }
+];
+
+flashDeck({
+  key: "cfa-c8-m1-review",
+  source: "CFA L2 Alternative Investments \u00b7 M1 Commodities \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

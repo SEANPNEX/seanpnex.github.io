@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Equity — quiz misses flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    id: "eq-m3-fcfe-from-sales-growth-target-dr-2026-11-16",
+    topic: "EQ M3 · FCFE from sales growth, target DR",
+    front: `The target capital structure is 40% debt / 60% equity. Sales rise by 500 million. Incremental net fixed capital investment is 30%, and working capital investment is 20%, of the sales increase. NI is 1,000 million. What is FCFE?`,
+    back: `<div class="ans">
+      <p><strong>850 million.</strong> Investment is the given rate times the sales increase; “net” fixed capital investment already nets out depreciation. With a target debt ratio, equity bears only \\((1-\\text{DR})\\) of new investment. (Figures are quiz data, not a textbook example.)</p><ul><li>Net FCInv is \\((\\text{FCInv}-\\text{Dep})=0.30\\times500=150\\); \\(\\text{WCInv}=0.20\\times500=100\\); total investment is 250. Equity funds \\((1-\\text{DR})\\times250=0.6\\times250=150\\).</li><li>\\(\\text{FCFE}=\\text{NI}-(1-\\text{DR})(\\text{FCInv}-\\text{Dep})-(1-\\text{DR})\\text{WCInv}=1{,}000-150=850\\).</li></ul>
+    </div>`,
+    gap: "Guessed right but was completely blind — didn't know how to infer investment from sales growth."
+  },
+  {
+    id: "eq-m3-wcinv-fcinv-from-balance-sheet-2026-11-16",
+    topic: "EQ M3 · WCInv and FCInv from the balance sheet",
+    front: `How do you infer WCInv and FCInv from the balance sheet? In the quiz figures, current assets excluding cash are 1,418 vs 1,388, current liabilities excluding short-term debt are 2,581 vs 2,657, NI is 1,399, depreciation is 347, interest is 285, the tax rate is 32% and capex is 680. What is FCFF?`,
+    back: `<div class="ans">
+      <p><strong>1,153.8.</strong> For free cash flow, working capital excludes cash and short-term debt (notes payable and the current portion of long-term debt are financing). \\(\\text{WCInv}=\\text{WC}_t-\\text{WC}_{t-1}\\); a positive WCInv is an outflow. FCInv is gross capex: the increase in gross fixed assets, or \\(\\Delta\\text{Net PP\\&E}+\\text{Dep}\\) when there are no disposals, or the stated capex — not \\(\\Delta(\\text{total assets}-\\text{current assets})\\). (Figures are quiz data, not a textbook example.)</p><ul><li>\\(\\text{WC}=(\\text{CA}-\\text{cash})-(\\text{CL}-\\text{short-term debt})\\). That is 1,418 vs 1,388 minus 2,581 vs 2,657, so WC is \\(-1{,}163\\) vs \\(-1{,}269\\) and \\(\\text{WCInv}=-1{,}163-(-1{,}269)=106\\). Shortcut: an increase in an operating asset is a use of cash and an increase in an operating liability is a source. The current-asset changes net to \\(26+51-47=30\\), and operating current liabilities fall by 76 (a use), so WCInv is \\(30+76=106\\).</li><li>\\(\\text{FCFF}=\\text{NI}+\\text{Dep}+\\text{Int}(1-t)-\\text{FCInv}-\\text{WCInv}=1{,}399+347+285(1-0.32)-680-106=1{,}153.8\\), since \\(285\\times 0.68=193.8\\).</li><li>\\(\\text{FCFF}=\\text{FCFE}\\) only if net borrowing equals \\(\\text{Int}(1-t)\\).</li></ul>
+    </div>`,
+    gap: "Didn't know how to infer WCInv from the balance sheet, and used \\(\\Delta(\\text{total assets}-\\text{current assets})\\) as FCInv."
+  },
+  {
+    id: "eq-m3-fcfe-from-statements-net-borrowing-2026-11-16",
+    topic: "EQ M3 · FCFE from statements, net borrowing",
+    front: `In the quiz figures, FCFF is 1,153.8, after-tax interest is 193.8, long-term debt is 2,848 vs 2,579, NI is 1,399, depreciation is 347, FCInv is 680 and WCInv is 106. Current liabilities are not broken out as notes payable or current LTD. What is FCFE?`,
+    back: `<div class="ans">
+      <p><strong>1,229.</strong> Net borrowing is the change in interest-bearing debt. Current liabilities are operating items unless notes payable or the current portion of long-term debt are broken out. Here that is only long-term debt: \\(\\text{NB}=2{,}848-2{,}579=269\\). (Figures are quiz data, not a textbook example.)</p><ul><li>\\(\\text{FCFE}=\\text{FCFF}-\\text{Int}(1-t)+\\text{NB}=1{,}153.8-193.8+269=1{,}229\\). Directly: \\(\\text{FCFE}=\\text{NI}+\\text{Dep}-\\text{FCInv}-\\text{WCInv}+\\text{NB}=1{,}399+347-680-106+269=1{,}229\\). FCFF (1,154) is the trap from the previous question; \\(\\text{FCFF}=\\text{FCFE}\\) only if net borrowing equals \\(\\text{Int}(1-t)\\).</li><li>Per share with a target debt ratio, \\(\\text{FCFE}=\\text{EPS}-(1-\\text{DR})\\times\\text{net capex}-(1-\\text{DR})\\times\\text{WCInv}\\). “Net capex” already nets depreciation, and \\((1-\\text{DR})\\) multiplies only the investment terms, never EPS. With 2021 EPS of 2.0, net capex of 40% of EPS and WCInv of 15% of EPS, FCFE is \\(2.0-0.7\\times0.80-0.7\\times0.30=1.23\\). Discount FCFE at the required return on equity, not WACC. The valuation date is year-end 2020 and the vignette says 2021 EPS will be 2.0, so 1.23 is already \\(\\text{FCFE}_1\\) and \\(V_0=1.23/(0.135-0.07)=18.92\\) (answer B). Do not multiply again by \\((1+g)\\).</li></ul>
+    </div>`,
+    gap: "Picked FCFF (1,154) instead of FCFE."
+  },
+  {
+    id: "eq-m3-fcf-vs-ddm-control-2026-11-16",
+    topic: "EQ M3 · FCF vs DDM, control perspective",
+    front: `Is DDM superior to FCF if there is a change in control? When is FCF preferred to DDM, and when is FCFF preferred to FCFE?`,
+    back: `<div class="ans">
+      <p><strong>No. FCF is better when control may change.</strong> FCFE is what the company can pay out without hurting its value, not what it does pay. A controlling owner can redirect that cash, so FCF models suit a control perspective (or a takeover target). DDM values the dividends actually paid.</p><ul><li>FCF is also preferred when dividends are zero or low, discretionary, or very different from FCFE — they then fail to reflect what the company can pay.</li><li>If the capital structure is unstable or changing, prefer FCFF to FCFE: FCFE growth swings with net borrowing, while FCFF growth reflects fundamentals and WACC is less sensitive to leverage than the required return on equity. A stable capital structure favors FCFE (simpler and more direct).</li></ul>
+    </div>`,
+    gap: "Said “DDM is superior to FCF if there is a change in control” was correct."
+  },
+  {
+    id: "eq-m4-ev-ebitda-vs-ev-fcff-capex-2026-11-15",
+    topic: "EQ M4 · EV/EBITDA vs EV/FCFF",
+    front: `Two firms have the same EV/EBITDA, but Firm A requires much heavier capex than Firm B. Which firm is more expensive, and why? Does EV/FCFF have the same limitation?`,
+    back: `<div class="ans">
+      <p><strong>Firm A is more expensive.</strong> EV/EBITDA hides differences in capital programs because EBITDA ignores capex (it reflects capex only if D&amp;A ≈ capex). FCFF does <strong>not</strong> have the same blind spot.</p><ul><li>FCFF adds back non-cash D&amp;A but subtracts actual capex (FCInv) and WCInv: \\(\\text{FCFF}=\\text{EBITDA}(1-t)+\\text{Dep}\\times t-\\text{FCInv}-\\text{WCInv}\\).</li><li>So EV/FCFF reveals capital intensity; EV/EBITDA does not. FCFF “directly reflects the amount of the company’s required capital expenditures” and has a stronger link to valuation theory than EBITDA.</li></ul><p><em>Simplified illustration, not a textbook example</em> (taxes and WCInv ignored, so \\(\\text{FCFF}=\\text{EBITDA}-\\text{FCInv}\\)): EV 1,000 and EBITDA 100 for both (EV/EBITDA 10x). Capex 60 for A vs 20 for B → FCFF 40 vs 80 → EV/FCFF 25x vs 12.5x.</p>
+    </div>`,
+    gap: "Identified A as more expensive but couldn't explain why; thought FCFF has the same blind spot because it adds back D&A."
+  },
+  {
+    id: "eq-m4-justified-trailing-pe-payout-2026-11-15",
+    topic: "EQ M4 · Justified trailing P/E",
+    front: `The payout ratio is 40%, \\(g\\) is 5% and \\(r\\) is 9%. What is the justified trailing P/E?`,
+    back: `<div class="ans">
+      <p><strong>10.5.</strong></p><ul><li>Trailing: \\(\\dfrac{P_0}{E_0}=\\dfrac{(1-b)(1+g)}{r-g}=\\dfrac{0.40\\times1.05}{0.04}=10.5\\).</li><li>Leading (forward): \\(\\dfrac{P_0}{E_1}=\\dfrac{1-b}{r-g}=\\dfrac{0.40}{0.04}=10\\).</li></ul><p>\\(b\\) is the retention ratio; the numerator uses the payout, \\(1-b\\). The trailing multiple also includes \\((1+g)\\), because \\(E_1=E_0(1+g)\\).</p>
+    </div>`,
+    gap: "Used the retention ratio \\(b=0.6\\) instead of the payout \\(1-b=0.4\\), and left out \\((1+g)\\) for the trailing P/E."
+  },
+  {
+    id: "eq-m4-justified-trailing-ps-inferred-inputs-2026-11-16",
+    topic: "EQ M4 · Justified trailing P/S",
+    front: `NI is 1,200, ROE is 16.67%, sales are 12,000, \\(r\\) is 12%, and the increase in retained earnings is 720. What is the justified trailing P/S?`,
+    back: `<div class="ans">
+      <p><strong>2.2.</strong> Infer the inputs, then use the trailing form (which includes \\((1+g)\\)).</p><ul><li>Retention is \\(b=720/1{,}200=0.6\\), so the payout is \\(1-b=0.4\\). Sustainable growth is \\(g=\\text{ROE}\\times b=16.67\\%\\times0.6=10\\%\\). Profit margin is \\(\\text{PM}_0=E_0/S_0=1{,}200/12{,}000=10\\%\\).</li><li>\\(\\dfrac{P_0}{S_0}=\\dfrac{\\text{PM}_0(1-b)(1+g)}{r-g}=\\dfrac{0.10\\times0.40\\times1.10}{0.12-0.10}=2.2\\).</li></ul>
+    </div>`,
+    gap: "Got it right, but struggled with inferring the inputs."
+  },
+  {
+    id: "eq-m5-multistage-ri-pb-terminal-2026-11-16",
+    topic: "EQ M5 · Multistage RI, P/B terminal",
+    front: `\\(B_0\\) (start of 2020) is 10, ROE is 20% for 3 years, the payout is 50%, \\(r\\) is 12%, and the forecast P/B at the end of 2022 is 1.5. What is the value today?`,
+    back: `<div class="ans">
+      <p><strong>16.84.</strong> “Today” is the start of 2020, so the end-2022 premium is discounted three years. The terminal piece is the premium over book, \\(P_T-B_T\\), not the full price — \\(B_0\\) already counts book. (Figures are quiz data, not a textbook example.)</p><ul><li>Retention is 50%, so \\(g=\\text{ROE}\\times b=20\\%\\times50\\%=10\\%\\). Thus \\(B_1=11\\), \\(B_2=12.10\\), \\(B_3=13.31\\). Each RI uses beginning-of-year book: \\(\\text{RI}_t=(\\text{ROE}-r)B_{t-1}\\) equals 0.80, 0.88 and 0.968. Their PVs are \\(0.714+0.702+0.689=2.105\\).</li><li>Terminal premium \\(P_T-B_T=(1.5-1)B_3=0.5\\times13.31=6.655\\); PV is \\(6.655/1.12^3=4.737\\). \\(V_0=B_0+2.105+4.737=16.84\\).</li><li>Leaving the 6.655 undiscounted gives \\(10+2.105+6.655=18.76\\). Using the full price \\(1.5\\times B_3\\) instead of the premium double-counts book and gives about 26.3.</li></ul>
+    </div>`,
+    gap: "Used the terminal premium undiscounted and got 18.76."
+  },
+  {
+    id: "eq-m6-dloc-from-control-premium-2026-11-15",
+    topic: "EQ M6 · DLOC from control premium",
+    front: `The control premium is 25% and the DLOM is 20%. What is the total discount for a minority, non-marketable stake?`,
+    back: `<div class="ans">
+      <p><strong>36%.</strong></p><ul><li>\\(\\text{DLOC}=1-\\dfrac{1}{1+\\text{Control premium}}=1-\\dfrac{1}{1.25}=20\\%\\). The DLOC is not the control premium itself.</li><li>\\(\\text{Total discount}=1-(1-\\text{DLOC})(1-\\text{DLOM})=1-0.8\\times0.8=36\\%\\).</li></ul><p>If both discounts apply, they are applied in sequence and the total is multiplicative, not additive.</p>
+    </div>`,
+    gap: "Used the 25% control premium directly as the DLOC, and got 40%."
+  },
+  {
+    id: "eq-m6-excess-earnings-intangibles-2026-11-15",
+    topic: "EQ M6 · Excess earnings method",
+    front: `How does the excess earnings method value intangibles?`,
+    back: `<div class="ans">
+      <p>It capitalizes the earnings that remain after the required returns on tangible assets — it does not take intangibles from the financial statements.</p><ul><li>Estimate normalized earnings. Then take the fair market value of working capital and fixed assets and their required returns. Those required returns rise from working capital (lowest, \\(r_{WC}\\)) to fixed assets (\\(r_{FA}\\)) to intangibles (highest, \\(r_{RI}\\)).</li><li>\\(\\text{RI}_t=\\text{Normalized income}-(WC\\times r_{WC})-(FA\\times r_{FA})\\). Capitalize the excess earnings at the intangible-asset (residual-income) discount rate: \\(\\text{RV}_t=\\dfrac{\\text{RI}_t(1+g)}{r_{RI}-g}\\).</li><li>Firm value = working capital + fixed assets + the value of intangibles (\\(\\text{RV}_t\\)).</li></ul>
+    </div>`,
+    gap: "Said intangibles are taken from financial reports and usually not included."
+  },
+  {
+    id: "eq-m6-normalize-any-buyer-2026-11-15",
+    topic: "EQ M6 · Normalize earnings, any buyer",
+    front: `Owner compensation is USD 600,000 against a market rate of USD 350,000. How should earnings be normalized, and for which type of buyer?`,
+    back: `<div class="ans">
+      <p>Add back the USD 250,000 of excess compensation — a <strong>pre-tax</strong> SG&amp;A adjustment (then recompute tax). This normalization applies for <strong>any buyer</strong>: it restates earnings as if the firm were acquired and run efficiently at a market rate of pay.</p><ul><li>A <strong>strategic</strong> buyer additionally layers in synergies (investment value: increase revenue and/or cut costs beyond current expectations).</li><li>A <strong>financial</strong> buyer values the firm standalone, without those synergies.</li></ul>
+    </div>`,
+    gap: "Said normalize for the strategic buyer only."
+  },
+  {
+    id: "eq-m6-normalized-operating-income-pretax-2026-11-16",
+    topic: "EQ M6 · Normalized operating income, tax the add-back",
+    front: `Revenue is 4,200k, COGS 1,250k, SG&amp;A 1,500k (including management salaries of 980k versus a market rate of 500k), D&amp;A 200k, tax 30%, and operating income after tax 875k. What is normalized operating income?`,
+    back: `<div class="ans">
+      <p><strong>1,211k</strong> of normalized operating income after taxes. The excess compensation is a pre-tax SG&amp;A add-back; tax it when the target is after-tax operating income. (Figures are quiz data, not a textbook example.)</p><ul><li>Normalized SG&amp;A is \\(1{,}500-480=1{,}020\\)k, so EBIT is \\(4{,}200-1{,}250-1{,}020-200=1{,}730\\)k. Pro forma tax at 30% leaves \\(1{,}730\\times0.7=1{,}211\\)k. Equivalently, \\(875+480\\times0.7=1{,}211\\)k.</li><li>Adding the 480k pre-tax to the after-tax figure (\\(875+480=1{,}355\\)k) overstates income. D&amp;A stays deducted: operating income here is post-D&amp;A EBIT, not EBITDA. As reported, EBIT is \\(4{,}200-1{,}250-1{,}500-200=1{,}250\\)k, and \\(1{,}250\\times0.7=875\\)k matches the given after-tax amount.</li></ul>
+    </div>`,
+    gap: "Added the 480k pre-tax to after-tax operating income and got 1,355k."
+  }
+];
+
+flashDeck({
+  key: "cfa-c5-equity",
+  source: "CFA L2 Equity Valuation · Quiz misses",
+  gapLabel: "Gap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

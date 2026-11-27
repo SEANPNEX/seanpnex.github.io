@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Currency-exchange concepts</title>
+  <style>
+    :root{--paper:#F0EFEB;--ink:#1C1C1A;--muted:#6A6963;--soft:#A8A7A0;--grid:#D8D6CE;--faint:#E3E2DB}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,sans-serif}.card{padding:29px 30px 18px;border-radius:24px;overflow:hidden}h2{max-width:760px;margin:0;font-size:clamp(25px,4vw,42px);font-weight:700;line-height:1.05;letter-spacing:-.035em}.sub{margin:10px 0 7px;color:var(--muted);font-size:12px;line-height:1.5}svg{display:block;width:100%;height:auto;margin:6px 0 10px;overflow:visible}.src{color:#8A8983;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}.draw{stroke-dasharray:1;stroke-dashoffset:1;animation:draw .7s cubic-bezier(.25,.9,.35,1) forwards}.pop{opacity:0;transform-box:fill-box;transform-origin:center;animation:pop .4s cubic-bezier(.25,.9,.35,1) forwards}.fade{opacity:0;animation:fade .45s ease forwards}@keyframes draw{to{stroke-dashoffset:0}}@keyframes pop{to{opacity:1;transform:scale(1)}}@keyframes fade{to{opacity:1}}@media(max-width:600px){.card{padding:24px 15px 15px}.sub{font-size:11px}}@media(prefers-reduced-motion:reduce){.draw{stroke-dashoffset:0;animation:none}.pop,.fade{opacity:1;transform:none;animation:none}}
+  </style>
+  <script src="chart-fx.js"></script>
+</head>
+<body>
+  <main class="card" id="card"><h2 id="title"></h2><div class="sub" id="sub"></div><svg id="chart" viewBox="0 0 760 315" role="img"></svg><div class="src" id="src"></div></main>
+  <script src="i18n.js"></script>
+  <script>
+chartI18n.use({
+  zh: {
+    'Currency-exchange concepts': '汇率概念',
+    'Parity conditions connect prices, yields, and currency values.': '平价条件把价格、收益率和币值联系在一起。',
+    'each outer node = an observed or expected market quantity · lines converge on exchange-rate consistency': '每个外圈节点 = 一个观测到的或预期的市场量 · 线条汇聚于汇率的一致性',
+    'SPOT': '即期',
+    'FORWARD': '远期',
+    'NOMINAL RATES': '名义利率',
+    'REAL RATES': '实际利率',
+    'EXPECTED INFLATION': '预期通胀',
+    'PRICE LEVELS': '价格水平',
+    'FX': '汇率',
+    'FISHER': '费雪',
+    'Policy reaches the currency through rates, capital, and trade.': '政策通过利率、资本和贸易作用于汇率。',
+    'floating exchange rate · high capital mobility · two short-run transmission paths': '浮动汇率 · 资本高度流动 · 两条短期传导路径',
+    'MONETARY EXPANSION': '货币扩张',
+    'FISCAL EXPANSION': '财政扩张',
+    'LOWER RATE': '利率下降',
+    'CAPITAL OUTFLOW': '资本流出',
+    'DEPRECIATION': '贬值',
+    'HIGHER RATE': '利率上升',
+    'CAPITAL INFLOW': '资本流入',
+    'APPRECIATION': '升值',
+    'REGIME MATTERS · UNDER A FIXED RATE THE CENTRAL BANK MUST DEFEND THE PEG': '汇率制度很重要 · 在固定汇率下，央行必须维护挂钩汇率',
+    'REGIME MATTERS': '汇率制度很重要',
+    'UNDER A FIXED RATE THE CENTRAL BANK MUST DEFEND THE PEG': '在固定汇率下，央行必须维护挂钩汇率',
+  },
+  ja: {
+    'Currency-exchange concepts': '為替の概念',
+    'Parity conditions connect prices, yields, and currency values.': 'パリティ条件は、価格、利回り、通貨価値を結びつける。',
+    'each outer node = an observed or expected market quantity · lines converge on exchange-rate consistency': '外周の各ノード = 観測された、または期待される市場の数量 · 線は為替レートの整合性に集まる',
+    'SPOT': '直物',
+    'FORWARD': '先渡',
+    'NOMINAL RATES': '名目金利',
+    'REAL RATES': '実質金利',
+    'EXPECTED INFLATION': '期待インフレ',
+    'PRICE LEVELS': '物価水準',
+    'FX': '為替',
+    'FISHER': 'フィッシャー',
+    'Policy reaches the currency through rates, capital, and trade.': '政策は、金利、資本、貿易を通じて通貨に届く。',
+    'floating exchange rate · high capital mobility · two short-run transmission paths': '変動相場制 · 高い資本移動 · 短期の 2 つの波及経路',
+    'MONETARY EXPANSION': '金融緩和',
+    'FISCAL EXPANSION': '財政拡張',
+    'LOWER RATE': '金利低下',
+    'CAPITAL OUTFLOW': '資本流出',
+    'DEPRECIATION': '通貨安',
+    'HIGHER RATE': '金利上昇',
+    'CAPITAL INFLOW': '資本流入',
+    'APPRECIATION': '通貨高',
+    'REGIME MATTERS · UNDER A FIXED RATE THE CENTRAL BANK MUST DEFEND THE PEG': '為替制度が重要 · 固定相場制では中央銀行がペッグを守らなければならない',
+    'REGIME MATTERS': '為替制度が重要',
+    'UNDER A FIXED RATE THE CENTRAL BANK MUST DEFEND THE PEG': '固定相場制では中央銀行がペッグを守らなければならない',
+  },
+  fr: {
+    'Currency-exchange concepts': 'Notions de change',
+    'Parity conditions connect prices, yields, and currency values.': 'Les conditions de parité relient prix, rendements et valeur des devises.',
+    'each outer node = an observed or expected market quantity · lines converge on exchange-rate consistency': 'chaque nœud extérieur = une grandeur de marché observée ou attendue · les lignes convergent vers la cohérence du change',
+    'SPOT': 'COMPTANT',
+    'FORWARD': 'TERME',
+    'NOMINAL RATES': 'TAUX NOMINAUX',
+    'REAL RATES': 'TAUX RÉELS',
+    'EXPECTED INFLATION': 'INFLATION ANTICIPÉE',
+    'PRICE LEVELS': 'NIVEAUX DE PRIX',
+    'FX': 'CHANGE',
+    'PPP': 'PPA',
+    'Policy reaches the currency through rates, capital, and trade.': 'La politique atteint la devise par les taux, les capitaux et le commerce.',
+    'floating exchange rate · high capital mobility · two short-run transmission paths': 'change flottant · forte mobilité des capitaux · deux canaux de transmission à court terme',
+    'MONETARY EXPANSION': 'EXPANSION MONÉTAIRE',
+    'FISCAL EXPANSION': 'EXPANSION BUDGÉTAIRE',
+    'LOWER RATE': 'TAUX EN BAISSE',
+    'CAPITAL OUTFLOW': 'SORTIE DE CAPITAUX',
+    'DEPRECIATION': 'DÉPRÉCIATION',
+    'HIGHER RATE': 'TAUX EN HAUSSE',
+    'CAPITAL INFLOW': 'ENTRÉE DE CAPITAUX',
+    'APPRECIATION': 'APPRÉCIATION',
+    'REGIME MATTERS · UNDER A FIXED RATE THE CENTRAL BANK MUST DEFEND THE PEG': 'LE RÉGIME COMPTE · EN CHANGE FIXE, LA BANQUE CENTRALE DOIT DÉFENDRE L’ANCRAGE',
+    'REGIME MATTERS': 'LE RÉGIME COMPTE',
+    'UNDER A FIXED RATE THE CENTRAL BANK MUST DEFEND THE PEG': 'EN CHANGE FIXE, LA BANQUE CENTRALE DOIT DÉFENDRE L’ANCRAGE',
+  },
+});
+chartI18n.use({
+  zh: {
+    "Covered interest rate parity": "抛补利率平价",
+    "forward premium = interest-rate differential": "远期升水 = 利差",
+    "Uncovered interest rate parity": "非抛补利率平价",
+    "expected spot change = interest-rate differential": "即期汇率预期变动 = 利差",
+    "Fisher effect": "费雪效应",
+    "nominal rate = real rate + expected inflation": "名义利率 = 实际利率 + 预期通胀",
+    "Purchasing power parity": "购买力平价",
+    "spot change = inflation differential": "即期汇率变动 = 通胀差",
+    "Domestic interest rates fall": "本国利率下降",
+    "Capital leaves for higher yields abroad": "资本流出，追逐国外更高的收益",
+    "Selling the currency weakens it": "抛售本币使其走弱",
+    "Government borrowing pushes rates up": "政府借款推高利率",
+    "Higher yields draw capital in": "更高的收益吸引资本流入",
+    "Buying the currency strengthens it": "买入本币使其走强",
+  },
+  ja: {
+    "Covered interest rate parity": "カバー付き金利平価",
+    "forward premium = interest-rate differential": "先渡プレミアム = 金利差",
+    "Uncovered interest rate parity": "カバーなし金利平価",
+    "expected spot change = interest-rate differential": "直物の期待変化 = 金利差",
+    "Fisher effect": "フィッシャー効果",
+    "nominal rate = real rate + expected inflation": "名目金利 = 実質金利 + 期待インフレ率",
+    "Purchasing power parity": "購買力平価",
+    "spot change = inflation differential": "直物の変化 = インフレ格差",
+    "Domestic interest rates fall": "国内金利が下がる",
+    "Capital leaves for higher yields abroad": "資本がより高い海外の利回りを求めて流出",
+    "Selling the currency weakens it": "通貨が売られて弱くなる",
+    "Government borrowing pushes rates up": "政府の借入れが金利を押し上げる",
+    "Higher yields draw capital in": "高い利回りが資本を呼び込む",
+    "Buying the currency strengthens it": "通貨が買われて強くなる",
+  },
+  fr: {
+    "Covered interest rate parity": "Parité des taux d’intérêt couverte",
+    "forward premium = interest-rate differential": "prime à terme = différentiel de taux",
+    "Uncovered interest rate parity": "Parité des taux d’intérêt non couverte",
+    "expected spot change = interest-rate differential": "variation attendue du comptant = différentiel de taux",
+    "Fisher effect": "Effet Fisher",
+    "nominal rate = real rate + expected inflation": "taux nominal = taux réel + inflation attendue",
+    "Purchasing power parity": "Parité de pouvoir d’achat",
+    "spot change = inflation differential": "variation du comptant = différentiel d’inflation",
+    "Domestic interest rates fall": "les taux nationaux baissent",
+    "Capital leaves for higher yields abroad": "les capitaux partent vers des rendements plus élevés à l’étranger",
+    "Selling the currency weakens it": "la vente de la devise l’affaiblit",
+    "Government borrowing pushes rates up": "l’emprunt public fait monter les taux",
+    "Higher yields draw capital in": "des rendements plus élevés attirent les capitaux",
+    "Buying the currency strengthens it": "l’achat de la devise la renforce",
+  },
+}, {
+  patterns: {
+  zh: [
+    [/^linked\ by\ (.+)$/, "通过 $1 相连"],
+  ],
+  ja: [
+    [/^linked\ by\ (.+)$/, "$1 で結ばれる"],
+  ],
+  fr: [
+    [/^linked\ by\ (.+)$/, "relié par $1"],
+  ],
+  },
+  html: {
+  zh: {
+
+  },
+  ja: {
+
+  },
+  fr: {
+
+  },
+  },
+});
+
+  </script>
+  <script>
+    const NS='http://www.w3.org/2000/svg',INK='#1C1C1A',PAPER='#F0EFEB',MUTED='#6A6963',SOFT='#A8A7A0',GRID='#D8D6CE',FAINT='#E3E2DB';
+    const svg=document.querySelector('#chart');
+    const T=(s)=>(window.chartI18n?chartI18n.t(s):s);
+    const el=(tag,a={},content='')=>{const n=document.createElementNS(NS,tag);Object.entries(a).forEach(([k,v])=>n.setAttribute(k,v));if(content)n.textContent=content;svg.append(n);return n};
+    const txt=(x,y,s,a={})=>el('text',{x,y,fill:MUTED,'font-size':10,'font-weight':600,...a},s);
+    // Multi-line label: each line is its own <text>, so translations still match whole strings.
+    const lines=(x,y,list,a={},lh=11)=>list.forEach((s,i)=>txt(x,y+(i-(list.length-1)/2)*lh,s,a));
+    const dot=(x,y,r=7,a={})=>el('circle',{cx:x,cy:y,r,fill:INK,class:'pop',...a});
+    const path=(d,a={})=>el('path',{d,fill:'none',stroke:SOFT,'stroke-width':.9,pathLength:1,class:'draw',...a});
+    const box=(x,y,w,h,label,dark=false,delay=0,hover={})=>{el('rect',{x,y,width:w,height:h,rx:14,fill:dark?INK:FAINT,class:'pop',style:`animation-delay:${delay}s`,...hover});txt(x+w/2,y+h/2+3.5,label,{fill:dark?PAPER:INK,'text-anchor':'middle','font-size':10,'font-weight':800,class:'fade',style:`animation-delay:${delay}s`,...hover})};
+    const pill=(x,y,label,delay=0,hover={})=>{const w=label.length*6.4+16;el('rect',{x:x-w/2,y:y-9,width:w,height:18,rx:9,fill:PAPER,stroke:INK,'stroke-width':.9,class:'fade',style:`animation-delay:${delay}s`,...hover});txt(x,y+3.3,label,{fill:INK,'text-anchor':'middle','font-size':9,'font-weight':800,'letter-spacing':'.04em',class:'fade',style:`animation-delay:${delay}s`,...hover})};
+    const narrow=()=>svg.getBoundingClientRect().width<520;
+
+    const V={
+      parity:{title:'Parity conditions connect prices, yields, and currency values.',sub:'each outer node = an observed or expected market quantity · lines converge on exchange-rate consistency',src:'RADIAL CONVERGENCE · L5 MONO-EDITORIAL · PARITY MAP',render(small){
+        const L=small?{w:360,h:370,cx:180,cy:185,R:104,hub:32}:{w:760,h:340,cx:380,cy:170,R:132,hub:40};
+        svg.setAttribute('viewBox',`0 0 ${L.w} ${L.h}`);
+        const {cx,cy,R}=L;
+        const items=[['SPOT',-145],['FORWARD',-85],['NOMINAL RATES',-25],['REAL RATES',35],['EXPECTED INFLATION',95],['PRICE LEVELS',155]];
+        // Which conditions tie each quantity in: hovering a spoke lights them, hovering a condition lights its spokes.
+        const CONDS={CIRP:{q:[0,1,2],tip:'Covered interest rate parity\nforward premium = interest-rate differential'},UIRP:{q:[0,2],tip:'Uncovered interest rate parity\nexpected spot change = interest-rate differential'},FISHER:{q:[2,3,4],tip:'Fisher effect\nnominal rate = real rate + expected inflation'},PPP:{q:[0,4,5],tip:'Purchasing power parity\nspot change = inflation differential'}};
+        const linked=(i)=>Object.keys(CONDS).filter((k)=>CONDS[k].q.includes(i)).join(', ');
+        items.forEach(([name,deg],i)=>{
+          const a=deg*Math.PI/180,c=Math.cos(a),sn=Math.sin(a),x=cx+R*c,y=cy+R*sn,hx=cx+L.hub*c,hy=cy+L.hub*sn;
+          const hover={'data-hl':`q${i}`,'data-tip':`${T(name)}\nlinked by ${linked(i)}`};
+          path(`M${x} ${y} C${cx+(x-cx)*.45} ${cy+(y-cy)*.45} ${cx+(hx-cx)*.30} ${cy+(hy-cy)*.30} ${hx} ${hy}`,{style:`animation-delay:${i*.08}s`,...hover});
+          dot(x,y,3,{fill:MUTED,style:`animation-delay:${i*.08}s`,...hover});
+          // Side labels sit beside their dot; top and bottom labels sit above or below it.
+          const side=Math.abs(c)>.3,anchor=side?(c>0?'start':'end'):'middle';
+          const lx=side?x+(c>0?10:-10):x,ly=side?y+3:y+(sn<0?-12:19);
+          const label=T(name),split=small&&side&&label.includes(' ')?label.split(' '):[label];
+          lines(lx,ly,split,{'text-anchor':anchor,'font-size':9,'letter-spacing':'.08em',class:'fade',style:`animation-delay:${.2+i*.06}s`,...hover});
+          dot(hx,hy,small?7:8,{style:`animation-delay:${.4+i*.07}s`,...hover});
+        });
+        const hubR=small?24:28,fx=T('FX');
+        dot(cx,cy,hubR);
+        // Translated hub labels (e.g. CHANGE) must still fit inside the circle.
+        const fs=Math.min(12,hubR*1.5/(fx.length*.62));
+        txt(cx,cy+fs*.36,fx,{fill:PAPER,'text-anchor':'middle','font-size':fs.toFixed(1),'font-weight':800,class:'fade'});
+        // Each condition sits in the sector between the quantities it relates.
+        [['CIRP',-115],['UIRP',-55],['FISHER',65],['PPP',125]].forEach(([s,deg],i)=>{
+          const a=deg*Math.PI/180;
+          pill(cx+R*.64*Math.cos(a),cy+R*.64*Math.sin(a),T(s),.7+i*.06,{'data-hl':CONDS[s].q.map((q)=>`q${q}`).join(' '),'data-tip':CONDS[s].tip});
+        });
+      }},
+      policy:{title:'Policy reaches the currency through rates, capital, and trade.',sub:'floating exchange rate · high capital mobility · two short-run transmission paths',src:'TREND LINEAGE · L11 MONO-EDITORIAL · MUNDELL–FLEMING',render(small){
+        const rows=[{name:'MONETARY EXPANSION',nodes:['LOWER RATE','CAPITAL OUTFLOW','DEPRECIATION'],tips:['Domestic interest rates fall','Capital leaves for higher yields abroad','Selling the currency weakens it']},{name:'FISCAL EXPANSION',nodes:['HIGHER RATE','CAPITAL INFLOW','APPRECIATION'],tips:['Government borrowing pushes rates up','Higher yields draw capital in','Buying the currency strengthens it']}];
+        // A step lights its whole path; the other path dims.
+        const hover=(ri,i)=>({'data-hl':`row${ri}`,'data-tip':`${T(rows[ri].nodes[i])}\n${rows[ri].tips[i]}`});
+        const head={fill:INK,'font-size':9,'font-weight':800,'letter-spacing':'.08em'};
+        const foot={'text-anchor':'middle','font-size':8,'letter-spacing':'.1em',class:'fade',style:'animation-delay:.6s'};
+        if(small){
+          // Two columns read top to bottom.
+          svg.setAttribute('viewBox','0 0 360 318');
+          const xs=[92,268],ys=[74,144,214],w=150,h=42;
+          rows.forEach((r,ri)=>{
+            const x=xs[ri];
+            txt(x,30,T(r.name),{...head,'text-anchor':'middle'});
+            r.nodes.forEach((name,i)=>{
+              if(i<2){path(`M${x} ${ys[i]+h/2} L${x} ${ys[i+1]-h/2}`,{stroke:GRID,'stroke-width':1.2,style:`animation-delay:${ri*.2+i*.12}s`,'data-hl':`row${ri}`});dot(x,(ys[i]+ys[i+1])/2,2,{fill:SOFT,style:`animation-delay:${.25+i*.12}s`,'data-hl':`row${ri}`})}
+              box(x-w/2,ys[i]-h/2,w,h,T(name),i===2,ri*.1+i*.1,hover(ri,i));
+            });
+          });
+          txt(180,276,T('REGIME MATTERS'),foot);
+          txt(180,292,T('UNDER A FIXED RATE THE CENTRAL BANK MUST DEFEND THE PEG'),{...foot,'letter-spacing':'.06em'});
+        }else{
+          svg.setAttribute('viewBox','0 0 760 236');
+          const ys=[52,150],xs=[285,475,665];
+          rows.forEach((r,ri)=>{
+            const y=ys[ri];
+            txt(42,y+4,T(r.name),head);
+            r.nodes.forEach((name,i)=>{
+              if(i<2){path(`M${xs[i]+65} ${y} L${xs[i+1]-65} ${y}`,{stroke:GRID,'stroke-width':1.2,style:`animation-delay:${ri*.2+i*.12}s`,'data-hl':`row${ri}`});dot((xs[i]+xs[i+1])/2,y,2,{fill:SOFT,style:`animation-delay:${.25+i*.12}s`,'data-hl':`row${ri}`})}
+              box(xs[i]-65,y-22,130,44,T(name),i===2,ri*.1+i*.1,hover(ri,i));
+            });
+          });
+          txt(380,222,T('REGIME MATTERS · UNDER A FIXED RATE THE CENTRAL BANK MUST DEFEND THE PEG'),foot);
+        }
+      }}
+    };
+
+    const key=new URLSearchParams(location.search).get('view')||'parity',v=V[key]||V.parity;
+    document.querySelector('#title').textContent=v.title;
+    document.querySelector('#sub').textContent=v.sub;
+    document.querySelector('#src').textContent=v.src;
+    svg.setAttribute('aria-label',T(v.title));
+    let layout=null;
+    function render(force){
+      const small=narrow();
+      if(!force&&small===layout)return;
+      layout=small;svg.innerHTML='';v.render(small);
+      if(parent!==window)parent.postMessage({chartHeight:document.querySelector('#card').scrollHeight},location.origin);
+    }
+    render(true);
+    document.querySelector('#card').addEventListener('click',()=>render(true));
+    window.addEventListener('resize',()=>render(false));
+    document.fonts?.ready.then(()=>render(true));
+  </script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Security market line · alpha</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <script src="chart-fx.js"></script>
+</head>
+<body>
+  <main class="card" id="card" data-fx-scope>
+    <h2>Above the line is cheap, below it is rich.</h2>
+    <div class="sub">Security market line: required return = 3% + β × (8% − 3%) · dots = forecast returns of three stocks · the vertical gap to the line is Jensen’s alpha · hover a dot for its numbers</div>
+    <section class="panel">
+      <h3>Expected return against beta</h3>
+      <div class="hint">A forecasts 10% for a required 9%: α = +1%, undervalued, buy · B forecasts 6% for a required 7%: α = −1%, overvalued, sell · M sits on the line</div>
+      <svg id="chart" role="img" aria-label="Security market line from 3% at beta 0 through 8% at beta 1; stock A at beta 1.2 and 10% lies above it, stock B at beta 0.8 and 6% below it"></svg>
+    </section>
+    <div class="src">CAPM SECURITY MARKET LINE · F2 HAIRLINE LINE · RF = 3%, E(RM) = 8% · ILLUSTRATIVE STOCKS</div>
+  </main>
+  <script src="i18n.js"></script>
+  <script>
+chartI18n.use({
+  zh: {
+    'Security market line · alpha': '证券市场线 · 阿尔法',
+    'Above the line is cheap, below it is rich.': '线上为低估，线下为高估。',
+    'Security market line: required return = 3% + β × (8% − 3%) · dots = forecast returns of three stocks · the vertical gap to the line is Jensen’s alpha · hover a dot for its numbers': '证券市场线：必要收益率 = 3% + β × (8% − 3%) · 圆点 = 三只股票的预测收益率 · 到直线的垂直距离即为詹森阿尔法 · 悬停圆点查看数据',
+    'Expected return against beta': '预期收益率与贝塔的关系',
+    'A forecasts 10% for a required 9%: α = +1%, undervalued, buy · B forecasts 6% for a required 7%: α = −1%, overvalued, sell · M sits on the line': 'A 预测 10%，必要 9%：α = +1%，低估，买入 · B 预测 6%，必要 7%：α = −1%，高估，卖出 · M 位于线上',
+    'Security market line from 3% at beta 0 through 8% at beta 1; stock A at beta 1.2 and 10% lies above it, stock B at beta 0.8 and 6% below it': '证券市场线从贝塔 0 处的 3% 经过贝塔 1 处的 8%；贝塔 1.2、10% 的股票 A 位于其上方，贝塔 0.8、6% 的股票 B 位于其下方',
+    'CAPM SECURITY MARKET LINE · F2 HAIRLINE LINE · RF = 3%, E(RM) = 8% · ILLUSTRATIVE STOCKS': 'CAPM 证券市场线 · F2 发丝折线 · RF = 3%，E(RM) = 8% · 示意股票',
+    'beta →': '贝塔 β →',
+    'expected return': '预期收益率',
+    'Market portfolio: β = 1, return 8%': '市场组合：β = 1，收益率 8%',
+    'on the SML, α = 0': '位于 SML 上，α = 0',
+    'undervalued: buy': '低估：买入',
+    'overvalued: sell': '高估：卖出',
+    'required return (%)': '必要收益率 (%)',
+    'beta': '贝塔',
+  },
+  ja: {
+    'Security market line · alpha': '証券市場線 · アルファ',
+    'Above the line is cheap, below it is rich.': '線の上は割安、下は割高。',
+    'Security market line: required return = 3% + β × (8% − 3%) · dots = forecast returns of three stocks · the vertical gap to the line is Jensen’s alpha · hover a dot for its numbers': '証券市場線：要求リターン = 3% + β × (8% − 3%) · 点 = 3 銘柄の予想リターン · 線との縦の差がジェンセンのアルファ · 点にホバーして数値を表示',
+    'Expected return against beta': 'ベータに対する期待リターン',
+    'A forecasts 10% for a required 9%: α = +1%, undervalued, buy · B forecasts 6% for a required 7%: α = −1%, overvalued, sell · M sits on the line': 'A は要求 9% に対し予想 10%：α = +1%、割安、買い · B は要求 7% に対し予想 6%：α = −1%、割高、売り · M は線上にある',
+    'Security market line from 3% at beta 0 through 8% at beta 1; stock A at beta 1.2 and 10% lies above it, stock B at beta 0.8 and 6% below it': 'ベータ 0 で 3%、ベータ 1 で 8% を通る証券市場線。ベータ 1.2・10% の株式 A はその上、ベータ 0.8・6% の株式 B はその下にある',
+    'CAPM SECURITY MARKET LINE · F2 HAIRLINE LINE · RF = 3%, E(RM) = 8% · ILLUSTRATIVE STOCKS': 'CAPM 証券市場線 · F2 ヘアライン · RF = 3%、E(RM) = 8% · 例示銘柄',
+    'beta →': 'ベータ β →',
+    'expected return': '期待リターン',
+    'Market portfolio: β = 1, return 8%': '市場ポートフォリオ：β = 1、リターン 8%',
+    'on the SML, α = 0': 'SML 上にあり、α = 0',
+    'undervalued: buy': '割安：買い',
+    'overvalued: sell': '割高：売り',
+    'required return (%)': '要求リターン (%)',
+    'beta': 'ベータ',
+  },
+  fr: {
+    'Security market line · alpha': 'Droite de marché des titres · alpha',
+    'Above the line is cheap, below it is rich.': 'Au-dessus de la droite c’est bon marché, en dessous c’est cher.',
+    'Security market line: required return = 3% + β × (8% − 3%) · dots = forecast returns of three stocks · the vertical gap to the line is Jensen’s alpha · hover a dot for its numbers': 'Droite de marché des titres : rendement requis = 3 % + β × (8 % − 3 %) · points = rendements prévus de trois actions · l’écart vertical à la droite est l’alpha de Jensen · survoler un point pour ses chiffres',
+    'Expected return against beta': 'Rendement attendu selon le bêta',
+    'A forecasts 10% for a required 9%: α = +1%, undervalued, buy · B forecasts 6% for a required 7%: α = −1%, overvalued, sell · M sits on the line': 'A prévoit 10 % pour 9 % requis : α = +1 %, sous-évaluée, acheter · B prévoit 6 % pour 7 % requis : α = −1 %, surévaluée, vendre · M est sur la droite',
+    'Security market line from 3% at beta 0 through 8% at beta 1; stock A at beta 1.2 and 10% lies above it, stock B at beta 0.8 and 6% below it': 'Droite de marché des titres passant par 3 % à bêta 0 et 8 % à bêta 1 ; l’action A à bêta 1,2 et 10 % est au-dessus, l’action B à bêta 0,8 et 6 % en dessous',
+    'CAPM SECURITY MARKET LINE · F2 HAIRLINE LINE · RF = 3%, E(RM) = 8% · ILLUSTRATIVE STOCKS': 'DROITE DE MARCHÉ MÉDAF · LIGNE F2 · RF = 3 %, E(RM) = 8 % · ACTIONS ILLUSTRATIVES',
+    'beta →': 'bêta β →',
+    'expected return': 'rendement attendu',
+    'Market portfolio: β = 1, return 8%': 'Portefeuille de marché : β = 1, rendement 8 %',
+    'on the SML, α = 0': 'sur la SML, α = 0',
+    'undervalued: buy': 'sous-évaluée : acheter',
+    'overvalued: sell': 'surévaluée : vendre',
+    'required return (%)': 'rendement requis (%)',
+    'beta': 'bêta',
+  },
+}, {
+  patterns: {
+    zh: [
+      [/^Stock ([A-Z]+): β = ([\d.]+), forecast ([\d.]+)%$/, '股票 $1：β = $2，预测 $3%'],
+      [/^required ([\d.]+)% → α = ([+−-]?[\d.]+)%$/, '必要收益率 $1% → α = $2%'],
+    ],
+    ja: [
+      [/^Stock ([A-Z]+): β = ([\d.]+), forecast ([\d.]+)%$/, '株式 $1：β = $2、予想 $3%'],
+      [/^required ([\d.]+)% → α = ([+−-]?[\d.]+)%$/, '要求 $1% → α = $2%'],
+    ],
+    fr: [
+      [/^Stock ([A-Z]+): β = ([\d.]+), forecast ([\d.]+)%$/, 'Action $1 : β = $2, prévu $3 %'],
+      [/^required ([\d.]+)% → α = ([+−-]?[\d.]+)%$/, 'requis $1 % → α = $2 %'],
+    ],
+  },
+});
+  </script>
+  <script>
+(() => {
+  const { C, T, el, label, frame, axes, curve, guide, dot, probe, mount } = curveKit;
+
+  // ── Data: risk-free rate, market return, and three stocks (beta, forecast return, %) ──
+  const RF = 3, RM = 8, B1 = 2, MID = '#6A6963';
+  const sml = (b) => RF + b * (RM - RF);
+  const STOCKS = [
+    { name: 'A', b: 1.2, r: 10, fill: C.INK, side: 'up' },
+    { name: 'M', b: 1.0, r: 8, fill: MID, side: 'up' },
+    { name: 'B', b: 0.8, r: 6, fill: C.INK, side: 'down' },
+  ];
+
+  mount(document.getElementById('chart'), (s, W, H) => {
+    const F = frame(s, W, H, { l: W < 420 ? 32 : 36, r: 12, t: 22, b: 40, noTicks: true }, B1, 14);
+    [3, 8, 13].forEach((v) => {
+      el(s, 'line', { x1: F.X0, y1: F.y(v), x2: F.X1, y2: F.y(v), stroke: C.GRID, 'stroke-width': 0.6, 'stroke-dasharray': '2 4', class: 'fade' });
+      label(s, F.X0 - 6, F.y(v) + 3.5, v + '%', { size: 9.5, weight: 600, fill: C.MUTED, anchor: 'end', halo: 0 });
+    });
+    [0, 0.5, 1, 1.5, 2].forEach((v) => label(s, F.x(v), F.BASE + 14, String(v), { size: 9.5, weight: v === 1 ? 800 : 600, fill: v === 1 ? C.INK : C.MUTED, anchor: 'middle', halo: 0 }));
+    axes(s, F, 'beta →', 'expected return');
+
+    curve(s, F, sml, 0, B1, { stroke: C.INK, width: 1.6 }).setAttribute('data-hl', 'sml');
+    label(s, F.x(1.75), F.y(sml(1.75)) + 18, 'SML', { size: 10.5, anchor: 'middle', delay: 0.8 });
+
+    STOCKS.forEach((st, i) => {
+      const req = +sml(st.b).toFixed(2), a = +(st.r - req).toFixed(2);
+      if (a) guide(s, F.x(st.b), F.y(req), F.x(st.b), F.y(st.r), 0.9 + i * 0.05);
+      const tip = st.name === 'M'
+        ? 'Market portfolio: β = 1, return 8%\non the SML, α = 0'
+        : `Stock ${st.name}: β = ${st.b}, forecast ${st.r}%\nrequired ${req}% → α = ${a > 0 ? '+' : ''}${a}%\n${a > 0 ? 'undervalued: buy' : 'overvalued: sell'}`;
+      dot(s, F.x(st.b), F.y(st.r), 3.8, st.fill, 1 + i * 0.08, tip);
+      const txt = st.name === 'M' ? 'M' : `${st.name}: α ${a > 0 ? '+' : '−'}1%`;
+      label(s, F.x(st.b) + (st.side === 'up' ? -8 : 8), F.y(st.r) + (st.side === 'up' ? -9 : 16), txt, { size: 10.5, anchor: st.side === 'up' ? 'end' : 'start', delay: 1.1 + i * 0.08 });
+    });
+    label(s, F.x(0.06), F.y(RF) + 17, 'rf = 3%', { size: 10, weight: 700, fill: C.MUTED, delay: 0.9 });
+
+    probe(s, F, [{ name: 'required return (%)', f: sml }], { xName: T('beta'), fmt: (v) => v.toFixed(2) });
+  }, (W) => Math.max(250, Math.min(320, W * 0.6)));
+})();
+  </script>
+</body>
+</html>

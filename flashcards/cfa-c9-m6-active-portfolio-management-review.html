@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Portfolio Management M6 — Analysis of Active Portfolio Management review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    "id": "pm6-active-weights",
+    "topic": "Active weights",
+    "front": "Write the active return in terms of active weights. What do the active weights sum to, and what follows?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$R_A=\\textstyle\\sum_i\\Delta w_iR_i$$</div><div class=\"eq-block\">$$\\Delta w_i=w_{P,i}-w_{B,i}$$</div><p>They sum to <strong>zero</strong>: overweights are funded by underweights. Value is added only by overweighting assets that beat the benchmark.</p></div>"
+  },
+  {
+    "id": "pm6-aw-example",
+    "topic": "Active weights example",
+    "front": "Benchmark weights 50/30/20, portfolio 40/40/20; stock returns 10%, 15%, 5%. Find the active return.",
+    "back": "<div class=\"ans\"><p>Active weights: −10%, +10%, 0.</p><div class=\"eq-block\">$$\\begin{aligned}R_A&=-0.1(10\\%)+0.1(15\\%)\\\\&=0.5\\%\\end{aligned}$$</div><p>Check: \\(11\\%-10.5\\%\\).</p></div>"
+  },
+  {
+    "id": "pm6-decomp",
+    "topic": "Allocation vs selection",
+    "front": "Decompose the active return of a multi-asset portfolio into asset allocation and security selection.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\textstyle\\sum_i(w_i^P-w_i^B)R_i^B$$</div><p><strong>Allocation</strong>: active class weights × class benchmark returns.</p><div class=\"eq-block\">$$\\textstyle\\sum_i w_i^P(R_i^P-R_i^B)$$</div><p><strong>Selection</strong>: portfolio class weights × each class’s outperformance.</p></div>"
+  },
+  {
+    "id": "pm6-decomp-example",
+    "topic": "Decomposition example",
+    "front": "Benchmark: 60% equity (8%), 40% bonds (4%). Portfolio: 70% equity returning 9%, 30% bonds returning 3.5%. Decompose the active return.",
+    "back": "<div class=\"ans\"><ul><li>Allocation: \\(0.1(8\\%)-0.1(4\\%)=0.4\\%\\)</li><li>Selection: \\(0.7(1\\%)+0.3(-0.5\\%)=0.55\\%\\)</li></ul><p>Total <strong>0.95%</strong> \\(=7.35\\%-6.4\\%\\).</p></div>"
+  },
+  {
+    "id": "pm6-sharpe",
+    "topic": "Sharpe ratio",
+    "front": "Define the Sharpe ratio, ex ante and ex post. Why doesn’t lending or borrowing at \\(R_f\\) change it?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\text{SR}=\\frac{R_P-R_f}{\\sigma_P}$$</div><p>Ex ante: expected values; ex post: realized. Lending or borrowing moves the investor along the same <strong>CAL</strong>, whose slope is the Sharpe ratio.</p></div>",
+    "gap": "So pick the risky portfolio with the highest Sharpe ratio, then set total risk with cash or leverage."
+  },
+  {
+    "id": "pm6-cal-cml",
+    "topic": "CAL and CML",
+    "front": "What are the capital allocation line and the capital market line?",
+    "back": "<div class=\"ans\"><ul><li><strong>CAL</strong>: line from the risk-free asset through a risky portfolio; slope = its Sharpe ratio</li><li><strong>CML</strong>: the steepest CAL, tangent to the efficient frontier at the market portfolio</li></ul></div>"
+  },
+  {
+    "id": "pm6-ir",
+    "topic": "Information ratio",
+    "front": "Define the information ratio. How do ex ante and ex post IRs differ in use?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\text{IR}=\\frac{R_P-R_B}{\\sigma(R_P-R_B)}=\\frac{R_A}{\\sigma_A}$$</div><p>Ex ante: choose managers and size active risk. Ex post: evaluate managers’ performance.</p></div>",
+    "gap": "The Sharpe ratio is the IR with the risk-free asset as benchmark."
+  },
+  {
+    "id": "pm6-ir-properties",
+    "topic": "IR vs Sharpe ratio",
+    "front": "Which changes leave the IR unchanged, and which change it? How does the Sharpe ratio behave instead?",
+    "back": "<div class=\"ans\"><ul><li><strong>IR unchanged</strong>: scaling the aggressiveness of all active weights (no fees); mixing with the benchmark</li><li><strong>IR changed</strong>: adding cash or leverage at \\(R_f\\)</li><li><strong>Sharpe ratio</strong>: the opposite: unchanged by cash or leverage, changed by aggressiveness</li></ul></div>"
+  },
+  {
+    "id": "pm6-optimal",
+    "topic": "Optimal active risk",
+    "front": "Write the best achievable Sharpe ratio and the optimal active risk when combining an active portfolio with the benchmark.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\text{SR}_P^2=\\text{SR}_B^2+\\text{IR}^2$$</div><div class=\"eq-block\">$$\\sigma_A^*=\\frac{\\text{IR}}{\\text{SR}_B}\\,\\sigma_B$$</div><p>So choose the manager with the <strong>highest IR</strong>.</p></div>",
+    "gap": "Assumes the active returns are uncorrelated with the benchmark."
+  },
+  {
+    "id": "pm6-optimal-example",
+    "topic": "Optimal active risk example",
+    "front": "\\(\\text{SR}_B=0.40\\), \\(\\sigma_B=18\\%\\). A manager has IR 0.25 and active risk 15%. Find the optimal active risk, the weight on the manager and the best Sharpe ratio.",
+    "back": "<div class=\"ans\"><p>\\(\\sigma_A^*=(0.25/0.40)\\times18\\%=11.25\\%\\).</p><p>Weight \\(=11.25/15=75\\%\\) in the manager, 25% in the benchmark.</p><p>\\(\\text{SR}_P=\\sqrt{0.16+0.0625}=0.472\\).</p></div>"
+  },
+  {
+    "id": "pm6-triangle",
+    "topic": "Correlation triangle",
+    "front": "Name the three corners and three sides of the correlation triangle.",
+    "back": "<div class=\"ans\"><ul><li>Corners: <strong>forecasted</strong> active returns \\(\\mu_i\\); <strong>active weights</strong> \\(\\Delta w_i\\); <strong>realized</strong> active returns</li><li>Forecasts–realized: <strong>IC</strong> (signal quality)</li><li>Forecasts–weights: <strong>TC</strong> (portfolio construction)</li><li>Weights–realized: <strong>value added</strong></li></ul></div>"
+  },
+  {
+    "id": "pm6-ic",
+    "topic": "Information coefficient",
+    "front": "Define the information coefficient. What sign does it have ex ante and ex post?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\text{IC}=\\rho\\left(\\frac{R_{A,i}}{\\sigma_i},\\frac{\\mu_i}{\\sigma_i}\\right)$$</div><p>A risk-weighted correlation of forecasts and realized active returns. Ex ante: positive. Ex post: positive or negative.</p></div>"
+  },
+  {
+    "id": "pm6-tc",
+    "topic": "Transfer coefficient",
+    "front": "What does the transfer coefficient measure? What is it for an unconstrained portfolio?",
+    "back": "<div class=\"ans\"><p>The correlation of risk-weighted forecasts and risk-weighted active weights: how fully forecasts become weights, and how much <strong>constraints</strong> cut value added.</p><p>Unconstrained: \\(\\text{TC}=1\\). Constrained (e.g. long-only): \\(\\text{TC}&lt;1\\).</p></div>"
+  },
+  {
+    "id": "pm6-breadth",
+    "topic": "Breadth",
+    "front": "Define breadth and give the practical formula. Find BR for 20 decisions with \\(\\rho=0.25\\).",
+    "back": "<div class=\"ans\"><p>The number of <strong>independent</strong> active decisions per year.</p><div class=\"eq-block\">$$\\text{BR}=\\frac{N}{1+(N-1)\\rho}$$</div><p>\\(20/(1+19\\times0.25)=3.48\\).</p></div>",
+    "gap": "With hedging (\\(\\rho&lt;0\\)), BR can exceed \\(N\\)."
+  },
+  {
+    "id": "pm6-law",
+    "topic": "Fundamental law",
+    "front": "State the basic and the full fundamental law of active management, and the expected active return.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\text{IR}^*=\\text{IC}\\sqrt{\\text{BR}}$$</div><div class=\"eq-block\">$$\\text{IR}=\\text{TC}\\times\\text{IC}\\sqrt{\\text{BR}}$$</div><div class=\"eq-block\">$$E(R_A)=\\text{IR}\\times\\sigma_A$$</div></div>"
+  },
+  {
+    "id": "pm6-law-tc",
+    "topic": "Fundamental law with TC",
+    "front": "With constraints, what are the optimal active risk and the best Sharpe ratio?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\sigma_A^*=\\frac{\\text{TC}\\times\\text{IR}^*}{\\text{SR}_B}\\,\\sigma_B$$</div><div class=\"eq-block\">$$\\text{SR}_P^2=\\text{SR}_B^2+(\\text{TC}\\times\\text{IR}^*)^2$$</div><p>\\(\\text{IR}^*\\) is the unconstrained IR from the basic law.</p></div>"
+  },
+  {
+    "id": "pm6-law-example",
+    "topic": "Fundamental law example",
+    "front": "IC 0.05, BR 100, TC 0.6, active risk 4%; \\(\\text{SR}_B=0.40\\), \\(\\sigma_B=15\\%\\). Find IR, \\(E(R_A)\\), optimal active risk and best SR.",
+    "back": "<div class=\"ans\"><ul><li>\\(\\text{IR}^*=0.05\\times10=0.50\\); \\(\\text{IR}=0.6\\times0.50=0.30\\)</li><li>\\(E(R_A)=0.30\\times4\\%=1.2\\%\\)</li><li>\\(\\sigma_A^*=(0.30/0.40)\\times15\\%=11.25\\%\\)</li><li>\\(\\text{SR}_P=\\sqrt{0.16+0.09}=0.50\\)</li></ul></div>"
+  },
+  {
+    "id": "pm6-improve",
+    "topic": "Improving the IR",
+    "front": "How can a manager raise the IR, and what is the catch with breadth?",
+    "back": "<div class=\"ans\"><ul><li><strong>TC</strong>: relax constraints</li><li><strong>IC</strong>: better forecasts</li><li><strong>BR</strong>: more independent bets</li></ul><p>Breadth and IC trade off: extra bets help only if their IC stays reasonable; fewer, better bets can give a higher IR.</p></div>"
+  },
+  {
+    "id": "pm6-timing",
+    "topic": "Market timing IC",
+    "front": "How is IC measured for a market timer? A timer is right 55% of the time with 4 independent calls a year: find IC and IR.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\text{IC}=2(\\%\\text{ correct})-1$$</div><p>\\(\\text{IC}=0.10\\); \\(\\text{IR}=0.10\\sqrt4=0.20\\).</p></div>",
+    "gap": "Right 50% of the time means IC = 0: no skill."
+  },
+  {
+    "id": "pm6-ex-post",
+    "topic": "Ex post and limitations",
+    "front": "What drives ex post active returns? What share of their variance does the forecasting explain? What limits the fundamental law?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$E(R_A\\mid\\text{IC}_R)=\\text{TC}\\,\\text{IC}_R\\sqrt{\\text{BR}}\\,\\sigma_A$$</div><p>The realized IC explains \\(\\text{TC}^2\\) of the variance; \\(1-\\text{TC}^2\\) is noise.</p><p>Limits: IC and true independence (breadth) can’t be estimated precisely; IC assumed equal across decisions.</p></div>"
+  }
+];
+
+flashDeck({
+  key: "cfa-c9-m6-review",
+  source: "CFA L2 Portfolio Management \u00b7 M6 Analysis of Active Portfolio Management \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

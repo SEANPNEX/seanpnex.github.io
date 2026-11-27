@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Alternative Investments — quiz misses flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    id: "alt-m1-basis-swap-vs-total-return-2026-11-17",
+    topic: "ALT M1 · Basis swap vs total return swap",
+    front: `You need to hedge an illiquid physical commodity (heavy crude) against a liquid reference (Brent). Which swap is that? How does it differ from a total return, excess return, variance or volatility swap?`,
+    back: `<div class="ans">
+      <p><strong>A basis swap.</strong> Periodic payments are exchanged based on two related commodity reference prices that are not perfectly correlated. These swaps adjust for the difference (the basis) between a highly liquid futures contract and an illiquid but related material — for example, Brent crude (very liquid) versus heavy crude for delivery in the Gulf of Mexico.</p><ul><li>A <strong>total return swap</strong> gives index exposure equal to the change in the futures prices <em>plus</em> interest earned on cash collateral posted on those futures.</li><li>An <strong>excess return swap</strong> pays only the net change in the futures prices (the “excess” return) times the notional; it does not include the collateral interest.</li><li>A <strong>variance swap</strong> exchanges payments based on the difference between observed (actual) variance and a fixed amount of variance set at the outset. A <strong>volatility swap</strong> does the same versus expected volatility: the two sides are not betting on the level or direction of prices. A volatility seller profits if realized volatility is lower than expectations.</li></ul>
+    </div>`,
+    gap: "Chose a total return swap instead of a basis swap."
+  },
+  {
+    id: "alt-m1-roll-contango-fewer-contracts-2026-11-17",
+    topic: "ALT M1 · Roll in contango: fewer contracts",
+    front: `In contango, after you roll a long futures position to keep the same dollar exposure, do you hold more or fewer contracts? In the quiz figures, exposure is 120, the near contract is 10 and the far contract is 12. What happens to the contract count, and what is the sign of the roll return? What if the market is in backwardation?`,
+    back: `<div class="ans">
+      <p><strong>Fewer contracts, and the roll return is negative.</strong> In contango the farther-term contract is more expensive, so you buy fewer contracts than you sell to keep the same dollar exposure. (The 120 / 10 / 12 figures are quiz data, not a textbook example.)</p><ul><li>Near: \\(120/10=12\\) contracts. Far: \\(120/12=10\\) contracts.</li><li>\\(\\text{Roll return}=\\dfrac{\\text{Near-term closing price}-\\text{Farther-term closing price}}{\\text{Near-term closing price}}\\times\\text{Percentage of the position being rolled}\\). Here the near-to-far difference is negative, so the roll return is negative.</li><li>In backwardation the farther-term contract is cheaper, so you buy more contracts and the roll return is usually positive.</li></ul>
+    </div>`,
+    gap: "Thought that in contango you hold more contracts after the roll."
+  },
+  {
+    id: "alt-m2-noi-before-dep-interest-tax-2026-11-17",
+    topic: "ALT M2 · NOI before depreciation, interest and tax",
+    front: `How is NOI measured, and do you subtract depreciation or interest? If expected NOI is 500k, \\(r\\) is 9% and \\(g\\) is 3%, what is the property value? What if you also subtract 80k of depreciation and 120k of interest?`,
+    back: `<div class="ans">
+      <p><strong>8,333,333.</strong> \\(\\text{NOI}=\\text{Effective gross income}-\\text{Operating expenses}-\\text{Property maintenance allowance}\\). NOI is measured before financing costs, depreciation and income taxes. (The 500k, 9%, 3%, 80k and 120k figures are quiz data, not a textbook example.)</p><ul><li>The property maintenance allowance is subtracted. It includes capital expenditures needed to maintain the property’s current economic use, not capex that significantly upgrades or changes that use.</li><li>Direct capitalization: \\(\\text{Property value}=\\dfrac{\\text{Expected NOI}}{\\text{Capitalization rate}}\\), and the cap rate is \\(r-g\\). So \\(500{,}000/(0.09-0.03)=8{,}333{,}333\\).</li><li>Depreciation and interest come out later, when taxable income is \\(\\text{NOI}-\\text{Interest}-\\text{Depreciation}\\). Subtracting the 80k and 120k from NOI leaves 300k over 6%, or 5,000,000 — the trap.</li></ul>
+    </div>`,
+    gap: "Subtracted the 80k depreciation and the 120k interest and got 5,000,000."
+  },
+  {
+    id: "alt-m2-cost-approach-oversupply-replacement-2026-11-17",
+    topic: "ALT M2 · Cost approach: oversupply vs expansion",
+    front: `In the oversupply phase of the real estate cycle, is replacement cost above or below market value? What happens in the expansion phase?`,
+    back: `<div class="ans">
+      <p><strong>Replacement cost exceeds market prices in oversupply.</strong> Market prices weaken as a property glut builds, while the costs of materials and labor stay high because construction already in the pipeline continues to completion.</p><ul><li>New construction does not simply “stop” in oversupply: starts reach lows in the recession phase, and the recovery phase has little or no new construction.</li><li>In expansion, property prices are likely to rise faster than costs because new supply has not yet come onto the market, and the rising prices stimulate new construction.</li><li>The cost approach says an investor should not pay more for a property than the cost of buying vacant land and developing a comparable one; a large gap between replacement cost and the market price can reflect supply and demand imbalances.</li></ul>
+    </div>`,
+    gap: "Reversed the oversupply and expansion relationship between replacement cost and market value."
+  }
+];
+
+flashDeck({
+  key: "cfa-c8-alternative",
+  source: "CFA L2 Alternative Investments · Quiz misses",
+  gapLabel: "Gap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

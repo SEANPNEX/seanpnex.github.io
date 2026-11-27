@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA FSA M2 — Employee Compensation review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    "id": "f2-types",
+    "topic": "Types of compensation",
+    "front": "Name the five types of employee compensation and the two features that distinguish them.",
+    "back": "<div class=\"ans\"><p>Distinguished by <strong>timing</strong> (how long after the service it is paid) and <strong>form of payment</strong>.</p><ul><li><strong>Short-term</strong>: paid within 12 months (salaries, bonuses, paid vacation)</li><li><strong>Long-term</strong>: paid later than 12 months (sabbaticals, long-term disability)</li><li><strong>Termination</strong>: paid because employment ends (severance)</li><li><strong>Share-based</strong>: shares, or cash linked to the share price</li><li><strong>Post-employment</strong>: pensions, retiree health care</li></ul></div>",
+    "gap": "Termination benefits are often reported within restructuring costs; check whether they recur before excluding them."
+  },
+  {
+    "id": "f2-timeline",
+    "topic": "Terminology · timeline",
+    "front": "Define the grant date, vesting period, vesting date and settlement date. When is the cost recognized?",
+    "back": "<div class=\"ans\"><ul><li><strong>Grant date</strong>: the terms are agreed; share-based fair value is measured here</li><li><strong>Vesting period</strong>: the service the employee must complete</li><li><strong>Vesting date</strong>: the conditions are met and the employee is unconditionally entitled</li><li><strong>Settlement date</strong>: paid in cash or shares</li></ul><p>The cost is recognized <strong>over the vesting period</strong>, as the service is rendered, not when it is paid. The credit is a <strong>liability</strong> if cash-settled, or <strong>equity</strong> if equity-settled.</p></div>",
+    "gap": "Pay for staff who build inventory or PP&amp;E is capitalized into that asset, not expensed straight away."
+  },
+  {
+    "id": "f2-principles",
+    "topic": "Accounting principles",
+    "front": "What amount is recognized over the vesting period for short-term benefits, equity-settled share-based awards and post-employment benefits?",
+    "back": "<div class=\"ans\"><ul><li><strong>Short-term</strong> (days or weeks): the <strong>undiscounted</strong> amount owed</li><li><strong>Equity-settled share-based</strong> (years): <strong>grant-date fair value</strong>, never remeasured</li><li><strong>Post-employment</strong> (years or decades): the <strong>present value</strong> of estimated future benefits</li></ul><p>Most companies report compensation by the employee's <strong>function</strong> (COGS, SG&amp;A, R&amp;D), not as a separate line.</p></div>",
+    "gap": "The longer the wait until payment, the more the amount relies on estimates."
+  },
+  {
+    "id": "f2-pros-cons",
+    "topic": "Share-based pay · pros and cons",
+    "front": "Give three advantages and four disadvantages of share-based compensation.",
+    "back": "<div class=\"ans\"><p><strong>Advantages</strong>: aligns employees' interests with shareholders'; improves retention through vesting; preserves liquidity (no cash outflow).</p><p><strong>Disadvantages</strong>: weak link to the employee's own effort; distorted risk-taking (options encourage <strong>too much</strong>, large shareholdings <strong>too little</strong>); concentrated risk for employees; <strong>dilution</strong> of existing shareholders.</p></div>",
+    "gap": "Options pay only on the upside, so they push managers toward excessive risk; large share holdings can make them too risk-averse."
+  },
+  {
+    "id": "f2-conditions",
+    "topic": "Vesting conditions",
+    "front": "An award worth 24m vests over 3 years (8m a year). At the end of year 3, how much cumulative expense remains if (a) a market condition is missed, (b) a non-market condition is missed, (c) the employee leaves?",
+    "back": "<div class=\"ans\"><ul><li>(a) <strong>Market condition</strong> missed (share-price target), employee still employed: <strong>24m</strong>, nothing reversed</li><li>(b) <strong>Non-market condition</strong> missed (e.g., EPS target): year-3 entry −16m, cumulative <strong>0</strong></li><li>(c) <strong>Service condition</strong> fails: cumulative <strong>0</strong></li></ul><p>A market condition is already priced into the grant-date fair value, so reversing the expense would count that risk twice. Non-market and service conditions are trued up to the number of awards that actually vest.</p></div>",
+    "gap": "With a market condition, the expense stays even if the award never pays out."
+  },
+  {
+    "id": "f2-instruments",
+    "topic": "Equity-settled awards",
+    "front": "Compare restricted stock, RSUs and employee stock options: what the employee gets, and how the grant-date fair value is measured.",
+    "back": "<div class=\"ans\"><ul><li><strong>Restricted stock</strong>: shares issued at grant, not sellable until vested; usually votes and dividends. Fair value = share price at grant</li><li><strong>RSUs</strong>: a promise of shares at settlement; usually no dividends. Fair value = share price at grant, less the expected dividends</li><li><strong>ESOs</strong>: the right to buy at a fixed exercise price, usually granted <strong>at the money</strong>. Fair value from an <strong>option-pricing model</strong> (time value only)</li></ul><p><strong>PSUs</strong> are RSUs whose number of shares depends on a performance condition.</p></div>",
+    "gap": "An at-the-money option has no intrinsic value at grant, so its fair value can't be read from the share price."
+  },
+  {
+    "id": "f2-option-inputs",
+    "topic": "Options · fair value inputs",
+    "front": "Which inputs drive an option's grant-date fair value, and in which direction? How can management lower the expense?",
+    "back": "<div class=\"ans\"><ul><li>Higher <strong>volatility</strong>, longer <strong>expected term</strong> or higher <strong>risk-free rate</strong> → higher fair value</li><li>Higher <strong>dividend yield</strong> → lower fair value</li></ul><p>Assuming a <strong>lower volatility</strong> or a <strong>shorter expected term</strong> reduces the fair value, and therefore the compensation expense. Check the disclosed inputs against peers.</p></div>",
+    "gap": "The grant-date fair value is fixed once measured: later share-price moves never change the expense."
+  },
+  {
+    "id": "f2-entries",
+    "topic": "Equity-settled · journal entries",
+    "front": "Give the entries for an equity-settled award during vesting, when RSUs settle and when options are exercised.",
+    "back": "<div class=\"ans\"><ul><li><strong>Grant date</strong>: no entry</li><li><strong>Each vesting year</strong>: Dr compensation expense, Cr <strong>share-based compensation reserve</strong>. NI and RE fall, the reserve rises; total equity is unchanged</li><li><strong>RSUs settle</strong>: Dr reserve, Cr share capital (par) and APIC; no cash</li><li><strong>Options exercised</strong>: Dr cash and reserve, Cr share capital and APIC; a CFF inflow</li></ul></div>",
+    "gap": "The expense is non-cash, so it is added back to NI in CFO under the indirect method."
+  },
+  {
+    "id": "f2-option-example",
+    "topic": "Options · worked example",
+    "front": "120 managers each get 10 options (exercise price $25, fair value $50, 2-year vesting, par $1). 5 leave in Y1 and 15 more are expected to; 12 actually leave in Y2. Find the Y1 and Y2 expense, and APIC when all vested options are exercised.",
+    "back": "<div class=\"ans\"><ul><li>Y1: \\((120-5-15)\\times10=1{,}000\\) expected → \\(1{,}000\\times50/2=\\) <strong>25,000</strong></li><li>Y2: \\((120-5-12)\\times10=1{,}030\\) vest → \\(1{,}030\\times50-25{,}000=\\) <strong>26,500</strong></li><li>Exercise: cash \\(1{,}030\\times25=25{,}750\\); share capital +1,030; APIC \\(25{,}750-1{,}030+51{,}500=\\) <strong>76,220</strong></li></ul></div>",
+    "gap": "Options out of the money at the end of Y2 still keep their expense: it is never reversed for the share price."
+  },
+  {
+    "id": "f2-tax",
+    "topic": "Tax treatment",
+    "front": "How does the tax deduction for share-based pay differ from the book expense? How do IFRS and US GAAP report a windfall or shortfall?",
+    "back": "<div class=\"ans\"><ul><li><strong>Book</strong>: grant-date fair value, over the vesting period</li><li><strong>Tax</strong>: at settlement, the share price (RSUs) or intrinsic value at exercise (options)</li><li>Share price above the grant-date level → <strong>excess tax benefit</strong> (windfall); below → <strong>tax shortfall</strong></li></ul><p><strong>US GAAP</strong>: through <strong>income tax expense</strong>. <strong>IFRS</strong> (curriculum): directly in <strong>equity</strong>.</p></div>",
+    "gap": "Under US GAAP, the effective tax rate moves with the share price: strip windfalls and shortfalls out of the forecast rate."
+  },
+  {
+    "id": "f2-tsm",
+    "topic": "Diluted shares · treasury stock method",
+    "front": "Give the treasury stock method for share-based awards. What counts as assumed proceeds?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}\\text{Diluted}={}&\\text{Basic}+N\\\\&-\\frac{\\text{Proceeds}}{\\bar P}\\end{aligned}$$</div><div class=\"eq-block\">$$\\text{Proceeds}=N\\times X+\\overline{\\text{UCE}}$$</div><p>\\(X\\) is the exercise price, <strong>0 for RSUs</strong>; \\(\\bar P\\) is the average share price; \\(\\overline{\\text{UCE}}\\) is the <strong>unrecognized compensation expense</strong>, averaged over the period.</p></div>",
+    "gap": "Awards are included only if dilutive. At- and out-of-the-money options, and all potential shares in a net-loss year, are anti-dilutive."
+  },
+  {
+    "id": "f2-tsm-example",
+    "topic": "Diluted shares · worked example",
+    "front": "200m basic shares; 1.8m RSUs (unrecognized expense 72m at year-end, 0 at the start); 10m options at $60 (unrecognized 100m). Average price $55. What are diluted shares?",
+    "back": "<div class=\"ans\"><ul><li>Options: \\(10-\\dfrac{10\\times60+50}{55}=10-11.82<0\\) → <strong>anti-dilutive</strong>, excluded</li><li>RSUs: \\(1.8-\\dfrac{(0+72)/2}{55}=1.8-0.655=1.145\\)</li></ul><p>Diluted shares \\(=200+1.145=\\) <strong>201.145m</strong>.</p></div>",
+    "gap": "Average the two period-end unrecognized-expense balances; don't use the year-end figure alone."
+  },
+  {
+    "id": "f2-sbc-model",
+    "topic": "Share-based pay · modeling",
+    "front": "What do the share-based compensation notes give an analyst, and how is the expense forecast?",
+    "back": "<div class=\"ans\"><ul><li>Notes: a <strong>roll-forward of awards</strong>, option-pricing inputs, the expense by line, and the <strong>unrecognized expense</strong> and the period over which it will be recognized</li><li>Forecast the expense <strong>as a % of revenue</strong>, from history, guidance or peers; the credit goes to the equity reserve</li><li>For <strong>early-stage companies</strong> the % tends to fall as they mature: model it from the unrecognized expense plus new grants</li></ul><div class=\"eq-block\">$$\\begin{aligned}\\text{Awards}_{\\text{end}}={}&\\text{Awards}_{\\text{beg}}+\\text{Grants (net)}\\\\&-\\text{Settlements}\\end{aligned}$$</div></div>",
+    "gap": "The proxy statement, not the notes, discloses executive and director pay and the performance targets."
+  },
+  {
+    "id": "f2-sbc-valuation",
+    "topic": "Share-based pay · valuation",
+    "front": "How should share-based compensation be handled in multiples and in a DCF?",
+    "back": "<div class=\"ans\"><ul><li><strong>Multiples</strong>: non-GAAP measures that exclude SBC inflate profit. Be consistent: GAAP with GAAP, or the same adjusted measure for the company and its peers</li><li><strong>DCF, existing awards</strong>: use <strong>diluted shares</strong> (treasury stock method) for value per share</li><li><strong>DCF, future awards</strong>: deduct SBC from free cash flow, i.e., don't add it back as a non-cash charge</li></ul><div class=\"eq-block\">$$\\begin{aligned}\\text{FCFF}={}&\\text{NI}+(\\text{NCC}-\\text{SBC})\\\\&+\\text{Int}(1-t)\\\\&-\\text{FCInv}-\\text{WCInv}\\end{aligned}$$</div></div>",
+    "gap": "Count future awards once: in the cash flows or in the share count, never both."
+  },
+  {
+    "id": "f2-dc-db",
+    "topic": "Post-employment · DC vs DB",
+    "front": "Compare DC and DB plans: what the sponsor promises, who bears investment risk, and what is reported.",
+    "back": "<div class=\"ans\"><ul><li><strong>DC</strong>: the sponsor promises a <strong>contribution</strong>; the <strong>employee</strong> bears investment risk. Expense = the contribution; only unpaid contributions are a (current) liability</li><li><strong>DB</strong>: the sponsor promises a <strong>benefit</strong>; the <strong>sponsor</strong> bears investment risk. Expense = total periodic pension cost; the balance sheet shows the <strong>funded status</strong></li></ul><div class=\"eq-block\">$$\\text{Benefit}=\\text{Final salary}\\times N\\times x\\%$$</div></div>",
+    "gap": "A closed plan admits no new members but keeps accruing; a frozen plan stops accruing for further service."
+  },
+  {
+    "id": "f2-pbo",
+    "topic": "DB · pension obligation",
+    "front": "Write the PBO roll-forward and say what each term is. Which assumption changes increase the PBO?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}\\text{PBO}_{\\text{end}}={}&\\text{PBO}_{\\text{beg}}+\\text{Interest}\\\\&+\\text{CSC}+\\text{PSC}\\\\&\\pm\\text{Actuarial L(G)}\\\\&-\\text{Benefits paid}\\end{aligned}$$</div><ul><li><strong>Interest cost</strong> = PBO<sub>beg</sub> × discount rate</li><li><strong>CSC</strong>: benefits earned this year; <strong>PSC</strong>: plan amendments for service already given</li><li>A <strong>lower discount rate</strong>, higher salary growth or longer life expectancy <strong>raises</strong> the PBO (an actuarial loss)</li></ul></div>",
+    "gap": "The discount rate is the yield on high-quality corporate bonds, not the expected return on plan assets."
+  },
+  {
+    "id": "f2-funded",
+    "topic": "DB · plan assets and funded status",
+    "front": "Write the plan-asset roll-forward and the funded status. How is a surplus reported under IFRS?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}\\text{Assets}_{\\text{end}}={}&\\text{Assets}_{\\text{beg}}\\\\&+\\text{Contributions}\\\\&+\\text{Actual return}\\\\&-\\text{Benefits paid}\\end{aligned}$$</div><div class=\"eq-block\">$$\\begin{aligned}\\text{Funded status}={}&\\text{Plan assets}\\\\&-\\text{PBO}\\end{aligned}$$</div><p>A deficit is a net pension <strong>liability</strong>; a surplus is a net pension <strong>asset</strong>, capped under IFRS by the <strong>asset ceiling</strong> (what the company can recover through refunds or lower contributions).</p></div>",
+    "gap": "Plans can't be netted: one plan's surplus does not offset another plan's deficit."
+  },
+  {
+    "id": "f2-tppc",
+    "topic": "DB · total periodic pension cost",
+    "front": "PBO 1,000 → 1,120 and plan assets 900 → 990; contributions are 70. CSC 60, PSC 20, interest 50, actuarial loss 30, actual return 60. Compute TPPC two ways.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}\\text{TPPC}&=\\text{Contrib.}-\\Delta\\text{Funded status}\\\\&=70-(-30)=100\\end{aligned}$$</div><div class=\"eq-block\">$$\\begin{aligned}\\text{TPPC}&=60+20+50+30-60\\\\&=100\\end{aligned}$$</div><p>TPPC is the <strong>same under IFRS and US GAAP</strong>; they differ only in how it is split between P&amp;L and OCI.</p></div>",
+    "gap": "Benefits paid reduce the PBO and plan assets equally, so they never change the funded status or TPPC."
+  },
+  {
+    "id": "f2-ifrs",
+    "topic": "DB · IFRS treatment",
+    "front": "Split TPPC of 100 under IFRS (discount rate 5%, opening deficit 100, plan assets 900, actual return 60, actuarial loss 30).",
+    "back": "<div class=\"ans\"><ul><li><strong>Service cost</strong> \\(60+20=80\\): P&amp;L, operating</li><li><strong>Net interest</strong> \\(5\\%\\times100=5\\) (\\(=50-45\\)): P&amp;L</li><li><strong>Remeasurements</strong> in OCI: actuarial loss 30 less the excess return \\(60-45=15\\) → <strong>15</strong></li></ul><p>P&amp;L <strong>85</strong>, OCI <strong>15</strong>.</p></div>",
+    "gap": "IFRS remeasurements are never reclassified to P&amp;L (they may be moved within equity to retained earnings)."
+  },
+  {
+    "id": "f2-usgaap",
+    "topic": "DB · US GAAP treatment",
+    "front": "Split the same TPPC of 100 under US GAAP, with an expected return of 7% and PSC of 20 amortized at 2 a year.",
+    "back": "<div class=\"ans\"><ul><li><strong>CSC</strong> 60: P&amp;L</li><li><strong>Interest cost − expected return</strong> \\(50-7\\%\\times900=-13\\): P&amp;L</li><li><strong>PSC</strong> 20 to OCI, of which <strong>2</strong> is amortized to P&amp;L</li><li>Actual − expected return \\(60-63=-3\\) and the actuarial loss 30: OCI; amortized only beyond the <strong>10% corridor</strong></li></ul><p>P&amp;L \\(60-13+2=\\) <strong>49</strong>; OCI \\(18+3+30=\\) <strong>51</strong>.</p></div>",
+    "gap": "US GAAP's expected return and its deferral of PSC and losses make P&amp;L pension expense look lower: 49 vs 85 under IFRS for the same cost."
+  },
+  {
+    "id": "f2-corridor",
+    "topic": "DB · corridor and presentation",
+    "front": "What is the US GAAP corridor approach, and where are pension cost components presented?",
+    "back": "<div class=\"ans\"><p>The net cumulative actuarial gain or loss in AOCI that exceeds <strong>10% of the greater of the PBO and plan assets</strong> (at the start of the year) is amortized into P&amp;L over the employees' average remaining service period. Faster recognition is allowed.</p><p>US GAAP: only <strong>service cost</strong> is in operating income; the other components are presented outside it. IFRS: service cost is operating; net interest is typically a finance cost.</p></div>",
+    "gap": "When comparing companies, look at TPPC and the assumptions, not just the P&amp;L pension line."
+  },
+  {
+    "id": "f2-opeb",
+    "topic": "Other post-employment benefits",
+    "front": "How are retiree health care and life insurance (OPEB) accounted for, and how do they differ from pensions?",
+    "back": "<div class=\"ans\"><p>Like a <strong>DB plan</strong>: an actuarial obligation, including an assumption for the <strong>health care cost trend</strong>.</p><p>Companies are generally <strong>not required to pre-fund</strong> OPEB, so many have few or no plan assets, and the deficit is close to the full obligation.</p></div>",
+    "gap": "A lower assumed health care cost trend lowers the OPEB obligation and cost: an aggressive choice."
+  },
+  {
+    "id": "f2-db-disclosure",
+    "topic": "DB · disclosures and assumptions",
+    "front": "What must DB disclosures explain, and which assumption choices are aggressive?",
+    "back": "<div class=\"ans\"><p>The plans' <strong>characteristics and risks</strong>, the <strong>amounts</strong> in the statements, and their effect on the <strong>amount, timing and uncertainty of future cash flows</strong>.</p><ul><li><strong>Higher</strong> discount rate</li><li><strong>Lower</strong> salary growth, life expectancy, inflation or health care cost trend</li><li><strong>Higher</strong> expected return on plan assets (US GAAP): lowers P&amp;L expense but not the PBO</li></ul></div>",
+    "gap": "The expected return has no effect on the PBO or the funded status; it only shifts cost between P&amp;L and OCI."
+  },
+  {
+    "id": "f2-db-model",
+    "topic": "DB · modeling",
+    "front": "How is a DB plan forecast? Start from a deficit of 130 with a 5% discount rate, service cost of 64, a contribution of 75 and no remeasurements.",
+    "back": "<div class=\"ans\"><ul><li><strong>Service cost</strong>: operating expense, from history and the notes</li><li><strong>Net interest</strong> = discount rate × opening funded status: \\(5\\%\\times130=6.5\\)</li><li><strong>Remeasurements</strong>: assumed to be <strong>zero</strong></li><li><strong>Contributions</strong>: from the disclosed expected contribution</li></ul><div class=\"eq-block\">$$-130-64-6.5+75=-125.5$$</div></div>",
+    "gap": "DC plans are forecast implicitly within operating expenses; only DB plans need a separate model."
+  },
+  {
+    "id": "f2-db-valuation",
+    "topic": "DB · valuation",
+    "front": "How should a DB plan (or OPEB) be treated in a valuation?",
+    "back": "<div class=\"ans\"><ul><li>An <strong>underfunded</strong> plan is <strong>debt-like</strong>: deduct it from enterprise value, often after tax. A surplus is usually <strong>ignored</strong></li><li><strong>Service cost</strong> is a cash operating cost: deduct it in FCFF; don't add it back</li><li><strong>Net interest</strong> stays out of FCFF: it is the deficit's financing cost</li><li>Contributions above service cost act like <strong>debt repayment</strong></li></ul></div>",
+    "gap": "Deducting the deficit and also modeling the contributions that repay it counts the obligation twice."
+  }
+];
+
+flashDeck({
+  key: "cfa-c3-m2-review",
+  source: "CFA L2 Financial Statement Analysis \u00b7 M2 Employee Compensation \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

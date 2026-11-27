@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Economic Growth — Solow flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    id: "c2-m2-steady-state-2026-10-13",
+    topic: "Steady state",
+    front: "When does capital deepening stop? Relate \\(sy\\) to required investment.",
+    back: `<div class="ans">
+<p>Steady state is where savings equal required investment:</p>
+<div class="eq-block">$$sy = sAk^{\\alpha} = \\left(\\frac{\\theta}{1-\\alpha}+\\delta+n\\right)k$$</div>
+<p>Capital deepening <strong>stops at \\(k^*\\)</strong>. The matching output is \\(y^*\\).</p>
+</div>`,
+    gap: "name both sides of the equality — the savings curve and the required-investment ray — and stop deepening at their intersection \\(k^*\\)."
+  },
+  {
+    id: "c2-m2-saving-rate-2026-10-13",
+    topic: "Saving rate",
+    front: "What does a higher saving rate do to steady-state \\(k\\) and \\(y\\), and to the long-run growth of \\(y\\)?",
+    back: `<div class="ans">
+<p><strong>\\(\\uparrow s \\rightarrow\\) higher \\(k^*\\) and \\(y^*\\)</strong> — a <strong>level</strong> effect only.</p>
+<ul>
+<li>Long-run growth of \\(y\\) is <strong>not permanently higher</strong>.</li>
+<li>\\(s \\in [0, 1]\\), so the rise in equilibrium \\(k\\) and \\(y\\) has a <strong>limit</strong>.</li>
+</ul>
+</div>`,
+    gap: "level vs growth rate. A higher \\(s\\) lifts the steady-state level; it does not raise long-run growth of \\(y\\) forever, and \\(s\\) cannot exceed 1."
+  },
+  {
+    id: "c2-m2-convergence-2026-10-13",
+    topic: "Convergence",
+    front: "Country A’s potential GDP growth is well above \\(G^*\\); Country B is near \\(G^*\\). Where does each country’s growth come from?",
+    back: `<div class="ans">
+<ul>
+<li><strong>A (\\(G &gt; G^*\\))</strong> is still <strong>converging via capital deepening</strong>.</li>
+<li><strong>B (near \\(G^*\\))</strong> gets growth mostly from <strong>TFP</strong> (and labor), <strong>not</strong> from capital investment.</li>
+</ul>
+</div>`,
+    gap: "above steady-state growth means capital deepening is still at work; once growth is near \\(G^*\\), further growth is TFP and labor, not investment in \\(k\\)."
+  },
+  {
+    id: "c2-m2-labor-growth-2026-10-13",
+    topic: "Labor growth",
+    front: "What happens to steady-state \\(k\\) and \\(y\\) when labor-force growth \\(n\\) rises?",
+    back: `<div class="ans">
+<p><strong>\\(\\uparrow n\\) steepens the required-investment line</strong> (slope \\(\\frac{\\theta}{1-\\alpha} + \\delta + n\\)).</p>
+<p>The intersection moves left: <strong>lower \\(k^*\\) and lower \\(y^*\\)</strong>.</p>
+</div>`,
+    gap: "\\(n\\) changes the ray, not the savings curve. A steeper ray cuts \\(sy\\) at a smaller \\(k^*\\)."
+  },
+  {
+    id: "c2-m2-tfp-vs-deepening-2026-10-13",
+    topic: "TFP vs deepening",
+    front: "What shifts the production curve \\(y = Ak^{\\alpha}\\), and what only moves along it?",
+    back: `<div class="ans">
+<ul>
+<li>Higher <strong>\\(A\\) (TFP)</strong> and <strong>\\(\\alpha\\)</strong> <strong>shape or shift</strong> the production curve.</li>
+<li><strong>Capital deepening</strong> moves <strong>along</strong> a given curve — same \\(A\\), higher \\(k\\).</li>
+</ul>
+</div>`,
+    gap: "a TFP shift changes the curve; capital deepening is a movement along the curve you already have."
+  },
+  {
+    id: "econ-cirp-forward-premium-2026-10-25",
+    topic: "Econ · CIRP forward premium direction",
+    front: `\\(S(\\text{USD/EUR})=1.10\\), \\(i_{USD}=4\\%\\), \\(i_{EUR}=2.5\\%\\). Find the 1-year forward. Does EUR trade at a forward premium or discount?`,
+    back: `<div class="ans">
+      <p>\\(F=1.10\\times\\dfrac{1.04}{1.025}=1.1161\\): <strong>EUR at a forward premium</strong>.</p><ul><li>In \\(S(f/d)\\), USD is the price currency and EUR is the base. CIRP: \\(F=S\\times\\dfrac{1+i_{price}}{1+i_{base}}\\).</li><li>Rule: the <strong>lower-rate currency trades at a forward premium</strong>; the higher-rate one at a discount. The forward premium offsets the interest gap, so there is no arbitrage.</li><li>UIRP: \\(\\%\\Delta S^e(f/d)\\approx i_f-i_d\\). Here EUR is expected to appreciate by about 1.5%.</li></ul>
+    </div>`,
+    gap: "Flipped the direction: said the lower-rate currency trades at a discount."
+  }
+];
+
+flashDeck({
+  key: "cfa-c2-economic-growth",
+  source: "CFA L2 Economic Growth · Neoclassical / Solow · Quiz 2026-10-13",
+  gapLabel: "Focus",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

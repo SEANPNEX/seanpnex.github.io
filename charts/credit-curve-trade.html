@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CDS curve trade · steepener</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <script src="chart-fx.js"></script>
+</head>
+<body>
+  <main class="card" id="card" data-fx-scope>
+    <h2>A steepener buys long-dated protection and sells short-dated protection.</h2>
+    <div class="sub">One reference entity’s credit curve (CDS spread by maturity) · ink = today, mid gray = after the curve steepens · arrows = the spread change at each leg · hover for both spreads at any maturity</div>
+    <section class="panel">
+      <h3>CDS spread against maturity</h3>
+      <div class="hint">The 10-year spread widens 30 bp and the 2-year narrows 18 bp: the bought 10-year protection gains, and so does the sold 2-year protection</div>
+      <svg id="chart" role="img" aria-label="Credit curve today and after steepening; the 10-year CDS spread rises from 1.50% to 1.80% and the 2-year falls from 1.01% to 0.83%"></svg>
+    </section>
+    <div class="src">CDS CURVE TRADE · F2 HAIRLINE LINE · ILLUSTRATIVE CURVE, STEEPENING PIVOTS AT 5 YEARS (+6 BP PER YEAR OF MATURITY)</div>
+  </main>
+  <script src="i18n.js"></script>
+  <script>
+chartI18n.use({
+  zh: {
+    'CDS curve trade · steepener': 'CDS 曲线交易 · 陡峭化交易',
+    'A steepener buys long-dated protection and sells short-dated protection.': '陡峭化交易买入长期保护并卖出短期保护。',
+    'One reference entity’s credit curve (CDS spread by maturity) · ink = today, mid gray = after the curve steepens · arrows = the spread change at each leg · hover for both spreads at any maturity': '单一参考实体的信用曲线（按期限的 CDS 利差）· 墨色 = 今日，中灰 = 曲线变陡后 · 箭头 = 各条腿的利差变化 · 悬停查看任意期限的两种利差',
+    'CDS spread against maturity': 'CDS 利差与期限',
+    'The 10-year spread widens 30 bp and the 2-year narrows 18 bp: the bought 10-year protection gains, and so does the sold 2-year protection': '10 年期利差扩大 30 个基点，2 年期收窄 18 个基点：买入的 10 年期保护获利，卖出的 2 年期保护也获利',
+    'Credit curve today and after steepening; the 10-year CDS spread rises from 1.50% to 1.80% and the 2-year falls from 1.01% to 0.83%': '今日与变陡后的信用曲线；10 年期 CDS 利差从 1.50% 升至 1.80%，2 年期从 1.01% 降至 0.83%',
+    'CDS CURVE TRADE · F2 HAIRLINE LINE · ILLUSTRATIVE CURVE, STEEPENING PIVOTS AT 5 YEARS (+6 BP PER YEAR OF MATURITY)': 'CDS 曲线交易 · F2 发丝折线 · 示意曲线，变陡以 5 年期为支点（每年期限 +6 BP）',
+    '1y': '1年',
+    '2y': '2年',
+    '5y': '5年',
+    '10y': '10年',
+    'maturity →': '期限 →',
+    'CDS spread': 'CDS 利差',
+    'Today: upward-sloping credit curve': '今日：向上倾斜的信用曲线',
+    'After steepening: long spreads up, short spreads down': '变陡后：长期利差上升，短期利差下降',
+    'Sell 2y protection\n1.01% → 0.83%: spread narrows, the seller gains': '卖出 2 年期保护\n1.01% → 0.83%：利差收窄，卖方获利',
+    'Buy 10y protection\n1.50% → 1.80%: spread widens, the buyer gains': '买入 10 年期保护\n1.50% → 1.80%：利差扩大，买方获利',
+    'sell 2y protection': '卖出 2 年期保护',
+    'buy 10y protection': '买入 10 年期保护',
+    'today': '今日',
+    'steeper': '更陡后',
+    'today (%)': '今日 (%)',
+    'steeper (%)': '更陡后 (%)',
+    'years': '年',
+  },
+  ja: {
+    'CDS curve trade · steepener': 'CDS カーブ取引 · スティープナー',
+    'A steepener buys long-dated protection and sells short-dated protection.': 'スティープナーは長期のプロテクションを買い、短期のプロテクションを売る。',
+    'One reference entity’s credit curve (CDS spread by maturity) · ink = today, mid gray = after the curve steepens · arrows = the spread change at each leg · hover for both spreads at any maturity': '1 つの参照組織のクレジット・カーブ（満期別の CDS スプレッド）· 墨 = 今日、中灰 = スティープ化後 · 矢印 = 各レッグのスプレッド変化 · カーソルを合わせると各満期の 2 つのスプレッドを表示',
+    'CDS spread against maturity': '満期別の CDS スプレッド',
+    'The 10-year spread widens 30 bp and the 2-year narrows 18 bp: the bought 10-year protection gains, and so does the sold 2-year protection': '10 年スプレッドは 30 bp 拡大し、2 年は 18 bp 縮小：買った 10 年プロテクションも売った 2 年プロテクションも利益が出る',
+    'Credit curve today and after steepening; the 10-year CDS spread rises from 1.50% to 1.80% and the 2-year falls from 1.01% to 0.83%': '今日とスティープ化後のクレジット・カーブ；10 年 CDS スプレッドは 1.50% から 1.80% へ上昇し、2 年は 1.01% から 0.83% へ低下',
+    'CDS CURVE TRADE · F2 HAIRLINE LINE · ILLUSTRATIVE CURVE, STEEPENING PIVOTS AT 5 YEARS (+6 BP PER YEAR OF MATURITY)': 'CDS カーブ取引 · F2 ヘアライン · 例示カーブ、5 年を軸にスティープ化（満期 1 年あたり +6 BP）',
+    '1y': '1年',
+    '2y': '2年',
+    '5y': '5年',
+    '10y': '10年',
+    'maturity →': '満期 →',
+    'CDS spread': 'CDS スプレッド',
+    'Today: upward-sloping credit curve': '今日：右上がりのクレジット・カーブ',
+    'After steepening: long spreads up, short spreads down': 'スティープ化後：長期スプレッド上昇、短期スプレッド低下',
+    'Sell 2y protection\n1.01% → 0.83%: spread narrows, the seller gains': '2 年プロテクションの売り\n1.01% → 0.83%：スプレッド縮小で売り手が利益',
+    'Buy 10y protection\n1.50% → 1.80%: spread widens, the buyer gains': '10 年プロテクションの買い\n1.50% → 1.80%：スプレッド拡大で買い手が利益',
+    'sell 2y protection': '2 年プロテクション売り',
+    'buy 10y protection': '10 年プロテクション買い',
+    'today': '今日',
+    'steeper': 'スティープ化後',
+    'today (%)': '今日 (%)',
+    'steeper (%)': 'スティープ化後 (%)',
+    'years': '年',
+  },
+  fr: {
+    'CDS curve trade · steepener': 'Opération sur la courbe CDS · pentification',
+    'A steepener buys long-dated protection and sells short-dated protection.': 'Un steepener achète une protection longue et vend une protection courte.',
+    'One reference entity’s credit curve (CDS spread by maturity) · ink = today, mid gray = after the curve steepens · arrows = the spread change at each leg · hover for both spreads at any maturity': 'Courbe de crédit d’une entité de référence (spread CDS par maturité) · encre = aujourd’hui, gris moyen = après pentification · flèches = variation du spread sur chaque jambe · survolez pour voir les deux spreads à chaque maturité',
+    'CDS spread against maturity': 'Spread CDS en fonction de la maturité',
+    'The 10-year spread widens 30 bp and the 2-year narrows 18 bp: the bought 10-year protection gains, and so does the sold 2-year protection': 'Le spread à 10 ans s’élargit de 30 pb et celui à 2 ans se resserre de 18 pb : la protection à 10 ans achetée gagne, tout comme la protection à 2 ans vendue',
+    'Credit curve today and after steepening; the 10-year CDS spread rises from 1.50% to 1.80% and the 2-year falls from 1.01% to 0.83%': 'Courbe de crédit aujourd’hui et après pentification ; le spread CDS à 10 ans passe de 1,50 % à 1,80 % et celui à 2 ans baisse de 1,01 % à 0,83 %',
+    'CDS CURVE TRADE · F2 HAIRLINE LINE · ILLUSTRATIVE CURVE, STEEPENING PIVOTS AT 5 YEARS (+6 BP PER YEAR OF MATURITY)': 'OPÉRATION SUR LA COURBE CDS · LIGNE F2 · COURBE ILLUSTRATIVE, PENTIFICATION PIVOTANT À 5 ANS (+6 PB PAR AN DE MATURITÉ)',
+    '1y': '1 an',
+    '2y': '2 ans',
+    '5y': '5 ans',
+    '10y': '10 ans',
+    'maturity →': 'maturité →',
+    'CDS spread': 'spread CDS',
+    'Today: upward-sloping credit curve': 'Aujourd’hui : courbe de crédit croissante',
+    'After steepening: long spreads up, short spreads down': 'Après pentification : spreads longs en hausse, spreads courts en baisse',
+    'Sell 2y protection\n1.01% → 0.83%: spread narrows, the seller gains': 'Vendre la protection à 2 ans\n1,01 % → 0,83 % : le spread se resserre, le vendeur gagne',
+    'Buy 10y protection\n1.50% → 1.80%: spread widens, the buyer gains': 'Acheter la protection à 10 ans\n1,50 % → 1,80 % : le spread s’élargit, l’acheteur gagne',
+    'sell 2y protection': 'vendre protection 2 ans',
+    'buy 10y protection': 'acheter protection 10 ans',
+    'today': 'aujourd’hui',
+    'steeper': 'plus pentue',
+    'today (%)': 'aujourd’hui (%)',
+    'steeper (%)': 'plus pentue (%)',
+    'years': 'ans',
+  },
+});
+  </script>
+  <script>
+(() => {
+  const { C, T, el, label, frame, axes, curve, arrow, dot, probe, mount } = curveKit;
+
+  // ── Data: today's credit curve (% spread) and a steepening that pivots at 5 years ──
+  const today = (t) => 0.60 + 0.90 * Math.log(1 + t) / Math.log(11);
+  const after = (t) => today(t) + 0.06 * (t - 5);
+  const T0 = 1, T1 = 10, SHORT = 2, LONG = 10, MID = '#6A6963';
+
+  mount(document.getElementById('chart'), (s, W, H) => {
+    const nw = W < 420;
+    const F = frame(s, W, H, { l: nw ? 36 : 40, r: 12, t: 22, b: 40, xMin: T0, yMin: 0.6, noTicks: true }, T1, 2.0);
+    [1.0, 1.5, 2.0].forEach((v) => {
+      el(s, 'line', { x1: F.X0, y1: F.y(v), x2: F.X1, y2: F.y(v), stroke: C.GRID, 'stroke-width': 0.6, 'stroke-dasharray': '2 4', class: 'fade' });
+      label(s, F.X0 - 6, F.y(v) + 3.5, v.toFixed(2) + '%', { size: 9.5, weight: 600, fill: C.MUTED, anchor: 'end', halo: 0 });
+    });
+    [1, 2, 5, 10].forEach((v) => label(s, F.x(v), F.BASE + 14, v + 'y', { size: 9.5, weight: v === SHORT || v === LONG ? 800 : 600, fill: v === SHORT || v === LONG ? C.INK : C.MUTED, anchor: 'middle', halo: 0 }));
+    axes(s, F, 'maturity →', 'CDS spread');
+
+    const hit = (f, hl, name) => {
+      const pts = Array.from({ length: 46 }, (_, i) => { const t = T0 + ((T1 - T0) * i) / 45; return F.x(t).toFixed(1) + ' ' + F.y(f(t)).toFixed(1); });
+      el(s, 'path', { d: 'M' + pts.join(' L'), fill: 'none', stroke: 'transparent', 'stroke-width': 10, 'data-hl': hl, 'data-tip': name });
+    };
+    curve(s, F, after, T0, T1, { stroke: MID, width: 1.5, delay: 0.35 }).setAttribute('data-hl', 'a');
+    curve(s, F, today, T0, T1, { stroke: C.INK, width: 1.6, delay: 0 }).setAttribute('data-hl', 't');
+    hit(today, 't', 'Today: upward-sloping credit curve');
+    hit(after, 'a', 'After steepening: long spreads up, short spreads down');
+
+    // The two legs: arrows from today's spread to the new one.
+    [[SHORT, 'Sell 2y protection\n1.01% → 0.83%: spread narrows, the seller gains'], [LONG, 'Buy 10y protection\n1.50% → 1.80%: spread widens, the buyer gains']].forEach(([t, tip], i) => {
+      const x = F.x(t), y0 = F.y(today(t)), y1 = F.y(after(t)), dir = y1 > y0 ? 1 : -1;
+      arrow(s, [[x, y0 + dir * 5], [x, y1 - dir * 2]], { stroke: C.INK, width: 1.2, head: 5, delay: 1 + i * 0.1 });
+      dot(s, x, y0, 3.2, C.INK, 0.9 + i * 0.1, tip);
+      dot(s, x, y1, 3.2, MID, 1.1 + i * 0.1, tip);
+    });
+    label(s, F.x(SHORT) + 8, F.y(after(SHORT)) + 16, 'sell 2y protection', { size: 10, weight: 700, delay: 1.2 });
+    label(s, F.x(LONG) - 8, F.y(after(LONG)) - 8, 'buy 10y protection', { size: 10, weight: 700, anchor: 'end', delay: 1.3 });
+    label(s, F.x(6.2), F.y(today(6.2)) + 18, 'today', { size: 10.5, delay: 0.8 });
+    label(s, F.x(7.4), F.y(after(7.4)) - 10, 'steeper', { size: 10.5, fill: MID, anchor: 'end', delay: 0.9 });
+
+    probe(s, F, [
+      { name: 'today (%)', f: today },
+      { name: 'steeper (%)', f: after, stroke: MID },
+    ], { xName: T('years'), fmt: (v) => v.toFixed(2) });
+  }, (W) => Math.max(250, Math.min(320, W * 0.6)));
+})();
+  </script>
+</body>
+</html>

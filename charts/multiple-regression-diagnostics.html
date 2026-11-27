@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Reading residual diagnostics</title>
+<style>
+:root{--bg:#F0EFEB;--paper:#F0EFEB;--ink:#1C1C1A;--mid:#55554F;--muted:#8F8E88;--faint:#C6C5BF;--grid:#DEDDD6}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body{padding:18px}
+.figure-head{margin:2px 4px 20px}
+.figure-head h1{margin:0 0 5px;font-size:24px;line-height:1.12;letter-spacing:-.035em}
+.figure-head p{margin:0;color:var(--muted);font-size:11px;line-height:1.5}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.card{min-width:0;padding:20px 20px 15px;border-radius:24px;background:var(--paper);outline:1px solid var(--grid);transition:outline-color .2s ease}
+.card:hover{outline-color:var(--faint)}
+.card h2{margin:0 0 4px;font-size:16px;line-height:1.2;letter-spacing:-.025em}
+.sub{min-height:34px;color:var(--muted);font-size:10px;line-height:1.45}
+svg{display:block;width:100%;height:auto;margin-top:4px;overflow:visible}
+.src{margin-top:4px;color:var(--muted);font-size:7px;font-weight:700;letter-spacing:.15em;text-transform:uppercase}
+.fade{opacity:0;animation:fade .48s cubic-bezier(.165,.84,.44,1) forwards}
+.pop{opacity:0;transform-box:fill-box;transform-origin:center;animation:pop .48s cubic-bezier(.165,.84,.44,1) forwards}
+.draw{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1s cubic-bezier(.165,.84,.44,1) forwards}
+@keyframes fade{to{opacity:1}}
+@keyframes pop{0%{opacity:0;transform:scale(0)}100%{opacity:1;transform:scale(1)}}
+@keyframes draw{to{stroke-dashoffset:0}}
+@media(max-width:620px){body{padding:12px}.grid{grid-template-columns:1fr}.card{padding:18px}.sub{min-height:0;margin-bottom:3px}}
+@media(prefers-reduced-motion:reduce){.fade,.pop,.draw{animation:none!important;opacity:1!important;stroke-dashoffset:0!important}}
+</style>
+  <script src="chart-fx.js"></script>
+</head>
+<body>
+<header class="figure-head">
+  <h1>Residuals reveal what the fitted equation hides</h1>
+  <p>Four simulated patterns · every dot is one residual · click a panel to replay</p>
+</header>
+<main class="grid">
+  <section class="card">
+    <h2>A random band supports linearity</h2>
+    <div class="sub">residuals stay centered on zero · vertical spread remains broadly stable</div>
+    <svg id="linear" viewBox="0 0 400 280" role="img" aria-label="Residual plot showing a random band around zero"></svg>
+    <div class="src">PLUMB SCATTER · F8 MONO-BASIC · SIMULATED RESIDUALS</div>
+  </section>
+  <section class="card">
+    <h2>Curvature signals missing structure</h2>
+    <div class="sub">a U-shaped residual path · consider a transformation or nonlinear term</div>
+    <svg id="curved" viewBox="0 0 400 280" role="img" aria-label="Residual plot showing curvature"></svg>
+    <div class="src">PLUMB SCATTER · F8 MONO-BASIC · SIMULATED RESIDUALS</div>
+  </section>
+  <section class="card">
+    <h2>A widening fan breaks constant variance</h2>
+    <div class="sub">dispersion grows with fitted value · standard OLS errors may be unreliable</div>
+    <svg id="funnel" viewBox="0 0 400 280" role="img" aria-label="Residual plot showing heteroskedasticity"></svg>
+    <div class="src">PLUMB SCATTER · F8 MONO-BASIC · SIMULATED RESIDUALS</div>
+  </section>
+  <section class="card">
+    <h2>A near-straight Q–Q path supports normality</h2>
+    <div class="sub">ordered residuals track theoretical normal quantiles · inspect the tails</div>
+    <svg id="qq" viewBox="0 0 400 280" role="img" aria-label="Normal Q-Q plot with points close to its reference line"></svg>
+    <div class="src">PLUMB SCATTER · F8 MONO-BASIC · SIMULATED QUANTILES</div>
+  </section>
+</main>
+<script src="i18n.js"></script>
+<script>
+chartI18n.use({
+  zh: {
+    'Reading residual diagnostics': '解读残差诊断',
+    'Residuals reveal what the fitted equation hides': '残差揭示拟合方程所隐藏的东西',
+    'Four simulated patterns · every dot is one residual · click a panel to replay': '四种模拟模式 · 每个点是一个残差 · 点击面板重播',
+    'A random band supports linearity': '随机带支持线性',
+    'residuals stay centered on zero · vertical spread remains broadly stable': '残差围绕零分布 · 纵向离散程度大体稳定',
+    'Curvature signals missing structure': '弯曲意味着遗漏了结构',
+    'a U-shaped residual path · consider a transformation or nonlinear term': 'U 形的残差路径 · 考虑变量变换或非线性项',
+    'A widening fan breaks constant variance': '逐渐张开的扇形破坏了方差恒定',
+    'dispersion grows with fitted value · standard OLS errors may be unreliable': '离散程度随拟合值增大 · 标准 OLS 误差可能不可靠',
+    'A near-straight Q–Q path supports normality': '近乎笔直的 Q–Q 路径支持正态性',
+    'ordered residuals track theoretical normal quantiles · inspect the tails': '排序后的残差贴合理论正态分位数 · 注意检查尾部',
+    'Residual plot showing a random band around zero': '围绕零呈随机带状的残差图',
+    'Residual plot showing curvature': '呈弯曲形态的残差图',
+    'Residual plot showing heteroskedasticity': '呈异方差的残差图',
+    'Normal Q-Q plot with points close to its reference line': '点靠近参考线的正态 Q-Q 图',
+    'LOW FIT': '拟合值低',
+    'HIGH FIT': '拟合值高',
+    'LOW QUANTILE': '分位数低',
+    'HIGH QUANTILE': '分位数高',
+    'RESIDUAL ↑': '残差 ↑',
+    'ORDERED RESIDUAL ↑': '排序残差 ↑',
+    'EVERY DOT HANGS TO THE SAME FITTED-VALUE FLOOR': '每个点都垂直连到同一条拟合值基线',
+  },
+  ja: {
+    'Reading residual diagnostics': '残差診断の読み方',
+    'Residuals reveal what the fitted equation hides': '残差は、推定した式が隠しているものを明らかにする',
+    'Four simulated patterns · every dot is one residual · click a panel to replay': 'シミュレーションによる 4 つのパターン · 点 1 つが残差 1 つ · パネルをクリックで再生',
+    'A random band supports linearity': 'ランダムな帯は線形性を支持する',
+    'residuals stay centered on zero · vertical spread remains broadly stable': '残差はゼロを中心にとどまる · 縦方向のばらつきはおおむね安定',
+    'Curvature signals missing structure': '曲がりは欠けている構造のサイン',
+    'a U-shaped residual path · consider a transformation or nonlinear term': 'U 字型の残差の並び · 変数変換や非線形項を検討する',
+    'A widening fan breaks constant variance': '広がる扇形は分散一定を崩す',
+    'dispersion grows with fitted value · standard OLS errors may be unreliable': '予測値とともにばらつきが大きくなる · 通常の OLS の標準誤差は信頼できないかもしれない',
+    'A near-straight Q–Q path supports normality': 'ほぼ直線の Q–Q プロットは正規性を支持する',
+    'ordered residuals track theoretical normal quantiles · inspect the tails': '並べた残差が正規分布の理論分位点に沿う · 裾を確認する',
+    'Residual plot showing a random band around zero': 'ゼロの周りにランダムな帯を示す残差プロット',
+    'Residual plot showing curvature': '曲がりを示す残差プロット',
+    'Residual plot showing heteroskedasticity': '不均一分散を示す残差プロット',
+    'Normal Q-Q plot with points close to its reference line': '点が基準線の近くにある正規 Q-Q プロット',
+    'LOW FIT': '予測値 小',
+    'HIGH FIT': '予測値 大',
+    'LOW QUANTILE': '分位点 小',
+    'HIGH QUANTILE': '分位点 大',
+    'RESIDUAL ↑': '残差 ↑',
+    'ORDERED RESIDUAL ↑': '並べた残差 ↑',
+    'EVERY DOT HANGS TO THE SAME FITTED-VALUE FLOOR': 'どの点も同じ予測値の基線から垂れ下がる',
+  },
+  fr: {
+    'Reading residual diagnostics': 'Lire les diagnostics des résidus',
+    'Residuals reveal what the fitted equation hides': 'Les résidus révèlent ce que l’équation ajustée cache',
+    'Four simulated patterns · every dot is one residual · click a panel to replay': 'Quatre profils simulés · chaque point est un résidu · cliquer sur un panneau pour rejouer',
+    'A random band supports linearity': 'Une bande aléatoire soutient la linéarité',
+    'residuals stay centered on zero · vertical spread remains broadly stable': 'les résidus restent centrés sur zéro · la dispersion verticale reste à peu près stable',
+    'Curvature signals missing structure': 'Une courbure signale une structure manquante',
+    'a U-shaped residual path · consider a transformation or nonlinear term': 'résidus en forme de U · envisager une transformation ou un terme non linéaire',
+    'A widening fan breaks constant variance': 'Un éventail qui s’ouvre rompt la variance constante',
+    'dispersion grows with fitted value · standard OLS errors may be unreliable': 'la dispersion croît avec la valeur ajustée · les écarts-types MCO usuels peuvent être peu fiables',
+    'A near-straight Q–Q path supports normality': 'Un tracé Q–Q presque rectiligne soutient la normalité',
+    'ordered residuals track theoretical normal quantiles · inspect the tails': 'les résidus ordonnés suivent les quantiles normaux théoriques · examiner les queues',
+    'Residual plot showing a random band around zero': 'Graphique des résidus montrant une bande aléatoire autour de zéro',
+    'Residual plot showing curvature': 'Graphique des résidus montrant une courbure',
+    'Residual plot showing heteroskedasticity': 'Graphique des résidus montrant de l’hétéroscédasticité',
+    'Normal Q-Q plot with points close to its reference line': 'Graphique Q-Q normal avec des points proches de la droite de référence',
+    'LOW FIT': 'AJUSTÉ FAIBLE',
+    'HIGH FIT': 'AJUSTÉ ÉLEVÉ',
+    'LOW QUANTILE': 'QUANTILE FAIBLE',
+    'HIGH QUANTILE': 'QUANTILE ÉLEVÉ',
+    'RESIDUAL ↑': 'RÉSIDU ↑',
+    'ORDERED RESIDUAL ↑': 'RÉSIDU ORDONNÉ ↑',
+    'EVERY DOT HANGS TO THE SAME FITTED-VALUE FLOOR': 'CHAQUE POINT PEND DEPUIS LA MÊME BASE DES VALEURS AJUSTÉES',
+  },
+}, {
+  patterns: {
+    zh: [
+      [/^Theoretical quantile (.+) · ordered residual (.+)$/, '理论分位数 $1 · 排序残差 $2'],
+      [/^Fitted value (.+) · residual position (.+)$/, '拟合值 $1 · 残差位置 $2'],
+    ],
+    ja: [
+      [/^Theoretical quantile (.+) · ordered residual (.+)$/, '理論分位点 $1 · 並べた残差 $2'],
+      [/^Fitted value (.+) · residual position (.+)$/, '予測値 $1 · 残差の位置 $2'],
+    ],
+    fr: [
+      [/^Theoretical quantile (.+) · ordered residual (.+)$/, 'Quantile théorique $1 · résidu ordonné $2'],
+      [/^Fitted value (.+) · residual position (.+)$/, 'Valeur ajustée $1 · position du résidu $2'],
+    ],
+  },
+});
+</script>
+<script>
+const INK='#1C1C1A',PAPER='#F0EFEB',MUTED='#8F8E88',GRID='#DEDDD6';
+const NS='http://www.w3.org/2000/svg';
+const el=(p,t,a)=>{const n=document.createElementNS(NS,t);for(const k in a)n.setAttribute(k,a[k]);p.appendChild(n);return n};
+const txt=(p,a,s)=>{const n=el(p,'text',a);n.textContent=s;return n};
+const tip=(n,s)=>{const t=document.createElementNS(NS,'title');t.textContent=s;n.appendChild(t)};
+const rnd=(i,k)=>Math.abs(((i*73856093)^(k*19349663))%1000)/1000;
+const timers=new Map();
+const obsReveal=(id,fn)=>{
+  const n=document.getElementById(id);
+  const go=()=>{(timers.get(id)||[]).forEach(clearTimeout);timers.set(id,[]);n.innerHTML='';fn(n)};
+  const io=new IntersectionObserver(es=>{if(es[0].isIntersecting){go();io.disconnect()}},{threshold:.25});
+  io.observe(n);n.style.cursor='pointer';n.addEventListener('click',go);
+};
+
+const clamp=(v,a=8,b=92)=>Math.max(a,Math.min(b,v));
+const N=19;
+const DATA={
+  linear:Array.from({length:N},(_,i)=>[8+i*4.6,clamp(50+18*Math.sin(i*2.31)+7*Math.cos(i*.77),20,80)]),
+  curved:Array.from({length:N},(_,i)=>{const x=8+i*4.6,z=(x-50)/44;return[x,clamp(68-45*z*z+7*Math.sin(i*1.91),15,82)]}),
+  funnel:Array.from({length:N},(_,i)=>{const x=8+i*4.6,spread=5+x*.32;return[x,clamp(50+spread*Math.sin(i*2.19),10,90)]}),
+  qq:Array.from({length:N},(_,i)=>{const x=8+i*4.6,tail=Math.abs(x-50)>35?Math.sign(x-50)*4:0;return[x,clamp(92-x+1.8*Math.sin(i*1.4)-tail,7,93)]})
+};
+
+function renderPlumb(id,kind){
+  obsReveal(id,s=>{
+    const X0=48,X1=368,top=24,base=232,mapX=p=>X0+p/100*(X1-X0),mapY=v=>top+v/100*(base-top);
+    for(let g=0;g<=20;g++){
+      const x=X0+g/20*(X1-X0);
+      el(s,'line',{x1:x,y1:base,x2:x,y2:base-(g%5===0?7:4),stroke:'#C6C5BF','stroke-width':.6,class:'fade',style:`animation-delay:${g*.01}s`});
+    }
+    el(s,'line',{x1:X0-6,y1:base,x2:X1+6,y2:base,stroke:GRID,'stroke-width':.8,class:'fade'});
+    if(kind!=='qq')el(s,'line',{x1:X0,y1:mapY(50),x2:X1,y2:mapY(50),stroke:MUTED,'stroke-width':.65,'stroke-dasharray':'3 4',class:'fade'});
+    if(kind==='qq')el(s,'line',{x1:mapX(8),y1:mapY(92),x2:mapX(92),y2:mapY(8),stroke:INK,'stroke-width':1,pathLength:1,class:'draw'});
+    if(kind==='curved'){
+      const d=Array.from({length:41},(_,i)=>{const x=i*2.5,z=(x-50)/44,y=68-45*z*z;return`${i?'L':'M'}${mapX(x)} ${mapY(y)}`}).join(' ');
+      el(s,'path',{d,fill:'none',stroke:INK,'stroke-width':1.2,pathLength:1,class:'draw'});
+    }
+    DATA[kind].forEach(([px,py],i)=>{
+      const x=mapX(px),y=mapY(py);
+      el(s,'line',{x1:x,y1:base,x2:x,y2:y,stroke:'#B0AFA9','stroke-width':.55,opacity:.62,class:'fade',style:`animation-delay:${.16+i*.035}s`});
+      const dot=el(s,'circle',{cx:x,cy:y,r:2.7,fill:i%6===0?INK:'#55554F',class:'pop',style:`animation-delay:${.22+i*.035}s`});
+      tip(dot,kind==='qq'?`Observation ${i+1}\ntheoretical quantile ${px.toFixed(0)} · ordered residual ${py.toFixed(0)}`:`Observation ${i+1}\nfitted value ${px.toFixed(0)} · residual ${(50-py)>=0?'+':''}${(50-py).toFixed(0)} from zero`);
+    });
+    txt(s,{x:X0,y:base+17,'font-size':7,'font-weight':600,fill:'#8F8E88',class:'fade'},kind==='qq'?'LOW QUANTILE':'LOW FIT');
+    txt(s,{x:X1,y:base+17,'font-size':7,'font-weight':600,fill:'#8F8E88','text-anchor':'end',class:'fade'},kind==='qq'?'HIGH QUANTILE':'HIGH FIT');
+    txt(s,{x:25,y:top+3,'font-size':7,'font-weight':600,fill:'#8F8E88',transform:`rotate(-90 25 ${top+3})`,'text-anchor':'end','letter-spacing':'.08em',class:'fade'},kind==='qq'?'ORDERED RESIDUAL ↑':'RESIDUAL ↑');
+    txt(s,{x:200,y:274,'font-size':7,'font-weight':600,fill:'#8F8E88','text-anchor':'middle','letter-spacing':'.12em',class:'fade',style:'animation-delay:.9s'},'EVERY DOT HANGS TO THE SAME FITTED-VALUE FLOOR');
+  });
+}
+renderPlumb('linear','linear');renderPlumb('curved','curved');renderPlumb('funnel','funnel');renderPlumb('qq','qq');
+</script>
+</body>
+</html>

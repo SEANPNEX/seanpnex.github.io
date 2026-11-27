@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Derivative timelines · FRA, option on futures, swaption</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <script src="chart-fx.js"></script>
+</head>
+<body>
+  <main class="card" id="card" data-fx-scope>
+    <h2 id="title"></h2>
+    <div class="sub" id="sub"></div>
+    <section class="panel">
+      <h3 id="h3"></h3>
+      <div class="hint" id="hint"></div>
+      <svg id="chart" role="img"></svg>
+    </section>
+    <div class="src" id="src"></div>
+  </main>
+  <script src="i18n.js"></script>
+  <script>
+chartI18n.use({
+  zh: {
+    'Derivative timelines · FRA, option on futures, swaption': '衍生品时间线 · 远期利率协议、期货期权、互换期权',
+    'An FRA’s gain is known at a but earned at b, so it is discounted back.': 'FRA 的收益在 a 时确定但在 b 时实现，因此需要折现回来。',
+    'a × b FRA, in months · the reference rate is set at a for a loan from a to b · settlement is at a, so the interest difference is discounted from b · before a, value at t by discounting from b to t · hover a marker': 'a × b FRA（单位：月）· 在 a 确定从 a 到 b 贷款的参考利率 · 在 a 结算，因此利息差从 b 折现回来 · 在 a 之前，从 b 折现到 t 来确定 t 时的价值 · 悬停标记查看详情',
+    'FRA timeline': 'FRA 时间线',
+    'Accrual period = (b − a)/12 · at a: discount at the rate just set, over b − a · at t < a: use today’s forward rate for a to b, and the spot rate from t to b': '计息期 = (b − a)/12 · 在 a 时：按刚刚确定的利率在 b − a 期间折现 · 在 t < a 时：使用今日从 a 到 b 的远期利率，并用从 t 到 b 的即期利率折现',
+    'FRA · TIMELINE · SIMPLE INTEREST THROUGHOUT': 'FRA · 时间线 · 全程单利计算',
+    'FRA agreed': '签订 FRA',
+    'Time 0: the fixed (FRA) rate is set so the FRA is worth 0': '时间 0：设定固定（FRA）利率，使 FRA 价值为 0',
+    'value today': '今日估值',
+    'Valuation date t, before a\nvalue = NP × (new FRA rate − old) × (b − a)/12, discounted from b to t': '估值日 t，在 a 之前\n价值 = NP × (新 FRA 利率 − 旧利率) × (b − a)/12，从 b 折现到 t',
+    'rate set · settle': '定息 · 结算',
+    'Expiration a: the reference rate is observed\nthe FRA is settled in cash now': '到期日 a：观察参考利率\nFRA 此时以现金结算',
+    'loan matures': '贷款到期',
+    'b: when the interest on the notional loan would be paid': 'b：名义贷款利息原本应当支付的时点',
+    'underlying loan: (b − a)/12': '标的贷款：(b − a)/12',
+    'discount at the new rate': '按新利率折现',
+    'or, before a: discount b → t': '或在 a 之前：从 b 折现到 t',
+    'An option on futures ends where a futures position begins.': '期货期权的终点，正是期货头寸的起点。',
+    'Option on a futures contract · the option expires at m; exercise delivers a futures position, struck at X, that runs to n · hover a marker': '期货合约期权 · 期权在 m 到期；行权交付一个行权价为 X、持续到 n 的期货头寸 · 悬停标记查看详情',
+    'Option on futures timeline': '期货期权时间线',
+    'Long call → long futures at X when the futures price at m is above X · long put → short futures at X when it is below X': '多头看涨 → 当 m 时期货价格高于 X 时转为期货多头 · 多头看跌 → 当其低于 X 时转为期货空头',
+    'OPTION ON FUTURES · TIMELINE · BLACK MODEL DISCOUNTS FROM THE OPTION EXPIRY': '期货期权 · 时间线 · BLACK 模型从期权到期日折现',
+    'option bought': '买入期权',
+    'Time 0: buy the option for its premium': '时间 0：支付期权费买入期权',
+    'option expires': '期权到期',
+    'm: option expiry\nexercise if the futures price F_m is above X (call) or below X (put)\nthe holder gets a futures position at X, plus F_m − X (call) in cash': 'm：期权到期日\n若期货价格 F_m 高于 X（看涨）或低于 X（看跌）则行权\n持有人获得行权价为 X 的期货头寸，外加 F_m − X（看涨）现金',
+    'futures expires': '期货到期',
+    'n: the underlying futures contract expires': 'n：标的期货合约到期',
+    'option life': '期权存续期',
+    'futures contract': '期货合约',
+    'A swaption is an option today on a swap that starts at expiry.': '互换期权是今天针对到期日才开始的互换的期权。',
+    'Payer swaption · the option expires at m, when the swap starts · if exercised, the holder pays the fixed rate R_X and receives floating on each payment date to n · hover a marker': '付方互换期权 · 期权在 m 到期，此时互换开始 · 若行权，持有人在直到 n 的每个支付日支付固定利率 R_X 并收取浮动利率 · 悬停标记查看详情',
+    'Swaption timeline': '互换期权时间线',
+    'Value = NP × accrual period × PVA × (Black formula on the forward swap rate) · PVA = the sum of discount factors on the swap’s payment dates': '价值 = NP × 计息期 × PVA ×（基于远期互换利率的 Black 公式）· PVA = 互换各支付日折现因子之和',
+    'SWAPTION · TIMELINE · PAYER = RIGHT TO PAY FIXED, RECEIVER = RIGHT TO RECEIVE FIXED': '互换期权 · 时间线 · 付方 = 支付固定的权利，收方 = 收取固定的权利',
+    'bought': '买入',
+    'Time 0: buy the swaption': '时间 0：买入互换期权',
+    'expiry = swap start': '到期 = 互换开始',
+    'm: exercise if the market swap rate is above R_X (payer)\nthe swap starts here': 'm：若市场互换利率高于 R_X 则行权（付方）\n互换在此处开始',
+    'Swap payment: pay R_X, receive floating': '互换支付：支付 R_X，收取浮动利率',
+    'swap ends': '互换结束',
+    'n: last swap payment': 'n：最后一次互换支付',
+    'underlying swap': '标的互换',
+  },
+  ja: {
+    'Derivative timelines · FRA, option on futures, swaption': 'デリバティブのタイムライン · FRA、先物オプション、スワップション',
+    'An FRA’s gain is known at a but earned at b, so it is discounted back.': 'FRA の利益は時点 a で確定するが時点 b で発生するため、割り戻す必要がある。',
+    'a × b FRA, in months · the reference rate is set at a for a loan from a to b · settlement is at a, so the interest difference is discounted from b · before a, value at t by discounting from b to t · hover a marker': 'a × b FRA（月単位）· a から b までの貸出の参照金利が a で決まる · 決済は a なので、利息差を b から割り引く · a より前では、b から t へ割り引いて t 時点の価値を求める · マーカーにカーソルを合わせると詳細を表示',
+    'FRA timeline': 'FRA のタイムライン',
+    'Accrual period = (b − a)/12 · at a: discount at the rate just set, over b − a · at t < a: use today’s forward rate for a to b, and the spot rate from t to b': '利息計算期間 = (b − a)/12 · a 時点：決まったばかりの金利で b − a 期間を割り引く · t < a：今日の a から b へのフォワード・レートと、t から b までのスポット・レートを使う',
+    'FRA · TIMELINE · SIMPLE INTEREST THROUGHOUT': 'FRA · タイムライン · すべて単利計算',
+    'FRA agreed': 'FRA 契約',
+    'Time 0: the fixed (FRA) rate is set so the FRA is worth 0': '時点 0：FRA の価値が 0 になるよう固定（FRA）金利を設定',
+    'value today': '今日の価値',
+    'Valuation date t, before a\nvalue = NP × (new FRA rate − old) × (b − a)/12, discounted from b to t': 'a より前の評価日 t\n価値 = NP × (新しい FRA レート − 旧レート) × (b − a)/12 を b から t へ割引',
+    'rate set · settle': '金利確定 · 決済',
+    'Expiration a: the reference rate is observed\nthe FRA is settled in cash now': '満期 a：参照金利が観測される\nFRA はここで現金決済される',
+    'loan matures': '貸出満期',
+    'b: when the interest on the notional loan would be paid': 'b：想定貸出の利息が本来支払われる時点',
+    'underlying loan: (b − a)/12': '原貸出：(b − a)/12',
+    'discount at the new rate': '新しい金利で割引',
+    'or, before a: discount b → t': 'または a より前：b → t へ割引',
+    'An option on futures ends where a futures position begins.': '先物オプションは、先物ポジションが始まる場所で終わる。',
+    'Option on a futures contract · the option expires at m; exercise delivers a futures position, struck at X, that runs to n · hover a marker': '先物契約のオプション · オプションは m で満期；行使すると行使価格 X で n まで続く先物ポジションを受け取る · マーカーにカーソルを合わせると詳細を表示',
+    'Option on futures timeline': '先物オプションのタイムライン',
+    'Long call → long futures at X when the futures price at m is above X · long put → short futures at X when it is below X': 'コールのロング → m 時点の先物価格が X を上回れば X で先物ロング · プットのロング → X を下回れば X で先物ショート',
+    'OPTION ON FUTURES · TIMELINE · BLACK MODEL DISCOUNTS FROM THE OPTION EXPIRY': '先物オプション · タイムライン · ブラック・モデルはオプション満期から割り引く',
+    'option bought': 'オプション購入',
+    'Time 0: buy the option for its premium': '時点 0：プレミアムを払ってオプションを購入',
+    'option expires': 'オプション満期',
+    'm: option expiry\nexercise if the futures price F_m is above X (call) or below X (put)\nthe holder gets a futures position at X, plus F_m − X (call) in cash': 'm：オプション満期\n先物価格 F_m が X より上（コール）または下（プット）なら行使\n保有者は X の先物ポジションと現金 F_m − X（コール）を受け取る',
+    'futures expires': '先物満期',
+    'n: the underlying futures contract expires': 'n：原資産の先物契約が満期を迎える',
+    'option life': 'オプション期間',
+    'futures contract': '先物契約',
+    'A swaption is an option today on a swap that starts at expiry.': 'スワップションは、満期時に始まるスワップに対する今日のオプションである。',
+    'Payer swaption · the option expires at m, when the swap starts · if exercised, the holder pays the fixed rate R_X and receives floating on each payment date to n · hover a marker': 'ペイヤー・スワップション · オプションはスワップ開始時点 m で満期 · 行使すると保有者は n までの各支払日に固定金利 R_X を支払い変動金利を受け取る · マーカーにカーソルを合わせると詳細を表示',
+    'Swaption timeline': 'スワップションのタイムライン',
+    'Value = NP × accrual period × PVA × (Black formula on the forward swap rate) · PVA = the sum of discount factors on the swap’s payment dates': '価値 = NP × 利息計算期間 × PVA ×（フォワード・スワップ・レートに対するブラック式）· PVA = スワップの支払日の割引係数の合計',
+    'SWAPTION · TIMELINE · PAYER = RIGHT TO PAY FIXED, RECEIVER = RIGHT TO RECEIVE FIXED': 'スワップション · タイムライン · ペイヤー = 固定払いの権利、レシーバー = 固定受取の権利',
+    'bought': '購入',
+    'Time 0: buy the swaption': '時点 0：スワップションを購入',
+    'expiry = swap start': '満期 = スワップ開始',
+    'm: exercise if the market swap rate is above R_X (payer)\nthe swap starts here': 'm：市場スワップ・レートが R_X を上回れば行使（ペイヤー）\nスワップがここから始まる',
+    'Swap payment: pay R_X, receive floating': 'スワップ支払：R_X を支払い、変動を受取',
+    'swap ends': 'スワップ終了',
+    'n: last swap payment': 'n：最終スワップ支払',
+    'underlying swap': '原スワップ',
+  },
+  fr: {
+    'Derivative timelines · FRA, option on futures, swaption': 'Frises des dérivés · FRA, option sur futures, swaption',
+    'An FRA’s gain is known at a but earned at b, so it is discounted back.': 'Le gain d’un FRA est connu en a mais perçu en b ; il est donc actualisé.',
+    'a × b FRA, in months · the reference rate is set at a for a loan from a to b · settlement is at a, so the interest difference is discounted from b · before a, value at t by discounting from b to t · hover a marker': 'FRA a × b, en mois · le taux de référence est fixé en a pour un prêt de a à b · le règlement a lieu en a, donc l’écart d’intérêts est actualisé depuis b · avant a, valorisation en t en actualisant de b à t · survolez un repère',
+    'FRA timeline': 'Frise du FRA',
+    'Accrual period = (b − a)/12 · at a: discount at the rate just set, over b − a · at t < a: use today’s forward rate for a to b, and the spot rate from t to b': 'Période d’intérêts = (b − a)/12 · en a : actualiser au taux qui vient d’être fixé, sur b − a · en t < a : utiliser le taux forward actuel de a à b, et le taux comptant de t à b',
+    'FRA · TIMELINE · SIMPLE INTEREST THROUGHOUT': 'FRA · FRISE · INTÉRÊT SIMPLE SUR TOUTE LA DURÉE',
+    'FRA agreed': 'FRA conclu',
+    'Time 0: the fixed (FRA) rate is set so the FRA is worth 0': 'Date 0 : le taux fixe (FRA) est fixé pour que le FRA vaille 0',
+    'value today': 'valeur aujourd’hui',
+    'Valuation date t, before a\nvalue = NP × (new FRA rate − old) × (b − a)/12, discounted from b to t': 'Date de valorisation t, avant a\nvaleur = NP × (nouveau taux FRA − ancien) × (b − a)/12, actualisée de b à t',
+    'rate set · settle': 'taux fixé · règlement',
+    'Expiration a: the reference rate is observed\nthe FRA is settled in cash now': 'Échéance a : le taux de référence est observé\nle FRA est réglé en espèces maintenant',
+    'loan matures': 'échéance du prêt',
+    'b: when the interest on the notional loan would be paid': 'b : date à laquelle les intérêts du prêt notionnel seraient payés',
+    'underlying loan: (b − a)/12': 'prêt sous-jacent : (b − a)/12',
+    'discount at the new rate': 'actualiser au nouveau taux',
+    'or, before a: discount b → t': 'ou, avant a : actualiser b → t',
+    'An option on futures ends where a futures position begins.': 'Une option sur futures s’achève là où commence une position futures.',
+    'Option on a futures contract · the option expires at m; exercise delivers a futures position, struck at X, that runs to n · hover a marker': 'Option sur contrat futures · l’option expire en m ; l’exercice livre une position futures, au strike X, qui court jusqu’en n · survolez un repère',
+    'Option on futures timeline': 'Frise d’une option sur futures',
+    'Long call → long futures at X when the futures price at m is above X · long put → short futures at X when it is below X': 'Call acheté → futures acheté à X si le prix du futures en m dépasse X · put acheté → futures vendu à X s’il est en dessous de X',
+    'OPTION ON FUTURES · TIMELINE · BLACK MODEL DISCOUNTS FROM THE OPTION EXPIRY': 'OPTION SUR FUTURES · FRISE · LE MODÈLE DE BLACK ACTUALISE DEPUIS L’ÉCHÉANCE DE L’OPTION',
+    'option bought': 'option achetée',
+    'Time 0: buy the option for its premium': 'Date 0 : achat de l’option contre sa prime',
+    'option expires': 'échéance de l’option',
+    'm: option expiry\nexercise if the futures price F_m is above X (call) or below X (put)\nthe holder gets a futures position at X, plus F_m − X (call) in cash': 'm : échéance de l’option\nexercice si le prix du futures F_m est au-dessus de X (call) ou en dessous de X (put)\nle détenteur reçoit une position futures à X, plus F_m − X (call) en espèces',
+    'futures expires': 'échéance du futures',
+    'n: the underlying futures contract expires': 'n : le contrat futures sous-jacent arrive à échéance',
+    'option life': 'vie de l’option',
+    'futures contract': 'contrat futures',
+    'A swaption is an option today on a swap that starts at expiry.': 'Une swaption est une option aujourd’hui sur un swap qui démarre à l’échéance.',
+    'Payer swaption · the option expires at m, when the swap starts · if exercised, the holder pays the fixed rate R_X and receives floating on each payment date to n · hover a marker': 'Swaption payeuse · l’option expire en m, quand le swap démarre · en cas d’exercice, le détenteur paie le taux fixe R_X et reçoit le variable à chaque date de paiement jusqu’en n · survolez un repère',
+    'Swaption timeline': 'Frise d’une swaption',
+    'Value = NP × accrual period × PVA × (Black formula on the forward swap rate) · PVA = the sum of discount factors on the swap’s payment dates': 'Valeur = NP × période d’intérêts × PVA × (formule de Black sur le taux de swap forward) · PVA = somme des facteurs d’actualisation aux dates de paiement du swap',
+    'SWAPTION · TIMELINE · PAYER = RIGHT TO PAY FIXED, RECEIVER = RIGHT TO RECEIVE FIXED': 'SWAPTION · FRISE · PAYEUSE = DROIT DE PAYER LE FIXE, RECEVEUSE = DROIT DE RECEVOIR LE FIXE',
+    'bought': 'achetée',
+    'Time 0: buy the swaption': 'Date 0 : achat de la swaption',
+    'expiry = swap start': 'échéance = début du swap',
+    'm: exercise if the market swap rate is above R_X (payer)\nthe swap starts here': 'm : exercice si le taux de swap de marché dépasse R_X (payeuse)\nle swap commence ici',
+    'Swap payment: pay R_X, receive floating': 'Paiement du swap : payer R_X, recevoir le variable',
+    'swap ends': 'fin du swap',
+    'n: last swap payment': 'n : dernier paiement du swap',
+    'underlying swap': 'swap sous-jacent',
+  },
+});
+  </script>
+  <script>
+(() => {
+  const { C, T, el, label, arrow, mount } = curveKit;
+  const MID = '#6A6963';
+
+  // ── Data: one timeline per view. Points sit on [0, 1]; brackets span two points; flows are arrows. ──
+  const VIEWS = {
+    fra: {
+      title: 'An FRA’s gain is known at a but earned at b, so it is discounted back.',
+      sub: 'a × b FRA, in months · the reference rate is set at a for a loan from a to b · settlement is at a, so the interest difference is discounted from b · before a, value at t by discounting from b to t · hover a marker',
+      h3: 'FRA timeline', hint: 'Accrual period = (b − a)/12 · at a: discount at the rate just set, over b − a · at t < a: use today’s forward rate for a to b, and the spot rate from t to b',
+      src: 'FRA · TIMELINE · SIMPLE INTEREST THROUGHOUT',
+      points: [
+        { at: 0, name: '0', note: 'FRA agreed', tip: 'Time 0: the fixed (FRA) rate is set so the FRA is worth 0' },
+        { at: 0.22, name: 't', note: 'value today', tip: 'Valuation date t, before a\nvalue = NP × (new FRA rate − old) × (b − a)/12, discounted from b to t', soft: true },
+        { at: 0.45, name: 'a', note: 'rate set · settle', tip: 'Expiration a: the reference rate is observed\nthe FRA is settled in cash now' },
+        { at: 1, name: 'b', note: 'loan matures', tip: 'b: when the interest on the notional loan would be paid' },
+      ],
+      brackets: [{ from: 2, to: 3, text: 'underlying loan: (b − a)/12' }],
+      flows: [
+        { from: 3, to: 2, text: 'discount at the new rate', row: 1 },
+        { from: 3, to: 1, text: 'or, before a: discount b → t', row: 2, soft: true },
+      ],
+    },
+    futopt: {
+      title: 'An option on futures ends where a futures position begins.',
+      sub: 'Option on a futures contract · the option expires at m; exercise delivers a futures position, struck at X, that runs to n · hover a marker',
+      h3: 'Option on futures timeline', hint: 'Long call → long futures at X when the futures price at m is above X · long put → short futures at X when it is below X',
+      src: 'OPTION ON FUTURES · TIMELINE · BLACK MODEL DISCOUNTS FROM THE OPTION EXPIRY',
+      points: [
+        { at: 0, name: '0', note: 'option bought', tip: 'Time 0: buy the option for its premium' },
+        { at: 0.5, name: 'm', note: 'option expires', tip: 'm: option expiry\nexercise if the futures price F_m is above X (call) or below X (put)\nthe holder gets a futures position at X, plus F_m − X (call) in cash' },
+        { at: 1, name: 'n', note: 'futures expires', tip: 'n: the underlying futures contract expires' },
+      ],
+      brackets: [{ from: 0, to: 1, text: 'option life' }, { from: 1, to: 2, text: 'futures contract' }],
+      flows: [],
+    },
+    swaption: {
+      title: 'A swaption is an option today on a swap that starts at expiry.',
+      sub: 'Payer swaption · the option expires at m, when the swap starts · if exercised, the holder pays the fixed rate R_X and receives floating on each payment date to n · hover a marker',
+      h3: 'Swaption timeline', hint: 'Value = NP × accrual period × PVA × (Black formula on the forward swap rate) · PVA = the sum of discount factors on the swap’s payment dates',
+      src: 'SWAPTION · TIMELINE · PAYER = RIGHT TO PAY FIXED, RECEIVER = RIGHT TO RECEIVE FIXED',
+      points: [
+        { at: 0, name: '0', note: 'bought', tip: 'Time 0: buy the swaption' },
+        { at: 0.42, name: 'm', note: 'expiry = swap start', tip: 'm: exercise if the market swap rate is above R_X (payer)\nthe swap starts here' },
+        { at: 0.61, name: '', tip: 'Swap payment: pay R_X, receive floating', pay: true },
+        { at: 0.8, name: '', tip: 'Swap payment: pay R_X, receive floating', pay: true },
+        { at: 1, name: 'n', note: 'swap ends', tip: 'n: last swap payment', pay: true },
+      ],
+      brackets: [{ from: 0, to: 1, text: 'option life' }, { from: 1, to: 4, text: 'underlying swap' }],
+      flows: [],
+    },
+  };
+  const key = new URLSearchParams(location.search).get('view');
+  const V = VIEWS[key] || VIEWS.fra;
+  ['title', 'sub', 'h3', 'hint', 'src'].forEach((k) => { document.getElementById(k).textContent = T(V[k]); });
+  document.getElementById('chart').setAttribute('aria-label', T(V.h3) + ': ' + V.points.filter((q) => q.name).map((q) => q.name + (q.note ? ' ' + T(q.note) : '')).join(', '));
+
+  mount(document.getElementById('chart'), (s, W, H) => {
+    const L = 22, R = W - 22, Y = 96, x = (a) => L + a * (R - L);
+    el(s, 'line', { x1: L, y1: Y, x2: R, y2: Y, stroke: C.INK, 'stroke-width': 1.4, pathLength: 1, class: 'draw' });
+
+    // Brackets above the axis.
+    V.brackets.forEach((b, i) => {
+      const x1 = x(V.points[b.from].at), x2 = x(V.points[b.to].at), yb = Y - 34;
+      el(s, 'path', { d: `M${x1 + 2} ${yb + 7} L${x1 + 2} ${yb} L${x2 - 2} ${yb} L${x2 - 2} ${yb + 7}`, fill: 'none', stroke: MID, 'stroke-width': 1.1, class: 'fade', style: `animation-delay:${0.3 + i * 0.1}s` });
+      label(s, (x1 + x2) / 2, yb - 7, b.text, { size: 10, weight: 700, fill: MID, anchor: 'middle', delay: 0.4 + i * 0.1, maxWidth: x2 - x1 + 10 });
+    });
+
+    // Points: a tick, a dot and labels below.
+    V.points.forEach((q, i) => {
+      const px = x(q.at);
+      el(s, 'line', { x1: px, y1: Y - 6, x2: px, y2: Y + 6, stroke: q.soft ? C.SOFT : C.INK, 'stroke-width': 1.2, class: 'fade', style: `animation-delay:${0.2 + i * 0.06}s` });
+      const g = el(s, 'circle', { cx: px, cy: Y, r: q.pay ? 3.4 : 4.6, fill: q.soft ? C.PAPER : C.INK, stroke: q.soft ? C.SOFT : C.INK, 'stroke-width': 1.4, class: 'pop', style: `animation-delay:${0.3 + i * 0.06}s`, 'data-tip': q.tip });
+      if (q.name) label(s, px, Y + 22, q.name, { size: 12, anchor: 'middle', fill: q.soft ? MID : C.INK, delay: 0.5 });
+      if (q.note) {
+        // Wrap each caption to the room between its neighbours.
+        const last = V.points.length - 1;
+        const prev = i > 0 ? px - x(V.points[i - 1].at) : Infinity, next = i < last ? x(V.points[i + 1].at) - px : Infinity;
+        const room = i === 0 ? next - 8 : i === last ? prev - 8 : 2 * Math.min(prev, next) - 8;
+        label(s, px, Y + 37, q.note, { size: 9.5, weight: 600, fill: C.MUTED, anchor: i === 0 ? 'start' : i === last ? 'end' : 'middle', delay: 0.55, maxWidth: Math.min(room, 130) });
+      }
+    });
+
+    // Discounting flows below the axis: from a later point back to an earlier one.
+    V.flows.forEach((f, i) => {
+      // Start below the captions, so the arrows never cross the point labels.
+      const x1 = x(V.points[f.from].at), x2 = x(V.points[f.to].at), yb = Y + 76 + (f.row - 1) * 26;
+      arrow(s, [[x1, Y + 58], [x1, yb], [x2, yb], [x2, Y + 60]], { stroke: f.soft ? C.SOFT : C.INK, width: 1.2, head: 5, delay: 0.8 + i * 0.15 });
+      label(s, (x1 + x2) / 2, yb - 5, f.text, { size: 10, weight: 700, fill: f.soft ? MID : C.INK, anchor: 'middle', delay: 0.9 + i * 0.15 });
+    });
+  }, () => (V.flows.length ? 214 : 160));
+})();
+  </script>
+</body>
+</html>

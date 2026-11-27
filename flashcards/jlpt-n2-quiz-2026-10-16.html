@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>JLPT N2 — quiz misses 2026-10-16</title>
+<link rel="stylesheet" href="/flashcards/deck.css" />
+</head>
+<body>
+<script src="/flashcards/deck.js"></script>
+<script>
+const CARDS = [
+  {
+    id: "jlpt-kaeru-godan-2026-10-16",
+    topic: "Verb class · 帰る",
+    front: "Is <span class=\"jp\">帰る</span> a ru-verb (ichidan)? What is its <strong>ます形</strong>?",
+    back: `<div class="ans">
+      <p><span class="jp">帰る</span> looks like a ru-verb but is a <strong>u-verb (godan)</strong>.</p>
+      <p><span class="jp">ます形 → <strong>帰ります</strong></span> (not <span class="jp">帰ます</span>).</p>
+    </div>`,
+    gap: "Treated 帰る as ichidan; ます形 is 帰ります."
+  },
+  {
+    id: "jlpt-hou-ga-ii-advice-2026-10-16",
+    topic: "Advice · ほうがいい",
+    front: "How do you advise “you should rest” and “water is better”? Is <strong>じゃありませんか</strong> the advice pattern?",
+    back: `<div class="ans">
+      <p>Verb advice: <span class="jp"><strong>Vたほうがいい</strong></span> → <span class="jp">休んだほうがいい</span>.</p>
+      <p>Noun advice: <span class="jp"><strong>Nのほうがいい</strong></span> → <span class="jp">水のほうがいい</span>.</p>
+      <p><span class="jp">じゃありませんか</span> is soft confirmation (“isn’t it…?”), <strong>not</strong> advice.</p>
+    </div>`,
+    gap: "Mixed advice ほうがいい with soft confirmation じゃありませんか."
+  }
+];
+
+flashDeck({
+  key: "jlpt-n2-2026-10-16",
+  source: "JLPT N2 · quiz misses 2026-10-16",
+  gapLabel: "Gap",
+  cards: CARDS
+});
+</script>
+</body>
+</html>

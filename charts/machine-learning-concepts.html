@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Machine-learning concepts</title>
+  <style>
+    :root{--paper:#F0EFEB;--ink:#1C1C1A;--g1:#4A4944;--g2:#6A6963;--g3:#8A8983;--g4:#A8A7A0;--g5:#B0AFA9;--g6:#C6C5BF;--grid:#D8D6CE;--faint:#E3E2DB}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,sans-serif}.card{min-height:440px;padding:28px 30px 18px;border-radius:24px;background:var(--paper);overflow:hidden}h2{max-width:760px;margin:0;font-size:clamp(24px,4vw,40px);font-weight:700;line-height:1.06;letter-spacing:-.035em}.sub{margin:10px 0 12px;color:var(--g2);font-size:12px;line-height:1.5}.chart{display:block;width:100%;height:315px}.src{margin-top:5px;color:var(--g3);font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}.draw{stroke-dasharray:1;stroke-dashoffset:1;animation:draw .7s cubic-bezier(.25,.9,.35,1) forwards}.pop{opacity:0;transform-box:fill-box;transform-origin:center;animation:pop .4s cubic-bezier(.25,.9,.35,1) forwards}.fade{opacity:0;animation:fade .45s ease forwards}@keyframes draw{to{stroke-dashoffset:0}}@keyframes pop{0%{opacity:0;transform:scale(0)}to{opacity:1;transform:scale(1)}}@keyframes fade{to{opacity:1}}@media(max-width:600px){.card{min-height:500px;padding:24px 16px 16px}.chart{height:365px}}@media(prefers-reduced-motion:reduce){.draw{stroke-dashoffset:0;animation:none}.pop,.fade{opacity:1;transform:none;animation:none}}
+  </style>
+  <script src="chart-fx.js"></script>
+</head>
+<body>
+  <main class="card" id="card"><h2 id="title"></h2><div class="sub" id="sub"></div><svg class="chart" id="chart" viewBox="0 0 800 315" role="img"></svg><div class="src" id="src"></div></main>
+  <script src="i18n.js"></script>
+  <script>
+chartI18n.use({
+  zh: {
+    'Machine-learning concepts': '机器学习概念',
+    'The widest safe street defines the classifier.': '最宽的安全通道决定了分类器。',
+    'two classes · solid line = decision boundary · dashed lines = margins · circled points = support vectors': '两个类别 · 实线 = 决策边界 · 虚线 = 间隔 · 圈出的点 = 支持向量',
+    'MAXIMUM MARGIN': '最大间隔',
+    'FEATURE 1 →': '特征 1 →',
+    'Every split narrows the decision.': '每一次切分都让决策更明确。',
+    'binary classification tree · terminal leaves return the majority class': '二元分类树 · 终端叶节点返回多数类别',
+    'FCF growth > 4%?': 'FCF 增长 > 4%？',
+    'Interest coverage > 3×?': '利息保障倍数 > 3 倍？',
+    'No increase': '不提高',
+    'Increase': '提高',
+    'NO': '否',
+    'YES': '是',
+    'Correlated features converge into orthogonal directions.': '相关的特征汇聚成相互正交的方向。',
+    'lines = feature loadings · larger hubs = more variance explained': '线条 = 特征载荷 · 节点越大 = 解释的方差越多',
+    'MARGIN': '利润率',
+    'GROWTH': '增长',
+    'LEVERAGE': '杠杆',
+    'YIELD': '收益率',
+    'Compression succeeds only if the decoder can rebuild the input.': '只有解码器能重建输入，压缩才算成功。',
+    'encoder → bottleneck → decoder · training minimizes reconstruction error ‖x − x̂‖²': '编码器 → 瓶颈 → 解码器 · 训练最小化重建误差 ‖x − x̂‖²',
+    'INPUT x': '输入 x',
+    'ENCODER': '编码器',
+    'LATENT z': '潜变量 z',
+    'DECODER': '解码器',
+    'RECONSTRUCTION x̂': '重建 x̂',
+    'THE BOTTLENECK RETAINS ONLY THE STRUCTURE NEEDED TO RECONSTRUCT': '瓶颈只保留重建所需的结构',
+    'The dendrogram preserves every possible cluster cut.': '树状图保留了每一种可能的聚类切割。',
+    'agglomerative example · merge height represents dissimilarity · cut height determines K': '凝聚式示例 · 合并高度代表相异度 · 切割高度决定 K',
+    'CUT HERE → 3 CLUSTERS': '在此切割 → 3 个簇',
+    'Hidden neurons combine every input into learned representations.': '隐藏神经元把所有输入组合成学到的表示。',
+    'lines = learned weights · nodes = neurons · nonlinear activations create flexible boundaries': '线条 = 学到的权重 · 节点 = 神经元 · 非线性激活带来灵活的边界',
+    'INPUT': '输入层',
+    'HIDDEN 1': '隐藏层 1',
+    'HIDDEN 2': '隐藏层 2',
+    'OUTPUT': '输出层',
+    'Each action changes both the reward and what happens next.': '每个行动既改变奖励，也改变接下来发生的事。',
+    'closed feedback loop · policy balances exploration with exploitation': '闭环反馈 · 策略在探索与利用之间取得平衡',
+    'STATE sₜ': '状态 sₜ',
+    'AGENT / POLICY': '智能体 / 策略',
+    'ACTION aₜ': '行动 aₜ',
+    'ENVIRONMENT': '环境',
+    'REWARD rₜ₊₁ + NEW STATE': '奖励 rₜ₊₁ + 新状态',
+    'MAXIMIZE EXPECTED DISCOUNTED CUMULATIVE REWARD': '最大化预期折现累计奖励',
+  },
+  ja: {
+    'Machine-learning concepts': '機械学習の概念',
+    'The widest safe street defines the classifier.': '最も幅の広い安全な通り道が分類器を決める。',
+    'two classes · solid line = decision boundary · dashed lines = margins · circled points = support vectors': '2 クラス · 実線 = 決定境界 · 破線 = マージン · 丸で囲んだ点 = サポートベクター',
+    'MAXIMUM MARGIN': '最大マージン',
+    'FEATURE 1 →': '特徴量 1 →',
+    'Every split narrows the decision.': '分割のたびに判断が絞られていく。',
+    'binary classification tree · terminal leaves return the majority class': '2 値の分類木 · 末端の葉は多数派のクラスを返す',
+    'FCF growth > 4%?': 'FCF 成長率 > 4%？',
+    'Interest coverage > 3×?': 'インタレスト・カバレッジ > 3 倍？',
+    'No increase': '増配なし',
+    'Increase': '増配',
+    'NO': 'いいえ',
+    'YES': 'はい',
+    'Correlated features converge into orthogonal directions.': '相関した特徴量が、互いに直交する方向へ集約される。',
+    'lines = feature loadings · larger hubs = more variance explained': '線 = 特徴量の負荷量 · 大きなハブほど説明される分散が大きい',
+    'MARGIN': '利益率',
+    'GROWTH': '成長',
+    'LEVERAGE': 'レバレッジ',
+    'YIELD': '利回り',
+    'Compression succeeds only if the decoder can rebuild the input.': 'デコーダが入力を再現できて初めて、圧縮は成功する。',
+    'encoder → bottleneck → decoder · training minimizes reconstruction error ‖x − x̂‖²': 'エンコーダ → ボトルネック → デコーダ · 学習は再構成誤差 ‖x − x̂‖² を最小化する',
+    'INPUT x': '入力 x',
+    'ENCODER': 'エンコーダ',
+    'LATENT z': '潜在変数 z',
+    'DECODER': 'デコーダ',
+    'RECONSTRUCTION x̂': '再構成 x̂',
+    'THE BOTTLENECK RETAINS ONLY THE STRUCTURE NEEDED TO RECONSTRUCT': 'ボトルネックは再構成に必要な構造だけを残す',
+    'The dendrogram preserves every possible cluster cut.': '樹形図は、ありうるすべてのクラスターの切り方を保つ。',
+    'agglomerative example · merge height represents dissimilarity · cut height determines K': '凝集型の例 · 統合の高さが非類似度を表す · 切る高さで K が決まる',
+    'CUT HERE → 3 CLUSTERS': 'ここで切る → 3 クラスター',
+    'Hidden neurons combine every input into learned representations.': '隠れニューロンは、すべての入力を組み合わせて学習した表現にする。',
+    'lines = learned weights · nodes = neurons · nonlinear activations create flexible boundaries': '線 = 学習した重み · ノード = ニューロン · 非線形の活性化が柔軟な境界をつくる',
+    'INPUT': '入力層',
+    'HIDDEN 1': '隠れ層 1',
+    'HIDDEN 2': '隠れ層 2',
+    'OUTPUT': '出力層',
+    'Each action changes both the reward and what happens next.': 'それぞれの行動が、報酬とその後の展開の両方を変える。',
+    'closed feedback loop · policy balances exploration with exploitation': '閉じたフィードバック・ループ · 方策は探索と活用のバランスをとる',
+    'STATE sₜ': '状態 sₜ',
+    'AGENT / POLICY': 'エージェント / 方策',
+    'ACTION aₜ': '行動 aₜ',
+    'ENVIRONMENT': '環境',
+    'REWARD rₜ₊₁ + NEW STATE': '報酬 rₜ₊₁ + 新しい状態',
+    'MAXIMIZE EXPECTED DISCOUNTED CUMULATIVE REWARD': '割り引いた累積報酬の期待値を最大化する',
+  },
+  fr: {
+    'Machine-learning concepts': 'Notions d’apprentissage automatique',
+    'The widest safe street defines the classifier.': 'La rue sûre la plus large définit le classifieur.',
+    'two classes · solid line = decision boundary · dashed lines = margins · circled points = support vectors': 'deux classes · ligne pleine = frontière de décision · pointillés = marges · points cerclés = vecteurs de support',
+    'MAXIMUM MARGIN': 'MARGE MAXIMALE',
+    'FEATURE 1 →': 'CARACTÉRISTIQUE 1 →',
+    'Every split narrows the decision.': 'Chaque division resserre la décision.',
+    'binary classification tree · terminal leaves return the majority class': 'arbre de classification binaire · les feuilles renvoient la classe majoritaire',
+    'FCF growth > 4%?': 'Croissance du FCF > 4 % ?',
+    'Interest coverage > 3×?': 'Couv. des intérêts > 3× ?',
+    'No increase': 'Pas de hausse',
+    'Increase': 'Hausse',
+    'NO': 'NON',
+    'YES': 'OUI',
+    'Correlated features converge into orthogonal directions.': 'Des caractéristiques corrélées convergent vers des directions orthogonales.',
+    'lines = feature loadings · larger hubs = more variance explained': 'lignes = poids des caractéristiques · plus le nœud est grand, plus la variance expliquée est forte',
+    'MARGIN': 'MARGE',
+    'GROWTH': 'CROISSANCE',
+    'LEVERAGE': 'LEVIER',
+    'YIELD': 'RENDEMENT',
+    'Compression succeeds only if the decoder can rebuild the input.': 'La compression ne réussit que si le décodeur peut reconstruire l’entrée.',
+    'encoder → bottleneck → decoder · training minimizes reconstruction error ‖x − x̂‖²': 'encodeur → goulot → décodeur · l’entraînement minimise l’erreur de reconstruction ‖x − x̂‖²',
+    'INPUT x': 'ENTRÉE x',
+    'ENCODER': 'ENCODEUR',
+    'LATENT z': 'LATENT z',
+    'DECODER': 'DÉCODEUR',
+    'RECONSTRUCTION x̂': 'RECONSTRUCTION x̂',
+    'THE BOTTLENECK RETAINS ONLY THE STRUCTURE NEEDED TO RECONSTRUCT': 'LE GOULOT NE GARDE QUE LA STRUCTURE NÉCESSAIRE À LA RECONSTRUCTION',
+    'The dendrogram preserves every possible cluster cut.': 'Le dendrogramme conserve toutes les découpes possibles en groupes.',
+    'agglomerative example · merge height represents dissimilarity · cut height determines K': 'exemple ascendant · la hauteur de fusion représente la dissimilarité · la hauteur de coupe fixe K',
+    'CUT HERE → 3 CLUSTERS': 'COUPER ICI → 3 GROUPES',
+    'Hidden neurons combine every input into learned representations.': 'Les neurones cachés combinent toutes les entrées en représentations apprises.',
+    'lines = learned weights · nodes = neurons · nonlinear activations create flexible boundaries': 'lignes = poids appris · nœuds = neurones · les activations non linéaires créent des frontières souples',
+    'INPUT': 'ENTRÉE',
+    'HIDDEN 1': 'CACHÉE 1',
+    'HIDDEN 2': 'CACHÉE 2',
+    'OUTPUT': 'SORTIE',
+    'Each action changes both the reward and what happens next.': 'Chaque action modifie à la fois la récompense et la suite.',
+    'closed feedback loop · policy balances exploration with exploitation': 'boucle de rétroaction fermée · la politique arbitre entre exploration et exploitation',
+    'STATE sₜ': 'ÉTAT sₜ',
+    'AGENT / POLICY': 'AGENT / POLITIQUE',
+    'ACTION aₜ': 'ACTION aₜ',
+    'ENVIRONMENT': 'ENVIRONNEMENT',
+    'REWARD rₜ₊₁ + NEW STATE': 'RÉCOMPENSE rₜ₊₁, ÉTAT sₜ₊₁',
+    'MAXIMIZE EXPECTED DISCOUNTED CUMULATIVE REWARD': 'MAXIMISER LA RÉCOMPENSE CUMULÉE ACTUALISÉE ATTENDUE',
+  },
+});
+chartI18n.use({
+  zh: {
+    "the original features": "原始特征",
+    "compresses x into fewer dimensions": "把 x 压缩到更少的维度",
+    "the compact code, the bottleneck": "紧凑的编码，即瓶颈",
+    "expands z back to the input size": "把 z 还原到输入的大小",
+    "compared with x: training minimizes ‖x − x̂‖²": "与 x 比较：训练使 ‖x − x̂‖² 最小",
+    "No → no increase · Yes → test interest coverage": "否 → 不提高 · 是 → 检验利息保障倍数",
+    "firms without FCF growth above 4%": "FCF 增长不超过 4% 的公司",
+    "only firms with FCF growth above 4% reach it": "只有 FCF 增长超过 4% 的公司才会走到这里",
+    "growth, but interest coverage of 3× or less": "有增长，但利息保障倍数不超过 3 倍",
+    "growth and coverage above 3×: the dividend rises": "有增长且保障倍数超过 3 倍：提高股息",
+    "the most similar pair, merged at a low height": "最相似的一对，在较低高度合并",
+    "merged above the cut, so they stay apart at K = 3": "在切割线以上合并，所以 K = 3 时保持分开",
+    "All four": "全部四个",
+    "the last merge, at the greatest dissimilarity": "最后一次合并，差异最大",
+    "Cut height": "切割高度",
+    "branches crossing it: {A, B}, {C}, {D} → K = 3": "与之相交的分支：{A, B}、{C}、{D} → K = 3",
+    "MARGIN, GROWTH, LEVERAGE": "利润率、增长、杠杆",
+    "what the agent observes now": "智能体当前观察到的",
+    "chooses an action from the state": "根据状态选择行动",
+    "what the agent does": "智能体所做的",
+    "responds to the action": "对行动作出反应",
+    "feeds back into the next decision": "反馈到下一次决策",
+    "Margin": "间隔边界",
+    "the closest + points sit on or beyond it": "最近的 + 类点位于其上或其外",
+    "the closest − points sit on or beyond it": "最近的 − 类点位于其上或其外",
+    "Decision boundary": "决策边界",
+    "halfway between the two margins": "位于两条间隔边界正中间",
+  },
+  ja: {
+    "the original features": "元の特徴量",
+    "compresses x into fewer dimensions": "x をより少ない次元に圧縮する",
+    "the compact code, the bottleneck": "コンパクトな符号、ボトルネック",
+    "expands z back to the input size": "z を入力の大きさに戻す",
+    "compared with x: training minimizes ‖x − x̂‖²": "x と比較：学習で ‖x − x̂‖² を最小化する",
+    "No → no increase · Yes → test interest coverage": "いいえ → 増配なし · はい → インタレスト・カバレッジを確認",
+    "firms without FCF growth above 4%": "FCF 成長率が 4% を超えない企業",
+    "only firms with FCF growth above 4% reach it": "FCF 成長率が 4% を超える企業だけがここに来る",
+    "growth, but interest coverage of 3× or less": "成長はあるが、インタレスト・カバレッジが 3 倍以下",
+    "growth and coverage above 3×: the dividend rises": "成長があり、カバレッジも 3 倍超：増配",
+    "the most similar pair, merged at a low height": "最も似たペア、低い高さで結合",
+    "merged above the cut, so they stay apart at K = 3": "カットより上で結合するので、K = 3 では別々のまま",
+    "All four": "4 つすべて",
+    "the last merge, at the greatest dissimilarity": "最後の結合、非類似度が最大",
+    "Cut height": "カットの高さ",
+    "branches crossing it: {A, B}, {C}, {D} → K = 3": "交わる枝：{A, B}、{C}、{D} → K = 3",
+    "MARGIN, GROWTH, LEVERAGE": "利益率、成長、レバレッジ",
+    "what the agent observes now": "エージェントが今観測しているもの",
+    "chooses an action from the state": "状態から行動を選ぶ",
+    "what the agent does": "エージェントが行うこと",
+    "responds to the action": "行動に反応する",
+    "feeds back into the next decision": "次の判断にフィードバックされる",
+    "Margin": "マージン",
+    "the closest + points sit on or beyond it": "最も近い + の点はその上か外側にある",
+    "the closest − points sit on or beyond it": "最も近い − の点はその上か外側にある",
+    "Decision boundary": "決定境界",
+    "halfway between the two margins": "2 つのマージンのちょうど中間",
+  },
+  fr: {
+    "the original features": "les variables d’origine",
+    "compresses x into fewer dimensions": "compresse x en moins de dimensions",
+    "the compact code, the bottleneck": "le code compact, le goulot d’étranglement",
+    "expands z back to the input size": "ramène z à la taille de l’entrée",
+    "compared with x: training minimizes ‖x − x̂‖²": "comparé à x : l’entraînement minimise ‖x − x̂‖²",
+    "No → no increase · Yes → test interest coverage": "Non → pas de hausse · Oui → tester la couverture des intérêts",
+    "firms without FCF growth above 4%": "entreprises sans croissance du FCF supérieure à 4 %",
+    "only firms with FCF growth above 4% reach it": "seules les entreprises dont le FCF croît de plus de 4 % y arrivent",
+    "growth, but interest coverage of 3× or less": "croissance, mais couverture des intérêts de 3× ou moins",
+    "growth and coverage above 3×: the dividend rises": "croissance et couverture supérieure à 3× : le dividende augmente",
+    "the most similar pair, merged at a low height": "la paire la plus similaire, fusionnée à faible hauteur",
+    "merged above the cut, so they stay apart at K = 3": "fusionnées au-dessus de la coupe, elles restent séparées pour K = 3",
+    "All four": "Les quatre",
+    "the last merge, at the greatest dissimilarity": "la dernière fusion, à la plus grande dissimilarité",
+    "Cut height": "Hauteur de coupe",
+    "branches crossing it: {A, B}, {C}, {D} → K = 3": "branches qui la croisent : {A, B}, {C}, {D} → K = 3",
+    "MARGIN, GROWTH, LEVERAGE": "MARGE, CROISSANCE, LEVIER",
+    "what the agent observes now": "ce que l’agent observe maintenant",
+    "chooses an action from the state": "choisit une action à partir de l’état",
+    "what the agent does": "ce que fait l’agent",
+    "responds to the action": "réagit à l’action",
+    "feeds back into the next decision": "alimente la décision suivante",
+    "Margin": "Marge",
+    "the closest + points sit on or beyond it": "les points + les plus proches sont dessus ou au-delà",
+    "the closest − points sit on or beyond it": "les points − les plus proches sont dessus ou au-delà",
+    "Decision boundary": "Frontière de décision",
+    "halfway between the two margins": "à mi-chemin entre les deux marges",
+  },
+}, {
+  patterns: {
+  zh: [
+    [/^Observation\ (.+)$/, "观测值 $1"],
+    [/^merges\ first,\ with\ (.+)$/, "最先与 $1 合并"],
+    [/^merges\ with\ (.+)\ only\ above\ the\ cut$/, "只在切割线以上才与 $1 合并"],
+    [/^input\ feature\ ·\ feeds\ all\ ([−\-+]?[\d][\d,.]*%?)\ first\-layer\ neurons$/, "输入特征 · 输入第一层全部 $1 个神经元"],
+    [/^weighted\ sum\ of\ ([−\-+]?[\d][\d,.]*%?)\ inputs,\ then\ a\ nonlinear\ activation$/, "$1 个输入的加权和，再经过非线性激活"],
+    [/^prediction\ ·\ weighs\ ([−\-+]?[\d][\d,.]*%?)\ second\-layer\ neurons$/, "预测 · 对第二层 $1 个神经元加权"],
+    [/^loads\ mainly\ on\ PC\ ([−\-+]?[\d][\d,.]*%?)$/, "主要载荷在 PC $1 上"],
+    [/^PC\ ([−\-+]?[\d][\d,.]*%?)\ explains\ ([−\-+]?[\d][\d,.]*%?)\ of\ the\ variance$/, "PC $1 解释 $2 的方差"],
+    [/^Class\ \+\ ·\ observation\ ([−\-+]?[\d][\d,.]*%?)$/, "+ 类 · 观测值 $1"],
+    [/^Class\ −\ ·\ observation\ ([−\-+]?[\d][\d,.]*%?)$/, "− 类 · 观测值 $1"],
+    [/^feature\ ([−\-+]?[\d][\d,.]*%?)\ at\ ([−\-+]?[\d][\d,.]*%?)\ of\ ([−\-+]?[\d][\d,.]*%?)$/, "特征 $1 为 $2（满分 $3）"],
+  ],
+  ja: [
+    [/^Observation\ (.+)$/, "観測値 $1"],
+    [/^merges\ first,\ with\ (.+)$/, "最初に $1 と結合"],
+    [/^merges\ with\ (.+)\ only\ above\ the\ cut$/, "カットより上でのみ $1 と結合"],
+    [/^input\ feature\ ·\ feeds\ all\ ([−\-+]?[\d][\d,.]*%?)\ first\-layer\ neurons$/, "入力特徴量 · 第 1 層の $1 個すべてのニューロンに入る"],
+    [/^weighted\ sum\ of\ ([−\-+]?[\d][\d,.]*%?)\ inputs,\ then\ a\ nonlinear\ activation$/, "$1 個の入力の加重和、その後に非線形の活性化"],
+    [/^prediction\ ·\ weighs\ ([−\-+]?[\d][\d,.]*%?)\ second\-layer\ neurons$/, "予測 · 第 2 層の $1 個のニューロンを加重"],
+    [/^loads\ mainly\ on\ PC\ ([−\-+]?[\d][\d,.]*%?)$/, "主に PC $1 に負荷"],
+    [/^PC\ ([−\-+]?[\d][\d,.]*%?)\ explains\ ([−\-+]?[\d][\d,.]*%?)\ of\ the\ variance$/, "PC $1 が分散の $2 を説明"],
+    [/^Class\ \+\ ·\ observation\ ([−\-+]?[\d][\d,.]*%?)$/, "クラス + · 観測値 $1"],
+    [/^Class\ −\ ·\ observation\ ([−\-+]?[\d][\d,.]*%?)$/, "クラス − · 観測値 $1"],
+    [/^feature\ ([−\-+]?[\d][\d,.]*%?)\ at\ ([−\-+]?[\d][\d,.]*%?)\ of\ ([−\-+]?[\d][\d,.]*%?)$/, "特徴量 $1 は $3 中 $2"],
+  ],
+  fr: [
+    [/^Observation\ (.+)$/, "Observation $1"],
+    [/^merges\ first,\ with\ (.+)$/, "fusionne d’abord, avec $1"],
+    [/^merges\ with\ (.+)\ only\ above\ the\ cut$/, "fusionne avec $1 seulement au-dessus de la coupe"],
+    [/^input\ feature\ ·\ feeds\ all\ ([−\-+]?[\d][\d,.]*%?)\ first\-layer\ neurons$/, "variable d’entrée · alimente les $1 neurones de la première couche"],
+    [/^weighted\ sum\ of\ ([−\-+]?[\d][\d,.]*%?)\ inputs,\ then\ a\ nonlinear\ activation$/, "somme pondérée de $1 entrées, puis une activation non linéaire"],
+    [/^prediction\ ·\ weighs\ ([−\-+]?[\d][\d,.]*%?)\ second\-layer\ neurons$/, "prédiction · pondère $1 neurones de la deuxième couche"],
+    [/^loads\ mainly\ on\ PC\ ([−\-+]?[\d][\d,.]*%?)$/, "charge surtout sur la PC $1"],
+    [/^PC\ ([−\-+]?[\d][\d,.]*%?)\ explains\ ([−\-+]?[\d][\d,.]*%?)\ of\ the\ variance$/, "la PC $1 explique $2 de la variance"],
+    [/^Class\ \+\ ·\ observation\ ([−\-+]?[\d][\d,.]*%?)$/, "Classe + · observation $1"],
+    [/^Class\ −\ ·\ observation\ ([−\-+]?[\d][\d,.]*%?)$/, "Classe − · observation $1"],
+    [/^feature\ ([−\-+]?[\d][\d,.]*%?)\ at\ ([−\-+]?[\d][\d,.]*%?)\ of\ ([−\-+]?[\d][\d,.]*%?)$/, "variable $1 à $2 sur $3"],
+  ],
+  },
+  html: {
+  zh: {
+
+  },
+  ja: {
+
+  },
+  fr: {
+
+  },
+  },
+});
+
+  </script>
+  <script>
+  const NS='http://www.w3.org/2000/svg', PAPER='#F0EFEB',INK='#1C1C1A',G1='#4A4944',G2='#6A6963',G3='#8A8983',G4='#A8A7A0',G5='#B0AFA9',G6='#C6C5BF',GRID='#D8D6CE',FAINT='#E3E2DB';
+  const rnd=(a,b)=>{let x=Math.sin(a*127.1+b*311.7)*43758.5453;return x-Math.floor(x)};
+  const T=(s)=>(window.chartI18n?chartI18n.t(s):s);
+  const svg=document.querySelector('#chart');
+  const el=(tag,a={},text='')=>{const n=document.createElementNS(NS,tag);Object.entries(a).forEach(([k,v])=>n.setAttribute(k,v));if(text)n.textContent=text;svg.append(n);return n};
+  const line=(x1,y1,x2,y2,a={})=>el('line',{x1,y1,x2,y2,stroke:G5,'stroke-width':1,pathLength:1,class:'draw',...a});
+  const text=(x,y,s,a={})=>el('text',{x,y,fill:G2,'font-size':10,'font-weight':600,...a},s);
+  const dot=(x,y,r=5,a={})=>{const n=el('circle',{cx:x,cy:y,r,fill:INK,class:'pop',...a});return n};
+  const labelBox=(x,y,w,h,label,dark=false,hover={})=>{el('rect',{x,y,width:w,height:h,rx:12,fill:dark?INK:FAINT,class:'pop',...hover});text(x+w/2,y+h/2+4,label,{fill:dark?PAPER:INK,'text-anchor':'middle','font-size':11,'font-weight':800,class:'fade',...hover});};
+  const arrow=(x1,y1,x2,y2,delay=0,hover={})=>{line(x1,y1,x2,y2,{stroke:G4,'stroke-width':1.2,'marker-end':'url(#arrow)',style:`animation-delay:${delay}s`,...hover})};
+  // A wide invisible twin makes a hairline easy to hover.
+  const hit=(x1,y1,x2,y2,hover)=>el('line',{x1,y1,x2,y2,stroke:'transparent','stroke-width':12,...hover});
+  function defs(){const d=el('defs'),m=document.createElementNS(NS,'marker');m.setAttribute('id','arrow');m.setAttribute('viewBox','0 0 10 10');m.setAttribute('refX','8');m.setAttribute('refY','5');m.setAttribute('markerWidth','6');m.setAttribute('markerHeight','6');m.setAttribute('orient','auto-start-reverse');const p=document.createElementNS(NS,'path');p.setAttribute('d','M 0 0 L 10 5 L 0 10 z');p.setAttribute('fill',G4);m.append(p);d.append(m)}
+  const V={
+    svm:{title:'The widest safe street defines the classifier.',sub:'two classes · solid line = decision boundary · dashed lines = margins · circled points = support vectors',src:'PLUMB SCATTER · F8 MONO-BASIC · ILLUSTRATIVE DATA',render(){
+      const pts=[];for(let i=0;i<14;i++)pts.push([125+rnd(i,2)*210,65+rnd(i,5)*105,'+']);for(let i=0;i<14;i++)pts.push([465+rnd(i,7)*210,150+rnd(i,9)*105,'−']);
+      for(let x=55;x<=745;x+=34)line(x,270,x,264,{stroke:GRID,'stroke-width':.7,style:`animation-delay:${x/3000}s`});line(55,270,745,270,{stroke:GRID});
+      const lineTips=['Margin\nthe closest + points sit on or beyond it','Decision boundary\nhalfway between the two margins','Margin\nthe closest − points sit on or beyond it'];
+      [[315,45,465,275,'5 5'],[365,45,515,275,'none'],[415,45,565,275,'5 5']].forEach((d,i)=>{const hover={'data-hl':`m${i}`,'data-tip':lineTips[i]};line(d[0],d[1],d[2],d[3],{stroke:i===1?INK:G4,'stroke-width':i===1?2:1,'stroke-dasharray':d[4],style:`animation-delay:${.2+i*.12}s`,...hover});hit(d[0],d[1],d[2],d[3],hover)});
+      pts.forEach(([x,y,c],i)=>{line(x,270,x,y,{stroke:FAINT,'stroke-width':.55,style:`animation-delay:${.25+i*.018}s`});dot(x,y,4,{fill:c==='+'?INK:PAPER,stroke:INK,'stroke-width':1.4,style:`animation-delay:${.3+i*.018}s`,'data-hl':c==='+'?'pos':'neg','data-tip':`Class ${c} · observation ${i%14+1}\nfeature 1 at ${Math.round((x-55)/6.9)} of 100`});text(x,y+3,c,{fill:c==='+'?PAPER:INK,'text-anchor':'middle','font-size':8,class:'fade',style:`animation-delay:${.45+i*.018}s`})});
+      text(526,68,'MAXIMUM MARGIN',{fill:INK,'font-size':9,'letter-spacing':'.1em'});text(60,294,'FEATURE 1 →',{'font-size':8,'letter-spacing':'.1em'});
+    }},
+    cart:{title:'Every split narrows the decision.',sub:'binary classification tree · terminal leaves return the majority class',src:'TREE LR · G7 MONO · DIVIDEND-CLASSIFICATION EXAMPLE',render(){
+      const nodes=[[400,35,190,44,'FCF growth > 4%?'],[255,130,175,44,'No increase'],[545,130,200,44,'Interest coverage > 3×?'],[455,230,175,44,'No increase'],[650,230,175,44,'Increase']];
+      const tips=['Root split\nNo → no increase · Yes → test interest coverage','Leaf\nfirms without FCF growth above 4%','Second split\nonly firms with FCF growth above 4% reach it','Leaf\ngrowth, but interest coverage of 3× or less','Leaf\ngrowth and coverage above 3×: the dividend rises'];
+      [[400,79,255,130,0,1],[400,79,545,130,0,2],[545,174,455,230,2,3],[545,174,650,230,2,4]].forEach(([a,b,c,d,f,t],i)=>arrow(a,b,c,d,i*.12,{'data-edge':`n${f}>n${t}`}));nodes.forEach((n,i)=>labelBox(n[0]-n[2]/2,n[1],n[2],n[3],n[4],i===4,{'data-node':`n${i}`,'data-tip':`${T(n[4])}\n${tips[i].split('\n')[1]}`}));text(303,102,'NO',{'font-size':8});text(487,102,'YES',{'font-size':8});text(486,207,'NO',{'font-size':8});text(605,207,'YES',{'font-size':8});
+    }},
+    pca:{title:'Correlated features converge into orthogonal directions.',sub:'lines = feature loadings · larger hubs = more variance explained',src:'RADIAL CONVERGENCE · L5 MONO-EDITORIAL · PCA CONCEPT',render(){
+      const feats=['P/E','P/B','E/P','ROE','MARGIN','GROWTH','LEVERAGE','YIELD'], hubs=[[390,115,'PC 1 · 52%',28],[515,205,'PC 2 · 24%',19],[275,220,'PC 3 · 11%',13]];
+      const hubOf=(i)=>i<4?0:i<7?1:2;
+      feats.forEach((f,i)=>{const a=-155+i*310/(feats.length-1),x=400+330*Math.cos(a*Math.PI/180),y=160+125*Math.sin(a*Math.PI/180),h=hubOf(i);const [hx,hy,hs]=hubs[h];const hover={'data-hl':`f${i}`,'data-tip':`${f}\nloads mainly on ${hs.split(' · ')[0]}`};el('path',{d:`M${x} ${y} Q400 160 ${hx} ${hy}`,fill:'none',stroke:G5,'stroke-width':.8,pathLength:1,class:'draw',style:`animation-delay:${i*.07}s`,...hover});dot(x,y,3,{fill:G2,style:`animation-delay:${i*.07}s`,...hover});text(x,y+(y<160?-9:15),f,{'text-anchor':'middle','font-size':8,class:'fade',...hover})});hubs.forEach(([x,y,s,r],i)=>{const mine=feats.map((f,k)=>hubOf(k)===i?k:-1).filter((k)=>k>=0);dot(x,y,r,{style:`animation-delay:${.45+i*.12}s`,'data-hl':mine.map((k)=>`f${k}`).join(' '),'data-tip':`${s.replace(' · ',' explains ')} of the variance\n${mine.map((k)=>feats[k]).join(', ')}`});text(x,y+4,s,{fill:PAPER,'text-anchor':'middle','font-size':9,'font-weight':800,class:'fade',style:`animation-delay:${.55+i*.12}s`})});
+    }},
+    autoencoder:{title:'Compression succeeds only if the decoder can rebuild the input.',sub:'encoder → bottleneck → decoder · training minimizes reconstruction error ‖x − x̂‖²',src:'TREND LINEAGE · L11 MONO-EDITORIAL · AUTOENCODER FLOW',render(){
+      const xs=[75,235,400,565,725], labels=['INPUT x','ENCODER','LATENT z','DECODER','RECONSTRUCTION x̂'], sizes=[120,115,90,115,140];const tips=['the original features','compresses x into fewer dimensions','the compact code, the bottleneck','expands z back to the input size','compared with x: training minimizes ‖x − x̂‖²'];xs.forEach((x,i)=>{if(i<4)arrow(x+sizes[i]/2-5,157,xs[i+1]-sizes[i+1]/2+5,157,.12*i,{'data-edge':`a${i}>a${i+1}`});labelBox(x-sizes[i]/2,133,sizes[i],48,labels[i],i===2,{'data-node':`a${i}`,'data-tip':`${T(labels[i])}\n${tips[i]}`})});text(400,225,'THE BOTTLENECK RETAINS ONLY THE STRUCTURE NEEDED TO RECONSTRUCT',{fill:G2,'text-anchor':'middle','font-size':9,'letter-spacing':'.08em'});
+    }},
+    hierarchy:{title:'The dendrogram preserves every possible cluster cut.',sub:'agglomerative example · merge height represents dissimilarity · cut height determines K',src:'TREE LR · G7 MONO · HIERARCHICAL CLUSTERING',render(){
+      // Each mark carries its place in the tree: hovering a leaf lights the merges above it.
+      const x=[125,260,520,675], base=270, leaf=['all/AB/A','all/AB/B','all/CD/C','all/CD/D'];
+      const P=(path,tip)=>(tip?{'data-path':path,'data-tip':tip}:{'data-path':path});
+      ['A','B','C','D'].forEach((s,i)=>{dot(x[i],base,5,{style:`animation-delay:${i*.08}s`,...P(leaf[i],`Observation ${s}\n${i<2?'merges first, with '+(i?'A':'B'):'merges with '+(i===2?'D':'C')+' only above the cut'}`)});text(x[i],295,s,{'text-anchor':'middle','font-weight':800,...P(leaf[i])})});
+      const ab=P('all/AB','A + B\nthe most similar pair, merged at a low height'),cd=P('all/CD','C + D\nmerged above the cut, so they stay apart at K = 3'),top=P('all','All four\nthe last merge, at the greatest dissimilarity');
+      line(125,270,125,190,P(leaf[0]));line(260,270,260,190,P(leaf[1]));line(125,190,260,190,ab);line(192.5,190,192.5,105,ab);line(520,270,520,120,P(leaf[2]));line(675,270,675,120,P(leaf[3]));line(520,120,675,120,cd);line(597.5,120,597.5,105,cd);line(192.5,105,597.5,105,top);line(395,105,395,65,top);
+      [[125,190,260,190,ab],[520,120,675,120,cd],[192.5,105,597.5,105,top]].forEach(([a,b,c,d,h])=>hit(a,b,c,d,h));
+      line(65,135,735,135,{stroke:G3,'stroke-dasharray':'6 5','data-tip':'Cut height\nbranches crossing it: {A, B}, {C}, {D} → K = 3'});hit(65,135,735,135,{'data-tip':'Cut height\nbranches crossing it: {A, B}, {C}, {D} → K = 3'});text(70,126,'CUT HERE → 3 CLUSTERS',{'font-size':9,'letter-spacing':'.08em',fill:INK});
+    }},
+    neural:{title:'Hidden neurons combine every input into learned representations.',sub:'lines = learned weights · nodes = neurons · nonlinear activations create flexible boundaries',src:'RADIAL CONVERGENCE · L5 MONO-EDITORIAL · FEEDFORWARD NETWORK',render(){
+      const cols=[{x:105,ys:[80,155,230],l:['x₁','x₂','x₃']},{x:330,ys:[65,125,185,245],l:['h₁','h₂','h₃','h₄']},{x:555,ys:[100,205],l:['h₅','h₆']},{x:720,ys:[155],l:['ŷ']}];cols.slice(0,-1).forEach((c,ci)=>c.ys.forEach((y,i)=>cols[ci+1].ys.forEach((ny,j)=>line(c.x,y,cols[ci+1].x,ny,{stroke:(i+j)%3===0?G3:G6,'stroke-width':.7,style:`animation-delay:${.02*(i+j+ci)}s`,'data-edge':`${ci}-${i}>${ci+1}-${j}`}))));
+      // A neuron lights its weights and the neurons on their other ends.
+      const role=(ci,i)=>ci===0?`input feature · feeds all ${cols[1].ys.length} first-layer neurons`:ci===3?`prediction · weighs ${cols[2].ys.length} second-layer neurons`:`weighted sum of ${cols[ci-1].ys.length} inputs, then a nonlinear activation`;
+      cols.forEach((c,ci)=>c.ys.forEach((y,i)=>{const hover={'data-node':`${ci}-${i}`,'data-tip':`${c.l[i]}\n${role(ci,i)}`};dot(c.x,y,ci===3?15:10,{fill:ci===3?INK:ci===0?G2:PAPER,stroke:INK,'stroke-width':1.4,style:`animation-delay:${.3+ci*.15}s`,...hover});text(c.x,y+3,c.l[i],{fill:ci===0||ci===3?PAPER:INK,'text-anchor':'middle','font-size':9,'font-weight':800,class:'fade',style:`animation-delay:${.4+ci*.15}s`,...hover})}));['INPUT','HIDDEN 1','HIDDEN 2','OUTPUT'].forEach((s,i)=>text(cols[i].x,292,s,{'text-anchor':'middle','font-size':8,'letter-spacing':'.12em'}));
+    }},
+    rl:{title:'Each action changes both the reward and what happens next.',sub:'closed feedback loop · policy balances exploration with exploitation',src:'TREND LINEAGE · L11 MONO-EDITORIAL · REINFORCEMENT LOOP',render(){
+      const n=[[105,130,130,'STATE sₜ'],[325,65,145,'AGENT / POLICY'],[565,65,145,'ACTION aₜ'],[675,205,160,'ENVIRONMENT'],[355,220,205,'REWARD rₜ₊₁ + NEW STATE']];const tips=['what the agent observes now','chooses an action from the state','what the agent does','responds to the action','feeds back into the next decision'];n.forEach((d,i)=>labelBox(d[0]-d[2]/2,d[1],d[2],46,d[3],i===1,{'data-node':`r${i}`,'data-tip':`${T(d[3])}\n${tips[i]}`}));[[170,153,252,95],[398,88,492,88],[605,111,650,205],[595,228,458,243],[252,243,150,176]].forEach(([a,b,c,d],i)=>arrow(a,b,c,d,.1*(i+1),{'data-edge':`r${i}>r${(i+1)%5}`}));text(400,298,'MAXIMIZE EXPECTED DISCOUNTED CUMULATIVE REWARD',{'text-anchor':'middle','font-size':9,'letter-spacing':'.1em',fill:INK});
+    }}
+  };
+  function render(){svg.innerHTML='';defs();const key=new URLSearchParams(location.search).get('view')||'svm',v=V[key]||V.svm;document.querySelector('#title').textContent=v.title;document.querySelector('#sub').textContent=v.sub;document.querySelector('#src').textContent=v.src;svg.setAttribute('aria-label',v.title);v.render()}
+  render();document.querySelector('#card').addEventListener('click',render);
+  </script>
+</body>
+</html>

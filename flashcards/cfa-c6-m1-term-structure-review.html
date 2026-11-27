@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Fixed Income M1 — Term Structure and Interest Rate Dynamics review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    "id": "fi1-spot",
+    "topic": "Spot rates · discount factors",
+    "front": "What is a spot rate, and how does it give the discount factor \\(P(n)\\)? With \\(s_5=3.30\\%\\), what is \\(P(5)\\)?",
+    "back": "<div class=\"ans\"><p>The rate, observed <strong>today</strong>, for a single payment in year \\(n\\): the yield on an \\(n\\)-year <strong>zero-coupon</strong> bond (the zero rate).</p><div class=\"eq-block\">$$P(n)=\\frac{1}{(1+s_n)^n}$$</div><p>\\(P(5)=1/1.033^5=0.8502\\): PV = FV × \\(P(n)\\), so discounting becomes multiplication.</p></div>",
+    "gap": "Long spot rates are usually bootstrapped from coupon bonds, not observed directly."
+  },
+  {
+    "id": "fi1-forward-def",
+    "topic": "Forward rates · definition",
+    "front": "Define \\(f(j,k)\\) and the forward discount factor \\(F(j,k)\\). How does \\(F\\) relate to the spot discount factors?",
+    "back": "<div class=\"ans\"><p>\\(f(j,k)\\): the rate agreed <strong>today</strong> for a loan starting in year \\(j\\) and running \\(k\\) years (ending in \\(j+k\\)).</p><div class=\"eq-block\">$$F(j,k)=\\frac{1}{(1+f(j,k))^k}=\\frac{P(j+k)}{P(j)}$$</div></div>"
+  },
+  {
+    "id": "fi1-forward-curve",
+    "topic": "Forward curves · L2 vs L1",
+    "front": "How does the Level II definition of a forward curve differ from Level I?",
+    "back": "<div class=\"ans\"><ul><li><strong>Level II</strong>: the term structure of forward rates \\(f(j,k)\\) against the tenor \\(k\\), all with the <strong>same initiation date</strong> \\(j\\). The spot curve is \\(j=0\\)</li><li><strong>Level I</strong>: forwards with the <strong>same tenor</strong> (e.g., one-year forwards \\(f(1,1), f(2,1),\\dots\\)) plotted against their start or end year</li></ul></div>",
+    "gap": "In the market, forward curves are often drawn on calendar years, each starting at its own initiation year."
+  },
+  {
+    "id": "fi1-forward-model",
+    "topic": "Forward rate model",
+    "front": "Give the no-arbitrage link between spot and forward rates. With \\(s_1=2.00\\%\\) and \\(s_2=2.40\\%\\), find \\(f(1,1)\\).",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$(1+s_{j+k})^{j+k}=(1+s_j)^j\\,(1+f(j,k))^k$$</div><div class=\"eq-block\">$$f(1,1)=\\frac{1.024^2}{1.02}-1=2.80\\%$$</div><p>Arbitrage forces both routes to pay the same.</p></div>",
+    "gap": "Shortcut: \\((j+k)s_{j+k}\\simeq j s_j+k f(j,k)\\), so \\(f(1,1)\\simeq2(2.40\\%)-2.00\\%=2.80\\%\\)."
+  },
+  {
+    "id": "fi1-above-below",
+    "topic": "Spot vs forward curves",
+    "front": "When does the forward curve lie above the spot curve, and why?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$f(j,k)\\simeq s_{j+k}+\\frac{j}{k}\\,(s_{j+k}-s_j)$$</div><ul><li><strong>Rising</strong> spot curve: \\(f(j,k)>s_{j+k}\\ge s_k\\): forwards <strong>above</strong></li><li><strong>Falling</strong> spot curve: forwards <strong>below</strong></li></ul><p>The long spot rate is roughly an average of \\(s_j\\) and \\(f(j,k)\\), so the forward sits on the far side of it.</p></div>",
+    "gap": "Example: \\(f(2,3)\\simeq3.30\\%+\\tfrac23(3.30\\%-2.40\\%)=3.90\\%\\), above \\(s_5=3.30\\%\\)."
+  },
+  {
+    "id": "fi1-convexity-shape",
+    "topic": "Spot curve shape → forward shape",
+    "front": "With continuous rates, how does the shape of the spot curve determine whether the forward curve rises or falls?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$f(t)=s(t)+t\\,s'(t)$$</div><div class=\"eq-block\">$$f'(t)=2s'(t)+t\\,s''(t)$$</div><ul><li><strong>Linear</strong> spot (\\(s''=0\\)): forward rises twice as steeply</li><li><strong>Concave</strong> rising spot: forward <strong>peaks</strong> where \\(t\\,s''=-2s'\\), then falls, while staying above the spot curve</li></ul></div>",
+    "gap": "A rising spot curve does not guarantee a rising forward curve: concavity can bend it down."
+  },
+  {
+    "id": "fi1-shapes",
+    "topic": "Yield curve shapes",
+    "front": "What shapes can the yield curve take, and what usually explains each?",
+    "back": "<div class=\"ans\"><ul><li><strong>Upward and concave</strong> (usual in developed markets): inflation premium with growth, plus a risk premium for longer bonds</li><li><strong>Inverted</strong>: uncommon; may reflect expected falls in inflation and policy rates, e.g., ahead of a recession</li><li><strong>Flat</strong>: a brief transition between upward-sloping and inverted</li><li><strong>Humped</strong>: intermediate maturities highest; rare</li></ul></div>"
+  },
+  {
+    "id": "fi1-par",
+    "topic": "Par rate",
+    "front": "Define the par rate and give its formula. Why is the par curve below a rising spot curve? Find \\(\\text{par}_2\\) with \\(P(1)=0.98039\\), \\(P(2)=0.95367\\).",
+    "back": "<div class=\"ans\"><p>The coupon rate that prices an \\(n\\)-year bond at <strong>par</strong>, discounting at the spot rates:</p><div class=\"eq-block\">$$\\text{par}_n=\\frac{1-P(n)}{\\sum_{i=1}^{n}P(i)}$$</div><p>\\(\\text{par}_2=0.04633/1.93406=2.395\\%\\). A par bond's yield averages the spot rates up to \\(n\\), so it sits below \\(s_n\\) when the curve rises.</p></div>",
+    "gap": "At par: YTM = coupon rate = par rate, and \\(\\text{par}_1=s_1\\)."
+  },
+  {
+    "id": "fi1-ytm",
+    "topic": "YTM",
+    "front": "What is the YTM, and when is it the investor's realized return?",
+    "back": "<div class=\"ans\"><p>The single discount rate that sets the PV of a bond's cash flows equal to its price: a cash-flow-weighted <strong>average</strong> of spot rates (equal to the spot rate if the curve is flat).</p><ul><li>Only if: payments made <strong>in full and on time</strong>, the bond is <strong>held to maturity</strong>, and coupons are <strong>reinvested at the YTM</strong></li></ul></div>",
+    "gap": "YTM is a poor estimate when rates are volatile, the curve is steep, there is default risk, or the bond has embedded options."
+  },
+  {
+    "id": "fi1-swap-rate",
+    "topic": "Swap rate",
+    "front": "Why is the swap rate a par rate?",
+    "back": "<div class=\"ans\"><ul><li>At initiation \\(V_{\\text{swap}}=0\\), so PV(fixed leg) = PV(floating leg)</li><li>Add a notional at the end: the legs become a fixed-rate bond and a floating-rate bond</li><li>A floater resets to the market rate, so it is priced at <strong>par</strong> → the fixed bond is at par too</li></ul><div class=\"eq-block\">$$\\text{Swap rate}_N=\\frac{1-P(N)}{\\sum_{i=1}^{N}P(i)}$$</div></div>",
+    "gap": "In a plain vanilla swap the fixed leg pays the swap rate; the floating leg pays the MRR (SOFR, formerly LIBOR)."
+  },
+  {
+    "id": "fi1-swap-curve",
+    "topic": "Swap curve as a benchmark",
+    "front": "Why do investors often prefer the swap curve to the government spot curve as a benchmark?",
+    "back": "<div class=\"ans\"><ul><li>More <strong>maturities</strong></li><li>Highly <strong>liquid</strong>, and efficient for hedging interest rate risk</li><li>Reflects <strong>bank credit risk</strong>, closer to private-sector borrowing costs</li><li><strong>Not government-regulated</strong> (OTC), so comparable across countries</li></ul></div>"
+  },
+  {
+    "id": "fi1-spreads",
+    "topic": "Spreads · G, I, swap",
+    "front": "Define the G-spread, I-spread and swap spread, and how they add up.",
+    "back": "<div class=\"ans\"><ul><li><strong>G-spread</strong> = bond yield − government yield (same maturity)</li><li><strong>I-spread</strong> = bond yield − swap rate (\\\"I\\\" = interpolated)</li><li><strong>Swap spread</strong> = swap rate − on-the-run government yield</li></ul><div class=\"eq-block\">$$\\text{G-spread}=\\text{Swap spread}+\\text{I-spread}$$</div></div>"
+  },
+  {
+    "id": "fi1-ispread-example",
+    "topic": "I-spread · example",
+    "front": "A 6-year corporate bond yields 4.80%. Swap rates: 5y 3.60%, 7y 3.90%. Government yields: 5y 3.20%, 7y 3.40%. Find the I-spread, swap spread and G-spread.",
+    "back": "<div class=\"ans\"><ul><li>6y swap \\(=3.60\\%+\\tfrac12(0.30\\%)=3.75\\%\\) → I-spread <strong>105 bps</strong></li><li>6y government \\(=3.30\\%\\) → G-spread <strong>150 bps</strong></li><li>Swap spread \\(=3.75\\%-3.30\\%=\\) <strong>45 bps</strong>: \\(45+105=150\\)</li></ul></div>"
+  },
+  {
+    "id": "fi1-ted-ois",
+    "topic": "TED and MRR–OIS spreads",
+    "front": "What do the TED spread and the MRR–OIS spread measure?",
+    "back": "<div class=\"ans\"><ul><li><strong>TED</strong> = 3-month MRR (LIBOR) − 3-month T-bill: credit and counterparty risk in the banking system; widening = rising perceived default risk</li><li><strong>MRR–OIS</strong>: the OIS floating leg is the geometric average of an overnight rate, almost free of credit risk, so the spread measures bank credit and liquidity risk over the term</li></ul></div>",
+    "gap": "LIBOR was phased out in 2021–2023; the same spreads work with any MRR such as SOFR."
+  },
+  {
+    "id": "fi1-zspread",
+    "topic": "Z-spread",
+    "front": "Define the Z-spread. A 3-year 5% annual-coupon bond is priced at 102.14, with spot rates 2.00%, 2.40%, 2.75%. Show that Z = 150 bps.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$P=\\sum_{t=1}^{N}\\frac{CF_t}{(1+s_t+Z)^t}$$</div><div class=\"eq-block\">$$\\begin{aligned}&\\frac{5}{1.035}+\\frac{5}{1.039^2}+\\frac{105}{1.0425^3}\\\\&=4.831+4.632+92.675=102.14\\end{aligned}$$</div></div>",
+    "gap": "The parallel shift is an assumption; with embedded options use the OAS instead."
+  },
+  {
+    "id": "fi1-pure-exp",
+    "topic": "Pure expectations theory",
+    "front": "State the pure expectations theory and what each curve shape implies.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$f(j,k)=E[s_k(j)]$$</div><ul><li>Upward → rates expected to <strong>rise</strong>; flat → <strong>unchanged</strong>; downward → <strong>fall</strong></li><li>Assumes <strong>risk neutrality</strong>: bonds of all maturities are perfect substitutes, with the same expected return over any horizon</li></ul></div>"
+  },
+  {
+    "id": "fi1-local-exp",
+    "topic": "Local expectations theory",
+    "front": "How does the local expectations theory differ from the pure expectations theory?",
+    "back": "<div class=\"ans\"><p>Risk neutrality is required only over <strong>short holding periods</strong>: over a short period every default-free bond is expected to earn the risk-free short rate. Risk premiums are allowed over longer horizons.</p></div>",
+    "gap": "In practice, long bonds tend to earn more than short bonds even over short periods."
+  },
+  {
+    "id": "fi1-liquidity",
+    "topic": "Liquidity preference theory",
+    "front": "State the liquidity preference theory and what each curve shape implies.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$f(j,k)=E[s_k(j)]+\\text{LP},\\quad\\text{LP}>0$$</div><ul><li>The premium <strong>rises with maturity</strong></li><li><strong>Upward</strong> curve: <strong>uncertain</strong>, rates may rise, stay flat or even fall slightly</li><li><strong>Flat</strong>: rates expected to <strong>fall</strong> slightly</li><li><strong>Downward</strong>: rates expected to <strong>fall</strong> significantly</li></ul></div>",
+    "gap": "An upward-sloping curve is not proof that rates will rise: it can be the premium alone."
+  },
+  {
+    "id": "fi1-segmented",
+    "topic": "Segmented markets vs preferred habitat",
+    "front": "Contrast the segmented market theory with the preferred habitat theory.",
+    "back": "<div class=\"ans\"><ul><li><strong>Segmented markets</strong>: each maturity's yield is set by supply and demand in that segment alone (e.g., ALM constraints); markets do <strong>not</strong> influence each other</li><li><strong>Preferred habitat</strong>: investors prefer certain maturities but <strong>will move</strong> for a high enough premium; premiums are not tied to maturity, so any shape, including humped, is possible</li></ul></div>"
+  },
+  {
+    "id": "fi1-factors",
+    "topic": "Yield curve factor model",
+    "front": "What are the three yield curve factors, and why decompose a curve move into them?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\Delta y(t)\\approx\\Delta X_L+\\Delta X_S\\,\\sigma(t)+\\Delta X_C\\,\\kappa(t)$$</div><ul><li><strong>Level</strong>: parallel shift; explains most of the variation</li><li><strong>Steepness</strong>: short end down, long end up</li><li><strong>Curvature</strong>: ends up, middle down</li></ul></div>",
+    "gap": "For a pure parallel shift, effective duration alone is enough."
+  },
+  {
+    "id": "fi1-duration",
+    "topic": "Duration and convexity (L1 review)",
+    "front": "Give the approximate modified duration, approximate convexity and the \\(\\Delta P/P\\) formula.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\text{ApproxModDur}=\\frac{PV_{-}-PV_{+}}{2\\,\\Delta y\\,PV_0}$$</div><div class=\"eq-block\">$$\\text{ApproxCon}=\\frac{PV_{-}+PV_{+}-2PV_0}{(\\Delta y)^2\\,PV_0}$$</div><div class=\"eq-block\">$$\\frac{\\Delta P}{P}\\approx-D\\,\\Delta y+\\tfrac12C(\\Delta y)^2$$</div></div>",
+    "gap": "Effective duration shifts the benchmark curve instead of the yield: use it for bonds with embedded options."
+  },
+  {
+    "id": "fi1-zero-exact",
+    "topic": "Exact duration and convexity of a zero",
+    "front": "Derive the modified duration and convexity of a zero-coupon bond. Why is the denominator of convexity \\((1+y)^2\\) for any maturity?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$P=F(1+y)^{-n}$$</div><div class=\"eq-block\">$$\\text{ModDur}=-\\frac{1}{P}\\frac{dP}{dy}=\\frac{n}{1+y}$$</div><div class=\"eq-block\">$$\\text{Convexity}=\\frac{1}{P}\\frac{d^2P}{dy^2}=\\frac{n(n+1)}{(1+y)^2}$$</div><p>Each derivative adds one power of \\((1+y)\\); dividing by \\(P\\) cancels the \\((1+y)^{-n}\\). 5-year zero at 4%: 4.808 and 27.74.</p></div>",
+    "gap": "In the exam use the approximate formulas; the closed form works only for zeros."
+  },
+  {
+    "id": "fi1-krd-def",
+    "topic": "Key rate duration · definition",
+    "front": "Define key rate duration. Why is it a curve duration, not a yield duration?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\text{KRD}_k=-\\frac{1}{PV}\\cdot\\frac{\\Delta PV}{\\Delta r_k}$$</div><ul><li>Shift only the \\(k\\)-th key rate of the <strong>benchmark curve</strong>, holding the others constant</li><li><strong>Yield duration</strong> (Macaulay, modified): sensitivity to the bond's <strong>own YTM</strong></li><li><strong>Curve duration</strong> (effective, KRD): sensitivity to the <strong>benchmark curve</strong>, repricing every cash flow at its own rate</li></ul></div>",
+    "gap": "The most important part of M1."
+  },
+  {
+    "id": "fi1-krd-example",
+    "topic": "Key rate duration · example",
+    "front": "A portfolio holds a 3-year zero worth 40 and a 5-year zero worth 60 (durations ≈ maturity). Find the KRDs, the effective duration, and the change if the 3-year rate falls 1% and the 5-year rises 1%.",
+    "back": "<div class=\"ans\"><ul><li>\\(\\text{KRD}_3=0.4\\times3=1.2\\), \\(\\text{KRD}_5=0.6\\times5=3.0\\)</li><li>Effective duration \\(=\\sum\\text{KRD}=4.2\\)</li></ul><div class=\"eq-block\">$$\\frac{\\Delta P}{P}\\approx-\\sum_k\\text{KRD}_k\\Delta r_k$$</div><p>\\(=-[1.2(-1\\%)+3.0(+1\\%)]=-1.8\\%\\).</p></div>",
+    "gap": "Sum of KRDs = effective duration for any portfolio, because a parallel shift moves every key rate together."
+  },
+  {
+    "id": "fi1-factor-durations",
+    "topic": "Factor durations from KRDs",
+    "front": "How are \\(D_L\\), \\(D_S\\) and \\(D_C\\) obtained from KRDs? Compute them for 1y, 5y, 10y zeros of 100 each, with shapes level (1,1,1), steepness (−1,0,1), curvature (1,0,1).",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\frac{\\Delta P}{P}\\approx-D_L\\Delta X_L-D_S\\Delta X_S-D_C\\Delta X_C$$</div><p>Each factor duration = KRDs weighted by that factor's shape. KRDs: \\(\\tfrac13,\\tfrac53,\\tfrac{10}3\\).</p><ul><li>\\(D_L=\\tfrac{16}{3}=5.33\\)</li><li>\\(D_S=-\\tfrac13+\\tfrac{10}3=3.00\\)</li><li>\\(D_C=\\tfrac13+\\tfrac{10}3=3.67\\)</li></ul></div>",
+    "gap": "Check: \\(\\Delta X_L=+0.5\\%\\), \\(\\Delta X_S=+0.2\\%\\), \\(\\Delta X_C=-0.1\\%\\) gives −2.90%, the same as summing KRD × key rate changes."
+  },
+  {
+    "id": "fi1-vol",
+    "topic": "Interest rate volatility",
+    "front": "What does the term structure of interest rate volatility usually look like, and why? How is volatility scaled to a month?",
+    "back": "<div class=\"ans\"><p>Usually <strong>downward sloping</strong>: short rates react to frequent <strong>monetary policy</strong> changes; long rates follow the slower-moving real economy and long-run inflation.</p><div class=\"eq-block\">$$\\sigma_{\\text{month}}=\\sigma_{\\text{annual}}\\sqrt{\\tfrac{1}{12}}$$</div><p>20% a year → \\(20\\%\\times\\sqrt{1/12}=5.77\\%\\) a month.</p></div>",
+    "gap": "Square-root-of-time scaling assumes changes in successive periods are uncorrelated."
+  },
+  {
+    "id": "fi1-forward-strategy",
+    "topic": "Forward contract strategy",
+    "front": "An investor is long a forward to buy a 1-year zero in one year at \\(F_0=100/(1+f(1,1))\\). Who gains if the future spot rate \\(s_1'\\) is above or below \\(f(1,1)\\)?",
+    "back": "<div class=\"ans\"><ul><li>\\(s_1'=f(1,1)\\): the contract has no value</li><li>\\(s_1'&gt;f(1,1)\\): bond price below \\(F_0\\) → <strong>short gains</strong>, long loses</li><li>\\(s_1'&lt;f(1,1)\\): bond price above \\(F_0\\) → <strong>long gains</strong></li></ul><p>With \\(f(1,1)=2.80\\%\\), \\(F_0=97.275\\); if \\(s_1'=2.00\\%\\) the long gains \\(98.039-97.275=0.764\\).</p></div>",
+    "gap": "Expect rates below the forwards → go long; above → go short."
+  },
+  {
+    "id": "fi1-riding",
+    "topic": "Riding the yield curve",
+    "front": "When does riding the yield curve beat maturity matching? A 5-year horizon: 5y bond at par (3%), or buy the 30y 3% bond at 63.67 (5.5%) and sell it as a 25y bond at 71.81 (5.0%).",
+    "back": "<div class=\"ans\"><ul><li>Works if the curve is <strong>upward sloping</strong> and expected <strong>not to change</strong></li><li>Maturity matching: 15 of coupons on 100 → about <strong>2.8%</strong> a year</li><li>Riding: \\((71.81+15-63.67)/63.67=36.3\\%\\) → about <strong>6.4%</strong> a year, above the 30y yield, from the roll-down gain of 8.14</li></ul></div>",
+    "gap": "The extra return comes with far more interest rate risk: an upward shift erases the roll-down gain."
+  },
+  {
+    "id": "fi1-bear-bull",
+    "topic": "Bear and bull moves",
+    "front": "Define bear flattening, bull steepening, bull flattening and bear steepening, with a typical cause of each.",
+    "back": "<div class=\"ans\"><ul><li><strong>Bear flattening</strong>: short yields rise more; monetary tightening</li><li><strong>Bull steepening</strong>: short yields fall more; easing in a recession</li><li><strong>Bull flattening</strong>: long yields fall more; flight to quality</li><li><strong>Bear steepening</strong>: long yields rise more; deficits, inflation fears</li></ul></div>",
+    "gap": "Bear = yields rise (prices fall); bull = yields fall."
+  },
+  {
+    "id": "fi1-macro",
+    "topic": "Macro drivers of yields",
+    "front": "How do inflation, fiscal policy and investor demand affect yields? How can an investor play an expected bull flattening?",
+    "back": "<div class=\"ans\"><ul><li><strong>Inflation</strong> explains most variation in short- and intermediate-term yields</li><li><strong>Deficits</strong> raise bond supply and yields, especially long-term: a segmented-market effect</li><li><strong>Domestic and foreign demand</strong> raise prices and lower the bond risk premium</li><li><strong>Flight to quality</strong> → bull flattening: shift from a <strong>bullet</strong> to a <strong>barbell</strong> of the same duration</li></ul></div>",
+    "gap": "The barbell's long end gains most when long yields fall, and its higher convexity adds to the gain."
+  }
+];
+
+flashDeck({
+  key: "cfa-c6-m1-review",
+  source: "CFA L2 Fixed Income \u00b7 M1 Term Structure and Interest Rate Dynamics \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Equity M4 — Market-Based Valuation review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    "id": "eq4-methods",
+    "topic": "Comparables vs fundamentals",
+    "front": "Contrast the method of comparables with the method based on forecast fundamentals.",
+    "back": "<div class=\"ans\"><ul><li><strong>Comparables</strong>: law of one price; gives <strong>relative</strong> value (comparables may be mispriced)</li><li><strong>Fundamentals</strong>: derive the multiple from a DCF of the company; gives intrinsic value</li></ul></div>",
+    "gap": "Justified multiple above the actual multiple → undervalued."
+  },
+  {
+    "id": "eq4-pe-def",
+    "topic": "Trailing vs forward P/E",
+    "front": "Define trailing and forward P/E. When is each preferred, and what is NTM EPS?",
+    "back": "<div class=\"ans\"><ul><li><strong>Trailing</strong>: price ÷ last four quarters’ EPS; when earnings aren’t predictable</li><li><strong>Forward</strong>: price ÷ expected EPS; when forecasts exist or after major changes</li></ul><p>NTM EPS is time-weighted, e.g. \\(\\frac{10}{12}\\)FY1 + \\(\\frac{2}{12}\\)FY2.</p></div>",
+    "gap": "Use the same definition for every company compared."
+  },
+  {
+    "id": "eq4-eps-adj",
+    "topic": "Adjusting EPS",
+    "front": "List the four adjustments to trailing EPS.",
+    "back": "<div class=\"ans\"><ul><li>Use <strong>diluted</strong> EPS</li><li>Remove nonrecurring items → <strong>underlying</strong> earnings</li><li><strong>Normalize</strong> cyclicals to mid-cycle EPS</li><li>Adjust for accounting differences (LIFO vs FIFO)</li></ul></div>",
+    "gap": "Molodovsky effect: cyclicals’ P/Es are high at the bottom of the cycle and low at the top."
+  },
+  {
+    "id": "eq4-normalize",
+    "topic": "Normalized EPS",
+    "front": "Compare the two normalizing methods. Average ROE 22.6%, current BVPS \\$4.82, price \\$18.21: normalized P/E?",
+    "back": "<div class=\"ans\"><ul><li>Historical average EPS: ignores company size</li><li>Average ROE × <strong>current</strong> BVPS: reflects size (preferred)</li></ul><p>\\(0.226\\times4.82=\\$1.09\\) → P/E <strong>16.7</strong> (vs 23.1 on average EPS).</p></div>"
+  },
+  {
+    "id": "eq4-negative",
+    "topic": "Negative earnings",
+    "front": "How do you handle negative or tiny EPS when comparing P/Es?",
+    "back": "<div class=\"ans\"><p>Report P/E as not meaningful. Use normalized or forward EPS, or rank by <strong>earnings yield E/P</strong>: price is never negative, so the ranking stays consistent.</p></div>"
+  },
+  {
+    "id": "eq4-justified-pe",
+    "topic": "Justified P/E",
+    "front": "Write the justified leading P/E. Retention 40%, \\(g\\) 3.5%, \\(r\\) 7.6%: find it.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\frac{P_0}{E_1}=\\frac{1-b}{r-g}$$</div><p>\\(0.60/0.041=\\) <strong>14.6</strong>. Falls with \\(r\\), rises with \\(g\\).</p></div>"
+  },
+  {
+    "id": "eq4-predicted",
+    "topic": "Predicted P/E",
+    "front": "What is a predicted P/E, and what are its limitations?",
+    "back": "<div class=\"ans\"><p>A cross-sectional regression of P/E on fundamentals (payout, beta, growth).</p><ul><li>Valid only for its sample and period</li><li>Coefficients change over time</li><li>Multicollinearity</li></ul></div>"
+  },
+  {
+    "id": "eq4-peg",
+    "topic": "PEG ratio",
+    "front": "Define the PEG ratio and its limitations.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$PEG=\\frac{P/E}{\\text{Expected growth (\\%)}}$$</div><p>Lower is more attractive. Limits: assumes a <strong>linear</strong> P/E–growth link; ignores <strong>risk</strong> and how long growth lasts.</p></div>"
+  },
+  {
+    "id": "eq4-fed",
+    "topic": "Fed and Yardeni models",
+    "front": "State the Fed model and the Yardeni model.",
+    "back": "<div class=\"ans\"><p><strong>Fed</strong>: market overvalued if forward E/P &lt; 10-year Treasury yield; justified P/E = 1/yield.</p><div class=\"eq-block\">$$\\frac{P}{E}=\\frac{1}{CBY-b\\times LTEG}$$</div><p>Yardeni: CBY = A-rated corporate yield; LTEG = 5-year consensus growth.</p></div>",
+    "gap": "The Fed model ignores the ERP and growth, and handles inflation poorly."
+  },
+  {
+    "id": "eq4-inflation",
+    "topic": "Inflation and P/E",
+    "front": "How does inflation affect P/E with incomplete pass-through? \\(\\rho=3\\%\\), \\(\\lambda=75\\%\\), \\(I=6\\%\\): P/E?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\frac{P_0}{E_1}=\\frac{1}{\\rho+(1-\\lambda)I}$$</div><p>\\(1/(0.03+0.015)=\\) <strong>22.2</strong>. Higher inflation → lower P/E; more pass-through → higher P/E.</p></div>"
+  },
+  {
+    "id": "eq4-pb",
+    "topic": "Price to book",
+    "front": "Give the rationales and drawbacks of P/B. What adjustments are made to book value?",
+    "back": "<div class=\"ans\"><ul><li><strong>+</strong> positive when EPS isn’t; stable; suits banks, insurers, liquidation cases</li><li><strong>−</strong> ignores human capital and brands; buybacks and accounting distort it</li></ul><p>Adjust: use tangible book value, LIFO→FIFO, off-balance-sheet items, fair value.</p></div>"
+  },
+  {
+    "id": "eq4-justified-pb",
+    "topic": "Justified P/B",
+    "front": "Write the justified P/B. ROE 12%, \\(r\\) 10%, \\(g\\) 7%: find it.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\frac{P_0}{B_0}=\\frac{ROE-g}{r-g}$$</div><p>\\(0.05/0.03=\\) <strong>1.67</strong>. If ROE = \\(r\\), P/B = 1.</p></div>",
+    "gap": "At the same P/B, the higher-ROE stock is cheaper."
+  },
+  {
+    "id": "eq4-ps",
+    "topic": "Price to sales",
+    "front": "Give the justified leading P/S. Margin 9%, payout 35%, \\(r\\) 9%, \\(g\\) 7%: find it. What is P/S’s main drawback?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\frac{P_0}{S_1}=\\frac{PM_1(1-b)}{r-g}$$</div><p>\\(0.09\\times0.35/0.02=\\) <strong>1.575</strong>.</p><p>It compares a price (after financing) with sales (before financing): use EV/sales for different capital structures.</p></div>"
+  },
+  {
+    "id": "eq4-pcf",
+    "topic": "Price to cash flow",
+    "front": "Name four cash flow measures used in P/CF and their caveats.",
+    "back": "<div class=\"ans\"><ul><li>CF = EPS + D&amp;A: ignores working capital and noncash revenue</li><li>CFO: adjust for non-recurring items, IFRS/GAAP differences</li><li>FCFE: best in theory, but volatile</li><li>EBITDA: pre-interest, so pair with <strong>EV</strong></li></ul></div>"
+  },
+  {
+    "id": "eq4-dy",
+    "topic": "Justified dividend yield",
+    "front": "Write the justified dividend yield. How do \\(g\\) and \\(r\\) affect it?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\frac{D_0}{P_0}=\\frac{r-g}{1+g}$$</div><p>Higher growth → lower yield; higher \\(r\\) → higher yield. Check dividend safety (payout, coverage).</p></div>"
+  },
+  {
+    "id": "eq4-ev",
+    "topic": "Enterprise value",
+    "front": "Define enterprise value. Why is cash subtracted, and how does EV differ from total invested capital?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}EV={}&E+P+MI+D\\\\&-\\text{Cash and ST inv.}\\end{aligned}$$</div><p>The acquirer gets the cash: EV is the net price. TIC = equity + debt, without subtracting cash.</p></div>"
+  },
+  {
+    "id": "eq4-ev-ebitda",
+    "topic": "EV/EBITDA",
+    "front": "Why use EV/EBITDA, and what drives its justified level?",
+    "back": "<div class=\"ans\"><ul><li>Compares companies with different <strong>leverage</strong>; controls for D&amp;A (capital-intensive firms); EBITDA often positive when EPS isn’t</li><li>Justified EV/EBITDA rises with FCFF growth and <strong>ROIC</strong>, falls with WACC</li></ul></div>",
+    "gap": "EBITDA overstates CFO when working capital is growing."
+  },
+  {
+    "id": "eq4-cross-border",
+    "topic": "Cross-border comparisons",
+    "front": "Which multiples are least and most affected by international accounting differences?",
+    "back": "<div class=\"ans\"><ul><li><strong>Least</strong>: P/CFO, P/FCFE</li><li><strong>Most</strong>: P/B, P/E, EBITDA multiples</li></ul></div>",
+    "gap": "The most frequent IFRS–GAAP adjustment is pensions; the largest by value is goodwill."
+  },
+  {
+    "id": "eq4-momentum",
+    "topic": "Momentum indicators",
+    "front": "Distinguish the scaled earnings surprise from SUE.",
+    "back": "<div class=\"ans\"><ul><li><strong>Scaled surprise</strong>: UE ÷ std dev of <strong>analysts’ forecasts</strong></li><li><strong>SUE</strong>: UE ÷ std dev of <strong>past surprises</strong></li></ul><p>Relative strength: the stock’s return, or stock ÷ index over a period.</p></div>"
+  },
+  {
+    "id": "eq4-harmonic",
+    "topic": "Averaging multiples",
+    "front": "Which average gives a portfolio’s true P/E? P/E 10 (55% weight) and 20 (45%): find it.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$X_{WH}=\\frac{1}{\\sum w_i/X_i}$$</div><p>\\(1/(0.055+0.0225)=\\) <strong>12.90</strong>, below the arithmetic mean of 15.</p></div>",
+    "gap": "The harmonic mean damps large outliers but amplifies small ones; the median limits both."
+  }
+];
+
+flashDeck({
+  key: "cfa-c5-m4-review",
+  source: "CFA L2 Equity \u00b7 M4 Market-Based Valuation \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

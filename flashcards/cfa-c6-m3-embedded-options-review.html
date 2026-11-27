@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Fixed Income M3 — Valuation of Bonds with Embedded Options review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    "id": "fi3-callable-putable",
+    "topic": "Callable and putable bonds",
+    "front": "Who holds the option in a callable and in a putable bond? Write each bond’s value in terms of the straight bond.",
+    "back": "<div class=\"ans\"><ul><li><strong>Callable</strong>: the <strong>issuer</strong> holds a call; the investor is short it</li><li><strong>Putable</strong>: the <strong>investor</strong> holds a put</li></ul><div class=\"eq-block\">$$V_{\\text{callable}}=V_{\\text{straight}}-V_{\\text{call}}$$</div><div class=\"eq-block\">$$V_{\\text{putable}}=V_{\\text{straight}}+V_{\\text{put}}$$</div></div>",
+    "gap": "Callable: price compression and negative convexity at low yields. Putable: a price floor at high yields."
+  },
+  {
+    "id": "fi3-extendible",
+    "topic": "Extendible bond · other options",
+    "front": "What is an extendible bond equivalent to? What is an estate put?",
+    "back": "<div class=\"ans\"><ul><li><strong>Extendible</strong>: the investor may extend the maturity. It is equivalent to a <strong>putable</strong> bond with the longer maturity: a 3-year bond extendible by 2 years = a 5-year bond putable at year 3</li><li><strong>Estate put</strong> (survivor’s option): the heirs of a deceased holder may put the bond at par</li></ul></div>"
+  },
+  {
+    "id": "fi3-tree-rule",
+    "topic": "Valuing options on the tree",
+    "front": "What extra step does a callable or putable bond need at each exercise node of the tree? How is the option then valued?",
+    "back": "<div class=\"ans\"><ul><li><strong>Callable</strong>: node value \\(=\\min(V,\\ \\text{call price})\\)</li><li><strong>Putable</strong>: node value \\(=\\max(V,\\ \\text{put price})\\)</li></ul><div class=\"eq-block\">$$V_{\\text{call}}=V_{\\text{straight}}-V_{\\text{callable}}$$</div><div class=\"eq-block\">$$V_{\\text{put}}=V_{\\text{putable}}-V_{\\text{straight}}$$</div></div>"
+  },
+  {
+    "id": "fi3-tree-example",
+    "topic": "Callable and putable example",
+    "front": "On the 3% / 8% / 5% tree, a 2-year 7% bond is worth 104.359 straight. Value it callable at 100 and putable at 100 in one year, and value each option.",
+    "back": "<div class=\"ans\"><p>Year 1 straight values: 99.074 (up), 101.905 (down).</p><ul><li><strong>Callable</strong>: called in the down node (101.905 → 100): \\(\\frac{106.074+107}{2.06}=103.434\\); call \\(=0.925\\)</li><li><strong>Putable</strong>: put in the up node (99.074 → 100): \\(\\frac{107+108.905}{2.06}=104.808\\); put \\(=0.449\\)</li></ul></div>",
+    "gap": "The issuer calls when rates are low (down node); the investor puts when rates are high (up node)."
+  },
+  {
+    "id": "fi3-exercise",
+    "topic": "Exercise styles",
+    "front": "Distinguish European, Bermudan and American exercise. How is each handled on the tree?",
+    "back": "<div class=\"ans\"><ul><li><strong>European</strong>: one exercise date</li><li><strong>Bermudan</strong>: a set of dates (e.g. each coupon date); check exercise at each such node, as for European</li><li><strong>American</strong>: any time; approximated with many more, shorter steps (not in the exam)</li></ul></div>"
+  },
+  {
+    "id": "fi3-volatility",
+    "topic": "Effect of volatility",
+    "front": "How does higher interest rate volatility affect a straight, a callable and a putable bond?",
+    "back": "<div class=\"ans\"><ul><li><strong>Straight</strong>: <strong>no effect</strong>; the tree is still calibrated to the same spot rates</li><li><strong>Callable</strong>: call value ↑, so callable value ↓</li><li><strong>Putable</strong>: put value ↑, so putable value ↑</li></ul></div>",
+    "gap": "Curve shape matters too: if expected future rates fall (flatter or inverted curve), the call is worth more and the put less."
+  },
+  {
+    "id": "fi3-oas-def",
+    "topic": "Option-adjusted spread",
+    "front": "Define the option-adjusted spread (OAS). How is it found?",
+    "back": "<div class=\"ans\"><p>The <strong>constant spread added to every one-period rate</strong> in the arbitrage-free tree that makes the tree value equal the bond’s <strong>market price</strong>.</p><p>It is found by trial and error, valuing the bond through the tree. Because the tree values the option explicitly, the OAS is the spread <strong>with the option removed</strong>.</p></div>",
+    "gap": "Like the Z-spread it is a parallel shift, but of the tree’s rates, not of the spot curve."
+  },
+  {
+    "id": "fi3-oas-zspread",
+    "topic": "OAS vs Z-spread",
+    "front": "Relate the OAS to the Z-spread. Which is larger for a callable bond, and for a putable bond?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\text{OAS}=\\text{Z-spread}-\\text{Option cost}$$</div><ul><li><strong>Callable</strong>: the investor is short the call and compensated for it: option cost &gt; 0, so \\(\\text{OAS}&lt;\\text{Z-spread}\\)</li><li><strong>Putable</strong>: the investor pays for the put: option cost &lt; 0, so \\(\\text{OAS}&gt;\\text{Z-spread}\\)</li></ul></div>",
+    "gap": "“OAS = Z-spread − option value” only holds for a callable; for a putable the option cost is negative."
+  },
+  {
+    "id": "fi3-spread-risks",
+    "topic": "What each spread covers",
+    "front": "Against a Treasury benchmark, what risks does the Z-spread compensate for, and what does the OAS compensate for?",
+    "back": "<div class=\"ans\"><ul><li><strong>Z-spread / nominal spread</strong>: credit, liquidity and <strong>option</strong> risk</li><li><strong>OAS</strong>: credit and liquidity risk only</li></ul><p>Against a sector benchmark, “credit” becomes credit relative to the sector; against the issuer’s own curve, only liquidity (and option risk for the Z-spread) remains.</p></div>"
+  },
+  {
+    "id": "fi3-oas-mispricing",
+    "topic": "OAS · rich or cheap",
+    "front": "How does the OAS identify mispriced bonds? What does an OAS of 0 against the Treasury curve mean?",
+    "back": "<div class=\"ans\"><p>Compare the bond’s actual OAS with the <strong>required</strong> OAS of comparable bonds: <strong>higher</strong> → <strong>cheap</strong> (undervalued); <strong>lower</strong> → <strong>rich</strong> (overvalued).</p><p>OAS = 0 vs Treasuries: no compensation for credit and liquidity risk, so <strong>overvalued</strong>. A negative OAS is overvalued against any benchmark.</p></div>"
+  },
+  {
+    "id": "fi3-oas-vol",
+    "topic": "OAS and volatility",
+    "front": "For a given market price, how does a higher assumed volatility change the OAS of a callable and of a putable bond?",
+    "back": "<div class=\"ans\"><ul><li><strong>Callable</strong>: model call value ↑, model bond value ↓, so a <strong>smaller OAS</strong> brings it to the price: OAS ↓</li><li><strong>Putable</strong>: model put and bond value ↑, so a <strong>larger OAS</strong> is needed: OAS ↑</li></ul></div>",
+    "gap": "OAS figures are comparable only under the same volatility assumption."
+  },
+  {
+    "id": "fi3-effdur",
+    "topic": "Effective duration",
+    "front": "Give the effective duration formula. How are \\(PV_-\\) and \\(PV_+\\) found for a bond with an embedded option?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$D_{\\text{eff}}=\\frac{PV_{-}-PV_{+}}{2\\,\\Delta\\text{Curve}\\,PV_0}$$</div><ul><li>Find the bond’s <strong>OAS</strong> from today’s tree and price</li><li>Shift the benchmark curve down and up by \\(\\Delta\\text{Curve}\\), build a new tree for each</li><li>Reprice with the <strong>same OAS</strong>: the credit spread is held fixed</li></ul></div>",
+    "gap": "It is a curve duration (benchmark curve shift), not a yield duration: the option’s cash flows change with rates."
+  },
+  {
+    "id": "fi3-effdur-example",
+    "topic": "Effective duration example",
+    "front": "A callable bond has \\(PV_0=101.2\\). With the curve shifted ±30 bp, \\(PV_-=102.8\\) and \\(PV_+=99.2\\). Find the effective duration and effective convexity.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}D_{\\text{eff}}&=\\frac{102.8-99.2}{2\\times0.003\\times101.2}\\\\&=5.93\\end{aligned}$$</div><div class=\"eq-block\">$$\\begin{aligned}C_{\\text{eff}}&=\\frac{102.8+99.2-202.4}{0.003^2\\times101.2}\\\\&=-439\\end{aligned}$$</div><p>Negative convexity, as expected for a callable bond.</p></div>"
+  },
+  {
+    "id": "fi3-ed-rules",
+    "topic": "Effective duration · rules",
+    "front": "State the effective duration of a zero, a fixed-rate bond, a floater, and a bond with an embedded option.",
+    "back": "<div class=\"ans\"><ul><li>Zero-coupon: ≈ its <strong>maturity</strong></li><li>Fixed-rate: &lt; its maturity</li><li>Floater: ≈ <strong>time to the next reset</strong> (≈ 0 at a reset date)</li><li>Callable or putable: ≤ the identical <strong>straight</strong> bond</li></ul></div>"
+  },
+  {
+    "id": "fi3-ed-direction",
+    "topic": "Effective duration · direction",
+    "front": "How does a fall in rates affect a callable bond’s effective duration? How does a rise affect a putable bond’s?",
+    "back": "<div class=\"ans\"><ul><li>Rates <strong>fall</strong> → call likely → the callable behaves like a bond ending at the call date: duration <strong>↓</strong></li><li>Rates <strong>rise</strong> → put likely → the putable behaves like a bond ending at the put date: duration <strong>↓</strong></li></ul></div>",
+    "gap": "In both cases the duration shortens when the option moves into the money."
+  },
+  {
+    "id": "fi3-effcon",
+    "topic": "Effective convexity",
+    "front": "Give the effective convexity formula, the second-order price change, and the sign for straight, callable and putable bonds.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$C_{\\text{eff}}=\\frac{PV_{-}+PV_{+}-2PV_0}{(\\Delta\\text{Curve})^2\\,PV_0}$$</div><div class=\"eq-block\">$$\\begin{aligned}\\tfrac{\\Delta P}{P}\\approx&-D_{\\text{eff}}\\,\\Delta\\text{Curve}\\\\&+\\tfrac12 C_{\\text{eff}}(\\Delta\\text{Curve})^2\\end{aligned}$$</div><ul><li>Straight: slightly positive</li><li>Callable: <strong>negative</strong> at low rates</li><li>Putable: <strong>more positive</strong> at high rates</li></ul></div>"
+  },
+  {
+    "id": "fi3-one-sided",
+    "topic": "One-sided durations",
+    "front": "Write \\(D_{\\text{up}}\\) and \\(D_{\\text{down}}\\). For the callable with \\(PV_0=101.2\\), \\(PV_+=99.2\\), \\(PV_-=102.8\\) (±30 bp), compute both.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$D_{\\text{up}}=\\frac{PV_0-PV_{+}}{\\Delta\\text{Curve}\\,PV_0}$$</div><div class=\"eq-block\">$$D_{\\text{down}}=\\frac{PV_{-}-PV_0}{\\Delta\\text{Curve}\\,PV_0}$$</div><p>\\(D_{\\text{up}}=\\frac{2.0}{0.3036}=6.59\\), \\(D_{\\text{down}}=\\frac{1.6}{0.3036}=5.27\\); their average is the effective duration, 5.93.</p></div>"
+  },
+  {
+    "id": "fi3-one-sided-dir",
+    "topic": "One-sided durations · which is larger",
+    "front": "Compare \\(D_{\\text{up}}\\) and \\(D_{\\text{down}}\\) for a straight, a callable and a putable bond.",
+    "back": "<div class=\"ans\"><ul><li><strong>Straight</strong>: \\(D_{\\text{down}}\\) slightly &gt; \\(D_{\\text{up}}\\) (positive convexity)</li><li><strong>Callable</strong>: \\(D_{\\text{down}}&lt;D_{\\text{up}}\\): the price is capped near the call price when rates fall</li><li><strong>Putable</strong>: \\(D_{\\text{up}}&lt;D_{\\text{down}}\\): the price is floored near the put price when rates rise</li></ul></div>",
+    "gap": "One-sided durations matter when the option is near the money and the price responds asymmetrically."
+  },
+  {
+    "id": "fi3-krd-plain",
+    "topic": "Key rate durations · option-free",
+    "front": "Which key rates drive an option-free bond trading at par, one not at par, and a zero-coupon bond?",
+    "back": "<div class=\"ans\"><ul><li><strong>At par</strong>: only the <strong>maturity-matched par rate</strong>; all other KRDs are 0 (a bond whose coupon equals that par rate is priced at par whatever the other rates are)</li><li><strong>Not at par</strong>: the maturity-matched rate still has the greatest effect, but others matter</li><li><strong>Zero or very low coupon</strong>: KRDs at shorter maturities can be <strong>negative</strong></li></ul></div>",
+    "gap": "KRDs measure shaping risk: sensitivity to steepening, flattening and twists, using the par curve as benchmark."
+  },
+  {
+    "id": "fi3-krd-options",
+    "topic": "Key rate durations · options",
+    "front": "Which key rate dominates a callable bond with a low vs a high coupon, and a putable bond with a high vs a low coupon?",
+    "back": "<div class=\"ans\"><ul><li><strong>Callable</strong>: low coupon (unlikely called) → <strong>maturity</strong> rate; high coupon (call likely) → <strong>time-to-exercise</strong> rate</li><li><strong>Putable</strong>: high coupon (unlikely put) → <strong>maturity</strong> rate; low coupon (put likely) → <strong>time-to-exercise</strong> rate</li></ul></div>",
+    "gap": "Whichever date the bond is expected to end on, that par rate dominates."
+  },
+  {
+    "id": "fi3-floater",
+    "topic": "Floating-rate bonds",
+    "front": "How is a floater’s coupon set, and why is it priced at par on reset dates?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}\\text{Coupon}={}&\\text{Reference rate}\\\\&+\\text{Margin}\\end{aligned}$$</div><p>The quoted margin is fixed. Coupons are paid <strong>in arrears</strong>: set by the rate at the <strong>start</strong> of the period, paid at its end. If the quoted margin equals the required margin, the floater is at <strong>par on each reset date</strong>.</p></div>",
+    "gap": "TIPS are not floaters: their coupon rate is fixed and their principal is indexed to inflation."
+  },
+  {
+    "id": "fi3-cap-floor",
+    "topic": "Caps and floors",
+    "front": "Who benefits from a cap and from a floor on a floater? Write the value of each bond.",
+    "back": "<div class=\"ans\"><ul><li><strong>Cap</strong> (maximum coupon): protects the <strong>issuer</strong> against rising rates</li><li><strong>Floor</strong> (minimum coupon): protects the <strong>investor</strong> against falling rates</li></ul><div class=\"eq-block\">$$V_{\\text{capped}}=V_{\\text{straight}}-V_{\\text{cap}}$$</div><div class=\"eq-block\">$$V_{\\text{floored}}=V_{\\text{straight}}+V_{\\text{floor}}$$</div></div>",
+    "gap": "A floater with both a cap and a floor is a collared floater."
+  },
+  {
+    "id": "fi3-cap-example",
+    "topic": "Capped and floored floater example",
+    "front": "A 2-year floater pays the one-year rate (margin 0) annually in arrears on the 3% / 8% / 5% tree. Value it with a 6% cap, and with a 5.5% floor.",
+    "back": "<div class=\"ans\"><p>Each coupon is set by the rate at the start of its period.</p><ul><li><strong>6% cap</strong>: up node pays 6, not 8: \\(106/1.08=98.148\\); down \\(=100\\). \\(V_0=\\frac{101.148+103}{2.06}=99.101\\); cap \\(=0.899\\)</li><li><strong>5.5% floor</strong>: today’s and the down node’s coupons rise to 5.5: up \\(=100\\), down \\(105.5/1.05=100.476\\). \\(V_0=\\frac{105.5+105.976}{2.06}=102.658\\); floor \\(=2.658\\)</li></ul></div>",
+    "gap": "Remember the year-1 coupon is set by today’s 3%, so the floor lifts it too."
+  },
+  {
+    "id": "fi3-ratchet",
+    "topic": "Ratchet bond",
+    "front": "What is a ratchet bond, and what options do the issuer and the investor hold?",
+    "back": "<div class=\"ans\"><p>A floater whose coupon can only <strong>decline</strong> at each reset: the cap ratchets down and never goes back up.</p><ul><li><strong>Issuer</strong>: extreme protection; the coupon falls with rates but never rises</li><li><strong>Investor</strong>: a <strong>contingent put</strong> at par, exercisable only at a reset where the coupon is lowered</li></ul></div>"
+  },
+  {
+    "id": "fi3-conv-defs",
+    "topic": "Convertible bond · definitions",
+    "front": "Define the conversion price, market conversion price, market conversion premium ratio, conversion value and minimum value.",
+    "back": "<div class=\"ans\"><ul><li>Conversion price \\(=\\) issue price / conversion ratio</li><li>Market conversion price \\(=\\) bond price / conversion ratio</li><li>Premium per share \\(=\\) market conversion price − share price; premium ratio \\(=\\) premium / share price</li><li>Conversion value \\(=\\) share price × conversion ratio</li><li>Minimum value \\(=\\max(\\)conversion value, straight value\\()\\)</li></ul></div>"
+  },
+  {
+    "id": "fi3-conv-example",
+    "topic": "Convertible bond example",
+    "front": "A convertible (par 1,000) trades at 1,100, converts into 40 shares, the share price is 25 and the straight value is 950. Find the conversion value, market conversion price, premium ratio, minimum value and premium over straight value.",
+    "back": "<div class=\"ans\"><ul><li>Conversion value \\(=25\\times40=1{,}000\\)</li><li>Market conversion price \\(=1{,}100/40=27.50\\)</li><li>Premium \\(=2.50\\); premium ratio \\(=2.50/25=10\\%\\)</li><li>Minimum value \\(=\\max(1{,}000,\\ 950)=1{,}000\\)</li><li>Premium over straight value \\(=1{,}100/950-1=15.8\\%\\)</li></ul></div>"
+  },
+  {
+    "id": "fi3-conv-value",
+    "topic": "Convertible bond · valuation",
+    "front": "Write the value of a convertible bond that is also callable by the issuer and putable by the investor.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}V_{\\text{conv}}={}&V_{\\text{straight}}\\\\&+V_{\\text{call on stock}}\\\\&-V_{\\text{issuer call}}\\\\&+V_{\\text{investor put}}\\end{aligned}$$</div><p>The conversion right is a <strong>call on the issuer’s shares</strong> held by the investor. Downside is limited by the straight value; upside depends on the share.</p></div>"
+  },
+  {
+    "id": "fi3-conv-perf",
+    "topic": "Convertible vs shares",
+    "front": "How does a convertible perform relative to the shares when the share price rises, falls, or is stable? What is a busted convertible?",
+    "back": "<div class=\"ans\"><ul><li><strong>Rises</strong>: underperforms (the conversion premium was paid)</li><li><strong>Falls</strong>: outperforms (the straight value limits the fall)</li><li><strong>Stable</strong>: usually outperforms (coupons exceed dividends)</li></ul><p>Share price far below the conversion price: the convertible behaves like a <strong>bond</strong> (busted convertible). Far above: like the <strong>stock</strong>.</p></div>"
+  }
+];
+
+flashDeck({
+  key: "cfa-c6-m3-review",
+  source: "CFA L2 Fixed Income \u00b7 M3 Valuation of Bonds with Embedded Options \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

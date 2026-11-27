@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Price and yield · straight, callable, putable</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <script src="chart-fx.js"></script>
+</head>
+<body>
+  <main class="card" id="card" data-fx-scope>
+    <h2>The call caps the price when yields fall; the put floors it when yields rise.</h2>
+    <div class="sub">Illustrative 10-year 5% annual-coupon bond, callable or putable at 100 · ink = straight bond, mid gray = callable, light gray = putable · callable = straight − call, putable = straight + put · hover for the three prices at any yield</div>
+    <section class="panel">
+      <h3>Price against yield</h3>
+      <div class="hint">Callable: price compression and negative convexity at low yields · putable: a price floor and extra positive convexity at high yields</div>
+      <svg id="chart" role="img" aria-label="Price against yield for a straight, a callable and a putable bond"></svg>
+    </section>
+    <div class="src">PRICE–YIELD · F2 HAIRLINE LINE · ILLUSTRATIVE: CALLABLE = SOFT MIN(STRAIGHT, 100), PUTABLE = SOFT MAX(STRAIGHT, 100)</div>
+  </main>
+  <script src="i18n.js"></script>
+  <script>
+chartI18n.use({
+  zh: {
+    'Price and yield · straight, callable, putable': '价格与收益率 · 普通、可赎回、可回售债券',
+    'The call caps the price when yields fall; the put floors it when yields rise.': '收益率下降时看涨期权限制价格上限；收益率上升时看跌期权托住价格下限。',
+    'Illustrative 10-year 5% annual-coupon bond, callable or putable at 100 · ink = straight bond, mid gray = callable, light gray = putable · callable = straight − call, putable = straight + put · hover for the three prices at any yield': '示意性 10 年期 5% 年付息债券，可按 100 赎回或回售 · 墨色 = 普通债券，中灰 = 可赎回，浅灰 = 可回售 · 可赎回 = 普通 − 看涨，可回售 = 普通 + 看跌 · 悬停查看任意收益率下的三种价格',
+    'Price against yield': '价格与收益率',
+    'Callable: price compression and negative convexity at low yields · putable: a price floor and extra positive convexity at high yields': '可赎回：低收益率时出现价格压缩与负凸性 · 可回售：高收益率时具有价格底部与额外的正凸性',
+    'Price against yield for a straight, a callable and a putable bond': '普通债券、可赎回债券和可回售债券的价格与收益率曲线',
+    'PRICE–YIELD · F2 HAIRLINE LINE · ILLUSTRATIVE: CALLABLE = SOFT MIN(STRAIGHT, 100), PUTABLE = SOFT MAX(STRAIGHT, 100)': '价格–收益率 · F2 发丝折线 · 示意：可赎回 = 平滑 MIN(普通, 100)，可回售 = 平滑 MAX(普通, 100)',
+    'yield →': '收益率 →',
+    'price': '价格',
+    'Straight bond: positive convexity': '普通债券：正凸性',
+    'Callable = straight − call\nprice compressed near 100 at low yields: negative convexity': '可赎回 = 普通 − 看涨期权\n低收益率时价格在 100 附近受压：负凸性',
+    'Putable = straight + put\nprice floored near 100 at high yields': '可回售 = 普通 + 看跌期权\n高收益率时价格在 100 附近获支撑',
+    'straight': '普通债券',
+    'callable ≈ call price': '可赎回 ≈ 赎回价',
+    'putable ≈ put price': '可回售 ≈ 回售价',
+    'callable': '可赎回',
+    'putable': '可回售',
+    'yield': '收益率',
+  },
+  ja: {
+    'Price and yield · straight, callable, putable': '価格と利回り · 普通、コーラブル、プッタブル債',
+    'The call caps the price when yields fall; the put floors it when yields rise.': '利回りが下がるとコールが価格の上限を抑え、利回りが上がるとプットが価格の下限を支える。',
+    'Illustrative 10-year 5% annual-coupon bond, callable or putable at 100 · ink = straight bond, mid gray = callable, light gray = putable · callable = straight − call, putable = straight + put · hover for the three prices at any yield': '10 年・年 5% クーポン債の例、100 でコールまたはプット可能 · 墨 = 普通社債、中灰 = コーラブル、薄灰 = プッタブル · コーラブル = 普通 − コール、プッタブル = 普通 + プット · カーソルを合わせると各利回りの 3 つの価格を表示',
+    'Price against yield': '利回りに対する価格',
+    'Callable: price compression and negative convexity at low yields · putable: a price floor and extra positive convexity at high yields': 'コーラブル：低利回りで価格の圧縮と負のコンベクシティ · プッタブル：高利回りで価格の下限とより大きな正のコンベクシティ',
+    'Price against yield for a straight, a callable and a putable bond': '普通社債、コーラブル債、プッタブル債の価格と利回り',
+    'PRICE–YIELD · F2 HAIRLINE LINE · ILLUSTRATIVE: CALLABLE = SOFT MIN(STRAIGHT, 100), PUTABLE = SOFT MAX(STRAIGHT, 100)': '価格–利回り · F2 ヘアライン · 例示：コーラブル = 滑らかな MIN(普通, 100)、プッタブル = 滑らかな MAX(普通, 100)',
+    'yield →': '利回り →',
+    'price': '価格',
+    'Straight bond: positive convexity': '普通社債：正のコンベクシティ',
+    'Callable = straight − call\nprice compressed near 100 at low yields: negative convexity': 'コーラブル = 普通 − コール\n低利回りで価格が 100 付近に圧縮：負のコンベクシティ',
+    'Putable = straight + put\nprice floored near 100 at high yields': 'プッタブル = 普通 + プット\n高利回りで価格が 100 付近に下支え',
+    'straight': '普通社債',
+    'callable ≈ call price': 'コーラブル ≈ コール価格',
+    'putable ≈ put price': 'プッタブル ≈ プット価格',
+    'callable': 'コーラブル',
+    'putable': 'プッタブル',
+    'yield': '利回り',
+  },
+  fr: {
+    'Price and yield · straight, callable, putable': 'Prix et rendement · classique, callable, putable',
+    'The call caps the price when yields fall; the put floors it when yields rise.': 'Le call plafonne le prix quand les rendements baissent ; le put lui fixe un plancher quand ils montent.',
+    'Illustrative 10-year 5% annual-coupon bond, callable or putable at 100 · ink = straight bond, mid gray = callable, light gray = putable · callable = straight − call, putable = straight + put · hover for the three prices at any yield': 'Obligation illustrative à 10 ans, coupon annuel 5 %, remboursable ou revendable à 100 · encre = classique, gris moyen = callable, gris clair = putable · callable = classique − call, putable = classique + put · survolez pour les trois prix à tout rendement',
+    'Price against yield': 'Prix en fonction du rendement',
+    'Callable: price compression and negative convexity at low yields · putable: a price floor and extra positive convexity at high yields': 'Callable : compression du prix et convexité négative aux rendements bas · putable : plancher de prix et convexité positive accrue aux rendements élevés',
+    'Price against yield for a straight, a callable and a putable bond': 'Prix en fonction du rendement pour une obligation classique, callable et putable',
+    'PRICE–YIELD · F2 HAIRLINE LINE · ILLUSTRATIVE: CALLABLE = SOFT MIN(STRAIGHT, 100), PUTABLE = SOFT MAX(STRAIGHT, 100)': 'PRIX–RENDEMENT · LIGNE F2 · ILLUSTRATIF : CALLABLE = MIN LISSE(CLASSIQUE, 100), PUTABLE = MAX LISSE(CLASSIQUE, 100)',
+    'yield →': 'rendement →',
+    'price': 'prix',
+    'Straight bond: positive convexity': 'Obligation classique : convexité positive',
+    'Callable = straight − call\nprice compressed near 100 at low yields: negative convexity': 'Callable = classique − call\nprix comprimé près de 100 aux rendements bas : convexité négative',
+    'Putable = straight + put\nprice floored near 100 at high yields': 'Putable = classique + put\nprix soutenu près de 100 aux rendements élevés',
+    'straight': 'classique',
+    'callable ≈ call price': 'callable ≈ prix de rappel',
+    'putable ≈ put price': 'putable ≈ prix de revente',
+    'callable': 'callable',
+    'putable': 'putable',
+    'yield': 'rendement',
+  },
+});
+  </script>
+  <script>
+(() => {
+  const { C, T, el, label, frame, axes, curve, probe, mount } = curveKit;
+
+  // ── Data: an illustrative 10-year 5% annual-coupon bond, par 100, option strike 100 ──
+  const N = 10, CPN = 5, K = 100, TAU = 4;
+  const straight = (y) => { let v = 0; for (let t = 1; t <= N; t++) v += CPN / Math.pow(1 + y / 100, t); return v + 100 / Math.pow(1 + y / 100, N); };
+  // Smooth stand-ins for the option effect: the callable price bends under the strike, the putable price over it.
+  const callable = (y) => -TAU * Math.log(Math.exp(-straight(y) / TAU) + Math.exp(-K / TAU));
+  const putable = (y) => TAU * Math.log(Math.exp(straight(y) / TAU) + Math.exp(K / TAU));
+  const Y0 = 1, Y1 = 10, MID = '#6A6963', LIGHT = '#9A9992';
+
+  mount(document.getElementById('chart'), (s, W, H) => {
+    const nw = W < 420;
+    const F = frame(s, W, H, { l: nw ? 30 : 34, r: 10, t: 22, b: 40, xMin: Y0, yMin: 60, noTicks: true }, Y1, 145);
+    [70, 100, 130].forEach((v) => {
+      el(s, 'line', { x1: F.X0, y1: F.y(v), x2: F.X1, y2: F.y(v), stroke: C.GRID, 'stroke-width': 0.6, 'stroke-dasharray': '2 4', class: 'fade' });
+      label(s, F.X0 - 6, F.y(v) + 3.5, String(v), { size: 9.5, weight: 600, fill: C.MUTED, anchor: 'end', halo: 0 });
+    });
+    [2, 4, 6, 8, 10].forEach((v) => label(s, F.x(v), F.BASE + 14, v + '%', { size: 9.5, weight: 600, fill: C.MUTED, anchor: 'middle', halo: 0 }));
+    axes(s, F, 'yield →', 'price');
+
+    const hit = (f, hl, name) => {
+      const pts = Array.from({ length: 121 }, (_, i) => { const y = Y0 + ((Y1 - Y0) * i) / 120; return F.x(y).toFixed(1) + ' ' + F.y(f(y)).toFixed(1); });
+      el(s, 'path', { d: 'M' + pts.join(' L'), fill: 'none', stroke: 'transparent', 'stroke-width': 10, 'data-hl': hl, 'data-tip': name });
+    };
+    [[putable, LIGHT, 'p', 0.2], [callable, MID, 'c', 0.1], [straight, C.INK, 's', 0]].forEach(([f, stroke, hl, delay]) => {
+      curve(s, F, f, Y0, Y1, { stroke, width: hl === 's' ? 1.6 : 1.5, delay }).setAttribute('data-hl', hl);
+    });
+    hit(straight, 's', 'Straight bond: positive convexity');
+    hit(callable, 'c', 'Callable = straight − call\nprice compressed near 100 at low yields: negative convexity');
+    hit(putable, 'p', 'Putable = straight + put\nprice floored near 100 at high yields');
+
+    // Direct labels at the ends where the curves separate.
+    label(s, F.x(1.25), F.y(straight(1.25)) - 8, 'straight', { size: 10.5, delay: 0.8 });
+    label(s, F.x(1.25), F.y(callable(1.25)) + 16, 'callable ≈ call price', { size: 10.5, fill: MID, delay: 0.85 });
+    label(s, F.X1 - 2, F.y(putable(9.6)) - 8, 'putable ≈ put price', { size: 10.5, fill: LIGHT, anchor: 'end', delay: 0.9 });
+    label(s, F.X1 - 2, F.y(straight(9.6)) + 16, 'straight', { size: 10.5, anchor: 'end', delay: 0.9 });
+
+    probe(s, F, [
+      { name: 'straight', f: straight },
+      { name: 'callable', f: callable, stroke: MID },
+      { name: 'putable', f: putable, stroke: LIGHT },
+    ], { xName: T('yield'), fmt: (v) => v.toFixed(2) });
+  }, (W) => Math.max(250, Math.min(320, W * 0.6)));
+})();
+  </script>
+</body>
+</html>

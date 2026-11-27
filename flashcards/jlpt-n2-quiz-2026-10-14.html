@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>JLPT N2 — quiz misses 2026-10-14</title>
+<link rel="stylesheet" href="/flashcards/deck.css" />
+</head>
+<body>
+<script src="/flashcards/deck.js"></script>
+<script>
+const CARDS = [
+  {
+    id: "2026-10-14-darega-wa",
+    topic: "は vs が · だれが",
+    front: "After <span class=\"jp\">だれが留学生ですか</span>, once you’ve named the person, do you keep <strong>が</strong> or switch to <strong>は</strong> on that person?",
+    back: `<div class="ans">
+      <p>Question uses <strong>が</strong> (<span class="jp">だれが</span>). After the person is identified, later sentences use <strong>は</strong> (known topic).</p>
+      <p><span class="jp">A: だれが留学生ですか。<br>B: あの人が留学生で、ジョージさんです。<br>ジョージさん<strong>は</strong>今、先生の研究室にいます。</span></p>
+    </div>`,
+    gap: "Answered with が on the known name instead of switching to は."
+  },
+  {
+    id: "2026-10-14-hoshii-3rd",
+    topic: "ほしい · person",
+    front: "Can you say <span class=\"jp\">彼が新しい車がほしいです</span> for a third person’s want? What do you use instead?",
+    back: `<div class="ans">
+      <p><strong>ほしいです</strong> is mainly for the <strong>speaker</strong>. For third person, use <span class="jp"><strong>ほしがっています</strong></span> (e.g. <span class="jp">彼は新しい車をほしがっています</span>).</p>
+    </div>`,
+    gap: "Used ほしいです for third person."
+  },
+  {
+    id: "2026-10-14-hodo-nai",
+    topic: "Comparison · ほど",
+    front: "How do you say “Japan is not as large as China” with <strong>ほど</strong>?",
+    back: `<div class="ans">
+      <p><span class="jp">日本は中国ほど広くありません。</span></p>
+      <p><strong>N₂ は N₁ ほど ～ない</strong> = N₂ does not reach N₁’s degree. (より / のほうが were solid; this was the miss.)</p>
+    </div>`,
+    gap: "より / のほうが OK; ほど～ない frame not recalled."
+  }
+];
+
+flashDeck({
+  key: "jlpt-n2-2026-10-14",
+  source: "JLPT N2 · quiz misses 2026-10-14",
+  gapLabel: "Gap",
+  cards: CARDS
+});
+</script>
+</body>
+</html>

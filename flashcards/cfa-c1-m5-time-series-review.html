@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Quant M5 — Time-Series Models review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    id: "q5-trends",
+    topic: "Trend models",
+    front: "Linear vs log-linear trend: when do you use each, and what does the slope mean?",
+    back: "<div class=\"ans\"><ul><li><strong>Linear</strong> \\(Y_t=\\beta_0+\\beta_1t+\\varepsilon_t\\): constant <strong>absolute change</strong> per period</li><li><strong>Log-linear</strong> \\(\\ln Y_t=\\beta_0+\\beta_1t+\\varepsilon_t\\): constant <strong>percentage growth</strong>; exact growth \\(g=e^{\\beta_1}-1\\approx\\beta_1\\)</li></ul></div>",
+    gap: "A good-looking trend fit is not enough: serially correlated residuals make OLS inference unreliable."
+  },
+  {
+    id: "q5-stationarity",
+    topic: "Covariance stationarity",
+    front: "State the three conditions for covariance stationarity.",
+    back: "<div class=\"ans\"><ul><li>Constant, finite <strong>mean</strong>: \\(E(Y_t)=\\mu\\)</li><li>Constant, finite <strong>variance</strong>: \\(\\operatorname{Var}(Y_t)=\\sigma^2\\)</li><li><strong>Covariance depends only on the lag</strong>: \\(\\operatorname{Cov}(Y_t,Y_{t-j})=\\gamma_j\\)</li></ul><p>A deterministic trend breaks the constant mean; a unit root breaks stationarity too.</p></div>"
+  },
+  {
+    id: "q5-ar1",
+    topic: "AR(1) · mean reversion",
+    front: "For \\(Y_t=\\beta_0+\\phi Y_{t-1}+\\varepsilon_t\\): when is it stationary, and what is its mean-reverting level?",
+    back: "<div class=\"ans\"><p>Stationary if \\(|\\phi|<1\\); mean-reverting level</p><div class=\"eq-block\">$$\\mu=\\frac{\\beta_0}{1-\\phi}$$</div><ul><li>\\(0<\\phi<1\\): deviations decay, same sign</li><li>\\(-1<\\phi<0\\): deviations decay, alternating</li><li>\\(\\phi\\) near 1: very slow reversion</li></ul></div>"
+  },
+  {
+    id: "q5-ar-forecast",
+    topic: "AR(1) · forecasting",
+    front: "\\(\\hat\\beta_0=1.2\\), \\(\\hat\\phi=0.6\\), \\(Y_t=5\\). Give the one-step forecast and where long-horizon forecasts converge.",
+    back: "<div class=\"ans\"><p>\\(\\hat Y_{t+1}=1.2+0.6\\times5=4.2\\). Later steps are built recursively and converge to</p><div class=\"eq-block\">$$\\hat\\mu=\\frac{1.2}{1-0.6}=3$$</div></div>"
+  },
+  {
+    id: "q5-acf-bounds",
+    topic: "Autocorrelation · ACF",
+    front: "What is the approximate standard error of a sample autocorrelation, and the 5% bounds?",
+    back: "<div class=\"ans\"><div class=\"eq-block\">$$SE(\\hat\\rho_j)\\approx\\frac{1}{\\sqrt T}$$</div><div class=\"eq-block\">$$\\text{bounds}\\approx\\pm\\frac{1.96}{\\sqrt T}$$</div><p>Values outside are evidence, not proof, of dependence at that lag; with many lags, look at the overall pattern too.</p></div>"
+  },
+  {
+    id: "q5-acf-pacf",
+    topic: "Identification · ACF and PACF",
+    front: "How do the ACF and PACF identify AR(p), MA(q) and ARMA models?",
+    back: "<div class=\"ans\"><ul><li><strong>AR(p)</strong>: ACF tails off; PACF <strong>cuts off after lag p</strong></li><li><strong>MA(q)</strong>: ACF <strong>cuts off after lag q</strong>; PACF tails off</li><li><strong>ARMA(p,q)</strong>: both tail off</li></ul><p>The PACF at lag \\(j\\) is the correlation after controlling for lags 1 to \\(j-1\\).</p></div>",
+    gap: "\"Cuts off\" is a population idea: sample values beyond the cutoff just stay inside the bounds."
+  },
+  {
+    id: "q5-ar-adequacy",
+    topic: "Model adequacy",
+    front: "You fit an AR model. How do you check it captured the serial dependence, and which test should you avoid?",
+    back: "<div class=\"ans\"><p>Inspect the <strong>residual ACF</strong>; test several residual lags jointly with <strong>Breusch–Godfrey</strong>. Significant residual autocorrelation means the model is incomplete.</p><p><strong>Avoid Durbin–Watson</strong>: it is invalid with a lagged dependent variable.</p></div>"
+  },
+  {
+    id: "q5-ma-arima",
+    topic: "MA, ARMA and ARIMA",
+    front: "What is an MA(q) model, and how does ARIMA differ from ARMA?",
+    back: "<div class=\"ans\"><p>\\(MA(q)\\): \\(Y_t=\\mu+\\varepsilon_t+\\theta_1\\varepsilon_{t-1}+\\cdots+\\theta_q\\varepsilon_{t-q}\\); autocorrelations are zero beyond lag \\(q\\).</p><p><strong>ARMA(p,q)</strong> models a stationary series. <strong>ARIMA(p,d,q)</strong> first <strong>differences \\(d\\) times</strong> to make a nonstationary series stationary.</p></div>"
+  },
+  {
+    id: "q5-seasonality",
+    topic: "Seasonality",
+    front: "How can you treat monthly seasonality?",
+    back: "<div class=\"ans\"><ul><li>Seasonal <strong>dummy variables</strong></li><li>A seasonal AR lag such as \\(Y_{t-12}\\)</li><li>Seasonal <strong>differencing</strong>: \\(Y_t-Y_{t-12}\\)</li><li>Combined regular and seasonal AR or MA terms</li></ul><p>Match the treatment to the pattern; one seasonal lag is not the only option.</p></div>"
+  },
+  {
+    id: "q5-random-walk",
+    topic: "Unit roots · random walk",
+    front: "What is a random walk (with drift), and why is regressing one on another dangerous?",
+    back: "<div class=\"ans\"><p>\\(\\phi=1\\): \\(Y_t=\\beta_0+Y_{t-1}+\\varepsilon_t\\) (drift if \\(\\beta_0\\ne0\\)). It has a <strong>unit root</strong>: shocks are permanent, the level is not stationary, and the mean-reverting level \\(\\beta_0/(1-\\phi)\\) is undefined.</p><p>Regressing unrelated unit-root series gives <strong>spurious regression</strong>: high \\(R^2\\) and significant \\(t\\)s with no real relation.</p></div>"
+  },
+  {
+    id: "q5-df",
+    topic: "Unit roots · Dickey–Fuller",
+    front: "Set up the Dickey–Fuller test. What are the hypotheses, and which critical values apply?",
+    back: "<div class=\"ans\"><div class=\"eq-block\">$$\\Delta Y_t=\\beta_0+\\gamma Y_{t-1}+\\varepsilon_t$$</div><div class=\"eq-block\">$$\\gamma=\\phi-1$$</div><p>\\(H_0:\\gamma=0\\) (<strong>unit root</strong>) vs \\(H_a:\\gamma<0\\) (stationary). Use <strong>Dickey–Fuller critical values</strong>, not Student's \\(t\\); reject if the statistic is sufficiently negative.</p></div>",
+    gap: "Failing to reject leaves a unit root plausible; difference and retest. ADF adds lagged differences for higher-order correlation."
+  },
+  {
+    id: "q5-differencing",
+    topic: "Unit roots · differencing",
+    front: "What does first-differencing a random walk with drift give? Is unnecessary differencing harmless?",
+    back: "<div class=\"ans\"><p>\\(\\Delta Y_t=\\beta_0+\\varepsilon_t\\): stationary around the drift (only a driftless walk gives \\(\\Delta Y_t=\\varepsilon_t\\)).</p><p><strong>Not harmless</strong>: over-differencing adds noise and moving-average behavior.</p></div>"
+  },
+  {
+    id: "q5-arch",
+    topic: "Volatility · ARCH and GARCH",
+    front: "What do ARCH(q) and GARCH(p,q) model, and how do you detect ARCH effects?",
+    back: "<div class=\"ans\"><div class=\"eq-block\">$$\\sigma_t^2=\\alpha_0+\\sum_{i=1}^{q}\\alpha_i\\varepsilon_{t-i}^2+\\sum_{j=1}^{p}\\beta_j\\sigma_{t-j}^2$$</div><p>They model the <strong>conditional variance</strong> (volatility clustering), not the mean; GARCH adds lagged variances for persistence. Detect with the ACF of <strong>squared residuals</strong> or an ARCH LM test. Estimated by maximum likelihood.</p></div>"
+  },
+  {
+    id: "q5-cointegration",
+    topic: "Cointegration · Engle–Granger",
+    front: "When is a regression of one unit-root series on another not spurious, and how do you test it?",
+    back: "<div class=\"ans\"><p>When the series are <strong>cointegrated</strong>: a linear combination is stationary (a long-run equilibrium).</p><ul><li>Test each series for a unit root (same order of integration)</li><li>Run the levels regression \\(Y_t=\\beta_0+\\beta_1X_t+u_t\\)</li><li>Unit-root test the residuals with <strong>Engle–Granger</strong> critical values</li></ul><p>Stationary residuals → cointegrated; otherwise the levels regression is likely spurious.</p></div>",
+    gap: "Cointegration does not make each series stationary; only the combination is."
+  },
+  {
+    id: "q5-workflow",
+    topic: "Model selection",
+    front: "A series has a unit root. Can you still use ARIMA? What makes a final model acceptable?",
+    back: "<div class=\"ans\"><p><strong>Yes.</strong> A unit root rules out fitting a stationary AR, MA or ARMA to the <em>level</em>; ARIMA works if differencing \\(d\\) times gives a stationary ARMA.</p><p>Prefer a parsimonious model with sensible coefficients, white-noise residuals, stable parameters and credible out-of-sample performance.</p></div>"
+  }
+];
+
+flashDeck({
+  key: "cfa-c1-m5-review",
+  source: "CFA L2 Quantitative Methods \u00b7 M5 Time Series \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Value at risk · the tail cut</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <script src="chart-fx.js"></script>
+</head>
+<body>
+  <main class="card" id="card" data-fx-scope>
+    <h2>VaR cuts off the worst 5% of outcomes; CVaR averages them.</h2>
+    <div class="sub">Distribution of portfolio returns, normal with mean 0, in standard deviations (σ) · shaded = the 5% left tail · 5% VaR = 1.65σ, CVaR = 2.06σ · hover the shaded tail or the CVaR dot</div>
+    <section class="panel">
+      <h3>Probability density of returns</h3>
+      <div class="hint">At 95% confidence the loss is at most the VaR · with 5% probability it is at least the VaR · tighter levels move the cut left: 2.5% at 1.96σ, 1% at 2.33σ</div>
+      <svg id="chart" role="img" aria-label="Normal return distribution with the left 5% tail shaded below minus 1.65 sigma, the 5% VaR, and the conditional VaR at minus 2.06 sigma"></svg>
+    </section>
+    <div class="src">PARAMETRIC VAR · F3 HAIRLINE AREA · NORMAL RETURNS, μ = 0 · CVAR = σ × φ(1.65) / 5%</div>
+  </main>
+  <script src="i18n.js"></script>
+  <script>
+chartI18n.use({
+  zh: {
+    'Value at risk · the tail cut': '风险价值（VaR）· 尾部切分',
+    'VaR cuts off the worst 5% of outcomes; CVaR averages them.': 'VaR 切出最差的 5% 结果；CVaR 对其取平均。',
+    'Distribution of portfolio returns, normal with mean 0, in standard deviations (σ) · shaded = the 5% left tail · 5% VaR = 1.65σ, CVaR = 2.06σ · hover the shaded tail or the CVaR dot': '组合回报分布，均值为 0 的正态分布，以标准差 (σ) 计 · 阴影 = 5% 左尾 · 5% VaR = 1.65σ，CVaR = 2.06σ · 悬停阴影尾部或 CVaR 圆点查看说明',
+    'Probability density of returns': '回报的概率密度',
+    'At 95% confidence the loss is at most the VaR · with 5% probability it is at least the VaR · tighter levels move the cut left: 2.5% at 1.96σ, 1% at 2.33σ': '在 95% 置信水平下，损失至多为 VaR · 以 5% 概率损失至少为 VaR · 更严格的水平使切分点左移：2.5% 在 1.96σ，1% 在 2.33σ',
+    'Normal return distribution with the left 5% tail shaded below minus 1.65 sigma, the 5% VaR, and the conditional VaR at minus 2.06 sigma': '正态回报分布：−1.65σ 以下的 5% 左尾呈阴影（5% VaR），条件 VaR 位于 −2.06σ',
+    'PARAMETRIC VAR · F3 HAIRLINE AREA · NORMAL RETURNS, μ = 0 · CVAR = σ × φ(1.65) / 5%': '参数法 VaR · F3 发丝面积 · 正态回报，μ = 0 · CVAR = σ × φ(1.65) / 5%',
+    '5% of outcomes: loss of at least 1.65σ': '最差 5% 的结果：损失至少为 1.65σ',
+    'return →': '回报 →',
+    'probability': '概率密度',
+    'CVaR (expected shortfall): the average loss when the loss exceeds VaR = 2.06σ': 'CVaR（预期尾部损失）：当损失超过 VaR 时的平均损失 = 2.06σ',
+  },
+  ja: {
+    'Value at risk · the tail cut': 'バリュー・アット・リスク · テールの切れ目',
+    'VaR cuts off the worst 5% of outcomes; CVaR averages them.': 'VaR は最悪 5% の結果を切り分け、CVaR はそれを平均する。',
+    'Distribution of portfolio returns, normal with mean 0, in standard deviations (σ) · shaded = the 5% left tail · 5% VaR = 1.65σ, CVaR = 2.06σ · hover the shaded tail or the CVaR dot': 'ポートフォリオ・リターンの分布（平均 0 の正規分布、標準偏差 σ 単位）· 網掛け = 左テール 5% · 5% VaR = 1.65σ、CVaR = 2.06σ · 網掛け部分や CVaR の点にホバーして説明を表示',
+    'Probability density of returns': 'リターンの確率密度',
+    'At 95% confidence the loss is at most the VaR · with 5% probability it is at least the VaR · tighter levels move the cut left: 2.5% at 1.96σ, 1% at 2.33σ': '信頼水準 95% で損失はせいぜい VaR · 確率 5% で損失は少なくとも VaR · 水準を厳しくすると切れ目は左へ移動：2.5% は 1.96σ、1% は 2.33σ',
+    'Normal return distribution with the left 5% tail shaded below minus 1.65 sigma, the 5% VaR, and the conditional VaR at minus 2.06 sigma': '正規リターン分布：−1.65σ 未満の左 5% テールが網掛け（5% VaR）、条件付き VaR は −2.06σ',
+    'PARAMETRIC VAR · F3 HAIRLINE AREA · NORMAL RETURNS, μ = 0 · CVAR = σ × φ(1.65) / 5%': 'パラメトリック VaR · F3 ヘアライン面 · 正規リターン、μ = 0 · CVAR = σ × φ(1.65) / 5%',
+    '5% of outcomes: loss of at least 1.65σ': '結果の 5%：少なくとも 1.65σ の損失',
+    'return →': 'リターン →',
+    'probability': '確率密度',
+    'CVaR (expected shortfall): the average loss when the loss exceeds VaR = 2.06σ': 'CVaR（期待ショートフォール）：損失が VaR を超えたときの平均損失 = 2.06σ',
+  },
+  fr: {
+    'Value at risk · the tail cut': 'Valeur à risque · la coupure de queue',
+    'VaR cuts off the worst 5% of outcomes; CVaR averages them.': 'La VaR isole les 5 % pires issues ; la CVaR en fait la moyenne.',
+    'Distribution of portfolio returns, normal with mean 0, in standard deviations (σ) · shaded = the 5% left tail · 5% VaR = 1.65σ, CVaR = 2.06σ · hover the shaded tail or the CVaR dot': 'Distribution des rendements du portefeuille, loi normale de moyenne 0, en écarts-types (σ) · grisé = queue gauche à 5 % · VaR 5 % = 1,65σ, CVaR = 2,06σ · survoler la queue ou le point CVaR',
+    'Probability density of returns': 'Densité de probabilité des rendements',
+    'At 95% confidence the loss is at most the VaR · with 5% probability it is at least the VaR · tighter levels move the cut left: 2.5% at 1.96σ, 1% at 2.33σ': 'À 95 % de confiance, la perte est au plus la VaR · avec 5 % de probabilité, elle est au moins la VaR · des seuils plus stricts décalent la coupure à gauche : 2,5 % à 1,96σ, 1 % à 2,33σ',
+    'Normal return distribution with the left 5% tail shaded below minus 1.65 sigma, the 5% VaR, and the conditional VaR at minus 2.06 sigma': 'Distribution normale des rendements avec la queue gauche de 5 % grisée sous −1,65 sigma (VaR à 5 %) et la VaR conditionnelle à −2,06 sigma',
+    'PARAMETRIC VAR · F3 HAIRLINE AREA · NORMAL RETURNS, μ = 0 · CVAR = σ × φ(1.65) / 5%': 'VAR PARAMÉTRIQUE · AIRE F3 · RENDEMENTS NORMAUX, μ = 0 · CVAR = σ × φ(1,65) / 5 %',
+    '5% of outcomes: loss of at least 1.65σ': '5 % des issues : perte d’au moins 1,65σ',
+    'return →': 'rendement →',
+    'probability': 'probabilité',
+    'CVaR (expected shortfall): the average loss when the loss exceeds VaR = 2.06σ': 'CVaR (perte moyenne conditionnelle) : perte moyenne lorsque la perte dépasse la VaR = 2,06σ',
+  },
+});
+  </script>
+  <script>
+(() => {
+  const { C, el, label, frame, axes, curve, guide, dot, mount } = curveKit;
+
+  // ── Data: standard normal returns, the 5% cut and the tail mean ──
+  const Z = 1.65, CVAR = 2.06, X0 = -4, X1 = 4;
+  const pdf = (x) => Math.exp(-x * x / 2) / Math.sqrt(2 * Math.PI);
+
+  mount(document.getElementById('chart'), (s, W, H) => {
+    const F = frame(s, W, H, { l: 14, r: 12, t: 22, b: 40, xMin: X0, noTicks: true }, X1, 0.44);
+    // The tail: a solid area under the curve to the left of the cut.
+    const pts = [];
+    for (let i = 0; i <= 60; i++) { const x = X0 + ((-Z - X0) * i) / 60; pts.push(F.x(x).toFixed(1) + ' ' + F.y(pdf(x)).toFixed(1)); }
+    el(s, 'path', { d: `M${F.x(X0)} ${F.BASE} L${pts.join(' L')} L${F.x(-Z)} ${F.BASE} Z`, fill: C.FAINT, class: 'fade', style: 'animation-delay:0.6s', 'data-hl': 'tail', 'data-tip': '5% of outcomes: loss of at least 1.65σ' });
+    curve(s, F, pdf, X0, X1, { stroke: C.INK, width: 1.6 });
+
+    [-3, -2, -1, 0, 1, 2, 3].forEach((v) => label(s, F.x(v), F.BASE + 14, v ? (v > 0 ? '+' : '−') + Math.abs(v) + 'σ' : '0', { size: 9.5, weight: 600, fill: C.MUTED, anchor: 'middle', halo: 0 }));
+    axes(s, F, 'return →', 'probability');
+
+    guide(s, F.x(-Z), F.BASE, F.x(-Z), F.y(0.3), 0.7);
+    label(s, F.x(-Z) + 3, F.y(0.3) - 6, 'VaR = 1.65σ', { size: 10.5, anchor: 'end', delay: 0.9 });
+    dot(s, F.x(-CVAR), F.BASE - 0.5, 3.4, C.INK, 1, 'CVaR (expected shortfall): the average loss when the loss exceeds VaR = 2.06σ');
+    label(s, F.x(-CVAR) - 4, F.y(0.075), 'CVaR', { size: 10, weight: 700, anchor: 'end', delay: 1.05 });
+    label(s, F.x(-3.1), F.y(0.13), '5%', { size: 11, anchor: 'middle', delay: 1 });
+    label(s, F.x(0.9), F.y(0.24), '95%', { size: 11, fill: C.MUTED, anchor: 'start', delay: 1 });
+
+  }, (W) => Math.max(250, Math.min(320, W * 0.6)));
+})();
+  </script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Portfolio Management M5 — Economics and Investment Markets review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    "id": "pm5-framework",
+    "topic": "Framework of analysis",
+    "front": "Through what channels must an economic factor affect an asset’s value?",
+    "back": "<div class=\"ans\"><ul><li>The <strong>timing or amount</strong> of expected cash flows</li><li>The <strong>discount rate</strong>: default-free real rate, expected inflation, or risk premiums</li></ul></div>",
+    "gap": "Risk premiums depend on both the amount of risk and investors’ perception of it."
+  },
+  {
+    "id": "pm5-components",
+    "topic": "Discount rate components",
+    "front": "Name the components \\(\\iota,\\theta,\\pi,\\gamma,\\kappa,\\phi\\) of the discount rate.",
+    "back": "<div class=\"ans\"><ul><li>\\(\\iota\\): real default-free rate</li><li>\\(\\theta\\): expected inflation</li><li>\\(\\pi\\): inflation risk premium</li><li>\\(\\gamma\\): credit premium</li><li>\\(\\kappa\\): equity premium over credit-risky bonds</li><li>\\(\\phi\\): liquidity premium</li></ul></div>"
+  },
+  {
+    "id": "pm5-ior",
+    "topic": "Inter-temporal rate of substitution",
+    "front": "Define \\(m_t\\). How does it behave over the cycle, and how does it give the real rate?",
+    "back": "<div class=\"ans\"><p>\\(m_t\\): marginal utility of consumption at \\(t\\) over that today. It <strong>falls in good times</strong> (diminishing marginal utility).</p><div class=\"eq-block\">$$\\iota=\\frac{1}{E(m_1)}-1$$</div><p>E.g. \\(E(m_1)=0.98\\) gives \\(\\iota=2.04\\%\\).</p></div>"
+  },
+  {
+    "id": "pm5-cov",
+    "topic": "Risk premium and covariance",
+    "front": "Write the price of a risky asset in terms of the risk-neutral value. Why do most risky assets offer a premium?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$P_0=\\frac{E(P_1)}{1+\\iota}+\\text{Cov}(P_1,m_1)$$</div><p>Most assets pay off in good times, when \\(m_1\\) is low: the covariance is <strong>negative</strong>, the price is below the risk-neutral value, and there is a premium.</p></div>",
+    "gap": "An asset that pays off in bad times (positive covariance) is a hedge and trades above its risk-neutral value."
+  },
+  {
+    "id": "pm5-inflation",
+    "topic": "Inflation premium",
+    "front": "How do short-term and long-term default-free bonds differ in the inflation compensation they require?",
+    "back": "<div class=\"ans\"><ul><li><strong>Short term (T-bills)</strong>: only expected inflation: discount at \\(\\iota+\\theta\\)</li><li><strong>Long term</strong>: also the inflation risk premium \\(\\pi\\) for uncertainty: \\(\\iota+\\theta+\\pi\\)</li></ul></div>"
+  },
+  {
+    "id": "pm5-taylor",
+    "topic": "Taylor rule",
+    "front": "Write the Taylor rule. Neutral real rate 2%, inflation 4% (target 2%), GDP growth 3% (target 2%): find \\(R\\).",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}R={}&R_n+\\theta+0.5(\\theta-\\theta^*)\\\\&+0.5(Y-Y^*)\\end{aligned}$$</div><p>\\(R=6\\%+1\\%+0.5\\%=\\) <strong>7.5%</strong>.</p></div>"
+  },
+  {
+    "id": "pm5-bei",
+    "topic": "Break-even inflation",
+    "front": "Define the break-even inflation rate. Nominal 10-year yield 4.0%, TIPS 1.5%, expected inflation 2.2%: find the BEI and \\(\\pi\\).",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\text{BEI}=\\theta+\\pi$$</div><p>BEI \\(=4.0\\%-1.5\\%=2.5\\%\\); \\(\\pi=2.5\\%-2.2\\%=0.3\\%\\).</p></div>",
+    "gap": "The BEI is not a pure inflation forecast: it includes the inflation risk premium."
+  },
+  {
+    "id": "pm5-curve",
+    "topic": "Yield curve and the cycle",
+    "front": "How does the yield curve’s slope change over the business cycle?",
+    "back": "<div class=\"ans\"><ul><li><strong>Recession</strong>: policy rates cut, curve <strong>steep</strong></li><li><strong>Late expansion</strong>: rates raised against inflation, curve <strong>flattens</strong>, can <strong>invert</strong></li></ul><p>An inverted curve has often preceded a recession; short rates move with the cycle far more than long rates.</p></div>"
+  },
+  {
+    "id": "pm5-credit",
+    "topic": "Credit premium",
+    "front": "How do credit premiums behave over the cycle and across ratings? What drives sovereign spreads?",
+    "back": "<div class=\"ans\"><ul><li>Widen in recessions (more defaults, lower recovery), narrow in expansions</li><li>Lower ratings: higher and more cyclical spreads</li><li>Sovereigns: fiscal position, external debt, growth, political risk; especially debt in a foreign currency</li></ul></div>"
+  },
+  {
+    "id": "pm5-erp",
+    "topic": "Equity risk premium",
+    "front": "Relate \\(\\lambda\\), \\(\\gamma\\) and \\(\\kappa\\). Why do equities need a large premium?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\lambda=\\gamma+\\kappa$$</div><p>Required return \\(=\\iota+\\theta+\\pi+\\gamma+\\kappa\\). Equities have poor <strong>consumption hedging</strong>: earnings fall in recessions, when marginal utility is highest.</p></div>"
+  },
+  {
+    "id": "pm5-pe",
+    "topic": "Justified P/E",
+    "front": "Write the justified leading and trailing P/E. Define each term.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\frac{P_0}{E_1}=\\frac{1-b}{r-g}$$</div><div class=\"eq-block\">$$\\frac{P_0}{E_0}=\\frac{(1-b)(1+g)}{r-g}$$</div><p>\\(b\\): retention ratio; \\(1-b\\): payout; \\(r\\): required return; \\(g=b\\times\\text{ROE}\\).</p></div>",
+    "gap": "Multiples rise with growth and fall with the required return."
+  },
+  {
+    "id": "pm5-pb",
+    "topic": "Justified P/B",
+    "front": "Write the justified P/B. When is it above 1?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\frac{P_0}{B_0}=\\frac{\\text{ROE}-g}{r-g}$$</div><p>\\(P/B&gt;1\\iff\\text{ROE}&gt;r\\iff\\) residual income \\(&gt;0\\).</p></div>"
+  },
+  {
+    "id": "pm5-multiples-example",
+    "topic": "Multiples example",
+    "front": "Retention 40%, ROE 12.5%, required return 9%. Find the justified leading P/E, trailing P/E and P/B.",
+    "back": "<div class=\"ans\"><p>\\(g=0.4\\times12.5\\%=5\\%\\).</p><ul><li>Leading P/E \\(=0.6/0.04=15\\)</li><li>Trailing P/E \\(=15\\times1.05=15.75\\)</li><li>P/B \\(=7.5\\%/4\\%=1.875\\)</li></ul></div>"
+  },
+  {
+    "id": "pm5-styles",
+    "topic": "Growth vs value, small vs large",
+    "front": "Contrast growth and value stocks, and explain why small caps underperform in hard times.",
+    "back": "<div class=\"ans\"><ul><li><strong>Growth</strong>: strong earnings growth, high P/E, low yield; value far in the future</li><li><strong>Value</strong>: mature, low growth, low P/E, high yield</li><li><strong>Small caps</strong>: less diversified, harder to finance in recessions, more volatile: higher premium</li></ul></div>",
+    "gap": "In expansions, rotate into growth, small-cap and cyclical stocks when they are expected to outperform."
+  },
+  {
+    "id": "pm5-liquidity",
+    "topic": "Liquidity premium · real estate",
+    "front": "Why does commercial real estate require a liquidity premium, and what is its full required return?",
+    "back": "<div class=\"ans\"><p>It is illiquid (large, unique, slow and costly to sell), cyclical (rents, occupancy, tenant default) and a partial inflation hedge.</p><div class=\"eq-block\">$$r=\\iota+\\theta+\\pi+\\gamma+\\kappa+\\phi$$</div></div>"
+  }
+];
+
+flashDeck({
+  key: "cfa-c9-m5-review",
+  source: "CFA L2 Portfolio Management \u00b7 M5 Economics and Investment Markets \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

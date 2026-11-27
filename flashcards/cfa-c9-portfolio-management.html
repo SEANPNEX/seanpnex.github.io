@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Portfolio Management — quiz misses flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    id: "pm-m3-position-vs-scenario-limit-2026-11-15",
+    topic: "PM M3 · Position vs scenario limit",
+    front: `An analyst expects a recession and suggests limiting exposure to corporate bonds. What kind of constraint is that?`,
+    back: `<div class="ans">
+      <p><strong>Position limit.</strong></p><ul><li><strong>Position limit:</strong> caps the size of an exposure (security, asset class, sector, issuer, or country).</li><li><strong>Scenario limit:</strong> caps the estimated loss allowed under a given scenario or stress test.</li><li><strong>Stop-loss limit:</strong> requires a reduction or close-out once a loss over a period exceeds a trigger.</li></ul><p>The reason behind a limit (here, a recession view) does not change its type. A cap on the estimated loss if a named crisis repeats is a scenario limit, not a stop-loss.</p>
+    </div>`,
+    gap: "Answered scenario limit."
+  },
+  {
+    id: "pm-m3-scenario-vs-stop-loss-2026-11-15",
+    topic: "PM M3 · Scenario vs stop-loss limit",
+    front: `A rule says the portfolio loss must not exceed 10% if a 2008-style credit crisis repeats. What kind of constraint is that?`,
+    back: `<div class="ans">
+      <p><strong>Scenario limit.</strong></p><ul><li><strong>Scenario limit:</strong> a cap on the estimated loss for a given hypothetical or historical scenario or stress test (here, a repeat of the 2008 credit crisis). The loss tolerance for that scenario is set before the event.</li><li><strong>Stop-loss limit:</strong> requires a reduction or close-out when a loss of a particular size occurs in a specified period — realized losses that have already happened.</li><li><strong>Position limit:</strong> caps the size of an exposure. A size cap, even if motivated by a crisis or recession view, is still a position limit.</li></ul><p>A hypothetical or historical path (if a 2008-style crisis repeats) is a scenario limit; a stop-loss is triggered only after losses have already occurred.</p>
+    </div>`,
+    gap: "Answered stop-loss limit."
+  },
+  {
+    id: "pm-m6-ir-vs-sharpe-2026-11-15",
+    topic: "PM M6 · IR vs Sharpe",
+    front: `Where is the information ratio least appropriate?`,
+    back: `<div class="ans">
+      <p><strong>Quantifying return in excess of the risk-free rate.</strong> That is the Sharpe ratio: excess return over the risk-free rate per unit of total risk, \\(\\text{SR}_P=\\dfrac{R_P-R_f}{\\sigma_P}\\).</p><ul><li><strong>IR</strong> \\(=\\dfrac{R_A}{\\sigma_A}=\\dfrac{R_P-R_B}{\\sigma(R_P-R_B)}\\): active return per unit of active risk, measured against the benchmark.</li><li>IR <strong>is</strong> used in portfolio construction: \\(\\text{SR}_P^2=\\text{SR}_B^2+\\text{IR}^2\\), with optimal active risk \\(\\sigma_A^*=\\dfrac{\\text{IR}}{\\text{SR}_B}\\sigma_B\\).</li><li>The ex post IR is also used to evaluate past performance.</li></ul>
+    </div>`,
+    gap: "Chose constructing an actively managed portfolio."
+  },
+  {
+    id: "pm-m6-low-active-risk-passive-2026-11-15",
+    topic: "PM M6 · Low active risk / passive",
+    front: `A portfolio has return 6.5%, risk 10.9%, active return 0.15%, active risk 0.25% and IR 0.6. The benchmark has return 6.35% and risk 11.0%. What is the most appropriate conclusion about how the portfolio is managed?`,
+    back: `<div class="ans">
+      <p><strong>Might be passively managed, because active risk is close to zero.</strong></p><ul><li>Active risk (tracking error) of 0.25% is near zero, which points to an index fund or a closet indexer: a fund that advertises itself as active but is actually close to being an index fund.</li><li>A positive IR (here 0.6) does not prove the portfolio is actively managed. A closet index's IR can be indeterminate because active risk is so low, and is often close to zero or slightly negative after fees; a small positive active return can still produce a positive IR.</li><li>Total risk close to the benchmark's (10.9% vs 11.0%) does not measure how active the portfolio is. Tracking error and active share do.</li></ul>
+    </div>`,
+    gap: "Chose must be actively managed because IR is positive."
+  },
+  {
+    id: "pm-m2-apt-assumptions-2026-11-15",
+    topic: "PM M2 · APT assumptions",
+    front: `Which is not an assumption of the APT?`,
+    back: `<div class="ans">
+      <p><strong>Arbitrage will push the risk premium on systematic risk to zero.</strong></p><p>The APT's three key assumptions are:</p><ul><li>A factor model describes asset returns.</li><li>With many assets to choose from, investors can form well-diversified portfolios that eliminate asset-specific (idiosyncratic) risk.</li><li>No arbitrage opportunities exist among well-diversified portfolios.</li></ul><p>Arbitrage removes mispricing among well-diversified portfolios; it does not drive systematic factor risk premiums to zero. Those premiums, \\(\\lambda_j\\), are the expected reward for bearing the risk of factor \\(j\\). Asset-specific risk is diversified away and does not appear in expected return.</p>
+    </div>`,
+    gap: "Chose idiosyncratic risk can be eliminated by diversification."
+  }
+];
+
+flashDeck({
+  key: "cfa-c9-portfolio-management",
+  source: "CFA L2 Portfolio Management · Quiz misses",
+  gapLabel: "Gap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Correlation triangle · IC, TC, value added</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <script src="chart-fx.js"></script>
+</head>
+<body>
+  <main class="card" id="card" data-fx-scope>
+    <h2>Skill flows from forecasts to weights to returns.</h2>
+    <div class="sub">The correlation triangle of active management · each corner is a set of numbers across the assets; each side is the correlation between two corners · hover a side or a corner</div>
+    <section class="panel">
+      <h3>Forecasts, weights and realized returns</h3>
+      <div class="hint">IC = how good the forecasts are · TC = how fully the forecasts reach the weights · value added = the weights times the realized active returns</div>
+      <svg id="chart" role="img" aria-label="Triangle with forecasted active returns at the top, active weights at the bottom left and realized active returns at the bottom right; the sides are the transfer coefficient, the information coefficient and value added"></svg>
+    </section>
+    <div class="src">GRINOLD–KAHN CORRELATION TRIANGLE · RELATIONSHIP DIAGRAM · IC = ρ(μ/σ, Rₐ/σ) · TC = ρ(μ/σ, Δw·σ)</div>
+  </main>
+  <script src="i18n.js"></script>
+  <script>
+chartI18n.use({
+  zh: {
+    'Correlation triangle · IC, TC, value added': '相关性三角 · IC、TC、价值增加',
+    'Skill flows from forecasts to weights to returns.': '投资能力从预测流向权重，再流向回报。',
+    'The correlation triangle of active management · each corner is a set of numbers across the assets; each side is the correlation between two corners · hover a side or a corner': '主动管理的相关性三角 · 每个顶点是跨资产的一组数字；每条边是两个顶点之间的相关性 · 悬停边或顶点查看详情',
+    'Forecasts, weights and realized returns': '预测、权重与实现回报',
+    'IC = how good the forecasts are · TC = how fully the forecasts reach the weights · value added = the weights times the realized active returns': 'IC = 预测的质量 · TC = 预测多大程度传递到权重 · 价值增加 = 权重乘以实现的主动回报',
+    'Triangle with forecasted active returns at the top, active weights at the bottom left and realized active returns at the bottom right; the sides are the transfer coefficient, the information coefficient and value added': '顶部为预测主动回报、左下为主动权重、右下为实现主动回报的三角形；三条边分别是转移系数、信息系数和价值增加',
+    'GRINOLD–KAHN CORRELATION TRIANGLE · RELATIONSHIP DIAGRAM · IC = ρ(μ/σ, Rₐ/σ) · TC = ρ(μ/σ, Δw·σ)': 'GRINOLD–KAHN 相关性三角 · 关系图 · IC = ρ(μ/σ, Rₐ/σ) · TC = ρ(μ/σ, Δw·σ)',
+    'Forecasted active returns': '预测主动回报',
+    'Forecasted active returns μᵢ\nthe manager’s expectations, before any trade': '预测主动回报 μᵢ\n管理人在交易前的预期',
+    'Active weights': '主动权重',
+    'Active weights Δwᵢ = wᵢ(P) − wᵢ(B)\nthe bets actually taken; they sum to 0': '主动权重 Δwᵢ = wᵢ(P) − wᵢ(B)\n实际建立的主动押注；总和为 0',
+    'Realized active returns': '实现主动回报',
+    'Realized active returns\nwhat each asset actually returned relative to the benchmark': '实现主动回报\n每项资产相对于基准的实际超额回报',
+    'TC': 'TC',
+    'portfolio construction': '组合构建',
+    'Transfer coefficient (TC)\ncorrelation of forecasts and active weights\n= 1 without constraints, < 1 with them': '转移系数（TC）\n预测与主动权重的相关性\n无约束时 = 1，有约束时 < 1',
+    'IC': 'IC',
+    'signal quality': '信号质量',
+    'Information coefficient (IC)\ncorrelation of forecasts and realized active returns\nex ante > 0; ex post can be negative': '信息系数（IC）\n预测与实现主动回报的相关性\n事前 > 0；事后可能为负',
+    'Value added': '价值增加',
+    'Value added\nthe active return the weights actually earned\nRₐ = Σ Δwᵢ × Rₐ,ᵢ': '价值增加\n权重实际赚取的主动回报\nRₐ = Σ Δwᵢ × Rₐ,ᵢ',
+  },
+  ja: {
+    'Correlation triangle · IC, TC, value added': '相関の三角形 · IC、TC、付加価値',
+    'Skill flows from forecasts to weights to returns.': '運用スキルは予想からウェイトへ、そしてリターンへと流れる。',
+    'The correlation triangle of active management · each corner is a set of numbers across the assets; each side is the correlation between two corners · hover a side or a corner': 'アクティブ運用の相関の三角形 · 各頂点は資産ごとの数値の組、各辺は 2 つの頂点の間の相関 · 辺や頂点にカーソルを合わせると説明を表示',
+    'Forecasts, weights and realized returns': '予想、ウェイト、実現リターン',
+    'IC = how good the forecasts are · TC = how fully the forecasts reach the weights · value added = the weights times the realized active returns': 'IC = 予想の質 · TC = 予想がどれだけウェイトに反映されるか · 付加価値 = ウェイト × 実現アクティブ・リターン',
+    'Triangle with forecasted active returns at the top, active weights at the bottom left and realized active returns at the bottom right; the sides are the transfer coefficient, the information coefficient and value added': '上に予想アクティブ・リターン、左下にアクティブ・ウェイト、右下に実現アクティブ・リターンを置いた三角形。辺は移転係数、情報係数、付加価値',
+    'GRINOLD–KAHN CORRELATION TRIANGLE · RELATIONSHIP DIAGRAM · IC = ρ(μ/σ, Rₐ/σ) · TC = ρ(μ/σ, Δw·σ)': 'GRINOLD–KAHN 相関の三角形 · 関係図 · IC = ρ(μ/σ, Rₐ/σ) · TC = ρ(μ/σ, Δw·σ)',
+    'Forecasted active returns': '予想アクティブ・リターン',
+    'Forecasted active returns μᵢ\nthe manager’s expectations, before any trade': '予想アクティブ・リターン μᵢ\n取引前の運用者の期待値',
+    'Active weights': 'アクティブ・ウェイト',
+    'Active weights Δwᵢ = wᵢ(P) − wᵢ(B)\nthe bets actually taken; they sum to 0': 'アクティブ・ウェイト Δwᵢ = wᵢ(P) − wᵢ(B)\n実際にとった賭け；合計は 0',
+    'Realized active returns': '実現アクティブ・リターン',
+    'Realized active returns\nwhat each asset actually returned relative to the benchmark': '実現アクティブ・リターン\n各資産がベンチマークに対して実際に上げたリターン',
+    'TC': 'TC',
+    'portfolio construction': 'ポートフォリオ構築',
+    'Transfer coefficient (TC)\ncorrelation of forecasts and active weights\n= 1 without constraints, < 1 with them': '移転係数（TC）\n予想とアクティブ・ウェイトの相関\n制約がなければ = 1、制約があると < 1',
+    'IC': 'IC',
+    'signal quality': 'シグナルの質',
+    'Information coefficient (IC)\ncorrelation of forecasts and realized active returns\nex ante > 0; ex post can be negative': '情報係数（IC）\n予想と実現アクティブ・リターンの相関\n事前 > 0；事後はマイナスになりうる',
+    'Value added': '付加価値',
+    'Value added\nthe active return the weights actually earned\nRₐ = Σ Δwᵢ × Rₐ,ᵢ': '付加価値\nウェイトが実際に稼いだアクティブ・リターン\nRₐ = Σ Δwᵢ × Rₐ,ᵢ',
+  },
+  fr: {
+    'Correlation triangle · IC, TC, value added': 'Triangle des corrélations · IC, TC, valeur ajoutée',
+    'Skill flows from forecasts to weights to returns.': 'Le talent passe des prévisions aux pondérations, puis aux rendements.',
+    'The correlation triangle of active management · each corner is a set of numbers across the assets; each side is the correlation between two corners · hover a side or a corner': 'Le triangle des corrélations de la gestion active · chaque sommet est un ensemble de valeurs sur les actifs ; chaque côté est la corrélation entre deux sommets · survolez un côté ou un sommet',
+    'Forecasts, weights and realized returns': 'Prévisions, pondérations et rendements réalisés',
+    'IC = how good the forecasts are · TC = how fully the forecasts reach the weights · value added = the weights times the realized active returns': 'IC = qualité des prévisions · TC = part des prévisions qui passe dans les pondérations · valeur ajoutée = pondérations fois rendements actifs réalisés',
+    'Triangle with forecasted active returns at the top, active weights at the bottom left and realized active returns at the bottom right; the sides are the transfer coefficient, the information coefficient and value added': 'Triangle avec les rendements actifs prévus en haut, les pondérations actives en bas à gauche et les rendements actifs réalisés en bas à droite ; les côtés sont le coefficient de transfert, le coefficient d’information et la valeur ajoutée',
+    'GRINOLD–KAHN CORRELATION TRIANGLE · RELATIONSHIP DIAGRAM · IC = ρ(μ/σ, Rₐ/σ) · TC = ρ(μ/σ, Δw·σ)': 'TRIANGLE DES CORRÉLATIONS DE GRINOLD–KAHN · SCHÉMA DE RELATIONS · IC = ρ(μ/σ, Rₐ/σ) · TC = ρ(μ/σ, Δw·σ)',
+    'Forecasted active returns': 'Rendements actifs prévus',
+    'Forecasted active returns μᵢ\nthe manager’s expectations, before any trade': 'Rendements actifs prévus μᵢ\nles anticipations du gérant, avant toute transaction',
+    'Active weights': 'Pondérations actives',
+    'Active weights Δwᵢ = wᵢ(P) − wᵢ(B)\nthe bets actually taken; they sum to 0': 'Pondérations actives Δwᵢ = wᵢ(P) − wᵢ(B)\nles paris effectivement pris ; leur somme vaut 0',
+    'Realized active returns': 'Rendements actifs réalisés',
+    'Realized active returns\nwhat each asset actually returned relative to the benchmark': 'Rendements actifs réalisés\nce que chaque actif a réellement rapporté par rapport à l’indice',
+    'TC': 'TC',
+    'portfolio construction': 'construction du portefeuille',
+    'Transfer coefficient (TC)\ncorrelation of forecasts and active weights\n= 1 without constraints, < 1 with them': 'Coefficient de transfert (TC)\ncorrélation entre prévisions et pondérations actives\n= 1 sans contraintes, < 1 avec contraintes',
+    'IC': 'IC',
+    'signal quality': 'qualité du signal',
+    'Information coefficient (IC)\ncorrelation of forecasts and realized active returns\nex ante > 0; ex post can be negative': 'Coefficient d’information (IC)\ncorrélation entre prévisions et rendements actifs réalisés\nex ante > 0 ; ex post peut être négatif',
+    'Value added': 'Valeur ajoutée',
+    'Value added\nthe active return the weights actually earned\nRₐ = Σ Δwᵢ × Rₐ,ᵢ': 'Valeur ajoutée\nle rendement actif réellement dégagé par les pondérations\nRₐ = Σ Δwᵢ × Rₐ,ᵢ',
+  },
+});
+  </script>
+  <script>
+(() => {
+  const { C, el, label, mount } = curveKit;
+
+  // ── Data: the three corners and the three sides ──
+  const CORNERS = [
+    { id: 'mu', name: 'Forecasted active returns', sym: 'μᵢ', tip: 'Forecasted active returns μᵢ\nthe manager’s expectations, before any trade' },
+    { id: 'w', name: 'Active weights', sym: 'Δwᵢ', tip: 'Active weights Δwᵢ = wᵢ(P) − wᵢ(B)\nthe bets actually taken; they sum to 0' },
+    { id: 'ra', name: 'Realized active returns', sym: 'Rₐ,ᵢ', tip: 'Realized active returns\nwhat each asset actually returned relative to the benchmark' },
+  ];
+  const SIDES = [
+    { a: 0, b: 1, name: 'TC', sub: 'portfolio construction', tip: 'Transfer coefficient (TC)\ncorrelation of forecasts and active weights\n= 1 without constraints, < 1 with them' },
+    { a: 0, b: 2, name: 'IC', sub: 'signal quality', tip: 'Information coefficient (IC)\ncorrelation of forecasts and realized active returns\nex ante > 0; ex post can be negative' },
+    { a: 1, b: 2, name: 'Value added', sub: 'Rₐ = Σ Δwᵢ Rₐ,ᵢ', tip: 'Value added\nthe active return the weights actually earned\nRₐ = Σ Δwᵢ × Rₐ,ᵢ' },
+  ];
+
+  mount(document.getElementById('chart'), (s, W, H) => {
+    const nw = W < 420, padX = nw ? 62 : 110;
+    const P = [[W / 2, 48], [padX, H - 52], [W - padX, H - 52]];
+    SIDES.forEach((sd, i) => {
+      const [x1, y1] = P[sd.a], [x2, y2] = P[sd.b];
+      el(s, 'line', { x1, y1, x2, y2, stroke: i === 1 ? C.INK : '#6A6963', 'stroke-width': i === 1 ? 1.6 : 1.3, pathLength: 1, class: 'draw', style: `animation-delay:${0.15 + i * 0.15}s`, 'data-hl': 's' + i });
+      el(s, 'line', { x1, y1, x2, y2, stroke: 'transparent', 'stroke-width': 14, 'data-hl': 's' + i, 'data-tip': sd.tip });
+      const mx = (x1 + x2) / 2, my = (y1 + y2) / 2;
+      const off = i === 2 ? [0, 22] : [i === 0 ? -20 : 14, -2];
+      const anchor = i === 2 ? 'middle' : i === 0 ? 'end' : 'start';
+      label(s, mx + off[0], my + off[1], sd.name, { size: 11.5, anchor, delay: 0.8 + i * 0.08 });
+      label(s, mx + off[0], my + off[1] + 13, sd.sub, { size: 9.5, weight: 600, fill: C.MUTED, anchor, delay: 0.85 + i * 0.08 });
+    });
+    CORNERS.forEach((c, i) => {
+      const [x, y] = P[i], w = c.sym.length * 8 + 22, h = 22;
+      const g = el(s, 'g', { class: 'pop', style: `animation-delay:${0.4 + i * 0.1}s`, 'data-tip': c.tip, 'data-hl': 'c' + i });
+      el(g, 'rect', { x: x - w / 2, y: y - h / 2, width: w, height: h, rx: h / 2, fill: i === 0 ? C.INK : C.PAPER, stroke: C.INK, 'stroke-width': 1.1 });
+      el(g, 'text', { x, y: y + 4, 'text-anchor': 'middle', 'font-size': 11, 'font-weight': 800, fill: i === 0 ? C.PAPER : C.INK }, c.sym);
+      const below = i > 0;
+      label(s, x, below ? y + 28 : y - 18, c.name, { size: 10, weight: 700, fill: C.MUTED, anchor: 'middle', delay: 0.7, maxWidth: nw ? 110 : 160, up: !below });
+    });
+  }, (W) => Math.max(250, Math.min(300, W * 0.6)));
+})();
+  </script>
+</body>
+</html>

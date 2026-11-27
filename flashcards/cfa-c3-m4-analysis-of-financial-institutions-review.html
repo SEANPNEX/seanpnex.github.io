@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA FSA M4 — Analysis of Financial Institutions review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    "id": "f4-systemic",
+    "topic": "Systemic importance",
+    "front": "Why are banks systemically important, and what is financial contagion?",
+    "back": "<div class=\"ans\"><p>Banks create <strong>linkages across all types of entities</strong> (other banks, companies, households, governments), so one failure can threaten the whole system.</p><p><strong>Contagion</strong>: losses spread through counterparty exposures, depositor runs and fire-sale prices. The largest banks are <strong>G-SIBs</strong> and hold extra capital.</p></div>",
+    "gap": "This is why financial institutions are heavily regulated, unlike most companies."
+  },
+  {
+    "id": "f4-regulators",
+    "topic": "Regulators",
+    "front": "Name the international bodies that set standards for financial institutions.",
+    "back": "<div class=\"ans\"><ul><li><strong>Basel Committee</strong>: bank capital, liquidity, funding (Basel III)</li><li><strong>Financial Stability Board</strong>: global financial stability; identifies G-SIBs</li><li><strong>IADI</strong>: deposit insurance</li><li><strong>IAIS</strong>: insurance supervision</li><li><strong>IOSCO</strong>: securities markets</li></ul></div>"
+  },
+  {
+    "id": "f4-balance-sheet",
+    "topic": "Bank balance sheets",
+    "front": "How do a bank's assets and liabilities differ from those of a non-financial company?",
+    "back": "<div class=\"ans\"><ul><li><strong>Assets</strong>: mostly <strong>financial</strong> (loans, securities), many at fair value, so closer to market value and exposed to credit, market and liquidity risk</li><li><strong>Liabilities</strong>: mostly <strong>deposits</strong>, withdrawable at short notice → <strong>maturity mismatch</strong></li><li><strong>High leverage</strong>: a small loss on assets can wipe out a large share of equity</li></ul></div>"
+  },
+  {
+    "id": "f4-basel",
+    "topic": "Basel III · aims and requirements",
+    "front": "What are Basel III's three requirements?",
+    "back": "<div class=\"ans\"><ul><li><strong>Minimum capital</strong>, relative to risk-weighted assets</li><li><strong>Minimum liquidity</strong>: survive 30 days of stress (LCR)</li><li><strong>Stable funding</strong>: fund long-term assets with stable sources (NSFR)</li></ul><p>Aims: absorb shocks from any source, improve risk management, strengthen transparency and disclosure.</p></div>"
+  },
+  {
+    "id": "f4-camels",
+    "topic": "CAMELS",
+    "front": "What does CAMELS stand for?",
+    "back": "<div class=\"ans\"><ul><li><strong>C</strong>apital adequacy</li><li><strong>A</strong>sset quality</li><li><strong>M</strong>anagement capabilities</li><li><strong>E</strong>arnings sufficiency</li><li><strong>L</strong>iquidity position</li><li><strong>S</strong>ensitivity to market risk</li></ul></div>"
+  },
+  {
+    "id": "f4-rwa",
+    "topic": "Capital · risk-weighted assets",
+    "front": "How are risk-weighted assets computed? A bank holds cash 100 and government bonds 300 (0%), mortgages 400 (35%) and corporate loans 200 (100%). What are RWA?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\text{RWA}=\\sum_i\\text{Exposure}_i\\times\\text{Risk weight}_i$$</div><p>\\(0+0+400\\times35\\%+200\\times100\\%=\\) <strong>340</strong>, out of total assets of 1,000. RWA also include charges for market and operational risk.</p></div>",
+    "gap": "Capital ratios divide by RWA, not total assets: riskier assets need more capital."
+  },
+  {
+    "id": "f4-tiers",
+    "topic": "Capital · tiers",
+    "front": "What is in CET1, Additional Tier 1 and Tier 2 capital?",
+    "back": "<div class=\"ans\"><ul><li><strong>CET1</strong>: common shares, retained earnings, AOCI, <strong>less</strong> goodwill, intangibles and deferred tax assets; absorbs losses first, as a going concern</li><li><strong>AT1</strong>: perpetual, non-cumulative instruments (non-cumulative preferred, contingent convertibles); going concern</li><li><strong>Tier 2</strong>: subordinated debt (original maturity ≥ 5 years), some loan-loss allowances; absorbs losses only when the bank fails</li></ul></div>",
+    "gap": "Tier 1 = CET1 + AT1; total capital = Tier 1 + Tier 2."
+  },
+  {
+    "id": "f4-minimums",
+    "topic": "Capital · minimum ratios",
+    "front": "Give the Basel III minimum capital ratios and the main add-ons. With CET1 25, AT1 5, Tier 2 8 and RWA 340, are they met?",
+    "back": "<div class=\"ans\"><ul><li>CET1 ≥ <strong>4.5%</strong>; Tier 1 ≥ <strong>6%</strong>; total ≥ <strong>8%</strong> of RWA</li><li>Plus a 2.5% <strong>conservation buffer</strong>, a countercyclical buffer up to 2.5%, G-SIB surcharges, and a 3% <strong>leverage ratio</strong> (Tier 1 / total exposure)</li></ul><p>\\(25/340=7.4\\%\\), \\(30/340=8.8\\%\\), \\(38/340=11.2\\%\\): all met, including 7% CET1 with the buffer.</p></div>",
+    "gap": "The leverage ratio is not risk-based: it guards against risk weights that are too low."
+  },
+  {
+    "id": "f4-allowance",
+    "topic": "Asset quality · loan-loss allowance",
+    "front": "How do the provision and the allowance for loan losses work?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}\\text{Allow.}_{\\text{end}}={}&\\text{Allow.}_{\\text{beg}}\\\\&+\\text{Provision}\\\\&-\\text{Net charge-offs}\\end{aligned}$$</div><ul><li><strong>Allowance</strong>: B/S contra-asset for expected credit losses</li><li><strong>Provision</strong>: I/S expense that increases the allowance</li><li><strong>Charge-offs</strong>: actual losses, which use up the allowance</li></ul></div>",
+    "gap": "The provision is a management estimate: under-providing raises profit now and leaves losses for later."
+  },
+  {
+    "id": "f4-aq-ratios",
+    "topic": "Asset quality · ratios",
+    "front": "What do the three allowance ratios show?",
+    "back": "<div class=\"ans\"><ul><li><strong>Allowance / non-performing loans</strong>: how much of the troubled loans is covered</li><li><strong>Allowance / net charge-offs</strong>: how many years of losses the allowance absorbs</li><li><strong>Provision / net charge-offs</strong>: below 1 means the allowance is being drawn down</li></ul></div>",
+    "gap": "Falling ratios, or ratios well below peers, suggest under-reserving."
+  },
+  {
+    "id": "f4-earnings",
+    "topic": "Earnings sufficiency",
+    "front": "What are a bank's three income sources, and which are most sustainable?",
+    "back": "<div class=\"ans\"><ul><li><strong>Net interest income</strong></li><li><strong>Service income</strong> (fees and commissions)</li><li><strong>Trading income</strong></li></ul><p>A larger share of net interest and service income is <strong>more sustainable</strong> than trading income; lower volatility in net interest income is better.</p></div>",
+    "gap": "Earnings quality also depends on estimates: loan-loss provisions and Level 3 fair values."
+  },
+  {
+    "id": "f4-liquidity",
+    "topic": "Liquidity · LCR and NSFR",
+    "front": "Define the LCR and the NSFR. What else signals a liquidity risk?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\text{LCR}=\\frac{\\text{HQLA}}{\\text{30-day net outflows}}\\ge100\\%$$</div><div class=\"eq-block\">$$\\text{NSFR}=\\frac{\\text{Available SF}}{\\text{Required SF}}\\ge100\\%$$</div><p>HQLA: high-quality liquid assets; SF: stable funding. Also: <strong>concentration of funding</strong> (few depositors, short-term wholesale funding) and <strong>contractual maturity mismatch</strong>.</p></div>",
+    "gap": "LCR is a short-term stress test; NSFR is structural, over one year."
+  },
+  {
+    "id": "f4-market-risk",
+    "topic": "Sensitivity to market risk",
+    "front": "How does an analyst assess a bank's sensitivity to market risk?",
+    "back": "<div class=\"ans\"><ul><li><strong>VaR</strong> of the trading book, and <strong>trading revenue per unit of VaR</strong></li><li>Mismatches in the <strong>maturity</strong>, <strong>repricing frequency</strong> and <strong>reference rates</strong> of assets and liabilities</li><li>Currency exposures</li></ul></div>"
+  },
+  {
+    "id": "f4-pc",
+    "topic": "Insurers · P&C business",
+    "front": "What features of property and casualty insurers matter for analysis?",
+    "back": "<div class=\"ans\"><ul><li><strong>Cyclical</strong>: the underwriting cycle of competition, falling premiums and rising losses</li><li><strong>Loss reserves</strong>: estimates of future claims, the main source of discretion; <strong>reserve development</strong> shows how good they were</li><li>Premiums are invested <strong>conservatively</strong> (the float), mostly in high-quality bonds</li></ul></div>",
+    "gap": "There are no global capital requirements for insurers: rules are national (US risk-based capital, EU Solvency II)."
+  },
+  {
+    "id": "f4-ratios",
+    "topic": "Insurers · underwriting ratios",
+    "front": "Give the loss and LAE ratio, underwriting expense ratio, combined ratio and combined ratio after dividends.",
+    "back": "<div class=\"ans\"><ul><li><strong>Loss and LAE</strong> = (losses + LAE) / net premiums <strong>earned</strong></li><li><strong>Underwriting expense</strong> = underwriting expense / net premiums <strong>written</strong></li><li><strong>Combined</strong> = loss and LAE ratio + underwriting expense ratio; <strong>below 100%</strong> = underwriting profit</li><li><strong>After dividends</strong> = combined ratio <strong>+</strong> dividends to policyholders / net premiums earned</li></ul></div>",
+    "gap": "The dividends ratio is added, not subtracted: it is a further cost."
+  },
+  {
+    "id": "f4-ratio-example",
+    "topic": "Insurers · example",
+    "front": "Net premiums written 1,000, earned 980; losses and LAE 640; underwriting expenses 300; policyholder dividends 20. Compute the ratios.",
+    "back": "<div class=\"ans\"><ul><li>Loss and LAE \\(=640/980=65.3\\%\\)</li><li>Underwriting expense \\(=300/1{,}000=30.0\\%\\)</li><li>Combined \\(=95.3\\%\\): an underwriting profit</li><li>After dividends \\(=95.3\\%+20/980=97.3\\%\\)</li></ul></div>",
+    "gap": "A combined ratio above 100% can still be profitable overall if investment income covers the underwriting loss."
+  }
+];
+
+flashDeck({
+  key: "cfa-c3-m4-review",
+  source: "CFA L2 Financial Statement Analysis \u00b7 M4 Analysis of Financial Institutions \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

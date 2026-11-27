@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Fixed Income M5 — Credit Default Swaps review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    "id": "fi5-def",
+    "topic": "CDS · buyer and seller",
+    "front": "What is a credit default swap? Which side is “long” and which “short”, and why?",
+    "back": "<div class=\"ans\"><p>A credit derivative on the <strong>credit quality</strong> of a reference entity, working like insurance.</p><ul><li><strong>Protection buyer</strong>: pays periodic premiums; gains if credit worsens: <strong>short</strong> credit risk</li><li><strong>Protection seller</strong>: compensates the buyer on a credit event; gains if credit improves: <strong>long</strong> credit risk</li></ul></div>",
+    "gap": "“Buying a CDS” means buying protection, which is the short side."
+  },
+  {
+    "id": "fi5-spread",
+    "topic": "CDS spread",
+    "front": "What does the CDS spread compensate the seller for, and how is it approximated? Find it for a 2% hazard rate and 40% recovery.",
+    "back": "<div class=\"ans\"><p>The expected loss, which depends on the <strong>hazard rate</strong> and the <strong>loss given default</strong>.</p><div class=\"eq-block\">$$\\text{Spread}\\approx\\text{Hazard rate}\\times\\text{LGD}$$</div><p>\\(2\\%\\times60\\%=1.2\\%\\) a year on the notional.</p></div>"
+  },
+  {
+    "id": "fi5-credit-events",
+    "topic": "Credit events",
+    "front": "Name the three credit events and who decides whether one has occurred.",
+    "back": "<div class=\"ans\"><ul><li><strong>Bankruptcy</strong></li><li><strong>Failure to pay</strong> interest or principal (after any grace period)</li><li><strong>Restructuring</strong>: an involuntary change in terms that hurts creditors</li></ul><p>An ISDA <strong>Determinations Committee</strong> of dealers and investors decides.</p></div>",
+    "gap": "Restructuring is usually excluded from standard North American corporate CDS, but included in many European ones."
+  },
+  {
+    "id": "fi5-settlement",
+    "topic": "Settlement",
+    "front": "Compare physical and cash settlement. Write the payout amount.",
+    "back": "<div class=\"ans\"><ul><li><strong>Physical</strong>: the buyer delivers the defaulted debt and receives the <strong>notional</strong></li><li><strong>Cash</strong> (most common): the seller pays the payout amount; recovery is set by an <strong>auction</strong></li></ul><div class=\"eq-block\">$$\\text{Payout}=\\text{Notional}\\times(1-\\text{RR})$$</div></div>",
+    "gap": "The payout ratio, 1 − recovery rate, is the LGD. Both methods leave the buyer with the notional."
+  },
+  {
+    "id": "fi5-single-name",
+    "topic": "Single-name CDS · coverage",
+    "front": "In a single-name CDS, which debt is covered beyond the reference obligation, and what is the cheapest-to-deliver obligation?",
+    "back": "<div class=\"ans\"><ul><li>The reference obligation is usually <strong>senior unsecured</strong></li><li><strong>Any debt of the same or higher seniority</strong> is covered</li><li>Payoff is set by the <strong>cheapest-to-deliver</strong>: the lowest-priced debt at the covered level, which the buyer delivers</li></ul></div>"
+  },
+  {
+    "id": "fi5-ctd-example",
+    "topic": "Cheapest-to-deliver example",
+    "front": "10 million of protection; the company defaults and two senior unsecured bonds trade at 38 and 42. What does the buyer receive?",
+    "back": "<div class=\"ans\"><p>CTD at 38, so the recovery rate is 38%:</p><div class=\"eq-block\">$$10\\text{m}\\times(1-38\\%)=6.2\\text{m}$$</div><p>Physical: deliver 10m face of the 38 bond (worth 3.8m), receive 10m: the same 6.2m net.</p></div>"
+  },
+  {
+    "id": "fi5-index",
+    "topic": "Index CDS",
+    "front": "How does an index CDS (CDX, iTraxx) allocate coverage, and what does its value depend on?",
+    "back": "<div class=\"ans\"><ul><li>Coverage is spread <strong>evenly</strong>: each of the 125 names carries 1/125 of the notional</li><li>On a default the seller pays on that name’s share; the contract continues with the <strong>notional reduced</strong></li><li>Value depends on <strong>credit correlation</strong>: higher correlation makes joint defaults, and protection, more valuable</li></ul></div>"
+  },
+  {
+    "id": "fi5-index-example",
+    "topic": "Index CDS example",
+    "front": "Protection on CDX (125 names), notional 100 million. One name defaults with 40% recovery. Find the payout and the remaining notional.",
+    "back": "<div class=\"ans\"><p>Each name’s share: \\(100\\text{m}/125=0.8\\text{m}\\).</p><div class=\"eq-block\">$$0.8\\text{m}\\times(1-40\\%)=480{,}000$$</div><p>The notional falls to 99.2 million.</p></div>"
+  },
+  {
+    "id": "fi5-other-types",
+    "topic": "Tranche CDS and CDS options",
+    "front": "What are a tranche CDS and a CDS swaption?",
+    "back": "<div class=\"ans\"><ul><li><strong>Tranche CDS</strong>: covers only a slice of an index’s losses (e.g. 0–3%), like a CDO tranche</li><li><strong>CDS swaption</strong>: an option to buy or sell protection at a fixed spread in the future</li></ul></div>"
+  },
+  {
+    "id": "fi5-standard",
+    "topic": "Standard coupons and upfront payment",
+    "front": "What are the standard CDS coupons, and how is the difference from the market spread settled?",
+    "back": "<div class=\"ans\"><p><strong>1%</strong> for investment grade, <strong>5%</strong> for high yield. The gap to the required credit spread is settled by an <strong>upfront payment</strong>:</p><div class=\"eq-block\">$$\\begin{aligned}\\text{Upfront}={}&\\text{PV(protection)}\\\\&-\\text{PV(premium)}\\end{aligned}$$</div></div>",
+    "gap": "The 1% and 5% coupons are not given in the exam: remember them."
+  },
+  {
+    "id": "fi5-legs",
+    "topic": "Protection and premium legs",
+    "front": "How are the protection leg and the premium leg valued?",
+    "back": "<div class=\"ans\"><ul><li><strong>Protection leg</strong>: expected payouts, \\(\\sum\\text{POD}_t\\times\\text{LGD}\\times\\text{DF}_t\\) (the CVA)</li><li><strong>Premium leg</strong>: coupons paid only while the entity survives, \\(\\sum\\text{POS}_t\\times\\text{Coupon}\\times\\text{DF}_t\\)</li></ul></div>"
+  },
+  {
+    "id": "fi5-upfront",
+    "topic": "Upfront premium and price",
+    "front": "Write the upfront premium approximation and the CDS price. When does the seller pay the buyer?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}\\text{Upfront}\\approx{}&(\\text{Spread}-\\text{Coupon})\\\\&\\times\\text{CDS duration}\\end{aligned}$$</div><div class=\"eq-block\">$$\\text{Price}=100-\\text{Upfront (\\%)}$$</div><p>Positive: the <strong>buyer</strong> pays. Negative (coupon above the spread): the <strong>seller</strong> pays the buyer, and the price is above 100.</p></div>"
+  },
+  {
+    "id": "fi5-upfront-example",
+    "topic": "Upfront premium example",
+    "front": "10 million of 5-year protection. (1) Investment grade: spread 1.80%, duration 4.5. (2) High yield: spread 3.20%, duration 4.2. Find each upfront premium and price.",
+    "back": "<div class=\"ans\"><ul><li>(1) \\((1.80\\%-1\\%)\\times4.5=3.60\\%\\): buyer pays 360,000; price 96.40</li><li>(2) \\((3.20\\%-5\\%)\\times4.2=-7.56\\%\\): seller pays 756,000; price 107.56</li></ul></div>"
+  },
+  {
+    "id": "fi5-profit",
+    "topic": "Profit on a CDS",
+    "front": "How does a CDS position gain or lose as the spread changes? A buyer of 10m protection (duration 4.5) sees the spread widen from 1.80% to 2.40%.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}\\text{Profit}\\approx{}&\\Delta\\text{Spread}\\times D\\\\&\\times\\text{Notional}\\end{aligned}$$</div><p>\\(0.60\\%\\times4.5\\times10\\text{m}=270{,}000\\) gain to the buyer; the seller loses the same.</p></div>",
+    "gap": "Buyers gain when spreads widen, sellers when they narrow. Realize the gain early with an offsetting CDS."
+  },
+  {
+    "id": "fi5-applications",
+    "topic": "Applications of CDS",
+    "front": "Describe adjusting credit exposure, a naked CDS, and a long/short CDS trade.",
+    "back": "<div class=\"ans\"><ul><li><strong>Adjust exposure</strong>: buy protection to hedge a loan or bond without selling it; sell protection to add exposure without buying bonds</li><li><strong>Naked CDS</strong>: buy protection without owning the debt: a bet that credit worsens</li><li><strong>Long/short</strong>: buy protection on one entity, sell on another: a bet on <strong>relative</strong> credit quality</li></ul></div>"
+  },
+  {
+    "id": "fi5-curve-trade",
+    "topic": "Curve trade",
+    "front": "What is the credit curve? How do you trade an expected steepening, and a flattening?",
+    "back": "<div class=\"ans\"><p>The CDS spreads of one reference entity across maturities, usually upward sloping.</p><ul><li><strong>Steepener</strong>: <strong>buy long-term</strong>, <strong>sell short-term</strong> protection</li><li><strong>Flattener</strong>: sell long-term, buy short-term protection</li></ul></div>",
+    "gap": "With equal notionals a steepener is also net short credit (the long leg has more duration); size the legs by duration to bet on shape alone."
+  },
+  {
+    "id": "fi5-curve-example",
+    "topic": "Curve trade example",
+    "front": "Buy 10m of 10-year protection (duration 8.5), sell 10m of 2-year (duration 1.9). The 10-year spread widens 30 bp and the 2-year narrows 18 bp. Profit?",
+    "back": "<div class=\"ans\"><ul><li>10-year: \\(0.30\\%\\times8.5\\times10\\text{m}=255{,}000\\)</li><li>2-year: \\(0.18\\%\\times1.9\\times10\\text{m}=34{,}200\\)</li></ul><p>Total <strong>289,200</strong>.</p></div>",
+    "gap": "Unlike riding the yield curve (a stable curve), a curve trade is a bet on a change in the curve’s shape."
+  },
+  {
+    "id": "fi5-basis",
+    "topic": "Basis trade",
+    "front": "What is a CDS basis trade? What do you do if a bond’s credit spread is above the CDS spread?",
+    "back": "<div class=\"ans\"><p>It exploits a gap between the bond market’s credit spread and the CDS spread for the same entity.</p><p>Bond spread &gt; CDS spread: <strong>buy the bond and buy protection</strong>. The CDS hedges the credit risk; keep the difference until the spreads converge.</p></div>"
+  },
+  {
+    "id": "fi5-synthetic",
+    "topic": "Synthetic CDO arbitrage",
+    "front": "How can CDS replicate a risky bond, and how is that used for arbitrage?",
+    "back": "<div class=\"ans\"><p>A <strong>risk-free bond + sold protection</strong> (long credit) replicates a risky bond. A pool of these is a <strong>synthetic CDO</strong>.</p><p>If the synthetic is cheaper than a cash CDO with the same exposure, buy the real CDO and short the synthetic, or the reverse.</p></div>"
+  }
+];
+
+flashDeck({
+  key: "cfa-c6-m5-review",
+  source: "CFA L2 Fixed Income \u00b7 M5 Credit Default Swaps \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

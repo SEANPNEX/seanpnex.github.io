@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Financial asset classification</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="curve-kit.js"></script>
+  <style>
+    .lanes{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+    .entry{
+      padding:8px 12px;border-radius:10px;background:var(--ink);color:var(--paper);
+      font-size:12.5px;font-weight:800;letter-spacing:-.005em;
+    }
+    /* A question; the main path continues down, the exit sits on the right. */
+    .step{
+      display:flex;align-items:center;gap:10px;padding:9px 10px 9px 12px;
+      border:1px solid var(--ink);border-radius:10px;
+    }
+    .step.key{outline:1.5px dashed var(--ink);outline-offset:3px}
+    .q{flex:1;min-width:0;font-size:12px;font-weight:700;line-height:1.3}
+    .q small{display:block;margin-top:2px;font-size:10.5px;font-weight:500;color:var(--muted);line-height:1.35}
+    .exit{display:flex;flex-direction:column;align-items:flex-end;gap:3px;font-size:10px;font-weight:700;color:var(--muted);white-space:nowrap}
+    /* Connector down to the next question, labelled with the answer that leads there. */
+    .go{
+      height:26px;margin-left:20px;padding:6px 0 0 8px;border-left:1.2px solid #8F8E88;
+      font-size:10px;font-weight:700;color:var(--muted);
+    }
+    .tag{display:inline-block;padding:3px 8px;border-radius:7px;font-size:10.5px;font-weight:800;letter-spacing:.02em}
+    .fvpl{background:#1C1C1A;color:#F0EFEB}
+    .fvoci{background:#6A6963;color:#F0EFEB}
+    .amc{background:#C6C5BF;color:#1C1C1A}
+    .results{display:flex;gap:8px}
+    .result{flex:1;padding:9px 12px;border-radius:10px}
+    .result b{display:block;font-size:14px;font-weight:800}
+    .result small{display:block;margin-top:1px;font-size:10.5px;font-weight:500;opacity:.8;line-height:1.35}
+    .deriv{
+      display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:16px;padding-top:12px;
+      border-top:1px solid var(--grid);font-size:12px;font-weight:700;
+    }
+    .deriv .entry{padding:6px 10px}
+    .deriv small{font-size:10.5px;font-weight:500;color:var(--muted)}
+    .legend{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px;font-size:10.5px;color:var(--muted)}
+    .legend span{display:inline-flex;align-items:center;gap:5px}
+    .legend i{width:10px;height:10px;border-radius:3px}
+    .lane>*{animation:fade .5s ease both}
+    .step{transition:background-color .15s ease}
+    .step:hover{background-color:rgba(28,28,26,.05)}
+    [data-hl]{cursor:default}
+    @media(max-width:539px){.lanes{grid-template-columns:1fr;gap:22px}}
+  </style>
+  <script src="chart-fx.js"></script>
+</head>
+<body>
+  <main class="card" id="card">
+    <h2>Instrument type and two tests decide AMC, FVOCI, or FVPL.</h2>
+    <div class="sub">Follow a column down · each question's exit sits on its right · SPPI test + business-model test for debt, trading + designation for equity</div>
+    <div class="lanes">
+      <section class="lane" aria-label="Debt instruments">
+        <div class="entry">Debt instruments</div>
+        <div class="go"></div>
+        <div class="step">
+          <div class="q">Solely principal + interest?<small>SPPI cash-flow test</small></div>
+          <div class="exit">No<span class="tag fvpl" data-hl="fvpl">FVPL</span></div>
+        </div>
+        <div class="go">Yes</div>
+        <div class="step">
+          <div class="q">Business model?<small>M1 hold to collect · M2 collect and sell</small></div>
+          <div class="exit">Neither<span class="tag fvpl" data-hl="fvpl">FVPL</span></div>
+        </div>
+        <div class="go">M1 or M2</div>
+        <div class="step">
+          <div class="q">Fair value option?<small>elected to reduce an accounting mismatch</small></div>
+          <div class="exit">Yes<span class="tag fvpl" data-hl="fvpl">FVPL</span></div>
+        </div>
+        <div class="go">No</div>
+        <div class="results">
+          <div class="result amc" data-hl="amc"><b>AMC</b><small>M1 · hold to collect</small></div>
+          <div class="result fvoci" data-hl="fvoci"><b>FVOCI</b><small>M2 · collect and sell</small></div>
+        </div>
+      </section>
+      <section class="lane" aria-label="Equity instruments">
+        <div class="entry">Equity instruments</div>
+        <div class="go"></div>
+        <div class="step">
+          <div class="q">Held for trading?</div>
+          <div class="exit">Yes<span class="tag fvpl" data-hl="fvpl">FVPL</span></div>
+        </div>
+        <div class="go">No</div>
+        <div class="step key">
+          <div class="q">Designate at FVOCI?<small>irrevocable election</small></div>
+          <div class="exit">No<span class="tag fvpl" data-hl="fvpl">FVPL</span></div>
+        </div>
+        <div class="go">Yes</div>
+        <div class="results">
+          <div class="result fvoci" data-hl="fvoci"><b>FVOCI</b><small>only dividends reach profit or loss</small></div>
+        </div>
+      </section>
+    </div>
+    <div class="deriv">
+      <span class="entry">Derivatives</span>
+      <span>always <span class="tag fvpl" data-hl="fvpl">FVPL</span></span>
+      <small>except hedging instruments</small>
+    </div>
+    <div class="legend">
+      <span data-hl="fvpl"><i class="fvpl"></i>FVPL · fair value through profit or loss</span>
+      <span data-hl="fvoci"><i class="fvoci"></i>FVOCI · fair value through OCI</span>
+      <span data-hl="amc"><i class="amc"></i>AMC · amortized cost</span>
+    </div>
+    <div class="src">DECISION FLOW · LIEFLAT G7 · FINANCIAL ASSET CLASSIFICATION</div>
+  </main>
+  <script src="i18n.js"></script>
+  <script>
+chartI18n.use({
+  zh: {
+    "Financial asset classification": "金融资产分类",
+    "Instrument type and two tests decide AMC, FVOCI, or FVPL.": "工具类型和两项测试决定 AMC、FVOCI 或 FVPL。",
+    "Follow a column down · each question's exit sits on its right · SPPI test + business-model test for debt, trading + designation for equity": "沿一列向下看 · 每个问题的出口在其右侧 · 债务工具看 SPPI 测试 + 业务模式测试，权益工具看是否交易性 + 是否指定",
+    "Debt instruments": "债务工具",
+    "Solely principal + interest?": "仅为本金 + 利息？",
+    "SPPI cash-flow test": "SPPI 现金流测试",
+    "No": "否",
+    "Yes": "是",
+    "Business model?": "业务模式？",
+    "M1 hold to collect · M2 collect and sell": "M1 持有以收取 · M2 收取并出售",
+    "Neither": "都不是",
+    "M1 or M2": "M1 或 M2",
+    "Fair value option?": "公允价值选择权？",
+    "elected to reduce an accounting mismatch": "为减少会计错配而选择",
+    "M1 · hold to collect": "M1 · 持有以收取",
+    "M2 · collect and sell": "M2 · 收取并出售",
+    "Equity instruments": "权益工具",
+    "Held for trading?": "交易性持有？",
+    "Designate at FVOCI?": "指定为 FVOCI？",
+    "irrevocable election": "不可撤销的选择",
+    "only dividends reach profit or loss": "只有股息计入损益",
+    "Derivatives": "衍生品",
+    "always": "一律",
+    "except hedging instruments": "套期工具除外",
+    "FVPL · fair value through profit or loss": "FVPL · 以公允价值计量且其变动计入损益",
+    "FVOCI · fair value through OCI": "FVOCI · 以公允价值计量且其变动计入 OCI",
+    "AMC · amortized cost": "AMC · 摊余成本",
+    "DECISION FLOW · LIEFLAT G7 · FINANCIAL ASSET CLASSIFICATION": "决策流程 · LIEFLAT G7 · 金融资产分类",
+  },
+  ja: {
+    "Financial asset classification": "金融資産の分類",
+    "Instrument type and two tests decide AMC, FVOCI, or FVPL.": "金融商品の種類と 2 つのテストで AMC、FVOCI、FVPL が決まる。",
+    "Follow a column down · each question's exit sits on its right · SPPI test + business-model test for debt, trading + designation for equity": "列を上から下へたどる · 各質問の出口は右側 · 負債性は SPPI テスト + 事業モデルテスト、持分は売買目的 + 指定の有無",
+    "Debt instruments": "負債性金融商品",
+    "Solely principal + interest?": "元本 + 利息のみか？",
+    "SPPI cash-flow test": "SPPI キャッシュフロー・テスト",
+    "No": "いいえ",
+    "Yes": "はい",
+    "Business model?": "事業モデルは？",
+    "M1 hold to collect · M2 collect and sell": "M1 回収のために保有 · M2 回収と売却",
+    "Neither": "どちらでもない",
+    "M1 or M2": "M1 または M2",
+    "Fair value option?": "公正価値オプション？",
+    "elected to reduce an accounting mismatch": "会計上のミスマッチを減らすために選択",
+    "M1 · hold to collect": "M1 · 回収のために保有",
+    "M2 · collect and sell": "M2 · 回収と売却",
+    "Equity instruments": "持分金融商品",
+    "Held for trading?": "売買目的か？",
+    "Designate at FVOCI?": "FVOCI に指定するか？",
+    "irrevocable election": "取消不能な選択",
+    "only dividends reach profit or loss": "純損益に入るのは配当だけ",
+    "Derivatives": "デリバティブ",
+    "always": "常に",
+    "except hedging instruments": "ヘッジ手段を除く",
+    "FVPL · fair value through profit or loss": "FVPL · 純損益を通じて公正価値で測定",
+    "FVOCI · fair value through OCI": "FVOCI · OCI を通じて公正価値で測定",
+    "AMC · amortized cost": "AMC · 償却原価",
+    "DECISION FLOW · LIEFLAT G7 · FINANCIAL ASSET CLASSIFICATION": "判定フロー · LIEFLAT G7 · 金融資産の分類",
+  },
+  fr: {
+    "Financial asset classification": "Classement des actifs financiers",
+    "Instrument type and two tests decide AMC, FVOCI, or FVPL.": "Le type d’instrument et deux tests décident entre AMC, FVOCI et FVPL.",
+    "Follow a column down · each question's exit sits on its right · SPPI test + business-model test for debt, trading + designation for equity": "Suivez une colonne vers le bas · la sortie de chaque question est à sa droite · test SPPI + test du modèle économique pour la dette, transaction + désignation pour les actions",
+    "Debt instruments": "Instruments de dette",
+    "Solely principal + interest?": "Uniquement principal + intérêts ?",
+    "SPPI cash-flow test": "test SPPI des flux",
+    "No": "Non",
+    "Yes": "Oui",
+    "Business model?": "Modèle économique ?",
+    "M1 hold to collect · M2 collect and sell": "M1 détenir pour encaisser · M2 encaisser et vendre",
+    "Neither": "Aucun des deux",
+    "M1 or M2": "M1 ou M2",
+    "Fair value option?": "Option juste valeur ?",
+    "elected to reduce an accounting mismatch": "choisie pour réduire une non-concordance comptable",
+    "M1 · hold to collect": "M1 · détenir pour encaisser",
+    "M2 · collect and sell": "M2 · encaisser et vendre",
+    "Equity instruments": "Instruments de capitaux propres",
+    "Held for trading?": "Détenu à des fins de transaction ?",
+    "Designate at FVOCI?": "Désigné en FVOCI ?",
+    "irrevocable election": "choix irrévocable",
+    "only dividends reach profit or loss": "seuls les dividendes atteignent le résultat",
+    "Derivatives": "Dérivés",
+    "always": "toujours",
+    "except hedging instruments": "sauf instruments de couverture",
+    "FVPL · fair value through profit or loss": "FVPL · juste valeur par le résultat",
+    "FVOCI · fair value through OCI": "FVOCI · juste valeur par les OCI",
+    "AMC · amortized cost": "AMC · coût amorti",
+    "DECISION FLOW · LIEFLAT G7 · FINANCIAL ASSET CLASSIFICATION": "ARBRE DE DÉCISION · LIEFLAT G7 · CLASSEMENT DES ACTIFS FINANCIERS",
+  },
+}, {
+  patterns: {
+  zh: [
+
+  ],
+  ja: [
+
+  ],
+  fr: [
+
+  ],
+  },
+  html: {
+  zh: {
+
+  },
+  ja: {
+
+  },
+  fr: {
+
+  },
+  },
+});
+  </script>
+  <script>
+    // Stagger the ladders top to bottom.
+    document.querySelectorAll('.lane').forEach((lane, j) => {
+      [...lane.children].forEach((n, i) => { n.style.animationDelay = `${j * 0.1 + i * 0.05}s`; });
+    });
+    curveKit.fit();
+  </script>
+</body>
+</html>

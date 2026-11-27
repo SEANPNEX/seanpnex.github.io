@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Alternative Investments M2 — Real Estate review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    "id": "ai2-noi",
+    "topic": "Net operating income",
+    "front": "Define NOI. What does the property maintenance allowance cover?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}NOI={}&EGI-\\text{Opex}\\\\&-\\text{Maintenance}\\\\&\\quad\\text{allowance}\\end{aligned}$$</div><p>Before financing and income tax. The allowance is capex to <strong>maintain</strong> current income, not upgrades.</p></div>"
+  },
+  {
+    "id": "ai2-wallonia",
+    "topic": "NOI example",
+    "front": "Wallonia: gross rent 525,000, recoveries 102,500, pass-through tax and insurance 52,500, opex 173,250, allowance 100,000. NOI?",
+    "back": "<div class=\"ans\"><p>EGI = 680,000; NOI = 680,000 − 173,250 − 100,000 = <strong>406,750</strong>.</p></div>",
+    "gap": "If repair costs rise but recoveries are fixed, NOI falls; passed-through taxes and insurance don’t affect it."
+  },
+  {
+    "id": "ai2-ltv-dsc",
+    "topic": "LTV and DSC",
+    "front": "Define LTV and DSC. Wallonia: debt after year 1 is 2,899,255, value 3,750,000, NOI 406,750, debt service 220,745.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$LTV=\\frac{\\text{Debt}}{\\text{Value}}=0.773$$</div><div class=\"eq-block\">$$DSC=\\frac{NOI}{\\text{Debt service}}=1.84$$</div></div>",
+    "gap": "Debt service includes principal, not just interest."
+  },
+  {
+    "id": "ai2-edr",
+    "topic": "Equity dividend rate",
+    "front": "Define the equity dividend rate. Wallonia: NOI 406,750, debt service 220,745, equity 750,000.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\text{EDR}=\\frac{NOI-\\text{Debt service}}{\\text{Equity}}$$</div><p>\\(186{,}005/750{,}000=\\) <strong>24.8%</strong>: first-year, cash, pretax; ignores capital gains.</p></div>"
+  },
+  {
+    "id": "ai2-after-tax",
+    "topic": "After-tax cash flow",
+    "front": "How are taxes on a property computed, and why does a lower land value raise after-tax cash flow?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}\\text{Tax}={}&t(NOI-\\text{Interest}\\\\&-\\text{Depreciation})\\end{aligned}$$</div><p>Land isn’t depreciated: a lower land share means more depreciation, less tax, higher after-tax cash flow.</p></div>"
+  },
+  {
+    "id": "ai2-classes",
+    "topic": "Property classes",
+    "front": "How do higher and lower property classes differ for investors?",
+    "back": "<div class=\"ans\"><p>Class A: newest, best amenities, highest rents and prices, <strong>less</strong> appreciation potential. Lower classes: cheaper, more appreciation potential, may need capex.</p></div>"
+  },
+  {
+    "id": "ai2-forms",
+    "topic": "Forms of investment",
+    "front": "Give examples of private and public real estate debt and equity.",
+    "back": "<div class=\"ans\"><ul><li>Private debt: mortgages, construction and mezzanine loans</li><li>Private equity: direct ownership, funds, private REITs</li><li>Public debt: MBS, covered bonds, mortgage REITs</li><li>Public equity: REITs, real estate companies, funds and ETFs</li></ul></div>"
+  },
+  {
+    "id": "ai2-strategies",
+    "topic": "Risk/return strategies",
+    "front": "Order the real estate strategies from lowest to highest risk.",
+    "back": "<div class=\"ans\"><p>Senior debt → <strong>core</strong> → core-plus → value-add → <strong>opportunistic</strong> (development).</p></div>"
+  },
+  {
+    "id": "ai2-risks",
+    "topic": "Real estate risks",
+    "front": "Name the main risks of real estate investment, with an example of model risk.",
+    "back": "<div class=\"ans\"><ul><li>Economic and competitive (activity, demographics, supply, capital)</li><li>Property-specific (management, obsolescence, environment, zoning)</li><li><strong>Model risk</strong>: Zillow Offers lost about USD1bn using a pricing algorithm</li></ul></div>"
+  },
+  {
+    "id": "ai2-cycle",
+    "topic": "Real estate cycle",
+    "front": "In which phase do NOI and DSC peak, and LTV bottom? When does replacement cost exceed market prices?",
+    "back": "<div class=\"ans\"><p><strong>Oversupply</strong>: NOI and DSC peak, LTV bottoms, and replacement cost exceeds market prices.</p><p>In recovery, NOI and DSC bottom and LTV peaks.</p></div>"
+  },
+  {
+    "id": "ai2-leases",
+    "topic": "Lease terms",
+    "front": "Describe step-up clauses, indexed rents and overage rent.",
+    "back": "<div class=\"ans\"><ul><li><strong>Step-up</strong>: pre-set rent increases</li><li><strong>Indexed</strong>: rent moves with CPI or another index</li><li><strong>Overage</strong>: extra rent on a retailer’s sales above a target</li></ul></div>",
+    "gap": "Chandra: base 135,000 + 8% of 250,000 over the target = INR155,000."
+  },
+  {
+    "id": "ai2-benefits",
+    "topic": "Role in a portfolio",
+    "front": "What does real estate offer a portfolio, and how does public real estate differ?",
+    "back": "<div class=\"ans\"><ul><li>Income, appreciation, inflation hedge, diversification, tax benefits</li></ul><p>Public real estate (REITs, MBS) is more correlated with stocks and bonds in the short to medium term.</p></div>"
+  },
+  {
+    "id": "ai2-types",
+    "topic": "Property types",
+    "front": "Which property types are most cyclical, hardest to convert, and most hit by remote work and online shopping?",
+    "back": "<div class=\"ans\"><ul><li>Most cyclical: business-travel <strong>hotels</strong></li><li>Hardest to convert: <strong>industrial/warehouse</strong></li><li>Hit by structural change: <strong>office</strong> (remote work), <strong>retail</strong> (online shopping)</li></ul></div>"
+  },
+  {
+    "id": "ai2-loss-to-lease",
+    "topic": "Loss to lease",
+    "front": "Define loss to lease. What does a positive and a negative value mean?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\text{Loss to lease}=GPRI-GRI$$</div><p>Positive: current leases are <strong>below</strong> market rent. Negative: above market (e.g. falling market rents).</p></div>"
+  },
+  {
+    "id": "ai2-due-diligence",
+    "topic": "Due diligence",
+    "front": "List the areas of real estate due diligence. Which is least likely to affect the NOI forecast?",
+    "back": "<div class=\"ans\"><ul><li>Market review</li><li>Current leases</li><li>Future leasing</li><li>Financial review</li><li>Documents (title, liens, zoning)</li><li>Inspection and service contracts</li></ul><p><strong>Documentation review</strong> matters for the purchase but least for NOI.</p></div>"
+  },
+  {
+    "id": "ai2-direct-cap",
+    "topic": "Direct capitalization",
+    "front": "Value a property by direct capitalization. NOI 406,750, \\(r\\) 12.5%, \\(g\\) 2%.",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$V=\\frac{NOI_1}{r-g}$$</div><p>\\(406{,}750/0.105=\\) <strong>EUR3,873,810</strong>.</p></div>",
+    "gap": "Best when NOI is stable; otherwise use stabilized NOI or a DCF."
+  },
+  {
+    "id": "ai2-dcf",
+    "topic": "DCF and cap rates",
+    "front": "Why can the going-in cap rate differ from the terminal cap rate? (Eastmain: 7.68% vs 11%)",
+    "back": "<div class=\"ans\"><p>Near-term NOI is depressed by the downside scenario, while value reflects the later recovery; risk \\(r\\) is the same every year.</p><div class=\"eq-block\">$$TV=\\frac{NOI_n(1+g)}{r-g}$$</div></div>"
+  },
+  {
+    "id": "ai2-cost",
+    "topic": "Cost approach",
+    "front": "Describe the cost approach. Replacement cost 4,350,000, land 750,000, 30-year life, 4 years old: value?",
+    "back": "<div class=\"ans\"><p>Value = replacement cost (land + construction + developer profit) − depreciation and other adjustments.</p><p>Depreciation 3,600,000/30 × 4 = 480,000 → <strong>EUR3,870,000</strong>.</p></div>"
+  },
+  {
+    "id": "ai2-sales-comp",
+    "topic": "Sales comparison",
+    "front": "How are comparable sales adjusted in the sales comparison approach?",
+    "back": "<div class=\"ans\"><ul><li>Older sale in a rising market → adjust <strong>up</strong></li><li>Larger comparable → discount</li><li>Comparable in a worse location → adjust up</li><li>Newer comparable → adjust the subject down</li></ul></div>",
+    "gap": "Most used where there are many similar sales, such as single-family homes."
+  },
+  {
+    "id": "ai2-appraisal",
+    "topic": "Appraisal-based indexes",
+    "front": "What biases do appraisal-based indexes have, and how are they fixed?",
+    "back": "<div class=\"ans\"><p>Appraisal lag <strong>smooths</strong> the index: understated volatility and correlation, overstated Sharpe ratio, overallocation.</p><p>Fix: <strong>unsmooth</strong>, or use transaction-based indexes.</p></div>"
+  },
+  {
+    "id": "ai2-unsmooth",
+    "topic": "Unsmoothing",
+    "front": "Write the unsmoothing formula. \\(a=0.6\\), \\(R_1^*=0.50\\%\\), \\(R_0^*=2.70\\%\\): find \\(R_1\\).",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$R_t=\\frac{R_t^*}{a}+\\frac{1-a}{a}R_{t-1}^*$$</div><p>\\(0.50/0.6+(0.4/0.6)(2.70)=\\) <strong>2.63%</strong>.</p></div>"
+  },
+  {
+    "id": "ai2-transaction",
+    "topic": "Transaction-based indexes",
+    "front": "Contrast repeat sales and hedonic indexes.",
+    "back": "<div class=\"ans\"><ul><li><strong>Repeat sales</strong>: properties sold at least twice; regression allocates the change by period</li><li><strong>Hedonic</strong>: no repeat sales needed; regression on size, age, quality, location</li></ul></div>",
+    "gap": "They lead appraisal indexes but add quarter-to-quarter noise."
+  }
+];
+
+flashDeck({
+  key: "cfa-c8-m2-review",
+  source: "CFA L2 Alternative Investments \u00b7 M2 Real Estate \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

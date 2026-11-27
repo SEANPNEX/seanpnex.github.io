@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Quant M6 — Machine Learning review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    id: "q6-types",
+    topic: "Learning types",
+    front: "Distinguish supervised, unsupervised and reinforcement learning, with a finance example of each.",
+    back: "<div class=\"ans\"><ul><li><strong>Supervised</strong>: labeled outcomes; predict a value or class (forecast earnings, classify defaults)</li><li><strong>Unsupervised</strong>: no labels; find structure or reduce dimension (segment companies, build factors)</li><li><strong>Reinforcement</strong>: rewards from sequential actions; learn a policy (dynamic trading, execution)</li></ul></div>",
+    gap: "Regression (continuous target) vs classification (discrete class) are both supervised."
+  },
+  {
+    id: "q6-penalized",
+    topic: "Supervised · penalized regression",
+    front: "What does the tuning parameter \\(\\lambda\\) do in penalized regression? Why standardize features first?",
+    back: "<div class=\"ans\"><div class=\"eq-block\">$$\\min\\Big\\{\\sum_i(y_i-\\beta_0-x_i'\\boldsymbol\\beta)^2+\\lambda P(\\boldsymbol\\beta)\\Big\\}$$</div><p>\\(\\lambda=0\\) is OLS; a larger \\(\\lambda\\) shrinks coefficients more: <strong>more bias, less variance</strong>, often lower out-of-sample error. Standardize because the penalty depends on coefficient scale.</p></div>"
+  },
+  {
+    id: "q6-lasso",
+    topic: "Supervised · LASSO vs ridge",
+    front: "How does LASSO differ from ridge regression?",
+    back: "<div class=\"ans\"><ul><li><strong>LASSO</strong>: \\(L_1\\) penalty \\(\\sum|\\beta_j|\\); can set coefficients <strong>exactly to zero</strong>, so it also <strong>selects variables</strong></li><li><strong>Ridge</strong>: \\(\\sum\\beta_j^2\\); shrinks toward, but not to, zero</li></ul></div>",
+    gap: "The penalty is on coefficient size, not directly on the number of features."
+  },
+  {
+    id: "q6-svm",
+    topic: "Supervised · SVM",
+    front: "What does an SVM maximize, what are support vectors, and what does a larger \\(C\\) do?",
+    back: "<div class=\"ans\"><p>It finds the separating hyperplane with the <strong>widest margin</strong> between classes; the points closest to the boundary are the <strong>support vectors</strong>.</p><p>A soft margin allows violations; a <strong>larger \\(C\\)</strong> penalizes them more: narrower margin, more complex fit. <strong>Kernels</strong> handle nonlinear boundaries.</p></div>"
+  },
+  {
+    id: "q6-knn",
+    topic: "Supervised · KNN",
+    front: "How does KNN classify a new point, and how does the choice of \\(K\\) affect the fit?",
+    back: "<div class=\"ans\"><p>Find the \\(K\\) nearest training points and take the <strong>majority class</strong> (mean target for regression). Non-parametric; <strong>scale features</strong> first.</p><ul><li>Small \\(K\\): flexible, low bias, high variance</li><li>Large \\(K\\): smoother, higher bias</li></ul><p>Choose \\(K\\) by validation.</p></div>"
+  },
+  {
+    id: "q6-cart",
+    topic: "Supervised · CART",
+    front: "How does a classification and regression tree predict, choose splits, and avoid overfitting?",
+    back: "<div class=\"ans\"><ul><li>Leaf predicts the <strong>majority class</strong> (classification) or <strong>mean</strong> (regression)</li><li>Splits reduce impurity (<strong>Gini</strong>, entropy) or squared error</li><li>Control depth, minimum leaf size, number of leaves; <strong>prune</strong> branches that add little</li></ul></div>"
+  },
+  {
+    id: "q6-ensemble",
+    topic: "Supervised · ensembles",
+    front: "Compare a single deep tree, bagging and a random forest.",
+    back: "<div class=\"ans\"><ul><li><strong>Deep tree</strong>: low bias, <strong>high variance</strong></li><li><strong>Bagging</strong>: trees on bootstrap samples, predictions averaged → lower variance</li><li><strong>Random forest</strong>: bagging plus a <strong>random subset of features at each split</strong> → decorrelated trees, more benefit from averaging, less interpretable</li></ul></div>"
+  },
+  {
+    id: "q6-pca",
+    topic: "Unsupervised · PCA",
+    front: "What does PCA produce, what is an eigenvalue here, and what is a limitation?",
+    back: "<div class=\"ans\"><p>Uncorrelated linear combinations \\(PC_k=\\boldsymbol w_k'x\\) of standardized features; eigenvalue \\(\\lambda_k\\) = variance captured; explained share \\(\\lambda_k/\\sum\\lambda_j\\). PC1 is the direction of maximum variance.</p><p>Limitation: <strong>linear and target-independent</strong>; a component can explain variance yet not predict \\(Y\\), and is hard to interpret.</p></div>"
+  },
+  {
+    id: "q6-autoencoder",
+    topic: "Unsupervised · autoencoder",
+    front: "What is an autoencoder, and how does it compare with PCA?",
+    back: "<div class=\"ans\"><p>A neural network trained to <strong>reproduce its input</strong>: encoder \\(z=f(x)\\) through a bottleneck, decoder \\(\\hat x=g(z)\\), minimizing \\(\\|x-\\hat x\\|^2\\).</p><p>Unlike PCA it can learn <strong>nonlinear</strong> representations, but needs more data and tuning and is less transparent.</p></div>"
+  },
+  {
+    id: "q6-clustering",
+    topic: "Unsupervised · clustering",
+    front: "K-means vs hierarchical clustering: how does each work, and which needs \\(K\\) in advance?",
+    back: "<div class=\"ans\"><ul><li><strong>K-means</strong>: <strong>pre-set \\(K\\)</strong>; alternate assigning points to the nearest centroid and recomputing centroids. Sensitive to scale, outliers and starting centroids.</li><li><strong>Hierarchical</strong>: agglomerative (merge) or divisive (split), shown as a <strong>dendrogram</strong>; needs a linkage rule (single, complete, average). Cut the tree at a height; <strong>no \\(K\\) needed up front</strong>.</li></ul></div>"
+  },
+  {
+    id: "q6-nn",
+    topic: "Neural networks",
+    front: "How does a neural network learn? Name its layers and the role of backpropagation and the learning rate.",
+    back: "<div class=\"ans\"><p>Each neuron computes \\(a=g\\big(\\sum w_jx_j+b\\big)\\) with a nonlinear activation (e.g. ReLU). Input → hidden → output layers.</p><p><strong>Forward pass</strong> gives \\(\\hat y\\); <strong>backpropagation</strong> uses the chain rule for gradients; gradient descent updates \\(\\theta\\leftarrow\\theta-\\eta\\nabla L\\). Too large \\(\\eta\\) overshoots; too small converges slowly.</p></div>",
+    gap: "Deep networks overfit easily: use weight penalties, dropout or early stopping."
+  },
+  {
+    id: "q6-rl",
+    topic: "Reinforcement learning",
+    front: "What does a reinforcement-learning agent maximize, and what trade-off must it manage?",
+    back: "<div class=\"ans\"><p>Expected <strong>discounted cumulative reward</strong> \\(E\\big[\\sum_k\\gamma^kr_{t+k+1}\\big]\\), choosing actions through a policy \\(\\pi(a\\mid s)\\).</p><p>It balances <strong>exploration</strong> (try new actions) against <strong>exploitation</strong> (use the best known). In finance, costs, regime shifts and unrealistic simulations add model risk.</p></div>"
+  },
+  {
+    id: "q6-samples",
+    topic: "Evaluation · data splits",
+    front: "What is each of the training, validation and test sets for? What is the main leakage risk?",
+    back: "<div class=\"ans\"><ul><li><strong>Training</strong>: estimate parameters</li><li><strong>Validation</strong>: choose algorithms and hyperparameters (\\(\\lambda\\), \\(K\\), depth)</li><li><strong>Test</strong>: one final estimate on untouched data</li></ul><p>Don't tune repeatedly on the test set; for time series, split <strong>chronologically</strong> rather than shuffling.</p></div>"
+  },
+  {
+    id: "q6-bias-variance",
+    topic: "Evaluation · overfitting",
+    front: "How do training and validation errors diagnose underfitting and overfitting?",
+    back: "<div class=\"ans\"><ul><li><strong>Underfit</strong>: training and validation errors both <strong>high</strong> (high bias)</li><li><strong>Overfit</strong>: training error very low, validation error <strong>high or rising</strong> (high variance)</li></ul><div class=\"eq-block\">$$E[(Y-\\hat f)^2]=\\text{Bias}^2+\\text{Var}+\\sigma_\\varepsilon^2$$</div><p>More complexity lowers bias and raises variance; \\(\\sigma_\\varepsilon^2\\) is irreducible base error.</p></div>"
+  },
+  {
+    id: "q6-cv",
+    topic: "Evaluation · K-fold cross-validation",
+    front: "Describe K-fold cross-validation. When is it unsuitable?",
+    back: "<div class=\"ans\"><p>Split the training data into \\(K\\) folds; train on \\(K-1\\), validate on the remaining one; rotate until each fold has validated; <strong>average the \\(K\\) errors</strong> to pick hyperparameters. Then refit and test once.</p><p>Ordinary random K-fold is <strong>unsuitable when time order matters</strong>.</p></div>"
+  },
+  {
+    id: "q6-metrics",
+    topic: "Evaluation · classification metrics",
+    front: "Define accuracy, precision and recall. Why can accuracy mislead for rare defaults?",
+    back: "<div class=\"ans\"><div class=\"eq-block\">$$\\text{Acc}=\\frac{TP+TN}{\\text{all}}$$</div><div class=\"eq-block\">$$\\text{Prec}=\\frac{TP}{TP+FP}$$</div><div class=\"eq-block\">$$\\text{Rec}=\\frac{TP}{TP+FN}$$</div><p>With imbalanced classes, always predicting \"no default\" gives <strong>high accuracy but zero recall</strong>. Pick the metric by the economic cost of each error.</p></div>"
+  }
+];
+
+flashDeck({
+  key: "cfa-c1-m6-review",
+  source: "CFA L2 Quantitative Methods \u00b7 M6 Machine Learning \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>

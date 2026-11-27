@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CFA Alternative Investments M4 — Hedge Funds review flashcards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="deck.css">
+<script src="deck.js"></script>
+</head>
+<body>
+<script>
+/* Unit review deck. Append future cards here: { id, topic, front, back, gap }. front, back and gap take HTML. */
+const CARDS = [
+  {
+    "id": "ai4-traits",
+    "topic": "Hedge fund characteristics",
+    "front": "List the main characteristics of hedge funds.",
+    "back": "<div class=\"ans\"><ul><li>Light regulation; sophisticated investors only</li><li>Flexible mandates; large universe</li><li>Aggressive styles; liberal leverage</li><li>Lock-ups, gates, exit windows</li><li>High fees: management + incentive</li></ul></div>"
+  },
+  {
+    "id": "ai4-liquid-alts",
+    "topic": "Liquid alts",
+    "front": "How do liquid alternatives differ from hedge funds, and how have they performed?",
+    "back": "<div class=\"ans\"><p>Daily redemption, retail marketing, no incentive fee (most countries).</p><p>They underperform similar hedge funds by about <strong>100–200 bp a year</strong>: the illiquidity premium doesn’t carry over.</p></div>"
+  },
+  {
+    "id": "ai4-categories",
+    "topic": "Strategy categories",
+    "front": "Name the six strategy categories and their main risk.",
+    "back": "<div class=\"ans\"><ul><li>Equity-related: beta</li><li>Event-driven: event risk</li><li>Relative value: credit and liquidity</li><li>Opportunistic: varies (top-down)</li><li>Specialist: niche risks</li><li>Multi-manager: manager selection</li></ul></div>"
+  },
+  {
+    "id": "ai4-ls-equity",
+    "topic": "Long/short equity",
+    "front": "Describe long/short equity: typical net exposure, source of skill and leverage.",
+    "back": "<div class=\"ans\"><ul><li>40–60% <strong>net long</strong>; about half the volatility of long-only</li><li>Skill: <strong>stock selection</strong> (market timing is weak)</li><li>Leverage variable, higher for quant</li></ul></div>",
+    "gap": "Don’t pay hedge fund fees for embedded beta."
+  },
+  {
+    "id": "ai4-short",
+    "topic": "Short selling strategies",
+    "front": "Contrast dedicated short and short-biased funds. What makes shorting hard?",
+    "back": "<div class=\"ans\"><ul><li>Dedicated: 60–120% short; short-biased: 30–60% net short</li><li>Difficulties: borrow cost and recall, losses grow as prices rise, uptick rules and bans</li></ul></div>",
+    "gap": "High short interest and borrow cost signal squeeze risk: use puts instead (Generic Inc.)."
+  },
+  {
+    "id": "ai4-emn",
+    "topic": "Equity market neutral",
+    "front": "What is equity market neutral, and what are its main risks?",
+    "back": "<div class=\"ans\"><p>Long and short similar stocks with <strong>beta ≈ 0</strong> (pairs, stub, multi-class, stat arb). Steady returns; high leverage (up to 300/300).</p><p>Risks: forced downsizing by the prime broker after drawdowns; tail risk (effectively short volatility).</p></div>"
+  },
+  {
+    "id": "ai4-pairs",
+    "topic": "Beta-neutral pairs trade",
+    "front": "Long USD1m of KO (β 0.55). How much PEP (β 0.65) to short for beta neutrality?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\frac{1{,}000{,}000}{0.65/0.55}=846{,}154$$</div></div>"
+  },
+  {
+    "id": "ai4-merger",
+    "topic": "Merger arbitrage payoff",
+    "front": "What payoff does merger arbitrage resemble, and what are typical returns and risks?",
+    "back": "<div class=\"ans\"><p>A <strong>riskless bond + short put</strong> (plus a call if a white knight appears).</p><p>Spreads 3–7%; annualized 7–12%; failure loses 20–40% (left tail); leverage 3–5×.</p></div>"
+  },
+  {
+    "id": "ai4-merger-example",
+    "topic": "Merger arbitrage example",
+    "front": "A offers 1 A for 2 T; buy 20,000 T at USD19, short 10,000 A at USD42. Payoff if the deal closes, and if it fails (A back to 45, T to 15)?",
+    "back": "<div class=\"ans\"><ul><li>Closes: <strong>+USD40,000</strong></li><li>Fails: −30,000 on A, −80,000 on T = <strong>−USD110,000</strong></li></ul></div>"
+  },
+  {
+    "id": "ai4-distressed",
+    "topic": "Distressed securities",
+    "front": "What do distressed investors do in liquidation, reorganization and capital structure arbitrage?",
+    "back": "<div class=\"ans\"><ul><li>Liquidation: buy debt below expected recovery</li><li>Reorganization: buy <strong>fulcrum securities</strong> to gain control</li><li>Capital structure arbitrage: long good-recovery claims, short poor ones</li></ul></div>",
+    "gap": "Long-biased, lumpy; best early in a recovery; leverage 1.2–1.7×."
+  },
+  {
+    "id": "ai4-fi-arb",
+    "topic": "Fixed-income arbitrage",
+    "front": "Describe the classic off-the-run vs on-the-run trade. What payoff and leverage are typical?",
+    "back": "<div class=\"ans\"><p>Long off-the-run, short duration-matched on-the-run Treasuries: rate and credit hedged, <strong>liquidity risk</strong> remains.</p><p>Payoff like a <strong>short put</strong>; leverage 4–5× via repo (12–15× in some multi-strategy funds).</p></div>"
+  },
+  {
+    "id": "ai4-convert-arb",
+    "topic": "Convertible arbitrage",
+    "front": "Describe the classic convertible arbitrage trade. When does it profit?",
+    "back": "<div class=\"ans\"><p>Long the convertible, short delta × shares. Positive gamma: rebalancing sells high, buys low.</p><p>Profits when <strong>realized volatility &gt; implied volatility</strong>. Leverage 300% long / 200% short.</p></div>",
+    "gap": "Best with heavy issuance, moderate volatility and liquidity; hurt in credit stress."
+  },
+  {
+    "id": "ai4-macro",
+    "topic": "Global macro",
+    "front": "How do global macro funds make money, and what environment hurts them?",
+    "back": "<div class=\"ans\"><p>Anticipating <strong>trends</strong> in economies, rates and currencies, often early and contrarian, via derivatives (6–7× leverage).</p><p>Hurt by low-volatility, <strong>mean-reverting</strong> markets.</p></div>"
+  },
+  {
+    "id": "ai4-managed-futures",
+    "topic": "Managed futures",
+    "front": "Why are managed futures valuable diversifiers? Contrast TSM and CSM.",
+    "back": "<div class=\"ans\"><p><strong>Positive skew</strong> in crises; low correlation with stocks and bonds.</p><ul><li><strong>TSM</strong>: absolute momentum; can be net long or short</li><li><strong>CSM</strong>: relative winners vs losers; about net zero</li></ul></div>",
+    "gap": "Hurt in range-bound markets; higher volatility or correlation → smaller positions."
+  },
+  {
+    "id": "ai4-vol",
+    "topic": "Volatility trading",
+    "front": "Describe long and short volatility, and the instruments used.",
+    "back": "<div class=\"ans\"><ul><li>Long vol: convex, right-skewed, diversifies equities; suffers premium bleed and roll-down</li><li>Short vol: earns the volatility risk premium (sells crisis insurance)</li><li>Instruments: listed and OTC options, VIX futures, variance and volatility swaps</li></ul></div>"
+  },
+  {
+    "id": "ai4-life",
+    "topic": "Life settlements and cat reinsurance",
+    "front": "What makes a life settlement attractive, and how do these strategies relate to markets?",
+    "back": "<div class=\"ans\"><ul><li>Low surrender value offered; low premiums; insured likely to die earlier than actuarial estimates</li><li>Profit when PV(death benefit) &gt; PV(price + premiums)</li></ul><p>Life settlements and cat reinsurance are <strong>uncorrelated</strong> with financial markets.</p></div>"
+  },
+  {
+    "id": "ai4-fof-fees",
+    "topic": "Fund-of-funds fees",
+    "front": "Underlying funds charge 2/20, the FoF 1/10. Both earn 20% gross. Net return?",
+    "back": "<div class=\"ans\"><p>Underlying net: \\(20-2-0.2(18)=14.4\\%\\).</p><p>FoF net: \\(14.4-1-0.1(13.4)=\\) <strong>12.06%</strong>; fees take 39.7% of gross.</p></div>"
+  },
+  {
+    "id": "ai4-netting",
+    "topic": "Netting risk",
+    "front": "What is netting risk, and who bears it in a FoF vs a multi-strategy fund?",
+    "back": "<div class=\"ans\"><p>Winning funds charge incentive fees even when losers offset them, so investors pay fees on net-zero gains.</p><p>FoF: the <strong>investor</strong> bears it. Multi-strategy: the <strong>GP</strong> mostly absorbs it.</p></div>"
+  },
+  {
+    "id": "ai4-fof-vs-multi",
+    "topic": "FoF vs multi-strategy",
+    "front": "Compare funds-of-funds with multi-strategy funds.",
+    "back": "<div class=\"ans\"><ul><li>Multi-strategy: higher returns, faster reallocation, full transparency, one fee layer</li><li>But: more leverage, concentrated operational risk, limited to in-house talent</li><li>FoF: diverse, access for small investors, but double fees and less transparency</li></ul></div>"
+  },
+  {
+    "id": "ai4-conditional",
+    "topic": "Conditional factor model",
+    "front": "Write the conditional factor model. How is total crisis exposure found?",
+    "back": "<div class=\"ans\"><div class=\"eq-block\">$$\\begin{aligned}R_{i,t}={}&\\alpha_i+\\textstyle\\sum\\beta_{i,k}F_{k,t}\\\\&+\\textstyle\\sum D_t\\beta^D_{i,k}F_{k,t}+\\varepsilon\\end{aligned}$$</div><p>Total crisis exposure = normal \\(\\beta\\) + crisis \\(\\beta^D\\). Final factors: SNP500, CREDIT, USD, VIX.</p></div>"
+  },
+  {
+    "id": "ai4-bam",
+    "topic": "Reading factor exposures",
+    "front": "A short-biased fund has SNP500 −0.572, DSNP500 +0.236, VIX −0.164. Interpret.",
+    "back": "<div class=\"ans\"><p>Crisis equity beta \\(-0.572+0.236=-0.336\\): still short, but <strong>less</strong> short in crises.</p><p>Negative VIX: <strong>short volatility</strong> (e.g. selling puts).</p></div>"
+  },
+  {
+    "id": "ai4-desired",
+    "topic": "Desired crisis exposures",
+    "front": "What exposures are desirable in normal times and in crises?",
+    "back": "<div class=\"ans\"><ul><li>Normal: long equity and credit, short USD and VIX</li><li>Crisis: negative DSNP500 and DCREDIT; positive DUSD and DVIX</li></ul></div>",
+    "gap": "Multi-manager funds showed no crisis hedging in 2007–09."
+  },
+  {
+    "id": "ai4-portfolio",
+    "topic": "Adding hedge funds to 60/40",
+    "front": "What did a 20% hedge fund allocation do to a 60/40 portfolio? Which strategies stood out?",
+    "back": "<div class=\"ans\"><ul><li>Almost all lowered volatility and raised Sharpe and Sortino</li><li>Best Sharpe and lowest volatility: <strong>systematic futures</strong></li><li>Smallest drawdowns: macro, managed futures, merger arb, EMN</li><li>Largest drawdowns: convertible arb, long/short equity; FoFs added little</li></ul></div>",
+    "gap": "Sortino uses downside deviation: better for strategies with large negative events."
+  }
+];
+
+flashDeck({
+  key: "cfa-c8-m4-review",
+  source: "CFA L2 Alternative Investments \u00b7 M4 Hedge Funds \u00b7 Unit review",
+  gapLabel: "Exam trap",
+  cards: CARDS,
+});
+</script>
+</body>
+</html>
