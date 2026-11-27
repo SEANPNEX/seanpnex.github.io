@@ -52,7 +52,7 @@ const projects = [
   {
     eyebrow: 'Audio natif · Multiplateforme',
     title: 'Musico',
-    copy: 'Un lecteur audio hors ligne centré sur les dossiers et multi-files, développé nativement pour Apple, Android et Windows avec extensions JS.',
+    copy: 'Un lecteur musical centré sur les dossiers et multi-files à l’interface native personnalisable sur Apple, Android et Windows — avec synchro cloud et extensions JS.',
     link: '/fr/projects/musico',
     mark: '05',
     image: '/images/musico/architecture.svg',

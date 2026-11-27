@@ -52,7 +52,7 @@ const projects = [
   {
     eyebrow: '原生音频 · 跨平台',
     title: 'Musico',
-    copy: '面向 Apple、Android 与 Windows 的离线、文件夹优先、多队列本地音乐播放器，内置跨平台 JS 扩展运行时。',
+    copy: '面向 Apple、Android 与 Windows 的文件夹优先、多队列音乐播放器——支持自定义原生界面、云端同步与 JS 扩展。',
     link: '/zh/projects/musico',
     mark: '05',
     image: '/images/musico/architecture.svg',

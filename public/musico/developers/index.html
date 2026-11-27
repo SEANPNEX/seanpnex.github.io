@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23FF8A7A'/><text x='50' y='67' font-size='56' text-anchor='middle'>♪</text></svg>">
-  <link rel="stylesheet" href="../assets/styles.css?v=20261127d">
+  <link rel="stylesheet" href="../assets/styles.css?v=20261127e">
 </head>
 <body>
   <a class="skip-link" href="#main" data-i18n="common.skip">Skip to content</a>
@@ -144,6 +144,7 @@
               <label class="cap-check"><input type="checkbox" name="gen-cap" value="lyrics"> <span data-i18n="dev.gen.cap.lyrics">lyrics</span></label>
               <label class="cap-check"><input type="checkbox" name="gen-cap" value="cookie" checked> <span data-i18n="dev.gen.cap.cookie">cookie</span></label>
               <label class="cap-check"><input type="checkbox" name="gen-cap" value="qr_login"> <span data-i18n="dev.gen.cap.qr_login">qr_login</span></label>
+              <label class="cap-check"><input type="checkbox" name="gen-cap" value="web_login"> <span data-i18n="dev.gen.cap.web_login">web_login</span></label>
               <label class="cap-check"><input type="checkbox" name="gen-cap" value="proxy"> <span data-i18n="dev.gen.cap.proxy">proxy</span></label>
             </div>
           </div>
@@ -225,12 +226,13 @@
               <tr><td><code>badgeLabel</code></td><td><code>string</code></td><td data-i18n="dev.man.req.no">No</td><td data-i18n-html="dev.man.r6.note">Short pill badge in Folders, Search chips &amp; Lyrics (defaults to <code>name</code>, max 16 chars).</td></tr>
               <tr><td><code>entry</code></td><td><code>string</code></td><td data-i18n="dev.man.req.no">No</td><td data-i18n-html="dev.man.r7.note">Relative script path inside <code>.musicoext</code> (defaults to <code>"index.js"</code>).</td></tr>
               <tr><td><code>updateUrl</code></td><td><code>string</code></td><td data-i18n="dev.man.req.no">No</td><td data-i18n-html="dev.man.r8.note">HTTPS URL to a <code>.musicoext</code> package for automatic and manual updates (falls back to import URL).</td></tr>
-              <tr><td><code>capabilities</code></td><td><code>string[]</code></td><td data-i18n="dev.man.req.yes">Yes</td><td data-i18n-html="dev.man.r9.note">Non-empty subset of <code>"playlist"</code>, <code>"tree"</code>, <code>"stream"</code>, <code>"cookie"</code>, <code>"proxy"</code>, <code>"lyrics"</code>, <code>"search"</code>, <code>"qr_login"</code>.</td></tr>
+              <tr><td><code>capabilities</code></td><td><code>string[]</code></td><td data-i18n="dev.man.req.yes">Yes</td><td data-i18n-html="dev.man.r9.note">Non-empty subset of <code>"playlist"</code>, <code>"tree"</code>, <code>"stream"</code>, <code>"cookie"</code>, <code>"proxy"</code>, <code>"lyrics"</code>, <code>"search"</code>, <code>"qr_login"</code>, <code>"web_login"</code>.</td></tr>
               <tr><td><code>urlPatterns</code></td><td><code>string[]</code></td><td data-i18n="dev.man.req.cond">Conditional</td><td data-i18n-html="dev.man.r10.note">Native regex strings tested before starting a JS VM. Required when <code>"playlist"</code> or <code>"tree"</code> is declared.</td></tr>
               <tr><td><code>searchKinds</code></td><td><code>string[]</code></td><td data-i18n="dev.man.req.no">No</td><td data-i18n-html="dev.man.r11.note">Subset of <code>"track"</code>, <code>"playlist"</code>, <code>"album"</code> (defaults to all three when <code>"search"</code> is declared).</td></tr>
               <tr><td><code>permissions.hosts</code></td><td><code>string[]</code></td><td data-i18n="dev.man.req.cond">Conditional</td><td data-i18n-html="dev.man.r12.note">Exact domain (<code>example.com</code>) or <code>*.sub.domain</code> (≥ 2 labels after <code>*.</code>; bare <code>*</code> &amp; <code>*.tld</code> rejected). May be empty if <code>settings</code> has <code>"server_url"</code>.</td></tr>
               <tr><td><code>qualities</code></td><td><code>array</code></td><td data-i18n="dev.man.req.no">No</td><td data-i18n-html="dev.man.r13.note">Up to 16 audio quality objects <code>{ id, label, badge?, lossless? }</code>; paired with <code>defaultStreamQuality</code> &amp; <code>defaultDownloadQuality</code>.</td></tr>
               <tr><td><code>settings</code></td><td><code>array</code></td><td data-i18n="dev.man.req.no">No</td><td data-i18n-html="dev.man.r14.note"><code>{ key, label, type, default, options? }</code> where <code>type</code> is <code>"boolean"</code>, <code>"string"</code>, <code>"select"</code>, or <code>"server_url"</code> (dynamically allows that user host).</td></tr>
+              <tr><td><code>webLogin</code></td><td><code>object</code></td><td data-i18n="dev.man.req.cond">Conditional</td><td data-i18n-html="dev.man.r15.note">Required when <code>"web_login"</code> is declared: <code>{ loginUrl, cookieDomains, requiredCookies?, userAgent? }</code>.</td></tr>
             </tbody>
           </table>
         </div>
@@ -286,6 +288,7 @@
           <li data-i18n-html="dev.ctx.li4"><strong><code>ctx.settings.get(key)</code> &amp; <code>ctx.env</code>:</strong> Read user settings and inspect <code>{ platform: "ios" | "macos" | "android" | "windows", appVersion, apiVersion: 1 }</code>.</li>
           <li data-i18n-html="dev.ctx.li5"><strong><code>ctx.log</code> (<code>info</code> / <code>warn</code> / <code>error</code>):</strong> Writes to the 200-entry ring buffer in Extension Manager. <strong>Never pass <code>req.cookie</code> into <code>ctx.log</code></strong> (Android and Windows also auto-redact raw/URL-encoded cookies as defense-in-depth).</li>
           <li data-i18n-html="dev.ctx.li6"><strong>Limits &amp; Portable JS Subset:</strong> <code>15s</code> timeout on <code>canHandle</code>, <code>resolveStream</code>, <code>search</code>, and <code>searchLyrics</code>; <code>60s</code> on <code>fetchCollection</code>/<code>fetchFolder</code>; <strong>32 MB</strong> heap limit on QuickJS &amp; Jint. Use <strong>ES2020 + CommonJS <code>module.exports</code> + <code>ctx.*</code></strong> only (no Node <code>require</code>/<code>fs</code>/<code>Buffer</code>, no <code>window</code>/<code>document</code>).</li>
+          <li data-i18n-html="dev.ctx.li7"><strong>Isolated Ephemeral WebView (<code>web_login</code>) &amp; <code>cookies.txt</code>:</strong> Declaring <code>"web_login"</code> opens an isolated, ephemeral OS WebView (<code>WKWebView</code> / Android <code>WebView</code> / <code>WebView2</code>) strictly for login cookie capture—the player UI stays 100% native—matching <code>webLogin.cookieDomains</code> and optional <code>requiredCookies</code>, alongside masked <code>cookies.txt</code> file import.</li>
         </ul>
       </section>
 
@@ -321,7 +324,7 @@
           </article>
           <article class="zine-card zine-card--mint">
             <h3 data-i18n="dev.ux.c2.t">2. Clear Auth &amp; Cookie UX</h3>
-            <p data-i18n-html="dev.ux.c2.d">Fail loudly with <code>AUTH_REQUIRED</code> and a plain-language message (or implement <code>qr_login</code>). Never require cookies for public endpoints, and never log secrets.</p>
+            <p data-i18n-html="dev.ux.c2.d">Fail loudly with <code>AUTH_REQUIRED</code> and a plain-language message, or implement <code>qr_login</code> / <code>web_login</code> (isolated ephemeral OS WebView for login capture only; player UI stays 100% native) plus <code>cookies.txt</code> import compatibility. Never require cookies for public endpoints, and never log secrets.</p>
           </article>
           <article class="zine-card zine-card--sakura">
             <h3 data-i18n="dev.ux.c3.t">3. Pagination &amp; Preview Respect</h3>
@@ -374,7 +377,7 @@ npm run check:release &amp;&amp; npm run build:release</code></pre>
   </footer>
 
   <div id="musico-toast" class="toast" role="status" aria-live="polite"></div>
-  <script src="../assets/i18n/en.js?v=20261127d"></script>
-  <script src="../assets/app.js?v=20261127d"></script>
+  <script src="../assets/i18n/en.js?v=20261127e"></script>
+  <script src="../assets/app.js?v=20261127e"></script>
 </body>
 </html>

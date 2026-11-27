@@ -52,7 +52,7 @@ const projects = [
   {
     eyebrow: 'ネイティブ音声 · クロスプラットフォーム',
     title: 'Musico',
-    copy: 'Apple・Android・Windows 向けにネイティブ開発したフォルダ指向・マルチキュー音楽プレーヤー。共通の JS 拡張ランタイムを搭載。',
+    copy: 'Apple・Android・Windows 向けにカスタム可能なネイティブ UI を備えたフォルダ指向・マルチキュー音楽プレーヤー。クラウド同期と JS 拡張に対応。',
     link: '/jp/projects/musico',
     mark: '05',
     image: '/images/musico/architecture.svg',

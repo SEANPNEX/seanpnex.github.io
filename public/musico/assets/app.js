@@ -2,7 +2,7 @@
   'use strict';
 
   var BASE = location.pathname.indexOf('/musico') === 0 ? '/musico/' : '/';
-  var ASSET_V = '20261127d';
+  var ASSET_V = '20261127e';
   var KAOMOJI_POOL = [
     '(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧',
     '♪(´▽｀)',
@@ -767,17 +767,17 @@
               [t('platform.apple.queues.r3t', 'Search (NetEase): OST'), t('platform.apple.queues.r3s', 'Ephemeral · Excluded from Stats')]
             ],
             Extensions: [
-              [t('platform.apple.extensions.r1t', 'YouTube Search v1.1.0'), t('platform.apple.extensions.r1s', 'Enabled · search, playlist, stream')],
-              [t('platform.apple.extensions.r2t', 'NetEase Cloud v1.2.0'), t('platform.apple.extensions.r2s', 'Enabled · qr_login, search')],
-              [t('platform.apple.extensions.r3t', 'Apple Music v1.0.0'), t('platform.apple.extensions.r3s', 'Enabled · lyrics, stream, search')]
+              [t('platform.apple.extensions.r1t', 'YouTube Search v1.2.0'), t('platform.apple.extensions.r1s', 'Enabled · web_login, search, playlist, stream')],
+              [t('platform.apple.extensions.r2t', 'NetEase Cloud v1.2.0'), t('platform.apple.extensions.r2s', 'Enabled · qr_login, 9 quality tiers')],
+              [t('platform.apple.extensions.r3t', 'Apple Music v1.0.1'), t('platform.apple.extensions.r3s', 'Enabled · lyrics Bearer auth, alac/atmos')]
             ]
           },
           specs: [
-            t('platform.apple.spec1', 'UI Toolkit: Swift & SwiftUI (@Observable): Tabs & Sheets on iOS, Sidebar + Inspector on macOS/iPadOS'),
-            t('platform.apple.spec2', 'Audio & Media: AVAudioEngine + AVAudioUnitEQ, MPNowPlayingInfoCenter lock-screen controls'),
-            t('platform.apple.spec3', 'JS Runtime: Embedded JavaScriptCore with Compression + CryptoKit bridge'),
-            t('platform.apple.spec4', 'Formats: mp3, m4a, aac, flac, wav, aif, aiff, caf, alac'),
-            t('platform.apple.spec5', 'Shortcuts: Cmd+1 to Cmd+8 tabs, Cmd+F search, Cmd+R rescan, Cmd+P play/pause')
+            t('platform.apple.spec1', 'UI Toolkit: Swift & SwiftUI (@Observable): NSVisualEffectView frosted translucency, Custom Appearance + WCAG 2.1 Auto-fix'),
+            t('platform.apple.spec2', 'Audio & Media: AVAudioEngine + AVAudioUnitEQ, MPNowPlayingInfoCenter & Floating Mini-Player'),
+            t('platform.apple.spec3', 'JS Runtime: Embedded JavaScriptCore + ephemeral WKWebView for web_login capture only'),
+            t('platform.apple.spec4', 'Formats: mp3, m4a, aac, flac, wav, aif, aiff, caf, alac (plus Drag-and-Drop import)'),
+            t('platform.apple.spec5', 'Shortcuts: Cmd+K palette, Cmd+, settings, Cmd+Shift+N mini-player, Cmd+1–8 tabs')
           ]
         },
         android: {
@@ -804,17 +804,17 @@
               [t('platform.android.queues.r3t', 'Queue #3 · Workout'), t('platform.android.queues.r3s', '15 tracks · Shuffle On')]
             ],
             Extensions: [
-              [t('platform.android.extensions.r1t', 'Bilibili Search v1.1.0'), t('platform.android.extensions.r1s', 'QuickJS · 32 MB heap cap')],
-              [t('platform.android.extensions.r2t', 'YouTube Search v1.1.0'), t('platform.android.extensions.r2s', 'Opus/M4A auto format')],
-              [t('platform.android.extensions.r3t', 'Cookie Redaction'), t('platform.android.extensions.r3s', 'Active in 200-entry log viewer')]
+              [t('platform.android.extensions.r1t', 'Bilibili Search v1.2.0'), t('platform.android.extensions.r1s', 'QuickJS · qr_login, Hi-Res/FLAC')],
+              [t('platform.android.extensions.r2t', 'YouTube Search v1.2.0'), t('platform.android.extensions.r2s', 'web_login · 4 quality tiers')],
+              [t('platform.android.extensions.r3t', 'Cookie & File Import'), t('platform.android.extensions.r3s', 'Masked cookies.txt + log redaction')]
             ]
           },
           specs: [
-            t('platform.android.spec1', 'UI Toolkit: Kotlin & Jetpack Compose Material 3 with Dynamic Color & ModalBottomSheet'),
-            t('platform.android.spec2', 'Audio & Media: AndroidX Media3 (ExoPlayer + MediaSessionService) & SAF DocumentFile'),
-            t('platform.android.spec3', 'JS Runtime: Embedded QuickJS (quickjs-kt) with 32 MB heap guardrail & cookie redaction'),
+            t('platform.android.spec1', 'UI Toolkit: Kotlin & Jetpack Compose Material 3 with Custom Appearance, WCAG 2.1 checker & live Preview'),
+            t('platform.android.spec2', 'Audio & Media: AndroidX Media3 (ExoPlayer + MediaSessionService) & SAF + Device delete'),
+            t('platform.android.spec3', 'JS Runtime: Embedded QuickJS (32 MB cap), ephemeral WebView web_login & cookies.txt import'),
             t('platform.android.spec4', 'Formats: mp3, m4a, aac, flac, wav, aif, aiff, caf, alac, ogg, opus, webm'),
-            t('platform.android.spec5', 'Updates: Persistently signed release.apk with in-app FileProvider installer')
+            t('platform.android.spec5', 'Updates: Persistently signed release.apk with FileProvider installer & Drive OAuth 2.0')
           ]
         },
         windows: {
@@ -841,17 +841,17 @@
               [t('platform.windows.queues.r3t', 'Queue #5 · Saved Cloud'), t('platform.windows.queues.r3s', '18 tracks · .musico-cloud.json')]
             ],
             Extensions: [
-              [t('platform.windows.extensions.r1t', 'Apple Music v1.0.0'), t('platform.windows.extensions.r1s', 'Jint · serverUrl allowlisted')],
-              [t('platform.windows.extensions.r2t', 'YouTube Search v1.1.0'), t('platform.windows.extensions.r2s', 'HTTP Proxy supported')],
-              [t('platform.windows.extensions.r3t', 'Portable Mode'), t('platform.windows.extensions.r3s', '.\\Data\\Extensions\\ isolated')]
+              [t('platform.windows.extensions.r1t', 'Apple Music v1.0.1'), t('platform.windows.extensions.r1s', 'Jint · serverUrl + lyrics Bearer auth')],
+              [t('platform.windows.extensions.r2t', 'YouTube Search v1.2.0'), t('platform.windows.extensions.r2s', 'WebView2 web_login + HTTP Proxy')],
+              [t('platform.windows.extensions.r3t', 'Bilibili Search v1.2.0'), t('platform.windows.extensions.r3s', 'qr_login + Hi-Res/FLAC in .\\Data\\')]
             ]
           },
           specs: [
-            t('platform.windows.spec1', 'UI Toolkit: C# / .NET 8 WPF Fluent Design: Acrylic NavigationView, Reveal hover & Light/Dark sync'),
-            t('platform.windows.spec2', 'Audio & Media: NAudio (BiQuadFilter 10-band EQ), TagLibSharp & Windows 10 SMTC'),
-            t('platform.windows.spec3', 'JS Runtime: Embedded Jint engine with proxy-aware HttpClient & automatic cookie redaction'),
-            t('platform.windows.spec4', 'Formats: mp3, m4a, aac, flac, wav, aif, aiff, wma, ogg, opus'),
-            t('platform.windows.spec5', 'Shortcuts: Space play/pause, Ctrl+Left/Right skip, Ctrl+F search, Esc close')
+            t('platform.windows.spec1', 'UI Toolkit: C# / .NET 8 WPF: Win11 DWM Acrylic & rounded corners, independent sidebar, WCAG 2.1 Auto-fix'),
+            t('platform.windows.spec2', 'Audio & Media: NAudio (BiQuadFilter 10-band EQ), TagLibSharp, SMTC & Floating Mini-Player'),
+            t('platform.windows.spec3', 'JS Runtime: Embedded Jint + proxy-aware HttpClient, WebView2 web_login & cookie redaction'),
+            t('platform.windows.spec4', 'Formats: mp3, m4a, aac, flac, wav, aif, aiff, wma, ogg, opus (plus Drag-and-Drop import)'),
+            t('platform.windows.spec5', 'Shortcuts: Ctrl+K palette, Ctrl+, settings, Ctrl+Shift+N mini-player, Space play/pause')
           ]
         }
       };
@@ -1049,6 +1049,13 @@
       if (has('search')) {
         lines.push("  searchKinds: ['track', 'playlist', 'album'],");
       }
+      if (has('web_login')) {
+        lines.push('  webLogin: {');
+        lines.push("    loginUrl: 'https://" + primaryHost + "/login',");
+        lines.push("    cookieDomains: ['." + primaryHost + "'],");
+        lines.push("    requiredCookies: ['SESSION_ID']");
+        lines.push('  },');
+      }
       lines.push('  permissions: {');
       lines.push('    hosts: ' + JSON.stringify(hosts));
       lines.push('  }');
@@ -1077,7 +1084,7 @@
         lines.push('  var match = canHandle({ rawText: req.url, extractedUrl: req.url });');
         lines.push("  if (!match.matched) throw extError('INVALID_URL', 'Unsupported URL.');");
         lines.push("  var headers = { Accept: 'application/json' };");
-        if (has('cookie') || has('qr_login')) {
+        if (has('cookie') || has('qr_login') || has('web_login')) {
           lines.push('  if (req.cookie) headers.Cookie = req.cookie;');
         }
         lines.push("  var res = await ctx.http.request({ method: 'GET', url: 'https://" + primaryHost + "/v1/collections/' + encodeURIComponent(match.remoteId), headers: headers });");
@@ -1133,7 +1140,7 @@
         lines.push('// ' + t('gen.code.streamHook', 'Audio stream URL resolver'));
         lines.push('async function resolveStream(ctx, req) {');
         lines.push("  var headers = { Accept: 'application/json' };");
-        if (has('cookie') || has('qr_login')) {
+        if (has('cookie') || has('qr_login') || has('web_login')) {
           lines.push('  if (req.cookie) headers.Cookie = req.cookie;');
         }
         lines.push("  var res = await ctx.http.request({ method: 'GET', url: 'https://" + primaryHost + "/v1/tracks/' + encodeURIComponent(req.remoteTrackId) + '/stream', headers: headers });");
@@ -1149,7 +1156,7 @@
         lines.push('// ' + t('gen.code.searchHook', 'Opt-in cloud search hook'));
         lines.push('async function search(ctx, req) {');
         lines.push("  var headers = { Accept: 'application/json' };");
-        if (has('cookie') || has('qr_login')) {
+        if (has('cookie') || has('qr_login') || has('web_login')) {
           lines.push('  if (req.cookie) headers.Cookie = req.cookie;');
         }
         lines.push("  var url = 'https://" + primaryHost + "/v1/search?q=' + encodeURIComponent(req.query) + '&kind=' + encodeURIComponent(req.kind || 'all') + '&limit=' + encodeURIComponent(String(req.limit || 20));");

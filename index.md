@@ -52,7 +52,7 @@ const projects = [
   {
     eyebrow: 'Native audio · Cross-platform',
     title: 'Musico',
-    copy: 'An offline, folder-first, multi-queue local music player built natively for Apple, Android, and Windows with a shared JS extension runtime.',
+    copy: 'A folder-first, multi-queue music player with customizable native UI for Apple, Android, and Windows—pairing cloud sync and JS extensions.',
     link: '/projects/musico',
     mark: '05',
     image: '/images/musico/architecture.svg',
